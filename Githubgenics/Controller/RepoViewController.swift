@@ -1,16 +1,21 @@
 import UIKit
 
+
+
+
 class RepoViewController: UITableViewController {
     
     
-    var ReposData = [APIReposData]()
+        var ReposData = [APIReposData]()
 
     
-    override func viewDidLoad() {
+       override func viewDidLoad() {
         super.viewDidLoad()
         FetchRepos {
             print("Repos List Loaded")
             self.tableView.reloadData()
+            self.tableView.rowHeight = 100.0
+            self.tableView.backgroundView = UIImageView(image: UIImage(named: "jjjjj.png"))
         }
 
     }

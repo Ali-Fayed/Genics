@@ -7,8 +7,17 @@
 
 //JSON Data
 
-struct APIUsersData: Decodable {
+struct APIUsersData: Decodable, Identifiable {
     let login: String
+    let id: Int
+    let html_url: String
+//    let bio: String
+    
 }
 
+struct APIReposData: Decodable {
+    let name: String
+    let id: Int 
+    
+}
 

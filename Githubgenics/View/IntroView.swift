@@ -10,6 +10,7 @@ import CLTypingLabel
 
 class IntroView: UIViewController {
     
+    @IBOutlet weak var Button: UIButton!
     @IBOutlet weak var IntroLabel: CLTypingLabel!
     @IBOutlet weak var SignIn: UIButton!
     
@@ -18,16 +19,27 @@ class IntroView: UIViewController {
         
         
 
-        IntroLabel.text = "Githubgentics"
+        IntroLabel.text = "Githubgenics"
     }
-//    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.navigationController?.navigationBar.barTintColor = UIColor.green
-//        self.navigationController?.navigationBar.tintColor = UIColor.blue
-//        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blue]
-//   }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
 
-
+//    @IBAction func Button(_ sender: UIButton) {
+//        guard let url = URL(string: "www.google.com")else {
+//            return
+//        }
+//        let vc = WebViewController(url: url, title: "Google")
+//        let navVc = UINavigationController(rootViewController: vc)
+//        present(navVc, animated: true)
+//    }
+    
 
 }
