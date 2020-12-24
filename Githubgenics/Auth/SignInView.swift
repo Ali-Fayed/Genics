@@ -33,10 +33,10 @@ class SignInView: UIViewController {
                 guard self != nil else { return }
             if let e = error {
                 print(e.localizedDescription)
-                self?.performSegue(withIdentifier: "error", sender: self)
+                self?.performSegue(withIdentifier: K.SignInErrorSegue, sender: self)
             } else {
                 print("Sign In Complete")
-                self?.performSegue(withIdentifier: K.SignIn, sender: self)
+                self?.performSegue(withIdentifier: K.SignInSegue, sender: self)
             }
         }
     }

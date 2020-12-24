@@ -42,7 +42,7 @@ extension UIImageView {
                 let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
                 let data = data, error == nil,
                 let image = UIImage(data: data)
-                else { return }
+            else { return }
             DispatchQueue.main.async() { [weak self] in
                 self?.image = image
             }
@@ -60,39 +60,39 @@ class UsersView: UITableViewController  {
     var Users = [APIUsersData]()
     var SpecificUser = [UserAPI]()
     var ReposData = [APIReposData]()
-      var UsersCall:APIUsersData?
+    var UsersCall:APIUsersData?
     var SpeicficUserCall:UserAPI?
     var ReposCall:APIReposData?
     
     
-      override func viewDidLoad() {
+    override func viewDidLoad() {
         
-          super.viewDidLoad()
-         view.isSkeletonable = true
-          view.showAnimatedGradientSkeleton()
-          tableView.rowHeight = 100.0
-          navigationItem.hidesBackButton = true
+        super.viewDidLoad()
+        view.isSkeletonable = true
+        view.showAnimatedGradientSkeleton()
+        tableView.rowHeight = 100.0
+        navigationItem.hidesBackButton = true
         
-          fetchData {
-              print("JSON Users Data Loaded")
-              self.tableView.reloadData()
-          }
+        fetchData {
+            print("JSON Users Data Loaded")
+            self.tableView.reloadData()
+        }
         
-          view.hideSkeleton()
-         }
+        view.hideSkeleton()
+    }
     
-
+    
     // MARK: - Sign Out Auth
     
-
+    
     @IBAction func SignOuut(_ sender: UIBarButtonItem) {
         let firebaseAuth = Auth.auth()
-    do {
-      try firebaseAuth.signOut()
-        navigationController?.popToRootViewController(animated: true)
-    } catch let signOutError as NSError {
-      print ("Error signing out: %@", signOutError)
-    }
+        do {
+            try firebaseAuth.signOut()
+            navigationController?.popToRootViewController(animated: true)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
     // MARK: - TableView Datasource Methods
@@ -115,15 +115,15 @@ class UsersView: UITableViewController  {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destnation = segue.destination as? DetailViewController {
+        if let destnation = segue.destination as? DetailView {
             destnation.UsersCall = Users[(tableView.indexPathForSelectedRow?.row)!]
         }
     }
     
-
-
-
-// MARK: - JSON Decoder
+    
+    
+    
+    // MARK: - JSON Decoder
     
     func fetchData(completed: @escaping () -> ()) {
         if let url = URL(string: "https://api.github.com/users?since=5") {
@@ -147,8 +147,8 @@ class UsersView: UITableViewController  {
             }
             task.resume()
         }
-    
-
-}
+        
+        
+    }
     
 }

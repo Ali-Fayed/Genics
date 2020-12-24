@@ -18,13 +18,13 @@
 		EA566FF525927B9E00596E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA566FF425927B9E00596E6A /* Assets.xcassets */; };
 		EA566FF825927B9E00596E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA566FF625927B9E00596E6A /* LaunchScreen.storyboard */; };
 		EA5EADF725929E2700AC3223 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5EADF625929E2700AC3223 /* UsersView.swift */; };
-		EA999A6525927C02005E832C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6425927C02005E832C /* DetailViewController.swift */; };
-		EA999A6825927C0A005E832C /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6725927C0A005E832C /* RepoViewController.swift */; };
+		EA999A6525927C02005E832C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6425927C02005E832C /* DetailView.swift */; };
+		EA999A6825927C0A005E832C /* ReposView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6725927C0A005E832C /* ReposView.swift */; };
 		EA999A6E25927C1D005E832C /* APIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6D25927C1D005E832C /* APIData.swift */; };
 		EA999A7725927C90005E832C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA999A7625927C90005E832C /* Main.storyboard */; };
-		EA999A7A25927CAA005E832C /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7925927CAA005E832C /* IntroView.swift */; };
-		EA999A8025927E26005E832C /* SignInClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7E25927E26005E832C /* SignInClass.swift */; };
-		EA999A8125927E26005E832C /* SignUpClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7F25927E26005E832C /* SignUpClass.swift */; };
+		EA999A7A25927CAA005E832C /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7925927CAA005E832C /* LaunchScreenView.swift */; };
+		EA999A8025927E26005E832C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7E25927E26005E832C /* SignInView.swift */; };
+		EA999A8125927E26005E832C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7F25927E26005E832C /* SignUpView.swift */; };
 		EAEC113C2592E837003C2B76 /* WebManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEC113B2592E837003C2B76 /* WebManger.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,13 +44,13 @@
 		EA566FF725927B9E00596E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA566FF925927B9E00596E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5EADF625929E2700AC3223 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
-		EA999A6425927C02005E832C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		EA999A6725927C0A005E832C /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
+		EA999A6425927C02005E832C /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		EA999A6725927C0A005E832C /* ReposView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposView.swift; sourceTree = "<group>"; };
 		EA999A6D25927C1D005E832C /* APIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIData.swift; sourceTree = "<group>"; };
 		EA999A7625927C90005E832C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		EA999A7925927CAA005E832C /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
-		EA999A7E25927E26005E832C /* SignInClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInClass.swift; sourceTree = "<group>"; };
-		EA999A7F25927E26005E832C /* SignUpClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpClass.swift; sourceTree = "<group>"; };
+		EA999A7925927CAA005E832C /* LaunchScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		EA999A7E25927E26005E832C /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		EA999A7F25927E26005E832C /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		EAEC113B2592E837003C2B76 /* WebManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebManger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,8 +141,8 @@
 		EA999A7425927C67005E832C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EA999A6425927C02005E832C /* DetailViewController.swift */,
-				EA999A6725927C0A005E832C /* RepoViewController.swift */,
+				EA999A6425927C02005E832C /* DetailView.swift */,
+				EA999A6725927C0A005E832C /* ReposView.swift */,
 				EA5EADF625929E2700AC3223 /* UsersView.swift */,
 			);
 			path = Controller;
@@ -152,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				EA999A7625927C90005E832C /* Main.storyboard */,
-				EA999A7925927CAA005E832C /* IntroView.swift */,
+				EA999A7925927CAA005E832C /* LaunchScreenView.swift */,
 				EA566FF625927B9E00596E6A /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -161,8 +161,8 @@
 		EA999A8325927E2B005E832C /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				EA999A7E25927E26005E832C /* SignInClass.swift */,
-				EA999A7F25927E26005E832C /* SignUpClass.swift */,
+				EA999A7E25927E26005E832C /* SignInView.swift */,
+				EA999A7F25927E26005E832C /* SignUpView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -266,16 +266,16 @@
 			files = (
 				EA54C347259408D40021BFC4 /* UsersCell.swift in Sources */,
 				EAEC113C2592E837003C2B76 /* WebManger.swift in Sources */,
-				EA999A8125927E26005E832C /* SignUpClass.swift in Sources */,
+				EA999A8125927E26005E832C /* SignUpView.swift in Sources */,
 				EA5EADF725929E2700AC3223 /* UsersView.swift in Sources */,
 				EA566FED25927B9D00596E6A /* ViewController.swift in Sources */,
 				EA566FF325927B9D00596E6A /* Githubgenics.xcdatamodeld in Sources */,
-				EA999A6825927C0A005E832C /* RepoViewController.swift in Sources */,
+				EA999A6825927C0A005E832C /* ReposView.swift in Sources */,
 				EA999A6E25927C1D005E832C /* APIData.swift in Sources */,
 				EA2312DD2592819D000BDC8C /* Constants.swift in Sources */,
-				EA999A8025927E26005E832C /* SignInClass.swift in Sources */,
-				EA999A6525927C02005E832C /* DetailViewController.swift in Sources */,
-				EA999A7A25927CAA005E832C /* IntroView.swift in Sources */,
+				EA999A8025927E26005E832C /* SignInView.swift in Sources */,
+				EA999A6525927C02005E832C /* DetailView.swift in Sources */,
+				EA999A7A25927CAA005E832C /* LaunchScreenView.swift in Sources */,
 				EA566FE925927B9D00596E6A /* AppDelegate.swift in Sources */,
 				EA566FEB25927B9D00596E6A /* SceneDelegate.swift in Sources */,
 			);

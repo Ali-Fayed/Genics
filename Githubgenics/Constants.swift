@@ -7,7 +7,9 @@
 
 
 struct K {
-    static let SignIn = "LoginIDD"
-    static let SignOut = "SignUpId"
-    static let ReposSegue = "DetailsView"
+    static let SignInSegue = "SignIn"
+    static let SignUpSegue = "SignUp"
+    static let DetailSegue = "DetailViewSegue"
+    static let SignInErrorSegue = "SignInerror"
+    static let SignUpErrorSegue = "SignUperror"
 }

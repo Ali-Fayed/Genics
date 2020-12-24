@@ -33,10 +33,10 @@ class SignUpView: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let e = error {
                 print(e.localizedDescription)
-                self.performSegue(withIdentifier: "SignUPs", sender: self)
+                self.performSegue(withIdentifier: K.SignUpErrorSegue, sender: self)
             } else {
                 print("Done")
-                self.performSegue(withIdentifier: K.SignOut, sender: self)
+                self.performSegue(withIdentifier: K.SignUpSegue, sender: self)
                 
             }
         }

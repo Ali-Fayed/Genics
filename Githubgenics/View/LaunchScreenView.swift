@@ -19,7 +19,7 @@ class LaunchScreenView: UIViewController {
         
         
         
-        IntroLabel.text = "Githubgenics"
+//        IntroLabel.text = "Githubgenics"
     }
     
     override func viewWillAppear(_ animated: Bool) {
