@@ -8,12 +8,23 @@
 import UIKit
 import Firebase
 
-class SignUpClass: UIViewController {
+class SignUpView: UIViewController {
 
     @IBOutlet weak var Email: UITextField!
     @IBOutlet weak var Password: UITextField!
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+             let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+            view.addGestureRecognizer(tap)
+        }
+
+        @objc func dismissKeyboard() {
+            view.endEditing(true)
+    }
     
     @IBAction func SignUp(_ sender: UIButton) {
         
@@ -36,12 +47,14 @@ class SignUpClass: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isToolbarHidden = true
+        navigationController?.isNavigationBarHidden = true
 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.isToolbarHidden = false
+        navigationController?.isNavigationBarHidden = false
         
     }
 }

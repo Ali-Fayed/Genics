@@ -8,7 +8,7 @@
 import UIKit
 import CLTypingLabel
 
-class IntroView: UIViewController {
+class LaunchScreenView: UIViewController {
     
     @IBOutlet weak var Button: UIButton!
     @IBOutlet weak var IntroLabel: CLTypingLabel!
@@ -18,7 +18,7 @@ class IntroView: UIViewController {
         super.viewDidLoad()
         
         
-
+        
         IntroLabel.text = "Githubgenics"
     }
     
@@ -26,7 +26,7 @@ class IntroView: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
         navigationController?.isToolbarHidden = true
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -35,15 +35,15 @@ class IntroView: UIViewController {
         navigationController?.isToolbarHidden = false
         
     }
-
-//    @IBAction func Button(_ sender: UIButton) {
-//        guard let url = URL(string: "www.google.com")else {
-//            return
-//        }
-//        let vc = WebViewController(url: url, title: "Google")
-//        let navVc = UINavigationController(rootViewController: vc)
-//        present(navVc, animated: true)
-//    }
     
-
+    //    @IBAction func Button(_ sender: UIButton) {
+    //        guard let url = URL(string: "www.google.com")else {
+    //            return
+    //        }
+    //        let vc = WebViewController(url: url, title: "Google")
+    //        let navVc = UINavigationController(rootViewController: vc)
+    //        present(navVc, animated: true)
+    //    }
+    
+    
 }

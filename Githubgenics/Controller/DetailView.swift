@@ -21,20 +21,20 @@ extension UIViewController {
     }
 }
 
-class DetailViewController: UIViewController {
-
+class DetailView: UIViewController {
+    
     var Users = [APIUsersData]()
     var SpecificUser = [UserAPI]()
     var ReposData = [APIReposData]()
-      var UsersCall:APIUsersData?
+    var UsersCall:APIUsersData?
     var SpeicficUserCall:UserAPI?
     var ReposCall:APIReposData?
-
-
+    
+    
     
     @IBOutlet weak var UserName: UILabel!
     @IBOutlet weak var ImageView: UIImageView!
-//    @IBOutlet weak var buttoo: UIButton!
+    //    @IBOutlet weak var buttoo: UIButton!
     @IBOutlet weak var Followers: UILabel!
     @IBOutlet weak var Following: UILabel!
     @IBOutlet weak var Site: UIBarButtonItem!
@@ -45,31 +45,31 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         fetchUser {
             print("Detail Data Done")
-//            self.tableView.reloadData()
+            //            self.tableView.reloadData()
         }
-//        buttoo.addTarget(self, action: #selector(Button), for: .touchUpInside)
+        //        buttoo.addTarget(self, action: #selector(Button), for: .touchUpInside)
         UserName.text = UsersCall?.login
         let APIImageurl = (UsersCall?.avatar_url)!
         ImageView.layer.cornerRadius = 40
         ImageView.downloaded(from: APIImageurl)
-//        Followers.text = String(UsersCall!.id)
-//        Following.text = SpeicficUserCall?.login
+        //        Followers.text = String(UsersCall!.id)
+        //        Following.text = SpeicficUserCall?.login
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        Followers.text = SPUser?.login
-//    }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        Followers.text = SPUser?.login
+    //    }
     
-//    @IBAction func Button(_ sender: UIButton) {
-//        let APIurl = (UsersCall?.html_url)!
-//        guard let url = URL(string: APIurl)
-//        else {
-//            return }
-//        let vc = WebManger(url: url, title: "Google")
-//        let navVc = UINavigationController(rootViewController: vc)
-//        present(navVc, animated: true)
-//    }
-//
+    //    @IBAction func Button(_ sender: UIButton) {
+    //        let APIurl = (UsersCall?.html_url)!
+    //        guard let url = URL(string: APIurl)
+    //        else {
+    //            return }
+    //        let vc = WebManger(url: url, title: "Google")
+    //        let navVc = UINavigationController(rootViewController: vc)
+    //        present(navVc, animated: true)
+    //    }
+    //
     
     @IBAction func Site(_ sender: UIBarButtonItem) {
         let APIurl = (UsersCall?.html_url)!
@@ -103,8 +103,8 @@ class DetailViewController: UIViewController {
             }
             task.resume()
         }
+        
+        
+    }
     
-
-}
-
 }
