@@ -8,5 +8,6 @@ target 'Githubgenics' do
 
   pod 'CLTypingLabel'
   pod 'Firebase/Auth'
+  pod 'SkeletonView'
   
 end

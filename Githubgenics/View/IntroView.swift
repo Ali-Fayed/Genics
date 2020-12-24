@@ -25,11 +25,15 @@ class IntroView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+        navigationController?.isToolbarHidden = true
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.isNavigationBarHidden = false
+        navigationController?.isToolbarHidden = false
+        
     }
 
 //    @IBAction func Button(_ sender: UIButton) {

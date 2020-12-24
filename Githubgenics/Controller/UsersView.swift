@@ -27,6 +27,11 @@
 //}
 import UIKit
 import Firebase
+import SkeletonView
+import WebKit
+
+
+
 
 extension UIImageView {
     func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
@@ -49,35 +54,38 @@ extension UIImageView {
     }
 }
 
-class UserCell: UITableViewCell {
-    
-    @IBOutlet weak var NameLAbel: UILabel!
-    @IBOutlet weak var ImageView: UIImageView!
-    
-}
 
-
-class UsersView: UITableViewController {
+class UsersView: UITableViewController  {
     
-    var image:APIUsersData?
     var Users = [APIUsersData]()
+    var SpecificUser = [UserAPI]()
+    var ReposData = [APIReposData]()
+      var UsersCall:APIUsersData?
+    var SpeicficUserCall:UserAPI?
+    var ReposCall:APIReposData?
+    
     
       override func viewDidLoad() {
+        
           super.viewDidLoad()
-          
-        tableView.rowHeight = 100.0
-        navigationItem.hidesBackButton = true
+         view.isSkeletonable = true
+          view.showAnimatedGradientSkeleton()
+          tableView.rowHeight = 100.0
+          navigationItem.hidesBackButton = true
+        
           fetchData {
               print("JSON Users Data Loaded")
               self.tableView.reloadData()
           }
+        
+          view.hideSkeleton()
          }
     
+
     // MARK: - Sign Out Auth
     
-    
-    
-    @IBAction func SignOut(_ sender: UIBarButtonItem) {
+
+    @IBAction func SignOuut(_ sender: UIBarButtonItem) {
         let firebaseAuth = Auth.auth()
     do {
       try firebaseAuth.signOut()
@@ -90,39 +98,35 @@ class UsersView: UITableViewController {
     // MARK: - TableView Datasource Methods
     
     
-
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Users.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
-        cell.NameLAbel?.text = Users[indexPath.row].login.capitalized
-
-        let Imageurl = "https://avatars0.githubusercontent.com/u/\(Int.random(in: 105 ... 200))?v=4"
-        let url = URL(string: Imageurl)
-        cell.ImageView.downloaded(from: url!)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UsersCell
+        cell.UserNameLabel?.text = Users[indexPath.row].login.capitalized
+        let APIImageurl = "https://avatars0.githubusercontent.com/u/\(Users[indexPath.row].id)?v=4"
+        cell.ImageView.downloaded(from: APIImageurl)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "SSS", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destnation = segue.destination as? DetailViewController {
-            destnation.User = Users[(tableView.indexPathForSelectedRow?.row)!]
+            destnation.UsersCall = Users[(tableView.indexPathForSelectedRow?.row)!]
         }
     }
     
 
 
+
 // MARK: - JSON Decoder
     
     func fetchData(completed: @escaping () -> ()) {
-        if let url = URL(string: "https://api.github.com/users?since=\(Int.random(in: 105 ... 200 ))") {
+        if let url = URL(string: "https://api.github.com/users?since=5") {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error == nil {

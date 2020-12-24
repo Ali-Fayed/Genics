@@ -44,16 +44,3 @@ class WebManger: UIViewController {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-    
-

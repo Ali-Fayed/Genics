@@ -22,12 +22,25 @@ class SignInClass: UIViewController {
                 guard self != nil else { return }
             if let e = error {
                 print(e.localizedDescription)
+                self?.performSegue(withIdentifier: "error", sender: self)
             } else {
                 print("Sign In Complete")
                 self?.performSegue(withIdentifier: K.SignIn, sender: self)
             }
         }
     }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isToolbarHidden = true
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isToolbarHidden = false
         
     }
 }

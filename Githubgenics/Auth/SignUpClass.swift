@@ -22,12 +22,26 @@ class SignUpClass: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let e = error {
                 print(e.localizedDescription)
+                self.performSegue(withIdentifier: "SignUPs", sender: self)
             } else {
                 print("Done")
                 self.performSegue(withIdentifier: K.SignOut, sender: self)
+                
             }
         }
     }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isToolbarHidden = true
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isToolbarHidden = false
         
     }
 }

@@ -10,6 +10,7 @@
 		1A2908345F20F1BD39F47705 /* libPods-Githubgenics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC40B80E214607357A0B543 /* libPods-Githubgenics.a */; };
 		EA2312D925928108000BDC8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA2312D825928108000BDC8C /* GoogleService-Info.plist */; };
 		EA2312DD2592819D000BDC8C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2312DC2592819D000BDC8C /* Constants.swift */; };
+		EA54C347259408D40021BFC4 /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54C346259408D40021BFC4 /* UsersCell.swift */; };
 		EA566FE925927B9D00596E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA566FE825927B9D00596E6A /* AppDelegate.swift */; };
 		EA566FEB25927B9D00596E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA566FEA25927B9D00596E6A /* SceneDelegate.swift */; };
 		EA566FED25927B9D00596E6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA566FEC25927B9D00596E6A /* ViewController.swift */; };
@@ -24,7 +25,6 @@
 		EA999A7A25927CAA005E832C /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7925927CAA005E832C /* IntroView.swift */; };
 		EA999A8025927E26005E832C /* SignInClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7E25927E26005E832C /* SignInClass.swift */; };
 		EA999A8125927E26005E832C /* SignUpClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7F25927E26005E832C /* SignUpClass.swift */; };
-		EAE3B6EC2592953C00E0C43C /* NetworkingManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE3B6EB2592953C00E0C43C /* NetworkingManger.swift */; };
 		EAEC113C2592E837003C2B76 /* WebManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEC113B2592E837003C2B76 /* WebManger.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +34,7 @@
 		CCC40B80E214607357A0B543 /* libPods-Githubgenics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Githubgenics.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA2312D825928108000BDC8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EA2312DC2592819D000BDC8C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EA54C346259408D40021BFC4 /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
 		EA566FE525927B9D00596E6A /* Githubgenics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Githubgenics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA566FE825927B9D00596E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA566FEA25927B9D00596E6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,8 +51,6 @@
 		EA999A7925927CAA005E832C /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		EA999A7E25927E26005E832C /* SignInClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInClass.swift; sourceTree = "<group>"; };
 		EA999A7F25927E26005E832C /* SignUpClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpClass.swift; sourceTree = "<group>"; };
-		EAE3B6EB2592953C00E0C43C /* NetworkingManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManger.swift; sourceTree = "<group>"; };
-		EAE3B6EE259298CC00E0C43C /* Githubgenics */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Githubgenics; sourceTree = "<group>"; };
 		EAEC113B2592E837003C2B76 /* WebManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebManger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,11 +83,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		EA54C34925940DCC0021BFC4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EA54C346259408D40021BFC4 /* UsersCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		EA566FDC25927B9D00596E6A = {
 			isa = PBXGroup;
 			children = (
 				EA566FE725927B9D00596E6A /* Githubgenics */,
-				EAE3B6EE259298CC00E0C43C /* Githubgenics */,
 				EA566FE625927B9D00596E6A /* Products */,
 				CB322849B6A5E692B7FCA807 /* Pods */,
 				B9640142B75DF33193081D74 /* Frameworks */,
@@ -111,6 +117,7 @@
 				EA566FEC25927B9D00596E6A /* ViewController.swift */,
 				EA566FF425927B9E00596E6A /* Assets.xcassets */,
 				EA999A8325927E2B005E832C /* Auth */,
+				EA54C34925940DCC0021BFC4 /* Cell */,
 				EA999A7C25927CB4005E832C /* View */,
 				EA999A7425927C67005E832C /* Controller */,
 				EA999A7325927C31005E832C /* Model */,
@@ -126,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				EA999A6D25927C1D005E832C /* APIData.swift */,
-				EAE3B6EB2592953C00E0C43C /* NetworkingManger.swift */,
 				EAEC113B2592E837003C2B76 /* WebManger.swift */,
 			);
 			path = Model;
@@ -258,12 +264,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA54C347259408D40021BFC4 /* UsersCell.swift in Sources */,
 				EAEC113C2592E837003C2B76 /* WebManger.swift in Sources */,
 				EA999A8125927E26005E832C /* SignUpClass.swift in Sources */,
 				EA5EADF725929E2700AC3223 /* UsersView.swift in Sources */,
 				EA566FED25927B9D00596E6A /* ViewController.swift in Sources */,
 				EA566FF325927B9D00596E6A /* Githubgenics.xcdatamodeld in Sources */,
-				EAE3B6EC2592953C00E0C43C /* NetworkingManger.swift in Sources */,
 				EA999A6825927C0A005E832C /* RepoViewController.swift in Sources */,
 				EA999A6E25927C1D005E832C /* APIData.swift in Sources */,
 				EA2312DD2592819D000BDC8C /* Constants.swift in Sources */,
