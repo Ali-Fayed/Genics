@@ -7,7 +7,7 @@
 
 //JSON Data
 
-struct APIUsersData: Decodable {
+struct UsersStruct: Decodable {
     let login: String
     let id: Int
     let html_url: String
@@ -18,17 +18,6 @@ struct APIUsersData: Decodable {
 
 struct APIReposData: Decodable {
     let name: String
-//    let id: Int
-//    let description: String
-}
+    let description:String
 
-struct UserAPI: Decodable {
-    let login: String
-//    let company: String
-//    let bio: String
-//    let name: String
-//    let following: Int
-//    let followers: Int
-//    let public_repos: Int
 }
-

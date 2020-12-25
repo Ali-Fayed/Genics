@@ -9,8 +9,8 @@ import UIKit
 
 class UsersCell: UITableViewCell {
     
-    var User:APIUsersData?
-    var Users = [APIUsersData]()
+    var User:UsersStruct?
+    var Users = [UsersStruct]()
 
     @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var UserNameLabel: UILabel!

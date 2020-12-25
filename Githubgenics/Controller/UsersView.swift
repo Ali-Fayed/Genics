@@ -57,11 +57,9 @@ extension UIImageView {
 
 class UsersView: UITableViewController  {
     
-    var Users = [APIUsersData]()
-    var SpecificUser = [UserAPI]()
+    var UsersAPIStruct = [UsersStruct]()
     var ReposData = [APIReposData]()
-    var UsersCall:APIUsersData?
-    var SpeicficUserCall:UserAPI?
+    var SpeicficUserCall:UsersStruct?
     var ReposCall:APIReposData?
     
     
@@ -99,13 +97,13 @@ class UsersView: UITableViewController  {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Users.count
+        return UsersAPIStruct.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UsersCell
-        cell.UserNameLabel?.text = Users[indexPath.row].login.capitalized
-        let APIImageurl = "https://avatars0.githubusercontent.com/u/\(Users[indexPath.row].id)?v=4"
+        cell.UserNameLabel?.text = UsersAPIStruct[indexPath.row].login.capitalized
+        let APIImageurl = "https://avatars0.githubusercontent.com/u/\(UsersAPIStruct[indexPath.row].id)?v=4"
         cell.ImageView.downloaded(from: APIImageurl)
         return cell
     }
@@ -116,7 +114,7 @@ class UsersView: UITableViewController  {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destnation = segue.destination as? DetailView {
-            destnation.UsersCall = Users[(tableView.indexPathForSelectedRow?.row)!]
+            destnation.Users = UsersAPIStruct[(tableView.indexPathForSelectedRow?.row)!]
         }
     }
     
@@ -126,14 +124,14 @@ class UsersView: UITableViewController  {
     // MARK: - JSON Decoder
     
     func fetchData(completed: @escaping () -> ()) {
-        if let url = URL(string: "https://api.github.com/users?since=5") {
+        if let url = URL(string: "https://api.github.com/users?per_page=150") {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error == nil {
                     let decoder = JSONDecoder()
                     if let safeData = data {
                         do {
-                            self.Users = try decoder.decode([APIUsersData].self, from: safeData)
+                            self.UsersAPIStruct = try decoder.decode([UsersStruct].self, from: safeData)
                             DispatchQueue.main.async {
                                 completed()
                             }
