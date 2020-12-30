@@ -14,10 +14,20 @@ struct UsersStruct: Decodable {
     let avatar_url: String
     let url: String
     let repos_url: String
+    
+    enum CodingKeys: String, CodingKey {
+        case login
+        case id
+        case html_url
+        case avatar_url
+        case url
+        case repos_url
+    }
 }
 
-struct APIReposData: Decodable {
+struct ReposStruct: Codable {
     let name: String
     let description:String
-
+    let svn_url: String
 }
+

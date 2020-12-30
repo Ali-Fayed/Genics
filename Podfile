@@ -9,5 +9,8 @@ target 'Githubgenics' do
   pod 'CLTypingLabel'
   pod 'Firebase/Auth'
   pod 'SkeletonView'
+  pod 'Alamofire', '~> 5.2'
+  pod 'Kingfisher', '~> 5.15.8'
+  pod 'SwiftyJSON', '~> 4.0'
   
 end

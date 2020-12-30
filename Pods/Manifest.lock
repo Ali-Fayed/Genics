@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.4.1)
   - CLTypingLabel (0.4.0)
   - Firebase/Auth (7.2.0):
     - Firebase/CoreOnly
@@ -37,6 +38,9 @@ PODS:
   - GoogleUtilities/Reachability (7.1.1):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.5.0)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
   - nanopb (2.30906.0):
     - nanopb/decode (= 2.30906.0)
     - nanopb/encode (= 2.30906.0)
@@ -44,14 +48,19 @@ PODS:
   - nanopb/encode (2.30906.0)
   - PromisesObjC (1.2.11)
   - SkeletonView (1.11.0)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.2)
   - CLTypingLabel
   - Firebase/Auth
+  - Kingfisher (~> 5.15.8)
   - SkeletonView
+  - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - CLTypingLabel
     - Firebase
     - FirebaseAuth
@@ -60,11 +69,14 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - GTMSessionFetcher
+    - Kingfisher
     - nanopb
     - PromisesObjC
     - SkeletonView
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   CLTypingLabel: 95a7d1faf7e3d1d952cd11cb0491d17d80c50934
   Firebase: 456eeacc158d8c58586b7871619a81bb9f27d4ae
   FirebaseAuth: e6a214cc897d2eab7635b1e5dd6b4298fd1e776b
@@ -73,10 +85,12 @@ SPEC CHECKSUMS:
   GoogleDataTransport: e4085e6762f36a6141738f46b0153473ce57fb18
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SkeletonView: cc84ce90a804dd0dd7198dd802833411c8a64eaf
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: d49489b826de8ac69222d4961ce57fbc1a147c50
+PODFILE CHECKSUM: a9d2285d297148978db1128b433d2d8817c2ff8b
 
 COCOAPODS: 1.10.0

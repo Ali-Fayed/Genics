@@ -18,7 +18,6 @@ class LaunchScreenView: UIViewController {
         super.viewDidLoad()
         
         
-        
 //        IntroLabel.text = "Githubgenics"
     }
     

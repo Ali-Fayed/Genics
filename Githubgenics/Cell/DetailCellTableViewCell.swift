@@ -14,7 +14,8 @@ class DetailCellTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        backgroundColor = UIColor.init(cgColor: #colorLiteral(red: 0.2355628014, green: 0.2136559784, blue: 0.2124236524, alpha: 1))
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

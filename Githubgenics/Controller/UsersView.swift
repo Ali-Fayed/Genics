@@ -4,78 +4,53 @@
 //
 //  Created by Ali Fayed on 22/12/2020.
 //
-//extension UIImageView {
-//
-//    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-//        contentMode = mode
-//        URLSession.shared.dataTask(with: url) { data, response, error in
-//            guard
-//                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-//                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-//                let data = data, error == nil,
-//                let image = UIImage(data: data)
-//                else { return }
-//            DispatchQueue.main.async() { [weak self] in
-//                self?.image = image
-//            }
-//        }.resume()
-//    }
-//    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-//        guard let url = URL(string: link) else { return }
-//        downloaded(from: url, contentMode: mode)
-//    }
-//}
+
 import UIKit
 import Firebase
 import SkeletonView
 import WebKit
+import Alamofire
+import Kingfisher
+import CoreData
 
-
-
-
-extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-        contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-            else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = image
-            }
-        }.resume()
-    }
-    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-        guard let url = URL(string: link) else { return }
-        downloaded(from: url, contentMode: mode)
-    }
-}
-
-
-class UsersView: UITableViewController  {
+class UsersView: UITableViewController {
+    
+    let sessionManager: Session = {
+        let configuration = URLSessionConfiguration.af.default
+        configuration.requestCachePolicy = .returnCacheDataElseLoad
+        let responseCacher = ResponseCacher(behavior: .modify { _, response in
+            let userInfo = ["date": Date()]
+            return CachedURLResponse(
+                response: response.response,
+                data: response.data,
+                userInfo: userInfo,
+                storagePolicy: .allowed)
+        })
+        
+        let networkLogger = GitNetworkLogger()
+        let interceptor = GitRequestInterceptor()
+        
+        return Session(
+            configuration: configuration,
+            interceptor: interceptor,
+            cachedResponseHandler: responseCacher,
+            eventMonitors: [networkLogger])
+    }()
+    
     
     var UsersAPIStruct = [UsersStruct]()
-    var ReposData = [APIReposData]()
+    var ReposData = [ReposStruct]()
     var SpeicficUserCall:UsersStruct?
-    var ReposCall:APIReposData?
-    
+    var ReposCall:ReposStruct?
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         view.isSkeletonable = true
         view.showAnimatedGradientSkeleton()
         tableView.rowHeight = 100.0
         navigationItem.hidesBackButton = true
-        
-        fetchData {
-            print("JSON Users Data Loaded")
-            self.tableView.reloadData()
-        }
-        
+        fetchData()
         view.hideSkeleton()
     }
     
@@ -103,9 +78,12 @@ class UsersView: UITableViewController  {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UsersCell
         cell.UserNameLabel?.text = UsersAPIStruct[indexPath.row].login.capitalized
+        
+        
         let APIImageurl = "https://avatars0.githubusercontent.com/u/\(UsersAPIStruct[indexPath.row].id)?v=4"
-        cell.ImageView.downloaded(from: APIImageurl)
+        cell.ImageView.kf.setImage(with: URL(string: APIImageurl), placeholder: nil, options: [.transition(.fade(0.7))])
         return cell
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -123,30 +101,35 @@ class UsersView: UITableViewController  {
     
     // MARK: - JSON Decoder
     
-    func fetchData(completed: @escaping () -> ()) {
-        if let url = URL(string: "https://api.github.com/users?per_page=150") {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if error == nil {
-                    let decoder = JSONDecoder()
-                    if let safeData = data {
-                        do {
-                            self.UsersAPIStruct = try decoder.decode([UsersStruct].self, from: safeData)
-                            DispatchQueue.main.async {
-                                completed()
-                            }
-                        } catch {
-                            let error = error
-                            print("JSON Error")
-                            print(error.localizedDescription)
-                        }
-                    }
-                }
+    func fetchData() {
+        let url = "https://api.github.com/users?since=100"
+        sessionManager.request(url, method: .get).responseJSON { (response) in
+            do {
+                let users = try JSONDecoder().decode([UsersStruct].self, from: response.data!)
+                self.UsersAPIStruct = users
+                self.tableView.reloadData()
+            } catch {
+                let error = error
+                print("Users Parse Error")
+                print(error.localizedDescription)
             }
-            task.resume()
         }
-        
-        
     }
     
+    func saveItems() {
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error.localizedDescription)")
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    
+    
 }
+
+
+

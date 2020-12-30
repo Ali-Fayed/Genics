@@ -6,7 +6,11 @@
 //
 
 import UIKit
+import Firebase
+import SkeletonView
 import WebKit
+import Alamofire
+import Kingfisher
 
 //extension UIViewController {
 //    func loader() -> UIAlertController {
@@ -21,46 +25,65 @@ import WebKit
 //    }
 //}
 
+//MARK:- Main Class
 
-class DetailView: UIViewController, UITableViewDataSource,UITableViewDelegate {
+class DetailView: UIViewController {
     
+    let sessionManager: Session = {
+      let configuration = URLSessionConfiguration.af.default
+      configuration.requestCachePolicy = .returnCacheDataElseLoad
+      let responseCacher = ResponseCacher(behavior: .modify { _, response in
+        let userInfo = ["date": Date()]
+        return CachedURLResponse(
+          response: response.response,
+          data: response.data,
+          userInfo: userInfo,
+          storagePolicy: .allowed)
+      })
 
-    
+      let networkLogger = GitNetworkLogger()
+      let interceptor = GitRequestInterceptor()
+
+      return Session(
+        configuration: configuration,
+        interceptor: interceptor,
+        cachedResponseHandler: responseCacher,
+        eventMonitors: [networkLogger])
+    }()
     
     var UsersAPIStruct = [UsersStruct]()
-    var ReposData = [APIReposData]()
+    var ReposData = [ReposStruct]()
     var Users:UsersStruct?
-    var Repos:APIReposData?
+    var Repos:ReposStruct?
     
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var UserName: UILabel!
     @IBOutlet weak var ImageView: UIImageView!
-    @IBOutlet weak var Followers: UILabel!
-    @IBOutlet weak var Following: UILabel!
     @IBOutlet weak var Site: UIBarButtonItem!
     
+    //MARK:- ViewDidLoad
     
     override func viewDidLoad() {
-
+        
         super.viewDidLoad()
-        tableView.rowHeight = 70.0
+        tableView.rowHeight = 170.0
         tableView.dataSource = self
         tableView.delegate = self
-        FetchRepos {
-            print("Repos List Loaded")
-            self.tableView.reloadData()
-            self.tableView.rowHeight = 100.0
-        }
+        self.tableView.rowHeight = 100.0
+
+        FetchRepos ()
         UserName.text = Users?.login
         let APIImageurl = (Users?.avatar_url)!
-        ImageView.layer.cornerRadius = 40
-        ImageView.downloaded(from: APIImageurl)
+        ImageView.kf.indicatorType = .activity
+        ImageView.kf.setImage(with: URL(string: APIImageurl), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
+
         
     }
     
-
+    //MARK:- WebView
+    
+    
     @IBAction func Site(_ sender: UIBarButtonItem) {
         let APIurl = (Users?.html_url)!
         guard let url = URL(string: APIurl)
@@ -71,13 +94,40 @@ class DetailView: UIViewController, UITableViewDataSource,UITableViewDelegate {
         present(navVc, animated: true)
     }
     
+    //MARK:- JSON Viewer
     
-        
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func FetchRepos() {
+      let url = "https://api.github.com/users/\((Users?.login)!)/repos"
+        sessionManager.request(url, method: .get).responseJSON { (response) in
+          do {
+            if let safedata = response.data {
+                let users = try JSONDecoder().decode([ReposStruct].self, from: safedata)
+               self.ReposData = users
+               self.tableView.reloadData()
+               print("Fetch OK")
+            }
+          }
+          catch {
+              let error = error
+              print("Detail View Error")
+              print(error.localizedDescription)
+        }
+      }
+  }
+    
+    //
+}
+//
+
+//MARK:- TableView
+
+extension DetailView: UITableViewDataSource , UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ReposData.count
     }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepoCell", for: indexPath) as! DetailCellTableViewCell
         cell.RepoNameLabel?.text = ReposData[indexPath.row].name.capitalized
         cell.Description?.text = ReposData[indexPath.row].description.capitalized
@@ -85,33 +135,7 @@ class DetailView: UIViewController, UITableViewDataSource,UITableViewDelegate {
         return cell
     }
     
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-        
-    
-    
-    func FetchRepos(completed: @escaping () -> ()) {
-        if let url = URL(string: "https://api.github.com/users/\((Users?.login)!)/repos") {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if error == nil {
-                    let decoder = JSONDecoder()
-                    if let safeData = data {
-                        do {
-                            self.ReposData = try decoder.decode([APIReposData].self, from: safeData)
-                            DispatchQueue.main.async {
-                                completed()
-                            }
-                        } catch {
-                            print("JSON Error")
-                        }
-                    }
-                }
-            }
-            task.resume()
-        }
-    }
-    
 }
