@@ -14,7 +14,7 @@ import Kingfisher
 
 class SettingsView: UITableViewController {
      
-    var Setting = ["Dark Mode" , "Languages" , "About" ]
+    var Setting = ["Dark Mode" ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +30,8 @@ class SettingsView: UITableViewController {
     }
  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = Setting[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsCell
+        cell.DarkModeLabel?.text = Setting[indexPath.row]
         return cell
     }
     

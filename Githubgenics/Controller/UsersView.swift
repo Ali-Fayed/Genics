@@ -8,50 +8,27 @@
 import UIKit
 import Firebase
 import SkeletonView
-import WebKit
 import Alamofire
 import Kingfisher
 import CoreData
 
 class UsersView: UITableViewController {
-    
-    let sessionManager: Session = {
-        let configuration = URLSessionConfiguration.af.default
-        configuration.requestCachePolicy = .returnCacheDataElseLoad
-        let responseCacher = ResponseCacher(behavior: .modify { _, response in
-            let userInfo = ["date": Date()]
-            return CachedURLResponse(
-                response: response.response,
-                data: response.data,
-                userInfo: userInfo,
-                storagePolicy: .allowed)
-        })
-        
-        let networkLogger = GitNetworkLogger()
-        let interceptor = GitRequestInterceptor()
-        
-        return Session(
-            configuration: configuration,
-            interceptor: interceptor,
-            cachedResponseHandler: responseCacher,
-            eventMonitors: [networkLogger])
-    }()
-    
-    
+
     var UsersAPIStruct = [UsersStruct]()
-    var ReposData = [ReposStruct]()
-    var SpeicficUserCall:UsersStruct?
-    var ReposCall:ReposStruct?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.isSkeletonable = true
-        view.showAnimatedGradientSkeleton()
         tableView.rowHeight = 100.0
         navigationItem.hidesBackButton = true
         fetchData()
-        view.hideSkeleton()
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        LoadingIndicator()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.dismiss(animated: false, completion: nil)
+        }
+      
     }
     
     
@@ -63,9 +40,29 @@ class UsersView: UITableViewController {
         do {
             try firebaseAuth.signOut()
             navigationController?.popToRootViewController(animated: true)
+            UserDefaults.standard.removeObject(forKey: "email")
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
+            let alert = UIAlertController(title: "Error Sign Out", message: "check your internet", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
+            }
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            self.tableView.stopSkeletonAnimation()
+//            self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
         }
+    }
+    
+    // MARK: - GitHubURL Button
+    
+    @IBAction func GitHubURL(_ sender: UIBarButtonItem) {
+        let APIurl = ("https://github.com/")
+        guard let url = URL(string: APIurl)
+        else {
+            return }
+        let vc = WebManger(url: url, title: "Google")
+        let navVc = UINavigationController(rootViewController: vc)
+        present(navVc, animated: true)
     }
     
     // MARK: - TableView Datasource Methods
@@ -78,8 +75,6 @@ class UsersView: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UsersCell
         cell.UserNameLabel?.text = UsersAPIStruct[indexPath.row].login.capitalized
-        
-        
         let APIImageurl = "https://avatars0.githubusercontent.com/u/\(UsersAPIStruct[indexPath.row].id)?v=4"
         cell.ImageView.kf.setImage(with: URL(string: APIImageurl), placeholder: nil, options: [.transition(.fade(0.7))])
         return cell
@@ -102,8 +97,8 @@ class UsersView: UITableViewController {
     // MARK: - JSON Decoder
     
     func fetchData() {
-        let url = "https://api.github.com/users?since=100"
-        sessionManager.request(url, method: .get).responseJSON { (response) in
+        let url = "https://api.github.com/users?per_page=100"
+        AF.request(url, method: .get).responseJSON { (response) in
             do {
                 let users = try JSONDecoder().decode([UsersStruct].self, from: response.data!)
                 self.UsersAPIStruct = users
@@ -116,6 +111,8 @@ class UsersView: UITableViewController {
         }
     }
     
+    // MARK: - DataBase
+    
     func saveItems() {
         
         do {
@@ -126,8 +123,45 @@ class UsersView: UITableViewController {
         
         self.tableView.reloadData()
     }
+
+    @IBAction func Data(_ sender: UIBarButtonItem) {
+ 
+    }
     
+    // MARK: - Loader and SkeletonView
     
+    func LoadingIndicator() {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        alert.view.tintColor = UIColor.black
+        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50)) as UIActivityIndicatorView
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+
+        super.viewDidAppear(animated)
+        tableView.isSkeletonable = true
+        tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)), animation: nil, transition: .crossDissolve(0.25))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.tableView.stopSkeletonAnimation()
+            self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.tableView.stopSkeletonAnimation()
+            self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+        }
+
+    }
     
 }
 

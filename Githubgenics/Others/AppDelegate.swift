@@ -9,17 +9,22 @@ import UIKit
 import CoreData
 import Firebase
 import Alamofire
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         NetworkReachability.shared.startNetworkMonitoring()
+        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        
         return true
     }
+    
+
 
     // MARK: UISceneSession Lifecycle
 

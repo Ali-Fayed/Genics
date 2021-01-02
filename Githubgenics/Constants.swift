@@ -13,3 +13,6 @@ struct K {
     static let SignInErrorSegue = "SignInerror"
     static let SignUpErrorSegue = "SignUperror"
 }
+
+
+
