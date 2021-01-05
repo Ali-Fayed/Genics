@@ -12,7 +12,9 @@ struct K {
     static let DetailSegue = "DetailViewSegue"
     static let SignInErrorSegue = "SignInerror"
     static let SignUpErrorSegue = "SignUperror"
+    
 }
+
 
 
 

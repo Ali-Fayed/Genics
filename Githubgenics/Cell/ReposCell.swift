@@ -10,7 +10,6 @@ import UIKit
 class ReposCell: UITableViewCell {
 
     @IBOutlet weak var RepoNameLabel: UILabel!
-    @IBOutlet weak var Description: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

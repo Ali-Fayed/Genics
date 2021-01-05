@@ -13,7 +13,7 @@ import Kingfisher
 import CoreData
 
 class UsersView: UITableViewController {
-
+    
     var UsersAPIStruct = [UsersStruct]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -22,18 +22,13 @@ class UsersView: UITableViewController {
         view.isSkeletonable = true
         tableView.rowHeight = 100.0
         navigationItem.hidesBackButton = true
-        fetchData()
+        FetchData(param: Int.random(in: 100...200))
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         LoadingIndicator()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.dismiss(animated: false, completion: nil)
-        }
-      
     }
     
     
     // MARK: - Sign Out Auth
-    
     
     @IBAction func SignOuut(_ sender: UIBarButtonItem) {
         let firebaseAuth = Auth.auth()
@@ -43,13 +38,7 @@ class UsersView: UITableViewController {
             UserDefaults.standard.removeObject(forKey: "email")
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
-            let alert = UIAlertController(title: "Error Sign Out", message: "check your internet", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
-            }
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-            self.tableView.stopSkeletonAnimation()
-//            self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+            SignOutError()
         }
     }
     
@@ -65,7 +54,7 @@ class UsersView: UITableViewController {
         present(navVc, animated: true)
     }
     
-    // MARK: - TableView Datasource Methods
+    // MARK: - TableView Methods
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,61 +80,70 @@ class UsersView: UITableViewController {
         }
     }
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let postion = scrollView.contentOffset.y
+        if postion > (tableView.contentSize.height-80-scrollView.frame.size.height) {
+            print("fetch more")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.tableView.tableFooterView = nil
+            }
+        }
+    }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastSectionIndex = tableView.numberOfSections - 1
+        let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
+        if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex {
+            // print("this is the last cell")
+            let spinner = UIActivityIndicatorView(style: .medium)
+            spinner.startAnimating()
+            spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+            
+            self.tableView.tableFooterView = spinner
+            self.tableView.tableFooterView?.isHidden = false
+        }
+    }
     
     
     
-    // MARK: - JSON Decoder
+    // MARK: - Fetch Data From GitHubAPI
     
-    func fetchData() {
-        let url = "https://api.github.com/users?per_page=100"
+    func FetchData(param: Int) {
+        let url = "https://api.github.com/users?since=\(param)"
         AF.request(url, method: .get).responseJSON { (response) in
             do {
-                let users = try JSONDecoder().decode([UsersStruct].self, from: response.data!)
-                self.UsersAPIStruct = users
+                let Users = try JSONDecoder().decode([UsersStruct].self, from: response.data!)
+                self.UsersAPIStruct = Users
                 self.tableView.reloadData()
+                self.SkeletonViewLoader()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    self.dismiss(animated: false, completion: nil)
+                }
             } catch {
                 let error = error
-                print("Users Parse Error")
                 print(error.localizedDescription)
             }
         }
     }
     
-    // MARK: - DataBase
     
-    func saveItems() {
-        
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error.localizedDescription)")
-        }
-        
-        self.tableView.reloadData()
-    }
-
     @IBAction func Data(_ sender: UIBarButtonItem) {
- 
+        
     }
     
-    // MARK: - Loader and SkeletonView
+    // MARK: - Loaders
     
     func LoadingIndicator() {
         let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-
         alert.view.tintColor = UIColor.black
         let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50)) as UIActivityIndicatorView
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
-
         alert.view.addSubview(loadingIndicator)
         present(alert, animated: true, completion: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-
-        super.viewDidAppear(animated)
+    func SkeletonViewLoader () {
         tableView.isSkeletonable = true
         tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)), animation: nil, transition: .crossDissolve(0.25))
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -154,15 +152,15 @@ class UsersView: UITableViewController {
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.tableView.stopSkeletonAnimation()
-            self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+    func SignOutError () {
+        let alert = UIAlertController(title: "Error Sign Out", message: "check your internet", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
         }
-
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
+  
 }
 
 

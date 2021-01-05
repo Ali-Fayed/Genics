@@ -8,7 +8,6 @@
 import UIKit
 import Firebase
 import SkeletonView
-import WebKit
 import Alamofire
 import Kingfisher
 
@@ -16,15 +15,14 @@ import Kingfisher
 
 class DetailView: UIViewController {
     
-    var uC = UsersView()
     var ReposData = [ReposStruct]()
     var Users:UsersStruct?
+    var  userclass = UsersView()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var UserName: UILabel!
     @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var Site: UIBarButtonItem!
-    
     @IBOutlet weak var Followers: UILabel!
     @IBOutlet weak var Following: UILabel!
     //MARK:- ViewDidLoad
@@ -39,12 +37,9 @@ class DetailView: UIViewController {
         let APIImageurl = (Users?.avatar_url)!
         ImageView.kf.indicatorType = .activity
         ImageView.kf.setImage(with: URL(string: APIImageurl), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
-
-        
     }
     
     //MARK:- WebView
-    
     
     @IBAction func Site(_ sender: UIBarButtonItem) {
         let APIurl = (Users?.html_url)!
@@ -56,7 +51,7 @@ class DetailView: UIViewController {
         present(navVc, animated: true)
     }
     
-    //MARK:- JSON Viewer
+    //MARK:- Fetch Repostories 
     
     func FetchRepos() {
         let url = "https://api.github.com/users/\((Users?.login)!)/repos"
@@ -67,16 +62,26 @@ class DetailView: UIViewController {
                self.ReposData = repos
                self.tableView.reloadData()
                print("Fetch OK")
+                self.SkeletonViewLoader ()
             }
           }
           catch {
               let error = error
               print("Detail View Error")
               print(error.localizedDescription)
+            
         }
       }
   }
-
+    
+    func SkeletonViewLoader () {
+        tableView.isSkeletonable = true
+        tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)), animation: nil, transition: .crossDissolve(0.25))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.tableView.stopSkeletonAnimation()
+            self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+        }
+    }
     //
 }
 //
@@ -92,7 +97,6 @@ extension DetailView: UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepoCell", for: indexPath) as! ReposCell
         cell.RepoNameLabel?.text = ReposData[indexPath.row].name.capitalized
-        cell.Description?.text = ReposData[indexPath.row].description.capitalized
         
         return cell
     }
