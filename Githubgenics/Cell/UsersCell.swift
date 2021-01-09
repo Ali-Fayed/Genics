@@ -9,82 +9,88 @@ import UIKit
 import CoreData
 
 class UsersCell: UITableViewCell {
-    
-    
-    //    var User:UsersStruct?
-//    var Users = [UsersStruct]()
+    var buttonstate:Bool = true
+    var checkmarks:Bool?
 
     @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var UserNameLabel: UILabel!
     @IBOutlet weak var Button: UIButton!
+    let defaults = UserDefaults.standard
+    var favid: Int = 0
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    private var usersdatabase:UsersStruct?
     
-//    @IBAction func Bookmark(_ sender: UIBarButtonItem) {
-//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//        let newContact = NSEntityDescription.insertNewObject(forEntityName: "Users", into: context)
-//        let APIImageurl = "https://avatars0.githubusercontent.com/u/\("9")?v=4"
-//        ImageView.kf.setImage(with: URL(string: APIImageurl), placeholder: nil, options: [.transition(.fade(0.7))])
-//        let imageData:NSData = ImageView.image!.jpegData(compressionQuality: 1)! as NSData
-//        newContact.setValue(imageData, forKey: "imageData")
+
+//
+//    var setImageStatus: String = "off" {
+//        willSet {
+//            if newValue == "on" {
+//                Button.setImage(UIImage(systemName: "bookmark"), for: .normal)
+//
+//            } else {
+//                Button.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+//            }
+//        }
 //    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        if UserDefaults.standard.value(forKeyPath: "isSaved") != nil {
-            Button.setImage(UIImage(named: "bookmark"), for: .normal)
+//        Button.setImage(UIImage(systemName: "bookmark"), for: .normal)
+//               Button.setImage(UIImage(systemName: "bookmark"), for: .normal)
 
+//        if UserDefaults.standard.value(forKeyPath: "state") != nil {
+//            Button.tag == 0
+//
+//        }
+//            if let imgStatus = defaults.string(forKey: "imgStatus")
+//                 {
+//                     setImageStatus = imgStatus
+//                 } else {
+//                     setImageStatus = "off"
+//
+//        }// Initialization code
+        
+        if checkmarks != nil {
+            Button.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+
+        } else {
+            checkmarks = false
+            Button.setImage(UIImage(systemName: "bookmark"), for: .normal)
         }
-    
-        // Initialization code
+
     }
+    
     @IBAction func BookmarkCell(_ sender: UIButton) {
         
-        sender.isSelected = !sender.isSelected
-         UserDefaults.standard.set(sender.isSelected, forKey: "isSaved")
-        //set image for button
-//        Button.setImage(UIImage(named: "EmptyHeart.png"), for: .normal)
-//        Button.setImage(UIImage(named: "bookmark"), for: .selected)
-        Button.isSelected = UserDefaults.standard.bool(forKey: "isSaved")
-    }
-    
-    
-    
-    func saveUser() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving \(error)")
+   
+        
+        if Button.tag == 0 {
+            Button.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            Button.tag = 1
+        } else {
+            Button.setImage(UIImage(systemName: "bookmark"), for: .normal)
+            Button.tag = 0
         }
+//        let stat = setImageStatus == "on" ? "off" : "on"
+//             setImageStatus = stat
+//            defaults.set(stat, forKey: "imgStatus")
+//         }
+//
+    
     }
     
-//    func loadCategories() {
-//
-//        let request : NSFetchRequest<Category> = UsersStruct.fetchRequest()
-//
-//        do{
-//            categories = try context.fetch(request)
-//        } catch {
-//            print("Error loading categories \(error)")
-//        }
-//
-//        tableView.reloadData()
-//
-//    }
+    
+    
+
  
     
   
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
     
-//    func UserImage () {
-//        let APIImageurl = (User?.avatar_url)!
-//        ImageView.kf.setImage(with: URL(string: APIImageurl), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
-//    }
+    
+
  
     
+
+
 }

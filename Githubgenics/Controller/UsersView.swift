@@ -13,18 +13,39 @@ import Kingfisher
 import CoreData
 
 class UsersView: UITableViewController {
-    
+
     var UsersAPIStruct = [UsersStruct]()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var checkmarks = [Int : Bool]()
     
     override func viewDidLoad() {
+        self.SkeletonViewLoader()
+
         super.viewDidLoad()
         view.isSkeletonable = true
         tableView.rowHeight = 100.0
         navigationItem.hidesBackButton = true
-        FetchData(param: Int.random(in: 100...200))
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         LoadingIndicator()
+        if let checks = UserDefaults.standard.value(forKey: "checkmarks") as? NSData {
+            checkmarks = NSKeyedUnarchiver.unarchiveObject(with: checks as Data) as! [Int : Bool]
+        }
+        
+       // MARK: - Call Fetch Function
+        
+        Fetch(pagination: false) { (result) in
+            switch result {
+            case.success( _):
+                self.UsersAPIStruct.append(contentsOf: self.UsersAPIStruct)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case.failure(_):
+                break
+            }
+        }
+        
+        
+       
     }
     
     
@@ -60,18 +81,38 @@ class UsersView: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return UsersAPIStruct.count
     }
-    
+     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UsersCell
         cell.UserNameLabel?.text = UsersAPIStruct[indexPath.row].login.capitalized
         let APIImageurl = "https://avatars0.githubusercontent.com/u/\(UsersAPIStruct[indexPath.row].id)?v=4"
         cell.ImageView.kf.setImage(with: URL(string: APIImageurl), placeholder: nil, options: [.transition(.fade(0.7))])
+        if checkmarks[indexPath.row] != nil {
+            cell.accessoryType = checkmarks[indexPath.row]! ? .checkmark : .none
+            
+        } else {
+            checkmarks[indexPath.row] = false
+            cell.accessoryType = .none
+        }
         return cell
         
     }
+
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+            if cell.accessoryType == .checkmark {
+                cell.accessoryType = .none
+                checkmarks[indexPath.row] = false
+            }
+            else{
+                cell.accessoryType = .checkmark
+                checkmarks[indexPath.row] = true
+            }
+        }
+        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: checkmarks), forKey: "checkmarks")
+        UserDefaults.standard.synchronize()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -83,52 +124,73 @@ class UsersView: UITableViewController {
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let postion = scrollView.contentOffset.y
         if postion > (tableView.contentSize.height-80-scrollView.frame.size.height) {
-            print("fetch more")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self.tableView.tableFooterView = nil
+            guard !isPaginating else {
+                return
+            }
+            Fetch(pagination: true) { [weak self] result in
+                DispatchQueue.main.async {
+                    self?.tableView.tableFooterView = nil
+                }
+                switch result {
+                case .success(let UsersAPIStruct):
+                    self?.UsersAPIStruct.append(contentsOf: UsersAPIStruct)
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                case .failure(_):
+                    break
+                }
             }
         }
     }
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastSectionIndex = tableView.numberOfSections - 1
-        let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
-        if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex {
-            // print("this is the last cell")
-            let spinner = UIActivityIndicatorView(style: .medium)
-            spinner.startAnimating()
-            spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
-            
-            self.tableView.tableFooterView = spinner
-            self.tableView.tableFooterView?.isHidden = false
+        let LastSection = tableView.numberOfSections - 1
+        let lastRowIndex = tableView.numberOfRows(inSection: LastSection) - 1
+        if indexPath.section ==  LastSection && indexPath.row == lastRowIndex {
+            DisplaySpinner ()
         }
+        
+        
     }
     
     
     
     // MARK: - Fetch Data From GitHubAPI
     
-    func FetchData(param: Int) {
-        let url = "https://api.github.com/users?since=\(param)"
-        AF.request(url, method: .get).responseJSON { (response) in
-            do {
-                let Users = try JSONDecoder().decode([UsersStruct].self, from: response.data!)
-                self.UsersAPIStruct = Users
-                self.tableView.reloadData()
+   private var Users : [UsersStruct] = []
+   var isPaginating = false
+   
+   func Fetch(pagination: Bool = false, complete: @escaping (Result<[UsersStruct], Error>) -> Void ) {
+       
+       if pagination {
+           isPaginating = true
+       }
+    
+       DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 2)) {
+           AF.request("https://api.github.com/users?since=\(Int.random(in: 1 ... 9000))", method: .get).responseJSON { (response) in
+               do {
+                   let users = try JSONDecoder().decode([UsersStruct].self, from: response.data!)
+                   self.Users = users
+                   self.tableView.reloadData()
+                   DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                       self.dismiss(animated: false, completion: nil)
+                   }
                 self.SkeletonViewLoader()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    self.dismiss(animated: false, completion: nil)
-                }
-            } catch {
-                let error = error
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    
-    @IBAction func Data(_ sender: UIBarButtonItem) {
-        
-    }
+
+                print("Users Parse Done")
+               } catch {
+                   let error = error
+                   print(error.localizedDescription)
+               }
+           }
+           complete(.success( pagination ? self.Users : self.Users ))
+           if pagination {
+               self.isPaginating = false
+           }
+       }
+   }
+
     
     // MARK: - Loaders
     
@@ -160,7 +222,15 @@ class UsersView: UITableViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-  
+    func DisplaySpinner () {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.startAnimating()
+        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+        self.tableView.tableFooterView = spinner
+        self.tableView.tableFooterView?.isHidden = false
+    }
+    
+
 }
 
 

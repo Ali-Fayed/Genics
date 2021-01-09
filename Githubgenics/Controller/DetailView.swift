@@ -19,6 +19,7 @@ class DetailView: UIViewController {
     var Users:UsersStruct?
     var  userclass = UsersView()
     
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var UserName: UILabel!
     @IBOutlet weak var ImageView: UIImageView!

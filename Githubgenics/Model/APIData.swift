@@ -6,7 +6,11 @@
 //
 
 //JSON Data
-
+class customData {
+    let User = [UsersStruct]()
+    var ButtonState = false
+    
+}
 struct UsersStruct: Decodable {
     let login: String
     let id: Int

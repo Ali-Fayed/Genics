@@ -146,6 +146,7 @@
 				EA999A7C25927CB4005E832C /* View */,
 				EA999A7425927C67005E832C /* Controller */,
 				EA32D3DE2598344F00AC067C /* Database */,
+				EA999A7325927C31005E832C /* Model */,
 				EA566FF925927B9E00596E6A /* Info.plist */,
 				EA2312D825928108000BDC8C /* GoogleService-Info.plist */,
 				EA2312DC2592819D000BDC8C /* Constants.swift */,
@@ -179,7 +180,6 @@
 				EA5EADF625929E2700AC3223 /* UsersView.swift */,
 				EA999A6425927C02005E832C /* DetailView.swift */,
 				EA9743512596C3790057C8A0 /* SettingsView.swift */,
-				EA999A7325927C31005E832C /* Model */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

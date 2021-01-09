@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="0lm-sm-7sH" customClass="Main" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="blN-QN-dpF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Intro" translatesAutoresizingMaskIntoConstraints="NO" id="gG7-0w-X1x">
@@ -112,7 +112,7 @@
             <objects>
                 <viewController id="S3z-l9-GCH" customClass="SignInView" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qSb-VO-Vg6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Sign In Light Dark" translatesAutoresizingMaskIntoConstraints="NO" id="24n-Zu-exY">
@@ -216,6 +216,7 @@
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7af-q1-YzP">
                                                     <rect key="frame" x="352" y="30" width="17.333333333333314" height="30"/>
+                                                    <rect key="contentStretch" x="0.34999999999999998" y="0.10000000000000001" width="1" height="1"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="4V3-DR-A9C"/>
                                                         <constraint firstAttribute="width" constant="17.329999999999998" id="P0e-Zb-Ul4"/>
@@ -226,7 +227,7 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="BookmarkCell:" destination="LYE-4v-yLq" eventType="touchUpInside" id="zpL-TH-gp0"/>
+                                                        <action selector="BookmarkCell:" destination="LYE-4v-yLq" eventType="touchUpInside" id="cxd-YF-uCa"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -254,7 +255,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="Button" destination="7af-q1-YzP" id="vcN-yP-WYV"/>
+                                    <outlet property="Button" destination="7af-q1-YzP" id="TlX-m9-kNK"/>
                                     <outlet property="ImageView" destination="89G-DI-8VC" id="M69-Ko-6Wb"/>
                                     <outlet property="UserNameLabel" destination="FPs-sr-8it" id="k4R-oL-N5Y"/>
                                     <segue destination="rsa-Ug-v1B" kind="show" identifier="DetailViewSegue" id="lmt-UR-tPE"/>
@@ -458,7 +459,7 @@
             <objects>
                 <viewController id="Zsw-ac-vnD" customClass="SignUpView" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nnb-C6-E0R">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Sign Up Light Dark" translatesAutoresizingMaskIntoConstraints="NO" id="HsN-7m-bV3">
@@ -558,7 +559,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="kvl-kN-7Mb"/>
-        <segue reference="es7-ij-VLV"/>
+        <segue reference="JtI-Kd-008"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Intro" width="390" height="844"/>
