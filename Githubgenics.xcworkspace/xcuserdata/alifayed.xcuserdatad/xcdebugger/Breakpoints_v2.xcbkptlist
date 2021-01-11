@@ -20,5 +20,53 @@
             landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4B0AB347-0D3A-470D-BFDD-8FA709D57392"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Githubgenics/Controller/UsersView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "FetchMoreUsers()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4B0AB347-0D3A-470D-BFDD-8FA709D57392 - 9ab9772dc2c19d69"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Githubgenics.UsersStruct&gt;, Swift.Error&gt;) -&gt; () in Githubgenics.UsersView.FetchMoreUsers() -&gt; ()"
+                  moduleName = "Githubgenics"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alifayed/Desktop/App/Githubgenics/Githubgenics/Controller/UsersView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "240"
+                  endingLineNumber = "240"
+                  offsetFromSymbolStart = "1208">
+               </Location>
+               <Location
+                  uuid = "4B0AB347-0D3A-470D-BFDD-8FA709D57392 - 7d48485378f3c24f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #1 (Swift.Result&lt;Swift.Array&lt;Githubgenics.UsersStruct&gt;, Swift.Error&gt;) -&gt; () in Githubgenics.UsersView.FetchMoreUsers() -&gt; ()"
+                  moduleName = "Githubgenics"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alifayed/Desktop/App/Githubgenics/Githubgenics/Controller/UsersView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "233"
+                  endingLineNumber = "233"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

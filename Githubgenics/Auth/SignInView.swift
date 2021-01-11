@@ -15,7 +15,7 @@ class SignInView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,13 +25,14 @@ class SignInView: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
     }
-    
+//    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.isToolbarHidden = false
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.isToolbarHidden = true
+
     }
-    
+//    
     @IBAction func SignIn(_ sender: UIButton) {
         if let email = Email.text, let password = Password.text {
             UserDefaults.standard.set(Email.text, forKey: "email")
@@ -49,7 +50,7 @@ class SignInView: UIViewController {
     }
     
     func ErrorSigninAlert () {
-        let alert = UIAlertController(title: "Enter Vaild Informations", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Enter Sign in", message: "The password is invalid or you don't have the password", preferredStyle: .alert)
         let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
         }
         alert.addAction(action)

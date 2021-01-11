@@ -11,5 +11,7 @@ target 'Githubgenics' do
   pod 'Alamofire', '~> 5.2'
   pod 'Kingfisher', '~> 5.15.8'
   pod 'IQKeyboardManagerSwift'
+  pod 'SwipeCellKit'
+
   
 end

@@ -15,7 +15,8 @@ class SignUpView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,15 +24,15 @@ class SignUpView: UIViewController {
         navigationController?.isToolbarHidden = true
         navigationController?.isNavigationBarHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        
-        
+
+
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.isToolbarHidden = false
-        navigationController?.isNavigationBarHidden = false
-        
+        navigationController?.isToolbarHidden = true
+        navigationController?.isNavigationBarHidden = true
+
     }
     
     @IBAction func SignUp(_ sender: UIButton) {
@@ -51,7 +52,7 @@ class SignUpView: UIViewController {
     
 
     func ErrorSignUpAlert () {
-        let alert = UIAlertController(title: "Enter Vaild Informations", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error Sign up", message: "The password must be 6 characters long or more", preferredStyle: .alert)
         let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
         }
         alert.addAction(action)

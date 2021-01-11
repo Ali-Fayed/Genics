@@ -15,8 +15,9 @@ class Main: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        navigationController?.isToolbarHidden = true
+        navigationController?.isNavigationBarHidden = true
 
-        
     }
     
     @IBAction func AutoSignIn(_ sender: Any) {
@@ -30,14 +31,16 @@ class Main: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
         navigationController?.isToolbarHidden = true
-        
+
     }
+////
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        navigationController?.isNavigationBarHidden = false
+//        navigationController?.isToolbarHidden = true
+//
+//    }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.isToolbarHidden = false
-        
-    }
+  
     
 }

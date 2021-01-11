@@ -11,6 +11,7 @@ import SkeletonView
 import Alamofire
 import Kingfisher
 import CoreData
+import SwipeCellKit
 
 class UsersView: UITableViewController {
 
@@ -18,37 +19,32 @@ class UsersView: UITableViewController {
     var checkmarks = [Int : Bool]()
     
     override func viewDidLoad() {
-        self.SkeletonViewLoader()
-
         super.viewDidLoad()
-        view.isSkeletonable = true
         tableView.rowHeight = 100.0
         navigationItem.hidesBackButton = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         LoadingIndicator()
+        FetchUsers ()
         if let checks = UserDefaults.standard.value(forKey: "checkmarks") as? NSData {
             checkmarks = NSKeyedUnarchiver.unarchiveObject(with: checks as Data) as! [Int : Bool]
         }
-        
-       // MARK: - Call Fetch Function
-        
-        Fetch(pagination: false) { (result) in
-            switch result {
-            case.success( _):
-                self.UsersAPIStruct.append(contentsOf: self.UsersAPIStruct)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            case.failure(_):
-                break
-            }
-        }
-        
-        
-       
+
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isToolbarHidden = false
+        navigationController?.isNavigationBarHidden = false
+
+
+    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
+    }
     // MARK: - Sign Out Auth
     
     @IBAction func SignOuut(_ sender: UIBarButtonItem) {
@@ -77,23 +73,27 @@ class UsersView: UITableViewController {
     
     // MARK: - TableView Methods
     
+    @IBAction func Refresh(_ sender: UIRefreshControl) {
+        sender.endRefreshing()
+        FetchUsers ()
+        tableView.reloadData()
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return UsersAPIStruct.count
     }
      
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UsersCell
-        cell.UserNameLabel?.text = UsersAPIStruct[indexPath.row].login.capitalized
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UsersCell 
         let APIImageurl = "https://avatars0.githubusercontent.com/u/\(UsersAPIStruct[indexPath.row].id)?v=4"
+        cell.UserNameLabel?.text = UsersAPIStruct[indexPath.row].login.capitalized
         cell.ImageView.kf.setImage(with: URL(string: APIImageurl), placeholder: nil, options: [.transition(.fade(0.7))])
-        if checkmarks[indexPath.row] != nil {
-            cell.accessoryType = checkmarks[indexPath.row]! ? .checkmark : .none
-            
-        } else {
-            checkmarks[indexPath.row] = false
-            cell.accessoryType = .none
-        }
+//        if checkmarks[indexPath.row] != nil {
+//            cell.accessoryType = checkmarks[indexPath.row]! ? .checkmark : .none
+//        } else {
+//            checkmarks[indexPath.row] = false
+//            cell.accessoryType = .none
+//        }
         return cell
         
     }
@@ -101,18 +101,18 @@ class UsersView: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
-            if cell.accessoryType == .checkmark {
-                cell.accessoryType = .none
-                checkmarks[indexPath.row] = false
-            }
-            else{
-                cell.accessoryType = .checkmark
-                checkmarks[indexPath.row] = true
-            }
-        }
-        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: checkmarks), forKey: "checkmarks")
-        UserDefaults.standard.synchronize()
+//        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+//            if cell.accessoryType == .checkmark {
+//                cell.accessoryType = .none
+//                checkmarks[indexPath.row] = false
+//            }
+//            else{
+//                cell.accessoryType = .checkmark
+//                checkmarks[indexPath.row] = true
+//            }
+//        }
+//        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: checkmarks), forKey: "checkmarks")
+//        UserDefaults.standard.synchronize()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -121,26 +121,12 @@ class UsersView: UITableViewController {
         }
     }
     
+    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let postion = scrollView.contentOffset.y
-        if postion > (tableView.contentSize.height-80-scrollView.frame.size.height) {
-            guard !isPaginating else {
-                return
-            }
-            Fetch(pagination: true) { [weak self] result in
-                DispatchQueue.main.async {
-                    self?.tableView.tableFooterView = nil
-                }
-                switch result {
-                case .success(let UsersAPIStruct):
-                    self?.UsersAPIStruct.append(contentsOf: UsersAPIStruct)
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
-                    }
-                case .failure(_):
-                    break
-                }
-            }
+        if postion > (tableView.contentSize.height-100-scrollView.frame.size.height) {
+            FetchMoreUsers ()
+            
         }
     }
     
@@ -148,10 +134,10 @@ class UsersView: UITableViewController {
         let LastSection = tableView.numberOfSections - 1
         let lastRowIndex = tableView.numberOfRows(inSection: LastSection) - 1
         if indexPath.section ==  LastSection && indexPath.row == lastRowIndex {
+            
             DisplaySpinner ()
+            
         }
-        
-        
     }
     
     
@@ -160,28 +146,26 @@ class UsersView: UITableViewController {
     
    private var Users : [UsersStruct] = []
    var isPaginating = false
-   
-   func Fetch(pagination: Bool = false, complete: @escaping (Result<[UsersStruct], Error>) -> Void ) {
-       
+    
+    func Fetch(pagination: Bool = false, since : Int , page : Int , complete: @escaping (Result<[UsersStruct], Error>) -> Void ) {
+
        if pagination {
            isPaginating = true
        }
-    
        DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 2)) {
-           AF.request("https://api.github.com/users?since=\(Int.random(in: 1 ... 9000))", method: .get).responseJSON { (response) in
+        let url = "https://api.github.com/users?since=\(since)&per_page=\(page)"
+        AF.request(url , method: .get).responseJSON { (response) in
                do {
                    let users = try JSONDecoder().decode([UsersStruct].self, from: response.data!)
                    self.Users = users
-                   self.tableView.reloadData()
-                   DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                       self.dismiss(animated: false, completion: nil)
-                   }
-                self.SkeletonViewLoader()
-
-                print("Users Parse Done")
+                   self.dismiss(animated: false, completion: nil)
+                self.tableView.reloadData()
+                self.SkeletonViewLoader ()
+                print("Main Fetch")
                } catch {
                    let error = error
                    print(error.localizedDescription)
+                   self.LoadingIndicator()
                }
            }
            complete(.success( pagination ? self.Users : self.Users ))
@@ -230,8 +214,48 @@ class UsersView: UITableViewController {
         self.tableView.tableFooterView?.isHidden = false
     }
     
+    func FetchUsers () {
+        Fetch(pagination: false, since: 2, page: 30) { (result) in
+            switch result {
+            case.success( let UsersAPIStruct):
+                self.UsersAPIStruct.append(contentsOf: UsersAPIStruct)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    print("Main Fetch")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.tableView.stopSkeletonAnimation()
+                        self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+                    }
+
+                }
+            case.failure(_):
+                self.LoadingIndicator()
+            }
+        }
+    }
+    
+    func FetchMoreUsers () {
+        guard !isPaginating else {
+            return
+        }
+        Fetch(pagination: true, since: Int.random(in: 40 ... 5000 ), page: 10 ) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.tableView.tableFooterView = nil
+            }
+            switch result {
+            case .success(let UsersAPIStruct):
+                self?.UsersAPIStruct.append(contentsOf: UsersAPIStruct)
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                    self!.view.hideSkeleton()
+                    self?.tableView.isSkeletonable = false
+                }
+                
+            case .failure(_):
+                self!.LoadingIndicator()
+            }
+        }
+    }
 
 }
-
-
 

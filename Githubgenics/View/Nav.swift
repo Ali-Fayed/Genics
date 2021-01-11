@@ -13,12 +13,11 @@ class Nav: UINavigationController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
 
         interactivePopGestureRecognizer?.delegate = self
-        
+      
     }
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return viewControllers.count > 1
     }
-
-
+    
 }
