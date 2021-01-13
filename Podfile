@@ -12,6 +12,7 @@ target 'Githubgenics' do
   pod 'Kingfisher', '~> 5.15.8'
   pod 'IQKeyboardManagerSwift'
   pod 'SwipeCellKit'
+  pod 'lottie-ios'
 
   
 end

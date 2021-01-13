@@ -20,38 +20,36 @@ class UsersView: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        UIView.setAnimationsEnabled(false)
         tableView.rowHeight = 100.0
         navigationItem.hidesBackButton = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        LoadingIndicator()
         FetchUsers ()
-        if let checks = UserDefaults.standard.value(forKey: "checkmarks") as? NSData {
-            checkmarks = NSKeyedUnarchiver.unarchiveObject(with: checks as Data) as! [Int : Bool]
-        }
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isToolbarHidden = false
         navigationController?.isNavigationBarHidden = false
-
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-
     }
+    
     // MARK: - Sign Out Auth
     
     @IBAction func SignOuut(_ sender: UIBarButtonItem) {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            navigationController?.popToRootViewController(animated: true)
+            for controller in self.navigationController!.viewControllers as Array {
+                if controller.isKind(of: Main.self) {
+                    self.navigationController!.popToViewController(controller, animated: true)
+                    break
+                }
+            }
             UserDefaults.standard.removeObject(forKey: "email")
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
@@ -76,7 +74,6 @@ class UsersView: UITableViewController {
     @IBAction func Refresh(_ sender: UIRefreshControl) {
         sender.endRefreshing()
         FetchUsers ()
-        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,12 +85,6 @@ class UsersView: UITableViewController {
         let APIImageurl = "https://avatars0.githubusercontent.com/u/\(UsersAPIStruct[indexPath.row].id)?v=4"
         cell.UserNameLabel?.text = UsersAPIStruct[indexPath.row].login.capitalized
         cell.ImageView.kf.setImage(with: URL(string: APIImageurl), placeholder: nil, options: [.transition(.fade(0.7))])
-//        if checkmarks[indexPath.row] != nil {
-//            cell.accessoryType = checkmarks[indexPath.row]! ? .checkmark : .none
-//        } else {
-//            checkmarks[indexPath.row] = false
-//            cell.accessoryType = .none
-//        }
         return cell
         
     }
@@ -101,18 +92,6 @@ class UsersView: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
-//            if cell.accessoryType == .checkmark {
-//                cell.accessoryType = .none
-//                checkmarks[indexPath.row] = false
-//            }
-//            else{
-//                cell.accessoryType = .checkmark
-//                checkmarks[indexPath.row] = true
-//            }
-//        }
-//        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: checkmarks), forKey: "checkmarks")
-//        UserDefaults.standard.synchronize()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -123,21 +102,41 @@ class UsersView: UITableViewController {
     
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         let postion = scrollView.contentOffset.y
         if postion > (tableView.contentSize.height-100-scrollView.frame.size.height) {
             FetchMoreUsers ()
-            
+            DisplaySpinner ()
         }
+        
+
+     
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//            cell.alpha = 0
+//        let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 0)
+//        cell.layer.transform = transform
+//        
+//        UIView.animate(withDuration: 1.0) {
+//            cell.alpha = 1.0
+//            cell.layer.transform = CATransform3DIdentity
+//        }
+//        }
+ 
         let LastSection = tableView.numberOfSections - 1
-        let lastRowIndex = tableView.numberOfRows(inSection: LastSection) - 1
+        let lastRowIndex = tableView.numberOfRows(inSection: LastSection) - 20
         if indexPath.section ==  LastSection && indexPath.row == lastRowIndex {
-            
-            DisplaySpinner ()
-            
+
         }
+        
+        if indexPath.row == UsersAPIStruct.count - 1 {
+    
+        }
+
     }
     
     
@@ -154,21 +153,22 @@ class UsersView: UITableViewController {
        }
        DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 2)) {
         let url = "https://api.github.com/users?since=\(since)&per_page=\(page)"
+        
         AF.request(url , method: .get).responseJSON { (response) in
                do {
                    let users = try JSONDecoder().decode([UsersStruct].self, from: response.data!)
                    self.Users = users
-                   self.dismiss(animated: false, completion: nil)
                 self.tableView.reloadData()
-                self.SkeletonViewLoader ()
+                self.dismiss(animated: false, completion: nil)
+
                 print("Main Fetch")
                } catch {
                    let error = error
                    print(error.localizedDescription)
-                   self.LoadingIndicator()
                }
            }
            complete(.success( pagination ? self.Users : self.Users ))
+        
            if pagination {
                self.isPaginating = false
            }
@@ -186,6 +186,28 @@ class UsersView: UITableViewController {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+  
+    
+
+    func Error () {
+        let alert = UIAlertController(title: "Server isn't stable", message: "Pull to refresh to load the data", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
+            self.Fetch(pagination: false, since: 1, page: 20) { (result) in
+                switch result {
+                case.success( let UsersAPIStruct):
+                    self.UsersAPIStruct.append(contentsOf: UsersAPIStruct)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.tableView.reloadData()
+                    }
+                case.failure(_):
+                    self.Error()
+                }
+            }        }
+        alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
     
@@ -214,22 +236,22 @@ class UsersView: UITableViewController {
         self.tableView.tableFooterView?.isHidden = false
     }
     
+    
     func FetchUsers () {
-        Fetch(pagination: false, since: 2, page: 30) { (result) in
-            switch result {
-            case.success( let UsersAPIStruct):
-                self.UsersAPIStruct.append(contentsOf: UsersAPIStruct)
-                DispatchQueue.main.async {
+        AF.request("https://api.github.com/users", method: .get).responseJSON { (response) in
+            do {
+                if let safedata = response.data {
+                    let repos = try JSONDecoder().decode([UsersStruct].self, from: safedata)
+                    self.UsersAPIStruct = repos
                     self.tableView.reloadData()
-                    print("Main Fetch")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.tableView.stopSkeletonAnimation()
-                        self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
-                    }
-
+                    self.SkeletonViewLoader ()
                 }
-            case.failure(_):
-                self.LoadingIndicator()
+            }
+            catch {
+                let error = error
+                print(error.localizedDescription)
+//                self.ErroLoadingRepos ()
+                self.Error()
             }
         }
     }
@@ -247,12 +269,11 @@ class UsersView: UITableViewController {
                 self?.UsersAPIStruct.append(contentsOf: UsersAPIStruct)
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
-                    self!.view.hideSkeleton()
-                    self?.tableView.isSkeletonable = false
                 }
                 
             case .failure(_):
-                self!.LoadingIndicator()
+                self!.Error()
+            break
             }
         }
     }

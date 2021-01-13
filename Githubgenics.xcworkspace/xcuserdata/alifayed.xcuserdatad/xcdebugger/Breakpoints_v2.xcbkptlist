@@ -30,10 +30,10 @@
             filePath = "Githubgenics/Controller/UsersView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
-            landmarkName = "FetchMoreUsers()"
-            landmarkType = "7">
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "UsersView"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "4B0AB347-0D3A-470D-BFDD-8FA709D57392 - 9ab9772dc2c19d69"
@@ -66,6 +66,22 @@
                   offsetFromSymbolStart = "40">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "56A8B515-216A-4F05-9B01-454F6D88B53B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Githubgenics/Controller/UsersView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

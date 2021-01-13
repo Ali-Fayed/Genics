@@ -12,6 +12,9 @@
 		EA2312DD2592819D000BDC8C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2312DC2592819D000BDC8C /* Constants.swift */; };
 		EA3F065825AA1C6D0066FDCF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3F065725AA1C6D0066FDCF /* Network.swift */; };
 		EA3F065B25AA1EB80066FDCF /* hh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3F065A25AA1EB80066FDCF /* hh.swift */; };
+		EA3FA0FA25AE9B88008D7520 /* LaunchAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */; };
+		EA3FA0FD25AE9C00008D7520 /* loadingspinner.json in Resources */ = {isa = PBXBuildFile; fileRef = EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */; };
+		EA3FA10325AEC191008D7520 /* ViewControllerl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA10225AEC191008D7520 /* ViewControllerl.swift */; };
 		EA43BCD325965CAD00098ACA /* ReposCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA43BCD225965CAD00098ACA /* ReposCell.swift */; };
 		EA45AA1A259C45E400365E9B /* Network Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA45AA19259C45E400365E9B /* Network Reachability.swift */; };
 		EA45AA1E259C555300365E9B /* Networking Manger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA45AA1D259C555300365E9B /* Networking Manger.swift */; };
@@ -22,7 +25,7 @@
 		EA566FF525927B9E00596E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA566FF425927B9E00596E6A /* Assets.xcassets */; };
 		EA566FF825927B9E00596E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA566FF625927B9E00596E6A /* LaunchScreen.storyboard */; };
 		EA5EADF725929E2700AC3223 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5EADF625929E2700AC3223 /* UsersView.swift */; };
-		EA6BC5A725AC20F30017D688 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6BC5A625AC20F30017D688 /* ViewController.swift */; };
+		EA6BC5A725AC20F30017D688 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6BC5A625AC20F30017D688 /* Repositories.swift */; };
 		EA85CE3A25A0293E006EA337 /* Nav.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA85CE3925A0293E006EA337 /* Nav.swift */; };
 		EA9743522596C3790057C8A0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9743512596C3790057C8A0 /* SettingsView.swift */; };
 		EA9743552596C3B10057C8A0 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9743542596C3B10057C8A0 /* SettingsCell.swift */; };
@@ -43,6 +46,9 @@
 		EA2312DC2592819D000BDC8C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EA3F065725AA1C6D0066FDCF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		EA3F065A25AA1EB80066FDCF /* hh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hh.swift; sourceTree = "<group>"; };
+		EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAnimation.swift; sourceTree = "<group>"; };
+		EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingspinner.json; sourceTree = "<group>"; };
+		EA3FA10225AEC191008D7520 /* ViewControllerl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerl.swift; sourceTree = "<group>"; };
 		EA43BCD225965CAD00098ACA /* ReposCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposCell.swift; sourceTree = "<group>"; };
 		EA45AA19259C45E400365E9B /* Network Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Reachability.swift"; sourceTree = "<group>"; };
 		EA45AA1D259C555300365E9B /* Networking Manger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking Manger.swift"; sourceTree = "<group>"; };
@@ -55,7 +61,7 @@
 		EA566FF725927B9E00596E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA566FF925927B9E00596E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5EADF625929E2700AC3223 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
-		EA6BC5A625AC20F30017D688 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EA6BC5A625AC20F30017D688 /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		EA85CE3925A0293E006EA337 /* Nav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nav.swift; sourceTree = "<group>"; };
 		EA9743512596C3790057C8A0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EA9743542596C3B10057C8A0 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
@@ -146,6 +152,7 @@
 		EA566FE725927B9D00596E6A /* Githubgenics */ = {
 			isa = PBXGroup;
 			children = (
+				EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */,
 				EA9743CE2596D8C20057C8A0 /* Auth */,
 				EA43BCD7259662AE00098ACA /* Others */,
 				EA54C34925940DCC0021BFC4 /* Cell */,
@@ -156,6 +163,7 @@
 				EA566FF925927B9E00596E6A /* Info.plist */,
 				EA2312D825928108000BDC8C /* GoogleService-Info.plist */,
 				EA2312DC2592819D000BDC8C /* Constants.swift */,
+				EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */,
 			);
 			path = Githubgenics;
 			sourceTree = "<group>";
@@ -165,6 +173,7 @@
 			children = (
 				EA9743C92596D8480057C8A0 /* SignInView.swift */,
 				EA9743CA2596D8490057C8A0 /* SignUpView.swift */,
+				EA3FA10225AEC191008D7520 /* ViewControllerl.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -188,7 +197,7 @@
 				EA5EADF625929E2700AC3223 /* UsersView.swift */,
 				EA999A6425927C02005E832C /* DetailView.swift */,
 				EA9743512596C3790057C8A0 /* SettingsView.swift */,
-				EA6BC5A625AC20F30017D688 /* ViewController.swift */,
+				EA6BC5A625AC20F30017D688 /* Repositories.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -262,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA3FA0FD25AE9C00008D7520 /* loadingspinner.json in Resources */,
 				EA999A7725927C90005E832C /* Main.storyboard in Resources */,
 				EA2312D925928108000BDC8C /* GoogleService-Info.plist in Resources */,
 				EA566FF825927B9E00596E6A /* LaunchScreen.storyboard in Resources */,
@@ -308,6 +318,8 @@
 				EA566FF325927B9D00596E6A /* Githubgenics.xcdatamodeld in Sources */,
 				EA85CE3A25A0293E006EA337 /* Nav.swift in Sources */,
 				EA999A6E25927C1D005E832C /* APIData.swift in Sources */,
+				EA3FA0FA25AE9B88008D7520 /* LaunchAnimation.swift in Sources */,
+				EA3FA10325AEC191008D7520 /* ViewControllerl.swift in Sources */,
 				EA3F065B25AA1EB80066FDCF /* hh.swift in Sources */,
 				EA9743522596C3790057C8A0 /* SettingsView.swift in Sources */,
 				EA2312DD2592819D000BDC8C /* Constants.swift in Sources */,
@@ -319,7 +331,7 @@
 				EA566FE925927B9D00596E6A /* AppDelegate.swift in Sources */,
 				EA566FEB25927B9D00596E6A /* SceneDelegate.swift in Sources */,
 				EA9743CB2596D8490057C8A0 /* SignInView.swift in Sources */,
-				EA6BC5A725AC20F30017D688 /* ViewController.swift in Sources */,
+				EA6BC5A725AC20F30017D688 /* Repositories.swift in Sources */,
 				EA3F065825AA1C6D0066FDCF /* Network.swift in Sources */,
 				EA9743552596C3B10057C8A0 /* SettingsCell.swift in Sources */,
 			);

@@ -22,9 +22,9 @@ class Main: UIViewController {
     
     @IBAction func AutoSignIn(_ sender: Any) {
        if UserDefaults.standard.value(forKeyPath: "email") != nil {
-            performSegue(withIdentifier: "Default", sender: self)
+            performSegue(withIdentifier: "Main", sender: self)
        } else {
-        performSegue(withIdentifier: "Nil", sender: self)
+        performSegue(withIdentifier: "Default", sender: self)
        }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -34,12 +34,23 @@ class Main: UIViewController {
 
     }
 ////
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        navigationController?.isNavigationBarHidden = false
-//        navigationController?.isToolbarHidden = true
+////    override func viewWillDisappear(_ animated: Bool) {
+////        super.viewWillDisappear(animated)
+////        navigationController?.isNavigationBarHidden = false
+////        navigationController?.isToolbarHidden = true
+////   override func viewWillAppear(_ animated: Bool) {
+//    super.viewWillAppear(animated)
+//    navigationController?.isNavigationBarHidden = true
+//    self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 //
-//    }
+//}
+//
+//override func viewDidAppear(_ animated: Bool) {
+//    super.viewDidAppear(animated)
+//    self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+//}
+//
+////    }
     
   
     
