@@ -35,6 +35,9 @@
 		EA999A6E25927C1D005E832C /* APIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6D25927C1D005E832C /* APIData.swift */; };
 		EA999A7725927C90005E832C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA999A7625927C90005E832C /* Main.storyboard */; };
 		EA999A7A25927CAA005E832C /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7925927CAA005E832C /* Main.swift */; };
+		EAD4475C25B0141000FB42B4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD4475B25B0141000FB42B4 /* SearchViewController.swift */; };
+		EAD4476625B0148A00FB42B4 /* UsersSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD4476425B0148A00FB42B4 /* UsersSearchCell.swift */; };
+		EAD4476725B0148A00FB42B4 /* QueryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD4476525B0148A00FB42B4 /* QueryCell.xib */; };
 		EAEC113C2592E837003C2B76 /* WebManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEC113B2592E837003C2B76 /* WebManger.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +74,9 @@
 		EA999A6D25927C1D005E832C /* APIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIData.swift; sourceTree = "<group>"; };
 		EA999A7625927C90005E832C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EA999A7925927CAA005E832C /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		EAD4475B25B0141000FB42B4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		EAD4476425B0148A00FB42B4 /* UsersSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersSearchCell.swift; sourceTree = "<group>"; };
+		EAD4476525B0148A00FB42B4 /* QueryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryCell.xib; sourceTree = "<group>"; };
 		EAEC113B2592E837003C2B76 /* WebManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebManger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +133,8 @@
 				EA54C346259408D40021BFC4 /* UsersCell.swift */,
 				EA43BCD225965CAD00098ACA /* ReposCell.swift */,
 				EA9743542596C3B10057C8A0 /* SettingsCell.swift */,
+				EAD4476425B0148A00FB42B4 /* UsersSearchCell.swift */,
+				EAD4476525B0148A00FB42B4 /* QueryCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 				EA999A6425927C02005E832C /* DetailView.swift */,
 				EA9743512596C3790057C8A0 /* SettingsView.swift */,
 				EA6BC5A625AC20F30017D688 /* Repositories.swift */,
+				EAD4475B25B0141000FB42B4 /* SearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -275,6 +284,7 @@
 				EA999A7725927C90005E832C /* Main.storyboard in Resources */,
 				EA2312D925928108000BDC8C /* GoogleService-Info.plist in Resources */,
 				EA566FF825927B9E00596E6A /* LaunchScreen.storyboard in Resources */,
+				EAD4476725B0148A00FB42B4 /* QueryCell.xib in Resources */,
 				EA566FF525927B9E00596E6A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,10 +327,12 @@
 				EA5EADF725929E2700AC3223 /* UsersView.swift in Sources */,
 				EA566FF325927B9D00596E6A /* Githubgenics.xcdatamodeld in Sources */,
 				EA85CE3A25A0293E006EA337 /* Nav.swift in Sources */,
+				EAD4475C25B0141000FB42B4 /* SearchViewController.swift in Sources */,
 				EA999A6E25927C1D005E832C /* APIData.swift in Sources */,
 				EA3FA0FA25AE9B88008D7520 /* LaunchAnimation.swift in Sources */,
 				EA3FA10325AEC191008D7520 /* ViewControllerl.swift in Sources */,
 				EA3F065B25AA1EB80066FDCF /* hh.swift in Sources */,
+				EAD4476625B0148A00FB42B4 /* UsersSearchCell.swift in Sources */,
 				EA9743522596C3790057C8A0 /* SettingsView.swift in Sources */,
 				EA2312DD2592819D000BDC8C /* Constants.swift in Sources */,
 				EA999A6525927C02005E832C /* DetailView.swift in Sources */,

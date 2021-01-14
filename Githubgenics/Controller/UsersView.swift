@@ -15,6 +15,7 @@ import SwipeCellKit
 
 class UsersView: UITableViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
     var UsersAPIStruct = [UsersStruct]()
     var checkmarks = [Int : Bool]()
     
@@ -25,6 +26,9 @@ class UsersView: UITableViewController {
         navigationItem.hidesBackButton = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         FetchUsers ()
+        searchBar.delegate = self
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +110,6 @@ class UsersView: UITableViewController {
         let postion = scrollView.contentOffset.y
         if postion > (tableView.contentSize.height-100-scrollView.frame.size.height) {
             FetchMoreUsers ()
-            DisplaySpinner ()
         }
         
 
@@ -134,6 +137,7 @@ class UsersView: UITableViewController {
         }
         
         if indexPath.row == UsersAPIStruct.count - 1 {
+            DisplaySpinner()
     
         }
 
@@ -278,5 +282,40 @@ class UsersView: UITableViewController {
         }
     }
 
+}
+
+extension UsersView: UISearchBarDelegate {
+    
+    
+    func searchbar () {
+
+        searchBar.delegate = self
+        searchBar.showsScopeBar = true
+        searchBar.tintColor = UIColor.lightGray
+        searchBar.scopeButtonTitles = [""]
+        self.tableView.tableHeaderView = searchBar
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        performSegue(withIdentifier: "SearchBar", sender: self)
+
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        performSegue(withIdentifier: "SearchBar", sender: self)
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            FetchUsers ()
+        } else {
+            if searchBar.selectedScopeButtonIndex == 0 {
+                UsersAPIStruct = UsersAPIStruct.filter({ (UsersStruct) -> Bool in
+                    return UsersStruct.login.lowercased().contains(searchText.lowercased())
+                })
+            }
+        }
+        self.tableView.reloadData()
+        self.tableView.tableFooterView?.isHidden = true
+
+    }
 }
 
