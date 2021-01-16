@@ -17,18 +17,16 @@ class UsersView: UITableViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     var UsersAPIStruct = [UsersStruct]()
-    var checkmarks = [Int : Bool]()
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        UIView.setAnimationsEnabled(false)
-        tableView.rowHeight = 100.0
+        tableView.rowHeight = 60
         navigationItem.hidesBackButton = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         FetchUsers ()
         searchBar.delegate = self
-
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,46 +59,37 @@ class UsersView: UITableViewController {
         }
     }
     
-    // MARK: - GitHubURL Button
-    
-    @IBAction func GitHubURL(_ sender: UIBarButtonItem) {
-        let APIurl = ("https://github.com/")
-        guard let url = URL(string: APIurl)
-        else {
-            return }
-        let vc = WebManger(url: url, title: "Google")
-        let navVc = UINavigationController(rootViewController: vc)
-        present(navVc, animated: true)
-    }
-    
-    // MARK: - TableView Methods
-    
     @IBAction func Refresh(_ sender: UIRefreshControl) {
         sender.endRefreshing()
         FetchUsers ()
     }
+
+    // MARK: - TableView Methods
+    
+  
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return UsersAPIStruct.count
     }
      
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UsersCell 
-        let APIImageurl = "https://avatars0.githubusercontent.com/u/\(UsersAPIStruct[indexPath.row].id)?v=4"
-        cell.UserNameLabel?.text = UsersAPIStruct[indexPath.row].login.capitalized
-        cell.ImageView.kf.setImage(with: URL(string: APIImageurl), placeholder: nil, options: [.transition(.fade(0.7))])
+        let cell = tableView.dequeueReusableCell(withIdentifier: UsersCell.identifier, for: indexPath) as! UsersCell 
+        cell.CellData(with: UsersAPIStruct[indexPath.row])
         return cell
         
     }
 
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destnation = segue.destination as? DetailView {
             destnation.Users = UsersAPIStruct[(tableView.indexPathForSelectedRow?.row)!]
+
+
         }
     }
     
@@ -109,27 +98,12 @@ class UsersView: UITableViewController {
         
         let postion = scrollView.contentOffset.y
         if postion > (tableView.contentSize.height-100-scrollView.frame.size.height) {
-            FetchMoreUsers ()
+            FetchMoreUsers()
         }
         
-
-     
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//            cell.alpha = 0
-//        let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 0)
-//        cell.layer.transform = transform
-//        
-//        UIView.animate(withDuration: 1.0) {
-//            cell.alpha = 1.0
-//            cell.layer.transform = CATransform3DIdentity
-//        }
-//        }
- 
         let LastSection = tableView.numberOfSections - 1
         let lastRowIndex = tableView.numberOfRows(inSection: LastSection) - 20
         if indexPath.section ==  LastSection && indexPath.row == lastRowIndex {
@@ -149,7 +123,7 @@ class UsersView: UITableViewController {
     
    private var Users : [UsersStruct] = []
    var isPaginating = false
-    
+
     func Fetch(pagination: Bool = false, since : Int , page : Int , complete: @escaping (Result<[UsersStruct], Error>) -> Void ) {
 
        if pagination {
@@ -157,7 +131,7 @@ class UsersView: UITableViewController {
        }
        DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 2)) {
         let url = "https://api.github.com/users?since=\(since)&per_page=\(page)"
-        
+
         AF.request(url , method: .get).responseJSON { (response) in
                do {
                    let users = try JSONDecoder().decode([UsersStruct].self, from: response.data!)
@@ -172,7 +146,7 @@ class UsersView: UITableViewController {
                }
            }
            complete(.success( pagination ? self.Users : self.Users ))
-        
+
            if pagination {
                self.isPaginating = false
            }
@@ -194,9 +168,6 @@ class UsersView: UITableViewController {
     }
     
     
-  
-    
-
     func Error () {
         let alert = UIAlertController(title: "Server isn't stable", message: "Pull to refresh to load the data", preferredStyle: .alert)
         let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
@@ -240,7 +211,7 @@ class UsersView: UITableViewController {
         self.tableView.tableFooterView?.isHidden = false
     }
     
-    
+
     func FetchUsers () {
         AF.request("https://api.github.com/users", method: .get).responseJSON { (response) in
             do {
@@ -254,12 +225,11 @@ class UsersView: UITableViewController {
             catch {
                 let error = error
                 print(error.localizedDescription)
-//                self.ErroLoadingRepos ()
                 self.Error()
             }
         }
     }
-    
+
     func FetchMoreUsers () {
         guard !isPaginating else {
             return
@@ -274,7 +244,7 @@ class UsersView: UITableViewController {
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
-                
+
             case .failure(_):
                 self!.Error()
             break
@@ -305,7 +275,7 @@ extension UsersView: UISearchBarDelegate {
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
-            FetchUsers ()
+           FetchUsers ()
         } else {
             if searchBar.selectedScopeButtonIndex == 0 {
                 UsersAPIStruct = UsersAPIStruct.filter({ (UsersStruct) -> Bool in
@@ -319,3 +289,6 @@ extension UsersView: UISearchBarDelegate {
     }
 }
 
+//extension UsersView: OK {
+//
+//}

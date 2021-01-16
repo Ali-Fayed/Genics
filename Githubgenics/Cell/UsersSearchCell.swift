@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UsersSearchCell: UITableViewCell {
-
+    
+    static let identifier = "Cell"
     @IBOutlet var UserTitleLabel: UILabel!
     @IBOutlet var UserAvatar: UIImageView!
 
@@ -20,7 +22,6 @@ class UsersSearchCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    static let identifier = "Cell"
 
     static func nib() -> UINib {
         return UINib(nibName: "QueryCell",
@@ -30,9 +31,12 @@ class UsersSearchCell: UITableViewCell {
     func CellData(with model: items) {
         self.UserTitleLabel.text = model.login
         let url = model.avatar_url
-        if let data = try? Data(contentsOf: URL(string: url)!) {
-            self.UserAvatar.image = UIImage(data: data)
-        }
+        self.UserAvatar.kf.setImage(with: URL(string: url), placeholder: nil, options: [.transition(.fade(0.7))])
+        UserAvatar.contentMode = .scaleAspectFill
+        UserAvatar.layer.masksToBounds = false
+        UserAvatar.layer.cornerRadius = UserAvatar.frame.height/2
+        UserAvatar.clipsToBounds = true
+
     }
     
 }

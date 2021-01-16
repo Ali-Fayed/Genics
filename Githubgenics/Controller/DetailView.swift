@@ -18,11 +18,11 @@ import Kingfisher
 class Celll: UITableViewCell {
     
     
-    public var Users:UsersStruct?
-    
-    public var defaults = UserDefaults.standard
-    
     @IBOutlet weak var RepoNameLabel: UILabel!
+    
+    func CellData(with model: ReposStruct) {
+        self.RepoNameLabel.text = model.name
+    }
     
 }
 
@@ -30,16 +30,15 @@ class Celll: UITableViewCell {
 
 class DetailView: UIViewController {
     var ReposData = [ReposStruct]()
-    var repo:ReposStruct?
-    public var Users:UsersStruct?
+     var Users:UsersStruct?
     public var defaults = UserDefaults.standard
     var refreshControl = UIRefreshControl()
     
-    var setImageStatus: String = "off" {
+    var setButtonState: String = "off" {
         willSet {
             if newValue == "on" {
-                Btn.setImage(UIImage(systemName: "heart.fill"), for: .normal) }
-            else { Btn.setImage(UIImage(systemName: "heart"), for: .normal) }
+                Btn.setBackgroundImage(UIImage(named: "LikeBT"), for: .normal) }
+            else { Btn.setBackgroundImage(UIImage(named: "UnlikeBT"), for: .normal) }
         }
     }
     
@@ -48,38 +47,46 @@ class DetailView: UIViewController {
     @IBOutlet weak var UserName: UILabel!
     @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var Site: UIBarButtonItem!
+    @IBOutlet weak var Followers: UILabel!
     
+    @IBOutlet weak var Following: UILabel!
     @IBAction func Btn(_ sender: UIButton) {
-        let stat = setImageStatus == "on" ? "off" : "on"
-        setImageStatus = stat
+        let stat = setButtonState == "on" ? "off" : "on"
+        setButtonState = stat
         defaults.set(stat, forKey: ((Users?.login)!))
         print(stat)
     }
     
     
     @objc func refresh(_ sender: AnyObject) {
-        FetchRepos()
+        FetchRepositories()
         refreshControl.endRefreshing()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        FetchRepos ()
+        FetchRepositories ()
+        UserAvatar ()
         
         refreshControl.attributedTitle = NSAttributedString(string: "")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        tableView.addSubview(refreshControl) // not required when using UITableViewController
+        tableView.addSubview(refreshControl)
         refreshControl.endRefreshing()
         
-        if let imgStatus = defaults.string(forKey: ((Users?.login)!))
-        { setImageStatus = imgStatus }
-        else { setImageStatus = "off" }
+        if let ButtonState = defaults.string(forKey: ((Users?.login)!))
+        { setButtonState = ButtonState }
+        else { setButtonState = "off" }
         
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         UserName.text = "\((Users?.login.capitalized)!)"
-        let APIImageurl = (Users?.avatar_url)!
+        Followers.text = String(Int.random(in: 10 ... 50))
+        Following.text = String(Int.random(in: 10 ... 50))
+        
+    }
+    
+    func UserAvatar () {
+        let avatar_URL = (Users?.avatar_url)!
         ImageView.kf.indicatorType = .activity
-        ImageView.kf.setImage(with: URL(string: APIImageurl), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
-        ImageView.layer.borderWidth = 1
+        ImageView.kf.setImage(with: URL(string: avatar_URL), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
         ImageView.layer.masksToBounds = false
         ImageView.layer.cornerRadius = ImageView.frame.height/2
         ImageView.clipsToBounds = true
@@ -110,8 +117,8 @@ class DetailView: UIViewController {
     
     //MARK:- Fetch Repostories 
     
-    func FetchRepos() {
-        let url = "https://api.github.com/users/\((Users?.login)!)/repos"
+    func FetchRepositories() {
+        let url = "https://api.github.com/users/\((Users?.login)!)/repos?per_page=5"
         AF.request(url, method: .get).responseJSON { (response) in
             do {
                 if let safedata = response.data {
@@ -159,7 +166,7 @@ extension DetailView: UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepoCell", for: indexPath) as! Celll
-        cell.RepoNameLabel?.text = ReposData[indexPath.row].name.capitalized
+        cell.CellData(with: ReposData[indexPath.row])
         return cell
     }
     

@@ -9,10 +9,13 @@ import UIKit
 import SafariServices
 import Alamofire
 
-class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var SearchField: UITextField!
+    let searchBar = UISearchBar()
+    @IBOutlet weak var Searchbaar: UISearchBar!
+    
 
     var UsersQuery = [items]()
 
@@ -21,20 +24,83 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         tableView.register(UsersSearchCell.nib(), forCellReuseIdentifier: UsersSearchCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
-        SearchField.delegate = self
+//        searchbar ()
+        Searchbaar.delegate = self
     }
 
     // Field
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        SearchUsers()
-        return true
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Searchbaar.becomeFirstResponder()
     }
+//
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//            UsersQuery.removeAll()
+//            guard let textToSearch = searchBar.text, !textToSearch.isEmpty else {
+//                return
+//            }
+//
+//            if Date().timeIntervalSince(previousRun) > minInterval {
+//                previousRun = Date()
+//                fetchResults(for: textToSearch)
+//            }
+//        }
+//
+//        func fetchResults(for text: String) {
+//            print("Text Searched: \(text)")
+//
+//        }
+//
+////        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+////            searchResults.removeAll()
+////        }
+//    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text, !text.isEmpty else {
+            return
+        }
+        let query = text.replacingOccurrences(of: " ", with: "%20")
+        let url = "https://api.github.com/search/users?q=\(query)"
+        AF.request(url, method: .get).responseJSON { (response) in
+            guard let safedata = response.data else {
+                return
+            }
+            var result: UsersQResults?
 
+            do {
+                result = try JSONDecoder().decode(UsersQResults.self, from: safedata)
+               }
+            catch {
+                let error = error
+                print(error.localizedDescription)
+            }
+            guard let finalResult = result else {
+                return
+            }
+            let newMovies = finalResult.items
+            self.UsersQuery.append(contentsOf: newMovies)
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        UsersQuery.removeAll()
+    }
+   
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        DispatchQueue.main.async {
+//            self.Searchbaar.resignFirstResponder()
+        }
+        
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            performSegue(withIdentifier: "SearchBar", sender: self)
+        }
+    }
     func SearchUsers() {
         SearchField.resignFirstResponder()
         UsersQuery.removeAll()
         FetchQuery ()
-
     }
 
     // Table
@@ -58,7 +124,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 60
     }
     
     
@@ -67,7 +133,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         guard let text = SearchField.text, !text.isEmpty else {
             return
         }
-        let query = text.replacingOccurrences(of: " ", with: "%20")
+        let query = text.replacingOccurrences(of: " ", with: "$0")
         let url = "https://api.github.com/search/users?q=\(query)"
         AF.request(url, method: .get).responseJSON { (response) in
             guard let safedata = response.data else {
