@@ -47,6 +47,11 @@ class UsersCell: UITableViewCell {
         ImageView.layer.masksToBounds = false
         ImageView.layer.cornerRadius = ImageView.frame.height/2
         ImageView.clipsToBounds = true
+        
+        UserNameLabel.layer.masksToBounds = false
+        UserNameLabel.layer.cornerRadius = UserNameLabel.frame.height/2
+        UserNameLabel.clipsToBounds = true
+      
     }
 
 

@@ -19,15 +19,17 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xMB-UR-bcS">
                         <rect key="frame" x="12" y="5" width="50" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="ige-WG-uAV"/>
-                            <constraint firstAttribute="width" constant="50" id="wOa-Qi-TrM"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="NYO-9a-r6Q"/>
+                            <constraint firstAttribute="width" constant="50" id="NrY-aA-WlK"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="YSg-G6-47A"/>
+                            <constraint firstAttribute="height" constant="50" id="f4a-vk-UKk"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4l-xG-HRp">
-                        <rect key="frame" x="95" y="12" width="304" height="37"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4l-xG-HRp">
+                        <rect key="frame" x="70" y="12" width="324" height="37"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="37" id="Zec-w2-mgM"/>
-                            <constraint firstAttribute="width" constant="304" id="xCc-7M-m6s"/>
+                            <constraint firstAttribute="width" constant="324" id="b3P-tl-vt9"/>
+                            <constraint firstAttribute="height" constant="37" id="wOz-Fb-HVm"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -35,12 +37,14 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="xMB-UR-bcS" secondAttribute="bottom" constant="5" id="Kzs-zh-DIc"/>
-                    <constraint firstAttribute="bottom" secondItem="B4l-xG-HRp" secondAttribute="bottom" constant="11" id="Lix-hP-lI9"/>
-                    <constraint firstItem="xMB-UR-bcS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="XX8-ZO-Y6l"/>
-                    <constraint firstItem="xMB-UR-bcS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="eLe-JR-cCH"/>
-                    <constraint firstAttribute="trailing" secondItem="B4l-xG-HRp" secondAttribute="trailing" constant="15" id="ij1-6m-Lmi"/>
-                    <constraint firstItem="B4l-xG-HRp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="saz-6A-FXz"/>
+                    <constraint firstItem="B4l-xG-HRp" firstAttribute="leading" secondItem="xMB-UR-bcS" secondAttribute="trailing" constant="8" symbolic="YES" id="539-mb-pN2"/>
+                    <constraint firstItem="xMB-UR-bcS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="5d8-Q6-ppk"/>
+                    <constraint firstItem="B4l-xG-HRp" firstAttribute="leading" secondItem="xMB-UR-bcS" secondAttribute="trailing" constant="8" symbolic="YES" id="NOl-G7-W7r"/>
+                    <constraint firstItem="B4l-xG-HRp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="UhT-Jo-6jg"/>
+                    <constraint firstAttribute="bottom" secondItem="xMB-UR-bcS" secondAttribute="bottom" constant="5" id="gzm-Zd-pk1"/>
+                    <constraint firstItem="xMB-UR-bcS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="uh9-Ud-RWa"/>
+                    <constraint firstAttribute="trailing" secondItem="B4l-xG-HRp" secondAttribute="trailing" constant="20" symbolic="YES" id="wkd-J9-Tsz"/>
+                    <constraint firstAttribute="bottom" secondItem="B4l-xG-HRp" secondAttribute="bottom" constant="11" id="xWA-hW-4Eh"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -24,6 +24,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         tableView.register(UsersSearchCell.nib(), forCellReuseIdentifier: UsersSearchCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        navigationItem.hidesBackButton = true
 //        searchbar ()
         Searchbaar.delegate = self
     }

@@ -10,6 +10,7 @@ import Firebase
 import SkeletonView
 import Alamofire
 import Kingfisher
+import SafariServices
 
 //MARK:- Main Class
 
@@ -19,10 +20,36 @@ class Celll: UITableViewCell {
     
     
     @IBOutlet weak var RepoNameLabel: UILabel!
+    @IBOutlet weak var De: UITextView!
+    @IBOutlet weak var likec: UILabel!
+    @IBOutlet weak var language: UILabel!
+    
+    
+    
     
     func CellData(with model: ReposStruct) {
         self.RepoNameLabel.text = model.name
+        self.De.text = model.description
+        self.likec.text = String(model.stargazers_count)
+        self.language.text = model.language
+        
+//        RepoNameLabel.layer.masksToBounds = false
+//        RepoNameLabel.layer.cornerRadius = RepoNameLabel.frame.height/2
+//        RepoNameLabel.clipsToBounds = true
+//        
+//        De.layer.masksToBounds = false
+//        De.layer.cornerRadius = De.frame.height/2
+//        De.clipsToBounds = true
+//        
+//        likec.layer.masksToBounds = false
+//        likec.layer.cornerRadius = likec.frame.height/2
+//        likec.clipsToBounds = true
+//        
+//        language.layer.masksToBounds = false
+//        language.layer.cornerRadius = language.frame.height/2
+//        language.clipsToBounds = true
     }
+
     
 }
 
@@ -37,8 +64,8 @@ class DetailView: UIViewController {
     var setButtonState: String = "off" {
         willSet {
             if newValue == "on" {
-                Btn.setBackgroundImage(UIImage(named: "LikeBT"), for: .normal) }
-            else { Btn.setBackgroundImage(UIImage(named: "UnlikeBT"), for: .normal) }
+                Btn.setBackgroundImage(UIImage(named: "like"), for: .normal) }
+            else { Btn.setBackgroundImage(UIImage(named: "unlike"), for: .normal) }
         }
     }
     
@@ -63,6 +90,7 @@ class DetailView: UIViewController {
         refreshControl.endRefreshing()
     }
     override func viewDidLoad() {
+        tableView.rowHeight = 120.0
         super.viewDidLoad()
         FetchRepositories ()
         UserAvatar ()
@@ -95,7 +123,7 @@ class DetailView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
-        navigationController?.isToolbarHidden = false
+        navigationController?.isToolbarHidden = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -105,20 +133,20 @@ class DetailView: UIViewController {
     
     //MARK:- WebView
     
-    @IBAction func Site(_ sender: UIBarButtonItem) {
-        let APIurl = (Users?.html_url)!
-        guard let url = URL(string: APIurl)
-        else {
-            return }
-        let vc = WebManger(url: url, title: "Google")
-        let navVc = UINavigationController(rootViewController: vc)
-        present(navVc, animated: true)
-    }
+//    @IBAction func Site(_ sender: UIBarButtonItem) {
+//        let APIurl = (Users?.html_url)!
+//        guard let url = URL(string: APIurl)
+//        else {
+//            return }
+//        let vc = WebManger(url: url, title: "Google")
+//        let navVc = UINavigationController(rootViewController: vc)
+//        present(navVc, animated: true)
+//    }
     
     //MARK:- Fetch Repostories 
     
     func FetchRepositories() {
-        let url = "https://api.github.com/users/\((Users?.login)!)/repos?per_page=5"
+        let url = "https://api.github.com/users/\((Users?.login)!)/repos?per_page=6"
         AF.request(url, method: .get).responseJSON { (response) in
             do {
                 if let safedata = response.data {
@@ -173,12 +201,9 @@ extension DetailView: UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destnation = segue.destination as? Repositories {
-            destnation.Repo = ReposData[(tableView.indexPathForSelectedRow?.row)!]
-        }
+        let url = ReposData[indexPath.row].html_url
+        let vc = SFSafariViewController(url: URL(string: url)!)
+        present(vc, animated: true)
     }
     
 }

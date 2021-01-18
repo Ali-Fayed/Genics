@@ -31,7 +31,7 @@ class UsersView: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isToolbarHidden = false
+        navigationController?.isToolbarHidden = true
         navigationController?.isNavigationBarHidden = false
     }
     
@@ -42,7 +42,9 @@ class UsersView: UITableViewController {
     
     // MARK: - Sign Out Auth
     
-    @IBAction func SignOuut(_ sender: UIBarButtonItem) {
+  
+    
+    @IBAction func SignOut(_ sender: UIBarItem) {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
@@ -58,6 +60,7 @@ class UsersView: UITableViewController {
             SignOutError()
         }
     }
+    
     
     @IBAction func Refresh(_ sender: UIRefreshControl) {
         sender.endRefreshing()
@@ -189,6 +192,7 @@ class UsersView: UITableViewController {
     func SkeletonViewLoader () {
         tableView.isSkeletonable = true
         tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)), animation: nil, transition: .crossDissolve(0.25))
+        tableView.skeletonCornerRadius = 5
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.tableView.stopSkeletonAnimation()
             self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
