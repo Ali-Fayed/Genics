@@ -13,8 +13,31 @@ class SignInView: UIViewController {
     @IBOutlet weak var Email: UITextField!
     @IBOutlet weak var Password: UITextField!
     
+    @IBOutlet weak var Hello: UILabel!
+    @IBOutlet weak var PleaseLogintoCont : UILabel!
+    @IBOutlet weak var EmailLabel: UILabel!
+    @IBOutlet weak var PasswordLabel: UILabel!
+    @IBOutlet weak var Or: UILabel!
+    @IBOutlet weak var SigninwithLabel: UILabel!
+    @IBOutlet weak var DontHaveAccLabel: UILabel!
+    @IBOutlet weak var SignUpButton: UIButton!
+    @IBOutlet weak var SignIn: UIButton!
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        SignUpButton.setTitle("Signup".localized(), for: .normal)
+        SignIn.setTitle("Sign In".localized(), for: .normal)
+        Hello.text = "Hello!".localized()
+        PleaseLogintoCont.text = "Please Login to continue".localized()
+        EmailLabel.text = "E-mail".localized()
+        PasswordLabel.text = "Password".localized()
+        Or.text = "Or".localized()
+        SigninwithLabel.text = "Signin with".localized()
+        DontHaveAccLabel.text = "Don't have account?".localized()
 
     }
     

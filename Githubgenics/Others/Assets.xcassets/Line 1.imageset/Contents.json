@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "CD99C210-3A8D-4C14-BDAA-6ADB9CFC2D05.JPEG",
+      "filename" : "Line 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Line 1-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Line 1-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

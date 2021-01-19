@@ -9,11 +9,17 @@ import UIKit
 
 class Main: UIViewController {
     
-    @IBOutlet weak var Button: UIButton!
-    @IBOutlet weak var SignIn: UIButton!
+
+    @IBOutlet weak var HelloWorld: UILabel!
+    @IBOutlet weak var SignInBT: UIButton!
+    @IBOutlet weak var SignUpBT: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        HelloWorld.text = "Hello World!".localized()
+        SignInBT.setTitle("Sign In".localized(), for: .normal)
+        SignUpBT.setTitle("Sign Up".localized(), for: .normal)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         navigationController?.isToolbarHidden = true
         navigationController?.isNavigationBarHidden = true

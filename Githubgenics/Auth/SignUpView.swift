@@ -13,8 +13,47 @@ class SignUpView: UIViewController {
     @IBOutlet weak var Email: UITextField!
     @IBOutlet weak var Password: UITextField!
     
+    @IBOutlet weak var Hello: UILabel!
+    @IBOutlet weak var PleaseSignUptoCon: UILabel!
+    @IBOutlet weak var FullName: UILabel!
+    @IBOutlet weak var EmailLabel: UILabel!
+    @IBOutlet weak var PasswordLabel: UILabel!
+    @IBOutlet weak var ConfirmPassword: UILabel!
+    @IBOutlet weak var Or: UILabel!
+    @IBOutlet weak var SignupwithLabel: UILabel!
+    @IBOutlet weak var Alreadyhaveaccount: UILabel!
+
+    @IBOutlet weak var LoginBT: UIButton!
+    
+    @IBOutlet weak var SignUp: UIButton!
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        LoginBT.setTitle("Login".localized(), for: .normal)
+        SignUp.setTitle("Sign Up".localized(), for: .normal)
+        Hello.text = "Hello!".localized()
+        PleaseSignUptoCon.text = "Please signup to continue".localized()
+        FullName.text = "Full Name".localized()
+        EmailLabel.text = "E-mail".localized()
+        PasswordLabel.text = "Password".localized()
+        ConfirmPassword.text = "Confirm Password".localized()
+        Or.text = "Or".localized()
+        SignupwithLabel.text = "Signup with".localized()
+        Alreadyhaveaccount.text = "Already have account?".localized()
+        
+        
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 
     }

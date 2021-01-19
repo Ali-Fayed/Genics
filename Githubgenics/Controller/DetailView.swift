@@ -33,23 +33,23 @@ class Celll: UITableViewCell {
         self.likec.text = String(model.stargazers_count)
         self.language.text = model.language
         
-//        RepoNameLabel.layer.masksToBounds = false
-//        RepoNameLabel.layer.cornerRadius = RepoNameLabel.frame.height/2
-//        RepoNameLabel.clipsToBounds = true
-//        
-//        De.layer.masksToBounds = false
-//        De.layer.cornerRadius = De.frame.height/2
-//        De.clipsToBounds = true
-//        
-//        likec.layer.masksToBounds = false
-//        likec.layer.cornerRadius = likec.frame.height/2
-//        likec.clipsToBounds = true
-//        
-//        language.layer.masksToBounds = false
-//        language.layer.cornerRadius = language.frame.height/2
-//        language.clipsToBounds = true
+        //        RepoNameLabel.layer.masksToBounds = false
+        //        RepoNameLabel.layer.cornerRadius = RepoNameLabel.frame.height/2
+        //        RepoNameLabel.clipsToBounds = true
+        //
+        //        De.layer.masksToBounds = false
+        //        De.layer.cornerRadius = De.frame.height/2
+        //        De.clipsToBounds = true
+        //
+        //        likec.layer.masksToBounds = false
+        //        likec.layer.cornerRadius = likec.frame.height/2
+        //        likec.clipsToBounds = true
+        //
+        //        language.layer.masksToBounds = false
+        //        language.layer.cornerRadius = language.frame.height/2
+        //        language.clipsToBounds = true
     }
-
+    
     
 }
 
@@ -57,7 +57,7 @@ class Celll: UITableViewCell {
 
 class DetailView: UIViewController {
     var ReposData = [ReposStruct]()
-     var Users:UsersStruct?
+    var Users:UsersStruct?
     public var defaults = UserDefaults.standard
     var refreshControl = UIRefreshControl()
     
@@ -75,6 +75,7 @@ class DetailView: UIViewController {
     @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var Site: UIBarButtonItem!
     @IBOutlet weak var Followers: UILabel!
+    @IBOutlet weak var ali: UILabel!
     
     @IBOutlet weak var Following: UILabel!
     @IBAction func Btn(_ sender: UIButton) {
@@ -94,7 +95,7 @@ class DetailView: UIViewController {
         super.viewDidLoad()
         FetchRepositories ()
         UserAvatar ()
-        
+//        ali.text = "ali".localized()
         refreshControl.attributedTitle = NSAttributedString(string: "")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
@@ -108,6 +109,7 @@ class DetailView: UIViewController {
         UserName.text = "\((Users?.login.capitalized)!)"
         Followers.text = String(Int.random(in: 10 ... 50))
         Following.text = String(Int.random(in: 10 ... 50))
+        navigationItem.title = "Detail View".localized()
         
     }
     
@@ -133,15 +135,15 @@ class DetailView: UIViewController {
     
     //MARK:- WebView
     
-//    @IBAction func Site(_ sender: UIBarButtonItem) {
-//        let APIurl = (Users?.html_url)!
-//        guard let url = URL(string: APIurl)
-//        else {
-//            return }
-//        let vc = WebManger(url: url, title: "Google")
-//        let navVc = UINavigationController(rootViewController: vc)
-//        present(navVc, animated: true)
-//    }
+    //    @IBAction func Site(_ sender: UIBarButtonItem) {
+    //        let APIurl = (Users?.html_url)!
+    //        guard let url = URL(string: APIurl)
+    //        else {
+    //            return }
+    //        let vc = WebManger(url: url, title: "Google")
+    //        let navVc = UINavigationController(rootViewController: vc)
+    //        present(navVc, animated: true)
+    //    }
     
     //MARK:- Fetch Repostories 
     
@@ -176,7 +178,7 @@ class DetailView: UIViewController {
     func ErroLoadingRepos () {
         let alert = UIAlertController(title: "Server Error", message: "Repositories server not stable", preferredStyle: .alert)
         let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
-
+            
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)

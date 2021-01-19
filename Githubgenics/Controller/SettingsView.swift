@@ -18,7 +18,7 @@ class SettingsView: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.title = "Settings".localized()
 
     }
 

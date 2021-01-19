@@ -9,11 +9,8 @@ import UIKit
 import SafariServices
 import Alamofire
 
-class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class SearchViewController: UITableViewController , UISearchBarDelegate {
 
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var SearchField: UITextField!
-    let searchBar = UISearchBar()
     @IBOutlet weak var Searchbaar: UISearchBar!
     
 
@@ -22,11 +19,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UsersSearchCell.nib(), forCellReuseIdentifier: UsersSearchCell.identifier)
-        tableView.delegate = self
-        tableView.dataSource = self
+        Searchbaar.showsCancelButton = true
         navigationItem.hidesBackButton = true
 //        searchbar ()
         Searchbaar.delegate = self
+        navigationItem.title = "Github Users".localized()
     }
 
     // Field
@@ -57,6 +54,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
 ////            searchResults.removeAll()
 ////        }
 //    }
+    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else {
             return
@@ -95,28 +94,35 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         }
         
         func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-            performSegue(withIdentifier: "SearchBar", sender: self)
+//            let searchResultController: UsersView = UsersView ()
+//                 navigationController?.pushViewController(searchResultController, animated: true)
+            searchBar.setShowsCancelButton(true, animated: true)
+            searchBar.text = ""
+//            searchBar.resignFirstResponder()
+            print("ali")
         }
+        
+        
+        
     }
     func SearchUsers() {
-        SearchField.resignFirstResponder()
         UsersQuery.removeAll()
         FetchQuery ()
     }
 
     // Table
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return UsersQuery.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UsersSearchCell.identifier, for: indexPath) as! UsersSearchCell
         cell.CellData(with: UsersQuery[indexPath.row])
         return cell
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         // Show movie details
         let url = UsersQuery[indexPath.row].html_url
@@ -124,41 +130,14 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         present(vc, animated: true)
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
     
     
     
     func FetchQuery () {
-        guard let text = SearchField.text, !text.isEmpty else {
-            return
-        }
-        let query = text.replacingOccurrences(of: " ", with: "$0")
-        let url = "https://api.github.com/search/users?q=\(query)"
-        AF.request(url, method: .get).responseJSON { (response) in
-            guard let safedata = response.data else {
-                return
-            }
-            var result: UsersQResults?
-
-            do {
-                result = try JSONDecoder().decode(UsersQResults.self, from: safedata)
-               }
-            catch {
-                let error = error
-                print(error.localizedDescription)
-            }
-            guard let finalResult = result else {
-                return
-            }
-            let newMovies = finalResult.items
-            self.UsersQuery.append(contentsOf: newMovies)
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+      
     }
     
     

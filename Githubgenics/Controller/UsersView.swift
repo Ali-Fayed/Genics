@@ -15,24 +15,39 @@ import SwipeCellKit
 
 class UsersView: UITableViewController {
 
+   
+    @IBOutlet weak var SignOutBT: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
     var UsersAPIStruct = [UsersStruct]()
-
+    var defaults = UserDefaults.standard
+   var window = UIWindow()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SignOutBT.title = "Signout".localized()
         tableView.rowHeight = 60
         navigationItem.hidesBackButton = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         FetchUsers ()
         searchBar.delegate = self
+        searchBar.placeholder = "Search".localized()
+        navigationItem.title = "Github Users".localized()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isToolbarHidden = true
         navigationController?.isNavigationBarHidden = false
+//        let darkModeEnabled = defaults.bool(forKey: "darkModeEnabled")
+//
+//          if darkModeEnabled {
+//              // Apply your dark theme
+//            window.overrideUserInterfaceStyle = .dark
+//          } else {
+//              // Apply your normal theme.
+//            window.overrideUserInterfaceStyle = .light
+//          }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,6 +60,7 @@ class UsersView: UITableViewController {
   
     
     @IBAction func SignOut(_ sender: UIBarItem) {
+        title = "llll"
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
@@ -267,6 +283,7 @@ extension UsersView: UISearchBarDelegate {
         searchBar.showsScopeBar = true
         searchBar.tintColor = UIColor.lightGray
         searchBar.scopeButtonTitles = [""]
+        searchBar.placeholder = "Search".localized()
         self.tableView.tableHeaderView = searchBar
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -276,6 +293,10 @@ extension UsersView: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         performSegue(withIdentifier: "SearchBar", sender: self)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("ok")
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
@@ -291,8 +312,13 @@ extension UsersView: UISearchBarDelegate {
         self.tableView.tableFooterView?.isHidden = true
 
     }
+    
+    
 }
 
-//extension UsersView: OK {
-//
-//}
+extension String {
+    func localized () -> String {
+        return NSLocalizedString(self, tableName: "Localizable", bundle: .main, value: self, comment: self
+        )
+    }
+}
