@@ -5,12 +5,7 @@
 //  Created by Ali Fayed on 21/12/2020.
 //
 
-//JSON Data
-class customData {
-    let User = [UsersStruct]()
-    var ButtonState = false
-    
-}
+
 struct UsersStruct: Decodable {
     let login: String
     let id: Int
@@ -30,6 +25,7 @@ struct UsersStruct: Decodable {
 }
 
 struct ReposStruct: Codable {
+    
     let name: String
     let description:String
     let svn_url: String

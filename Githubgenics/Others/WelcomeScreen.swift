@@ -7,15 +7,27 @@
 
 import UIKit
 
-class Main: UIViewController {
+class WelcomeScreen: UIViewController {
     
-
+    @IBOutlet weak var Tile: UILabel!
+    
+    @IBOutlet weak var TxtView: UITextView!
     @IBOutlet weak var HelloWorld: UILabel!
     @IBOutlet weak var SignInBT: UIButton!
     @IBOutlet weak var SignUpBT: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+      let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 100))
+        view.addSubview(label)
+        label.center = view.center
+        Tile.font = UIFont(name: "AppleSDGothicNeo-Light", size: 40)
+        Tile.text = "GITHUBGENICS".localized()
+        
+        
+        
+        
         
         HelloWorld.text = "Hello World!".localized()
         SignInBT.setTitle("Sign In".localized(), for: .normal)

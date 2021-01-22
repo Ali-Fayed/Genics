@@ -1,8 +1,7 @@
-"Github Users" = "قايمه المستخدمين";
+"Github Users" = "قائمة المستخدمين";
 "Hello World!" = "مرحبا بالعالم!";
 "Detail View" = "الصفحه الشخصيه";
 "Settings" = "الاعدادات";
-"Github Users" = "قايمه المستخدمين";
 "Full Name" = "الاسم كامل";
 "E-mail" = "البريد الالكتروني";
 "Password" = "كلمه السر";
@@ -21,3 +20,5 @@
 "Sign Up" = "عضويه جديده";
 "Signout" = "تسجيل خروج";
 "Search" = "البحث";
+"Please check your connection and try again" = "";
+"No Internet Connection" = "";

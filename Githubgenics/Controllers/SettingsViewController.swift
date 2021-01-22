@@ -12,7 +12,7 @@ import WebKit
 import Alamofire
 import Kingfisher
 
-class SettingsView: UITableViewController {
+class SettingsViewController: UITableViewController {
      
     var Setting = ["Dark Mode" ]
     

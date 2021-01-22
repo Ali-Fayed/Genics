@@ -73,7 +73,7 @@ class SignInView: UIViewController {
     }
     
     func ErrorSigninAlert () {
-        let alert = UIAlertController(title: "Enter Sign in", message: "The password is invalid or you don't have the password", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Enter Sign in", message: "Check your E-mail or password", preferredStyle: .alert)
         let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
         }
         alert.addAction(action)

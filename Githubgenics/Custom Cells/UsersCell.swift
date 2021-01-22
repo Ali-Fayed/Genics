@@ -9,35 +9,20 @@ import UIKit
 import CoreData
 
 class UsersCell: UITableViewCell {
-    var buttonstate:Bool = true
-    var checkmarks:Bool?
-    
+  
     static let identifier = "User"
+    static let profileImageSize: CGSize = CGSize(width: 50, height: 50)
+
     @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var UserNameLabel: UILabel!
-    let defaults = UserDefaults.standard
-
-
-
-
-
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
 
-    @IBAction func BookmarkCell(_ sender: UIButton) {
-
-
-
-
-    }
-
-
-
-    static let profileImageSize: CGSize = CGSize(width: 50, height: 50)
-
-
+ 
     func CellData(with model: UsersStruct) {
         self.UserNameLabel.text = model.login.capitalized
         let url = model.avatar_url
@@ -47,7 +32,6 @@ class UsersCell: UITableViewCell {
         ImageView.layer.masksToBounds = false
         ImageView.layer.cornerRadius = ImageView.frame.height/2
         ImageView.clipsToBounds = true
-        
         UserNameLabel.layer.masksToBounds = false
         UserNameLabel.layer.cornerRadius = UserNameLabel.frame.height/2
         UserNameLabel.clipsToBounds = true

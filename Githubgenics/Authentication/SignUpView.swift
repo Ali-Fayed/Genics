@@ -22,8 +22,6 @@ class SignUpView: UIViewController {
     @IBOutlet weak var Or: UILabel!
     @IBOutlet weak var SignupwithLabel: UILabel!
     @IBOutlet weak var Alreadyhaveaccount: UILabel!
-
-    @IBOutlet weak var LoginBT: UIButton!
     
     @IBOutlet weak var SignUp: UIButton!
     
@@ -41,7 +39,6 @@ class SignUpView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LoginBT.setTitle("Login".localized(), for: .normal)
         SignUp.setTitle("Sign Up".localized(), for: .normal)
         Hello.text = "Hello!".localized()
         PleaseSignUptoCon.text = "Please signup to continue".localized()
@@ -91,7 +88,7 @@ class SignUpView: UIViewController {
     
 
     func ErrorSignUpAlert () {
-        let alert = UIAlertController(title: "Error Sign up", message: "The password must be 6 characters long or more", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error Sign up", message: "Enter Valid E-mail and the password must be 6 characters long or more", preferredStyle: .alert)
         let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
         }
         alert.addAction(action)
