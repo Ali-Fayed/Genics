@@ -15,10 +15,12 @@ import CoreData
 class UsersListViewController: UITableViewController {
 
     var UsersAPIStruct = [UsersStruct]()
-    
+    var APISaves = [UsersDataBase]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
    
     @IBOutlet weak var SignOutBT: UIBarButtonItem!
-    @IBOutlet weak var searchBar: UISearchBar!
+//    @IBOutlet weak var searchBar: UISearchBar!
     @IBAction func Refresh(_ sender: UIRefreshControl) {
         sender.endRefreshing()
         FetchUsersVDL ()
@@ -48,16 +50,18 @@ class UsersListViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.rowHeight = 60
-        navigationItem.hidesBackButton = true
+        self.tabBarController?.navigationItem.hidesBackButton = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         FetchUsersVDL ()
-        searchBar.placeholder = "Search".localized()
-        navigationItem.title = "Github Users".localized()
+//        searchBar.placeholder = "Search".localized()
+        self.tabBarController?.navigationItem.leftBarButtonItem = SignOutBT
         SignOutBT.title = "Signout".localized()
-        searchBar.delegate = self
+//        searchBar.delegate = self
         let longPress = UILongPressGestureRecognizer()
         self.tableView.addGestureRecognizer(longPress)
         longPress.addTarget(self, action: #selector(ges))
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+
         
       
         
@@ -77,6 +81,8 @@ class UsersListViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.tabBarController?.navigationItem.title = "Github Users".localized()
+
     }
     
  
@@ -97,6 +103,10 @@ class UsersListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let model = UsersAPIStruct[indexPath.row].login
+        let model2 = UsersAPIStruct[indexPath.row].avatar_url
+        let model3 = UsersAPIStruct[indexPath.row].html_url
+        saveNewSearchHistoryWord(login: model, avatar_url: model2, html_url: model3)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -124,7 +134,6 @@ class UsersListViewController: UITableViewController {
             DisplaySpinner()
     
         }
-
     }
     
     
@@ -261,7 +270,59 @@ class UsersListViewController: UITableViewController {
         self.tableView.tableFooterView?.isHidden = false
     }
     
-  
+//    func fetchAllData () {
+//        do {
+//            APISaves = try context.fetch(UsersDataBase.fetchRequest())
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//
+//            }
+//        } catch {
+//            //error
+//        }
+//    }
+    
+    func saveNewSearchHistoryWord (login: String , avatar_url: String , html_url: String) {
+        let DataParameters = UsersDataBase(context: context)
+        DataParameters.login = login
+        DataParameters.avatar_url = avatar_url
+        DataParameters.html_url = html_url
+        do {
+            try context.save()
+        } catch {
+            
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let important = importantAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [important])
+    }
+    
+    func importantAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "Bookmark") { [self] (action, view, completion) in
+            let model = self.UsersAPIStruct[indexPath.row].login
+            let model2 = self.UsersAPIStruct[indexPath.row].avatar_url
+            let model3 = UsersAPIStruct[indexPath.row].html_url
+
+            saveNewSearchHistoryWord(login: model, avatar_url: model2, html_url: model3)
+        }
+        action.image = #imageLiteral(resourceName: "like")
+        action.backgroundColor = .gray
+        return action
+    }
+//
+//    func updateSearchHistory (DataParameters: UsersDataBase, SaveData: String)  {
+//        DataParameters.login = SaveData
+//        DataParameters.avatar_url = SaveData
+//        do {
+//            try context.save()
+//            fetchAllData()
+//        } catch {
+//
+//        }
+//    }
 
 }
 

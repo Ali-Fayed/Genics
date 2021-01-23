@@ -2,6 +2,22 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SearchHistory+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:SearchHistory+CoreDataProperties.swift">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "CoreData">
+      <FileRef
+         location = "group:/Users/alifayed/Desktop/my App/Githubgenics/UsersDataBase+CoreDataClass.swift">
+      </FileRef>
+      <FileRef
+         location = "group:/Users/alifayed/Desktop/my App/Githubgenics/UsersDataBase+CoreDataProperties.swift">
+      </FileRef>
+   </Group>
+   <FileRef
       location = "group:Githubgenics.xcodeproj">
    </FileRef>
    <FileRef

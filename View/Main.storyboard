@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="76a-81-Rnh">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="first" id="0lm-sm-7sH" customClass="WelcomeScreen" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="blN-QN-dpF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="dll-Sv-rPW">
-                                <rect key="frame" x="32" y="568" width="350" height="139"/>
+                                <rect key="frame" x="32" y="694" width="350" height="139"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jdj-s6-L06">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="55"/>
@@ -51,7 +51,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1oe-HB-6Am">
-                                <rect key="frame" x="52" y="390" width="305" height="90"/>
+                                <rect key="frame" x="52" y="434" width="305" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GITHUBGENICS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWq-VR-wsD">
                                         <rect key="frame" x="0.0" y="0.0" width="305" height="36"/>
@@ -64,7 +64,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nwu-nn-ipZ">
-                                        <rect key="frame" x="28.666666666666686" y="36" width="248" height="54"/>
+                                        <rect key="frame" x="28.5" y="36" width="248" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="248" id="AtH-Gm-QBX"/>
                                             <constraint firstAttribute="height" constant="54" id="Bs2-p6-eht"/>
@@ -119,20 +119,20 @@ Projects and more.</string>
                         <outlet property="SignUpBT" destination="ka5-oR-Y7i" id="7aR-4m-vtj"/>
                         <outlet property="Tile" destination="lWq-VR-wsD" id="EqR-WF-41a"/>
                         <outlet property="TxtView" destination="nwu-nn-ipZ" id="cAs-Du-8GM"/>
-                        <segue destination="u95-HX-U7Q" kind="show" identifier="Main" id="EMi-XK-bje"/>
                         <segue destination="S3z-l9-GCH" kind="show" identifier="Default" id="que-yM-HIX"/>
+                        <segue destination="tgq-MK-Dsb" kind="show" identifier="Main" id="S5u-ai-ppc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Voz-yH-W3M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1537.5" y="97.5"/>
+            <point key="canvasLocation" x="1536.2318840579712" y="97.098214285714278"/>
         </scene>
         <!--Settings-->
         <scene sceneID="zcG-ZE-OTN">
             <objects>
                 <tableViewController id="th9-lH-FdZ" customClass="SettingsViewController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Eqh-84-PAS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -171,18 +171,47 @@ Projects and more.</string>
                             <outlet property="delegate" destination="th9-lH-FdZ" id="OuD-rK-1ra"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="5Za-nk-W7r"/>
                     <navigationItem key="navigationItem" title="Settings" id="cTc-8b-ok9"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbe-eD-rr2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3658" y="984"/>
+            <point key="canvasLocation" x="3433" y="1071"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="3X3-UH-uMt">
+            <objects>
+                <tableViewController id="Nb4-Hd-arP" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QcO-fx-rU2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Dis-Pa-STE">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dis-Pa-STE" id="vky-1h-RPr">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Nb4-Hd-arP" id="QMF-Ox-Jm8"/>
+                            <outlet property="delegate" destination="Nb4-Hd-arP" id="idJ-wH-u84"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W67-nh-N12" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4274" y="1071"/>
         </scene>
         <!--Sign In View-->
         <scene sceneID="SLm-1C-OLG">
             <objects>
                 <viewController id="S3z-l9-GCH" customClass="SignInView" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qSb-VO-Vg6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paZ-uV-Fkh" userLabel="Google Sign In">
@@ -290,7 +319,7 @@ Projects and more.</string>
                         <outlet property="SignIn" destination="oTs-DH-rsH" id="U44-0c-qzF"/>
                         <outlet property="SignUpButton" destination="JvK-Kw-jQp" id="6qB-dH-pJh"/>
                         <outlet property="SigninwithLabel" destination="FfM-qV-VZi" id="L6n-xv-Le6"/>
-                        <segue destination="u95-HX-U7Q" kind="show" identifier="SignIn" id="kvl-kN-7Mb"/>
+                        <segue destination="tgq-MK-Dsb" kind="show" identifier="SignIn" id="5iZ-og-xEK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oe7-rQ-Dp5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -302,21 +331,12 @@ Projects and more.</string>
             <objects>
                 <tableViewController storyboardIdentifier="UsersView" id="u95-HX-U7Q" customClass="UsersListViewController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="D5q-uh-bf0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search" id="iZs-hK-nfJ">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <scopeButtonTitles>
-                                <string>Title</string>
-                                <string>Title</string>
-                            </scopeButtonTitles>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="User" rowHeight="60" id="U5a-iy-2eK" customClass="UsersCell" customModule="Githubgenics" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U5a-iy-2eK" id="ID5-OF-I7A">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -383,6 +403,7 @@ Projects and more.</string>
                             <outlet property="delegate" destination="u95-HX-U7Q" id="gdC-de-EBH"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Users" image="person.fill" catalog="system" id="4gn-V5-bWK"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Github Users" id="9kj-te-afC">
                         <barButtonItem key="leftBarButtonItem" title="Signout" style="plain" id="Xgo-s6-u9f">
@@ -390,14 +411,10 @@ Projects and more.</string>
                                 <action selector="SignOut:" destination="u95-HX-U7Q" id="bwD-c1-qQD"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="DXv-Xh-6Js">
-                            <connections>
-                                <segue destination="th9-lH-FdZ" kind="show" id="EkO-xY-X59"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="zP2-6w-TBb"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="kFX-pm-oen">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -408,24 +425,22 @@ Projects and more.</string>
                     </refreshControl>
                     <connections>
                         <outlet property="SignOutBT" destination="Xgo-s6-u9f" id="fIW-q4-pt1"/>
-                        <outlet property="searchBar" destination="iZs-hK-nfJ" id="DJR-qB-Q30"/>
-                        <segue destination="meW-y0-u8r" kind="show" identifier="SearchBar" id="9NS-20-9N0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sqQ-kV-2NL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3457.971014492754" y="172.76785714285714"/>
+            <point key="canvasLocation" x="3920" y="163"/>
         </scene>
         <!--Profile-->
         <scene sceneID="MaP-i9-acf">
             <objects>
                 <viewController id="rsa-Ug-v1B" customClass="DetailViewController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0k7-tn-XKz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="0k7-tn-XKz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qcF-zd-L1T">
-                                <rect key="frame" x="0.0" y="44" width="414" height="171"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="171"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jt3-Ze-1qa" userLabel="DetailView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="171"/>
@@ -550,7 +565,7 @@ Projects and more.</string>
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N4Y-YG-s45">
-                                <rect key="frame" x="0.0" y="216" width="414" height="636"/>
+                                <rect key="frame" x="0.0" y="260" width="414" height="636"/>
                                 <color key="backgroundColor" name="CellBallet"/>
                                 <color key="tintColor" name="CellBallet"/>
                                 <constraints>
@@ -598,7 +613,7 @@ Projects and more.</string>
                                                                     </connections>
                                                                 </button>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vT-aN-FKs">
-                                                                    <rect key="frame" x="20" y="49.666666666666657" width="320" height="39.333333333333343"/>
+                                                                    <rect key="frame" x="20" y="49.5" width="320" height="39.5"/>
                                                                     <color key="tintColor" red="0.082089252769999996" green="0.087861247360000005" blue="0.097543157640000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="39.5" id="tW0-dM-UqQ"/>
@@ -735,7 +750,7 @@ Projects and more.</string>
                         <barButtonItem key="backBarButtonItem" title="Back" id="KQf-3e-INs"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape" catalog="system" id="rJI-Is-9ju">
                             <connections>
-                                <segue destination="th9-lH-FdZ" kind="show" id="dkF-WZ-0GU"/>
+                                <segue destination="Ol9-Cx-Lf3" kind="show" id="m24-aE-pqL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -750,18 +765,142 @@ Projects and more.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zab-j6-uPX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4469.5652173913049" y="139.28571428571428"/>
+            <point key="canvasLocation" x="4846" y="163"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Zv0-0H-Uv6">
+            <objects>
+                <tabBarController id="tgq-MK-Dsb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Cjv-ch-k4L"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lBq-5R-X7a">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="u95-HX-U7Q" kind="relationship" relationship="viewControllers" id="OPC-o7-Hkw"/>
+                        <segue destination="meW-y0-u8r" kind="relationship" relationship="viewControllers" id="jVG-NQ-pBA"/>
+                        <segue destination="Ol9-Cx-Lf3" kind="relationship" relationship="viewControllers" id="k3G-zi-anF"/>
+                        <segue destination="th9-lH-FdZ" kind="relationship" relationship="viewControllers" id="WV1-d6-Sei"/>
+                        <segue destination="8fy-Fd-JgB" kind="relationship" relationship="viewControllers" id="KYr-4b-b0w"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U3s-5n-0L8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3097" y="188"/>
+        </scene>
+        <!--Search History Container-->
+        <scene sceneID="DbM-Wc-r7X">
+            <objects>
+                <tableViewController id="hwn-5h-8Ex" customClass="SearchHistoryContainer" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fyy-L8-cmH">
+                        <rect key="frame" x="0.0" y="0.0" width="453" height="669"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="kDY-Mz-LGq">
+                                <rect key="frame" x="0.0" y="28" width="453" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kDY-Mz-LGq" id="yqS-bv-kCi">
+                                    <rect key="frame" x="0.0" y="0.0" width="453" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hwn-5h-8Ex" id="ztP-3b-4yV"/>
+                            <outlet property="delegate" destination="hwn-5h-8Ex" id="LTK-oq-YfD"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2VV-fj-6fO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1852" y="-706"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="UL3-lU-ucX">
+            <objects>
+                <viewController id="8fy-Fd-JgB" customClass="DoubleView" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nHo-QQ-gff">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkR-gz-8Qt">
+                                <rect key="frame" x="0.0" y="228" width="453" height="669"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="DJu-dT-Kcl"/>
+                                    <constraint firstAttribute="height" constant="669" id="HbJ-5Z-bWX"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="hwn-5h-8Ex" kind="embed" id="ToE-Hp-Uhv"/>
+                                </connections>
+                            </containerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R7L-6g-fac">
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="669" id="Nyt-zC-NdW"/>
+                                    <constraint firstAttribute="width" constant="414" id="fzN-6S-ja1"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="eB4-7i-nX0">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eB4-7i-nX0" id="EPa-Sw-d7U">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8fy-Fd-JgB" id="C5o-ce-L90"/>
+                                    <outlet property="delegate" destination="8fy-Fd-JgB" id="DFw-4I-LhR"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QNe-J7-g8H">
+                                <rect key="frame" x="0.0" y="88" width="453" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8fy-Fd-JgB" id="Dmh-fb-pa0"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="a2r-hD-Ac2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NkR-gz-8Qt" firstAttribute="trailing" secondItem="a2r-hD-Ac2" secondAttribute="trailing" id="BtZ-PC-HOB"/>
+                            <constraint firstItem="QNe-J7-g8H" firstAttribute="trailing" secondItem="a2r-hD-Ac2" secondAttribute="trailing" id="Dgj-xl-OU9"/>
+                            <constraint firstItem="R7L-6g-fac" firstAttribute="leading" secondItem="a2r-hD-Ac2" secondAttribute="leading" id="SBn-BA-6pW"/>
+                            <constraint firstItem="QNe-J7-g8H" firstAttribute="leading" secondItem="a2r-hD-Ac2" secondAttribute="leading" id="Uvw-OY-dp5"/>
+                            <constraint firstItem="NkR-gz-8Qt" firstAttribute="bottom" secondItem="a2r-hD-Ac2" secondAttribute="bottom" id="aEH-uW-Vrw"/>
+                            <constraint firstItem="NkR-gz-8Qt" firstAttribute="leading" secondItem="a2r-hD-Ac2" secondAttribute="leading" id="h7M-zE-IR6"/>
+                            <constraint firstItem="R7L-6g-fac" firstAttribute="bottom" secondItem="a2r-hD-Ac2" secondAttribute="bottom" id="umr-TT-umX"/>
+                            <constraint firstItem="QNe-J7-g8H" firstAttribute="top" secondItem="a2r-hD-Ac2" secondAttribute="top" id="xYL-tS-0oC"/>
+                            <constraint firstItem="R7L-6g-fac" firstAttribute="trailing" secondItem="a2r-hD-Ac2" secondAttribute="trailing" id="z2L-gZ-pEG"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="t45-f4-jDG"/>
+                    <connections>
+                        <outlet property="SearchHistoryView" destination="NkR-gz-8Qt" id="FiY-dh-Yox"/>
+                        <outlet property="Searchbaar" destination="QNe-J7-g8H" id="O3Q-ch-aYx"/>
+                        <outlet property="tableView" destination="R7L-6g-fac" id="VXc-gI-Jdu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KN6-TV-ffN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2739.130434782609" y="-640.84821428571422"/>
         </scene>
         <!--Github Search-->
         <scene sceneID="3ml-oO-bmM">
             <objects>
                 <tableViewController id="meW-y0-u8r" customClass="SearchViewController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GFf-dx-8wE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" showsCancelButton="YES" showsScopeBar="YES" id="h8X-HC-tao">
-                            <rect key="frame" x="0.0" y="0.0" width="438" height="56"/>
+                            <rect key="frame" x="0.0" y="0.0" width="453" height="56"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <scopeButtonTitles>
@@ -777,27 +916,50 @@ Projects and more.</string>
                             <outlet property="delegate" destination="meW-y0-u8r" id="aBt-Nf-6DI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Github Search" id="nrh-YM-Ivw">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="L3H-1C-ReR">
-                            <connections>
-                                <segue destination="u95-HX-U7Q" kind="show" id="Hp4-N3-URI"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="3nv-lR-p2m"/>
+                    <navigationItem key="navigationItem" title="Github Search" id="nrh-YM-Ivw"/>
                     <connections>
                         <outlet property="Searchbaar" destination="h8X-HC-tao" id="WKW-Sy-hfW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7S3-FP-ywh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3458" y="-590"/>
+            <point key="canvasLocation" x="3443" y="-601"/>
+        </scene>
+        <!--Saved Users-->
+        <scene sceneID="zRw-aU-8RS">
+            <objects>
+                <tableViewController id="Ol9-Cx-Lf3" customClass="SavedUsersController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AgO-TA-QcV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search" id="RhS-26-7bf">
+                            <rect key="frame" x="0.0" y="0.0" width="453" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <connections>
+                            <outlet property="dataSource" destination="Ol9-Cx-Lf3" id="mpn-sk-V7D"/>
+                            <outlet property="delegate" destination="Ol9-Cx-Lf3" id="eh1-jd-mdj"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmark.fill" catalog="system" id="JMP-Py-qPC"/>
+                    <navigationItem key="navigationItem" title="Saved Users" id="biE-wc-mOv"/>
+                    <connections>
+                        <outlet property="searchBar" destination="RhS-26-7bf" id="Jfj-ag-Hgy"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zti-3R-3su" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4422" y="-591"/>
         </scene>
         <!--Sign Up View-->
         <scene sceneID="rK8-qL-4JV">
             <objects>
                 <viewController id="Zsw-ac-vnD" customClass="SignUpView" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nnb-C6-E0R">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ryv-mG-9uZ">
@@ -808,10 +970,10 @@ Projects and more.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AB1-0F-QYs">
-                                <rect key="frame" x="20" y="39" width="374" height="648"/>
+                                <rect key="frame" x="20" y="83" width="374" height="730"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="hlC-Zy-6WD">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="524"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="606"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="q6s-N3-O3q">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="138"/>
@@ -842,7 +1004,7 @@ Projects and more.</string>
                                                         </subviews>
                                                     </stackView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="tP6-Dw-GX7">
-                                                        <rect key="frame" x="160.66666666666666" y="87" width="53" height="51"/>
+                                                        <rect key="frame" x="160.5" y="87" width="53" height="51"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="53" id="9xt-Dp-A8G"/>
                                                             <constraint firstAttribute="height" constant="51" id="cZ8-4q-ufQ"/>
@@ -855,13 +1017,13 @@ Projects and more.</string>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="kXG-yG-dGk">
-                                                <rect key="frame" x="19.666666666666657" y="179" width="335" height="253"/>
+                                                <rect key="frame" x="19.5" y="179" width="335" height="335"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JR4-7M-9Fg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="54"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLh-33-Seb">
-                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="15"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="15" id="oJj-cJ-gRl"/>
                                                                 </constraints>
@@ -870,7 +1032,7 @@ Projects and more.</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="Line 1" translatesAutoresizingMaskIntoConstraints="NO" id="eXH-vb-eGt" userLabel="Name">
-                                                                <rect key="frame" x="0.0" y="5" width="335" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="20" width="335" height="34"/>
                                                                 <color key="backgroundColor" name="CellBallet"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="34" id="2cU-BL-OFy"/>
@@ -883,7 +1045,7 @@ Projects and more.</string>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Vr2-vW-Z05">
-                                                        <rect key="frame" x="0.0" y="44" width="335" height="53"/>
+                                                        <rect key="frame" x="0.0" y="93" width="335" height="53"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbw-OI-afY">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="15"/>
@@ -912,7 +1074,7 @@ Projects and more.</string>
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="w3P-YE-zj3">
-                                                        <rect key="frame" x="0.0" y="136" width="335" height="24"/>
+                                                        <rect key="frame" x="0.0" y="185" width="335" height="57"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vv-i6-z5w">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="15"/>
@@ -924,7 +1086,7 @@ Projects and more.</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="Line 1" translatesAutoresizingMaskIntoConstraints="NO" id="II8-p6-UAj">
-                                                                <rect key="frame" x="0.0" y="23" width="335" height="1"/>
+                                                                <rect key="frame" x="0.0" y="23" width="335" height="34"/>
                                                                 <color key="backgroundColor" name="CellBallet"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="335" id="2nF-mY-Gfk"/>
@@ -942,7 +1104,7 @@ Projects and more.</string>
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="I0M-Lp-7CN">
-                                                        <rect key="frame" x="0.0" y="199" width="335" height="54"/>
+                                                        <rect key="frame" x="0.0" y="281" width="335" height="54"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEL-fY-Mpl">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="15"/>
@@ -978,7 +1140,7 @@ Projects and more.</string>
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Omd-Zm-ZNp" userLabel="Sign Up">
-                                                <rect key="frame" x="11" y="473" width="352" height="51"/>
+                                                <rect key="frame" x="11" y="555" width="352" height="51"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="51" id="F9F-sM-jfn"/>
                                                     <constraint firstAttribute="width" constant="352" id="owY-B9-b73"/>
@@ -991,7 +1153,7 @@ Projects and more.</string>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fb1-a5-Lyp">
-                                        <rect key="frame" x="35.666666666666657" y="524" width="303" height="124"/>
+                                        <rect key="frame" x="35.5" y="606" width="303" height="124"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7N-z4-to7">
                                                 <rect key="frame" x="20" y="32" width="263" height="14"/>
@@ -1022,7 +1184,6 @@ Projects and more.</string>
                                                 <state key="normal" image="google"/>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="124" id="44S-wZ-bQV"/>
                                             <constraint firstItem="6vl-so-TST" firstAttribute="centerX" secondItem="Xd6-zO-iPd" secondAttribute="centerX" id="bGx-Ai-vjk"/>
@@ -1060,19 +1221,19 @@ Projects and more.</string>
                         <outlet property="PleaseSignUptoCon" destination="mPg-RQ-n4W" id="iTX-ro-frE"/>
                         <outlet property="SignUp" destination="Omd-Zm-ZNp" id="fOu-4Q-sDn"/>
                         <outlet property="SignupwithLabel" destination="I7N-z4-to7" id="fwj-1t-Pk4"/>
-                        <segue destination="u95-HX-U7Q" kind="show" identifier="SignUp" id="mmE-ls-RWo"/>
+                        <segue destination="tgq-MK-Dsb" kind="show" identifier="SignUp" id="WMe-mb-CpF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jjK-jW-DFi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2355.072463768116" y="-177.45535714285714"/>
+            <point key="canvasLocation" x="2242" y="39"/>
         </scene>
         <!--Title-->
         <scene sceneID="us6-uP-gq8">
             <objects>
                 <viewController id="bhe-2U-t0y" customClass="LaunchAnimation" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IRM-3x-bid">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="PB4-rO-c0E"/>
                         <color key="backgroundColor" name="CellBallet"/>
@@ -1092,7 +1253,7 @@ Projects and more.</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="76a-81-Rnh" customClass="NavBarController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SRb-JF-cOb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1104,23 +1265,54 @@ Projects and more.</string>
             </objects>
             <point key="canvasLocation" x="-117.39130434782609" y="97.767857142857139"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Ome-Ax-HhR">
+            <objects>
+                <tableViewController id="V7p-FY-Ovx" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vvn-wi-vad">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="59z-7w-EQh">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="59z-7w-EQh" id="hPK-9A-HkX">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="V7p-FY-Ovx" id="Q1n-FP-Y4j"/>
+                            <outlet property="delegate" destination="V7p-FY-Ovx" id="cTH-cI-KZK"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nKG-ma-41e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1550" y="-453"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="qk6-vl-Ley"/>
-        <segue reference="mmE-ls-RWo"/>
-        <segue reference="EkO-xY-X59"/>
+        <segue reference="k3G-zi-anF"/>
+        <segue reference="WMe-mb-CpF"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="Follow" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="Follow" width="256" height="256"/>
         <image name="Github" width="471" height="460"/>
         <image name="Image" width="132" height="132"/>
         <image name="Image-1" width="950" height="148"/>
-        <image name="Line 1" width="316.66665649414062" height="0.3333333432674408"/>
+        <image name="Line 1" width="475" height="0.5"/>
+        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="circle" width="512" height="512"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="google" width="106" height="106"/>
-        <image name="star-3" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="unlike" width="170.66667175292969" height="151.66667175292969"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="star-3" width="256" height="256"/>
+        <image name="unlike" width="256" height="227.5"/>
         <namedColor name="CellBallet">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

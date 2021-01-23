@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="UsersData" representedClassName=".UsersDataBase" syncable="YES" codeGenerationType="class">
+    <entity name="SavedUsers" representedClassName=".UsersDataBase" syncable="YES">
+        <attribute name="avatar_url" optional="YES" attributeType="String"/>
+        <attribute name="html_url" optional="YES" attributeType="String"/>
         <attribute name="login" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="SearchHistory" representedClassName="SearchHistory" syncable="YES">
+        <attribute name="keyword" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
-        <element name="UsersData" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="SavedUsers" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="SearchHistory" positionX="-63" positionY="9" width="128" height="44"/>
     </elements>
 </model>

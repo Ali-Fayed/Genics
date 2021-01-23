@@ -18,10 +18,14 @@ class SettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Settings".localized()
+      
 
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.navigationItem.title = "Settings".localized()
 
+    }
     // MARK: - Table view data source
 
      override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

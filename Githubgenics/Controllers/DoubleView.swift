@@ -9,11 +9,16 @@ import UIKit
 import SafariServices
 import Alamofire
 
-class SearchViewController: UITableViewController , UISearchBarDelegate {
+class DoubleView: UIViewController , UITableViewDataSource , UITableViewDelegate , UISearchBarDelegate {
 
     @IBOutlet weak var Searchbaar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var SearchHistoryView: UIView!
+    
     var UsersAPIStruct = [UsersStruct]()
-    var APISaves = [UsersDataBase]()
+    var bookmarkDataBase = [UsersDataBase]()
+    var searchHistory = [SearchHistory]()
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     
@@ -26,21 +31,29 @@ class SearchViewController: UITableViewController , UISearchBarDelegate {
         Searchbaar.showsCancelButton = true
         navigationItem.hidesBackButton = true
         Searchbaar.delegate = self
-        
+
         Searchbaar.showsScopeBar = true
         Searchbaar.scopeButtonTitles = ["Users","Repositories"]
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Searchbaar.becomeFirstResponder()
+//        Searchbaar.becomeFirstResponder()
+        tableView.isHidden = true
         self.tabBarController?.navigationItem.title = "Search".localized()
     }
     
    
     //MARK:- SearchBar Delegate
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        DispatchQueue.main.async {
+         self.SearchHistoryView.isHidden = true
+         self.tableView.isHidden = false
+       }
+    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+  
         print ("Search = \(searchText)")
         guard let text = searchBar.text, !text.isEmpty else { return }
         let query = text.replacingOccurrences(of: " ", with: "%20")
@@ -54,23 +67,36 @@ class SearchViewController: UITableViewController , UISearchBarDelegate {
         searchBar.text = ""
         self.UsersQuery.removeAll()
         self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.SearchHistoryView.isHidden = false
+            self.tableView.isHidden = true
+            self.Searchbaar.resignFirstResponder()
+            
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text, !text.isEmpty else { return }
+        savehistory(keyword: text)
+ 
+
     }
     
 
 //MARK:- TableView Methods and Delegate
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return UsersQuery.count
         
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UsersSearchCell.identifier, for: indexPath) as! UsersSearchCell
         cell.CellData(with: UsersQuery[indexPath.row])
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         // Show movie details
         print(UsersQuery[indexPath.row].html_url)
@@ -83,7 +109,7 @@ class SearchViewController: UITableViewController , UISearchBarDelegate {
         saveNewSearchHistoryWord(login: model, avatar_url: model2)
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
 
@@ -130,7 +156,8 @@ class SearchViewController: UITableViewController , UISearchBarDelegate {
     func
     fetchAllData () {
         do {
-            APISaves = try context.fetch(UsersDataBase.fetchRequest())
+            bookmarkDataBase = try context.fetch(UsersDataBase.fetchRequest())
+            searchHistory = try context.fetch(SearchHistory.fetchRequest())
             DispatchQueue.main.async {
                 self.tableView.reloadData()
 
@@ -139,5 +166,26 @@ class SearchViewController: UITableViewController , UISearchBarDelegate {
             //error
         }
     }
+    
+    func savehistory (keyword: String) {
+        let historyData = SearchHistory(context: context)
+        historyData.keyword = keyword
+        do {
+            try context.save()
+            fetchAllData ()
+        } catch {}
+    }
+    
+    func updateHistory (DataBase: SearchHistory, keyword: String)  {
+        DataBase.keyword = keyword
+        do {
+            try context.save()
+            fetchAllData ()
+        } catch {
+            
+        }
+    }
+    
+    
 }
 
