@@ -25,16 +25,21 @@ class ReposCell: UITableViewCell {
     @IBOutlet weak var De: UITextView!
     @IBOutlet weak var likec: UILabel!
     @IBOutlet weak var language: UILabel!
-    @IBOutlet weak var BookmarkRepo: UIButton!
+    @IBOutlet weak var BookmarkRepo: UIButton?
     
+    
+    static func nib() -> UINib {
+        return UINib(nibName: "RepoSearchCell",
+                     bundle: nil)
+    }
     
     var setButtonState: String = "off" {
         willSet {
             if newValue == "on" {
-                BookmarkRepo.setBackgroundImage(UIImage(named: "like"), for: .normal)
+                BookmarkRepo?.setBackgroundImage(UIImage(named: "like"), for: .normal)
                 
             }
-            else { BookmarkRepo.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
+            else { BookmarkRepo?.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
                 
             }
         }
@@ -55,14 +60,19 @@ class ReposCell: UITableViewCell {
         else { setButtonState = "off" }
     }
     
-   
+    func userCellData( with model: repositoriesParameters ) {
+                self.RepoNameLabel.text = model.name
+                self.De.text = model.description
+                self.likec.text = String(model.stargazers_count)
+                self.language.text = model.language
+    }
     
     
-    func CellData(with model: ReposStruct) {
-        self.RepoNameLabel.text = model.name
-        self.De.text = model.description
-        self.likec.text = String(model.stargazers_count)
-        self.language.text = model.language
+    func CellData(with model: Repository) {
+        RepoNameLabel?.text = model.name
+        De?.text = model.description
+        language.text = model.language
+        likec.text = String(model.stargazers_count!)
     }
     
     

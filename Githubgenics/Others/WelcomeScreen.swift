@@ -24,11 +24,6 @@ class WelcomeScreen: UIViewController {
         label.center = view.center
         Tile.font = UIFont(name: "AppleSDGothicNeo-Light", size: 40)
         Tile.text = "GITHUBGENICS".localized()
-        
-        
-        
-        
-        
         HelloWorld.text = "Hello World!".localized()
         SignInBT.setTitle("Sign In".localized(), for: .normal)
         SignUpBT.setTitle("Sign Up".localized(), for: .normal)
@@ -51,25 +46,7 @@ class WelcomeScreen: UIViewController {
         navigationController?.isToolbarHidden = true
 
     }
-////
-////    override func viewWillDisappear(_ animated: Bool) {
-////        super.viewWillDisappear(animated)
-////        navigationController?.isNavigationBarHidden = false
-////        navigationController?.isToolbarHidden = true
-////   override func viewWillAppear(_ animated: Bool) {
-//    super.viewWillAppear(animated)
-//    navigationController?.isNavigationBarHidden = true
-//    self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-//
-//}
-//
-//override func viewDidAppear(_ animated: Bool) {
-//    super.viewDidAppear(animated)
-//    self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-//}
-//
-////    }
-    
+
   
     
 }

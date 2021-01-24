@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:LastSearch+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:LastSearch+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:SearchHistory+CoreDataClass.swift">
    </FileRef>
    <FileRef
