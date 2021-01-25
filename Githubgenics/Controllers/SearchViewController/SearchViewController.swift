@@ -14,7 +14,8 @@ class SearchViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var LastSearc = [LastSearch]()
     var searchHistory = [SearchHistory]()
-    var UsersQuery = [items]()
+    var UsersQuery : [items] = []
+
     
     @IBOutlet weak var Searchbaar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -23,7 +24,7 @@ class SearchViewController: UIViewController {
 
     //MARK:- View LifeCycle Methods
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UsersSearchCell.nib(), forCellReuseIdentifier: UsersSearchCell.identifier)
@@ -32,7 +33,7 @@ class SearchViewController: UIViewController {
         navigationItem.hidesBackButton = true
         Searchbaar.delegate = self
         Searchbaar.placeholder = "Search".localized()
-        
+        fetchAndDisplaySearchViewUsers()
 
     }
 
@@ -43,19 +44,16 @@ class SearchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.isHidden = true
-            
-//            if self.Searchbaar.text == nil {
-//                self.tableView.isHidden = true
-//                Searchbaar.becomeFirstResponder()
-//            } else {
-//                self.tableView.isHidden = false
-//
-//            }
         
         self.tabBarController?.navigationItem.title = "Search".localized()
     }
     
-
+    func fetchAndDisplaySearchViewUsers() {
+        GithubRouter.shared.fetchUserstoAvoidIndexError { repositories in
+        self.UsersQuery = repositories
+        self.tableView.reloadData()
+      }
+    }
     //MARK:- CRUD Methods
     
     func saveSearchKeywords (keyword: String) {
@@ -117,14 +115,14 @@ extension SearchViewController : UITableViewDataSource , UITableViewDelegate  {
        
        let url = UsersQuery[indexPath.row].html_url
        let serverErrorURL = URL(string: "https://github.com")!
-       let vc = SFSafariViewController(url: URL(string: url) ?? serverErrorURL)
+       let vc = SFSafariViewController(url: URL(string: url!) ?? serverErrorURL)
        present(vc, animated: true)
         
        
        let model = UsersQuery[indexPath.row].login
        let model2 = UsersQuery[indexPath.row].avatar_url
        let model3 = UsersQuery[indexPath.row].html_url
-       saveLastTouchedSearch(login: model, avatar_url: model2, html_url: model3)
+        saveLastTouchedSearch(login: model!, avatar_url: model2!, html_url: model3!)
    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -132,6 +130,7 @@ extension SearchViewController : UITableViewDataSource , UITableViewDelegate  {
    }
     
 }
+
 
 
  //MARK:- UISearchBar Delegate
@@ -146,18 +145,17 @@ extension SearchViewController  : UISearchBarDelegate  {
      }
      
      func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-   
-         print ("Search = \(searchText)")
-        if searchText != nil {
-            tableView.isHidden = false
+        guard let query = searchBar.text else {
+          return
         }
-         guard let text = searchBar.text, !text.isEmpty else { return }
-         let query = text.replacingOccurrences(of: " ", with: "%20")
-         let url = "https://api.github.com/search/users?q=\(query)"
-         SearchFromGithubQuery(url: url)
+        GithubRouter.shared.searchUsers(query: query) { (response) in
+            self.UsersQuery = response
+            self.tableView.reloadData()
+        }
          UsersQuery.removeAll()
-     }
-     
+        }
+
+    
      func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
          searchBar.setShowsCancelButton(true, animated: true)
          searchBar.text = ""
@@ -177,33 +175,8 @@ extension SearchViewController  : UISearchBarDelegate  {
   
 
      }
-     
-    func SearchFromGithubQuery (url: String ) {
-        AF.request(url, method: .get).responseJSON { (response) in
-            guard let safedata = response.data else {
-                return
-            }
-            var result: UsersQResults?
 
-            do {
-                result = try JSONDecoder().decode(UsersQResults.self, from: safedata)
-               }
-            catch {
-                let error = error
-                print(error.localizedDescription)
-            }
-            guard let finalResult = result else {
-                return
-            }
-            let newMovies = finalResult.items
-            self.UsersQuery.append(contentsOf: newMovies)
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
+
 
 }
 

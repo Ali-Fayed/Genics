@@ -55,45 +55,45 @@ class NetworkReachabilityModel {
             connectionType = .unknown
         }
     }
-//  let ReachabilityManager = NetworkReachabilityManager(host: "www.google.com")
-//
-//  let OfflineAlertController: UIAlertController = {
-//    let alert = UIAlertController(title: "", message: "Please check your connection and try again".localized(), preferredStyle: .alert)
-//    alert.view.tintColor = UIColor.black
-//    let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 110, y: 5, width: 50, height: 50)) as UIActivityIndicatorView
-//    loadingIndicator.hidesWhenStopped = true
-//    loadingIndicator.style = UIActivityIndicatorView.Style.medium
-//    loadingIndicator.startAnimating();
-//    alert.view.addSubview(loadingIndicator)
-//    return alert
-//  }()
-//
-//
-//  func startNetworkMonitoring() {
-//    ReachabilityManager?.startListening { status in
-//      switch status {
-//      case .notReachable:
-//        self.ShowOfflineAlert()
-//      case .reachable(.cellular):
-//        self.DismissOfflineAlert()
-//      case .reachable(.ethernetOrWiFi):
-//        self.DismissOfflineAlert()
-//      case .unknown:
-//        print("Unknown state")
-//      }
-//    }
-//  }
-//
-//
-//  func ShowOfflineAlert() {
-//    let RootViewController = UIApplication.shared.windows.first?.rootViewController
-//    RootViewController?.present(OfflineAlertController, animated: true, completion: nil)
-//  }
-//
-//  func DismissOfflineAlert() {
-//    let RootViewController = UIApplication.shared.windows.first?.rootViewController
-//    RootViewController?.dismiss(animated: true, completion: nil)
-//  }
+  let ReachabilityManager = NetworkReachabilityManager(host: "www.google.com")
+
+  let OfflineAlertController: UIAlertController = {
+    let alert = UIAlertController(title: "", message: "Please check your connection and try again".localized(), preferredStyle: .alert)
+    alert.view.tintColor = UIColor.black
+    let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 110, y: 5, width: 50, height: 50)) as UIActivityIndicatorView
+    loadingIndicator.hidesWhenStopped = true
+    loadingIndicator.style = UIActivityIndicatorView.Style.medium
+    loadingIndicator.startAnimating();
+    alert.view.addSubview(loadingIndicator)
+    return alert
+  }()
+
+
+  func startNetworkMonitoring() {
+    ReachabilityManager?.startListening { status in
+      switch status {
+      case .notReachable:
+        self.ShowOfflineAlert()
+      case .reachable(.cellular):
+        self.DismissOfflineAlert()
+      case .reachable(.ethernetOrWiFi):
+        self.DismissOfflineAlert()
+      case .unknown:
+        print("Unknown state")
+      }
+    }
+  }
+
+
+  func ShowOfflineAlert() {
+    let RootViewController = UIApplication.shared.windows.first?.rootViewController
+    RootViewController?.present(OfflineAlertController, animated: true, completion: nil)
+  }
+
+  func DismissOfflineAlert() {
+    let RootViewController = UIApplication.shared.windows.first?.rootViewController
+    RootViewController?.dismiss(animated: true, completion: nil)
+  }
 }
 
 

@@ -15,6 +15,7 @@ class SavedUsersController: UITableViewController , UISearchBarDelegate {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var SignOutBT: UIBarButtonItem!
     
     var bookmarkedUsers = [UsersDataBase]()
     
@@ -25,13 +26,23 @@ class SavedUsersController: UITableViewController , UISearchBarDelegate {
         super.viewDidLoad()
         tableView.register(UsersSearchCell.nib(), forCellReuseIdentifier: UsersSearchCell.identifier)
         searchBar.delegate = self
+        SignOutBT.title = "Repos".localized()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabBarController?.navigationItem.title = "Bookmarks".localized()
         fetchBookmarks ()
+        self.tabBarController?.navigationItem.rightBarButtonItem = SignOutBT
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
+
+    }
+    
+
     
     
     //MARK:- CRUD Methods

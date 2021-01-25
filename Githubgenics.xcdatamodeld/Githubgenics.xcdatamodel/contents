@@ -5,6 +5,13 @@
         <attribute name="html_url" optional="YES" attributeType="String"/>
         <attribute name="login" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="SavedRepositories" representedClassName="SavedRepositories" syncable="YES">
+        <attribute name="descriptin" optional="YES" attributeType="String"/>
+        <attribute name="language" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="stars" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="SavedUsers" representedClassName=".UsersDataBase" syncable="YES">
         <attribute name="avatar_url" optional="YES" attributeType="String"/>
         <attribute name="html_url" optional="YES" attributeType="String"/>
@@ -14,8 +21,9 @@
         <attribute name="keyword" optional="YES" attributeType="String"/>
     </entity>
     <elements>
+        <element name="LastSearch" positionX="-63" positionY="9" width="128" height="74"/>
+        <element name="SavedRepositories" positionX="-63" positionY="18" width="128" height="104"/>
         <element name="SavedUsers" positionX="-63" positionY="-18" width="128" height="74"/>
         <element name="SearchHistory" positionX="-63" positionY="9" width="128" height="44"/>
-        <element name="LastSearch" positionX="-63" positionY="9" width="128" height="74"/>
     </elements>
 </model>

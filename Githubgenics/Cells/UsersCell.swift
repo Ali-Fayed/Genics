@@ -24,9 +24,9 @@ class UsersCell: UITableViewCell {
 
  
     func CellData(with model: UsersStruct) {
-        self.UserNameLabel.text = model.login.capitalized
+        self.UserNameLabel.text = model.login?.capitalized
         let url = model.avatar_url
-        self.ImageView.kf.setImage(with: URL(string: url), placeholder: nil, options: [.transition(.fade(0.7))])
+        self.ImageView.kf.setImage(with: URL(string: url!), placeholder: nil, options: [.transition(.fade(0.7))])
         self.ImageView.layer.cornerRadius = UsersCell.profileImageSize.width / 2.0
         ImageView.contentMode = .scaleAspectFill
         ImageView.layer.masksToBounds = false

@@ -217,9 +217,17 @@ Projects and more.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="nXG-VI-erI">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="vxf-ju-XGU" id="fy1-B2-0MR"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommitCell" rowHeight="60" id="uQc-4p-tiz">
-                                <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uQc-4p-tiz" id="e8s-Ly-XMd">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -249,6 +257,9 @@ Projects and more.</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="bVh-O3-afY"/>
+                    <connections>
+                        <outlet property="searchBar" destination="nXG-VI-erI" id="I4E-mH-EjT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0v-HB-0YS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -477,7 +488,7 @@ Projects and more.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sqQ-kV-2NL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3920" y="163"/>
+            <point key="canvasLocation" x="3919" y="212"/>
         </scene>
         <!--Profile-->
         <scene sceneID="MaP-i9-acf">
@@ -796,11 +807,7 @@ Projects and more.</string>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Profile" id="muC-Fj-asR">
                         <barButtonItem key="backBarButtonItem" title="Back" id="KQf-3e-INs"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape" catalog="system" id="rJI-Is-9ju">
-                            <connections>
-                                <segue destination="Ol9-Cx-Lf3" kind="show" id="m24-aE-pqL"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="link" catalog="system" id="rJI-Is-9ju"/>
                     </navigationItem>
                     <connections>
                         <outlet property="BookmarkBT" destination="hub-1d-dKN" id="bZT-1a-Iu8"/>
@@ -814,6 +821,36 @@ Projects and more.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zab-j6-uPX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4846" y="163"/>
+        </scene>
+        <!--Repos Bookmarks Controller-->
+        <scene sceneID="PZs-9S-aOG">
+            <objects>
+                <tableViewController id="ZPu-qi-WpB" customClass="ReposBookmarksController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MU4-XM-M8b">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="7tJ-aX-Txu">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="ZPu-qi-WpB" id="M8B-hA-ekN"/>
+                            </connections>
+                        </searchBar>
+                        <connections>
+                            <outlet property="dataSource" destination="ZPu-qi-WpB" id="WTC-f5-MPy"/>
+                            <outlet property="delegate" destination="ZPu-qi-WpB" id="pdz-MX-ue8"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="3mb-fD-RFY"/>
+                    <connections>
+                        <outlet property="searchBar" destination="7tJ-aX-Txu" id="jAv-V8-qYE"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fx5-on-dRx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5142" y="-591"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Zv0-0H-Uv6">
@@ -836,7 +873,7 @@ Projects and more.</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U3s-5n-0L8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3097" y="188"/>
+            <point key="canvasLocation" x="3094" y="226"/>
         </scene>
         <!--Recent Search View Controller-->
         <scene sceneID="NsN-sm-eb1">
@@ -1109,7 +1146,7 @@ Projects and more.</string>
             <objects>
                 <tableViewController id="Ol9-Cx-Lf3" customClass="SavedUsersController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AgO-TA-QcV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search" id="RhS-26-7bf">
@@ -1123,8 +1160,15 @@ Projects and more.</string>
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmark.fill" catalog="system" id="JMP-Py-qPC"/>
-                    <navigationItem key="navigationItem" title="Saved Users" id="biE-wc-mOv"/>
+                    <navigationItem key="navigationItem" title="Saved Users" id="biE-wc-mOv">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="eU0-Q9-h8A">
+                            <connections>
+                                <segue destination="ZPu-qi-WpB" kind="show" id="GJd-0X-BHJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="SignOutBT" destination="eU0-Q9-h8A" id="JTb-uH-RNv"/>
                         <outlet property="searchBar" destination="RhS-26-7bf" id="Jfj-ag-Hgy"/>
                     </connections>
                 </tableViewController>
@@ -1446,7 +1490,6 @@ Projects and more.</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="asB-B0-EvH"/>
-        <segue reference="m24-aE-pqL"/>
         <segue reference="WMe-mb-CpF"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1460,6 +1503,7 @@ Projects and more.</string>
         <image name="delete.left" catalog="system" width="128" height="104"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="google" width="106" height="106"/>
+        <image name="link" catalog="system" width="128" height="122"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="signpost.right.fill" catalog="system" width="128" height="118"/>

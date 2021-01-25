@@ -31,7 +31,7 @@ class UsersSearchCell: UITableViewCell {
     func CellData(with model: items) {
         self.UserTitleLabel.text = model.login
         let url = model.avatar_url
-        self.UserAvatar.kf.setImage(with: URL(string: url), placeholder: nil, options: [.transition(.fade(0.7))])
+        self.UserAvatar.kf.setImage(with: URL(string: url!), placeholder: nil, options: [.transition(.fade(0.7))])
         UserAvatar.contentMode = .scaleAspectFill
         UserAvatar.layer.masksToBounds = false
         UserAvatar.layer.cornerRadius = UserAvatar.frame.height/2

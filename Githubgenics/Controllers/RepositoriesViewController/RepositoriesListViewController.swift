@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import SafariServices
+import CoreData
 
 
 
@@ -16,6 +17,36 @@ class RepositoriesListViewController: UITableViewController  {
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 30, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
     var repositories: [Repository] = []
     var selectedRepository: Repository?
+    var savedrepo = [SavedRepositories]()
+
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+    func saveLastTouchedSearch (name: String , desc: String , language: String , stars: Int , url : String) {
+        let DataParameters = SavedRepositories(context: context)
+        DataParameters.name = name as NSObject
+        DataParameters.descriptin = desc as NSObject
+        DataParameters.language = language as NSObject
+        DataParameters.stars = stars as NSObject
+        DataParameters.url = url as NSObject
+
+        do {
+            try context.save()
+            fetchAllData ()
+        } catch {
+            
+        }
+    }
+    func fetchAllData () {
+        do {
+            savedrepo = try context.fetch(SavedRepositories.fetchRequest())
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+
+            }
+        } catch {
+            //error
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +54,12 @@ class RepositoriesListViewController: UITableViewController  {
         fetchAndDisplayPopularSwiftRepositories()
         loadingIndicator.center = view.center
         view.addSubview(loadingIndicator)
+        tableView.rowHeight = 120
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.navigationItem.title = "Repositories".localized()
     }
     
     
@@ -66,7 +103,25 @@ class RepositoriesListViewController: UITableViewController  {
 
     }
     
-   
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let important = importantAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [important])
+    }
+    
+    func importantAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "Bookmark") { [self] (action, view, completion) in
+            let index1 = repositories[indexPath.row].name
+            let index2 = repositories[indexPath.row].description
+            let index3 = repositories[indexPath.row].language
+            let index4 = repositories[indexPath.row].stargazers_count
+            let index5 = repositories[indexPath.row].html_url
+
+            saveLastTouchedSearch(name: index1, desc: index2!, language: index3!, stars: index4!, url: index5!)
+        }
+        action.image = #imageLiteral(resourceName: "like")
+        action.backgroundColor = .gray
+        return action
+    }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
       selectedRepository = repositories[indexPath.row]
@@ -83,6 +138,7 @@ class RepositoriesListViewController: UITableViewController  {
     }
 
 }
+
 
 
 // MARK: - UISearchBarDelegate

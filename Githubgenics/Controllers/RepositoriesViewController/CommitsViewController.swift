@@ -7,8 +7,9 @@
 
 import UIKit
 
-class CommitsViewController: UITableViewController {
+class CommitsViewController: UITableViewController, UISearchBarDelegate {
 
+    @IBOutlet weak var searchBar: UISearchBar!
     var commits: [Commit] = []
     var selectedRepository: Repository?
     let loadingIndicator = UIActivityIndicatorView(style: .large)
@@ -18,6 +19,7 @@ class CommitsViewController: UITableViewController {
       loadingIndicator.center = view.center
       view.addSubview(loadingIndicator)
       fetchCommitsForRepository()
+        searchBar.delegate = self
     }
 
     func fetchCommitsForRepository() {

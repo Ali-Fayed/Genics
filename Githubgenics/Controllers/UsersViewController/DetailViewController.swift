@@ -14,8 +14,9 @@ import SafariServices
 //MARK:- Main Class
 
 class DetailViewController: UIViewController  {
+    static let shared = DetailViewController()
         
-    var ReposData = [repositoriesParameters]()
+    var ReposData : [repositoriesParameters] = []
     var passedUserData:UsersStruct?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var usersDataBase = [UsersDataBase]()
@@ -33,7 +34,13 @@ class DetailViewController: UIViewController  {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        fetchRepositories ()
+        guard let repository = passedUserData else {return}
+        GithubRouter.shared.fetchClickedRepositories(for: repository.login!) { (repos) in
+            self.ReposData = repos
+            self.tableView.reloadData()
+//            Alerts.shared.self.errorLoadingRepositories()
+        }
+        
         userInfo ()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         navigationItem.title = "Detail View".localized()
@@ -52,7 +59,7 @@ class DetailViewController: UIViewController  {
     }
     
     func userInfo () {
-        UserName.text = "\((passedUserData?.login.capitalized)!)"
+        UserName.text = "\((passedUserData?.login?.capitalized)!)"
         let avatar_URL = (passedUserData?.avatar_url)!
         ImageView.kf.indicatorType = .activity
         ImageView.kf.setImage(with: URL(string: avatar_URL), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
@@ -135,79 +142,7 @@ class DetailViewController: UIViewController  {
     }
     
     //MARK:- Networking Methods
-    
-    func fetchRepositories(Page: Int = 5) {
-        let url = "https://api.github.com/users/\((passedUserData?.login)!)/repos?per_page=\(Page)"
-        AF.request(url, method: .get).responseJSON { (response) in
-            do {
-                if let safedata = response.data {
-                    let repos = try JSONDecoder().decode([repositoriesParameters].self, from: safedata)
-                    self.ReposData = repos
-                    self.tableView.reloadData()
-                    self.shimmerLoadingView ()
-                }
-            }
-            catch {
-                let error = error
-                print(error.localizedDescription)
-                self.errorLoadingRepositories ()
-            }
-        }
-    }
-    
-    
-    private var Reposs : [repositoriesParameters] = []
-    var isPaginating = false
- 
-    func fetch(pagination: Bool = false , complete: @escaping (Result<[repositoriesParameters], Error>) -> Void ) {
-        if pagination {
-            isPaginating = true
-        }
-        DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 2)) {
-            let url = "https://api.github.com/users/\((self.passedUserData?.login)!)/repos?per_page=\(3)"
 
-         AF.request(url , method: .get).responseJSON { (response) in
-                do {
-                    let repos = try JSONDecoder().decode([repositoriesParameters].self, from: response.data!)
-                    self.Reposs = repos
-                 self.tableView.reloadData()
-                 self.dismiss(animated: false, completion: nil)
-
-                 print("Main Fetch")
-                } catch {
-                    let error = error
-                    print(error.localizedDescription)
-                }
-            }
-            complete(.success( pagination ? self.Reposs : self.Reposs ))
-
-            if pagination {
-                self.isPaginating = false
-            }
-        }
-    }
-    
-    
-    func  loadMoreRepositories () {
-      guard !isPaginating else {
-          return
-      }
-      fetch(pagination: true ) { [weak self] result in
-          DispatchQueue.main.async {
-              self?.tableView.tableFooterView = nil
-          }
-          switch result {
-          case .success(let UsersAPIStruct):
-              self?.ReposData.append(contentsOf: UsersAPIStruct)
-              DispatchQueue.main.async {
-                  self?.tableView.reloadData()
-              }
-
-          case .failure(_):
-          break
-          }
-      }
-  }
     
     
     func shimmerLoadingView () {
@@ -218,14 +153,7 @@ class DetailViewController: UIViewController  {
             self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
         }
     }
-    
-    func errorLoadingRepositories () {
-        let alert = UIAlertController(title: "Server Error", message: "Repositories server not stable", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
-        }
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
+
 
     
     
@@ -251,30 +179,11 @@ extension DetailViewController: UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let url = ReposData[indexPath.row].html_url
-        let vc = SFSafariViewController(url: URL(string: url)!)
+        let vc = SFSafariViewController(url: URL(string: url!)!)
         present(vc, animated: true)
     }
     
-     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        let postion = scrollView.contentOffset.y
-        if postion > (tableView.contentSize.height-100-scrollView.frame.size.height) {
-            loadMoreRepositories ()
-        }
-         
-    }
-    
-     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let LastSection = tableView.numberOfSections - 1
-        let lastRowIndex = tableView.numberOfRows(inSection: LastSection) - 20
-        if indexPath.section ==  LastSection && indexPath.row == lastRowIndex {
 
-        }
-        if indexPath.row == ReposData.count - 1 {
-            DisplaySpinner()
-        }
-
-    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 120
    }

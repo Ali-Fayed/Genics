@@ -12,6 +12,7 @@ import SkeletonView
 import Alamofire
 import Kingfisher
 import SafariServices
+import CoreData
 
 //MARK:- Main Class
 
@@ -38,8 +39,10 @@ class ReposCell: UITableViewCell {
             if newValue == "on" {
                 BookmarkRepo?.setBackgroundImage(UIImage(named: "like"), for: .normal)
                 
+                
             }
             else { BookmarkRepo?.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
+                
                 
             }
         }
@@ -63,7 +66,7 @@ class ReposCell: UITableViewCell {
     func userCellData( with model: repositoriesParameters ) {
                 self.RepoNameLabel.text = model.name
                 self.De.text = model.description
-                self.likec.text = String(model.stargazers_count)
+                self.likec.text = String(model.stargazers_count!)
                 self.language.text = model.language
     }
     
@@ -73,6 +76,13 @@ class ReposCell: UITableViewCell {
         De?.text = model.description
         language.text = model.language
         likec.text = String(model.stargazers_count!)
+    }
+    
+    func cellll(with model: SavedRepositories) {
+        self.RepoNameLabel.text = model.name as? String
+        self.De.text = model.descriptin as? String
+        self.likec.text = model.stars! as? String
+        self.language.text = model.language as? String
     }
     
     

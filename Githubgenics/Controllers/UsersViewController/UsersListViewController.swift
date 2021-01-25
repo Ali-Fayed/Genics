@@ -12,11 +12,12 @@ import Alamofire
 import Kingfisher
 import CoreData
 
+
+
 class UsersListViewController: UITableViewController {
     
-    static let shared = UsersListViewController()
-
-    var usersParameters = [UsersStruct]()
+    private var users : [UsersStruct] = []
+    private var moreUsers : [UsersStruct] = []
    
     @IBOutlet weak var SignOutBT: UIBarButtonItem!
   
@@ -34,8 +35,34 @@ class UsersListViewController: UITableViewController {
         super.viewDidLoad()
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.tabBarController?.navigationItem.leftBarButtonItem = SignOutBT
+        
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        fetchFirstPage ()
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
+
+        GithubRouter.shared.listUsers { (users) in
+            self.users = users
+            self.tableView.reloadData()
+            self.shimmerLoadingView()
+        }
+        
+//        GithubRouter.shared.MainFetchFunctions(pagination: true, since: 5, page: 5) { [weak self] (result) in
+//            self!.moreUsers = self!.users
+//            DispatchQueue.main.async {
+//                self!.tableView.tableFooterView = nil
+//            }
+//            switch result {
+//            case .success(let UsersAPIStruct):
+//                self!.users.append(contentsOf: UsersAPIStruct)
+//                DispatchQueue.main.async {
+//                    self!.tableView.reloadData()
+//                }
+//
+//            case .failure(_):
+//                self!.serverErrorAlert()
+//            break
+//            }
+//        }
+
         SignOutBT.title = "Signout".localized()
         let longPress = UILongPressGestureRecognizer()
         self.tableView.addGestureRecognizer(longPress)
@@ -66,77 +93,44 @@ class UsersListViewController: UITableViewController {
     
     // MARK: - Networking Methods
     
-   private var Users : [UsersStruct] = []
-   var isPaginating = false
-
-    
-    
-    func MainFetchFunctions(pagination: Bool = false, since : Int , page : Int , complete: @escaping (Result<[UsersStruct], Error>) -> Void ) {
-
-       if pagination {
-           isPaginating = true
-       }
-       DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 2)) {
-        let url = "https://api.github.com/users?since=\(since)&per_page=\(page)"
-
-        AF.request(url , method: .get).responseJSON { (response) in
-               do {
-                   let users = try JSONDecoder().decode([UsersStruct].self, from: response.data!)
-                   self.Users = users
-                   self.tableView.reloadData()
-                   self.dismiss(animated: false, completion: nil)
-
-                print("Main Fetch")
-               } catch {
-                   let error = error
-                   print(error.localizedDescription)
-               }
-           }
-           complete(.success( pagination ? self.Users : self.Users ))
-
-           if pagination {
-               self.isPaginating = false
-           }
-       }
-   }
-    
-    
-    
-    func fetchFirstPage () {
-        AF.request("https://api.github.com/users", method: .get).responseJSON { (response) in
-            do {
-                if let safedata = response.data {
-                    let repos = try JSONDecoder().decode([UsersStruct].self, from: safedata)
-                    self.usersParameters = repos
-                    self.tableView.reloadData()
-                    self.shimmerLoadingView ()
+   
+    var isPaginating = false
+    func MainFetchFunctions(pagination: Bool = false, since : Int , page : Int , complete: @escaping (Result<[UsersStruct],Error>) -> Void ) {
+        if pagination {
+            isPaginating = true
+        }
+        DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 2)) {
+         let url = "https://api.github.com/users?since=\(since)&per_page=\(page)"
+            AF.request(url).responseDecodable(of: [UsersStruct].self) { response in
+                guard let users = response.value else {
+                  return
                 }
-            }
-            catch {
-                let error = error
-                print(error.localizedDescription)
-                self.serverErrorAlert()
+                complete(.success(users))
+                complete(.success( pagination ? self.moreUsers : self.users ))
+            if pagination {
+                self.isPaginating = false
             }
         }
     }
-
+        
+   }
+    
     func FetchMoreUsers () {
         guard !isPaginating else {
             return
         }
-        MainFetchFunctions(pagination: true, since: Int.random(in: 40 ... 5000 ), page: 10 ) { [weak self] result in
+         MainFetchFunctions(pagination: true, since: Int.random(in: 40 ... 5000 ), page: 10 ) { [weak self] result in
             DispatchQueue.main.async {
                 self?.tableView.tableFooterView = nil
             }
             switch result {
-            case .success(let UsersAPIStruct):
-                self?.usersParameters.append(contentsOf: UsersAPIStruct)
+            case .success(let moreUsers):
+                self?.users.append(contentsOf: moreUsers)
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
-
             case .failure(_):
-                self!.serverErrorAlert()
+                Alerts.shared.showPaginationErrorAlert()
             break
             }
         }
@@ -157,17 +151,6 @@ class UsersListViewController: UITableViewController {
     func serverErrorAlert () {
         let alert = UIAlertController(title: "Server isn't stable", message: "Pull to refresh to load the data", preferredStyle: .alert)
         let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
-            self.MainFetchFunctions(pagination: false, since: 1, page: 20) { (result) in
-                switch result {
-                case.success( let UsersAPIStruct):
-                    self.usersParameters.append(contentsOf: UsersAPIStruct)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        self.tableView.reloadData()
-                    }
-                case.failure(_):
-                    break
-                }
-            }
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
@@ -175,7 +158,7 @@ class UsersListViewController: UITableViewController {
     
     @IBAction func refreshTable(_ sender: UIRefreshControl) {
         sender.endRefreshing()
-        fetchFirstPage ()
+//        fetchFirstPage ()
     }
     
     
@@ -216,12 +199,12 @@ class UsersListViewController: UITableViewController {
    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return usersParameters.count
+        return users.count
     }
      
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UsersCell.identifier, for: indexPath) as! UsersCell
-        cell.CellData(with: usersParameters[indexPath.row])
+        cell.CellData(with: users[indexPath.row])
         let longPress = UILongPressGestureRecognizer()
         cell.addGestureRecognizer(longPress)
         return cell
@@ -234,7 +217,7 @@ class UsersListViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destnation = segue.destination as? DetailViewController {
-            destnation.passedUserData = usersParameters[(tableView.indexPathForSelectedRow?.row)!]
+            destnation.passedUserData = users[(tableView.indexPathForSelectedRow?.row)!]
         }
     }
     
@@ -247,7 +230,7 @@ class UsersListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == usersParameters.count - 1 {
+        if indexPath.row == users.count - 1 {
             tableViewSpinner()
         }
     }
