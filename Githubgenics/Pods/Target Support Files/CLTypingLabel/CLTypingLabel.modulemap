@@ -1,6 +1,0 @@
-module CLTypingLabel {
-  umbrella header "CLTypingLabel-umbrella.h"
-
-  export *
-  module * { export * }
-}

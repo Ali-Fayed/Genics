@@ -14,12 +14,12 @@ import SafariServices
 //MARK:- Main Class
 
 class DetailViewController: UIViewController  {
-    static let shared = DetailViewController()
-        
-    var ReposData : [repositoriesParameters] = []
-    var passedUserData:UsersStruct?
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var userRepository : [UserRepository] = []
+    var passedUser : Users?
     var usersDataBase = [UsersDataBase]()
+    var savedRepositories = [SavedRepositories]()
 
     @IBOutlet weak var BookmarkBT: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -32,19 +32,16 @@ class DetailViewController: UIViewController  {
     //MARK:- View Lifecycle Methods
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        guard let repository = passedUserData else {return}
-        GithubRouter.shared.fetchClickedRepositories(for: repository.login!) { (repos) in
-            self.ReposData = repos
-            self.tableView.reloadData()
-//            Alerts.shared.self.errorLoadingRepositories()
-        }
-        
-        userInfo ()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         navigationItem.title = "Detail View".localized()
+        userInfo ()
         loadTheButtonWithSavedState ()
+        guard let repository = passedUser else {return}
+        NetworkingManger.shared.fetchClickedRepositories(for: repository.login!) { (repos) in
+            self.userRepository = repos
+            self.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,58 +50,8 @@ class DetailViewController: UIViewController  {
         navigationController?.isToolbarHidden = true
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-    }
-    
-    func userInfo () {
-        UserName.text = "\((passedUserData?.login?.capitalized)!)"
-        let avatar_URL = (passedUserData?.avatar_url)!
-        ImageView.kf.indicatorType = .activity
-        ImageView.kf.setImage(with: URL(string: avatar_URL), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
-        ImageView.layer.masksToBounds = false
-        ImageView.layer.cornerRadius = ImageView.frame.height/2
-        ImageView.clipsToBounds = true
-        Followers.text = String(Int.random(in: 10 ... 50))
-        Following.text = String(Int.random(in: 10 ... 50))
-    }
-    
-    //MARK:- Bookmark Button
-    
-    var defaults = UserDefaults.standard
-    let refreshControl = UIRefreshControl()
-    var setFavBTState: String = "off" {
-        willSet {
-            if newValue == "on" {
-                BookmarkBT.setBackgroundImage(UIImage(named: "like"), for: .normal)
-                let login = passedUserData?.login
-                let image = passedUserData?.avatar_url
-                let url = passedUserData?.html_url
-                saveBookmarkedUser(login: login!, avatar_url: image!, html_url: url!)
-            }
-            else { BookmarkBT.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
 
-            }
-        }
-    }
-    
-    @IBAction func BookmarkBT(_ sender: UIButton) {
-        let stat = setFavBTState == "on" ? "off" : "on"
-        setFavBTState = stat
-        defaults.set(stat, forKey: ((passedUserData?.login)!))
-        print(stat)
-    }
-    
-    func loadTheButtonWithSavedState () {
-        
-        
-        if let ButtonState = defaults.string(forKey: ((passedUserData?.login)!))
-        { setFavBTState = ButtonState }
-        else { setFavBTState = "off" }
-    }
-
-    //MARK:- CRUD Methods
+    //MARK:- DataBase Methods
     
     func saveBookmarkedUser (login: String , avatar_url: String , html_url: String) {
         let DataParameters = UsersDataBase(context: context)
@@ -118,10 +65,25 @@ class DetailViewController: UIViewController  {
             
         }
     }
+    
+    func saveBookmarkedRepository (name: String , descriptin: String , url: String , stars: Int) {
+        let DataParameters = SavedRepositories(context: context)
+        DataParameters.name = name as NSObject
+        DataParameters.descriptin = descriptin as NSObject
+        DataParameters.url = url as NSObject
+        DataParameters.stars = stars as NSObject
+        do {
+            try context.save()
+              fetchBookmarkedUsers ()
+        } catch {
+            
+        }
+    }
 
     func fetchBookmarkedUsers () {
         do {
             usersDataBase = try context.fetch(UsersDataBase.fetchRequest())
+            savedRepositories = try context.fetch(SavedRepositories.fetchRequest())
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -130,20 +92,52 @@ class DetailViewController: UIViewController  {
         }
     }
     
-    func deleteBookmarkedUser(item: UsersDataBase) {
-        context.delete(item)
-        do {
-            try context.save()
-            fetchBookmarkedUsers()
-            
-        } catch {
-            
+    //MARK:- User Bookmark Button
+    
+    var defaults = UserDefaults.standard
+    let refreshControl = UIRefreshControl()
+    var setFavBTState: String = "off" {
+        willSet {
+            if newValue == "on" {
+                BookmarkBT.setBackgroundImage(UIImage(named: "like"), for: .normal)
+                let login = passedUser?.login
+                let image = passedUser?.avatar_url
+                let url = passedUser?.html_url
+                saveBookmarkedUser(login: login!, avatar_url: image!, html_url: url!)
+            }
+            else { BookmarkBT.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
+
+            }
         }
     }
     
-    //MARK:- Networking Methods
-
+    @IBAction func BookmarkBT(_ sender: UIButton) {
+        let stat = setFavBTState == "on" ? "off" : "on"
+        setFavBTState = stat
+        defaults.set(stat, forKey: ((passedUser?.login)!))
+        print(stat)
+    }
     
+    func loadTheButtonWithSavedState () {
+        if let ButtonState = defaults.string(forKey: ((passedUser?.login)!))
+        { setFavBTState = ButtonState }
+        else { setFavBTState = "off" }
+    }
+    
+
+    //MARK:- Other Methods
+    
+    func userInfo () {
+        UserName.text = "\((passedUser?.login?.capitalized)!)"
+        let avatar_URL = (passedUser?.avatar_url)!
+        ImageView.kf.indicatorType = .activity
+        ImageView.kf.setImage(with: URL(string: avatar_URL), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
+        ImageView.layer.masksToBounds = false
+        ImageView.layer.cornerRadius = ImageView.frame.height/2
+        ImageView.clipsToBounds = true
+        Followers.text = String(Int.random(in: 10 ... 50))
+        Following.text = String(Int.random(in: 10 ... 50))
+    }
     
     func shimmerLoadingView () {
         tableView.isSkeletonable = true
@@ -154,39 +148,40 @@ class DetailViewController: UIViewController  {
         }
     }
 
-
-    
-    
 }
 
 
-//MARK:-  TableView DataSource and Delegate
+//MARK:-  TableView DataSource
 
-extension DetailViewController: UITableViewDataSource , UITableViewDelegate {
+extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ReposData.count
+        return userRepository.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepoCell", for: indexPath) as! ReposCell
-        cell.userCellData(with: ReposData[indexPath.row])
+        cell.CellData(with: userRepository[indexPath.row])
         cell.BookmarkRepo?.tag = indexPath.row
         return cell
     }
     
-  
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let url = ReposData[indexPath.row].html_url
-        let vc = SFSafariViewController(url: URL(string: url!)!)
-        present(vc, animated: true)
-    }
-    
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 120
    }
+}
+
+//MARK:- TableView Delegate
+
+extension DetailViewController: UITableViewDelegate {
+    
+  
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let url = userRepository[indexPath.row].html_url
+        let vc = SFSafariViewController(url: URL(string: url!)!)
+        present(vc, animated: true)
+    }
     
     func DisplaySpinner () {
         let spinner = UIActivityIndicatorView(style: .medium)
@@ -196,8 +191,6 @@ extension DetailViewController: UITableViewDataSource , UITableViewDelegate {
         self.tableView.tableFooterView?.isHidden = false
     }
 
-
-        
-        }
+}
     
 

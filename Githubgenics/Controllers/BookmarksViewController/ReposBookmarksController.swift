@@ -9,45 +9,45 @@ import UIKit
 import SafariServices
 import CoreData
 
-class ReposBookmarksController: UITableViewController, UISearchBarDelegate {
-
-    @IBOutlet weak var searchBar: UISearchBar!
+class ReposBookmarksController: UITableViewController {
+    
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var repobookmark = [SavedRepositories]()
+    var savedRepositories = [SavedRepositories]()
+    
+    
+    @IBOutlet weak var searchBar: UISearchBar!
 
-    func fetchAllData () {
-        do {
-            repobookmark = try context.fetch(SavedRepositories.fetchRequest())
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
 
-            }
-        } catch {
-            //error
-        }
-    }
+    //MARK:- View Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(ReposCell.nib(), forCellReuseIdentifier: "repocell")
-        fetchAllData ()
+        fetchSavedRepositories ()
         searchBar.delegate = self
         tableView.rowHeight = 120
+        navigationItem.title = "Repositories".localized()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 
     }
     
     
 
-    // MARK: - Table view data source
+    // MARK: - TableView DataSource
 
-
+       
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repobookmark.count
+        return savedRepositories.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "repocell", for: indexPath) as? ReposCell
-        cell?.cellll(with: repobookmark[indexPath.row])
+        cell?.CellData(with: savedRepositories[indexPath.row])
         return cell!
     }
     
@@ -56,6 +56,8 @@ class ReposBookmarksController: UITableViewController, UISearchBarDelegate {
    }
     
     
+    //MARK:- TableView Delegate
+    
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
@@ -63,27 +65,17 @@ class ReposBookmarksController: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-            let item = repobookmark[indexPath.row]
-            deleteBookmarkedUser(item: item)
+            let item = savedRepositories[indexPath.row]
+            deleteBookmarkedRepositories(item: item)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
             
         }
     }
     
-    func deleteBookmarkedUser(item: SavedRepositories) {
-        context.delete(item)
-        do {
-            try context.save()
-            fetchAllData()            
-        } catch {
-            
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let url = repobookmark[indexPath.row].url
+        let url = savedRepositories[indexPath.row].url
         let serverErrorURL = URL(string: "https://github.com")!
         let vc = SFSafariViewController(url: URL(string: url! as! String) ?? serverErrorURL)
         DispatchQueue.main.async {
@@ -93,16 +85,43 @@ class ReposBookmarksController: UITableViewController, UISearchBarDelegate {
 
     }
     
-  
+    //MARK:- DataBase Methods
+    
+    func deleteBookmarkedRepositories(item: SavedRepositories) {
+        context.delete(item)
+        do {
+            try context.save()
+            fetchSavedRepositories()            
+        } catch {
+            
+        }
+    }
+    
+ 
+    func fetchSavedRepositories () {
+        do {
+            savedRepositories = try context.fetch(SavedRepositories.fetchRequest())
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        } catch {
+            //error
+        }
+    }
+
+}
+
+//MARK:- UISearchBar Delegate
+
+extension ReposBookmarksController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             searchBar.becomeFirstResponder()
         }
-        
         guard let searchText = searchBar.text else { return }
         if searchText.isEmpty {
-            fetchAllData()
+            fetchSavedRepositories()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -111,23 +130,12 @@ class ReposBookmarksController: UITableViewController, UISearchBarDelegate {
             request.predicate = NSPredicate(format: "name CONTAINS [cd] %@", searchText)
             request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
             do {
-                repobookmark = try context.fetch(request)
+                savedRepositories = try context.fetch(request)
             } catch {
                 print(error)
             }
             tableView.reloadData()
         }
-        
-        
     }
     
-
-
-}
-
-
-//
-extension ReposBookmarksController : UISearchDisplayDelegate {
-    
-
 }

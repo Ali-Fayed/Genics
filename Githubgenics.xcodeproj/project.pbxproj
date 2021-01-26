@@ -16,35 +16,33 @@
 		EA3FA0FA25AE9B88008D7520 /* LaunchAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */; };
 		EA3FA0FD25AE9C00008D7520 /* loadingspinner.json in Resources */ = {isa = PBXBuildFile; fileRef = EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */; };
 		EA43BCD325965CAD00098ACA /* ReposCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA43BCD225965CAD00098ACA /* ReposCell.swift */; };
+		EA4530C825BFAD3B00651BFA /* LocalizationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4530C725BFAD3B00651BFA /* LocalizationModel.swift */; };
 		EA45AA1A259C45E400365E9B /* NetworkReachabilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA45AA19259C45E400365E9B /* NetworkReachabilityModel.swift */; };
 		EA4BCB1625BCDC71000F302A /* HistoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BCB1525BCDC71000F302A /* HistoryCollectionCell.swift */; };
 		EA54C347259408D40021BFC4 /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54C346259408D40021BFC4 /* UsersCell.swift */; };
 		EA566FE925927B9D00596E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA566FE825927B9D00596E6A /* AppDelegate.swift */; };
 		EA566FEB25927B9D00596E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA566FEA25927B9D00596E6A /* SceneDelegate.swift */; };
-		EA566FF325927B9D00596E6A /* Githubgenics.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA566FF125927B9D00596E6A /* Githubgenics.xcdatamodeld */; };
 		EA566FF525927B9E00596E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA566FF425927B9E00596E6A /* Assets.xcassets */; };
 		EA566FF825927B9E00596E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA566FF625927B9E00596E6A /* LaunchScreen.storyboard */; };
 		EA5EADF725929E2700AC3223 /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5EADF625929E2700AC3223 /* UsersListViewController.swift */; };
-		EA60E86A25BE5F07000B6AC0 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60E86925BE5F07000B6AC0 /* Alerts.swift */; };
-		EA65CB7725BE848A005CBA09 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65CB7625BE848A005CBA09 /* CoreData.swift */; };
+		EA60E86A25BE5F07000B6AC0 /* AlertsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60E86925BE5F07000B6AC0 /* AlertsModel.swift */; };
 		EA65CB7A25BE9061005CBA09 /* ReposBookmarksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65CB7925BE9061005CBA09 /* ReposBookmarksController.swift */; };
-		EA65CB8025BE9692005CBA09 /* SavedRepositories+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65CB7E25BE9692005CBA09 /* SavedRepositories+CoreDataClass copy.swift */; };
 		EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65CB7F25BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift */; };
+		EA668B9D25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA668B9C25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift */; };
+		EA668BA125BFE83C00392A30 /* Githubgenics.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA668B9F25BFE83C00392A30 /* Githubgenics.xcdatamodeld */; };
 		EA7216D425B6121200E21D3B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7216D625B6121200E21D3B /* Localizable.strings */; };
 		EA7C4CA925BAA7E000EC9F45 /* SavedUsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CA825BAA7E000EC9F45 /* SavedUsersController.swift */; };
 		EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CAB25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift */; };
 		EA7C4CAE25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CAC25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift */; };
-		EA7C4CB125BAB04D00EC9F45 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CB025BAB04D00EC9F45 /* DataCell.swift */; };
 		EA85CE3A25A0293E006EA337 /* NavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA85CE3925A0293E006EA337 /* NavBarController.swift */; };
 		EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9743512596C3790057C8A0 /* SettingsViewController.swift */; };
 		EA9743552596C3B10057C8A0 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9743542596C3B10057C8A0 /* SettingsCell.swift */; };
 		EA9743CB2596D8490057C8A0 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9743C92596D8480057C8A0 /* SignInView.swift */; };
 		EA9743CC2596D8490057C8A0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9743CA2596D8490057C8A0 /* SignUpView.swift */; };
 		EA999A6525927C02005E832C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6425927C02005E832C /* DetailViewController.swift */; };
-		EA999A6E25927C1D005E832C /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6D25927C1D005E832C /* APIModel.swift */; };
+		EA999A6E25927C1D005E832C /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6D25927C1D005E832C /* NetworkModel.swift */; };
 		EA999A7A25927CAA005E832C /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7925927CAA005E832C /* WelcomeScreen.swift */; };
-		EAA710F525BD4707004D7E21 /* GithubRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA710F425BD4707004D7E21 /* GithubRouter.swift */; };
-		EAA710F925BD55F0004D7E21 /* CommitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA710F825BD55F0004D7E21 /* CommitsViewController.swift */; };
+		EAA710F525BD4707004D7E21 /* NetworkingManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA710F425BD4707004D7E21 /* NetworkingManger.swift */; };
 		EAB2AD0C25BBED9F001B6DD7 /* RecentSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2AD0B25BBED9F001B6DD7 /* RecentSearchViewController.swift */; };
 		EAB2AD0F25BBF214001B6DD7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2AD0E25BBF214001B6DD7 /* SearchViewController.swift */; };
 		EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2AD1125BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift */; };
@@ -67,28 +65,27 @@
 		EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAnimation.swift; sourceTree = "<group>"; };
 		EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingspinner.json; sourceTree = "<group>"; };
 		EA43BCD225965CAD00098ACA /* ReposCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposCell.swift; sourceTree = "<group>"; };
+		EA4530C725BFAD3B00651BFA /* LocalizationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationModel.swift; sourceTree = "<group>"; };
 		EA45AA19259C45E400365E9B /* NetworkReachabilityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityModel.swift; sourceTree = "<group>"; };
 		EA4BCB1525BCDC71000F302A /* HistoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionCell.swift; sourceTree = "<group>"; };
 		EA54C346259408D40021BFC4 /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
 		EA566FE525927B9D00596E6A /* Githubgenics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Githubgenics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA566FE825927B9D00596E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA566FEA25927B9D00596E6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EA566FF225927B9D00596E6A /* Githubgenics.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Githubgenics.xcdatamodel; sourceTree = "<group>"; };
 		EA566FF425927B9E00596E6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA566FF725927B9E00596E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA566FF925927B9E00596E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5EADF625929E2700AC3223 /* UsersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
-		EA60E86925BE5F07000B6AC0 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
-		EA65CB7625BE848A005CBA09 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		EA60E86925BE5F07000B6AC0 /* AlertsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsModel.swift; sourceTree = "<group>"; };
 		EA65CB7925BE9061005CBA09 /* ReposBookmarksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposBookmarksController.swift; sourceTree = "<group>"; };
-		EA65CB7E25BE9692005CBA09 /* SavedRepositories+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SavedRepositories+CoreDataClass copy.swift"; sourceTree = "<group>"; };
 		EA65CB7F25BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SavedRepositories+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		EA668B9C25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SavedRepositories+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EA668BA025BFE83C00392A30 /* Githubgenics.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Githubgenics.xcdatamodel; sourceTree = "<group>"; };
 		EA7216D525B6121200E21D3B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA7216D825B6121A00E21D3B /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA7C4CA825BAA7E000EC9F45 /* SavedUsersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedUsersController.swift; sourceTree = "<group>"; };
 		EA7C4CAB25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersDataBase+CoreDataClass copy.swift"; sourceTree = "<group>"; };
 		EA7C4CAC25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersDataBase+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
-		EA7C4CB025BAB04D00EC9F45 /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 		EA85CE3925A0293E006EA337 /* NavBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarController.swift; sourceTree = "<group>"; };
 		EA8E252F25B7E50400172F8C /* alienleaguecond.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alienleaguecond.ttf; sourceTree = "<group>"; };
 		EA9743512596C3790057C8A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -96,10 +93,9 @@
 		EA9743C92596D8480057C8A0 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		EA9743CA2596D8490057C8A0 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		EA999A6425927C02005E832C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		EA999A6D25927C1D005E832C /* APIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
+		EA999A6D25927C1D005E832C /* NetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		EA999A7925927CAA005E832C /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
-		EAA710F425BD4707004D7E21 /* GithubRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRouter.swift; sourceTree = "<group>"; };
-		EAA710F825BD55F0004D7E21 /* CommitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewController.swift; sourceTree = "<group>"; };
+		EAA710F425BD4707004D7E21 /* NetworkingManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManger.swift; sourceTree = "<group>"; };
 		EAB2AD0B25BBED9F001B6DD7 /* RecentSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchViewController.swift; sourceTree = "<group>"; };
 		EAB2AD0E25BBF214001B6DD7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EAB2AD1125BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -172,20 +168,16 @@
 				EAC1636525BAB789007EDC96 /* Main.storyboard */,
 				EA566FF625927B9E00596E6A /* LaunchScreen.storyboard */,
 			);
-			name = View;
-			path = ../View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		EA54C34925940DCC0021BFC4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				EA54C346259408D40021BFC4 /* UsersCell.swift */,
-				EA43BCD225965CAD00098ACA /* ReposCell.swift */,
-				EA4BCB1525BCDC71000F302A /* HistoryCollectionCell.swift */,
+				EA581A8825BFB7BF0097089D /* RepositoriesCell */,
 				EA8AD23F25BCF6B20022DE2E /* SearchViewCell */,
 				EA9743542596C3B10057C8A0 /* SettingsCell.swift */,
-				EA7C4CB025BAB04D00EC9F45 /* DataCell.swift */,
-				EAC1636425BAB789007EDC96 /* RepoSearchCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -193,7 +185,6 @@
 		EA566FDC25927B9D00596E6A = {
 			isa = PBXGroup;
 			children = (
-				EA703D7425BAB65900073DFB /* CoreData */,
 				EA566FE725927B9D00596E6A /* Githubgenics */,
 				EA566FE625927B9D00596E6A /* Products */,
 				CB322849B6A5E692B7FCA807 /* Pods */,
@@ -212,17 +203,14 @@
 		EA566FE725927B9D00596E6A /* Githubgenics */ = {
 			isa = PBXGroup;
 			children = (
-				EA566FF925927B9E00596E6A /* Info.plist */,
-				EA2312D825928108000BDC8C /* GoogleService-Info.plist */,
-				EA566FF425927B9E00596E6A /* Assets.xcassets */,
 				EA566FE825927B9D00596E6A /* AppDelegate.swift */,
 				EA566FEA25927B9D00596E6A /* SceneDelegate.swift */,
-				EA4664C425BAB204003C4AD1 /* View */,
-				EA9743CE2596D8C20057C8A0 /* Auth */,
-				EA54C34925940DCC0021BFC4 /* Cells */,
-				EA999A7425927C67005E832C /* Controllers */,
-				EA9743512596C3790057C8A0 /* SettingsViewController.swift */,
+				EA566FF425927B9E00596E6A /* Assets.xcassets */,
+				EA2312D825928108000BDC8C /* GoogleService-Info.plist */,
+				EA566FF925927B9E00596E6A /* Info.plist */,
 				EA999A7325927C31005E832C /* Models */,
+				EA4664C425BAB204003C4AD1 /* View */,
+				EA999A7425927C67005E832C /* Controllers */,
 				EA57EFAC25B93A4700115B33 /* Others */,
 			);
 			path = Githubgenics;
@@ -242,11 +230,20 @@
 			path = Others;
 			sourceTree = "<group>";
 		};
+		EA581A8825BFB7BF0097089D /* RepositoriesCell */ = {
+			isa = PBXGroup;
+			children = (
+				EA43BCD225965CAD00098ACA /* ReposCell.swift */,
+				EAC1636425BAB789007EDC96 /* RepoSearchCell.xib */,
+			);
+			path = RepositoriesCell;
+			sourceTree = "<group>";
+		};
 		EA65CB7C25BE9069005CBA09 /* BookmarksViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EA7C4CA825BAA7E000EC9F45 /* SavedUsersController.swift */,
 				EA65CB7925BE9061005CBA09 /* ReposBookmarksController.swift */,
+				EA7C4CA825BAA7E000EC9F45 /* SavedUsersController.swift */,
 			);
 			path = BookmarksViewController;
 			sourceTree = "<group>";
@@ -254,7 +251,7 @@
 		EA65CB8325BE9697005CBA09 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				EA65CB7E25BE9692005CBA09 /* SavedRepositories+CoreDataClass copy.swift */,
+				EA668B9C25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift */,
 				EA65CB7F25BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift */,
 			);
 			name = Repositories;
@@ -267,9 +264,9 @@
 				EA0C2DA025BD1B5300D3898A /* LastSearch */,
 				EA0C2DA125BD1B5E00D3898A /* SearchKeywords */,
 				EA0C2DA225BD1B6E00D3898A /* UsersDataBase */,
-				EA566FF125927B9D00596E6A /* Githubgenics.xcdatamodeld */,
+				EA668B9F25BFE83C00392A30 /* Githubgenics.xcdatamodeld */,
 			);
-			name = CoreData;
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		EA8AD23A25BCF5B20022DE2E /* SearchViewController */ = {
@@ -286,6 +283,7 @@
 			children = (
 				EAC1636325BAB789007EDC96 /* QueryCell.xib */,
 				EAD4476425B0148A00FB42B4 /* UsersSearchCell.swift */,
+				EA4BCB1525BCDC71000F302A /* HistoryCollectionCell.swift */,
 			);
 			path = SearchViewCell;
 			sourceTree = "<group>";
@@ -302,11 +300,12 @@
 		EA999A7325927C31005E832C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EA999A6D25927C1D005E832C /* APIModel.swift */,
-				EAA710F425BD4707004D7E21 /* GithubRouter.swift */,
+				EA703D7425BAB65900073DFB /* CoreData */,
+				EA999A6D25927C1D005E832C /* NetworkModel.swift */,
+				EAA710F425BD4707004D7E21 /* NetworkingManger.swift */,
 				EA45AA19259C45E400365E9B /* NetworkReachabilityModel.swift */,
-				EA60E86925BE5F07000B6AC0 /* Alerts.swift */,
-				EA65CB7625BE848A005CBA09 /* CoreData.swift */,
+				EA60E86925BE5F07000B6AC0 /* AlertsModel.swift */,
+				EA4530C725BFAD3B00651BFA /* LocalizationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -314,21 +313,15 @@
 		EA999A7425927C67005E832C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EA9743CE2596D8C20057C8A0 /* Auth */,
+				EA54C34925940DCC0021BFC4 /* Cells */,
 				EAA710FD25BD562E004D7E21 /* UsersViewController */,
-				EAA710FB25BD55FB004D7E21 /* RepositoriesViewController */,
 				EA8AD23A25BCF5B20022DE2E /* SearchViewController */,
 				EA65CB7C25BE9069005CBA09 /* BookmarksViewController */,
+				EA9743512596C3790057C8A0 /* SettingsViewController.swift */,
+				EA0C2DA825BD26AD00D3898A /* RepositoriesListViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		EAA710FB25BD55FB004D7E21 /* RepositoriesViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EA0C2DA825BD26AD00D3898A /* RepositoriesListViewController.swift */,
-				EAA710F825BD55F0004D7E21 /* CommitsViewController.swift */,
-			);
-			path = RepositoriesViewController;
 			sourceTree = "<group>";
 		};
 		EAA710FD25BD562E004D7E21 /* UsersViewController */ = {
@@ -444,8 +437,7 @@
 			files = (
 				EA0C2DA925BD26AD00D3898A /* RepositoriesListViewController.swift in Sources */,
 				EA7C4CA925BAA7E000EC9F45 /* SavedUsersController.swift in Sources */,
-				EAA710F525BD4707004D7E21 /* GithubRouter.swift in Sources */,
-				EA65CB8025BE9692005CBA09 /* SavedRepositories+CoreDataClass copy.swift in Sources */,
+				EAA710F525BD4707004D7E21 /* NetworkingManger.swift in Sources */,
 				EA43BCD325965CAD00098ACA /* ReposCell.swift in Sources */,
 				EA54C347259408D40021BFC4 /* UsersCell.swift in Sources */,
 				EAB2AD0F25BBF214001B6DD7 /* SearchViewController.swift in Sources */,
@@ -454,30 +446,29 @@
 				EA0C2D9625BD068C00D3898A /* LastSearch+CoreDataClass.swift in Sources */,
 				EA5EADF725929E2700AC3223 /* UsersListViewController.swift in Sources */,
 				EA4BCB1625BCDC71000F302A /* HistoryCollectionCell.swift in Sources */,
-				EA566FF325927B9D00596E6A /* Githubgenics.xcdatamodeld in Sources */,
 				EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */,
 				EA85CE3A25A0293E006EA337 /* NavBarController.swift in Sources */,
-				EA999A6E25927C1D005E832C /* APIModel.swift in Sources */,
+				EA999A6E25927C1D005E832C /* NetworkModel.swift in Sources */,
 				EA3FA0FA25AE9B88008D7520 /* LaunchAnimation.swift in Sources */,
 				EAD4476625B0148A00FB42B4 /* UsersSearchCell.swift in Sources */,
-				EAA710F925BD55F0004D7E21 /* CommitsViewController.swift in Sources */,
+				EA668BA125BFE83C00392A30 /* Githubgenics.xcdatamodeld in Sources */,
 				EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */,
+				EA668B9D25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift in Sources */,
 				EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */,
-				EA65CB7725BE848A005CBA09 /* CoreData.swift in Sources */,
 				EA2312DD2592819D000BDC8C /* Constants.swift in Sources */,
 				EA999A6525927C02005E832C /* DetailViewController.swift in Sources */,
 				EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */,
+				EA4530C825BFAD3B00651BFA /* LocalizationModel.swift in Sources */,
 				EA999A7A25927CAA005E832C /* WelcomeScreen.swift in Sources */,
 				EA9743CC2596D8490057C8A0 /* SignUpView.swift in Sources */,
 				EAB2AD0C25BBED9F001B6DD7 /* RecentSearchViewController.swift in Sources */,
-				EA7C4CB125BAB04D00EC9F45 /* DataCell.swift in Sources */,
 				EA65CB7A25BE9061005CBA09 /* ReposBookmarksController.swift in Sources */,
 				EA45AA1A259C45E400365E9B /* NetworkReachabilityModel.swift in Sources */,
 				EA566FE925927B9D00596E6A /* AppDelegate.swift in Sources */,
 				EA566FEB25927B9D00596E6A /* SceneDelegate.swift in Sources */,
 				EA9743CB2596D8490057C8A0 /* SignInView.swift in Sources */,
 				EA9743552596C3B10057C8A0 /* SettingsCell.swift in Sources */,
-				EA60E86A25BE5F07000B6AC0 /* Alerts.swift in Sources */,
+				EA60E86A25BE5F07000B6AC0 /* AlertsModel.swift in Sources */,
 				EA0C2D9725BD068C00D3898A /* LastSearch+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,12 +678,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EA566FF125927B9D00596E6A /* Githubgenics.xcdatamodeld */ = {
+		EA668B9F25BFE83C00392A30 /* Githubgenics.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EA566FF225927B9D00596E6A /* Githubgenics.xcdatamodel */,
+				EA668BA025BFE83C00392A30 /* Githubgenics.xcdatamodel */,
 			);
-			currentVersion = EA566FF225927B9D00596E6A /* Githubgenics.xcdatamodel */;
+			currentVersion = EA668BA025BFE83C00392A30 /* Githubgenics.xcdatamodel */;
 			path = Githubgenics.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

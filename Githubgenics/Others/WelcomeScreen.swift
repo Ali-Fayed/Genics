@@ -10,7 +10,6 @@ import UIKit
 class WelcomeScreen: UIViewController {
     
     @IBOutlet weak var Tile: UILabel!
-    
     @IBOutlet weak var TxtView: UITextView!
     @IBOutlet weak var HelloWorld: UILabel!
     @IBOutlet weak var SignInBT: UIButton!

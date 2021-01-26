@@ -1,1 +1,0 @@
-../../../Target Support Files/SwipeCellKit/SwipeCellKit-umbrella.h

@@ -10,14 +10,11 @@ import Firebase
 import SkeletonView
 import Alamofire
 import Kingfisher
-import CoreData
-
-
 
 class UsersListViewController: UITableViewController {
     
-    private var users : [UsersStruct] = []
-    private var moreUsers : [UsersStruct] = []
+    private var users : [Users] = []
+    private var moreUsers : [Users] = []
    
     @IBOutlet weak var SignOutBT: UIBarButtonItem!
   
@@ -26,51 +23,19 @@ class UsersListViewController: UITableViewController {
     //MARK:- View LifeCycle Methods
     
     override func viewDidLoad() {
-        
-        if NetworkReachabilityModel.shared.isConnected {
-            print("connected")
-        } else {
-            print("You're not")
-        }
+        SignOutBT.title = "Signout".localized()
         super.viewDidLoad()
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.tabBarController?.navigationItem.leftBarButtonItem = SignOutBT
-        
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
-
-        GithubRouter.shared.listUsers { (users) in
+        NetworkingManger.shared.listUsers { (users) in
             self.users = users
-            self.tableView.reloadData()
-            self.shimmerLoadingView()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.shimmerLoadingView()
+            }
+          
         }
-        
-//        GithubRouter.shared.MainFetchFunctions(pagination: true, since: 5, page: 5) { [weak self] (result) in
-//            self!.moreUsers = self!.users
-//            DispatchQueue.main.async {
-//                self!.tableView.tableFooterView = nil
-//            }
-//            switch result {
-//            case .success(let UsersAPIStruct):
-//                self!.users.append(contentsOf: UsersAPIStruct)
-//                DispatchQueue.main.async {
-//                    self!.tableView.reloadData()
-//                }
-//
-//            case .failure(_):
-//                self!.serverErrorAlert()
-//            break
-//            }
-//        }
-
-        SignOutBT.title = "Signout".localized()
-        let longPress = UILongPressGestureRecognizer()
-        self.tableView.addGestureRecognizer(longPress)
-        longPress.addTarget(self, action: #selector(ges))
-    }
-    
-    @objc func ges () {
-        print("done")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,20 +53,84 @@ class UsersListViewController: UITableViewController {
 
     }
     
- 
+    
+    // MARK: - TableView DataSource
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       return 60
+   }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return users.count
+    }
+     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: UsersCell.identifier, for: indexPath) as! UsersCell
+        cell.CellData(with: users[indexPath.row])
+        let longPress = UILongPressGestureRecognizer()
+        cell.addGestureRecognizer(longPress)
+        return cell
+    }
 
+    //MARK:- TableViev Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let postion = scrollView.contentOffset.y
+        if postion > (tableView.contentSize.height-100-scrollView.frame.size.height) {
+            FetchMoreUsers()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == users.count - 1 {
+            tableViewSpinner()
+        }
+    }
+    
+    func tableViewSpinner () {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.startAnimating()
+        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+        self.tableView.tableFooterView = spinner
+        self.tableView.tableFooterView?.isHidden = false
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let important = importantAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [important])
+    }
+    
+    func importantAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "Bookmark") { [weak self] (action, view, completion) in
+     
+        }
+        action.image = #imageLiteral(resourceName: "like")
+        action.backgroundColor = .gray
+        return action
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destnation = segue.destination as? DetailViewController {
+            destnation.passedUser = users[(tableView.indexPathForSelectedRow?.row)!]
+        }
+    }
     
     // MARK: - Networking Methods
     
    
     var isPaginating = false
-    func MainFetchFunctions(pagination: Bool = false, since : Int , page : Int , complete: @escaping (Result<[UsersStruct],Error>) -> Void ) {
+    func MainFetchFunctions(pagination: Bool = false, since : Int , page : Int , complete: @escaping (Result<[Users],Error>) -> Void ) {
         if pagination {
             isPaginating = true
         }
-        DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 2)) {
+        DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: .now() + (pagination ? 3 : 2)) {
          let url = "https://api.github.com/users?since=\(since)&per_page=\(page)"
-            AF.request(url).responseDecodable(of: [UsersStruct].self) { response in
+            AF.request(url).responseDecodable(of: [Users].self) { response in
                 guard let users = response.value else {
                   return
                 }
@@ -130,12 +159,13 @@ class UsersListViewController: UITableViewController {
                     self?.tableView.reloadData()
                 }
             case .failure(_):
-                Alerts.shared.showPaginationErrorAlert()
+                AlertsModel.shared.showPaginationErrorAlert()
             break
             }
         }
     }
     
+    //MARK:- Other Methods
     
     func shimmerLoadingView () {
         tableView.isSkeletonable = true
@@ -148,13 +178,6 @@ class UsersListViewController: UITableViewController {
     }
     
     
-    func serverErrorAlert () {
-        let alert = UIAlertController(title: "Server isn't stable", message: "Pull to refresh to load the data", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
-        }
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
     
     @IBAction func refreshTable(_ sender: UIRefreshControl) {
         sender.endRefreshing()
@@ -191,91 +214,4 @@ class UsersListViewController: UITableViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    
-    // MARK: - TableView DataSource and Delegate Methods
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return 60
-   }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
-    }
-     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UsersCell.identifier, for: indexPath) as! UsersCell
-        cell.CellData(with: users[indexPath.row])
-        let longPress = UILongPressGestureRecognizer()
-        cell.addGestureRecognizer(longPress)
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destnation = segue.destination as? DetailViewController {
-            destnation.passedUserData = users[(tableView.indexPathForSelectedRow?.row)!]
-        }
-    }
-    
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let postion = scrollView.contentOffset.y
-        if postion > (tableView.contentSize.height-100-scrollView.frame.size.height) {
-            FetchMoreUsers()
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == users.count - 1 {
-            tableViewSpinner()
-        }
-    }
-    
-    func tableViewSpinner () {
-        let spinner = UIActivityIndicatorView(style: .medium)
-        spinner.startAnimating()
-        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
-        self.tableView.tableFooterView = spinner
-        self.tableView.tableFooterView?.isHidden = false
-    }
-    
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let important = importantAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [important])
-    }
-    
-    func importantAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: "Bookmark") { [self] (action, view, completion) in
-     
-        }
-        action.image = #imageLiteral(resourceName: "like")
-        action.backgroundColor = .gray
-        return action
-    }
-    
-
-}
-
-//MARK:- SearchBar Methods
-
-extension UsersListViewController: UISearchBarDelegate {
-    
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        performSegue(withIdentifier: "SearchBar", sender: self)
-    }
-    
-}
-
-//MARK:- Localization Extention
-
-extension String {
-    func localized () -> String {
-        return NSLocalizedString(self, tableName: "Localizable", bundle: .main, value: self, comment: self
-        )
-    }
 }

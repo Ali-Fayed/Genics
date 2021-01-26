@@ -10,14 +10,14 @@ import Kingfisher
 import CoreData
 import SafariServices
 
-class SavedUsersController: UITableViewController , UISearchBarDelegate {
+class SavedUsersController: UITableViewController {
     
-    
+    var bookmarkedUsers = [UsersDataBase]()
+
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var SignOutBT: UIBarButtonItem!
     
-    var bookmarkedUsers = [UsersDataBase]()
     
 
     //MARK:- View LifeCycle Methods
@@ -34,6 +34,8 @@ class SavedUsersController: UITableViewController , UISearchBarDelegate {
         self.tabBarController?.navigationItem.title = "Bookmarks".localized()
         fetchBookmarks ()
         self.tabBarController?.navigationItem.rightBarButtonItem = SignOutBT
+                self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -42,11 +44,7 @@ class SavedUsersController: UITableViewController , UISearchBarDelegate {
 
     }
     
-
-    
-    
-    //MARK:- CRUD Methods
-    
+    //MARK:- DataBase Methods
     
     func fetchBookmarks () {
         do {
@@ -70,22 +68,28 @@ class SavedUsersController: UITableViewController , UISearchBarDelegate {
         }
     }
     
-    func loadItems(with request: NSFetchRequest<UsersDataBase> = UsersDataBase.fetchRequest(), predicate: NSPredicate? = nil) {
-        do {
-            bookmarkedUsers = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
-        tableView.reloadData()
-    }
-    
-    
-    //MARK:- tableView DataSource and Delegate
+    //MARK:- TableView DataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookmarkedUsers.count
     }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: UsersSearchCell.identifier, for: indexPath) as? UsersSearchCell
+        let  model = bookmarkedUsers[indexPath.row]
+        cell?.CellData(with: model)
+        return cell!
+    }
+    
+    //MARK:- TableView Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let url = bookmarkedUsers[indexPath.row].html_url
+        let vc = SFSafariViewController(url: URL(string: url!)!)
+        present(vc, animated: true)
+        
+    }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
@@ -102,36 +106,12 @@ class SavedUsersController: UITableViewController , UISearchBarDelegate {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let url = bookmarkedUsers[indexPath.row].html_url
-        let serverErrorURL = URL(string: "https://github.com")!
-        let vc = SFSafariViewController(url: URL(string: url!) ?? serverErrorURL)
-        present(vc, animated: true)
-        
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UsersSearchCell.identifier, for: indexPath) as? UsersSearchCell
-        let  model = bookmarkedUsers[indexPath.row]
-        cell?.UserTitleLabel.text = model.login
-        let url = model.avatar_url!
-        cell?.UserAvatar.kf.setImage(with: URL(string: url), placeholder: nil, options: [.transition(.fade(0.7))])
-        cell?.UserAvatar.contentMode = .scaleAspectFill
-        cell?.UserAvatar.layer.masksToBounds = false
-        cell?.UserAvatar.layer.cornerRadius = (cell?.UserAvatar.frame.height)!/2
-        cell?.UserAvatar.clipsToBounds = true
-        return cell!
-    }
-    
-    
 }
 
 
 //MARK:- UISearchBar Delegate
 
-extension SavedUsersController : UISearchDisplayDelegate {
+extension SavedUsersController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
@@ -140,7 +120,7 @@ extension SavedUsersController : UISearchDisplayDelegate {
         
         guard let searchText = searchBar.text else { return }
         if searchText.isEmpty {
-            loadItems()
+            fetchBookmarks ()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

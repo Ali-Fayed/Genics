@@ -15,13 +15,10 @@ class LaunchAnimation: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.performSegue(withIdentifier: "ali", sender: self)
         }
-     
         self.aniamtion ()
-        // Do any additional setup after loading the view.
     }
     
     private func aniamtion () {
