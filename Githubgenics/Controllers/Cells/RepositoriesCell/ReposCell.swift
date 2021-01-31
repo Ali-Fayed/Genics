@@ -16,10 +16,7 @@ import Kingfisher
 class ReposCell: UITableViewCell {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var userRepository = [UserRepository]()
-    var passedUser : Users?
-    var usersDataBase = [UsersDataBase]()
-    var savedRepositories = [SavedRepositories]()
+
 
     var defaults = UserDefaults.standard
     static func nib() -> UINib {
@@ -27,11 +24,11 @@ class ReposCell: UITableViewCell {
                      bundle: nil)
     }
     
-    @IBOutlet weak var RepoNameLabel: UILabel!
-    @IBOutlet weak var De: UITextView!
-    @IBOutlet weak var likec: UILabel!
-    @IBOutlet weak var language: UILabel!
-    @IBOutlet weak var BookmarkRepo: UIButton?
+    @IBOutlet weak var repositoryName: UILabel!
+    @IBOutlet weak var repositoryDescription: UITextView!
+    @IBOutlet weak var repositoryStars: UILabel!
+    @IBOutlet weak var repositoryLanguage: UILabel!
+    @IBOutlet weak var bookmarkRepository: UIButton?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,11 +43,11 @@ class ReposCell: UITableViewCell {
     var setButtonState: String = "off" {
         willSet {
             if newValue == "on" {
-                BookmarkRepo?.setBackgroundImage(UIImage(named: "like"), for: .normal)
+                bookmarkRepository?.setBackgroundImage(UIImage(named: "like"), for: .normal)
 //                let model = userRepository[indexPath!.row]
 //                saveBookmarkedRepository(name: model.name!, descriptin: model.description!, url: model.html_url!, stars: model.stargazers_count!)
             }
-            else { BookmarkRepo?.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
+            else { bookmarkRepository?.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
                 
                 
             }
@@ -82,34 +79,31 @@ class ReposCell: UITableViewCell {
     //MARK:- Repositories Cell Data
     
     func CellData( with model: UserRepository ) {
-        self.RepoNameLabel.text = model.name
-        self.De.text = model.description
-        self.likec.text = String(model.stargazers_count!)
-        self.language.text = model.language
+        self.repositoryName.text = model.repositoryName
+        self.repositoryDescription.text = model.repositoryDescription
+        self.repositoryStars.text = String(model.repositoryStars!)
+        self.repositoryLanguage.text = model.repositoryLanguage
     }
     
     
     func CellData(with model: Repository) {
-        RepoNameLabel?.text = model.name
-        De?.text = model.description
-        language.text = model.language
-        likec.text = String(model.stargazers_count)
+        repositoryName?.text = model.repositoryName
+        repositoryDescription?.text = model.repositoryDescription
+        repositoryLanguage.text = model.repositoryLanguage
+        repositoryStars.text = String(model.repositoryStars)
     }
     
     func CellData(with model: SavedRepositories) {
-        self.RepoNameLabel.text = model.name as? String
-        self.De.text = model.descriptin as? String
-        self.likec.text = model.stars! as? String
-        self.language.text = model.language as? String
+        self.repositoryName.text = model.name as? String
+        self.repositoryDescription.text = model.descriptin as? String
+        self.repositoryStars.text = model.stars! as? String
+        self.repositoryLanguage.text = model.language as? String
     }
     
     
 }
 extension UIResponder {
-    /**
-     * Returns the next responder in the responder chain cast to the given type, or
-     * if nil, recurses the chain until the next responder is nil or castable.
-     */
+
     func next<U: UIResponder>(of type: U.Type = U.self) -> U? {
         return self.next.flatMap({ $0 as? U ?? $0.next() })
     }

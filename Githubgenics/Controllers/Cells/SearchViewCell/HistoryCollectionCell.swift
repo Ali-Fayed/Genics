@@ -6,17 +6,28 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchHistoryCollectionViewCell: UICollectionViewCell {
     
     
-    @IBOutlet weak var avatar: UIImageView!
-    @IBOutlet weak var login: UILabel!
+    @IBOutlet weak var userAvatar: UIImageView!
+    @IBOutlet weak var userName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
- 
+        
     }
-
-
+    
+    func CellData(with model: LastSearch) {
+        userName.text = model.login
+        let url = model.avatar_url
+        userAvatar.kf.setImage(with: URL(string: url!), placeholder: nil, options: [.transition(.fade(0.7))])
+        userAvatar.contentMode = .scaleAspectFill
+        userAvatar.layer.masksToBounds = false
+        userAvatar.layer.cornerRadius = userAvatar.frame.height/2
+        userAvatar.clipsToBounds = true
+    }
+    
+    
 }

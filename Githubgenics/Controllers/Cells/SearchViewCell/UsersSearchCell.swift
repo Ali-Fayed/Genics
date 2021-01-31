@@ -10,9 +10,8 @@ import Kingfisher
 
 class UsersSearchCell: UITableViewCell {
     
-    static let identifier = "Cell"
-    @IBOutlet var UserTitleLabel: UILabel!
-    @IBOutlet var UserAvatar: UIImageView!
+    @IBOutlet var userName: UILabel!
+    @IBOutlet var userAvatar: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,23 +28,23 @@ class UsersSearchCell: UITableViewCell {
     }
 
     func CellData(with model: items) {
-        self.UserTitleLabel.text = model.login
-        let url = model.avatar_url
-        self.UserAvatar.kf.setImage(with: URL(string: url!), placeholder: nil, options: [.transition(.fade(0.7))])
-        UserAvatar.contentMode = .scaleAspectFill
-        UserAvatar.layer.masksToBounds = false
-        UserAvatar.layer.cornerRadius = UserAvatar.frame.height/2
-        UserAvatar.clipsToBounds = true
+        self.userName.text = model.userName
+        let url = model.userAvatar
+        self.userAvatar.kf.setImage(with: URL(string: url!), placeholder: nil, options: [.transition(.fade(0.7))])
+        userAvatar.contentMode = .scaleAspectFill
+        userAvatar.layer.masksToBounds = false
+        userAvatar.layer.cornerRadius = userAvatar.frame.height/2
+        userAvatar.clipsToBounds = true
     }
     
     func CellData(with model: UsersDataBase) {
-        self.UserTitleLabel.text = model.login
+        self.userName.text = model.login
         let url = model.avatar_url
-        self.UserAvatar.kf.setImage(with: URL(string: url!), placeholder: nil, options: [.transition(.fade(0.7))])
-        UserAvatar.contentMode = .scaleAspectFill
-        UserAvatar.layer.masksToBounds = false
-        UserAvatar.layer.cornerRadius = UserAvatar.frame.height/2
-        UserAvatar.clipsToBounds = true
+        self.userAvatar.kf.setImage(with: URL(string: url!), placeholder: nil, options: [.transition(.fade(0.7))])
+        userAvatar.contentMode = .scaleAspectFill
+        userAvatar.layer.masksToBounds = false
+        userAvatar.layer.cornerRadius = userAvatar.frame.height/2
+        userAvatar.clipsToBounds = true
     }
     
 }

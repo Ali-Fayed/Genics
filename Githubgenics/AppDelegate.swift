@@ -16,18 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        UIFont.familyNames.forEach { (name) in
-            for font_name in UIFont.fontNames(forFamilyName: name) {
-                print("\n\(font_name)")
-            }
-        }
-        
-        
-        
+        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
         FirebaseApp.configure()
         NetworkReachabilityModel.shared.startMonitoring()
         NetworkReachabilityModel.shared.startNetworkMonitoring()
-        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         

@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="repocell" rowHeight="111" id="KGk-i7-Jjw" customClass="ReposCell" customModule="Githubgenics" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="repositoryCell" rowHeight="111" id="KGk-i7-Jjw" customClass="ReposCell" customModule="Githubgenics" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -82,7 +82,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" name="CellBallet"/>
+                <color key="backgroundColor" name="ViewsColorBallet"/>
                 <constraints>
                     <constraint firstItem="0yH-KH-fWE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="5eP-2L-i6b"/>
                     <constraint firstItem="0yH-KH-fWE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="D5c-6l-oe1"/>
@@ -96,10 +96,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="De" destination="7V1-B8-d2d" id="kPX-vc-GAa"/>
-                <outlet property="RepoNameLabel" destination="0yH-KH-fWE" id="3xS-yt-DG5"/>
-                <outlet property="language" destination="Nae-9T-gyC" id="M2z-v7-X7u"/>
-                <outlet property="likec" destination="hfO-h4-ejh" id="xDd-CG-dOG"/>
+                <outlet property="repositoryDescription" destination="7V1-B8-d2d" id="kPX-vc-GAa"/>
+                <outlet property="repositoryLanguage" destination="Nae-9T-gyC" id="M2z-v7-X7u"/>
+                <outlet property="repositoryName" destination="0yH-KH-fWE" id="3xS-yt-DG5"/>
+                <outlet property="repositoryStars" destination="hfO-h4-ejh" id="xDd-CG-dOG"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="114.17410714285714"/>
         </tableViewCell>
@@ -107,7 +107,7 @@
     <resources>
         <image name="circle" width="512" height="512"/>
         <image name="star-3" width="256" height="256"/>
-        <namedColor name="CellBallet">
+        <namedColor name="ViewsColorBallet">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">

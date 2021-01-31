@@ -94,7 +94,7 @@ Projects and more.</string>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xRN-Av-spH"/>
-                        <color key="backgroundColor" name="CellBallet"/>
+                        <color key="backgroundColor" name="ViewsColorBallet"/>
                         <color key="tintColor" name="Darkmode"/>
                         <constraints>
                             <constraint firstItem="1oe-HB-6Am" firstAttribute="leading" secondItem="xRN-Av-spH" secondAttribute="leading" constant="52" id="1gD-LO-ePn"/>
@@ -118,15 +118,15 @@ Projects and more.</string>
                         <outlet property="HelloWorld" destination="xd0-tQ-0Fk" id="wGG-6T-cpj"/>
                         <outlet property="SignInBT" destination="Jdj-s6-L06" id="4pp-Jo-dN7"/>
                         <outlet property="SignUpBT" destination="ka5-oR-Y7i" id="7aR-4m-vtj"/>
-                        <outlet property="Tile" destination="lWq-VR-wsD" id="EqR-WF-41a"/>
-                        <outlet property="TxtView" destination="nwu-nn-ipZ" id="cAs-Du-8GM"/>
+                        <outlet property="projectTextView" destination="nwu-nn-ipZ" id="cAs-Du-8GM"/>
+                        <outlet property="projectTitle" destination="lWq-VR-wsD" id="EqR-WF-41a"/>
                         <segue destination="S3z-l9-GCH" kind="show" identifier="Default" id="que-yM-HIX"/>
                         <segue destination="tgq-MK-Dsb" kind="show" identifier="Main" id="S5u-ai-ppc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Voz-yH-W3M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1536.2318840579712" y="97.098214285714278"/>
+            <point key="canvasLocation" x="1049" y="98"/>
         </scene>
         <!--Settings-->
         <scene sceneID="zcG-ZE-OTN">
@@ -160,7 +160,7 @@ Projects and more.</string>
                                         </switch>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="CellBallet"/>
+                                <color key="backgroundColor" name="ViewsColorBallet"/>
                                 <connections>
                                     <outlet property="DarkModeLabel" destination="NAs-Uf-v5v" id="AYA-xO-Irv"/>
                                     <outlet property="DarkModeSwitch" destination="Fba-qH-A3q" id="6hs-k9-qwa"/>
@@ -177,7 +177,7 @@ Projects and more.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbe-eD-rr2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3126" y="1082"/>
+            <point key="canvasLocation" x="2117" y="1021"/>
         </scene>
         <!--Repositories-->
         <scene sceneID="rL0-n6-6ga">
@@ -204,7 +204,7 @@ Projects and more.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CFi-L0-YZU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4330" y="974"/>
+            <point key="canvasLocation" x="3080" y="1021"/>
         </scene>
         <!--Sign In View-->
         <scene sceneID="SLm-1C-OLG">
@@ -283,14 +283,14 @@ Projects and more.</string>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVg-Sm-wrt">
                                 <rect key="frame" x="38" y="476" width="338" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="CellBallet"/>
+                                <color key="backgroundColor" name="ViewsColorBallet"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ali@ali.com" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="15i-bg-wld">
                                 <rect key="frame" x="39" y="366" width="338" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="CellBallet"/>
+                                <color key="backgroundColor" name="ViewsColorBallet"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go"/>
                             </textField>
@@ -304,7 +304,7 @@ Projects and more.</string>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZFB-Z2-0Sm"/>
-                        <color key="backgroundColor" name="CellBallet"/>
+                        <color key="backgroundColor" name="ViewsColorBallet"/>
                     </view>
                     <navigationItem key="navigationItem" id="pSh-2D-nLh"/>
                     <connections>
@@ -324,7 +324,7 @@ Projects and more.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oe7-rQ-Dp5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2241" y="746"/>
+            <point key="canvasLocation" x="1048" y="1021"/>
         </scene>
         <!--Github Users-->
         <scene sceneID="9Nl-OL-bkg">
@@ -370,7 +370,7 @@ Projects and more.</string>
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" name="CellBallet"/>
+                                    <color key="backgroundColor" name="ViewsColorBallet"/>
                                     <constraints>
                                         <constraint firstItem="tVC-SD-Z60" firstAttribute="leading" secondItem="89c-YW-JbZ" secondAttribute="trailing" constant="14" id="2Fp-VR-f3T"/>
                                         <constraint firstItem="89c-YW-JbZ" firstAttribute="top" secondItem="ID5-OF-I7A" secondAttribute="top" constant="5" id="CKb-DF-6z0"/>
@@ -389,8 +389,8 @@ Projects and more.</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="ImageView" destination="89c-YW-JbZ" id="jFA-ik-uZ7"/>
-                                    <outlet property="UserNameLabel" destination="tVC-SD-Z60" id="Hju-5e-Sc2"/>
+                                    <outlet property="userAvatar" destination="89c-YW-JbZ" id="jFA-ik-uZ7"/>
+                                    <outlet property="userName" destination="tVC-SD-Z60" id="Hju-5e-Sc2"/>
                                     <segue destination="rsa-Ug-v1B" kind="show" id="MBw-t4-99P"/>
                                 </connections>
                             </tableViewCell>
@@ -424,18 +424,18 @@ Projects and more.</string>
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="SignOutBT" destination="Xgo-s6-u9f" id="fIW-q4-pt1"/>
+                        <outlet property="signOutButton" destination="Xgo-s6-u9f" id="fIW-q4-pt1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sqQ-kV-2NL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3919" y="212"/>
+            <point key="canvasLocation" x="3080" y="98"/>
         </scene>
         <!--Profile-->
         <scene sceneID="MaP-i9-acf">
             <objects>
                 <viewController id="rsa-Ug-v1B" customClass="DetailViewController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0k7-tn-XKz">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="0k7-tn-XKz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -520,7 +520,7 @@ Projects and more.</string>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="unlike"/>
                                                 <connections>
-                                                    <action selector="BookmarkBT:" destination="rsa-Ug-v1B" eventType="touchUpInside" id="VJG-n5-1xf"/>
+                                                    <action selector="bookmarkButton:" destination="rsa-Ug-v1B" eventType="touchUpInside" id="VJG-n5-1xf"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nk-wZ-cco">
@@ -534,8 +534,8 @@ Projects and more.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" name="CellBallet"/>
-                                        <color key="tintColor" name="CellBallet"/>
+                                        <color key="backgroundColor" name="ViewsColorBallet"/>
+                                        <color key="tintColor" name="ViewsColorBallet"/>
                                         <constraints>
                                             <constraint firstItem="0Nk-wZ-cco" firstAttribute="top" secondItem="jt3-Ze-1qa" secondAttribute="top" constant="44" id="8zf-rS-seR"/>
                                             <constraint firstItem="hub-1d-dKN" firstAttribute="top" secondItem="jt3-Ze-1qa" secondAttribute="top" constant="12" id="9fW-qD-8tr"/>
@@ -566,13 +566,13 @@ Projects and more.</string>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N4Y-YG-s45">
                                 <rect key="frame" x="0.0" y="260" width="414" height="636"/>
-                                <color key="backgroundColor" name="CellBallet"/>
-                                <color key="tintColor" name="CellBallet"/>
+                                <color key="backgroundColor" name="ViewsColorBallet"/>
+                                <color key="tintColor" name="ViewsColorBallet"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="636" id="Ghw-Pt-rvf"/>
                                     <constraint firstAttribute="width" constant="414" id="OZH-59-vLK"/>
                                 </constraints>
-                                <color key="sectionIndexBackgroundColor" name="CellBallet"/>
+                                <color key="sectionIndexBackgroundColor" name="ViewsColorBallet"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RepoCell" rowHeight="120" id="ImC-5k-7Pj" customClass="ReposCell" customModule="Githubgenics" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="120"/>
@@ -666,7 +666,7 @@ Projects and more.</string>
                                                                     </constraints>
                                                                 </imageView>
                                                             </subviews>
-                                                            <color key="backgroundColor" name="CellBallet"/>
+                                                            <color key="backgroundColor" name="ViewsColorBallet"/>
                                                             <constraints>
                                                                 <constraint firstItem="52m-hB-EL9" firstAttribute="top" secondItem="tVl-FB-9t6" secondAttribute="top" constant="20" symbolic="YES" id="12X-t8-2Dl"/>
                                                                 <constraint firstItem="ogU-VE-ZEN" firstAttribute="top" secondItem="0vT-aN-FKs" secondAttribute="bottom" constant="8" symbolic="YES" id="2Vh-oh-c5v"/>
@@ -696,7 +696,7 @@ Projects and more.</string>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" name="CellBallet"/>
+                                            <color key="backgroundColor" name="ViewsColorBallet"/>
                                             <color key="tintColor" name="List"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="hz6-8W-mF9" secondAttribute="bottom" constant="-5" id="L6x-Ul-POA"/>
@@ -708,17 +708,17 @@ Projects and more.</string>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
                                             </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="CellBallet"/>
+                                        <color key="backgroundColor" name="ViewsColorBallet"/>
                                         <color key="tintColor" red="0.07116562873" green="0.079158984119999998" blue="0.085826016960000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <outlet property="BookmarkRepo" destination="52m-hB-EL9" id="HRr-y8-yRl"/>
-                                            <outlet property="De" destination="0vT-aN-FKs" id="S5i-WT-smB"/>
-                                            <outlet property="RepoNameLabel" destination="xO6-9u-Jau" id="t31-G6-axx"/>
-                                            <outlet property="language" destination="bga-iC-gWA" id="DKV-hY-DGi"/>
-                                            <outlet property="likec" destination="ogU-VE-ZEN" id="eF0-OC-ebY"/>
+                                            <outlet property="bookmarkRepository" destination="52m-hB-EL9" id="HRr-y8-yRl"/>
+                                            <outlet property="repositoryDescription" destination="0vT-aN-FKs" id="S5i-WT-smB"/>
+                                            <outlet property="repositoryLanguage" destination="bga-iC-gWA" id="DKV-hY-DGi"/>
+                                            <outlet property="repositoryName" destination="xO6-9u-Jau" id="t31-G6-axx"/>
+                                            <outlet property="repositoryStars" destination="ogU-VE-ZEN" id="eF0-OC-ebY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -732,7 +732,7 @@ Projects and more.</string>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="52j-Do-DKe"/>
-                        <color key="backgroundColor" name="CellBallet"/>
+                        <color key="backgroundColor" name="ViewsColorBallet"/>
                         <constraints>
                             <constraint firstItem="qcF-zd-L1T" firstAttribute="top" secondItem="52j-Do-DKe" secondAttribute="top" id="3ev-Hs-FIy"/>
                             <constraint firstItem="qcF-zd-L1T" firstAttribute="centerX" secondItem="0k7-tn-XKz" secondAttribute="centerX" id="85v-7U-E1a"/>
@@ -751,17 +751,17 @@ Projects and more.</string>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="link" catalog="system" id="rJI-Is-9ju"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="BookmarkBT" destination="hub-1d-dKN" id="bZT-1a-Iu8"/>
-                        <outlet property="Followers" destination="mRL-LQ-wfo" id="weK-Al-Jqp"/>
-                        <outlet property="Following" destination="tJN-eQ-Gfe" id="3z0-We-WON"/>
-                        <outlet property="ImageView" destination="bCJ-13-JYq" id="tBY-jF-fhq"/>
-                        <outlet property="UserName" destination="0Nk-wZ-cco" id="xlb-OP-mhN"/>
+                        <outlet property="bookmarkButton" destination="hub-1d-dKN" id="bZT-1a-Iu8"/>
                         <outlet property="tableView" destination="N4Y-YG-s45" id="h7Q-V4-VRj"/>
+                        <outlet property="userAvatar" destination="bCJ-13-JYq" id="tBY-jF-fhq"/>
+                        <outlet property="userFollowers" destination="mRL-LQ-wfo" id="weK-Al-Jqp"/>
+                        <outlet property="userFollowing" destination="tJN-eQ-Gfe" id="3z0-We-WON"/>
+                        <outlet property="userName" destination="0Nk-wZ-cco" id="xlb-OP-mhN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zab-j6-uPX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4846" y="163"/>
+            <point key="canvasLocation" x="4139" y="98"/>
         </scene>
         <!--Repos Bookmarks Controller-->
         <scene sceneID="PZs-9S-aOG">
@@ -791,7 +791,7 @@ Projects and more.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fx5-on-dRx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5142" y="-591"/>
+            <point key="canvasLocation" x="4138" y="-682"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Zv0-0H-Uv6">
@@ -814,7 +814,7 @@ Projects and more.</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U3s-5n-0L8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3094" y="226"/>
+            <point key="canvasLocation" x="1975" y="98"/>
         </scene>
         <!--Recent Search View Controller-->
         <scene sceneID="NsN-sm-eb1">
@@ -907,7 +907,7 @@ Projects and more.</string>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rSy-jJ-2a5">
                                 <rect key="frame" x="0.0" y="55" width="414" height="91"/>
-                                <color key="backgroundColor" name="CellBallet"/>
+                                <color key="backgroundColor" name="ViewsColorBallet"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="EFG-fq-yD1"/>
                                     <constraint firstAttribute="height" constant="91" id="Tov-Q6-HjY"/>
@@ -966,7 +966,7 @@ Projects and more.</string>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" name="CellBallet"/>
+                                            <color key="backgroundColor" name="ViewsColorBallet"/>
                                             <constraints>
                                                 <constraint firstItem="L3y-wC-sFS" firstAttribute="leading" secondItem="nhF-Hi-UsV" secondAttribute="leading" constant="17" id="IRr-Mx-T3z"/>
                                                 <constraint firstAttribute="trailing" secondItem="L3y-wC-sFS" secondAttribute="trailing" constant="18" id="aiL-8a-tOJ"/>
@@ -976,8 +976,8 @@ Projects and more.</string>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="80" height="80"/>
                                         <connections>
-                                            <outlet property="avatar" destination="jQn-5o-H6v" id="pwN-QK-4CT"/>
-                                            <outlet property="login" destination="sOk-We-glF" id="879-zw-tKN"/>
+                                            <outlet property="userAvatar" destination="jQn-5o-H6v" id="pwN-QK-4CT"/>
+                                            <outlet property="userName" destination="sOk-We-glF" id="879-zw-tKN"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1013,7 +1013,7 @@ Projects and more.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AYF-TP-zip" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3097" y="-1107"/>
+            <point key="canvasLocation" x="1972" y="-1326"/>
         </scene>
         <!--Search-->
         <scene sceneID="UL3-lU-ucX">
@@ -1080,7 +1080,7 @@ Projects and more.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KN6-TV-ffN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3096" y="-492"/>
+            <point key="canvasLocation" x="1974" y="-682"/>
         </scene>
         <!--Saved Users-->
         <scene sceneID="zRw-aU-8RS">
@@ -1115,7 +1115,7 @@ Projects and more.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zti-3R-3su" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4422" y="-591"/>
+            <point key="canvasLocation" x="3080" y="-682"/>
         </scene>
         <!--Sign Up View-->
         <scene sceneID="rK8-qL-4JV">
@@ -1196,7 +1196,7 @@ Projects and more.</string>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="Line 1" translatesAutoresizingMaskIntoConstraints="NO" id="eXH-vb-eGt" userLabel="Name">
                                                                 <rect key="frame" x="0.0" y="20" width="335" height="34"/>
-                                                                <color key="backgroundColor" name="CellBallet"/>
+                                                                <color key="backgroundColor" name="ViewsColorBallet"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="34" id="2cU-BL-OFy"/>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="Vac-IH-i0b"/>
@@ -1221,7 +1221,7 @@ Projects and more.</string>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="Line 1" translatesAutoresizingMaskIntoConstraints="NO" id="2et-pU-6ta">
                                                                 <rect key="frame" x="0.0" y="19" width="335" height="34"/>
-                                                                <color key="backgroundColor" name="CellBallet"/>
+                                                                <color key="backgroundColor" name="ViewsColorBallet"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="335" id="FAU-lW-5xD"/>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="HrK-Gj-Fu3"/>
@@ -1250,7 +1250,7 @@ Projects and more.</string>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="Line 1" translatesAutoresizingMaskIntoConstraints="NO" id="II8-p6-UAj">
                                                                 <rect key="frame" x="0.0" y="23" width="335" height="34"/>
-                                                                <color key="backgroundColor" name="CellBallet"/>
+                                                                <color key="backgroundColor" name="ViewsColorBallet"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="335" id="2nF-mY-Gfk"/>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="Sy6-2b-ysJ"/>
@@ -1280,7 +1280,7 @@ Projects and more.</string>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="Line 1" translatesAutoresizingMaskIntoConstraints="NO" id="Ucg-eZ-gNb" userLabel="Confirm">
                                                                 <rect key="frame" x="0.0" y="20" width="335" height="34"/>
-                                                                <color key="backgroundColor" name="CellBallet"/>
+                                                                <color key="backgroundColor" name="ViewsColorBallet"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="335" id="4PC-qG-UIy"/>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="PEe-wK-gng"/>
@@ -1362,7 +1362,7 @@ Projects and more.</string>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OsI-FA-bgS"/>
-                        <color key="backgroundColor" name="CellBallet"/>
+                        <color key="backgroundColor" name="ViewsColorBallet"/>
                         <constraints>
                             <constraint firstItem="AB1-0F-QYs" firstAttribute="leading" secondItem="OsI-FA-bgS" secondAttribute="leading" constant="20" id="0bb-ls-f5U"/>
                             <constraint firstItem="OsI-FA-bgS" firstAttribute="bottom" secondItem="AB1-0F-QYs" secondAttribute="bottom" constant="49" id="1tg-20-glL"/>
@@ -1389,7 +1389,7 @@ Projects and more.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jjK-jW-DFi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2242" y="39"/>
+            <point key="canvasLocation" x="1048" y="-682"/>
         </scene>
         <!--Title-->
         <scene sceneID="us6-uP-gq8">
@@ -1399,7 +1399,7 @@ Projects and more.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="PB4-rO-c0E"/>
-                        <color key="backgroundColor" name="CellBallet"/>
+                        <color key="backgroundColor" name="ViewsColorBallet"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="nrF-Ab-MZt"/>
                     <connections>
@@ -1408,7 +1408,7 @@ Projects and more.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXv-9E-aIJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="792.75362318840587" y="97.767857142857139"/>
+            <point key="canvasLocation" x="364" y="98"/>
         </scene>
         <!--Nav Bar Controller-->
         <scene sceneID="7ho-c4-kie">
@@ -1426,12 +1426,12 @@ Projects and more.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LTG-UR-KSD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-117.39130434782609" y="97.767857142857139"/>
+            <point key="canvasLocation" x="-506" y="98"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="asB-B0-EvH"/>
-        <segue reference="WMe-mb-CpF"/>
+        <segue reference="5iZ-og-xEK"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Follow" width="256" height="256"/>
@@ -1450,9 +1450,6 @@ Projects and more.</string>
         <image name="signpost.right.fill" catalog="system" width="128" height="118"/>
         <image name="star-3" width="256" height="256"/>
         <image name="unlike" width="256" height="227.5"/>
-        <namedColor name="CellBallet">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Darkmode">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1460,6 +1457,9 @@ Projects and more.</string>
             <color red="0.1379999965429306" green="0.14599999785423279" blue="0.15199999511241913" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="List">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ViewsColorBallet">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
