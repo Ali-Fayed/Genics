@@ -11,7 +11,7 @@ struct Repositories: Decodable {
 
 struct Repository {
     let repositoryName: String
-    let repositoryDescription: String
+    let repositoryDescription: String?
     let repositoryStars: Int
     let repositoryLanguage: String?
     let repositoryURL:String
@@ -28,8 +28,8 @@ struct Repository {
 extension Repository: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: repositoriesCodingKeys.self)
-        repositoryName = try container.decode(String.self, forKey: .repositoryName)
-        repositoryDescription = try! container.decode(String.self, forKey: .repositoryDescription)
+        repositoryName = try! container.decode(String.self, forKey: .repositoryName)
+        repositoryDescription = try? container.decode(String.self, forKey: .repositoryDescription)
         repositoryStars = try! container.decode(Int.self, forKey: .repositoryStars)
         repositoryLanguage = try? container.decode(String.self, forKey: .repositoryLanguage)
         repositoryURL = try! container.decode(String.self, forKey: .repositoryURL)

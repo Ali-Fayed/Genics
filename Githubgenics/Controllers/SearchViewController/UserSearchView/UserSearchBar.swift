@@ -14,12 +14,8 @@ extension SearchViewController  : UISearchBarDelegate  {
         guard let query = searchBar.text else {
             return
         }
-        self.loadingIndicator.startAnimating()
-        UsersRouter().searchUsers(query: query) { (response) in
-            self.searchedUsers = response
-            self.loadingIndicator.stopAnimating()
-            self.tableView.reloadData()
-        }
+        fetchSearchedUsers (for: query)
+        self.searchedUsers.removeAll()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

@@ -11,19 +11,19 @@ import Alamofire
 
 class UsersRouter {
     
-    func listUsers(completion: @escaping ([Users]) -> Void) {
+    func listUsers(completion: @escaping (Result<[Users],Error>) -> Void) {
         let url = "https://api.github.com/users"
         DispatchQueue.global(qos: .background).async {
             AF.request(url).responseDecodable(of: [Users].self) { response in
                 guard let items = response.value else {
                     return AlertsModel.shared.showUsersListErrorAlert()
                 }
-                completion(items)
+                completion(.success(items))
             }
         }
     }
     
-    func searchUsers(query: String, completion: @escaping ([items]) -> Void) {
+    func searchUsers(query: String, completion: @escaping (Result<[items],Error>) -> Void) {
         let url = "https://api.github.com/search/users"
         var queryParameters: [String: Any] = ["sort": "repositories", "order": "desc", "page": 1]
         queryParameters["q"] = query
@@ -33,21 +33,22 @@ class UsersRouter {
                     guard let items = response.value else {
                         return
                     }
-                    completion(items.items)
+                    completion(.success(items.items))
                 }
         }
     }
     
-    func fetchUserstoAvoidIndexError(completion: @escaping ([items]) -> Void) {
+    func fetchUserstoAvoidIndexError(completion: @escaping (Result<[items],Error>) -> Void) {
         searchUsers(query: "a", completion: completion)
     }
     
 }
 
+
 extension UsersListViewController {
     
     
-     func MainFetchFunctions(pagination: Bool = false, since : Int , page : Int , complete: @escaping (Result<[Users],Error>) -> Void ) {
+     func MainFetchFunctions(pagination: Bool = false, since : Int , page : Int , completion: @escaping (Result<[Users],Error>) -> Void ) {
          if pagination {
              isPaginating = true
          }
@@ -57,8 +58,8 @@ extension UsersListViewController {
                  guard let users = response.value else {
                    return
                  }
-                 complete(.success(users))
-                 complete(.success( pagination ? self.moreUsers : self.users ))
+                completion(.success(users))
+                completion(.success( pagination ? self.moreUsers : self.users ))
              if pagination {
                  self.isPaginating = false
              }
@@ -67,24 +68,5 @@ extension UsersListViewController {
          
     }
      
-     func FetchMoreUsers () {
-         guard !isPaginating else {
-             return
-         }
-          MainFetchFunctions(pagination: true, since: Int.random(in: 40 ... 5000 ), page: 10 ) { [weak self] result in
-             DispatchQueue.main.async {
-                 self?.tableView.tableFooterView = nil
-             }
-             switch result {
-             case .success(let moreUsers):
-                 self?.users.append(contentsOf: moreUsers)
-                 DispatchQueue.main.async {
-                     self?.tableView.reloadData()
-                 }
-             case .failure(_):
-                 AlertsModel.shared.showPaginationErrorAlert()
-             break
-             }
-         }
-     }
+ 
 }

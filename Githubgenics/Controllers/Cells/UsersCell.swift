@@ -22,9 +22,9 @@ class UsersCell: UITableViewCell {
     }
 
     func CellData(with model: Users) {
-        self.userName.text = model.userName?.capitalized
+        self.userName.text = model.userName.capitalized
         let url = model.userAvatar
-        self.userAvatar.kf.setImage(with: URL(string: url!), placeholder: nil, options: [.transition(.fade(0.7))])
+        self.userAvatar.kf.setImage(with: URL(string: url), placeholder: nil, options: [.transition(.fade(0.7))])
         self.userAvatar.layer.cornerRadius = UsersCell.profileImageSize.width / 2.0
         userAvatar.contentMode = .scaleAspectFill
         userAvatar.layer.masksToBounds = false
@@ -34,14 +34,5 @@ class UsersCell: UITableViewCell {
         userName.layer.cornerRadius = userName.frame.height/2
         userName.clipsToBounds = true
     }
-
-
-
-
-
-
-
-
-
 
 }

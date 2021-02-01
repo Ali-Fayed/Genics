@@ -6,10 +6,10 @@
 //
 
 struct Users {
-    let userName: String?
-    let userURL: String?
-    let userAvatar: String?
-    let userRepositoriesURL: String?
+    let userName: String
+    let userURL: String
+    let userAvatar: String
+    let userRepositoriesURL: String
     
     enum usersCodingKeys: String, CodingKey {
         case userName = "login"
@@ -22,10 +22,10 @@ struct Users {
 extension Users: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: usersCodingKeys.self)
-        userName = try container.decode(String.self, forKey: .userName)
-        userAvatar = try? container.decode(String.self, forKey: .userAvatar)
-        userRepositoriesURL = try? container.decode(String.self, forKey: .userRepositoriesURL)
-        userURL = try? container.decode(String.self, forKey: .userURL)
+        userName = try! container.decode(String.self, forKey: .userName)
+        userAvatar = try! container.decode(String.self, forKey: .userAvatar)
+        userRepositoriesURL = try! container.decode(String.self, forKey: .userRepositoriesURL)
+        userURL = try! container.decode(String.self, forKey: .userURL)
     }
 }
 

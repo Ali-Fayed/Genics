@@ -70,6 +70,10 @@
 		EAC1636725BAB789007EDC96 /* RepoSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636425BAB789007EDC96 /* RepoSearchCell.xib */; };
 		EAC1636825BAB789007EDC96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636525BAB789007EDC96 /* Main.storyboard */; };
 		EAD4476625B0148A00FB42B4 /* UsersSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD4476425B0148A00FB42B4 /* UsersSearchCell.swift */; };
+		EAFB5D7725C7AF9F0096D729 /* UsersListFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB5D7625C7AF9F0096D729 /* UsersListFunctions.swift */; };
+		EAFB5D7A25C7B16F0096D729 /* DetailViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB5D7925C7B16F0096D729 /* DetailViewFunctions.swift */; };
+		EAFB5D8025C7B7C70096D729 /* RepositoriesFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB5D7F25C7B7C70096D729 /* RepositoriesFunctions.swift */; };
+		EAFB5D8325C7BF850096D729 /* SearchViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB5D8225C7BF850096D729 /* SearchViewFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +146,10 @@
 		EAC1636425BAB789007EDC96 /* RepoSearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoSearchCell.xib; sourceTree = "<group>"; };
 		EAC1636525BAB789007EDC96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EAD4476425B0148A00FB42B4 /* UsersSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersSearchCell.swift; sourceTree = "<group>"; };
+		EAFB5D7625C7AF9F0096D729 /* UsersListFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListFunctions.swift; sourceTree = "<group>"; };
+		EAFB5D7925C7B16F0096D729 /* DetailViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewFunctions.swift; sourceTree = "<group>"; };
+		EAFB5D7F25C7B7C70096D729 /* RepositoriesFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesFunctions.swift; sourceTree = "<group>"; };
+		EAFB5D8225C7BF850096D729 /* SearchViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +186,7 @@
 			children = (
 				EA999A6425927C02005E832C /* DetailViewController.swift */,
 				EA05894E25C555BB00BC1024 /* UserRepoTableView.swift */,
+				EAFB5D7925C7B16F0096D729 /* DetailViewFunctions.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -188,6 +197,7 @@
 				EAB2AD0E25BBF214001B6DD7 /* SearchViewController.swift */,
 				EA05896125C55B2B00BC1024 /* SearchTableView.swift */,
 				EA05895E25C55ADF00BC1024 /* UserSearchBar.swift */,
+				EAFB5D8225C7BF850096D729 /* SearchViewFunctions.swift */,
 			);
 			path = UserSearchView;
 			sourceTree = "<group>";
@@ -208,6 +218,7 @@
 				EA0C2DA825BD26AD00D3898A /* RepositoriesListViewController.swift */,
 				EA05898A25C564FB00BC1024 /* RepostoiresTableView.swift */,
 				EA05898725C564C700BC1024 /* RepostoiresSearchBar.swift */,
+				EAFB5D7F25C7B7C70096D729 /* RepositoriesFunctions.swift */,
 			);
 			path = RepostoriesViewController;
 			sourceTree = "<group>";
@@ -482,6 +493,7 @@
 			children = (
 				EA5EADF625929E2700AC3223 /* UsersListViewController.swift */,
 				EA94DCBB25C6726C00E2C30B /* UsersTableView.swift */,
+				EAFB5D7625C7AF9F0096D729 /* UsersListFunctions.swift */,
 			);
 			path = UsersView;
 			sourceTree = "<group>";
@@ -593,6 +605,7 @@
 				EAA710F525BD4707004D7E21 /* UsersRouter.swift in Sources */,
 				EA05895525C5567700BC1024 /* Fetch.swift in Sources */,
 				EA43BCD325965CAD00098ACA /* ReposCell.swift in Sources */,
+				EAFB5D7725C7AF9F0096D729 /* UsersListFunctions.swift in Sources */,
 				EA54C347259408D40021BFC4 /* UsersCell.swift in Sources */,
 				EAB2AD0F25BBF214001B6DD7 /* SearchViewController.swift in Sources */,
 				EAB2AD1425BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift in Sources */,
@@ -604,6 +617,7 @@
 				EA0C2D9625BD068C00D3898A /* LastSearch+CoreDataClass.swift in Sources */,
 				EA94DCBC25C6726C00E2C30B /* UsersTableView.swift in Sources */,
 				EA94DCAC25C6391000E2C30B /* Delete.swift in Sources */,
+				EAFB5D8025C7B7C70096D729 /* RepositoriesFunctions.swift in Sources */,
 				EA94DCA625C6377200E2C30B /* Save.swift in Sources */,
 				EA5EADF725929E2700AC3223 /* UsersListViewController.swift in Sources */,
 				EA05897725C55F9F00BC1024 /* RecentCollectionView.swift in Sources */,
@@ -616,10 +630,12 @@
 				EA3FA0FA25AE9B88008D7520 /* LaunchAnimation.swift in Sources */,
 				EA05898B25C564FB00BC1024 /* RepostoiresTableView.swift in Sources */,
 				EAD4476625B0148A00FB42B4 /* UsersSearchCell.swift in Sources */,
+				EAFB5D8325C7BF850096D729 /* SearchViewFunctions.swift in Sources */,
 				EA668BA125BFE83C00392A30 /* Githubgenics.xcdatamodeld in Sources */,
 				EA622CFC25C54F3800EC5F3C /* SearchUsesrAPI.swift in Sources */,
 				EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */,
 				EA668B9D25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift in Sources */,
+				EAFB5D7A25C7B16F0096D729 /* DetailViewFunctions.swift in Sources */,
 				EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */,
 				EA2312DD2592819D000BDC8C /* ConstantsModel.swift in Sources */,
 				EA0589BD25C56A0E00BC1024 /* BookmarksSearchBar.swift in Sources */,

@@ -50,17 +50,9 @@ class SearchViewController: UIViewController{
             loadingIndicator.stopAnimating()
         }
         Searchbaar.text = passedKeys?.keyword
-    }
+     }
 
-    func fetchAndDisplaySearchViewUsers() {
-            self.loadingIndicator.startAnimating()
-        UsersRouter().fetchUserstoAvoidIndexError { repositories in
-            self.searchedUsers = repositories
-                self.loadingIndicator.stopAnimating()
-                self.tableView.reloadData()
 
-        }
-    }
 
 }
 

@@ -45,7 +45,7 @@ extension RepositoriesListViewController {
       func importantAction(at indexPath: IndexPath) -> UIContextualAction {
           let action = UIContextualAction(style: .normal, title: "Bookmark") { [self] (action, view, completion) in
               let index = fetchedRepositories[indexPath.row]
-            Save().repository(name: index.repositoryName, desc: index.repositoryDescription, language: index.repositoryLanguage!, stars: index.repositoryStars, url: index.repositoryURL)
+            Save().repository(name: index.repositoryName, desc: index.repositoryDescription ?? "", language: index.repositoryLanguage ?? "", stars: index.repositoryStars, url: index.repositoryURL)
           }
           action.image = #imageLiteral(resourceName: "like")
           action.backgroundColor = .gray

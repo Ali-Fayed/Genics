@@ -37,7 +37,7 @@ extension UsersListViewController {
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let postion = scrollView.contentOffset.y
         if postion > (tableView.contentSize.height-100-scrollView.frame.size.height) {
-            FetchMoreUsers()
+            fetchMoreFromUsersList()
         }
     }
     

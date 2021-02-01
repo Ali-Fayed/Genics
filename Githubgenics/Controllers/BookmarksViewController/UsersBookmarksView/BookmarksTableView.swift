@@ -47,17 +47,6 @@ override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath
         }
     }
     
-    func deleteBookmarkedUser(item: UsersDataBase) {
-        context.delete(item)
-        do {
-            try context.save()
-            Fetch().users { (result) in
-                self.bookmarkedUsers = result
-            }
-            
-        } catch {
-            
-        }
-    }
+
 
 }
