@@ -17,9 +17,40 @@ extension DetailViewController: UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.userRepositoryCell, for: indexPath) as! ReposCell
         cell.CellData(with: userRepository[indexPath.row])
-        cell.bookmarkRepository?.tag = indexPath.row
+        cell.delegate = self
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        cell.addGestureRecognizer(longPress)
+
+        
+//        if userRepository[indexPath.row].done == false {
+//            cell.bookmarkRepository?.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
+//        } else {
+//            cell.bookmarkRepository?.setBackgroundImage(UIImage(named: "like"), for: .normal)
+//            userRepository[indexPath.row].done = true
+//        }
+        
+        
+             
+        if checkmarks[indexPath.row] != nil {
+            
+            cell.accessoryType = checkmarks[indexPath.row]! ? .checkmark : .none
+            if checkmarks[indexPath.row] == true {
+                cell.bookmarkRepository?.setBackgroundImage(UIImage(named: "like"), for: .normal)
+            }else {
+                cell.bookmarkRepository?.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
+            }
+            
+
+        } else {
+            
+            checkmarks[indexPath.row] = false
+            cell.accessoryType = .none
+            cell.bookmarkRepository?.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
+            
+        }
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 120
@@ -28,28 +59,69 @@ extension DetailViewController: UITableViewDataSource , UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let url = userRepository[indexPath.row].repositoryURL
-        let vc = SFSafariViewController(url: URL(string: url!)!)
-        present(vc, animated: true)
+        performSegue(withIdentifier: "CommitSegue", sender: self)
     }
     
-    func DisplaySpinner () {
-        let spinner = UIActivityIndicatorView(style: .medium)
-        spinner.startAnimating()
-        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
-        self.tableView.tableFooterView = spinner
-        self.tableView.tableFooterView?.isHidden = false
-    }
-
+ 
     
-    func shimmerLoadingView () {
-        tableView.isSkeletonable = true
-        tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)), animation: nil, transition: .crossDissolve(0.25))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.tableView.stopSkeletonAnimation()
-            self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+      selectedRepository = userRepository[indexPath.row]
+      return indexPath
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let commitsViewController = segue.destination as? CommitsViewController else {
+          return
         }
+        commitsViewController.selectedRepository = selectedRepository
     }
 
+    
+}
+extension DetailViewController : MyTableViewCellDelegate {
+    
+    func didTapButton(cell: ReposCell, didTappedThe button: UIButton?) {
+        guard let index = tableView.indexPath(for: cell) else {
+            return
+        }
+        print("we in \(index.row)")
+        Save().repository(name: userRepository[index.row].repositoryName!, desc: userRepository[index.row].repositoryDescription ?? "", language: userRepository[index.row].repositoryLanguage ?? "", stars: userRepository[index.row].repositoryStars ?? 1, url: userRepository[index.row].repositoryURL!)
+        
+//         userRepository[index.row].done = !userRepository[index.row].done
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    
+ 
+        if let cell = tableView.cellForRow(at: index) {
+            if cell.accessoryType == .checkmark {
+                button?.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
+//                cell.accessoryType = .none
+                checkmarks[index.row] = false
+            }
+            else{
+                button?.setBackgroundImage(UIImage(named: "like"), for: .normal)
+//                cell.accessoryType = .checkmark
+                checkmarks[index.row] = true
+            }
+        }
+  
+        
+        
+//        if ((cell.bookmarkRepository?.setBackgroundImage(UIImage(named: "like"), for: .normal)) != nil) {
+//            cell.bookmarkRepository?.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
+//                checkmarks[index.row] = false
+//            }
+//            else{
+//                cell.bookmarkRepository?.setBackgroundImage(UIImage(named: "like"), for: .normal)
+//                checkmarks[index.row] = true
+//            }
+        
+        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: checkmarks), forKey: "checkmarks")
+        UserDefaults.standard.synchronize()
+        
+    }
+    
+    
     
 }

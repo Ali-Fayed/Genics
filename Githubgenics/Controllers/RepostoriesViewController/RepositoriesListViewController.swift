@@ -16,6 +16,8 @@ class RepositoriesListViewController: UITableViewController  {
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
     var fetchedRepositories: [Repository] = []
     var savedRepositories = [SavedRepositories]()
+    var selectedRepository: Repository?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

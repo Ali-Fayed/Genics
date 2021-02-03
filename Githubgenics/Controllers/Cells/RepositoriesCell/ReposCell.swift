@@ -10,12 +10,17 @@ import UIKit
 import Kingfisher
 
 //MARK:- Main Class
-
+protocol MyTableViewCellDelegate: AnyObject {
+    func didTapButton(cell:ReposCell, didTappedThe button:UIButton?)
+    
+    
+}
 
 
 class ReposCell: UITableViewCell {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    weak var delegate:MyTableViewCellDelegate?
 
 
     var defaults = UserDefaults.standard
@@ -32,48 +37,35 @@ class ReposCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if let ButtonState = defaults.string(forKey: "Bookmark State")
-        { setButtonState = ButtonState }
-        else { setButtonState = "off" }
+//        if let ButtonState = defaults.string(forKey: "Bookmark State")
+//        { setButtonState = ButtonState }
+//        else { setButtonState = "off" }
     }
     
   
   //MARK:- Bookmark Button
     
-    var setButtonState: String = "off" {
-        willSet {
-            if newValue == "on" {
-                bookmarkRepository?.setBackgroundImage(UIImage(named: "like"), for: .normal)
-//                let model = userRepository[indexPath!.row]
-//                saveBookmarkedRepository(name: model.name!, descriptin: model.description!, url: model.html_url!, stars: model.stargazers_count!)
-            }
-            else { bookmarkRepository?.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
-                
-                
-            }
-        }
+//    var setButtonState: String = "off" {
+//        willSet {
+//            if newValue == "on" {
+//                bookmarkRepository?.setBackgroundImage(UIImage(named: "like"), for: .normal)
+//
+//            }
+//            else { bookmarkRepository?.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
+//
+//
+//            }
+//        }
+//    }
+//
+    @IBAction func didTapButton(_ sender: Any) {
+        delegate?.didTapButton(cell: self, didTappedThe: sender as? UIButton)
+//        let stat = setButtonState == "on" ? "off" : "on"
+//        setButtonState = stat
+//        defaults.set(stat , forKey: "Bookmark State")
+//        print(stat)
     }
     
-    @IBAction func BookmarkRepo(_ sender: UIButton) {
-        let stat = setButtonState == "on" ? "off" : "on"
-        setButtonState = stat
-        defaults.set(stat , forKey: "Bookmark State")
-        print(stat)
-    }
-    
-    func saveBookmarkedRepository (name: String , descriptin: String , url: String , stars: Int) {
-        let DataParameters = SavedRepositories(context: context)
-        DataParameters.name = name as NSObject
-        DataParameters.descriptin = descriptin as NSObject
-        DataParameters.url = url as NSObject
-        DataParameters.stars = stars as NSObject
-        do {
-            try context.save()
-        } catch {
-            
-        }
-    }
-
 
     
     //MARK:- Repositories Cell Data
@@ -102,19 +94,4 @@ class ReposCell: UITableViewCell {
     
     
 }
-extension UIResponder {
 
-    func next<U: UIResponder>(of type: U.Type = U.self) -> U? {
-        return self.next.flatMap({ $0 as? U ?? $0.next() })
-    }
-}
-
-extension UITableViewCell {
-    var tableView: UITableView? {
-        return self.next(of: UITableView.self)
-    }
-
-    var indexPath: IndexPath? {
-        return self.tableView?.indexPath(for: self)
-    }
-}

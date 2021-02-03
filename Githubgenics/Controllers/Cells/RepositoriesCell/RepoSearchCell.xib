@@ -82,7 +82,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" name="ViewsColorBallet"/>
                 <constraints>
                     <constraint firstItem="0yH-KH-fWE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="5eP-2L-i6b"/>
                     <constraint firstItem="0yH-KH-fWE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="D5c-6l-oe1"/>
@@ -95,6 +94,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="ViewsColorBallet"/>
             <connections>
                 <outlet property="repositoryDescription" destination="7V1-B8-d2d" id="kPX-vc-GAa"/>
                 <outlet property="repositoryLanguage" destination="Nae-9T-gyC" id="M2z-v7-X7u"/>

@@ -7,12 +7,13 @@
 
 import UIKit
 import Firebase
+import SafariServices
 
 
 extension UsersListViewController {
     
     func fetchUsersList () {
-        UsersRouter().listUsers { [weak self] result in
+        UsersRouter().listUsers(query: "a") { [weak self] result in
             switch result {
             case .success(let users):
                 self!.users.append(contentsOf: users)
@@ -30,7 +31,8 @@ extension UsersListViewController {
         guard !isPaginating else {
             return
         }
-         MainFetchFunctions(pagination: true, since: Int.random(in: 40 ... 5000 ), page: 10 ) { [weak self] result in
+      
+        MainFetchFunctions(query: "a", pagination: true ) { [weak self] result in
             DispatchQueue.main.async {
                 self?.tableView.tableFooterView = nil
             }
@@ -46,9 +48,18 @@ extension UsersListViewController {
             }
         }
     }
-    
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer){
+            let touchPoint = longPress.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                let cell = users[indexPath.row].userURL
+                        let vc = SFSafariViewController(url: URL(string: cell!)!)
+                        present(vc, animated: true)
+                
+            }
+        
+    }
     func refreshList () {
-        UsersRouter().listUsers { [weak self] result in
+        UsersRouter().listUsers(query: "a") { [weak self] result in
             switch result {
             case .success(let users):
                 self!.users.append(contentsOf: users)

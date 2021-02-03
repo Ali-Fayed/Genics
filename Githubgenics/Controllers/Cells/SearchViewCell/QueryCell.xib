@@ -37,7 +37,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" name="ViewsColorBallet"/>
                 <constraints>
                     <constraint firstItem="B4l-xG-HRp" firstAttribute="leading" secondItem="xMB-UR-bcS" secondAttribute="trailing" constant="8" symbolic="YES" id="539-mb-pN2"/>
                     <constraint firstItem="xMB-UR-bcS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="5d8-Q6-ppk"/>
@@ -50,6 +49,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="ViewsColorBallet"/>
             <connections>
                 <outlet property="userAvatar" destination="xMB-UR-bcS" id="Uyi-2w-Dm2"/>
                 <outlet property="userName" destination="B4l-xG-HRp" id="020-V4-mUU"/>

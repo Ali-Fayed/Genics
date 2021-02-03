@@ -10,12 +10,14 @@ struct Users {
     let userURL: String
     let userAvatar: String
     let userRepositoriesURL: String
+    let userID: Int
     
     enum usersCodingKeys: String, CodingKey {
         case userName = "login"
         case userURL = "html_url"
         case userAvatar = "avatar_url"
         case userRepositoriesURL = "repos_url"
+        case userID = "id"
     }
 }
 
@@ -26,6 +28,7 @@ extension Users: Decodable {
         userAvatar = try! container.decode(String.self, forKey: .userAvatar)
         userRepositoriesURL = try! container.decode(String.self, forKey: .userRepositoriesURL)
         userURL = try! container.decode(String.self, forKey: .userURL)
+        userID = try! container.decode(Int.self, forKey: .userID)
     }
 }
 

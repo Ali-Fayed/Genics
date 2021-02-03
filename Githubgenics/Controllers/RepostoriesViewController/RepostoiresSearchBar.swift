@@ -14,6 +14,7 @@ extension RepositoriesListViewController: UISearchBarDelegate {
             return
         }
         fetchSearchedRepositories(for: query)
+  
         self.fetchedRepositories.removeAll()
     }
     

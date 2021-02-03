@@ -28,12 +28,9 @@ extension RepositoriesListViewController {
       
       override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
           tableView.deselectRow(at: indexPath, animated: true)
-          let url = fetchedRepositories[indexPath.row].repositoryURL
-          let vc = SFSafariViewController(url: URL(string: url)!)
-          DispatchQueue.main.async {
-              tableView.isHidden = false
-          }
-          present(vc, animated: true)
+        
+        performSegue(withIdentifier: "Commit", sender: self)
+
 
       }
       
@@ -51,5 +48,17 @@ extension RepositoriesListViewController {
           action.backgroundColor = .gray
           return action
       }
+    override  func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+     selectedRepository = fetchedRepositories[indexPath.row]
+     return indexPath
+   }
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//      if segue.identifier == "Commit" {
+//        guard let commitsViewController = segue.destination as? CommitsViewController else {
+//          return
+//        }
+//        commitsViewController.selectedRepository = selectedRepository
+//      }
+//    }
 }

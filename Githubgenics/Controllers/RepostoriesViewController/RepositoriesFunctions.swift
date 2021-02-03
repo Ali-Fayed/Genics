@@ -16,6 +16,7 @@ extension RepositoriesListViewController {
             switch result {
             case .success(let repositories):
                 self.fetchedRepositories.append(contentsOf: repositories)
+                self.loadingIndicator.stopAnimating()
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }

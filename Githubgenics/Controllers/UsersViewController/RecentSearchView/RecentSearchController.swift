@@ -9,12 +9,15 @@ import UIKit
 import SafariServices
 import CoreData
 
-class RecentSearchViewController: UIViewController  {
+class RecentSearchViewController:  UIViewController  {
+    
+   
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var searchHistory = [SearchHistory]()
     var lastSearch = [LastSearch]()
     
+    @IBOutlet weak var searchBaar: UISearchBar!
     @IBOutlet weak var clearAll: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -49,6 +52,7 @@ class RecentSearchViewController: UIViewController  {
             self.lastSearch = result
             self.collectionView.reloadData()
         }
+
     }
     
     

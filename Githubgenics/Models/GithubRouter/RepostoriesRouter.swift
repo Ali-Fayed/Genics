@@ -35,6 +35,17 @@ class RepostoriesRouter {
         }
     }
     
+    func fetchCommits(for repository: String, completion: @escaping ([Commit]) -> Void) {
+      let url = "https://api.github.com/repos/\(repository)/commits"
+      AF.request(url)
+        .responseDecodable(of: [Commit].self) { response in
+          guard let commits = response.value else {
+            return
+          }
+          completion(commits)
+        }
+    }
+    
     func fetchPopularSwiftRepositories(completion: @escaping (Result<[Repository],Error>) -> Void) {
         searchRepositories(query: "language:Swift", completion: completion)
     }

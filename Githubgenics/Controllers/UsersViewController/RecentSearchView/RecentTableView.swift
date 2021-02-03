@@ -20,10 +20,16 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
    cell.textLabel?.text = searchHistory[indexPath.row].keyword
    return cell
 }
+    
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "collection", for: indexPath)
+//        cell.textLabel?.text = "1"
+//    }
 
 
  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
+    UsersListViewController().searchBar.text = searchHistory[indexPath.row].keyword
 }
 
 
@@ -44,10 +50,6 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
     }
 }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destnation = segue.destination as? SearchViewController {
-            destnation.passedKeys = searchHistory[(tableView.indexPathForSelectedRow?.row)!]
-        }
-}
+
 
 }

@@ -4,44 +4,52 @@
 //
 //  Created by Ali Fayed on 31/01/2021.
 //
-
+import SafariServices
 import UIKit
 
 
-extension UsersListViewController {
+extension UsersListViewController : UITableViewDataSource , UITableViewDelegate {
     
     // MARK: - TableView DataSource
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 60
    }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
      
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.userCell, for: indexPath) as! UsersCell
         cell.CellData(with: users[indexPath.row])
-        let longPress = UILongPressGestureRecognizer()
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         cell.addGestureRecognizer(longPress)
+        
+  
         return cell
     }
 
     //MARK:- TableViev Delegate
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let postion = scrollView.contentOffset.y
         if postion > (tableView.contentSize.height-100-scrollView.frame.size.height) {
             fetchMoreFromUsersList()
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let IndexPath = users[indexPath.row]
+//        let vc = SFSafariViewController(url: URL(string: IndexPath.userURL!)!)
+//        present(vc, animated: true)
+        Save().lastSearch(login: IndexPath.userName!, avatar_url: IndexPath.userAvatar!, html_url: IndexPath.userURL!)
+        
+    }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == users.count - 1 {
             tableViewSpinner()
         }
@@ -55,7 +63,7 @@ extension UsersListViewController {
         self.tableView.tableFooterView?.isHidden = false
     }
     
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let important = importantAction(at: indexPath)
         return UISwipeActionsConfiguration(actions: [important])
     }
