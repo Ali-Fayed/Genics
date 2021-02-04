@@ -13,8 +13,6 @@ import Kingfisher
 
 class DetailViewController: UIViewController  {
     var checkmarks = [Int : Bool]()
-
-
     var userRepository : [UserRepository] = []
     var savedRepos = [SavedRepositories]()
     var defaults = UserDefaults.standard
@@ -22,6 +20,7 @@ class DetailViewController: UIViewController  {
     var selectedRepository: UserRepository?
     var gg: UserRepository?
     let longPress = UILongPressGestureRecognizer()
+    
     var setBookmarkButtonState: String = "off" {
         willSet {
             if newValue == "on" {

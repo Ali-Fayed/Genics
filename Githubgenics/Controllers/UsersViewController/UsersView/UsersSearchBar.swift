@@ -9,7 +9,10 @@ import UIKit
 
 extension UsersListViewController  : UISearchBarDelegate  {
     
+    
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("\(searchText)")
         guard let query = searchBar.text else {
             return
         }
@@ -29,27 +32,24 @@ extension UsersListViewController  : UISearchBarDelegate  {
         self.users.removeAll()
         self.tableView.reloadData()
         tableView.isHidden = false
-        self.searchBar.showsSearchResultsButton = true
         
     }
     
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        self.searchBar.showsCancelButton = true
-        return true
-    }
-    
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        self.searchBar.showsCancelButton = false
-        return true
-    }
-    
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//        self.tableView.tableHeaderView = searchBar
+//    }
+//    
+//    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+//        self.tableView.tableHeaderView = searchBar
+//return true
+//    }
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
         print("cancel")
-        self.searchBar.text = ""
         self.users.removeAll()
-        self.tableView.reloadData()
-        self.searchBar.resignFirstResponder()
+        searchBar.text = nil
+        
             UsersRouter().fetchUserstoAvoidIndexError { [weak self] result in
                 switch result {
                 case .success(let users):
@@ -62,35 +62,32 @@ extension UsersListViewController  : UISearchBarDelegate  {
                 }
          
             }
-        self.tableView.reloadData()
+        tableView.tableHeaderView = self.searchBar
+        self.tableView.isHidden = false
+        self.tabBarController?.navigationItem.titleView = nil
+//        self.searchBar.showsCancelButton = false
+//        self.searchBar.resignFirstResponder()
+          
 
         }
+        
+        
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else { return }
         Save().searchKeywords(keyword: text)
     }
     
-    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
-//        historyView.isHidden = false
-//        tableView.isHidden = true
-        if tableView.isHidden == false {
-            tableView.isHidden = true
-            resignFirstResponder()
-            self.searchBar.showsSearchResultsButton = false
-        } else {
-            tableView.isHidden = false
-        }
-       
-        
-    }
-    
+
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        tableView.isHidden = false
+        tableView.isHidden = true
+        self.tableView.tableHeaderView = nil
+        self.searchBar.showsCancelButton = true
+        self.tabBarController?.navigationItem.titleView = self.searchBar
+        self.tabBarController?.navigationItem.leftBarButtonItem = nil
+        self.searchBar.becomeFirstResponder()
+
     }
     
-//    let tv : RecentSearchViewController = self.children[0] as! RecentSearchViewController
-//    tv.tableView.reloadData()
-//    tv.viewDidAppear(true)
     
 }

@@ -32,8 +32,6 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
 
     //MARK:- TableViev Delegate
     
-
-    
      func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let postion = scrollView.contentOffset.y
         if postion > (tableView.contentSize.height-100-scrollView.frame.size.height) {
@@ -43,8 +41,6 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let IndexPath = users[indexPath.row]
-//        let vc = SFSafariViewController(url: URL(string: IndexPath.userURL!)!)
-//        present(vc, animated: true)
         Save().lastSearch(login: IndexPath.userName!, avatar_url: IndexPath.userAvatar!, html_url: IndexPath.userURL!)
         
     }
@@ -62,21 +58,7 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
         self.tableView.tableFooterView = spinner
         self.tableView.tableFooterView?.isHidden = false
     }
-    
-     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let important = importantAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [important])
-    }
-    
-    func importantAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: "Bookmark") { [weak self] (action, view, completion) in
-     
-        }
-        action.image = #imageLiteral(resourceName: "like")
-        action.backgroundColor = .gray
-        return action
-    }
-    
+        
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destnation = segue.destination as? DetailViewController {

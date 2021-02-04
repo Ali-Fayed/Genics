@@ -33,6 +33,10 @@ class RepositoriesListViewController: UITableViewController  {
         self.tabBarController?.navigationItem.title = "Repositories".localized()
     }
     
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        super .viewDidDisappear(animated)
+        self.tabBarController?.navigationItem.titleView = nil
+
+    }
 }
 

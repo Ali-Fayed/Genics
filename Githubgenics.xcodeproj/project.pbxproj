@@ -68,7 +68,6 @@
 		EAC1636625BAB789007EDC96 /* QueryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636325BAB789007EDC96 /* QueryCell.xib */; };
 		EAC1636725BAB789007EDC96 /* RepoSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636425BAB789007EDC96 /* RepoSearchCell.xib */; };
 		EAC1636825BAB789007EDC96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636525BAB789007EDC96 /* Main.storyboard */; };
-		EAC3B16C25C9232A00F798DA /* RecentSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3B16B25C9232A00F798DA /* RecentSearchBar.swift */; };
 		EAC3B16F25C951B600F798DA /* RepositoryCommitsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3B16E25C951B600F798DA /* RepositoryCommitsAPI.swift */; };
 		EAC3B17325C9520700F798DA /* CommitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3B17225C9520700F798DA /* CommitsView.swift */; };
 		EAD4476625B0148A00FB42B4 /* UsersSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD4476425B0148A00FB42B4 /* UsersSearchCell.swift */; };
@@ -145,7 +144,6 @@
 		EAC1636325BAB789007EDC96 /* QueryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QueryCell.xib; sourceTree = "<group>"; };
 		EAC1636425BAB789007EDC96 /* RepoSearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoSearchCell.xib; sourceTree = "<group>"; };
 		EAC1636525BAB789007EDC96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		EAC3B16B25C9232A00F798DA /* RecentSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchBar.swift; sourceTree = "<group>"; };
 		EAC3B16E25C951B600F798DA /* RepositoryCommitsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCommitsAPI.swift; sourceTree = "<group>"; };
 		EAC3B17225C9520700F798DA /* CommitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsView.swift; sourceTree = "<group>"; };
 		EAD4476425B0148A00FB42B4 /* UsersSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersSearchCell.swift; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 				EAB2AD0B25BBED9F001B6DD7 /* RecentSearchController.swift */,
 				EA05897325C55F9800BC1024 /* RecentTableView.swift */,
 				EA05897625C55F9F00BC1024 /* RecentCollectionView.swift */,
-				EAC3B16B25C9232A00F798DA /* RecentSearchBar.swift */,
 			);
 			path = RecentSearchView;
 			sourceTree = "<group>";
@@ -634,7 +631,6 @@
 				EA2312DD2592819D000BDC8C /* ConstantsModel.swift in Sources */,
 				EA0589BD25C56A0E00BC1024 /* BookmarksSearchBar.swift in Sources */,
 				EA999A6525927C02005E832C /* DetailViewController.swift in Sources */,
-				EAC3B16C25C9232A00F798DA /* RecentSearchBar.swift in Sources */,
 				EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */,
 				EA622CFF25C54F4900EC5F3C /* SearchForRepostoriesAPI.swift in Sources */,
 				EA4530C825BFAD3B00651BFA /* Localizationl.swift in Sources */,

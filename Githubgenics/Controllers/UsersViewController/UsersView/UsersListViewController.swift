@@ -13,17 +13,28 @@ class UsersListViewController: UIViewController  {
     let longPress = UILongPressGestureRecognizer()
     var users : [items] = []
     var moreUsers : [items] = []
-    var lastSearch = [LastSearch]()
+   lazy var lastSearch = [LastSearch]()
     var searchHistory = [SearchHistory]()
     var isPaginating = false
+    lazy var refreshControl: UIRefreshControl = {
+            let refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action:
+                         #selector(UsersListViewController.handleRefresh(_:)),
+                                     for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.gray
+            return refreshControl
+        }()
     
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+            
+        refreshList ()
+        refreshControl.endRefreshing()
+        }
+    
+    lazy var searchBar:UISearchBar = UISearchBar()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var historyView: UIView!
-    @IBOutlet weak var emptyHistoryView: UIView!
     @IBOutlet weak var signOutButton: UIBarButtonItem?
-    @IBOutlet weak var searchBar: UISearchBar!
-    
-
     @IBAction func refreshTable(_ sender: UIRefreshControl?) {
         sender?.endRefreshing()
         refreshList ()
@@ -33,29 +44,42 @@ class UsersListViewController: UIViewController  {
         super.viewDidLoad()
         fetchUsersList()
         tableView.addGestureRecognizer(longPress)
+        self.tableView.addSubview(refreshControl)
         signOutButton?.title = "Signout".localized()
         self.tabBarController?.navigationItem.hidesBackButton = true
-        self.tabBarController?.navigationItem.leftBarButtonItem = signOutButton
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
         loadingIndicator.center = view.center
         view.addSubview(loadingIndicator)
-       
-   
+        searchBar.searchBarStyle = UISearchBar.Style.prominent
+        searchBar.placeholder = " Search..."
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = false
+        searchBar.backgroundColor = UIColor(named: "ViewsColorBallet")
+        searchBar.delegate = self
+        self.tableView.tableHeaderView = searchBar
         
+    
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isToolbarHidden = true
         navigationController?.isNavigationBarHidden = false
-      
+        self.tabBarController?.navigationItem.leftBarButtonItem = signOutButton
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.navigationItem.title = "Users".localized()
-        self.tableView.isHidden = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.tabBarController?.navigationItem.leftBarButtonItem = nil
+
     }
     
     
