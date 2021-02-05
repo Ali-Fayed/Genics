@@ -41,6 +41,7 @@ class RecentSearchViewController:  UIViewController  {
             self.collectionView.reloadData()
         }
         self.tableView.tableHeaderView = self.collectionView
+        self.tableView.sectionHeaderHeight = 120
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,9 +57,13 @@ class RecentSearchViewController:  UIViewController  {
             self.collectionView.reloadData()
         }
         self.tableView.tableHeaderView = self.collectionView
+
     }
     
-
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+    }
 
 }
 

@@ -9,14 +9,14 @@ import UIKit
 import SafariServices
 
 extension SavedUsersController {
-
+    
 
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return bookmarkedUsers.count
 }
 
 override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: K.userSerchCell, for: indexPath) as? UsersSearchCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: K.usersCell, for: indexPath) as? UsersCell
     let  model = bookmarkedUsers[indexPath.row]
     cell?.CellData(with: model)
     return cell!
@@ -33,6 +33,8 @@ override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: Inde
 override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
     return .delete
 }
+    
+    
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {

@@ -191,10 +191,16 @@ Projects and more.</string>
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <outlet property="delegate" destination="heg-jZ-fpe" id="DZ9-az-t9K"/>
                             </connections>
                         </searchBar>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="heg-jZ-fpe" id="alJ-1h-T8x"/>
                             <outlet property="delegate" destination="heg-jZ-fpe" id="Lw6-8b-INH"/>
@@ -225,47 +231,6 @@ Projects and more.</string>
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jJP-Mw-dsN">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="User" rowHeight="60" id="XAQ-IV-hBa" customClass="UsersCell" customModule="Githubgenics" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XAQ-IV-hBa" id="W63-Yv-v2C">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="02B-Ab-tIL">
-                                                    <rect key="frame" x="20" y="5" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GfG-h3-Wj8">
-                                                    <rect key="frame" x="82" y="20" width="312" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </label>
-                                            </subviews>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="ViewsColorBallet"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <outlet property="userAvatar" destination="02B-Ab-tIL" id="E40-I8-8Hw"/>
-                                            <outlet property="userName" destination="GfG-h3-Wj8" id="f37-au-oLs"/>
-                                            <segue destination="rsa-Ug-v1B" kind="show" id="A7F-og-Aro"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -306,6 +271,7 @@ Projects and more.</string>
                         <outlet property="historyView" destination="OOb-db-xIu" id="yaC-dC-CE3"/>
                         <outlet property="signOutButton" destination="qjF-lS-Pf4" id="faN-fj-PJD"/>
                         <outlet property="tableView" destination="jJP-Mw-dsN" id="CIK-zh-xWj"/>
+                        <segue destination="rsa-Ug-v1B" kind="show" identifier="Detail" id="A0E-LG-Dhg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJL-gW-2bm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -599,7 +565,7 @@ Projects and more.</string>
                                                                     <color key="textColor" name="DetailViewColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                     <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52m-hB-EL9">
@@ -609,6 +575,9 @@ Projects and more.</string>
                                                                         <constraint firstAttribute="height" constant="22" id="hxU-bk-QLC"/>
                                                                     </constraints>
                                                                     <state key="normal" title="Button" image="unlike"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="didTapButton:" destination="ImC-5k-7Pj" eventType="touchUpInside" id="JEr-ck-fUr"/>
                                                                     </connections>
@@ -624,7 +593,7 @@ Projects and more.</string>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                     <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </textView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11111" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogU-VE-ZEN">
@@ -636,7 +605,7 @@ Projects and more.</string>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                     <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="langauge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bga-iC-gWA">
@@ -649,7 +618,7 @@ Projects and more.</string>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                     <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="qjf-aQ-t3Y">
@@ -658,6 +627,9 @@ Projects and more.</string>
                                                                         <constraint firstAttribute="height" constant="15" id="BHx-lY-KXE"/>
                                                                         <constraint firstAttribute="width" constant="15" id="HhL-ca-6ay"/>
                                                                     </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-3" translatesAutoresizingMaskIntoConstraints="NO" id="ff2-Ut-vl0">
                                                                     <rect key="frame" x="26" y="97" width="15" height="15"/>
@@ -665,6 +637,9 @@ Projects and more.</string>
                                                                         <constraint firstAttribute="height" constant="15" id="6ea-sS-eay"/>
                                                                         <constraint firstAttribute="width" constant="15" id="G6I-7H-Uq1"/>
                                                                     </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                             </subviews>
                                                             <constraints>
@@ -690,6 +665,7 @@ Projects and more.</string>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                     </subviews>
@@ -697,6 +673,9 @@ Projects and more.</string>
                                                         <constraint firstAttribute="width" constant="416" id="T07-Kh-T3x"/>
                                                         <constraint firstAttribute="height" constant="134" id="hRy-Cp-hXf"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </stackView>
                                             </subviews>
                                             <color key="tintColor" name="List"/>
@@ -707,8 +686,8 @@ Projects and more.</string>
                                                 <constraint firstItem="hz6-8W-mF9" firstAttribute="leading" secondItem="8sh-GO-Hnv" secondAttribute="leading" id="sSv-Xq-rDw"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
                                             </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="ViewsColorBallet"/>
@@ -753,7 +732,6 @@ Projects and more.</string>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Profile" id="muC-Fj-asR">
                         <barButtonItem key="backBarButtonItem" title="Back" id="KQf-3e-INs"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="link" catalog="system" id="rJI-Is-9ju"/>
                     </navigationItem>
                     <connections>
                         <outlet property="bookmarkButton" destination="hub-1d-dKN" id="bZT-1a-Iu8"/>
@@ -767,7 +745,7 @@ Projects and more.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zab-j6-uPX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4701" y="77"/>
+            <point key="canvasLocation" x="4562" y="98"/>
         </scene>
         <!--Commits View Controller-->
         <scene sceneID="y7I-gR-MnY">
@@ -796,7 +774,7 @@ Projects and more.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5PJ-Dt-g2Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5440" y="68"/>
+            <point key="canvasLocation" x="5406" y="662"/>
         </scene>
         <!--Repos Bookmarks Controller-->
         <scene sceneID="PZs-9S-aOG">
@@ -822,11 +800,12 @@ Projects and more.</string>
                     <navigationItem key="navigationItem" id="3mb-fD-RFY"/>
                     <connections>
                         <outlet property="searchBar" destination="7tJ-aX-Txu" id="jAv-V8-qYE"/>
+                        <segue destination="8uN-GM-eUw" kind="show" identifier="CommitSegue" id="m0R-c3-1yO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fx5-on-dRx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3238" y="-734"/>
+            <point key="canvasLocation" x="3974" y="-735"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Zv0-0H-Uv6">
@@ -854,7 +833,7 @@ Projects and more.</string>
         <scene sceneID="zRw-aU-8RS">
             <objects>
                 <tableViewController id="Ol9-Cx-Lf3" customClass="SavedUsersController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AgO-TA-QcV">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AgO-TA-QcV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -879,6 +858,7 @@ Projects and more.</string>
                     <connections>
                         <outlet property="SignOutBT" destination="eU0-Q9-h8A" id="JTb-uH-RNv"/>
                         <outlet property="searchBar" destination="RhS-26-7bf" id="Jfj-ag-Hgy"/>
+                        <segue destination="rsa-Ug-v1B" kind="show" identifier="Detail" id="Ddv-Ei-mgU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zti-3R-3su" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1208,13 +1188,13 @@ Projects and more.</string>
                                 <rect key="frame" x="45" y="414" width="324" height="68"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your stuff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvk-tt-8DA">
-                                        <rect key="frame" x="87.5" y="0.0" width="149" height="26.5"/>
+                                        <rect key="frame" x="87.5" y="0.0" width="149" height="18"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" name="Labels"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Search all of Github for People, Repositories , Bookmark and stuff and access again" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="k88-jJ-LET">
-                                        <rect key="frame" x="19.5" y="26.5" width="285" height="41.5"/>
+                                        <rect key="frame" x="19.5" y="18" width="285" height="50"/>
                                         <color key="textColor" name="Labels"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1297,7 +1277,7 @@ Projects and more.</string>
                                     <outlet property="delegate" destination="DEM-w2-YeV" id="xYs-jg-6wP"/>
                                 </connections>
                             </collectionView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dCt-JS-Ygd">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dCt-JS-Ygd">
                                 <rect key="frame" x="0.0" y="44" width="414" height="808"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -1357,6 +1337,7 @@ Projects and more.</string>
         <segue reference="qk6-vl-Ley"/>
         <segue reference="S5u-ai-ppc"/>
         <segue reference="65E-pI-w9C"/>
+        <segue reference="Ddv-Ei-mgU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Follow" width="256" height="256"/>
@@ -1368,7 +1349,6 @@ Projects and more.</string>
         <image name="circle" width="512" height="512"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="google" width="106" height="106"/>
-        <image name="link" catalog="system" width="128" height="122"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="signpost.right.fill" catalog="system" width="128" height="118"/>
         <image name="star-3" width="256" height="256"/>

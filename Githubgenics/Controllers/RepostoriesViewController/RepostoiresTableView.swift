@@ -42,7 +42,7 @@ extension RepositoriesListViewController {
       func importantAction(at indexPath: IndexPath) -> UIContextualAction {
           let action = UIContextualAction(style: .normal, title: "Bookmark") { [self] (action, view, completion) in
               let index = fetchedRepositories[indexPath.row]
-            Save().repository(name: index.repositoryName, desc: index.repositoryDescription ?? "", language: index.repositoryLanguage ?? "", stars: index.repositoryStars, url: index.repositoryURL)
+            Save().repository(name: index.repositoryName, desc: index.repositoryDescription ?? "", language: index.repositoryLanguage ?? "", stars: index.repositoryStars, url: index.repositoryURL, fulName: index.fullName)
           }
           action.image = #imageLiteral(resourceName: "like")
           action.backgroundColor = .gray
@@ -53,12 +53,12 @@ extension RepositoriesListViewController {
      return indexPath
    }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//      if segue.identifier == "Commit" {
-//        guard let commitsViewController = segue.destination as? CommitsViewController else {
-//          return
-//        }
-//        commitsViewController.selectedRepository = selectedRepository
-//      }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if segue.identifier == "Commit" {
+        guard let commitsViewController = segue.destination as? CommitsViewController else {
+          return
+        }
+        commitsViewController.selectedRepository = selectedRepository
+      }
+    }
 }

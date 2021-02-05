@@ -36,8 +36,8 @@ struct K {
     static let lastSearchCell = "cell"
     static let repositoriesCell = "repositoryCell"
     static let settingsCell = "SettingsCell"
-    static let userCell = "User"
-    static let userSerchCell = "Cell"
+    static let usersCell = "UsersCell"
+    static let UsersNib = "UsersCell"
 
 }
 

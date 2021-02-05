@@ -12,6 +12,7 @@ class UsersListViewController: UIViewController  {
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
     let longPress = UILongPressGestureRecognizer()
     var users : [items] = []
+    var passedusers :items?
     var moreUsers : [items] = []
     var lastSearch = [LastSearch]()
     var searchHistory = [SearchHistory]()
@@ -41,31 +42,23 @@ class UsersListViewController: UIViewController  {
         sender?.endRefreshing()
         refreshList ()
     }
-    @IBOutlet weak var searchBaar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUsersList()
         tableView.addGestureRecognizer(longPress)
         self.tableView.addSubview(refreshControl)
+        tableView.register(UsersCell.nib(), forCellReuseIdentifier: K.usersCell)
         signOutButton?.title = "Signout".localized()
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
         loadingIndicator.center = view.center
         view.addSubview(loadingIndicator)
-        searchBar.searchBarStyle = UISearchBar.Style.prominent
-        searchBar.placeholder = " Search..."
-        searchBar.sizeToFit()
-        searchBar.isTranslucent = false
-        searchBar.backgroundColor = UIColor(named: "ViewsColorBallet")
-        searchBar.delegate = self
-        listSearchBar.searchBarStyle = UISearchBar.Style.prominent
-        listSearchBar.placeholder = " Search..."
-        listSearchBar.sizeToFit()
-        listSearchBar.isTranslucent = false
-        listSearchBar.backgroundColor = UIColor(named: "ViewsColorBallet")
-        listSearchBar.delegate = self
+        viewSearchBar()
         self.tableView.tableHeaderView = self.listSearchBar
+        self.tabBarController?.navigationItem.leftBarButtonItem = signOutButton
+        self.historyView.alpha = 0.0
+        self.searchBar.alpha = 0.0
     }
     
     
@@ -74,7 +67,8 @@ class UsersListViewController: UIViewController  {
         super.viewWillAppear(animated)
         navigationController?.isToolbarHidden = true
         navigationController?.isNavigationBarHidden = false
-        self.tabBarController?.navigationItem.leftBarButtonItem = signOutButton
+        self.searchBar.becomeFirstResponder()
+        self.historyView.alpha = 1.0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,7 +80,8 @@ class UsersListViewController: UIViewController  {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.tabBarController?.navigationItem.leftBarButtonItem = nil
-
+        self.historyView.alpha = 0.0
+        self.tableView.reloadData()
     }
     
     

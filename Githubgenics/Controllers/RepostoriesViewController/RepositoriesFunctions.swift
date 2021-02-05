@@ -12,6 +12,7 @@ extension RepositoriesListViewController {
     
     func fetchAndDisplayPopularSwiftRepositories() {
         loadingIndicator.startAnimating()
+        
         RepostoriesRouter().fetchPopularSwiftRepositories { result in
             switch result {
             case .success(let repositories):
@@ -19,6 +20,7 @@ extension RepositoriesListViewController {
                 self.loadingIndicator.stopAnimating()
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    self.shimmerLoadingView ()
                 }
             case .failure(_):
                 break
@@ -26,6 +28,16 @@ extension RepositoriesListViewController {
             
         }
     }
+    func shimmerLoadingView () {
+        tableView.isSkeletonable = true
+        tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)), animation: nil, transition: .crossDissolve(0.25))
+        tableView.skeletonCornerRadius = 5
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.tableView.stopSkeletonAnimation()
+            self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+        }
+    }
+    
     
     func fetchSearchedRepositories (for query: String) {
         loadingIndicator.startAnimating()
@@ -35,7 +47,6 @@ extension RepositoriesListViewController {
                 self.fetchedRepositories.append(contentsOf: users)
                 self.loadingIndicator.stopAnimating()
                 self.tableView.reloadData()
-                print("okkkkk")
             case .failure(_):
                 let error = Error.self
                 print(error)

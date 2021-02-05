@@ -13,14 +13,13 @@ class SavedUsersController: UITableViewController {
     
     var bookmarkedUsers = [UsersDataBase]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var SignOutBT: UIBarButtonItem!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UsersSearchCell.nib(), forCellReuseIdentifier: K.userSerchCell)
+        tableView.register(UsersCell.nib(), forCellReuseIdentifier: K.usersCell)
         searchBar.delegate = self
         SignOutBT.title = "Repos".localized()
         Fetch().users { (result) in

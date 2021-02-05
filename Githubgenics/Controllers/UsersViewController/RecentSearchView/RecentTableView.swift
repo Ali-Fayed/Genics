@@ -24,7 +24,7 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 //    cell.accessoryView = UIImageView(initWithImage:[UIImage imageNamed:"lock_icon.png"
 //            [cell.accessoryView setFrame:CGRectMake(0, 0, 24, 24)]
     cell.accessoryView = UIImageView(image: UIImage(systemName: "arrow.up.backward"))
-    
+
    return cell
     
 }
@@ -57,7 +57,10 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
           return headerView
     }
     
-
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+           return 50
+       }
+    
     @objc func myClasspressed () {
         print("here")
         let resetSearchHistory = NSFetchRequest<NSFetchRequestResult>(entityName: K.searchHistoryEntity)
@@ -93,9 +96,7 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 //    UsersListViewController.shared.searchBar.text = searchHistory[indexPath.row].keyword
     
 }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-           return 50
-       }
+
 
   func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
     return .delete

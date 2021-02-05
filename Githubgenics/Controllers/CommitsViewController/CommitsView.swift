@@ -9,14 +9,32 @@ import UIKit
 
 class CommitsViewController: UITableViewController {
     var commits: [Commit] = []
-    var selectedRepository: UserRepository?
+    var selectedRepository: Repository?
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
-
+    var selectedRepositorry: UserRepository?
+    var selectedBookmarked : SavedRepositories?
+    
     override func viewDidLoad() {
       super.viewDidLoad()
       loadingIndicator.center = view.center
       view.addSubview(loadingIndicator)
       fetchCommitsForRepository()
+        fetchCommitsForRepository2()
+        navigationItem.title = "Commits".localized()
+        fetchCommitsForRepository3()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationItem.title = "Commits".localized()
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
     }
 
     func fetchCommitsForRepository() {
@@ -25,6 +43,32 @@ class CommitsViewController: UITableViewController {
         return
       }
         RepostoriesRouter().fetchCommits(for: repository.fullName) { [self] commits in
+        self.commits = commits
+        loadingIndicator.stopAnimating()
+        tableView.reloadData()
+      }
+
+    }
+    
+    func fetchCommitsForRepository2() {
+      loadingIndicator.startAnimating()
+      guard let repository = selectedRepositorry else {
+        return
+      }
+        RepostoriesRouter().fetchCommits(for: repository.fullName) { [self] commits in
+        self.commits = commits
+        loadingIndicator.stopAnimating()
+        tableView.reloadData()
+      }
+
+    }
+    
+    func fetchCommitsForRepository3() {
+      loadingIndicator.startAnimating()
+      guard let repository = selectedBookmarked else {
+        return
+      }
+        RepostoriesRouter().fetchCommits(for: repository.fulName as! String) { [self] commits in
         self.commits = commits
         loadingIndicator.stopAnimating()
         tableView.reloadData()

@@ -21,12 +21,10 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
     }
      
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.userCell, for: indexPath) as! UsersCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.usersCell, for: indexPath) as! UsersCell
         cell.CellData(with: users[indexPath.row])
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         cell.addGestureRecognizer(longPress)
-        
-  
         return cell
     }
 
@@ -42,21 +40,9 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
         tableView.deselectRow(at: indexPath, animated: true)
         let IndexPath = users[indexPath.row]
         Save().lastSearch(login: IndexPath.userName!, avatar_url: IndexPath.userAvatar!, html_url: IndexPath.userURL!)
-        
+        performSegue(withIdentifier: "Detail", sender: self)
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        if tableView.isHidden == false {
-//        return searchBar
-//        }
-//        return searchBaar
-//
-//    }
-//    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//           return 70
-//       }
-//    
      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == users.count - 1 {
             tableViewSpinner()
@@ -71,11 +57,17 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
         self.tableView.tableFooterView?.isHidden = false
     }
         
-    
+      func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        passedusers = users[indexPath.row]
+     return indexPath
+   }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destnation = segue.destination as? DetailViewController {
-            destnation.passedUser = users[(tableView.indexPathForSelectedRow?.row)!]
+      if segue.identifier == "Detail" {
+        guard let commitsViewController = segue.destination as? DetailViewController else {
+          return
         }
+        commitsViewController.passedUser = passedusers
+      }
     }
     
 }

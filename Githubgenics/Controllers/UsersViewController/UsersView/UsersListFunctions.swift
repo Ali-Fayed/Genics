@@ -83,8 +83,6 @@ extension UsersListViewController {
     }
     
     
-    
-    
     func SignOutError () {
         let alert = UIAlertController(title: "Error Sign Out", message: "check your internet", preferredStyle: .alert)
         let action = UIAlertAction(title: "Try Again", style: .default) { (action) in
@@ -110,6 +108,7 @@ extension UsersListViewController {
             SignOutError()
         }
     }
+    
     func fetchUsersData () {
         UsersRouter().fetchUserstoAvoidIndexError { [weak self] result in
             switch result {
@@ -125,13 +124,25 @@ extension UsersListViewController {
         }
     }
     
+    func viewSearchBar() {
+        searchBar.searchBarStyle = UISearchBar.Style.default
+        searchBar.placeholder = " Search..."
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = false
+        searchBar.delegate = self
+        listSearchBar.searchBarStyle = UISearchBar.Style.prominent
+        listSearchBar.placeholder = " Search..."
+        listSearchBar.sizeToFit()
+        listSearchBar.isTranslucent = false
+        listSearchBar.delegate = self
+    }
+    
+    
     func fetchSearchedUsers (query: String) {
-        self.loadingIndicator.startAnimating()
         UsersRouter().listUsers(query:query) { [weak self] result in
             switch result {
             case .success(let users):
                 self!.users.append(contentsOf: users)
-                self!.loadingIndicator.stopAnimating()
                 DispatchQueue.main.async {
                     self!.tableView.reloadData()
                     

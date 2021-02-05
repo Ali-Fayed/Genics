@@ -37,33 +37,33 @@ class ReposCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        if let ButtonState = defaults.string(forKey: "Bookmark State")
-//        { setButtonState = ButtonState }
-//        else { setButtonState = "off" }
+        if let ButtonState = defaults.string(forKey: "Bookmark State")
+        { setButtonState = ButtonState }
+        else { setButtonState = "off" }
     }
     
   
   //MARK:- Bookmark Button
     
-//    var setButtonState: String = "off" {
-//        willSet {
-//            if newValue == "on" {
-//                bookmarkRepository?.setBackgroundImage(UIImage(named: "like"), for: .normal)
-//
-//            }
-//            else { bookmarkRepository?.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
-//
-//
-//            }
-//        }
-//    }
-//
+    var setButtonState: String = "off" {
+        willSet {
+            if newValue == "on" {
+                bookmarkRepository?.setBackgroundImage(UIImage(named: "like"), for: .normal)
+
+            }
+            else { bookmarkRepository?.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
+
+
+            }
+        }
+    }
+
     @IBAction func didTapButton(_ sender: Any) {
         delegate?.didTapButton(cell: self, didTappedThe: sender as? UIButton)
-//        let stat = setButtonState == "on" ? "off" : "on"
-//        setButtonState = stat
-//        defaults.set(stat , forKey: "Bookmark State")
-//        print(stat)
+        let stat = setButtonState == "on" ? "off" : "on"
+        setButtonState = stat
+        defaults.set(stat , forKey: "Bookmark State")
+        print(stat)
     }
     
 
@@ -71,6 +71,7 @@ class ReposCell: UITableViewCell {
     //MARK:- Repositories Cell Data
     
     func CellData( with model: UserRepository ) {
+        
         self.repositoryName.text = model.repositoryName
         self.repositoryDescription.text = model.repositoryDescription
         self.repositoryStars.text = String(model.repositoryStars!)

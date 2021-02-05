@@ -34,7 +34,7 @@ class Save: Fetch {
         }
     }
     
-    func repository(name: String , desc: String , language: String , stars: Int , url : String) {
+    func repository(name: String , desc: String , language: String , stars: Int , url : String , fulName: String) {
         let DataParameters = SavedRepositories(context: context)
         DataParameters.name = name as NSObject
         DataParameters.descriptin = desc as NSObject

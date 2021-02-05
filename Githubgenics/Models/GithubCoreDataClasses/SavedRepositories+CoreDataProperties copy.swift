@@ -21,5 +21,8 @@ extension SavedRepositories {
     @NSManaged public var url: NSObject?
     @NSManaged public var stars: NSObject?
     @NSManaged public var language: NSObject?
+    @NSManaged public var fulName: NSObject?
+
+    
 
 }

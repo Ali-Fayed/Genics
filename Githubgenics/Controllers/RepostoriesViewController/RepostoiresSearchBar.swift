@@ -14,9 +14,7 @@ extension RepositoriesListViewController: UISearchBarDelegate {
             return
         }
         fetchSearchedRepositories(for: query)
-  
         self.fetchedRepositories.removeAll()
-    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = nil
@@ -25,4 +23,5 @@ extension RepositoriesListViewController: UISearchBarDelegate {
         loadingIndicator.stopAnimating()
     }
     
+}
 }

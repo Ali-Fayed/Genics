@@ -27,6 +27,8 @@ extension DetailViewController {
      
         }
     }
+    
+
 
     func loadUserProfileData () {
         userName.text = "\((passedUser?.userName?.capitalized)!)"
@@ -39,6 +41,10 @@ extension DetailViewController {
         userFollowers.text = String(Int.random(in: 10 ... 50))
         userFollowing.text = String(Int.random(in: 10 ... 50))
     }
+    
+    
+    
+  
     
     @IBAction func bookmarkButton(_ sender: UIButton) {
         let stat = setBookmarkButtonState == "on" ? "off" : "on"
