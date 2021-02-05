@@ -18,14 +18,13 @@ class RecentSearchViewController:  UIViewController  {
     var lastSearch = [LastSearch]()
     
     
-    @IBOutlet weak var searchBaar: UISearchBar!
     @IBOutlet weak var clearAll: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
 
     @IBOutlet weak var ok: UILabel!
     
-
+    
     //MARK:- View LifeCycle Methods
     
     override func viewDidLoad() {
@@ -59,6 +58,7 @@ class RecentSearchViewController:  UIViewController  {
         self.tableView.tableHeaderView = self.collectionView
     }
     
+
 
 }
 

@@ -110,5 +110,35 @@ extension UsersListViewController {
             SignOutError()
         }
     }
+    func fetchUsersData () {
+        UsersRouter().fetchUserstoAvoidIndexError { [weak self] result in
+            switch result {
+            case .success(let users):
+                self!.users.append(contentsOf: users)
+                DispatchQueue.main.async {
+                    self!.tableView.reloadData()
+                }
+            case .failure(_):
+             break
+            }
+     
+        }
+    }
     
+    func fetchSearchedUsers (query: String) {
+        self.loadingIndicator.startAnimating()
+        UsersRouter().listUsers(query:query) { [weak self] result in
+            switch result {
+            case .success(let users):
+                self!.users.append(contentsOf: users)
+                self!.loadingIndicator.stopAnimating()
+                DispatchQueue.main.async {
+                    self!.tableView.reloadData()
+                    
+                }
+            case .failure(_):
+                break
+            }
+        }
+    }
 }

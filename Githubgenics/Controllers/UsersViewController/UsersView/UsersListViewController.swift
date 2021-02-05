@@ -13,10 +13,10 @@ class UsersListViewController: UIViewController  {
     let longPress = UILongPressGestureRecognizer()
     var users : [items] = []
     var moreUsers : [items] = []
-   lazy var lastSearch = [LastSearch]()
+    var lastSearch = [LastSearch]()
     var searchHistory = [SearchHistory]()
     var isPaginating = false
-    lazy var refreshControl: UIRefreshControl = {
+     var refreshControl: UIRefreshControl = {
             let refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action:
                          #selector(UsersListViewController.handleRefresh(_:)),
@@ -32,6 +32,8 @@ class UsersListViewController: UIViewController  {
         }
     
     lazy var searchBar:UISearchBar = UISearchBar()
+   lazy var listSearchBar:UISearchBar = UISearchBar()
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var historyView: UIView!
     @IBOutlet weak var signOutButton: UIBarButtonItem?
@@ -39,6 +41,7 @@ class UsersListViewController: UIViewController  {
         sender?.endRefreshing()
         refreshList ()
     }
+    @IBOutlet weak var searchBaar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,9 +59,13 @@ class UsersListViewController: UIViewController  {
         searchBar.isTranslucent = false
         searchBar.backgroundColor = UIColor(named: "ViewsColorBallet")
         searchBar.delegate = self
-        self.tableView.tableHeaderView = searchBar
-        
-    
+        listSearchBar.searchBarStyle = UISearchBar.Style.prominent
+        listSearchBar.placeholder = " Search..."
+        listSearchBar.sizeToFit()
+        listSearchBar.isTranslucent = false
+        listSearchBar.backgroundColor = UIColor(named: "ViewsColorBallet")
+        listSearchBar.delegate = self
+        self.tableView.tableHeaderView = self.listSearchBar
     }
     
     

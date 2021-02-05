@@ -45,6 +45,18 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
         
     }
     
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        if tableView.isHidden == false {
+//        return searchBar
+//        }
+//        return searchBaar
+//
+//    }
+//    
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//           return 70
+//       }
+//    
      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == users.count - 1 {
             tableViewSpinner()
