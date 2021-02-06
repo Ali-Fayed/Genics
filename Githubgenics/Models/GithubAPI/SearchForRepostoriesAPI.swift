@@ -23,7 +23,6 @@ struct Repository {
         case repositoryStars = "stargazers_count"
         case repositoryLanguage = "language"
         case fullName = "full_name"
-
         case repositoryURL = "html_url"
     }
 }
@@ -36,7 +35,6 @@ extension Repository: Decodable {
         repositoryStars = try! container.decode(Int.self, forKey: .repositoryStars)
         repositoryLanguage = try? container.decode(String.self, forKey: .repositoryLanguage)
         repositoryURL = try! container.decode(String.self, forKey: .repositoryURL)
-        
         fullName = try container.decode(String.self, forKey: .fullName)
 
     }

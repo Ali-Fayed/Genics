@@ -41,18 +41,7 @@ extension ReposBookmarksController {
             
         }
     }
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        selectedBookmarked = savedRepositories[indexPath.row]
-     return indexPath
-   }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if segue.identifier == "CommitSegue" {
-        guard let commitsViewController = segue.destination as? CommitsViewController else {
-          return
-        }
-        commitsViewController.selectedBookmarked = selectedBookmarked
-      }
-    }
+ 
  
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

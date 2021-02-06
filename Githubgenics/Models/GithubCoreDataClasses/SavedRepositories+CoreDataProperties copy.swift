@@ -16,12 +16,12 @@ extension SavedRepositories {
         return NSFetchRequest<SavedRepositories>(entityName: K.repositoryEntity)
     }
 
-    @NSManaged public var name: NSObject?
-    @NSManaged public var descriptin: NSObject?
-    @NSManaged public var url: NSObject?
-    @NSManaged public var stars: NSObject?
-    @NSManaged public var language: NSObject?
-    @NSManaged public var fulName: NSObject?
+    @NSManaged public var name: String?
+    @NSManaged public var descriptin: String?
+    @NSManaged public var url: String?
+    @NSManaged public var stars: NSDecimalNumber?
+    @NSManaged public var language: String?
+    @NSManaged public var fullName: String?
 
     
 

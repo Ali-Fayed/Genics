@@ -6,9 +6,31 @@
 //
 
 import UIKit
+import Alamofire
+
 
 class UsersListViewController: UIViewController  {
-    
+    let sessionManager: Session = {
+      let configuration = URLSessionConfiguration.af.default
+      configuration.requestCachePolicy = .returnCacheDataElseLoad
+      let responseCacher = ResponseCacher(behavior: .modify { _, response in
+        let userInfo = ["date": Date()]
+        return CachedURLResponse(
+          response: response.response,
+          data: response.data,
+          userInfo: userInfo,
+          storagePolicy: .allowed)
+      })
+
+      let networkLogger = GitNetworkLogger()
+      let interceptor = GitRequestInterceptor()
+
+      return Session(
+        configuration: configuration,
+        interceptor: interceptor,
+        cachedResponseHandler: responseCacher,
+        eventMonitors: [networkLogger])
+    }()
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
     let longPress = UILongPressGestureRecognizer()
     var users : [items] = []
@@ -74,6 +96,8 @@ class UsersListViewController: UIViewController  {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.tabBarController?.navigationItem.leftBarButtonItem = signOutButton
+
         self.tabBarController?.navigationItem.title = "Users".localized()
     }
     
@@ -87,6 +111,6 @@ class UsersListViewController: UIViewController  {
     
     
     @IBAction func SignOut(_ sender: UIBarItem) {
-        performSignOut ()
+        performSignOut()
     }
 }

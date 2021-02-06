@@ -20,7 +20,18 @@
 		EA0589BD25C56A0E00BC1024 /* BookmarksSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0589BC25C56A0E00BC1024 /* BookmarksSearchBar.swift */; };
 		EA0C2D9625BD068C00D3898A /* LastSearch+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C2D9425BD068C00D3898A /* LastSearch+CoreDataClass.swift */; };
 		EA0C2D9725BD068C00D3898A /* LastSearch+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C2D9525BD068C00D3898A /* LastSearch+CoreDataProperties.swift */; };
-		EA0C2DA925BD26AD00D3898A /* RepositoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C2DA825BD26AD00D3898A /* RepositoriesListViewController.swift */; };
+		EA22D78325CE2DE0009C0EEF /* GitRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D77C25CE2DE0009C0EEF /* GitRequestInterceptor.swift */; };
+		EA22D78525CE2DE0009C0EEF /* GitRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D77D25CE2DE0009C0EEF /* GitRouter.swift */; };
+		EA22D78625CE2DE0009C0EEF /* GitNetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D77E25CE2DE0009C0EEF /* GitNetworkLogger.swift */; };
+		EA22D78D25CE2DF4009C0EEF /* SecureStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78B25CE2DF4009C0EEF /* SecureStoreError.swift */; };
+		EA22D78E25CE2DF4009C0EEF /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78C25CE2DF4009C0EEF /* SecureStore.swift */; };
+		EA22D79425CE2E26009C0EEF /* SecureStoreQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D79325CE2E26009C0EEF /* SecureStoreQueryable.swift */; };
+		EA22D79925CE2E37009C0EEF /* RepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D79625CE2E37009C0EEF /* RepositoriesViewController.swift */; };
+		EA22D79A25CE2E37009C0EEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D79825CE2E37009C0EEF /* LoginViewController.swift */; };
+		EA22D7A125CE2EAB009C0EEF /* GitHubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78225CE2DE0009C0EEF /* GitHubConstants.swift */; };
+		EA22D7AD25CE2EDD009C0EEF /* GitAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D7A925CE2EDD009C0EEF /* GitAPIManager.swift */; };
+		EA22D7B625CE2F1B009C0EEF /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78125CE2DE0009C0EEF /* TokenManager.swift */; };
+		EA22D7B725CE2F1B009C0EEF /* GitHubAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78025CE2DE0009C0EEF /* GitHubAccessToken.swift */; };
 		EA2312D925928108000BDC8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA2312D825928108000BDC8C /* GoogleService-Info.plist */; };
 		EA2312DD2592819D000BDC8C /* ConstantsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2312DC2592819D000BDC8C /* ConstantsModel.swift */; };
 		EA3FA0FA25AE9B88008D7520 /* LaunchAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */; };
@@ -54,8 +65,6 @@
 		EA94DCBC25C6726C00E2C30B /* UsersTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94DCBB25C6726C00E2C30B /* UsersTableView.swift */; };
 		EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9743512596C3790057C8A0 /* SettingsViewController.swift */; };
 		EA9743552596C3B10057C8A0 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9743542596C3B10057C8A0 /* SettingsCell.swift */; };
-		EA9743CB2596D8490057C8A0 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9743C92596D8480057C8A0 /* SignInView.swift */; };
-		EA9743CC2596D8490057C8A0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9743CA2596D8490057C8A0 /* SignUpView.swift */; };
 		EA999A6525927C02005E832C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6425927C02005E832C /* DetailViewController.swift */; };
 		EA999A6E25927C1D005E832C /* ListUsersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6D25927C1D005E832C /* ListUsersAPI.swift */; };
 		EA999A7A25927CAA005E832C /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7925927CAA005E832C /* WelcomeScreen.swift */; };
@@ -72,7 +81,6 @@
 		EAD4476625B0148A00FB42B4 /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD4476425B0148A00FB42B4 /* UsersCell.swift */; };
 		EAFB5D7725C7AF9F0096D729 /* UsersListFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB5D7625C7AF9F0096D729 /* UsersListFunctions.swift */; };
 		EAFB5D7A25C7B16F0096D729 /* DetailViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB5D7925C7B16F0096D729 /* DetailViewFunctions.swift */; };
-		EAFB5D8025C7B7C70096D729 /* RepositoriesFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB5D7F25C7B7C70096D729 /* RepositoriesFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,7 +99,18 @@
 		EA0589BC25C56A0E00BC1024 /* BookmarksSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksSearchBar.swift; sourceTree = "<group>"; };
 		EA0C2D9425BD068C00D3898A /* LastSearch+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LastSearch+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EA0C2D9525BD068C00D3898A /* LastSearch+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LastSearch+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EA0C2DA825BD26AD00D3898A /* RepositoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListViewController.swift; sourceTree = "<group>"; };
+		EA22D77C25CE2DE0009C0EEF /* GitRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitRequestInterceptor.swift; sourceTree = "<group>"; };
+		EA22D77D25CE2DE0009C0EEF /* GitRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitRouter.swift; sourceTree = "<group>"; };
+		EA22D77E25CE2DE0009C0EEF /* GitNetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitNetworkLogger.swift; sourceTree = "<group>"; };
+		EA22D78025CE2DE0009C0EEF /* GitHubAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAccessToken.swift; sourceTree = "<group>"; };
+		EA22D78125CE2DE0009C0EEF /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		EA22D78225CE2DE0009C0EEF /* GitHubConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubConstants.swift; sourceTree = "<group>"; };
+		EA22D78B25CE2DF4009C0EEF /* SecureStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreError.swift; sourceTree = "<group>"; };
+		EA22D78C25CE2DF4009C0EEF /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
+		EA22D79325CE2E26009C0EEF /* SecureStoreQueryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureStoreQueryable.swift; sourceTree = "<group>"; };
+		EA22D79625CE2E37009C0EEF /* RepositoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesViewController.swift; sourceTree = "<group>"; };
+		EA22D79825CE2E37009C0EEF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EA22D7A925CE2EDD009C0EEF /* GitAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitAPIManager.swift; sourceTree = "<group>"; };
 		EA2312D825928108000BDC8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EA2312DC2592819D000BDC8C /* ConstantsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsModel.swift; sourceTree = "<group>"; };
 		EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAnimation.swift; sourceTree = "<group>"; };
@@ -129,8 +148,6 @@
 		EA94DCBB25C6726C00E2C30B /* UsersTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableView.swift; sourceTree = "<group>"; };
 		EA9743512596C3790057C8A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EA9743542596C3B10057C8A0 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
-		EA9743C92596D8480057C8A0 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		EA9743CA2596D8490057C8A0 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		EA999A6425927C02005E832C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EA999A6D25927C1D005E832C /* ListUsersAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUsersAPI.swift; sourceTree = "<group>"; };
 		EA999A7925927CAA005E832C /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
@@ -147,7 +164,6 @@
 		EAD4476425B0148A00FB42B4 /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
 		EAFB5D7625C7AF9F0096D729 /* UsersListFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListFunctions.swift; sourceTree = "<group>"; };
 		EAFB5D7925C7B16F0096D729 /* DetailViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewFunctions.swift; sourceTree = "<group>"; };
-		EAFB5D7F25C7B7C70096D729 /* RepositoriesFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,10 +218,9 @@
 		EA05898625C564AB00BC1024 /* RepostoriesViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EA0C2DA825BD26AD00D3898A /* RepositoriesListViewController.swift */,
+				EA22D79625CE2E37009C0EEF /* RepositoriesViewController.swift */,
 				EA05898A25C564FB00BC1024 /* RepostoiresTableView.swift */,
 				EA05898725C564C700BC1024 /* RepostoiresSearchBar.swift */,
-				EAFB5D7F25C7B7C70096D729 /* RepositoriesFunctions.swift */,
 			);
 			path = RepostoriesViewController;
 			sourceTree = "<group>";
@@ -284,6 +299,27 @@
 			path = CommitsViewController;
 			sourceTree = "<group>";
 		};
+		EA22D79225CE2E14009C0EEF /* SecureStore */ = {
+			isa = PBXGroup;
+			children = (
+				EA22D78C25CE2DF4009C0EEF /* SecureStore.swift */,
+				EA22D78B25CE2DF4009C0EEF /* SecureStoreError.swift */,
+				EA22D79325CE2E26009C0EEF /* SecureStoreQueryable.swift */,
+			);
+			path = SecureStore;
+			sourceTree = "<group>";
+		};
+		EA22D7C025CE4818009C0EEF /* Outh */ = {
+			isa = PBXGroup;
+			children = (
+				EA22D79825CE2E37009C0EEF /* LoginViewController.swift */,
+				EA22D78225CE2DE0009C0EEF /* GitHubConstants.swift */,
+				EA22D78025CE2DE0009C0EEF /* GitHubAccessToken.swift */,
+				EA22D78125CE2DE0009C0EEF /* TokenManager.swift */,
+			);
+			path = Outh;
+			sourceTree = "<group>";
+		};
 		EA4664C425BAB204003C4AD1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +396,10 @@
 		EA622D0E25C5529300EC5F3C /* GithubRouter */ = {
 			isa = PBXGroup;
 			children = (
+				EA22D77E25CE2DE0009C0EEF /* GitNetworkLogger.swift */,
+				EA22D77C25CE2DE0009C0EEF /* GitRequestInterceptor.swift */,
+				EA22D77D25CE2DE0009C0EEF /* GitRouter.swift */,
+				EA22D7A925CE2EDD009C0EEF /* GitAPIManager.swift */,
 				EAA710F425BD4707004D7E21 /* UsersRouter.swift */,
 				EA622D0925C5515F00EC5F3C /* RepostoriesRouter.swift */,
 			);
@@ -436,27 +476,19 @@
 			path = OtherControllers;
 			sourceTree = "<group>";
 		};
-		EA9743CE2596D8C20057C8A0 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				EA9743C92596D8480057C8A0 /* SignInView.swift */,
-				EA9743CA2596D8490057C8A0 /* SignUpView.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
 		EA999A7325927C31005E832C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EA22D79225CE2E14009C0EEF /* SecureStore */,
 				EA622D0525C5508500EC5F3C /* GithubAPI */,
 				EA622D0E25C5529300EC5F3C /* GithubRouter */,
 				EA0589CD25C56CF300BC1024 /* GithubCRUD */,
 				EA703D7425BAB65900073DFB /* GithubCoreDataClasses */,
 				EA94DCC825C67B0700E2C30B /* LocalizationModel */,
+				EA22D7C025CE4818009C0EEF /* Outh */,
 				EA45AA19259C45E400365E9B /* NetworkReachability.swift */,
 				EA60E86925BE5F07000B6AC0 /* AlertsModel.swift */,
 				EA2312DC2592819D000BDC8C /* ConstantsModel.swift */,
-				EA9743CE2596D8C20057C8A0 /* Auth */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -589,7 +621,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA0C2DA925BD26AD00D3898A /* RepositoriesListViewController.swift in Sources */,
 				EA7C4CA925BAA7E000EC9F45 /* SavedUsersController.swift in Sources */,
 				EAA710F525BD4707004D7E21 /* UsersRouter.swift in Sources */,
 				EA05895525C5567700BC1024 /* Fetch.swift in Sources */,
@@ -604,19 +635,25 @@
 				EA0C2D9625BD068C00D3898A /* LastSearch+CoreDataClass.swift in Sources */,
 				EA94DCBC25C6726C00E2C30B /* UsersTableView.swift in Sources */,
 				EA94DCAC25C6391000E2C30B /* Delete.swift in Sources */,
-				EAFB5D8025C7B7C70096D729 /* RepositoriesFunctions.swift in Sources */,
+				EA22D79A25CE2E37009C0EEF /* LoginViewController.swift in Sources */,
 				EA94DCA625C6377200E2C30B /* Save.swift in Sources */,
 				EA5EADF725929E2700AC3223 /* UsersListViewController.swift in Sources */,
 				EA05897725C55F9F00BC1024 /* RecentCollectionView.swift in Sources */,
 				EA622D0A25C5515F00EC5F3C /* RepostoriesRouter.swift in Sources */,
 				EA4BCB1625BCDC71000F302A /* HistoryCollectionCell.swift in Sources */,
+				EA22D79925CE2E37009C0EEF /* RepositoriesViewController.swift in Sources */,
 				EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */,
 				EA85CE3A25A0293E006EA337 /* NavBarController.swift in Sources */,
+				EA22D78D25CE2DF4009C0EEF /* SecureStoreError.swift in Sources */,
 				EA999A6E25927C1D005E832C /* ListUsersAPI.swift in Sources */,
+				EA22D7B625CE2F1B009C0EEF /* TokenManager.swift in Sources */,
 				EA05898825C564C700BC1024 /* RepostoiresSearchBar.swift in Sources */,
 				EA3FA0FA25AE9B88008D7520 /* LaunchAnimation.swift in Sources */,
+				EA22D78525CE2DE0009C0EEF /* GitRouter.swift in Sources */,
 				EA05898B25C564FB00BC1024 /* RepostoiresTableView.swift in Sources */,
+				EA22D78625CE2DE0009C0EEF /* GitNetworkLogger.swift in Sources */,
 				EAD4476625B0148A00FB42B4 /* UsersCell.swift in Sources */,
+				EA22D78E25CE2DF4009C0EEF /* SecureStore.swift in Sources */,
 				EAC3B17325C9520700F798DA /* CommitsView.swift in Sources */,
 				EA668BA125BFE83C00392A30 /* Githubgenics.xcdatamodeld in Sources */,
 				EA622CFC25C54F3800EC5F3C /* SearchUsesrAPI.swift in Sources */,
@@ -626,19 +663,22 @@
 				EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */,
 				EA2312DD2592819D000BDC8C /* ConstantsModel.swift in Sources */,
 				EA0589BD25C56A0E00BC1024 /* BookmarksSearchBar.swift in Sources */,
+				EA22D7A125CE2EAB009C0EEF /* GitHubConstants.swift in Sources */,
 				EA999A6525927C02005E832C /* DetailViewController.swift in Sources */,
 				EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */,
 				EA622CFF25C54F4900EC5F3C /* SearchForRepostoriesAPI.swift in Sources */,
 				EA4530C825BFAD3B00651BFA /* Localizationl.swift in Sources */,
 				EA999A7A25927CAA005E832C /* WelcomeScreen.swift in Sources */,
-				EA9743CC2596D8490057C8A0 /* SignUpView.swift in Sources */,
 				EAB2AD0C25BBED9F001B6DD7 /* RecentSearchController.swift in Sources */,
 				EA65CB7A25BE9061005CBA09 /* ReposBookmarksController.swift in Sources */,
+				EA22D7B725CE2F1B009C0EEF /* GitHubAccessToken.swift in Sources */,
+				EA22D7AD25CE2EDD009C0EEF /* GitAPIManager.swift in Sources */,
 				EA45AA1A259C45E400365E9B /* NetworkReachability.swift in Sources */,
+				EA22D78325CE2DE0009C0EEF /* GitRequestInterceptor.swift in Sources */,
+				EA22D79425CE2E26009C0EEF /* SecureStoreQueryable.swift in Sources */,
 				EA566FE925927B9D00596E6A /* AppDelegate.swift in Sources */,
 				EA05895B25C55ACC00BC1024 /* RepoSearchBar.swift in Sources */,
 				EA566FEB25927B9D00596E6A /* SceneDelegate.swift in Sources */,
-				EA9743CB2596D8490057C8A0 /* SignInView.swift in Sources */,
 				EA9743552596C3B10057C8A0 /* SettingsCell.swift in Sources */,
 				EA05894F25C555BB00BC1024 /* UserRepoTableView.swift in Sources */,
 				EA60E86A25BE5F07000B6AC0 /* AlertsModel.swift in Sources */,

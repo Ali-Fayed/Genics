@@ -56,7 +56,7 @@ extension DetailViewController : MyTableViewCellDelegate {
         guard let index = tableView.indexPath(for: cell) else {
             return
         }
-        Save().repository(name: userRepository[index.row].repositoryName!, desc: userRepository[index.row].repositoryDescription ?? "", language: userRepository[index.row].repositoryLanguage ?? "", stars: userRepository[index.row].repositoryStars ?? 1, url: userRepository[index.row].repositoryURL!, fulName: userRepository[index.row].fullName)
+        Save().repository(name: userRepository[index.row].repositoryName!, desc: userRepository[index.row].repositoryDescription ?? "", language: userRepository[index.row].repositoryLanguage ?? "", stars: userRepository[index.row].repositoryName, url: userRepository[index.row].repositoryURL!, fulName: userRepository[index.row].fullName)
                 DispatchQueue.main.async {
             self.tableView.reloadData()
         }

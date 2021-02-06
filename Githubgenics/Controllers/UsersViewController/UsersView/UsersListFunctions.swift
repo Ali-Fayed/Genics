@@ -22,7 +22,7 @@ extension UsersListViewController {
                     self!.shimmerLoadingView()
                 }
             case .failure(_):
-             break
+                break
             }
         }
     }
@@ -31,7 +31,7 @@ extension UsersListViewController {
         guard !isPaginating else {
             return
         }
-      
+        
         MainFetchFunctions(query: "a", pagination: true ) { [weak self] result in
             DispatchQueue.main.async {
                 self?.tableView.tableFooterView = nil
@@ -44,18 +44,18 @@ extension UsersListViewController {
                 }
             case .failure(_):
                 AlertsModel.shared.showPaginationErrorAlert()
-            break
+                break
             }
         }
     }
     @objc func handleLongPress(sender: UILongPressGestureRecognizer){
-            let touchPoint = longPress.location(in: tableView)
-            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                let cell = users[indexPath.row].userURL
-                        let vc = SFSafariViewController(url: URL(string: cell!)!)
-                        present(vc, animated: true)
-                
-            }
+        let touchPoint = longPress.location(in: tableView)
+        if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+            let cell = users[indexPath.row].userURL
+            let vc = SFSafariViewController(url: URL(string: cell!)!)
+            present(vc, animated: true)
+            
+        }
         
     }
     func refreshList () {
@@ -67,7 +67,7 @@ extension UsersListViewController {
                     self!.tableView.reloadData()
                 }
             case .failure(_):
-             break
+                break
             }
         }
     }
@@ -93,20 +93,13 @@ extension UsersListViewController {
     
     
     func performSignOut () {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            for controller in self.navigationController!.viewControllers as Array {
-                if controller.isKind(of: WelcomeScreen.self) {
-                    self.navigationController!.popToViewController(controller, animated: true)
-                    break
-                }
+        TokenManager.shared.clearAccessToken()
+        for controller in self.navigationController!.viewControllers as Array {
+            if controller.isKind(of: WelcomeScreen.self) {
+                self.navigationController!.popToViewController(controller, animated: true)
             }
-            UserDefaults.standard.removeObject(forKey: "email")
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-            SignOutError()
         }
+        UserDefaults.standard.removeObject(forKey: "outh")
     }
     
     func fetchUsersData () {
@@ -118,9 +111,9 @@ extension UsersListViewController {
                     self!.tableView.reloadData()
                 }
             case .failure(_):
-             break
+                break
             }
-     
+            
         }
     }
     
@@ -139,17 +132,10 @@ extension UsersListViewController {
     
     
     func fetchSearchedUsers (query: String) {
-        UsersRouter().listUsers(query:query) { [weak self] result in
-            switch result {
-            case .success(let users):
-                self!.users.append(contentsOf: users)
-                DispatchQueue.main.async {
-                    self!.tableView.reloadData()
-                    
-                }
-            case .failure(_):
-                break
-            }
+        GitAPIManager.shared.searchUsers(query: query) { [self] users in
+            self.users = users
+            loadingIndicator.stopAnimating()
+            tableView.reloadData()
         }
     }
 }

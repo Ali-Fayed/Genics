@@ -34,13 +34,14 @@ class Save: Fetch {
         }
     }
     
-    func repository(name: String , desc: String , language: String , stars: Int , url : String , fulName: String) {
+    func repository(name: String , desc: String , language: String , stars: String? , url : String , fulName: String) {
         let DataParameters = SavedRepositories(context: context)
-        DataParameters.name = name as NSObject
-        DataParameters.descriptin = desc as NSObject
-        DataParameters.language = language as NSObject
-        DataParameters.stars = stars as NSObject
-        DataParameters.url = url as NSObject
+        DataParameters.name = name
+        DataParameters.descriptin = desc
+        DataParameters.language = language
+//        DataParameters.stars = stars! as! NSDecimalNumber
+        DataParameters.url = url
+        DataParameters.fullName = fulName
         do {
             try context.save()
         } catch {

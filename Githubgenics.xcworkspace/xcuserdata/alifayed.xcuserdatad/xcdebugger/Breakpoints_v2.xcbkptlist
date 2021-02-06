@@ -36,53 +36,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5392DF42-23B9-4353-928C-84D1F9C4A5B6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Githubgenics/Models/GithubAPI/ListUsersAPI.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "Users"
-            landmarkType = "14">
-            <Locations>
-               <Location
-                  uuid = "5392DF42-23B9-4353-928C-84D1F9C4A5B6 - d59682cf8e98f81a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Githubgenics.Users.usersCodingKeys.init(rawValue: Swift.String) -&gt; Swift.Optional&lt;Githubgenics.Users.usersCodingKeys&gt;"
-                  moduleName = "Githubgenics"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alifayed/Desktop/my%20App/Githubgenics/Githubgenics/Models/GithubAPI/ListUsersAPI.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "144">
-               </Location>
-               <Location
-                  uuid = "5392DF42-23B9-4353-928C-84D1F9C4A5B6 - 96b9c36485b1756"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Githubgenics.Users.usersCodingKeys.rawValue.getter : Swift.String"
-                  moduleName = "Githubgenics"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alifayed/Desktop/my%20App/Githubgenics/Githubgenics/Models/GithubAPI/ListUsersAPI.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "84">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

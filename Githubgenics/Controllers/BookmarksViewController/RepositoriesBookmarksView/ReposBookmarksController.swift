@@ -14,7 +14,6 @@ class ReposBookmarksController: UITableViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var savedRepositories = [SavedRepositories]()
-    var selectedBookmarked : SavedRepositories?
 
     @IBOutlet weak var searchBar: UISearchBar!
 

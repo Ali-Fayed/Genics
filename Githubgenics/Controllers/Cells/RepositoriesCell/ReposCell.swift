@@ -87,10 +87,10 @@ class ReposCell: UITableViewCell {
     }
     
     func CellData(with model: SavedRepositories) {
-        self.repositoryName.text = model.name as? String
-        self.repositoryDescription.text = model.descriptin as? String
-        self.repositoryStars.text = model.stars! as? String
-        self.repositoryLanguage.text = model.language as? String
+        self.repositoryName.text = model.name
+        self.repositoryDescription.text = model.descriptin
+        self.repositoryStars?.text = String(Int(model.stars!)) 
+        self.repositoryLanguage.text = model.language
     }
     
     

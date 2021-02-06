@@ -12,7 +12,6 @@ class CommitsViewController: UITableViewController {
     var selectedRepository: Repository?
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
     var selectedRepositorry: UserRepository?
-    var selectedBookmarked : SavedRepositories?
     
     override func viewDidLoad() {
       super.viewDidLoad()
@@ -21,7 +20,6 @@ class CommitsViewController: UITableViewController {
       fetchCommitsForRepository()
         fetchCommitsForRepository2()
         navigationItem.title = "Commits".localized()
-        fetchCommitsForRepository3()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,12 +40,11 @@ class CommitsViewController: UITableViewController {
       guard let repository = selectedRepository else {
         return
       }
-        RepostoriesRouter().fetchCommits(for: repository.fullName) { [self] commits in
+      GitAPIManager.shared.fetchCommits(for: repository.fullName) { [self] commits in
         self.commits = commits
         loadingIndicator.stopAnimating()
         tableView.reloadData()
       }
-
     }
     
     func fetchCommitsForRepository2() {
@@ -63,16 +60,4 @@ class CommitsViewController: UITableViewController {
 
     }
     
-    func fetchCommitsForRepository3() {
-      loadingIndicator.startAnimating()
-      guard let repository = selectedBookmarked else {
-        return
-      }
-        RepostoriesRouter().fetchCommits(for: repository.fulName as! String) { [self] commits in
-        self.commits = commits
-        loadingIndicator.stopAnimating()
-        tableView.reloadData()
-      }
-
-    }
   }

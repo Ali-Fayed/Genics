@@ -16,7 +16,12 @@ class LaunchAnimation: UIViewController {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.performSegue(withIdentifier: K.animationSegue, sender: self)
+            if UserDefaults.standard.value(forKeyPath: "outh") != nil {
+                self.performSegue(withIdentifier: "OuthSegue", sender: self)
+            } else {
+                self.performSegue(withIdentifier: K.animationSegue, sender: self)
+            }
+           
         }
         self.aniamtion ()
     }

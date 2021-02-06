@@ -7,11 +7,19 @@
     </entity>
     <entity name="SavedRepositories" representedClassName="SavedRepositories" syncable="YES">
         <attribute name="descriptin" optional="YES" attributeType="String"/>
-        <attribute name="fulName" optional="YES" attributeType="String"/>
+        <attribute name="fullName" optional="YES" attributeType="String"/>
         <attribute name="language" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="stars" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="url" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="SavedRepository" representedClassName="SavedRepository" syncable="YES">
+        <attribute name="repoDescription" optional="YES" attributeType="String"/>
+        <attribute name="repoName" optional="YES" attributeType="String"/>
+        <attribute name="repoProgrammingLanguage" optional="YES" attributeType="String"/>
+        <attribute name="repoStars" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="repoURL" optional="YES" attributeType="String"/>
+        <attribute name="repoUserFullName" optional="YES" attributeType="String"/>
     </entity>
     <entity name="SavedUsers" representedClassName=".UsersDataBase" syncable="YES">
         <attribute name="avatar_url" optional="YES" attributeType="String"/>
@@ -26,5 +34,6 @@
         <element name="SavedRepositories" positionX="-63" positionY="18" width="128" height="119"/>
         <element name="SavedUsers" positionX="-63" positionY="-18" width="128" height="74"/>
         <element name="SearchHistory" positionX="-63" positionY="9" width="128" height="44"/>
+        <element name="SavedRepository" positionX="-63" positionY="45" width="128" height="119"/>
     </elements>
 </model>
