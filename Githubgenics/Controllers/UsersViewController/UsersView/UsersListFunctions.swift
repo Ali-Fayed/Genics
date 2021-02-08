@@ -6,41 +6,33 @@
 //
 
 import UIKit
-import Firebase
 import SafariServices
 
 
 extension UsersListViewController {
     
-    func fetchUsersList () {
-        UsersRouter().listUsers(query: "a") { [weak self] result in
-            switch result {
-            case .success(let users):
-                self!.users.append(contentsOf: users)
-                DispatchQueue.main.async {
-                    self!.tableView.reloadData()
-                    self!.shimmerLoadingView()
-                }
-            case .failure(_):
-                break
+    func fetchUsersList  ()  {
+        let querySetup : String = {
+              var query : String = "a"
+            if searchBar.text == nil {
+                query = searchBar.text ?? ""
+            } else {
+                searchBar.text = "a"
             }
-        }
-    }
-    
-    func fetchMoreFromUsersList () {
+            return query
+        }()
         guard !isPaginating else {
             return
         }
-        
-        MainFetchFunctions(query: "a", pagination: true ) { [weak self] result in
-            DispatchQueue.main.async {
-                self?.tableView.tableFooterView = nil
-            }
+        GitAPIManager().fetchUsers(query: querySetup, page: pageNo, pagination: false ) { [weak self] result in
             switch result {
             case .success(let moreUsers):
                 self?.users.append(contentsOf: moreUsers)
                 DispatchQueue.main.async {
-                    self?.tableView.reloadData()
+                    self!.tableView.reloadData()
+                    if self!.searchBar.showsCancelButton == false {
+                        self?.shimmerLoadingView()
+                    }
                 }
             case .failure(_):
                 AlertsModel.shared.showPaginationErrorAlert()
@@ -48,6 +40,41 @@ extension UsersListViewController {
             }
         }
     }
+    
+    func fetchMoreUsers () {
+        if  pageNo < totalPages {
+            pageNo += 1
+            guard !isPaginating else {
+                return
+            }
+            let querySetup : String = {
+                  var query : String = "a"
+                if searchBar.text == nil {
+                    query = searchBar.text!
+                } else {
+                    searchBar.text = query
+                }
+                return query
+            }()
+            GitAPIManager.shared.fetchUsers(query: querySetup, page: pageNo, pagination: true ) { [weak self] result in
+                DispatchQueue.main.async {
+                    self?.tableView.tableFooterView = nil
+                }
+                switch result {
+                case .success(let moreUsers):
+                    self?.users.append(contentsOf: moreUsers)
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                case .failure(_):
+                    AlertsModel.shared.showPaginationErrorAlert()
+                    break
+                }
+            }
+        }
+    }
+    
+    
     @objc func handleLongPress(sender: UILongPressGestureRecognizer){
         let touchPoint = longPress.location(in: tableView)
         if let indexPath = tableView.indexPathForRow(at: touchPoint) {
@@ -59,7 +86,7 @@ extension UsersListViewController {
         
     }
     func refreshList () {
-        UsersRouter().listUsers(query: "a") { [weak self] result in
+        GitAPIManager.shared.fetchUsers(query: "a", page: pageNo) { [weak self] result in
             switch result {
             case .success(let users):
                 self!.users.append(contentsOf: users)
@@ -94,28 +121,23 @@ extension UsersListViewController {
     
     func performSignOut () {
         TokenManager.shared.clearAccessToken()
-        for controller in self.navigationController!.viewControllers as Array {
-            if controller.isKind(of: WelcomeScreen.self) {
-                self.navigationController!.popToViewController(controller, animated: true)
-            }
-        }
         UserDefaults.standard.removeObject(forKey: "outh")
     }
     
-    func fetchUsersData () {
-        UsersRouter().fetchUserstoAvoidIndexError { [weak self] result in
-            switch result {
-            case .success(let users):
-                self!.users.append(contentsOf: users)
-                DispatchQueue.main.async {
-                    self!.tableView.reloadData()
-                }
-            case .failure(_):
-                break
-            }
-            
-        }
-    }
+//    func fetchUsersData () {
+//        UsersRouter().fetchUserstoAvoidIndexError { [weak self] result in
+//            switch result {
+//            case .success(let users):
+//                self!.users.append(contentsOf: users)
+//                DispatchQueue.main.async {
+//                    self!.tableView.reloadData()
+//                }
+//            case .failure(_):
+//                break
+//            }
+//            
+//        }
+//    }
     
     func viewSearchBar() {
         searchBar.searchBarStyle = UISearchBar.Style.default
@@ -131,11 +153,18 @@ extension UsersListViewController {
     }
     
     
-    func fetchSearchedUsers (query: String) {
-        GitAPIManager.shared.searchUsers(query: query) { [self] users in
-            self.users = users
-            loadingIndicator.stopAnimating()
-            tableView.reloadData()
+    func searchUser (query: String) {
+        UsersRouter().fetchUsers(query: query, page: pageNo) { [self] users in
+            switch users {
+            case .success(let moreUsers):
+                self.users.append(contentsOf: moreUsers)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(_):
+                AlertsModel.shared.showPaginationErrorAlert()
+                break
+            }
         }
     }
 }

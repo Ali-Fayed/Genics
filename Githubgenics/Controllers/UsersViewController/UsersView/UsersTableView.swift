@@ -30,12 +30,6 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
 
     //MARK:- TableViev Delegate
     
-     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let postion = scrollView.contentOffset.y
-        if postion > (tableView.contentSize.height-100-scrollView.frame.size.height) {
-            fetchMoreFromUsersList()
-        }
-    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let IndexPath = users[indexPath.row]
@@ -43,13 +37,19 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
         performSegue(withIdentifier: "Detail", sender: self)
     }
     
-     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == users.count - 1 {
-            tableViewSpinner()
+            if searchBar.showsCancelButton == false {
+            showTableViewSpinner()
+            fetchMoreUsers ()
+            } else {
+                
+            }
         }
     }
     
-    func tableViewSpinner () {
+    func showTableViewSpinner () {
         let spinner = UIActivityIndicatorView(style: .medium)
         spinner.startAnimating()
         spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))

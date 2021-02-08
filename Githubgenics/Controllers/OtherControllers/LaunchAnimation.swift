@@ -27,7 +27,7 @@ class LaunchAnimation: UIViewController {
     }
     
     private func aniamtion () {
-        animationView.animation = Animation.named(K.animation)
+        animationView.animation = Animation.named("loadingspinner")
         animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         animationView.center = view.center
         animationView.contentMode = .scaleAspectFit

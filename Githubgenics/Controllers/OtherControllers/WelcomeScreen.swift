@@ -6,13 +6,28 @@
 //
 
 import UIKit
+import TransitionButton
+import Lottie
 
+
+class Second: CustomTransitionViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .blue
+    }
+}
 class WelcomeScreen: UIViewController {
+    let animationView = AnimationView()
+
+    @IBOutlet weak var signInWithGitHub: TransitionButton!
+    @IBOutlet weak var Terms: UIButton!
+    @IBOutlet weak var Privacy: UIButton!
     
-    @IBOutlet weak var projectTitle: UILabel!
-    @IBOutlet weak var projectTextView: UITextView!
-    @IBOutlet weak var HelloWorld: UILabel!
-    @IBOutlet weak var signInWithGithub: UIButton!
+    @IBAction func privacy(_ sender: Any) {
+    }
+    
+    @IBAction func terms(_ sender: Any) {
+    }
     
     var isLoggedIn: Bool {
         if TokenManager.shared.fetchAccessToken() != nil {
@@ -21,11 +36,25 @@ class WelcomeScreen: UIViewController {
         return false
     }
     
+    @objc func didTapButton () {
+    
+    }
+    
+    @IBAction func signIn(_ sender: Any) {
+        signInWithGitHub.startAnimation()
+        DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+            self.signInWithGitHub.stopAnimation(animationStyle: .expand, revertAfterDelay: 1) {
+               
+                self.signInWithGitHub.layer.cornerRadius = 20
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        projectTitle.font = UIFont(name: "AppleSDGothicNeo-Light", size: 40)
-        projectTitle.text = "GITHUBGENICS".localized()
-        HelloWorld.text = "Hello World!".localized()
+
+        signInWithGitHub.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        signInWithGitHub.spinnerColor = .black
+        signInWithGitHub.layer.cornerRadius = 20
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         navigationController?.isToolbarHidden = true
         navigationController?.isNavigationBarHidden = true
@@ -35,10 +64,13 @@ class WelcomeScreen: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
         navigationController?.isToolbarHidden = true
+        signInWithGitHub.layer.cornerRadius = 20
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        signInWithGitHub.layer.cornerRadius = 20
+
        
     }
     
@@ -49,5 +81,7 @@ class WelcomeScreen: UIViewController {
       }
       return true
     }
+    
+
     
 }

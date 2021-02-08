@@ -26,7 +26,7 @@ struct K {
     
     static let usersURL = "SignUperror"
     static let searchUsersURL = "SignIn"
-    static let animation = "loadingspinner"
+    static let animation = "38825-robot-hello"
     
     
     //MARK:- Cell Identifers

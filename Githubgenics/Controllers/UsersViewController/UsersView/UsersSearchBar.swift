@@ -10,18 +10,18 @@ import UIKit
 extension UsersListViewController  : UISearchBarDelegate  {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
         guard let query = searchBar.text else {
             return
         }
         self.users.removeAll()
-        fetchSearchedUsers(query: query)
+        searchUser(query: query)
         UIView.animate(withDuration: 0.5, animations: {
             self.tableView.alpha = 1.0
             self.historyView.alpha = 0.0
             self.tableView.reloadData()
 
         })
-    
     }
     
 
@@ -29,8 +29,7 @@ extension UsersListViewController  : UISearchBarDelegate  {
         searchBar.setShowsCancelButton(true, animated: true)
         self.users.removeAll()
         searchBar.text = nil
-        fetchUsersData()
-        
+        fetchUsersList ()
     
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -80,6 +79,7 @@ extension UsersListViewController  : UISearchBarDelegate  {
                 self.loadingIndicator.stopAnimating()
             }
             self.tabBarController?.tabBar.isHidden = true
+            self.searchBar.text = nil
 
 
 

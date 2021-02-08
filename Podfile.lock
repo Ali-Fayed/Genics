@@ -1,96 +1,38 @@
 PODS:
   - Alamofire (5.4.1)
-  - Firebase/Auth (7.2.0):
-    - Firebase/CoreOnly
-    - FirebaseAuth (~> 7.2.0)
-  - Firebase/CoreOnly (7.2.0):
-    - FirebaseCore (= 7.2.0)
-  - FirebaseAuth (7.2.0):
-    - FirebaseCore (~> 7.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
-    - GoogleUtilities/Environment (~> 7.0)
-    - GTMSessionFetcher/Core (~> 1.4)
-  - FirebaseCore (7.2.0):
-    - FirebaseCoreDiagnostics (~> 7.0)
-    - GoogleUtilities/Environment (~> 7.0)
-    - GoogleUtilities/Logger (~> 7.0)
-  - FirebaseCoreDiagnostics (7.2.0):
-    - GoogleDataTransport (~> 8.0)
-    - GoogleUtilities/Environment (~> 7.0)
-    - GoogleUtilities/Logger (~> 7.0)
-    - nanopb (~> 2.30906.0)
-  - GoogleDataTransport (8.0.1):
-    - nanopb (~> 2.30906.0)
-  - GoogleUtilities/AppDelegateSwizzler (7.1.1):
-    - GoogleUtilities/Environment
-    - GoogleUtilities/Logger
-    - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.1.1):
-    - PromisesObjC (~> 1.2)
-  - GoogleUtilities/Logger (7.1.1):
-    - GoogleUtilities/Environment
-  - GoogleUtilities/Network (7.1.1):
-    - GoogleUtilities/Logger
-    - "GoogleUtilities/NSData+zlib"
-    - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.1.1)"
-  - GoogleUtilities/Reachability (7.1.1):
-    - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (1.5.0)
   - IQKeyboardManagerSwift (6.5.6)
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
   - lottie-ios (3.1.9)
-  - nanopb (2.30906.0):
-    - nanopb/decode (= 2.30906.0)
-    - nanopb/encode (= 2.30906.0)
-  - nanopb/decode (2.30906.0)
-  - nanopb/encode (2.30906.0)
-  - PromisesObjC (1.2.11)
   - SkeletonView (1.11.0)
+  - TransitionButton (0.5.3)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
-  - Firebase/Auth
   - IQKeyboardManagerSwift
   - Kingfisher (~> 5.15.8)
   - lottie-ios
   - SkeletonView
+  - TransitionButton
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - Firebase
-    - FirebaseAuth
-    - FirebaseCore
-    - FirebaseCoreDiagnostics
-    - GoogleDataTransport
-    - GoogleUtilities
-    - GTMSessionFetcher
     - IQKeyboardManagerSwift
     - Kingfisher
     - lottie-ios
-    - nanopb
-    - PromisesObjC
     - SkeletonView
+    - TransitionButton
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
-  Firebase: 456eeacc158d8c58586b7871619a81bb9f27d4ae
-  FirebaseAuth: e6a214cc897d2eab7635b1e5dd6b4298fd1e776b
-  FirebaseCore: c959e8a598f83125c01c1700d9161b236ab3833c
-  FirebaseCoreDiagnostics: 2d508e12e77e9691ca67d1669b91ee80f0985b29
-  GoogleDataTransport: e4085e6762f36a6141738f46b0153473ce57fb18
-  GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
-  GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
-  nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
-  PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SkeletonView: cc84ce90a804dd0dd7198dd802833411c8a64eaf
+  TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: 802964d86149609b0ff990e679fde312eeef3404
+PODFILE CHECKSUM: 24a7d26b7556ef321d4e9d54a62b214cb49bd49b
 
 COCOAPODS: 1.10.0

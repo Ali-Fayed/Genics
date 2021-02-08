@@ -34,14 +34,17 @@ import Foundation
 import Alamofire
 
 enum GitRouter {
+    
   case fetchUserRepositories
   case searchRepositories(String)
   case fetchCommits(String)
   case fetchAccessToken(String)
-
+  case fetchClickedRepositories(String)
+  case fetchUsers(Int, String)
+    
   var baseURL: String {
     switch self {
-    case .fetchUserRepositories, .searchRepositories, .fetchCommits:
+    case .fetchUserRepositories, .searchRepositories, .fetchCommits , .fetchClickedRepositories, .fetchUsers:
       return "https://api.github.com"
     case .fetchAccessToken:
       return "https://github.com"
@@ -58,7 +61,12 @@ enum GitRouter {
       return "/repos/\(repository)/commits"
     case .fetchAccessToken:
       return "/login/oauth/access_token"
+    case .fetchClickedRepositories(let user):
+    return "/users/\(user)/repos"
+    case .fetchUsers:
+    return "/search/users"
     }
+ 
   }
 
   var method: HTTPMethod {
@@ -71,13 +79,21 @@ enum GitRouter {
       return .get
     case .fetchAccessToken:
       return .post
+    case .fetchClickedRepositories:
+    return   .get
+    case .fetchUsers:
+        return .get
     }
   }
 
   var parameters: [String: String]? {
     switch self {
+    case .fetchUsers(let page, let query):
+    return ["sort": "repositories", "order": "desc", "page": "\(page)" , "q": query]
     case .fetchUserRepositories:
       return ["per_page": "100"]
+    case.fetchClickedRepositories:
+        return ["per_page": "10"]
     case .searchRepositories(let query):
       return ["sort": "stars", "order": "desc", "page": "1", "q": query]
     case .fetchCommits:

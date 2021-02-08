@@ -13,21 +13,19 @@ extension DetailViewController {
     
     func loadUserRepository () {
         guard let repository = passedUser else {return}
-        RepostoriesRouter().fetchClickedRepositories(for: repository.userName!) { [weak self] result in
+        GitAPIManager().fetchClickedRepositories(for: repository.userName!) {  result in
             switch result {
-            case .success(let repositories):
-                self!.userRepository.append(contentsOf: repositories)
+            case .success(let moreUsers):
+                self.userRepository.append(contentsOf: moreUsers)
                 DispatchQueue.main.async {
-                    self!.tableView.reloadData()
-                    self?.shimmerLoadingView()
+                    self.tableView.reloadData()
                 }
             case .failure(_):
-             break
+                AlertsModel.shared.showPaginationErrorAlert()
+                print("dd")
             }
-     
         }
     }
-    
 
 
     func loadUserProfileData () {

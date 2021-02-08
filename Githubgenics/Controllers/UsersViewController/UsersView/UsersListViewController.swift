@@ -10,32 +10,23 @@ import Alamofire
 
 
 class UsersListViewController: UIViewController  {
-    let sessionManager: Session = {
-      let configuration = URLSessionConfiguration.af.default
-      configuration.requestCachePolicy = .returnCacheDataElseLoad
-      let responseCacher = ResponseCacher(behavior: .modify { _, response in
-        let userInfo = ["date": Date()]
-        return CachedURLResponse(
-          response: response.response,
-          data: response.data,
-          userInfo: userInfo,
-          storagePolicy: .allowed)
-      })
+    var pageNo :Int = 1
+    var totalPages:Int = 100
 
-      let networkLogger = GitNetworkLogger()
-      let interceptor = GitRequestInterceptor()
+//    let querySetup : String = {
+//          var query : String = "a"
+//        if searchBar.text == nil {
+//            query = searchBar.text ?? ""
+//        } else {
+//            self.searchBar.text = "a"
+//        }
+//        return query
+//    }()
 
-      return Session(
-        configuration: configuration,
-        interceptor: interceptor,
-        cachedResponseHandler: responseCacher,
-        eventMonitors: [networkLogger])
-    }()
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
     let longPress = UILongPressGestureRecognizer()
     var users : [items] = []
     var passedusers :items?
-    var moreUsers : [items] = []
     var lastSearch = [LastSearch]()
     var searchHistory = [SearchHistory]()
     var isPaginating = false
@@ -52,6 +43,7 @@ class UsersListViewController: UIViewController  {
             
         refreshList ()
         refreshControl.endRefreshing()
+        
         }
     
     lazy var searchBar:UISearchBar = UISearchBar()

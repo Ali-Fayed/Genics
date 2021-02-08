@@ -34,7 +34,9 @@ import Foundation
 import Alamofire
 
 class GitAPIManager {
+    
   static let shared = GitAPIManager()
+    var isPaginating = false
 
   let sessionManager: Session = {
     let configuration = URLSessionConfiguration.af.default
@@ -57,6 +59,7 @@ class GitAPIManager {
       cachedResponseHandler: responseCacher,
       eventMonitors: [networkLogger])
   }()
+    
 
   func fetchPopularSwiftRepositories(completion: @escaping ([Repository]) -> Void) {
     searchRepositories(query: "language:Swift", completion: completion)
@@ -71,9 +74,11 @@ class GitAPIManager {
         completion(commits)
       }
   }
+    
+
 
   func searchRepositories(query: String, completion: @escaping ([Repository]) -> Void) {
-    sessionManager.request(GitRouter.searchRepositories(query))
+    self.sessionManager.request(GitRouter.searchRepositories(query))
       .responseDecodable(of: Repositories.self) { response in
         guard let repositories = response.value else {
           return completion([])
@@ -84,7 +89,7 @@ class GitAPIManager {
 
 
   func fetchAccessToken(accessCode: String, completion: @escaping (Bool) -> Void) {
-    sessionManager.request(GitRouter.fetchAccessToken(accessCode))
+    self.sessionManager.request(GitRouter.fetchAccessToken(accessCode))
       .responseDecodable(of: GitHubAccessToken.self) { response in
         guard let token = response.value else {
           return completion(false)
@@ -94,21 +99,10 @@ class GitAPIManager {
       }
   }
     
-    func searchUsers(query: String, completion: @escaping ([items]) -> Void) {
-        let url = "https://api.github.com/search/users"
-        var queryParameters: [String: Any] = ["sort": "repositories", "order": "desc", "page": 1]
-        queryParameters["q"] = query
-            sessionManager.request(url, parameters: queryParameters)
-                .responseDecodable(of: SearchedUsers.self) { response in
-                    guard let items = response.value else {
-                        return
-                    }
-                    completion(items.items)
-                }
-    }
+
 
   func fetchUserRepositories(completion: @escaping ([Repository]) -> Void) {
-    sessionManager.request(GitRouter.fetchUserRepositories)
+    self.sessionManager.request(GitRouter.fetchUserRepositories)
       .responseDecodable(of: [Repository].self) { response in
         guard let repositories = response.value else {
           return completion([])
@@ -116,4 +110,34 @@ class GitAPIManager {
         completion(repositories)
       }
   }
+    
+    func fetchUsers(query: String,page: Int , pagination: Bool = false, completion: @escaping (Result<[items],Error>) -> Void ) {
+        if pagination {
+            isPaginating = true
+        }
+        DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: .now() + (pagination ? 2 : 0)) {
+           DispatchQueue.global(qos: .background).async {
+            self.sessionManager.request(GitRouter.fetchUsers(page, query))
+                   .responseDecodable(of: SearchedUsers.self) { response in
+                       guard let items = response.value else {
+                           return
+                       }
+                       completion(.success(items.items))
+            if pagination {
+                self.isPaginating = false
+            }
+        }
+    }
+   }
+}
+    func fetchClickedRepositories(for repository: String , completion: @escaping (Result<[UserRepository],Error>) -> Void) {
+        sessionManager.request(GitRouter.fetchClickedRepositories(repository))
+            .responseDecodable(of: [UserRepository].self) { response in
+                guard let repository = response.value else {
+                    return
+                }
+                completion(.success(repository))
+            }
+    }
+    
 }

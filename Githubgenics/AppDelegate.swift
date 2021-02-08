@@ -7,7 +7,6 @@
 
 import UIKit
 import CoreData
-import Firebase
 import Alamofire
 import IQKeyboardManagerSwift
 
@@ -17,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
-        FirebaseApp.configure()
         NetworkReachabilityModel.shared.startMonitoring()
         NetworkReachabilityModel.shared.startNetworkMonitoring()
         IQKeyboardManager.shared.enable = true

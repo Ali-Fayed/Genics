@@ -51,6 +51,8 @@
 		EA622CFF25C54F4900EC5F3C /* SearchForRepostoriesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA622CFE25C54F4900EC5F3C /* SearchForRepostoriesAPI.swift */; };
 		EA622D0225C54FC600EC5F3C /* UserRepostoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA622D0125C54FC600EC5F3C /* UserRepostoryAPI.swift */; };
 		EA622D0A25C5515F00EC5F3C /* RepostoriesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA622D0925C5515F00EC5F3C /* RepostoriesRouter.swift */; };
+		EA62594B25CFB04400D63BE0 /* lf30_editor_8jr0szmb.json in Resources */ = {isa = PBXBuildFile; fileRef = EA62594A25CFB04400D63BE0 /* lf30_editor_8jr0szmb.json */; };
+		EA62595F25CFD75300D63BE0 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA62595E25CFD75300D63BE0 /* File.swift */; };
 		EA65CB7A25BE9061005CBA09 /* ReposBookmarksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65CB7925BE9061005CBA09 /* ReposBookmarksController.swift */; };
 		EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65CB7F25BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift */; };
 		EA668B9D25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA668B9C25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift */; };
@@ -132,6 +134,8 @@
 		EA622CFE25C54F4900EC5F3C /* SearchForRepostoriesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchForRepostoriesAPI.swift; sourceTree = "<group>"; };
 		EA622D0125C54FC600EC5F3C /* UserRepostoryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepostoryAPI.swift; sourceTree = "<group>"; };
 		EA622D0925C5515F00EC5F3C /* RepostoriesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepostoriesRouter.swift; sourceTree = "<group>"; };
+		EA62594A25CFB04400D63BE0 /* lf30_editor_8jr0szmb.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lf30_editor_8jr0szmb.json; sourceTree = "<group>"; };
+		EA62595E25CFD75300D63BE0 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		EA65CB7925BE9061005CBA09 /* ReposBookmarksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposBookmarksController.swift; sourceTree = "<group>"; };
 		EA65CB7F25BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SavedRepositories+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
 		EA668B9C25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SavedRepositories+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -402,6 +406,7 @@
 				EA22D7A925CE2EDD009C0EEF /* GitAPIManager.swift */,
 				EAA710F425BD4707004D7E21 /* UsersRouter.swift */,
 				EA622D0925C5515F00EC5F3C /* RepostoriesRouter.swift */,
+				EA62595E25CFD75300D63BE0 /* File.swift */,
 			);
 			path = GithubRouter;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				EA85CE3925A0293E006EA337 /* NavBarController.swift */,
 				EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */,
 				EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */,
+				EA62594A25CFB04400D63BE0 /* lf30_editor_8jr0szmb.json */,
 				EA8E252F25B7E50400172F8C /* alienleaguecond.ttf */,
 			);
 			path = OtherControllers;
@@ -582,6 +588,7 @@
 				EA3FA0FD25AE9C00008D7520 /* loadingspinner.json in Resources */,
 				EA7216D425B6121200E21D3B /* Localizable.strings in Resources */,
 				EAC1636825BAB789007EDC96 /* Main.storyboard in Resources */,
+				EA62594B25CFB04400D63BE0 /* lf30_editor_8jr0szmb.json in Resources */,
 				EA2312D925928108000BDC8C /* GoogleService-Info.plist in Resources */,
 				EA566FF825927B9E00596E6A /* LaunchScreen.storyboard in Resources */,
 				EA566FF525927B9E00596E6A /* Assets.xcassets in Resources */,
@@ -652,6 +659,7 @@
 				EA22D78525CE2DE0009C0EEF /* GitRouter.swift in Sources */,
 				EA05898B25C564FB00BC1024 /* RepostoiresTableView.swift in Sources */,
 				EA22D78625CE2DE0009C0EEF /* GitNetworkLogger.swift in Sources */,
+				EA62595F25CFD75300D63BE0 /* File.swift in Sources */,
 				EAD4476625B0148A00FB42B4 /* UsersCell.swift in Sources */,
 				EA22D78E25CE2DF4009C0EEF /* SecureStore.swift in Sources */,
 				EAC3B17325C9520700F798DA /* CommitsView.swift in Sources */,
