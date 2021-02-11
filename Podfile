@@ -12,6 +12,8 @@ target 'Githubgenics' do
   pod 'IQKeyboardManagerSwift'
   pod 'lottie-ios'
   pod 'TransitionButton'
+  pod 'SwiftyJSON', '~> 4.0'
+
 
   
 end

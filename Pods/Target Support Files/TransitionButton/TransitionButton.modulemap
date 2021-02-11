@@ -1,0 +1,6 @@
+module TransitionButton {
+  umbrella header "TransitionButton-umbrella.h"
+
+  export *
+  module * { export * }
+}
