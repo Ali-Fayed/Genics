@@ -30,7 +30,7 @@
 		EA22D7B625CE2F1B009C0EEF /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78125CE2DE0009C0EEF /* TokenManager.swift */; };
 		EA22D7B725CE2F1B009C0EEF /* GitHubAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78025CE2DE0009C0EEF /* GitHubAccessToken.swift */; };
 		EA2312D925928108000BDC8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA2312D825928108000BDC8C /* GoogleService-Info.plist */; };
-		EA2312DD2592819D000BDC8C /* ConstantsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2312DC2592819D000BDC8C /* ConstantsModel.swift */; };
+		EA2312DD2592819D000BDC8C /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2312DC2592819D000BDC8C /* Cells.swift */; };
 		EA3FA0FA25AE9B88008D7520 /* LaunchAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */; };
 		EA3FA0FD25AE9C00008D7520 /* loadingspinner.json in Resources */ = {isa = PBXBuildFile; fileRef = EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */; };
 		EA43BCD325965CAD00098ACA /* ReposCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA43BCD225965CAD00098ACA /* ReposCell.swift */; };
@@ -47,12 +47,12 @@
 		EA566FF525927B9E00596E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA566FF425927B9E00596E6A /* Assets.xcassets */; };
 		EA566FF825927B9E00596E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA566FF625927B9E00596E6A /* LaunchScreen.storyboard */; };
 		EA5EADF725929E2700AC3223 /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5EADF625929E2700AC3223 /* UsersListViewController.swift */; };
+		EA5FD26325D62CAD002E8927 /* HapticsManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FD26225D62CAD002E8927 /* HapticsManger.swift */; };
 		EA60E86A25BE5F07000B6AC0 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60E86925BE5F07000B6AC0 /* Alerts.swift */; };
 		EA622CFC25C54F3800EC5F3C /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA622CFB25C54F3800EC5F3C /* Users.swift */; };
 		EA622CFF25C54F4900EC5F3C /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA622CFE25C54F4900EC5F3C /* Repositories.swift */; };
 		EA622D0225C54FC600EC5F3C /* UsersRepostory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA622D0125C54FC600EC5F3C /* UsersRepostory.swift */; };
 		EA622D0A25C5515F00EC5F3C /* GitReposRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA622D0925C5515F00EC5F3C /* GitReposRouter.swift */; };
-		EA62594B25CFB04400D63BE0 /* lf30_editor_8jr0szmb.json in Resources */ = {isa = PBXBuildFile; fileRef = EA62594A25CFB04400D63BE0 /* lf30_editor_8jr0szmb.json */; };
 		EA62595F25CFD75300D63BE0 /* GitSessionManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA62595E25CFD75300D63BE0 /* GitSessionManger.swift */; };
 		EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65CB7F25BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift */; };
 		EA668B9D25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA668B9C25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift */; };
@@ -77,6 +77,11 @@
 		EAB2AD0C25BBED9F001B6DD7 /* RecentSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2AD0B25BBED9F001B6DD7 /* RecentSearchController.swift */; };
 		EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2AD1125BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift */; };
 		EAB2AD1425BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2AD1225BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift */; };
+		EAB3959025D5FD32009D178C /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3958F25D5FD32009D178C /* Segues.swift */; };
+		EAB3959325D5FD3F009D178C /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3959225D5FD3F009D178C /* Entities.swift */; };
+		EAB3959725D6041B009D178C /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3959625D6041B009D178C /* Titles.swift */; };
+		EAB3959B25D60AA3009D178C /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3959A25D60AA3009D178C /* SettingsTableView.swift */; };
+		EAB3959E25D60C30009D178C /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3959D25D60C30009D178C /* Messages.swift */; };
 		EABF30EF25C7C95000A17456 /* UsersSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABF30EE25C7C95000A17456 /* UsersSearchBar.swift */; };
 		EAC1636625BAB789007EDC96 /* UsersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636325BAB789007EDC96 /* UsersCell.xib */; };
 		EAC1636725BAB789007EDC96 /* ReposCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636425BAB789007EDC96 /* ReposCell.xib */; };
@@ -114,7 +119,7 @@
 		EA22D79625CE2E37009C0EEF /* RepositoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesViewController.swift; sourceTree = "<group>"; };
 		EA22D79825CE2E37009C0EEF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EA2312D825928108000BDC8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		EA2312DC2592819D000BDC8C /* ConstantsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsModel.swift; sourceTree = "<group>"; };
+		EA2312DC2592819D000BDC8C /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAnimation.swift; sourceTree = "<group>"; };
 		EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingspinner.json; sourceTree = "<group>"; };
 		EA43BCD225965CAD00098ACA /* ReposCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposCell.swift; sourceTree = "<group>"; };
@@ -133,12 +138,12 @@
 		EA566FF725927B9E00596E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA566FF925927B9E00596E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5EADF625929E2700AC3223 /* UsersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
+		EA5FD26225D62CAD002E8927 /* HapticsManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManger.swift; sourceTree = "<group>"; };
 		EA60E86925BE5F07000B6AC0 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		EA622CFB25C54F3800EC5F3C /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		EA622CFE25C54F4900EC5F3C /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		EA622D0125C54FC600EC5F3C /* UsersRepostory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepostory.swift; sourceTree = "<group>"; };
 		EA622D0925C5515F00EC5F3C /* GitReposRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitReposRouter.swift; sourceTree = "<group>"; };
-		EA62594A25CFB04400D63BE0 /* lf30_editor_8jr0szmb.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lf30_editor_8jr0szmb.json; sourceTree = "<group>"; };
 		EA62595E25CFD75300D63BE0 /* GitSessionManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitSessionManger.swift; sourceTree = "<group>"; };
 		EA65CB7F25BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SavedRepositories+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
 		EA668B9C25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SavedRepositories+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -148,7 +153,6 @@
 		EA7C4CA825BAA7E000EC9F45 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		EA7C4CAB25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersDataBase+CoreDataClass copy.swift"; sourceTree = "<group>"; };
 		EA7C4CAC25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersDataBase+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
-		EA8E252F25B7E50400172F8C /* alienleaguecond.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alienleaguecond.ttf; sourceTree = "<group>"; };
 		EA94DCA525C6377200E2C30B /* Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
 		EA94DCAB25C6391000E2C30B /* Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delete.swift; sourceTree = "<group>"; };
 		EA94DCBB25C6726C00E2C30B /* UsersTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableView.swift; sourceTree = "<group>"; };
@@ -165,6 +169,11 @@
 		EAB2AD0B25BBED9F001B6DD7 /* RecentSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchController.swift; sourceTree = "<group>"; };
 		EAB2AD1125BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EAB2AD1225BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHistory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EAB3958F25D5FD32009D178C /* Segues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
+		EAB3959225D5FD3F009D178C /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
+		EAB3959625D6041B009D178C /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
+		EAB3959A25D60AA3009D178C /* SettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
+		EAB3959D25D60C30009D178C /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		EABF30EE25C7C95000A17456 /* UsersSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersSearchBar.swift; sourceTree = "<group>"; };
 		EAC1636325BAB789007EDC96 /* UsersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsersCell.xib; sourceTree = "<group>"; };
 		EAC1636425BAB789007EDC96 /* ReposCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReposCell.xib; sourceTree = "<group>"; };
@@ -215,7 +224,7 @@
 			path = "Detail View";
 			sourceTree = "<group>";
 		};
-		EA05897125C55F8B00BC1024 /* RecentSearchView */ = {
+		EA05897125C55F8B00BC1024 /* Recent Search View */ = {
 			isa = PBXGroup;
 			children = (
 				EAB2AD0B25BBED9F001B6DD7 /* RecentSearchController.swift */,
@@ -223,7 +232,7 @@
 				EA05897625C55F9F00BC1024 /* RecentCollectionView.swift */,
 				EA48AD0025D4E2E8006803BD /* RecentSearchMethods.swift */,
 			);
-			path = RecentSearchView;
+			path = "Recent Search View";
 			sourceTree = "<group>";
 		};
 		EA05898625C564AB00BC1024 /* Repostories View */ = {
@@ -237,12 +246,13 @@
 			path = "Repostories View";
 			sourceTree = "<group>";
 		};
-		EA05898D25C5655A00BC1024 /* Settings View */ = {
+		EA05898D25C5655A00BC1024 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
 				EA9743512596C3790057C8A0 /* SettingsViewController.swift */,
+				EAB3959A25D60AA3009D178C /* SettingsTableView.swift */,
 			);
-			path = "Settings View";
+			path = SettingsView;
 			sourceTree = "<group>";
 		};
 		EA0589CD25C56CF300BC1024 /* GitCRUD */ = {
@@ -339,13 +349,13 @@
 			path = "Network Monitor";
 			sourceTree = "<group>";
 		};
-		EA52D7C325D4E3E100B24BDC /* Login View */ = {
+		EA52D7C325D4E3E100B24BDC /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
 				EA22D79825CE2E37009C0EEF /* LoginViewController.swift */,
 				EA52D7CA25D4E43D00B24BDC /* LoginViewMethods.swift */,
 			);
-			path = "Login View";
+			path = LoginViewController;
 			sourceTree = "<group>";
 		};
 		EA54C34925940DCC0021BFC4 /* Custom Cells */ = {
@@ -381,9 +391,9 @@
 				EA2312D825928108000BDC8C /* GoogleService-Info.plist */,
 				EA566FF925927B9E00596E6A /* Info.plist */,
 				EA566FF425927B9E00596E6A /* Assets.xcassets */,
-				EA999A7325927C31005E832C /* Model */,
+				EA999A7325927C31005E832C /* Models */,
 				EA4664C425BAB204003C4AD1 /* View */,
-				EA999A7425927C67005E832C /* Controller */,
+				EA999A7425927C67005E832C /* Controllers */,
 				EA94DCCC25C67CAA00E2C30B /* Other */,
 			);
 			path = Githubgenics;
@@ -422,7 +432,7 @@
 			path = GitRouter;
 			sourceTree = "<group>";
 		};
-		EA65CB7C25BE9069005CBA09 /* Bookmarks View */ = {
+		EA65CB7C25BE9069005CBA09 /* BookmarksViewController */ = {
 			isa = PBXGroup;
 			children = (
 				EA7C4CA825BAA7E000EC9F45 /* BookmarksViewController.swift */,
@@ -430,7 +440,7 @@
 				EA0589BC25C56A0E00BC1024 /* BookmarksSearchBar.swift */,
 				EAAF81F325D4E848006C44EC /* BookmarksViewMethods.swift */,
 			);
-			path = "Bookmarks View";
+			path = BookmarksViewController;
 			sourceTree = "<group>";
 		};
 		EA65CB8325BE9697005CBA09 /* Repositories */ = {
@@ -442,7 +452,7 @@
 			name = Repositories;
 			sourceTree = "<group>";
 		};
-		EA703D7425BAB65900073DFB /* GithubCoreDataClasses */ = {
+		EA703D7425BAB65900073DFB /* GitCoreDataClasses */ = {
 			isa = PBXGroup;
 			children = (
 				EA65CB8325BE9697005CBA09 /* Repositories */,
@@ -451,7 +461,7 @@
 				EA0C2DA225BD1B6E00D3898A /* UsersDataBase */,
 				EA668B9F25BFE83C00392A30 /* Githubgenics.xcdatamodeld */,
 			);
-			path = GithubCoreDataClasses;
+			path = GitCoreDataClasses;
 			sourceTree = "<group>";
 		};
 		EA73166125D3373E00429224 /* GitSessionManger */ = {
@@ -478,7 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				EA0589CD25C56CF300BC1024 /* GitCRUD */,
-				EA703D7425BAB65900073DFB /* GithubCoreDataClasses */,
+				EA703D7425BAB65900073DFB /* GitCoreDataClasses */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -491,15 +501,6 @@
 				EAAF820B25D4F036006C44EC /* SignOutCell.xib */,
 			);
 			path = Nibs;
-			sourceTree = "<group>";
-		};
-		EA94DCC225C67A1500E2C30B /* Users View */ = {
-			isa = PBXGroup;
-			children = (
-				EAA710FD25BD562E004D7E21 /* UsersView */,
-				EA05897125C55F8B00BC1024 /* RecentSearchView */,
-			);
-			path = "Users View";
 			sourceTree = "<group>";
 		};
 		EA94DCC825C67B0700E2C30B /* Localization */ = {
@@ -518,13 +519,11 @@
 				EA566FE825927B9D00596E6A /* AppDelegate.swift */,
 				EA566FEA25927B9D00596E6A /* SceneDelegate.swift */,
 				EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */,
-				EA62594A25CFB04400D63BE0 /* lf30_editor_8jr0szmb.json */,
-				EA8E252F25B7E50400172F8C /* alienleaguecond.ttf */,
 			);
 			path = Other;
 			sourceTree = "<group>";
 		};
-		EA999A7325927C31005E832C /* Model */ = {
+		EA999A7325927C31005E832C /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				EA73166325D337AF00429224 /* Networking */,
@@ -532,29 +531,25 @@
 				EA94DCC825C67B0700E2C30B /* Localization */,
 				EA22D7C025CE4818009C0EEF /* Outh2 */,
 				EA48ACF225D4D3AB006803BD /* Network Monitor */,
+				EAB3958D25D5FD20009D178C /* Constants */,
 				EA60E86925BE5F07000B6AC0 /* Alerts.swift */,
-				EA2312DC2592819D000BDC8C /* ConstantsModel.swift */,
+				EA5FD26225D62CAD002E8927 /* HapticsManger.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		EA999A7425927C67005E832C /* Controller */ = {
+		EA999A7425927C67005E832C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				EAAF81F825D4EB43006C44EC /* Welcome Screen View */,
-				EA52D7C325D4E3E100B24BDC /* Login View */,
-				EA94DCC225C67A1500E2C30B /* Users View */,
-				EA05895125C5561700BC1024 /* Detail View */,
-				EA05898625C564AB00BC1024 /* Repostories View */,
-				EA209CDC25C95F7F0097C03C /* Commits View */,
-				EA65CB7C25BE9069005CBA09 /* Bookmarks View */,
-				EA05898D25C5655A00BC1024 /* Settings View */,
+				EA52D7C325D4E3E100B24BDC /* LoginViewController */,
+				EAB395A625D60F3C009D178C /* Tab Bar Contoller Views */,
 				EA54C34925940DCC0021BFC4 /* Custom Cells */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		EAA710FD25BD562E004D7E21 /* UsersView */ = {
+		EAA710FD25BD562E004D7E21 /* Users View */ = {
 			isa = PBXGroup;
 			children = (
 				EA5EADF625929E2700AC3223 /* UsersListViewController.swift */,
@@ -562,7 +557,7 @@
 				EABF30EE25C7C95000A17456 /* UsersSearchBar.swift */,
 				EAFB5D7625C7AF9F0096D729 /* UsersListMethods.swift */,
 			);
-			path = UsersView;
+			path = "Users View";
 			sourceTree = "<group>";
 		};
 		EAAF81F825D4EB43006C44EC /* Welcome Screen View */ = {
@@ -572,6 +567,48 @@
 				EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */,
 			);
 			path = "Welcome Screen View";
+			sourceTree = "<group>";
+		};
+		EAB3958D25D5FD20009D178C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				EA2312DC2592819D000BDC8C /* Cells.swift */,
+				EAB3958F25D5FD32009D178C /* Segues.swift */,
+				EAB3959225D5FD3F009D178C /* Entities.swift */,
+				EAB3959625D6041B009D178C /* Titles.swift */,
+				EAB3959D25D60C30009D178C /* Messages.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		EAB395A325D60EE8009D178C /* UsersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EAA710FD25BD562E004D7E21 /* Users View */,
+				EA05897125C55F8B00BC1024 /* Recent Search View */,
+				EA05895125C5561700BC1024 /* Detail View */,
+			);
+			path = UsersViewController;
+			sourceTree = "<group>";
+		};
+		EAB395A425D60F10009D178C /* RepositoriesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA05898625C564AB00BC1024 /* Repostories View */,
+				EA209CDC25C95F7F0097C03C /* Commits View */,
+			);
+			path = RepositoriesViewController;
+			sourceTree = "<group>";
+		};
+		EAB395A625D60F3C009D178C /* Tab Bar Contoller Views */ = {
+			isa = PBXGroup;
+			children = (
+				EAB395A325D60EE8009D178C /* UsersViewController */,
+				EAB395A425D60F10009D178C /* RepositoriesViewController */,
+				EA65CB7C25BE9069005CBA09 /* BookmarksViewController */,
+				EA05898D25C5655A00BC1024 /* SettingsView */,
+			);
+			path = "Tab Bar Contoller Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -638,7 +675,6 @@
 				EA3FA0FD25AE9C00008D7520 /* loadingspinner.json in Resources */,
 				EA7216D425B6121200E21D3B /* Localizable.strings in Resources */,
 				EAC1636825BAB789007EDC96 /* Main.storyboard in Resources */,
-				EA62594B25CFB04400D63BE0 /* lf30_editor_8jr0szmb.json in Resources */,
 				EA2312D925928108000BDC8C /* GoogleService-Info.plist in Resources */,
 				EA566FF825927B9E00596E6A /* LaunchScreen.storyboard in Resources */,
 				EA566FF525927B9E00596E6A /* Assets.xcassets in Resources */,
@@ -700,6 +736,7 @@
 				EA05897725C55F9F00BC1024 /* RecentCollectionView.swift in Sources */,
 				EAAF81FE25D4EDAD006C44EC /* Cell Delegate.swift in Sources */,
 				EA622D0A25C5515F00EC5F3C /* GitReposRouter.swift in Sources */,
+				EAB3959B25D60AA3009D178C /* SettingsTableView.swift in Sources */,
 				EA4BCB1625BCDC71000F302A /* LastSearchCollection.swift in Sources */,
 				EA22D79925CE2E37009C0EEF /* RepositoriesViewController.swift in Sources */,
 				EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */,
@@ -713,6 +750,7 @@
 				EA62595F25CFD75300D63BE0 /* GitSessionManger.swift in Sources */,
 				EAD4476625B0148A00FB42B4 /* UsersCell.swift in Sources */,
 				EA22D78E25CE2DF4009C0EEF /* SecureStore.swift in Sources */,
+				EAB3959725D6041B009D178C /* Titles.swift in Sources */,
 				EAC3B17325C9520700F798DA /* CommitsViewController.swift in Sources */,
 				EA668BA125BFE83C00392A30 /* Githubgenics.xcdatamodeld in Sources */,
 				EA622CFC25C54F3800EC5F3C /* Users.swift in Sources */,
@@ -720,9 +758,10 @@
 				EA668B9D25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift in Sources */,
 				EAFB5D7A25C7B16F0096D729 /* DetailViewFunctions.swift in Sources */,
 				EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */,
-				EA2312DD2592819D000BDC8C /* ConstantsModel.swift in Sources */,
+				EA2312DD2592819D000BDC8C /* Cells.swift in Sources */,
 				EAAF81F425D4E848006C44EC /* BookmarksViewMethods.swift in Sources */,
 				EA48AD0125D4E2E8006803BD /* RecentSearchMethods.swift in Sources */,
+				EAB3959E25D60C30009D178C /* Messages.swift in Sources */,
 				EA0589BD25C56A0E00BC1024 /* BookmarksSearchBar.swift in Sources */,
 				EA22D7A125CE2EAB009C0EEF /* GitHubConstants.swift in Sources */,
 				EA999A6525927C02005E832C /* DetailViewController.swift in Sources */,
@@ -732,16 +771,19 @@
 				EA4530C825BFAD3B00651BFA /* Localizationl.swift in Sources */,
 				EA999A7A25927CAA005E832C /* WelcomeScreen.swift in Sources */,
 				EAB2AD0C25BBED9F001B6DD7 /* RecentSearchController.swift in Sources */,
+				EA5FD26325D62CAD002E8927 /* HapticsManger.swift in Sources */,
 				EA48ACFE25D4E1FA006803BD /* RepositoriesViewMethods.swift in Sources */,
 				EA22D7B725CE2F1B009C0EEF /* GitHubAccessToken.swift in Sources */,
 				EA45AA1A259C45E400365E9B /* NetworkReachability.swift in Sources */,
 				EA22D78325CE2DE0009C0EEF /* GitRequestInterceptor.swift in Sources */,
 				EA22D79425CE2E26009C0EEF /* SecureStoreQueryable.swift in Sources */,
 				EA566FE925927B9D00596E6A /* AppDelegate.swift in Sources */,
+				EAB3959325D5FD3F009D178C /* Entities.swift in Sources */,
 				EA566FEB25927B9D00596E6A /* SceneDelegate.swift in Sources */,
 				EA05894F25C555BB00BC1024 /* UserRepoTableView.swift in Sources */,
 				EA60E86A25BE5F07000B6AC0 /* Alerts.swift in Sources */,
 				EABF30EF25C7C95000A17456 /* UsersSearchBar.swift in Sources */,
+				EAB3959025D5FD32009D178C /* Segues.swift in Sources */,
 				EA4C91CC25C9623F00EE1242 /* CommitsViewTable.swift in Sources */,
 				EAAF820C25D4F036006C44EC /* SignOutCell.swift in Sources */,
 				EAAF81EF25D4E777006C44EC /* CommitsViewMethods.swift in Sources */,
