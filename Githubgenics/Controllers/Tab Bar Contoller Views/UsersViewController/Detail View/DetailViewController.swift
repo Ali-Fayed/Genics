@@ -17,7 +17,8 @@ class DetailViewController: UIViewController  {
     var savedRepos = [SavedRepositories]()
     var passedUser : items?
     var selectedRepository: UserRepository?
-    
+    var starButton = [Int : Bool]()
+
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userName: UILabel!
@@ -30,13 +31,14 @@ class DetailViewController: UIViewController  {
             if newValue == "on" {
                 bookmarkButton.setBackgroundImage(UIImage(named: "like"), for: .normal)
                 Save().user(userName: (passedUser?.userName)!, userAvatar: (passedUser?.userAvatar)!, userURL: (passedUser?.userURL)!)
+                HapticsManger.shared.selectionVibrate(for: .medium)
             }
             else { bookmarkButton.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
             }
         }
     }
 
-    override func viewDidLoad() {
+    override func viewDidLoad()  {
         super.viewDidLoad()
         tableView.addGestureRecognizer(longPress)
         view.addSubview(loadingIndicator)
@@ -47,6 +49,7 @@ class DetailViewController: UIViewController  {
         renderTheButtonWithSavedState ()
         renderClickedUserPublicRepositories()
         tableView.rowHeight = 120
+        renderStarState()
     }
     
     override func viewWillAppear(_ animated: Bool) {

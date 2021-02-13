@@ -50,6 +50,7 @@ class UsersListViewController: UIViewController  {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = Titles.usersViewTitle
+        self.tabBarItem.title = Titles.usersViewTitle
         navigationController?.isNavigationBarHidden = false
         self.searchBar.becomeFirstResponder()
         self.historyView.alpha = 1.0
@@ -58,6 +59,12 @@ class UsersListViewController: UIViewController  {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabBarController?.navigationItem.title = Titles.usersViewTitle
+        self.tabBarItem.title = Titles.usersViewTitle
+        if let viewControllers = tabBarController!.viewControllers {
+            for viewController in viewControllers {
+                let _ = viewController.view
+            }
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

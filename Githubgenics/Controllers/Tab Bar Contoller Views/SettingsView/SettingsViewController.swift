@@ -21,6 +21,7 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(Cells.signOutNib(), forCellReuseIdentifier: Cells.signOutCell)
         tableView.tableFooterView = UIView()
+        self.tabBarItem.title = Titles.settingsViewTitle
     }
     
     override func viewDidAppear(_ animated: Bool) {

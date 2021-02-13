@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol MyTableViewCellDelegate: AnyObject {
+    func didTapButton(cell:ReposCell, didTappedThe button:UIButton?)
+    
+    
+}
 protocol DidTapCell : AnyObject {
     func didTapButton(cell:ReposCell, didTappedThe button:UIButton?)
 }

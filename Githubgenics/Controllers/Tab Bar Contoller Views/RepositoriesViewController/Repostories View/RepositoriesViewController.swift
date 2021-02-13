@@ -33,6 +33,7 @@ class RepositoriesViewController: UITableViewController {
         view.addSubview(loadingIndicator)
         tableView.register(Cells.reposNib(), forCellReuseIdentifier: Cells.repositoriesCell)
         tableView.rowHeight = 120
+        self.tabBarItem.title = Titles.RepositoriesViewTitle
         renderSearchBar()
     }
     

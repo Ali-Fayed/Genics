@@ -10,6 +10,6 @@ import Foundation
 struct ID {
     static let welcomeScreenID = "WelcomeScreen"
     static let usersListViewID = "UsersListViewController"
-    static let loginViewID = "LoginView"
-    static let Main = "Main"
+    static let loginViewID     = "LoginView"
+    static let Main            = "Main"
 }

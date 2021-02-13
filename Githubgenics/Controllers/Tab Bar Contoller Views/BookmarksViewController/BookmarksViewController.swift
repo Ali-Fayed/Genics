@@ -22,6 +22,7 @@ class BookmarksViewController: UITableViewController {
         tableView.addGestureRecognizer(longPress)
         searchBar.delegate = self
         searchBar.placeholder = Titles.searchPlacholder
+        self.tabBarItem.title = Titles.BookmarksViewTitle
         tableView.tableFooterView = UIView()
         renderDB ()
     }

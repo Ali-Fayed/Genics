@@ -170,7 +170,7 @@
                             <outlet property="delegate" destination="th9-lH-FdZ" id="OuD-rK-1ra"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="5Za-nk-W7r"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="5Za-nk-W7r"/>
                     <navigationItem key="navigationItem" title="Settings" id="cTc-8b-ok9"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbe-eD-rr2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -205,7 +205,7 @@
                             <outlet property="delegate" destination="alL-Mw-hu1" id="hnR-Um-y0O"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Repositories" image="signpost.left.fill" catalog="system" id="xky-db-fYG"/>
+                    <tabBarItem key="tabBarItem" title="Repositories" image="square.and.pencil" catalog="system" id="xky-db-fYG"/>
                     <connections>
                         <outlet property="searchBar" destination="uT2-Ix-K5N" id="g4L-tP-Dbw"/>
                         <segue destination="8uN-GM-eUw" kind="show" identifier="CommitSegue" id="LFK-kK-RsT"/>
@@ -749,9 +749,9 @@
         <image name="Github" width="471" height="460"/>
         <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="follow" width="256" height="256"/>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="signpost.left.fill" catalog="system" width="128" height="118"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="unlike" width="256" height="227.5"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

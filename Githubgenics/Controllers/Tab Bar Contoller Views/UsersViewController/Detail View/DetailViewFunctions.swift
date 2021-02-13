@@ -14,11 +14,11 @@ extension DetailViewController {
     
     func renderClickedUserPublicRepositories () {
         guard let repository = passedUser else {return}
-        loadingIndicator.stopAnimating()
+        self.loadingIndicator.startAnimating()
         GitReposRouter().fetchUsersRepositories(for: repository.userName) { [self] result in
             self.userRepository = result
             DispatchQueue.main.async {
-                loadingIndicator.stopAnimating()
+                self.loadingIndicator.stopAnimating()
                 tableView.reloadData()
             }
         }
@@ -59,6 +59,8 @@ extension DetailViewController {
         let stat = setBookmarkButtonState == "on" ? "off" : "on"
         setBookmarkButtonState = stat
         defaults.set(stat, forKey: ((passedUser?.userName)!))
+        HapticsManger.shared.selectionVibrate(for: .medium)
+
     }
     
     func renderTheButtonWithSavedState () {
@@ -94,7 +96,24 @@ extension DetailViewController {
             present(sheet, animated: true)
         }
     }
-
+    
+    func renderStarState () {
+        if let checks = UserDefaults.standard.value(forKey: passedUser!.userName) as? NSData {
+            do {
+                try starButton = NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(checks as Data) as! [Int : Bool]
+            } catch {
+                //
+            }
+        }
+    }
+    func saveStarState () {
+        do {
+            try  UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: starButton, requiringSecureCoding: true), forKey: passedUser!.userName)
+            UserDefaults.standard.synchronize()
+        } catch {
+            //
+        }
+    }
     //MARK:- Handle Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
