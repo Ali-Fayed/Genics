@@ -1,34 +1,44 @@
-#Githubgenic app V 1.0
+#Githubgenics V1.0
 
 IOS Native App based on github REST API 
 
-Using :
+Githubgenics V1.0 written in Swift 5.3
 
-UIKit-
-CoreData-
-Alamofire-
-Kingfisher-
-Lottie-
-SFsafari-
-Userdefaults
+* Supported IOS : IOS 13 or above
+* Swift Frameworks : UIKit - SafariServices - Network - AuthenticationWS 
+* DataStorage : CoreData - UserDefaults
+* Third party Libraries : Alamofire - kingfisher - lottie - IQkeyboard - SkeletonView
+* Patterns : MVC - Singelton - Delegation
+* Supported languages in App : English , Arabic!
 
+************* ***important note*** ****************
+Open this link https://github.com/settings/applications/new and create outh2 app and copy your "Client ID & Client secret" to
+***( Models > Outh2 > Token Manger > GitHubconstants )***
 
-Fetures : 
+put the Authorization call back url :
 
-1 - explore github users at users view with infinite scrolling 
+ ***githubgenicap://***
 
-2 - explore any user repository by touch on the user cell in the table
+put the homepage url any valid url
 
-3 - bookmark any user or repository by swiping or press favourite button in the core data and explore your bookmarks and interact with them in the bookmarks screen
+Or https://alifayed.me
 
-4 - you can delete any search history word or user or repository 
+***if you don't do that choose "try without github"***
 
-5 - open any user or repository url in app
+*** using app without authentication reduce the API requests limit ***
 
-6 - recent search like twitter app
+If you face any bugs or issues please tell me
+*****************************************
 
-7 - dark mode
+App features : 
 
-8 - authentication using firebase
-
-9 - gestures and long press features enabled
+* Explore and search github users with infinite scrolling.
+* Explore  user Profile and Repositories by touch the cells.
+* Bookmark any User or Repository  to The Bookmarks View when you longpress the cell or Tap on the Bookmark Button.
+* You can delete or Excute Bookmarks Menu or Search History. 
+* Swipe to Delete search Records
+* Open any User or Repository URL with Longpress menu.
+* Explore your private and Public. Repositories with Outh2 when you sign in with github.
+* Supporting Dark Mode in app UI.
+* Haptic Feedback when longpress or important actions.
+* Supporting Arabic Language 100%
