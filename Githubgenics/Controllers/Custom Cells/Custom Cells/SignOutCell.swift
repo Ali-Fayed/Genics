@@ -8,16 +8,24 @@
 import UIKit
 
 class SignOutCell: UITableViewCell {
-    weak var delegate : DidTapSignOutCell?
     
-
+    weak var delegate : DidTapSignOutCell?
     @IBOutlet weak var logOut: UIButton!
+    var isLoggedIn: Bool {
+        if TokenManager.shared.fetchAccessToken() != nil {
+            return true
+        }
+        return false
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        logOut.setTitle(Titles.logOut, for: .normal)
+        if isLoggedIn {
+            logOut.setTitle(Titles.logOut, for: .normal)
+        } else {
+            logOut.setTitle(Titles.signinWith, for: .normal)
+        }
     }
-    
     
     @IBAction func signOut(_ sender: Any) {
         delegate?.didTapButton(cell: self, didTappedThe: sender as? UIButton)
@@ -26,9 +34,14 @@ class SignOutCell: UITableViewCell {
 
 extension SettingsViewController : DidTapSignOutCell {
     func didTapButton(cell: SignOutCell, didTappedThe button: UIButton?) {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WelcomeScreen") as? WelcomeScreen
-        self.navigationController?.pushViewController(vc!, animated: true)
-        TokenManager.shared.clearAccessToken()
-        UserDefaults.standard.removeObject(forKey: "outh")
+        if isLoggedIn {
+            let vc = UIStoryboard.init(name: ID.Main , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.welcomeScreenID) as? WelcomeScreen
+            self.navigationController?.pushViewController(vc!, animated: true)
+            TokenManager.shared.clearAccessToken()
+            UserDefaults.standard.removeObject(forKey: "outh")
+        } else {
+            let vc = UIStoryboard.init(name: ID.Main, bundle: Bundle.main).instantiateViewController(withIdentifier: ID.loginViewID) as? LoginViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
 }

@@ -18,7 +18,7 @@ class Delete: Fetch {
             }
             completion(usersDataBase)
         } catch {
-            Alerts.shared.showErrorAlert()
+            //
         }
     }
     
@@ -31,7 +31,7 @@ class Delete: Fetch {
             }
             completion(searchHistory)
         } catch {
-            Alerts.shared.showErrorAlert()
+            //
         }
     }
     
@@ -44,7 +44,7 @@ class Delete: Fetch {
             }
             completion(savedRepositories)
         } catch {
-            Alerts.shared.showErrorAlert()
+            //
         }
     }
     
@@ -57,7 +57,7 @@ class Delete: Fetch {
             }
             completion(lastSearch)
         } catch {
-            Alerts.shared.showErrorAlert()
+            //
         }
     }
 }

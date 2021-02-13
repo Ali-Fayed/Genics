@@ -20,5 +20,4 @@ extension SavedRepositories {
     @NSManaged public var repoUserFullName: String?
     @NSManaged public var repoProgrammingLanguage: String?
     @NSManaged public var repoURL: String?
-    @NSManaged public var isLiked: Bool
 }

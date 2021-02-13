@@ -39,5 +39,4 @@ extension RepositoriesViewController: UISearchBarDelegate {
             self.listSearchBar.becomeFirstResponder()
         }
     }
-    
 }

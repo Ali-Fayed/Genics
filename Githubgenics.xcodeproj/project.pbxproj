@@ -34,7 +34,7 @@
 		EA3FA0FA25AE9B88008D7520 /* LaunchAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */; };
 		EA3FA0FD25AE9C00008D7520 /* loadingspinner.json in Resources */ = {isa = PBXBuildFile; fileRef = EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */; };
 		EA43BCD325965CAD00098ACA /* ReposCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA43BCD225965CAD00098ACA /* ReposCell.swift */; };
-		EA4530C825BFAD3B00651BFA /* Localizationl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4530C725BFAD3B00651BFA /* Localizationl.swift */; };
+		EA4530C825BFAD3B00651BFA /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4530C725BFAD3B00651BFA /* Localization.swift */; };
 		EA45AA1A259C45E400365E9B /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA45AA19259C45E400365E9B /* NetworkReachability.swift */; };
 		EA48ACF025D4D2C9006803BD /* NetwrokMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA48ACEF25D4D2C9006803BD /* NetwrokMonitor.swift */; };
 		EA48ACFE25D4E1FA006803BD /* RepositoriesViewMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA48ACFD25D4E1FA006803BD /* RepositoriesViewMethods.swift */; };
@@ -48,7 +48,6 @@
 		EA566FF825927B9E00596E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA566FF625927B9E00596E6A /* LaunchScreen.storyboard */; };
 		EA5EADF725929E2700AC3223 /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5EADF625929E2700AC3223 /* UsersListViewController.swift */; };
 		EA5FD26325D62CAD002E8927 /* HapticsManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FD26225D62CAD002E8927 /* HapticsManger.swift */; };
-		EA60E86A25BE5F07000B6AC0 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60E86925BE5F07000B6AC0 /* Alerts.swift */; };
 		EA622CFC25C54F3800EC5F3C /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA622CFB25C54F3800EC5F3C /* Users.swift */; };
 		EA622CFF25C54F4900EC5F3C /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA622CFE25C54F4900EC5F3C /* Repositories.swift */; };
 		EA622D0225C54FC600EC5F3C /* UsersRepostory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA622D0125C54FC600EC5F3C /* UsersRepostory.swift */; };
@@ -61,6 +60,7 @@
 		EA7C4CA925BAA7E000EC9F45 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CA825BAA7E000EC9F45 /* BookmarksViewController.swift */; };
 		EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CAB25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift */; };
 		EA7C4CAE25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CAC25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift */; };
+		EA88A7B725D709CB008663BD /* Storyboard ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88A7B625D709CB008663BD /* Storyboard ID.swift */; };
 		EA94DCA625C6377200E2C30B /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94DCA525C6377200E2C30B /* Save.swift */; };
 		EA94DCAC25C6391000E2C30B /* Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94DCAB25C6391000E2C30B /* Delete.swift */; };
 		EA94DCBC25C6726C00E2C30B /* UsersTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94DCBB25C6726C00E2C30B /* UsersTableView.swift */; };
@@ -123,7 +123,7 @@
 		EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAnimation.swift; sourceTree = "<group>"; };
 		EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingspinner.json; sourceTree = "<group>"; };
 		EA43BCD225965CAD00098ACA /* ReposCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposCell.swift; sourceTree = "<group>"; };
-		EA4530C725BFAD3B00651BFA /* Localizationl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizationl.swift; sourceTree = "<group>"; };
+		EA4530C725BFAD3B00651BFA /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		EA45AA19259C45E400365E9B /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		EA48ACEF25D4D2C9006803BD /* NetwrokMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwrokMonitor.swift; sourceTree = "<group>"; };
 		EA48ACFD25D4E1FA006803BD /* RepositoriesViewMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesViewMethods.swift; sourceTree = "<group>"; };
@@ -139,7 +139,6 @@
 		EA566FF925927B9E00596E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5EADF625929E2700AC3223 /* UsersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
 		EA5FD26225D62CAD002E8927 /* HapticsManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManger.swift; sourceTree = "<group>"; };
-		EA60E86925BE5F07000B6AC0 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		EA622CFB25C54F3800EC5F3C /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		EA622CFE25C54F4900EC5F3C /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		EA622D0125C54FC600EC5F3C /* UsersRepostory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepostory.swift; sourceTree = "<group>"; };
@@ -153,6 +152,7 @@
 		EA7C4CA825BAA7E000EC9F45 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		EA7C4CAB25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersDataBase+CoreDataClass copy.swift"; sourceTree = "<group>"; };
 		EA7C4CAC25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersDataBase+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		EA88A7B625D709CB008663BD /* Storyboard ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard ID.swift"; sourceTree = "<group>"; };
 		EA94DCA525C6377200E2C30B /* Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
 		EA94DCAB25C6391000E2C30B /* Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delete.swift; sourceTree = "<group>"; };
 		EA94DCBB25C6726C00E2C30B /* UsersTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableView.swift; sourceTree = "<group>"; };
@@ -315,8 +315,8 @@
 		EA22D7C025CE4818009C0EEF /* Outh2 */ = {
 			isa = PBXGroup;
 			children = (
-				EA22D79225CE2E14009C0EEF /* Secure Store */,
 				EA48ACEC25D4D203006803BD /* Token Manger */,
+				EA22D79225CE2E14009C0EEF /* Secure Store */,
 			);
 			path = Outh2;
 			sourceTree = "<group>";
@@ -493,6 +493,14 @@
 			path = DataBase;
 			sourceTree = "<group>";
 		};
+		EA88A7BC25D731D4008663BD /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				EA5FD26225D62CAD002E8927 /* HapticsManger.swift */,
+			);
+			path = Haptics;
+			sourceTree = "<group>";
+		};
 		EA8AD23F25BCF6B20022DE2E /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,7 +514,7 @@
 		EA94DCC825C67B0700E2C30B /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				EA4530C725BFAD3B00651BFA /* Localizationl.swift */,
+				EA4530C725BFAD3B00651BFA /* Localization.swift */,
 				EA7216D625B6121200E21D3B /* Localizable.strings */,
 			);
 			path = Localization;
@@ -532,8 +540,7 @@
 				EA22D7C025CE4818009C0EEF /* Outh2 */,
 				EA48ACF225D4D3AB006803BD /* Network Monitor */,
 				EAB3958D25D5FD20009D178C /* Constants */,
-				EA60E86925BE5F07000B6AC0 /* Alerts.swift */,
-				EA5FD26225D62CAD002E8927 /* HapticsManger.swift */,
+				EA88A7BC25D731D4008663BD /* Haptics */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -577,6 +584,7 @@
 				EAB3959225D5FD3F009D178C /* Entities.swift */,
 				EAB3959625D6041B009D178C /* Titles.swift */,
 				EAB3959D25D60C30009D178C /* Messages.swift */,
+				EA88A7B625D709CB008663BD /* Storyboard ID.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -768,7 +776,8 @@
 				EA52D7CB25D4E43D00B24BDC /* LoginViewMethods.swift in Sources */,
 				EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */,
 				EA622CFF25C54F4900EC5F3C /* Repositories.swift in Sources */,
-				EA4530C825BFAD3B00651BFA /* Localizationl.swift in Sources */,
+				EA88A7B725D709CB008663BD /* Storyboard ID.swift in Sources */,
+				EA4530C825BFAD3B00651BFA /* Localization.swift in Sources */,
 				EA999A7A25927CAA005E832C /* WelcomeScreen.swift in Sources */,
 				EAB2AD0C25BBED9F001B6DD7 /* RecentSearchController.swift in Sources */,
 				EA5FD26325D62CAD002E8927 /* HapticsManger.swift in Sources */,
@@ -781,7 +790,6 @@
 				EAB3959325D5FD3F009D178C /* Entities.swift in Sources */,
 				EA566FEB25927B9D00596E6A /* SceneDelegate.swift in Sources */,
 				EA05894F25C555BB00BC1024 /* UserRepoTableView.swift in Sources */,
-				EA60E86A25BE5F07000B6AC0 /* Alerts.swift in Sources */,
 				EABF30EF25C7C95000A17456 /* UsersSearchBar.swift in Sources */,
 				EAB3959025D5FD32009D178C /* Segues.swift in Sources */,
 				EA4C91CC25C9623F00EE1242 /* CommitsViewTable.swift in Sources */,

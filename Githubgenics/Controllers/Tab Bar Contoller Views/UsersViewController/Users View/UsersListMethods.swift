@@ -13,7 +13,7 @@ extension UsersListViewController {
     
     //MARK:- Fetch Methods
     
-    func fetchUsersList  ()  {
+    func renderUsersList  ()  {
         let querySetup : String = {
             var query : String = "a"
             if searchBar.text == nil {
@@ -26,12 +26,12 @@ extension UsersListViewController {
         guard !isPaginating else {
             return
         }
-        GitUsersRouter().fetchUsers(query: querySetup, page: pageNo, pagination: false ) { [weak self] result in
-            self?.users = result
+        GitUsersRouter().fetchUsers(query: querySetup, page: pageNo, pagination: false ) { [self] result in
+            self.users = result
             DispatchQueue.main.async {
-                self!.tableView.reloadData()
-                if self!.searchBar.showsCancelButton == false {
-                    self!.shimmerLoadingView()
+                tableView.reloadData()
+                if searchBar.showsCancelButton == false {
+                    shimmerLoadingView()
                 }
                 
             }
@@ -51,11 +51,11 @@ extension UsersListViewController {
                 } 
                 return query
             }()
-            GitUsersRouter().fetchUsers(query: querySetup, page: pageNo, pagination: true ) { [weak self] result in
-                self?.users.append(contentsOf: result)
+            GitUsersRouter().fetchUsers(query: querySetup, page: pageNo, pagination: true ) { [self] result in
+                self.users.append(contentsOf: result)
                 DispatchQueue.main.async {
-                    self!.tableView.tableFooterView = nil
-                    self!.tableView.reloadData()
+                    tableView.tableFooterView = nil
+                    tableView.reloadData()
                     HapticsManger.shared.selectionVibrate(for: .light)
                 }
             }
@@ -63,22 +63,22 @@ extension UsersListViewController {
     }
     
     func searchUser (query: String) {
-        GitUsersRouter().fetchUsers(query: query, page: 1) { [weak self] users in
-            self?.users = users
+        GitUsersRouter().fetchUsers(query: query, page: 1) { [self] users in
+            self.users = users
             DispatchQueue.main.async {
-                self!.tableView.reloadData()
+                tableView.reloadData()
             }
         }
     }
     
-    //MARK:- UI Methods
+    //MARK:- Handle Long Press
     
     @objc func handleLongPress(sender: UILongPressGestureRecognizer){
         HapticsManger.shared.selectionVibrate(for: .medium)
         let touchPoint = longPress.location(in: tableView)
         if let index = tableView.indexPathForRow(at: touchPoint) {
             let sheet = UIAlertController(title: Titles.more, message: nil , preferredStyle: .actionSheet)
-            sheet.addAction(UIAlertAction(title: Titles.bookmark, style: .default, handler: { (url) in
+            sheet.addAction(UIAlertAction(title: Titles.bookmark, style: .default, handler: { (handler) in
                 if let index = self.tableView.indexPathForRow(at: touchPoint) {
                     let usersIndex = self.users[index.row]
                     Save().user(userName: usersIndex.userName, userAvatar: usersIndex.userAvatar, userURL: usersIndex.userURL )
@@ -97,6 +97,8 @@ extension UsersListViewController {
         }
     }
     
+    //MARK:- Handle Refresh
+    
     func refreshList () {
         let querySetup : String = {
             var query : String = "a"
@@ -112,6 +114,14 @@ extension UsersListViewController {
             }
         }
     }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.beginRefreshing()
+        refreshList ()
+        refreshControl.endRefreshing()
+    }
+    
+    //MARK:- UI Methods
     
     func shimmerLoadingView () {
         tableView.isSkeletonable = true
@@ -143,14 +153,6 @@ extension UsersListViewController {
         listSearchBar.isTranslucent = false
         listSearchBar.delegate = self
     }
-    
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        refreshControl.beginRefreshing()
-        refreshList ()
-        refreshControl.endRefreshing()
-    }
-    
-
     
     //MARK:- Handle Segue
     

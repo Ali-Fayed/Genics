@@ -21,6 +21,7 @@ extension BookmarksViewController {
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
             cell!.addGestureRecognizer(longPress)
             cell?.CellData(with: model)
+//            self.tableView.separatorStyle = UsersCell.SeparatorStyle.none
             return cell!
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Cells.repositoriesCell, for: indexPath) as? ReposCell
@@ -44,12 +45,9 @@ extension BookmarksViewController {
         }
     }
     
-    
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
-    
-    
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -67,7 +65,6 @@ extension BookmarksViewController {
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
-            
         }
     }
     
@@ -78,5 +75,4 @@ extension BookmarksViewController {
             return 110
         }
     }
-    
 }

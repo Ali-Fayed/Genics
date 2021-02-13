@@ -6,14 +6,12 @@
 //
 
 import UIKit
-import Network
 import Alamofire
 
 class NetworkReachabilityModel {
     
     static let shared = NetworkReachabilityModel()
     let ReachabilityManager = NetworkReachabilityManager(host: "www.google.com")
-    
     let OfflineAlertController: UIAlertController = {
         let alert = UIAlertController(title: "", message: Messages.internetError , preferredStyle: .alert)
         alert.view.tintColor = UIColor.black

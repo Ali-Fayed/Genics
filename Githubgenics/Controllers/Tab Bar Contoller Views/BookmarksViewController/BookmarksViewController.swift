@@ -20,19 +20,16 @@ class BookmarksViewController: UITableViewController {
         tableView.register(Cells.usersNib(), forCellReuseIdentifier: Cells.usersCell)
         tableView.register(Cells.reposNib(), forCellReuseIdentifier: Cells.repositoriesCell)
         tableView.addGestureRecognizer(longPress)
-
         searchBar.delegate = self
         searchBar.placeholder = Titles.searchPlacholder
+        tableView.tableFooterView = UIView()
         renderDB ()
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 600
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabBarController?.navigationItem.title = Titles.BookmarksViewTitle
-        renderDB ()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        renderDB ()
     }
-    
 }

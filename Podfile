@@ -11,9 +11,5 @@ target 'Githubgenics' do
   pod 'Kingfisher', '~> 5.15.8'
   pod 'IQKeyboardManagerSwift'
   pod 'lottie-ios'
-  pod 'TransitionButton'
-  pod 'SwiftyJSON', '~> 4.0'
-
-
   
 end

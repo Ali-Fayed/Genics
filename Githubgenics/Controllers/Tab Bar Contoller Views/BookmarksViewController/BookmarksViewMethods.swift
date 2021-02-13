@@ -20,6 +20,7 @@ extension BookmarksViewController {
             self.tableView.reloadData()
         }
     }
+    //MARK:- Search Method
     
     func searchFromDB () {
         guard let searchText = searchBar.text else { return }
@@ -50,6 +51,9 @@ extension BookmarksViewController {
             tableView.reloadData()
         }
     }
+    
+    //MARK:- Handle Long Press
+    
     @objc func handleLongPress(sender: UILongPressGestureRecognizer){
         HapticsManger.shared.selectionVibrate(for: .medium)
         let touchPoint = longPress.location(in: tableView)
@@ -60,7 +64,7 @@ extension BookmarksViewController {
                 let resetLastSearch = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.repositoryEntity)
                 let resetRequest = NSBatchDeleteRequest(fetchRequest: resetSearchHistory)
                 let resetRequest2 = NSBatchDeleteRequest(fetchRequest: resetLastSearch)
-
+                
                 do {
                     try self.context.execute(resetRequest)
                     try self.context.execute(resetRequest2)
@@ -78,11 +82,11 @@ extension BookmarksViewController {
                         self.tableView.reloadData()
                     }
                 } catch {
-                    print ("There was an error")
+//                    print ("There was an error")
                 }
             }))
-            sheet.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil ))
+            sheet.addAction(UIAlertAction(title: Titles.cancel, style: .cancel, handler: nil ))
             present(sheet, animated: true)
         }
     }
-        }
+}

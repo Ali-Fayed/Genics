@@ -10,15 +10,21 @@ import UIKit
 class SettingsViewController: UITableViewController {
      
     var Setting = Titles.darkMode
+    var isLoggedIn: Bool {
+      if TokenManager.shared.fetchAccessToken() != nil {
+        return true
+      }
+      return false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(Cells.signOutNib(), forCellReuseIdentifier: Cells.signOutCell)
+        tableView.tableFooterView = UIView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabBarController?.navigationItem.title = Titles.settingsViewTitle
-
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class WelcomeScreen: UIViewController {
     
@@ -14,22 +15,6 @@ class WelcomeScreen: UIViewController {
     @IBOutlet weak var term: UIButton!
     @IBOutlet weak var and: UILabel!
     @IBOutlet weak var bySign: UILabel!
-    
-    @IBAction func privacyPolicy(_ sender: Any) {
-    }
-    @IBAction func terms(_ sender: Any) {
-    }
-    
-    
-    var isLoggedIn: Bool {
-        if TokenManager.shared.fetchAccessToken() != nil {
-            return true
-        }
-        return false
-    }
-    
-    @IBAction func signIn(_ sender: Any) {
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,4 +41,36 @@ class WelcomeScreen: UIViewController {
         signInWithGitHub.layer.cornerRadius = 20
     }
     
+    @IBAction func privacyPolicy(_ sender: Any) {
+        let url = "https://docs.github.com/en/github/site-policy/github-privacy-statement"
+        let vc = SFSafariViewController(url: URL(string: url)!)
+        self.present(vc, animated: true)
+    }
+    
+    @IBAction func terms(_ sender: Any) {
+        let url = "https://docs.github.com/en/github/site-policy/github-terms-of-service"
+        let vc = SFSafariViewController(url: URL(string: url)!)
+        self.present(vc, animated: true)
+    }
+    
+    @IBAction func signIn(_ sender: Any) {
+        HapticsManger.shared.selectionVibrate(for: .medium)
+        let sheet = UIAlertController(title: "", message: Titles.makeSure , preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: Titles.signinWith, style: .default, handler: { (url) in
+            let vc = UIStoryboard.init(name: ID.Main , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.loginViewID) as? LoginViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }))
+        sheet.addAction(UIAlertAction(title: Titles.signinWithout , style: .default, handler: { (url) in
+            let alert = UIAlertController(title: "", message: Titles.byContinue , preferredStyle: .alert)
+            alert.view.tintColor = UIColor.black
+            let action = UIAlertAction(title: Titles.continuee, style: .default) { (action) in
+                self.performSegue(withIdentifier: Segues.signinWithoutGitubSegue, sender: self)
+            }
+            action.setValue(UIColor(named: "Color"), forKey: "titleTextColor")
+            alert.addAction(action)
+            self.present(alert, animated: true)
+        }))
+        sheet.addAction(UIAlertAction(title: Titles.cancel , style: .cancel, handler: nil ))
+        present(sheet, animated: true)
+    }
 }

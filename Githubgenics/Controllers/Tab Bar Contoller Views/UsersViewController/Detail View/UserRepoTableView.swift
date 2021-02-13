@@ -17,7 +17,6 @@ extension DetailViewController: UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.repositoriesCell, for: indexPath) as! ReposCell
         cell.CellData(with: userRepository[indexPath.row])
-        cell.delegate = self
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         cell.addGestureRecognizer(longPress)
         return cell
@@ -37,5 +36,4 @@ extension DetailViewController: UITableViewDataSource , UITableViewDelegate {
       selectedRepository = userRepository[indexPath.row]
       return indexPath
     }
-    
 }

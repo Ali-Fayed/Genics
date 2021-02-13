@@ -25,7 +25,7 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
         cell.addGestureRecognizer(longPress)
         return cell
     }
-        
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: Segues.detailViewSegue, sender: self)
@@ -35,8 +35,8 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == users.count - 1 {
-                showTableViewSpinner()
-                fetchMoreUsers ()
+            showTableViewSpinner()
+            fetchMoreUsers ()
         }
     }
     

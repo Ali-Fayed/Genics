@@ -18,11 +18,10 @@ class UsersCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    
     func CellData(with model: UsersDataBase) {
         self.userName.text = model.userName
-        let url = model.userAvatar
-        self.userAvatar.kf.setImage(with: URL(string: url!), placeholder: nil, options: [.transition(.fade(0.7))])
+        guard let url = model.userAvatar else { return }
+        self.userAvatar.kf.setImage(with: URL(string: url), placeholder: nil, options: [.transition(.fade(0.7))])
         userAvatar.contentMode = .scaleAspectFill
         userAvatar.layer.masksToBounds = false
         userAvatar.layer.cornerRadius = userAvatar.frame.height/2

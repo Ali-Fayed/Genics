@@ -21,6 +21,7 @@ class CommitsViewController: UITableViewController {
         renderSearchedRepositoriesCommits()
         renderUserRepositoriesCommits()
         navigationItem.title = Titles.commitsViewTitle
+        tableView.tableFooterView = UIView()
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -26,7 +26,7 @@ extension UsersListViewController  : UISearchBarDelegate  {
         searchBar.setShowsCancelButton(true, animated: true)
         self.users.removeAll()
         searchBar.text = nil
-        fetchUsersList ()
+        renderUsersList ()
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.tableView.isHidden = false
@@ -74,6 +74,5 @@ extension UsersListViewController  : UISearchBarDelegate  {
             self.tabBarController?.tabBar.isHidden = true
             self.searchBar.text = nil
         }
-        
     }
 }

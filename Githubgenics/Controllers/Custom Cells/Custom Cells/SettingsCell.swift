@@ -16,10 +16,12 @@ class SettingsCell: UITableViewCell {
         super.awakeFromNib()
         let myswitchBoolValue : Bool = UserDefaults.standard.bool(forKey: "mySwitch")
         if myswitchBoolValue == true {
-            print("true")
+            DarkModeSwitch.isOn = true
+            window?.overrideUserInterfaceStyle = .dark
         }
         else {
-            print("false")
+            DarkModeSwitch.isOn = false
+            window?.overrideUserInterfaceStyle = .light
         }
     }
     

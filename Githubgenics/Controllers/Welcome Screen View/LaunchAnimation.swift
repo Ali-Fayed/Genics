@@ -15,19 +15,22 @@ class LaunchAnimation: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if UserDefaults.standard.value(forKeyPath: "outh") != nil {
                 self.performSegue(withIdentifier: Segues.savedStateLoginSegue, sender: self)
             } else {
                 self.performSegue(withIdentifier: Segues.welcomeScreenSegue, sender: self)
             }
-           
         }
-        self.aniamtion ()
+        self.startAnimation ()
     }
-    
-    private func aniamtion () {
+        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+        
+    private func startAnimation () {
         animationView.animation = Animation.named(LaunchAnimation.animation)
         animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         animationView.center = view.center
@@ -36,18 +39,4 @@ class LaunchAnimation: UIViewController {
         animationView.play()
         view.addSubview(animationView)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-    }
-    
-
 }

@@ -9,13 +9,14 @@ import UIKit
 import SkeletonView
 
 class DetailViewController: UIViewController  {
-
+    
+    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
+    var defaults = UserDefaults.standard
+    let longPress = UILongPressGestureRecognizer()
     var userRepository = [UserRepository]()
     var savedRepos = [SavedRepositories]()
     var passedUser : items?
     var selectedRepository: UserRepository?
-    var defaults = UserDefaults.standard
-    let longPress = UILongPressGestureRecognizer()
     
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -38,12 +39,13 @@ class DetailViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.addGestureRecognizer(longPress)
+        view.addSubview(loadingIndicator)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         navigationItem.title = Titles.DetailViewTitle
         tableView.register(Cells.reposNib(), forCellReuseIdentifier: Cells.repositoriesCell)
         renderUserProfileData ()
-        loadTheButtonWithSavedState ()
-        renderClickedUserPunlicRepositories()
+        renderTheButtonWithSavedState ()
+        renderClickedUserPublicRepositories()
         tableView.rowHeight = 120
     }
     
@@ -52,5 +54,4 @@ class DetailViewController: UIViewController  {
         navigationController?.isNavigationBarHidden = false
         navigationController?.isToolbarHidden = true
     }
-        
 }

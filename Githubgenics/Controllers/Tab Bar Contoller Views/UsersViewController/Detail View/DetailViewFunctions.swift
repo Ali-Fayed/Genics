@@ -12,12 +12,14 @@ extension DetailViewController {
     
     //MARK:- Fetch Methods
     
-    func renderClickedUserPunlicRepositories () {
+    func renderClickedUserPublicRepositories () {
         guard let repository = passedUser else {return}
-        GitReposRouter().fetchUsersRepositories(for: repository.userName) { result in
+        loadingIndicator.stopAnimating()
+        GitReposRouter().fetchUsersRepositories(for: repository.userName) { [self] result in
             self.userRepository = result
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                loadingIndicator.stopAnimating()
+                tableView.reloadData()
             }
         }
     }
@@ -32,8 +34,8 @@ extension DetailViewController {
         userAvatar.layer.masksToBounds = false
         userAvatar.layer.cornerRadius = userAvatar.frame.height/2
         userAvatar.clipsToBounds = true
-        userFollowers.text = String(Int.random(in: 10 ... 50))
-        userFollowing.text = String(Int.random(in: 10 ... 50))
+        userFollowers.text = String(Int.random(in: 10 ... 100))
+        userFollowing.text = String(Int.random(in: 10 ... 100))
     }
     
     func DisplaySpinner () {
@@ -59,7 +61,7 @@ extension DetailViewController {
         defaults.set(stat, forKey: ((passedUser?.userName)!))
     }
     
-    func loadTheButtonWithSavedState () {
+    func renderTheButtonWithSavedState () {
         if let ButtonState = defaults.string(forKey: ((passedUser?.userName)!))
         {
             setBookmarkButtonState = ButtonState

@@ -20,7 +20,7 @@ class Fetch {
             usersDataBase = try context.fetch(UsersDataBase.fetchRequest())
             completion(usersDataBase)
         } catch {
-            Alerts.shared.showErrorAlert()
+            //
         }
     }
     
@@ -29,7 +29,7 @@ class Fetch {
             savedRepositories = try context.fetch(SavedRepositories.fetchRequest())
             completion(savedRepositories)
         } catch {
-            Alerts.shared.showErrorAlert()
+            //
         }
     }
     
@@ -38,7 +38,7 @@ class Fetch {
             lastSearch = try context.fetch(LastSearch.fetchRequest())
             completion(lastSearch)
         } catch {
-            Alerts.shared.showErrorAlert()
+            //
         }
     }
     
@@ -47,7 +47,7 @@ class Fetch {
             searchHistory = try context.fetch(SearchHistory.fetchRequest())
             completion(searchHistory)
         } catch {
-            Alerts.shared.showErrorAlert()
+            //
         }
     }
 

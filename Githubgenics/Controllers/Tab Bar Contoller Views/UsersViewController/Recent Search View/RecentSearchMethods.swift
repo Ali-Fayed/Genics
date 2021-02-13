@@ -7,7 +7,7 @@
 import UIKit
 import CoreData
 
-extension RecentSearchViewController {
+extension RecentSearchViewController : UISearchBarDelegate {
     
     func renderDB () {
         Fetch().searchHistory { (result) in
@@ -22,7 +22,7 @@ extension RecentSearchViewController {
         }
     }
     
-    @objc func myClasspressed () {
+     func excute () {
         print("here")
         let resetSearchHistory = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.searchHistoryEntity)
         let resetLastSearch = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.lastSearchEntity)
@@ -46,32 +46,30 @@ extension RecentSearchViewController {
                 self.lastSearch = result
             }
         } catch {
-            print ("There was an error")
+//            print ("There was an error")
         }
     }
     
-    
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer){
+        HapticsManger.shared.selectionVibrate(for: .medium)
+            let sheet = UIAlertController(title: Titles.more, message: nil , preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: Titles.deleteAllRecords, style: .default, handler: { (handler) in
+                self.excute ()
+            }))
+            sheet.addAction(UIAlertAction(title: Titles.cancel , style: .cancel, handler: nil ))
+            present(sheet, animated: true)
+    }
     
     func renderHeader () -> UIView {
         let headerView = UIView()
         headerView.backgroundColor = UIColor(named: "labels")
-        let sectionLabel = UILabel(frame: CGRect(x: 8, y: 28, width:
-                                                    tableView.bounds.size.width, height: tableView.bounds.size.height))
+        let sectionLabel = UILabel(frame: CGRect(x: 8, y: 28, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
         sectionLabel.font = UIFont(name: "Helvetica", size: 12)
         sectionLabel.textColor = UIColor(named: "labels")
         sectionLabel.text = Titles.searchHistory
         sectionLabel.sizeToFit()
-        let button = UIButton(frame: CGRect(x: 370, y: 14, width:
-                                                tableView.bounds.size.width, height: tableView.bounds.size.height))
-        button.setImage(UIImage(systemName: "delete.left") , for: .normal)
-        button.imageView?.tintColor = UIColor(named: "labels")
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.constraintsAffectingLayout(for: .horizontal)
-        button.constraintsAffectingLayout(for: .vertical)
-        button.sizeToFit()
-        button.addTarget(self, action: #selector(myClasspressed), for: .touchUpInside)
         headerView.addSubview(sectionLabel)
-        headerView.addSubview(button)
         return headerView
     }
+    
 }

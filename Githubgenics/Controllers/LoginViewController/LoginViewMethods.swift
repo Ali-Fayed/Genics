@@ -42,7 +42,7 @@ extension LoginViewController {
             print("Error fetching access token")
           }
           self.navigationController?.popViewController(animated: true)
-            self.performSegue(withIdentifier: Segues.loginToTabBarSegue, sender: self)
+          self.performSegue(withIdentifier: Segues.loginToTabBarSegue, sender: self)
           UserDefaults.standard.setValue(isSuccess, forKey: "outh")
 
         }

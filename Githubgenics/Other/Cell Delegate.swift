@@ -14,3 +14,4 @@ protocol DidTapCell : AnyObject {
 protocol DidTapSignOutCell : AnyObject {
     func didTapButton(cell:SignOutCell, didTappedThe button:UIButton?)
 }
+

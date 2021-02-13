@@ -34,22 +34,5 @@ extension RepositoriesViewController {
         cell!.addGestureRecognizer(longPress)
         return cell!
     }
-    
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let important = importantAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [important])
-    }
-    
-    func importantAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: "Bookmark") { [self] (action, view, completion) in
-            let index = repositories[indexPath.row]
-            Save().repository(repoName: index.repositoryName, repoDescription: index.repositoryDescription ?? "", repoProgrammingLanguage: index.repositoryLanguage ?? "", repoURL: index.repositoryURL, repoUserFullName: index.repoFullName, repoStars: Float((index.repositoryStars!)))
-        }
-        action.image = #imageLiteral(resourceName: "like")
-        action.backgroundColor = .gray
-        return action
-    }
-    
+        
 }
-
-

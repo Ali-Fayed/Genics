@@ -21,7 +21,6 @@ extension SettingsViewController {
        } else {
            let cell = tableView.dequeueReusableCell(withIdentifier: Cells.signOutCell, for: indexPath) as! SignOutCell
            cell.delegate = self
-
            return cell
        }
    }

@@ -17,7 +17,7 @@ class Save: Fetch {
         do {
             try context.save()
         } catch {
-            Alerts.shared.showErrorAlert()
+            //
         }
     }
     
@@ -29,7 +29,7 @@ class Save: Fetch {
         do {
             try context.save()
         } catch {
-            Alerts.shared.showErrorAlert()
+            //
         }
     }
     
@@ -44,7 +44,7 @@ class Save: Fetch {
         do {
             try context.save()
         } catch {
-            Alerts.shared.showErrorAlert()
+            //
         }
     }
     
@@ -55,7 +55,7 @@ class Save: Fetch {
             try context.save()
         }
         catch {
-            Alerts.shared.showErrorAlert()
+            //
         }
     }
     

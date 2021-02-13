@@ -9,7 +9,6 @@ class TokenManager {
   let userAccount = "accessToken"
   static let shared = TokenManager()
     
-
   let secureStore: SecureStore = {
     let accessTokenQueryable = GenericPasswordQueryable(service: "GitHubService")
     return SecureStore(secureStoreQueryable: accessTokenQueryable)

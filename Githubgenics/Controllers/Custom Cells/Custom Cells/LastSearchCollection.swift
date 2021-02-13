@@ -19,8 +19,8 @@ class LastSearchCollectionCell: UICollectionViewCell {
     
     func CellData(with model: LastSearch) {
         userName.text = model.userName
-        let url = model.userAvatar
-        userAvatar.kf.setImage(with: URL(string: url!), placeholder: nil, options: [.transition(.fade(0.7))])
+        guard let url = model.userAvatar else { return }
+        userAvatar.kf.setImage(with: URL(string: url), placeholder: nil, options: [.transition(.fade(0.7))])
         userAvatar.contentMode = .scaleAspectFill
         userAvatar.layer.masksToBounds = false
         userAvatar.layer.cornerRadius = userAvatar.frame.height/2
