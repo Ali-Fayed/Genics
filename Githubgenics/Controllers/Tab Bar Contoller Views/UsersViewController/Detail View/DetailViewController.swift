@@ -31,7 +31,6 @@ class DetailViewController: UIViewController  {
             if newValue == "on" {
                 bookmarkButton.setBackgroundImage(UIImage(named: "like"), for: .normal)
                 Save().user(userName: (passedUser?.userName)!, userAvatar: (passedUser?.userAvatar)!, userURL: (passedUser?.userURL)!)
-                HapticsManger.shared.selectionVibrate(for: .medium)
             }
             else { bookmarkButton.setBackgroundImage(UIImage(named: "unlike"), for: .normal)
             }
@@ -42,13 +41,13 @@ class DetailViewController: UIViewController  {
         super.viewDidLoad()
         tableView.addGestureRecognizer(longPress)
         view.addSubview(loadingIndicator)
+        tableView.rowHeight = 120
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         navigationItem.title = Titles.DetailViewTitle
         tableView.register(Cells.reposNib(), forCellReuseIdentifier: Cells.repositoriesCell)
         renderUserProfileData ()
         renderTheButtonWithSavedState ()
         renderClickedUserPublicRepositories()
-        tableView.rowHeight = 120
         renderStarState()
     }
     

@@ -50,5 +50,4 @@ extension RecentSearchViewController:  UITableViewDataSource , UITableViewDelega
             tableView.endUpdates()
         }
     }
-    
 }

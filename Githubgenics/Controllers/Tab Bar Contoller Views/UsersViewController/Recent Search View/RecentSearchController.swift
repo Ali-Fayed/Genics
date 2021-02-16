@@ -24,11 +24,7 @@ class RecentSearchViewController:  UIViewController  {
         self.tableView.tableHeaderView = self.collectionView
         tableView.addGestureRecognizer(longPress)
         self.tableView.sectionHeaderHeight = 120
-        if lastSearch.isEmpty == true {
-            tableView.isHidden = true
-        } else {
-            tableView.isHidden = false
-        }
+        renderHistoryViewCondition ()
         tableView.tableFooterView = UIView()
         renderDB ()
     }
@@ -36,16 +32,8 @@ class RecentSearchViewController:  UIViewController  {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.tableHeaderView = self.collectionView
-        if lastSearch.isEmpty == true {
-            tableView.isHidden = true
-        } else {
-            tableView.isHidden = false
-        }
+        renderHistoryViewCondition ()
         renderDB()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-    }
 }

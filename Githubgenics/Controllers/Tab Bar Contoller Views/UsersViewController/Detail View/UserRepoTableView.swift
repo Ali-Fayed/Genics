@@ -44,7 +44,10 @@ extension DetailViewController: UITableViewDataSource , UITableViewDelegate {
       return indexPath
     }
 }
-extension DetailViewController : MyTableViewCellDelegate {
+
+
+
+extension DetailViewController : DetailViewCellDelegate {
     
     func didTapButton(cell: ReposCell, didTappedThe button: UIButton?) {
         guard let indexPath = tableView.indexPath(for: cell) else {

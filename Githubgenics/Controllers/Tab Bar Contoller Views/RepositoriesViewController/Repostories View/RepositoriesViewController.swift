@@ -16,6 +16,8 @@ class RepositoriesViewController: UITableViewController {
     var repositories = [Repository]()
     var selectedRepository: Repository?
     var savedRepositories = [SavedRepositories]()
+    var starButton = [Int : Bool]()
+
     @IBOutlet weak var searchBar: UISearchBar!
     
     var isLoggedIn: Bool {
@@ -35,6 +37,7 @@ class RepositoriesViewController: UITableViewController {
         tableView.rowHeight = 120
         self.tabBarItem.title = Titles.RepositoriesViewTitle
         renderSearchBar()
+        renderStarState()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -14,6 +14,14 @@ extension RepositoriesViewController {
         return repositories.count
     }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.repositoriesCell, for: indexPath) as? ReposCell
+        cell?.CellData(with: repositories[indexPath.row])
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        cell!.addGestureRecognizer(longPress)
+        return cell!
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
@@ -26,15 +34,5 @@ extension RepositoriesViewController {
         selectedRepository = repositories[indexPath.row]
         return indexPath
     }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.repositoriesCell, for: indexPath) as? ReposCell
-        cell?.CellData(with: repositories[indexPath.row])
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        cell!.addGestureRecognizer(longPress)
-        return cell!
-    }
-        
+    
 }
-
-

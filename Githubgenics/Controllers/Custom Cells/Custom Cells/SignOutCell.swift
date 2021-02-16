@@ -11,6 +11,7 @@ class SignOutCell: UITableViewCell {
     
     weak var delegate : DidTapSignOutCell?
     @IBOutlet weak var logOut: UIButton!
+    
     var isLoggedIn: Bool {
         if TokenManager.shared.fetchAccessToken() != nil {
             return true

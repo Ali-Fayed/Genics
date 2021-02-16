@@ -14,10 +14,10 @@ extension RepositoriesViewController {
     
     func searchRepositories (query: String) {
         loadingIndicator.stopAnimating()
-        GitReposRouter().searchPublicRepositories(query: query) { [self] repositories in
-            self.repositories = repositories
-            loadingIndicator.stopAnimating()
-            tableView.reloadData()
+        GitReposRouter().searchPublicRepositories(query: query) { [weak self] repositories in
+            self?.repositories = repositories
+            self?.loadingIndicator.stopAnimating()
+            self?.tableView.reloadData()
         }
     }
     
@@ -25,19 +25,19 @@ extension RepositoriesViewController {
     
     func renderAndDisplayUserRepositories() {
         loadingIndicator.startAnimating()
-        GitUsersRouter().fetchAuthorizedUserRepositories { [self] repositories in
-            self.repositories = repositories
-            loadingIndicator.stopAnimating()
-            tableView.reloadData()
+        GitUsersRouter().fetchAuthorizedUserRepositories { [weak self] repositories in
+            self?.repositories = repositories
+            self?.loadingIndicator.stopAnimating()
+            self?.tableView.reloadData()
         }
     }
     
     func renderAndDisplayBestSwiftRepositories() {
       loadingIndicator.startAnimating()
-      GitReposRouter().fetchPopularSwiftRepositories { [self] repositories in
-        self.repositories = repositories
-        loadingIndicator.stopAnimating()
-        tableView.reloadData()
+      GitReposRouter().fetchPopularSwiftRepositories { [weak self] repositories in
+        self?.repositories = repositories
+        self?.loadingIndicator.stopAnimating()
+        self?.tableView.reloadData()
       }
     }
     
@@ -53,6 +53,7 @@ extension RepositoriesViewController {
         listSearchBar2.isTranslucent = false
         listSearchBar2.delegate = self
     }
+    
     // MARK: - Handling Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -64,6 +65,33 @@ extension RepositoriesViewController {
         }
     }
     
+    //MARK:- Handle Star Button State
+    
+    func renderStarState () {
+        let cell = ReposCell()
+        guard let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
+        if let checks = UserDefaults.standard.value(forKey: repositories[indexPath.row].repositoryName) as? NSData {
+            do {
+                try starButton = NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(checks as Data) as! [Int : Bool]
+            } catch {
+                //
+            }
+        }
+    }
+    func saveStarState () {
+        let cell = ReposCell()
+        guard let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
+        do {
+            try  UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: starButton, requiringSecureCoding: true), forKey: repositories[indexPath.row].repositoryName)
+            UserDefaults.standard.synchronize()
+        } catch {
+            //
+        }
+    }
     
     //MARK:- Handle Long Press
     

@@ -60,7 +60,6 @@ extension DetailViewController {
         setBookmarkButtonState = stat
         defaults.set(stat, forKey: ((passedUser?.userName)!))
         HapticsManger.shared.selectionVibrate(for: .medium)
-
     }
     
     func renderTheButtonWithSavedState () {
@@ -79,23 +78,25 @@ extension DetailViewController {
         HapticsManger.shared.selectionVibrate(for: .medium)
         let touchPoint = longPress.location(in: tableView)
         if let index = tableView.indexPathForRow(at: touchPoint) {
-            let sheet = UIAlertController(title: "More", message: nil , preferredStyle: .actionSheet)
-            sheet.addAction(UIAlertAction(title: "Bookmark", style: .default, handler: { (url) in
+            let sheet = UIAlertController(title: Titles.more, message: nil , preferredStyle: .actionSheet)
+            sheet.addAction(UIAlertAction(title: Titles.bookmark, style: .default, handler: { (url) in
                 let repository = self.userRepository[index.row]
                 Save().repository(repoName: repository.repositoryName, repoDescription: repository.repositoryDescription ?? "", repoProgrammingLanguage: repository.repositoryLanguage ?? "", repoURL: repository.repositoryURL, repoUserFullName: repository.repoFullName, repoStars: Float((repository.repositoryStars!)))
                         DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
             }))
-            sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil ))
-            sheet.addAction(UIAlertAction(title: "URL", style: .default, handler: { (url) in
+            sheet.addAction(UIAlertAction(title: Titles.cancel, style: .cancel, handler: nil ))
+            sheet.addAction(UIAlertAction(title: Titles.url, style: .default, handler: { (url) in
                 let cell = self.userRepository[index.row].repositoryURL
-                            let vc = SFSafariViewController(url: URL(string: cell)!)
+                let vc = SFSafariViewController(url: URL(string: cell)!)
                 self.present(vc, animated: true)
             }))
             present(sheet, animated: true)
         }
     }
+    
+    //MARK:- Handle Star Button State
     
     func renderStarState () {
         if let checks = UserDefaults.standard.value(forKey: passedUser!.userName) as? NSData {
@@ -114,6 +115,7 @@ extension DetailViewController {
             //
         }
     }
+    
     //MARK:- Handle Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

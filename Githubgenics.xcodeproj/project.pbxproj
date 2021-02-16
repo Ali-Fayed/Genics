@@ -261,6 +261,7 @@
 				EA05895425C5567700BC1024 /* Fetch.swift */,
 				EA94DCA525C6377200E2C30B /* Save.swift */,
 				EA94DCAB25C6391000E2C30B /* Delete.swift */,
+				EA668B9F25BFE83C00392A30 /* Githubgenics.xcdatamodeld */,
 			);
 			path = GitCRUD;
 			sourceTree = "<group>";
@@ -407,6 +408,7 @@
 				EA4BCB1525BCDC71000F302A /* LastSearchCollection.swift */,
 				EAAF820725D4F012006C44EC /* SettingsCell.swift */,
 				EAAF820A25D4F036006C44EC /* SignOutCell.swift */,
+				EAAF81FD25D4EDAD006C44EC /* Cell Delegate.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -459,7 +461,6 @@
 				EA0C2DA025BD1B5300D3898A /* LastSearch */,
 				EA0C2DA125BD1B5E00D3898A /* SearchKeywords */,
 				EA0C2DA225BD1B6E00D3898A /* UsersDataBase */,
-				EA668B9F25BFE83C00392A30 /* Githubgenics.xcdatamodeld */,
 			);
 			path = GitCoreDataClasses;
 			sourceTree = "<group>";
@@ -523,7 +524,6 @@
 		EA94DCCC25C67CAA00E2C30B /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				EAAF81FD25D4EDAD006C44EC /* Cell Delegate.swift */,
 				EA566FE825927B9D00596E6A /* AppDelegate.swift */,
 				EA566FEA25927B9D00596E6A /* SceneDelegate.swift */,
 				EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */,

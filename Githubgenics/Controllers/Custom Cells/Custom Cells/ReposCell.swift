@@ -11,7 +11,8 @@ import Kingfisher
 class ReposCell: UITableViewCell {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    weak var delegate:MyTableViewCellDelegate?
+    weak var delegate : DetailViewCellDelegate?
+    weak var repoListDelegate: RepositoryListCellDelegate?
     var defaults = UserDefaults.standard
     @IBOutlet weak var repositoryName: UILabel!
     @IBOutlet weak var repositoryDescription: UITextView!
@@ -21,7 +22,7 @@ class ReposCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     func buttonAccessory () {
         let starButton = UIButton(type: .system)
         starButton.setImage(#imageLiteral(resourceName: "fav_star"), for: .normal)
@@ -33,6 +34,7 @@ class ReposCell: UITableViewCell {
     
     @objc func didTapButton(_ sender: Any) {
         delegate?.didTapButton(cell: self, didTappedThe: sender as? UIButton)
+        repoListDelegate?.didTapButton(cell: self, didTappedThe: sender as? UIButton)
     }
     
     //MARK:- Repositories Cell Data

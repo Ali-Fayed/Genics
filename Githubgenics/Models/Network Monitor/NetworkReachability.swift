@@ -47,5 +47,4 @@ class NetworkReachabilityModel {
         let RootViewController = UIApplication.shared.windows.first?.rootViewController
         RootViewController?.dismiss(animated: true, completion: nil)
     }
-    
 }

@@ -29,8 +29,8 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: Segues.detailViewSegue, sender: self)
-        let IndexPath = users[indexPath.row]
-        Save().lastSearch(userName: IndexPath.userName, userAvatar: IndexPath.userAvatar, userURL: IndexPath.userURL)
+        let usersModel = users[indexPath.row]
+        Save().lastSearch(userName: usersModel.userName, userAvatar: usersModel.userAvatar, userURL: usersModel.userURL)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -41,7 +41,7 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        passedusers = users[indexPath.row]
+        passedUsers = users[indexPath.row]
         return indexPath
     }
 }

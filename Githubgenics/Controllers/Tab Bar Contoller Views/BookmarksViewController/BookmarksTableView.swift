@@ -21,9 +21,10 @@ extension BookmarksViewController {
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
             cell!.addGestureRecognizer(longPress)
             cell?.CellData(with: model)
-//            self.tableView.separatorStyle = UsersCell.SeparatorStyle.none
             return cell!
+            
         } else {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: Cells.repositoriesCell, for: indexPath) as? ReposCell
             cell?.CellData(with: savedRepositories[indexPath.row - bookmarkedUsers.count])
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))

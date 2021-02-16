@@ -10,6 +10,8 @@ import UIKit
 
 extension BookmarksViewController {
     
+    //MARK:- Fetch Methods
+    
     func renderDB () {
         Fetch().users { (result) in
             self.bookmarkedUsers = result
@@ -20,7 +22,8 @@ extension BookmarksViewController {
             self.tableView.reloadData()
         }
     }
-    //MARK:- Search Method
+    
+    //MARK:- Search From Query Method
     
     func searchFromDB () {
         guard let searchText = searchBar.text else { return }
@@ -73,16 +76,9 @@ extension BookmarksViewController {
                         self.tableView.reloadData()
                         HapticsManger.shared.selectionVibrate(for: .heavy)
                     }
-                    Fetch().self.repository { (result) in
-                        self.savedRepositories = result
-                        self.tableView.reloadData()
-                    }
-                    Fetch().self.users { (result) in
-                        self.bookmarkedUsers = result
-                        self.tableView.reloadData()
-                    }
+                       renderDB()
                 } catch {
-//                    print ("There was an error")
+                    //
                 }
             }))
             sheet.addAction(UIAlertAction(title: Titles.cancel, style: .cancel, handler: nil ))

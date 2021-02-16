@@ -1,22 +1,40 @@
+// Tab Bar Views Title
+
 "Users"        = "المستخدمين";
 "Profile"      = "الصفحه الشخصيه";
 "Bookmarks"    = "التفضيلات";
 "Repositories" = "المستودعات";
 "Commits"      = "الالتزامات";
 "Settings"     = "الاعدادات";
-" Search..."   = "البحث...";
-"RECENT SEARCHES" = "اخر كلمات البحث";
-"Please check your connection and try again" = "من فضلك قم بالتآكد من اتصالك بالانترنت";
+
+// LongPress Menu
+
+"Cancel"              = "الغاء";
+"Bookmark"            = "اضافه الي المفضله";
+"URL"                 = "فتح عبر المتصفح";
+"More"                = "المزيد";
+
+// Settings
+
+"Dark Mode"           = "الوضع الليلي";
+"Log Out"             = "تسجيل الخروج";
+
+// Welcome Screen
+
 "Sign in with GitHub" = "قم بالتسجيل عن طريق Github";
 "By sigining in you accept Github" = "‎بتسجيلك ستقوم بالموافقه علي شروط الموقع";
+"make sure you read the README file and fetch your client ID & client secret to Login with Github and avoid 404 web error or Try without!!" = "تأكد من قرائتك لملف الوصف !!";
+"Try without Github!" = "الاستمرار باي شكل";
+"by continue any way you will face API usage limit issues!" = "!بالاستمرار باستخدام التطبيق هكذا ستواجه مشاكل مثل حدود الاستخدام و البحث و خلافه !!";
 "Terms of use"        = "‎و تعليمات الاستخدام";
 "and" = "و";
 "Privacy policy."     = "‎سياسه الخصوصيه";
-"Dark Mode"           = "الوضع الليلي";
-"Log Out"             = "تسجيل الخروج";
-"Try without Github!" = "الاستمرار باي شكل";
-"by continue any way you will face API usage limit issues!" = "!بالاستمرار باستخدام التطبيق هكذا ستواجه مشاكل مثل حدود الاستخدام و البحث و خلافه !!";
-"Login Options"       = "خيارات التسجيل!";
 "Continue!"           = "الاستمرار!";
-"make sure you read the README file and fetch your client ID & client secret to Login with Github and avoid 404 web error or Try without!!" = "تأكد من قرائتك لملف الوصف !!";
+
+// Views Messages or Titles
+
+" Search..."   = "البحث...";
+"RECENT SEARCHES" = "اخر كلمات البحث";
+"Please check your connection and try again" = "من فضلك قم بالتآكد من اتصالك بالانترنت";
+"Login Options"       = "خيارات التسجيل!";
 "Delete All Records!" = "مسح جميع السجلات!";

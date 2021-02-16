@@ -9,6 +9,8 @@ import CoreData
 
 extension RecentSearchViewController : UISearchBarDelegate {
     
+    //MARK:- Fetch Methods
+    
     func renderDB () {
         Fetch().searchHistory { (result) in
             self.searchHistory = result
@@ -21,6 +23,8 @@ extension RecentSearchViewController : UISearchBarDelegate {
             self.collectionView.reloadData()
         }
     }
+    
+    //MARK:- Handle DB Excution
     
      func excute () {
         print("here")
@@ -50,15 +54,29 @@ extension RecentSearchViewController : UISearchBarDelegate {
         }
     }
     
+    //MARK:- Handle Long Press
+    
     @objc func handleLongPress(sender: UILongPressGestureRecognizer){
         HapticsManger.shared.selectionVibrate(for: .medium)
             let sheet = UIAlertController(title: Titles.more, message: nil , preferredStyle: .actionSheet)
-        sheet.addAction(UIAlertAction(title: Titles.deleteAllRecords, style: .default, handler: { (handler) in
-                self.excute ()
+        sheet.addAction(UIAlertAction(title: Titles.deleteAllRecords, style: .default, handler: { [weak self](handler) in
+                self?.excute ()
             }))
             sheet.addAction(UIAlertAction(title: Titles.cancel , style: .cancel, handler: nil ))
             present(sheet, animated: true)
     }
+    
+    //MARK:- Handle History View Conditions
+    
+    func renderHistoryViewCondition () {
+        if lastSearch.isEmpty == true {
+            tableView.isHidden = true
+        } else {
+            tableView.isHidden = false
+        }
+    }
+    
+    //MARK:- Hanlde Table View Header
     
     func renderHeader () -> UIView {
         let headerView = UIView()

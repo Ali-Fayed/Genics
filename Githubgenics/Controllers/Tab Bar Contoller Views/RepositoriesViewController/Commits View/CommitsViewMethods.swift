@@ -14,10 +14,10 @@ extension CommitsViewController {
       guard let repository = repository else {
         return
       }
-      GitReposRouter().fetchCommits(for: repository.repoFullName) { [self] commits in
-        self.commits = commits
-        loadingIndicator.stopAnimating()
-        tableView.reloadData()
+      GitReposRouter().fetchCommits(for: repository.repoFullName) { [weak self] commits in
+        self?.commits = commits
+        self?.loadingIndicator.stopAnimating()
+        self?.tableView.reloadData()
       }
     }
     
@@ -26,12 +26,10 @@ extension CommitsViewController {
       guard let repository = userRepositories else {
         return
       }
-        GitReposRouter().fetchCommits(for: repository.repoFullName) { [self] commits in
-        self.commits = commits
-        loadingIndicator.stopAnimating()
-        tableView.reloadData()
+        GitReposRouter().fetchCommits(for: repository.repoFullName) { [weak self] commits in
+        self?.commits = commits
+        self?.loadingIndicator.stopAnimating()
+        self?.tableView.reloadData()
       }
-
     }
-    
 }

@@ -11,5 +11,4 @@ struct Segues {
     static let savedStateLoginSegue    = "Outh2SavedSegue"
     static let loginToTabBarSegue      = "LogintoTabBarSegue"
     static let commitViewSegue         = "CommitSegue"
-    static let signinWithoutGitubSegue = "WelcomeScreenSegue"
 }

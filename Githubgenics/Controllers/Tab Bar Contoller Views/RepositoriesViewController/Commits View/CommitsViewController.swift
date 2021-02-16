@@ -34,5 +34,4 @@ class CommitsViewController: UITableViewController {
         super.viewDidDisappear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
-    
 }

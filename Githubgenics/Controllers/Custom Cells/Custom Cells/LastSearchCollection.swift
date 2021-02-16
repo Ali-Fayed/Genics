@@ -26,5 +26,4 @@ class LastSearchCollectionCell: UICollectionViewCell {
         userAvatar.layer.cornerRadius = userAvatar.frame.height/2
         userAvatar.clipsToBounds = true
     }
-
 }

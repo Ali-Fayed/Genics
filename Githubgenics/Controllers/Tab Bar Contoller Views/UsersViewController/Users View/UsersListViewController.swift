@@ -11,13 +11,12 @@ import Alamofire
 class UsersListViewController: UIViewController  {
     
     var users = [items]()
-    var passedusers : items?
+    var passedUsers : items?
     var lastSearch = [LastSearch]()
     var searchHistory = [SearchHistory]()
     var pageNo : Int = 1
     var totalPages : Int = 100
     var isPaginating = false
-    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
     let longPress = UILongPressGestureRecognizer()
     lazy var searchBar = UISearchBar()
     lazy var listSearchBar = UISearchBar()
@@ -29,6 +28,7 @@ class UsersListViewController: UIViewController  {
         refreshControl.tintColor = UIColor.gray
         return refreshControl
     }()
+    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var historyView: UIView!
     
@@ -60,11 +60,6 @@ class UsersListViewController: UIViewController  {
         super.viewDidAppear(animated)
         self.tabBarController?.navigationItem.title = Titles.usersViewTitle
         self.tabBarItem.title = Titles.usersViewTitle
-        if let viewControllers = tabBarController!.viewControllers {
-            for viewController in viewControllers {
-                let _ = viewController.view
-            }
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

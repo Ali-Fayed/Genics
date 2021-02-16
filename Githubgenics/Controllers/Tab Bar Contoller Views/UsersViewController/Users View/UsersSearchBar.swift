@@ -53,7 +53,6 @@ extension UsersListViewController  : UISearchBarDelegate  {
         Save().searchKeywords(keyword: text)
     }
     
-    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         UIView.animate(withDuration: 0.3, animations: {
             self.tableView.alpha = 0.0

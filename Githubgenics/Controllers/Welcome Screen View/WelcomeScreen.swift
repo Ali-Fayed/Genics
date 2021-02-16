@@ -64,7 +64,7 @@ class WelcomeScreen: UIViewController {
             let alert = UIAlertController(title: "", message: Titles.byContinue , preferredStyle: .alert)
             alert.view.tintColor = UIColor.black
             let action = UIAlertAction(title: Titles.continuee, style: .default) { (action) in
-                self.performSegue(withIdentifier: Segues.signinWithoutGitubSegue, sender: self)
+                self.performSegue(withIdentifier: Segues.welcomeScreenSegue, sender: self)
             }
             action.setValue(UIColor(named: "Color"), forKey: "titleTextColor")
             alert.addAction(action)
