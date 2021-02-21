@@ -37,7 +37,7 @@ extension LoginViewController {
           return
         }
         //fetch token using access code
-          GitUsersRouter().fetchAccessToken(accessToken: value) { isSuccess in
+          TokenManager().fetchAccessToken(accessToken: value) { isSuccess in
           if !isSuccess {
             print("Error fetching access token")
           }

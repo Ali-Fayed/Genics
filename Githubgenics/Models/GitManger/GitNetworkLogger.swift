@@ -20,8 +20,6 @@ class GitNetworkLogger: EventMonitor {
 //    }
 //    if let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) {
 //      print(json)
-//
-//
 //    }
 //  }
 }

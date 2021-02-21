@@ -13,13 +13,13 @@ extension BookmarksViewController {
     //MARK:- Fetch Methods
     
     func renderDB () {
-        Fetch().users { (result) in
-            self.bookmarkedUsers = result
-            self.tableView.reloadData()
+        DataBaseManger().Fetch(returnType: UsersDataBase.self) { [weak self] (users) in
+            self?.bookmarkedUsers = users
+            self?.tableView.reloadData()
         }
-        Fetch().repository { (result) in
-            self.savedRepositories = result
-            self.tableView.reloadData()
+        DataBaseManger().Fetch(returnType: SavedRepositories.self) {  [weak self] (reps) in
+            self?.savedRepositories = reps
+            self?.tableView.reloadData()
         }
     }
     
@@ -28,12 +28,7 @@ extension BookmarksViewController {
     func searchFromDB () {
         guard let searchText = searchBar.text else { return }
         if searchText.isEmpty {
-            Fetch().users { (result) in
-                self.bookmarkedUsers = result
-            }
-            Fetch().repository { (result) in
-                self.savedRepositories = result
-            }
+            renderDB()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

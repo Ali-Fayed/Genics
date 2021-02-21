@@ -14,7 +14,7 @@ extension RepositoriesViewController {
     
     func searchRepositories (query: String) {
         loadingIndicator.stopAnimating()
-        GitReposRouter().searchPublicRepositories(query: query) { [weak self] repositories in
+        GitAPIManger().searchPublicRepositories(query: query) { [weak self] repositories in
             self?.repositories = repositories
             self?.loadingIndicator.stopAnimating()
             self?.tableView.reloadData()
@@ -25,8 +25,8 @@ extension RepositoriesViewController {
     
     func renderAndDisplayUserRepositories() {
         loadingIndicator.startAnimating()
-        GitUsersRouter().fetchAuthorizedUserRepositories { [weak self] repositories in
-            self?.repositories = repositories
+        GitAPIManger().APIcall(returnType: Repository.self, requestData: GitRouter.fetchAuthorizedUserRepositories, pagination: false) { [weak self] (repos) in
+            self?.repositories = repos
             self?.loadingIndicator.stopAnimating()
             self?.tableView.reloadData()
         }
@@ -34,7 +34,7 @@ extension RepositoriesViewController {
     
     func renderAndDisplayBestSwiftRepositories() {
       loadingIndicator.startAnimating()
-      GitReposRouter().fetchPopularSwiftRepositories { [weak self] repositories in
+        GitAPIManger().fetchPopularSwiftRepositories { [weak self] repositories in
         self?.repositories = repositories
         self?.loadingIndicator.stopAnimating()
         self?.tableView.reloadData()
@@ -102,7 +102,14 @@ extension RepositoriesViewController {
             let repository = self.repositories[index.row]
             let sheet = UIAlertController(title: Titles.more, message: nil , preferredStyle: .actionSheet)
             sheet.addAction(UIAlertAction(title: Titles.bookmark, style: .default, handler: { (url) in
-                Save().repository(repoName: repository.repositoryName, repoDescription: repository.repositoryDescription ?? "", repoProgrammingLanguage: repository.repositoryLanguage ?? "", repoURL: repository.repositoryURL, repoUserFullName: repository.repoFullName, repoStars: Float((repository.repositoryStars!)))
+                let saveRepoInfo = SavedRepositories(context: self.context)
+                    saveRepoInfo.repoName = repository.repositoryName
+                    saveRepoInfo.repoDescription = repository.repositoryDescription
+                    saveRepoInfo.repoProgrammingLanguage = repository.repositoryLanguage
+                    saveRepoInfo.repoUserFullName = repository.repoFullName
+                    saveRepoInfo.repoStars = Float(repository.repositoryStars ?? 0)
+                    saveRepoInfo.repoURL = repository.repositoryURL
+                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }

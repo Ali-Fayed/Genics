@@ -19,3 +19,6 @@ protocol DidTapSignOutCell : AnyObject {
     func didTapButton(cell:SignOutCell, didTappedThe button:UIButton?)
 }
 
+protocol DidChangeLanguage : AnyObject {
+    func didChangeLang(cell:LanguageCell, didTappedThe button:UIButton?)
+}

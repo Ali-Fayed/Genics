@@ -16,32 +16,37 @@ extension BookmarksViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row < bookmarkedUsers.count {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cells.usersCell, for: indexPath) as? UsersCell
+            let cell = tableView.dequeue() as UsersCell
             let  model = bookmarkedUsers[indexPath.row]
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-            cell!.addGestureRecognizer(longPress)
-            cell?.CellData(with: model)
-            return cell!
+            cell.addGestureRecognizer(longPress)
+            cell.CellData(with: model)
+            return cell
             
         } else {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: Cells.repositoriesCell, for: indexPath) as? ReposCell
-            cell?.CellData(with: savedRepositories[indexPath.row - bookmarkedUsers.count])
+            let cell = tableView.dequeue() as ReposCell
+            cell.CellData(with: savedRepositories[indexPath.row - bookmarkedUsers.count])
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-            cell!.addGestureRecognizer(longPress)
-            return cell!
+            cell.addGestureRecognizer(longPress)
+            return cell
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row < bookmarkedUsers.count {
-            let url = bookmarkedUsers[indexPath.row].userURL
-            let vc = SFSafariViewController(url: URL(string: url!)!)
+            guard let url = bookmarkedUsers[indexPath.row].userURL  else {
+                return
+            }
+            
+            let vc = SFSafariViewController(url: URL(string: url)!)
             present(vc, animated: true)
         } else {
-            let url2 = savedRepositories[indexPath.row - bookmarkedUsers.count].repoURL
-            let vc = SFSafariViewController(url: URL(string: url2!)!)
+            guard let url2 = savedRepositories[indexPath.row - bookmarkedUsers.count].repoURL  else {
+                return
+            }
+            let vc = SFSafariViewController(url: URL(string: url2)!)
             present(vc, animated: true)
         }
     }
@@ -55,13 +60,15 @@ extension BookmarksViewController {
             tableView.beginUpdates()
             if indexPath.row < bookmarkedUsers.count {
                 let item = bookmarkedUsers[indexPath.row]
-                Delete().user(item: item) { (result) in
-                    self.bookmarkedUsers = result
+                DataBaseManger().Delete(returnType: UsersDataBase.self, Delete: item)
+                DataBaseManger().Fetch(returnType: UsersDataBase.self) { (users) in
+                    self.bookmarkedUsers = users
                 }
             } else {
                 let item = savedRepositories[indexPath.row - bookmarkedUsers.count]
-                Delete().repository(item: item)  { (result) in
-                    self.savedRepositories = result
+                DataBaseManger().Delete(returnType: SavedRepositories.self, Delete: item)
+                DataBaseManger().Fetch(returnType: SavedRepositories.self) { (repos) in
+                    self.savedRepositories = repos
                 }
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -73,7 +80,7 @@ extension BookmarksViewController {
         if indexPath.row < bookmarkedUsers.count {
             return 60
         } else {
-            return 110
+            return 60
         }
     }
 }

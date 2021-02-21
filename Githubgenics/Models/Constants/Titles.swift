@@ -5,7 +5,7 @@
 //  Created by Ali Fayed on 12/02/2021.
 //
 
-import Foundation
+import UIKit
 
 struct Titles {
     static let usersViewTitle        = "Users".localized()
@@ -35,4 +35,5 @@ struct Titles {
     static let cancel                = "Cancel".localized()
     static let removeAll             = "Remove All".localized()
     static let deleteAllRecords      = "Delete All Records!".localized()
+    static let langauge              = "English".localized()
 }

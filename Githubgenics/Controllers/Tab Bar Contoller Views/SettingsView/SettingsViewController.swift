@@ -19,7 +19,8 @@ class SettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(Cells.signOutNib(), forCellReuseIdentifier: Cells.signOutCell)
+        tableView.registerCellNib(cellClass: SignOutCell.self)
+        tableView.registerCellNib(cellClass: LanguageCell.self)
         tableView.tableFooterView = UIView()
         self.tabBarItem.title = Titles.settingsViewTitle
     }

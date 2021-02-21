@@ -43,8 +43,10 @@ extension RecentSearchViewController:  UITableViewDataSource , UITableViewDelega
         if editingStyle == .delete {
             tableView.beginUpdates()
             let item = searchHistory[indexPath.row]
-            Delete().searchHistory(item: item) { (result) in
-                self.searchHistory = result
+            DataBaseManger().Delete(returnType: SearchHistory.self, Delete: item)
+            DataBaseManger().Fetch(returnType: SearchHistory.self) { (history) in
+            self.searchHistory = history
+
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()

@@ -14,11 +14,11 @@ extension CommitsViewController {
       guard let repository = repository else {
         return
       }
-      GitReposRouter().fetchCommits(for: repository.repoFullName) { [weak self] commits in
-        self?.commits = commits
-        self?.loadingIndicator.stopAnimating()
-        self?.tableView.reloadData()
-      }
+        GitAPIManger().APIcall(returnType: Commit.self, requestData: GitRouter.fetchCommits(repository.repoFullName), pagination: false) { [weak self] (commits) in
+            self?.commits = commits
+            self?.loadingIndicator.stopAnimating()
+            self?.tableView.reloadData()
+          }
     }
     
     func renderUserRepositoriesCommits() {
@@ -26,10 +26,10 @@ extension CommitsViewController {
       guard let repository = userRepositories else {
         return
       }
-        GitReposRouter().fetchCommits(for: repository.repoFullName) { [weak self] commits in
-        self?.commits = commits
-        self?.loadingIndicator.stopAnimating()
-        self?.tableView.reloadData()
-      }
+        GitAPIManger().APIcall(returnType: Commit.self, requestData: GitRouter.fetchCommits(repository.repoFullName), pagination: false) { [weak self] (commits) in
+            self?.commits = commits
+            self?.loadingIndicator.stopAnimating()
+            self?.tableView.reloadData()
+          }
     }
 }

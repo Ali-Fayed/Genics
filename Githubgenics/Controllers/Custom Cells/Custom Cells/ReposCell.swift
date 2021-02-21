@@ -14,11 +14,6 @@ class ReposCell: UITableViewCell {
     weak var delegate : DetailViewCellDelegate?
     weak var repoListDelegate: RepositoryListCellDelegate?
     var defaults = UserDefaults.standard
-    @IBOutlet weak var repositoryName: UILabel!
-    @IBOutlet weak var repositoryDescription: UITextView!
-    @IBOutlet weak var repositoryStars: UILabel!
-    @IBOutlet weak var repositoryLanguage: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -39,25 +34,13 @@ class ReposCell: UITableViewCell {
     
     //MARK:- Repositories Cell Data
     
-    func CellData( with model: UserRepository ) {
-        self.repositoryName.text = model.repositoryName
-        self.repositoryDescription.text = model.repositoryDescription
-        self.repositoryStars.text = String(model.repositoryStars!)
-        self.repositoryLanguage.text = model.repositoryLanguage
+    func CellData( with model: Repository ) {
+        self.textLabel?.text = model.repositoryName
+        self.detailTextLabel?.text = model.repositoryDescription
     }
-    
-    
-    func CellData(with model: Repository) {
-        repositoryName?.text = model.repositoryName
-        repositoryDescription?.text = model.repositoryDescription
-        repositoryLanguage.text = model.repositoryLanguage
-        repositoryStars.text = String(model.repositoryStars!)
-    }
-    
+        
     func CellData(with model: SavedRepositories) {
-        self.repositoryName.text = model.repoName
-        self.repositoryDescription.text = model.repoDescription
-        self.repositoryStars?.text = String(model.repoStars)
-        self.repositoryLanguage.text = model.repoProgrammingLanguage
+        self.textLabel?.text = model.repoName
+        self.detailTextLabel?.text = model.repoDescription
     }
 }

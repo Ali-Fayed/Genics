@@ -17,8 +17,8 @@ class BookmarksViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(Cells.usersNib(), forCellReuseIdentifier: Cells.usersCell)
-        tableView.register(Cells.reposNib(), forCellReuseIdentifier: Cells.repositoriesCell)
+        tableView.registerCellNib(cellClass: UsersCell.self)
+        tableView.registerCellNib(cellClass: ReposCell.self)
         tableView.addGestureRecognizer(longPress)
         searchBar.delegate = self
         searchBar.placeholder = Titles.searchPlacholder
@@ -32,5 +32,6 @@ class BookmarksViewController: UITableViewController {
         self.tabBarController?.navigationItem.title = Titles.BookmarksViewTitle
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         renderDB ()
+
     }
 }

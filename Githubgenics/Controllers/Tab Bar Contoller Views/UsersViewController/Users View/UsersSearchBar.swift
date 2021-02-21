@@ -50,7 +50,10 @@ extension UsersListViewController  : UISearchBarDelegate  {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else { return }
-        Save().searchKeywords(keyword: text)
+        let history = SearchHistory(context: self.context)
+            history.keyword = text
+            try! self.context.save()
+
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

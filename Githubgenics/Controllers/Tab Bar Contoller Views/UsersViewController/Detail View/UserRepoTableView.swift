@@ -15,7 +15,7 @@ extension DetailViewController: UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.repositoriesCell, for: indexPath) as! ReposCell
+        let cell = tableView.dequeue() as ReposCell
         cell.CellData(with: userRepository[indexPath.row])
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         cell.addGestureRecognizer(longPress)
@@ -31,17 +31,17 @@ extension DetailViewController: UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return 120
-   }
-
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: Segues.commitViewSegue, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-        
-     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-      selectedRepository = userRepository[indexPath.row]
-      return indexPath
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        selectedRepository = userRepository[indexPath.row]
+        return indexPath
     }
 }
 
@@ -63,8 +63,15 @@ extension DetailViewController : DetailViewCellDelegate {
                 cell.accessoryView?.tintColor = .red
                 starButton[indexPath.row] = true
                 let repository = self.userRepository[indexPath.row]
-                Save().repository(repoName: repository.repositoryName, repoDescription: repository.repositoryDescription ?? "", repoProgrammingLanguage: repository.repositoryLanguage ?? "", repoURL: repository.repositoryURL, repoUserFullName: repository.repoFullName, repoStars: Float((repository.repositoryStars!)))
-                        DispatchQueue.main.async {
+                let saveRepoInfo = SavedRepositories(context: self.context)
+                    saveRepoInfo.repoName = repository.repositoryName
+                    saveRepoInfo.repoDescription = repository.repositoryDescription
+                    saveRepoInfo.repoProgrammingLanguage = repository.repositoryLanguage
+                    saveRepoInfo.repoUserFullName = repository.repoFullName
+                    saveRepoInfo.repoStars = Float(repository.repositoryStars ?? 0)
+                    saveRepoInfo.repoURL = repository.repositoryURL
+                
+                DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
             }

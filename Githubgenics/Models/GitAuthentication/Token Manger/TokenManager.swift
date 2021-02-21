@@ -9,6 +9,17 @@ class TokenManager {
   let userAccount = "accessToken"
   static let shared = TokenManager()
     
+    func fetchAccessToken(accessToken: String, completion: @escaping (Bool) -> Void) {
+        session.request(GitRouter.fetchAccessToken(accessToken))
+            .responseDecodable(of: GitHubAccessToken.self) { response in
+                guard let token = response.value else {
+                    return completion(false)
+                }
+                TokenManager.shared.saveAccessToken(gitToken: token)
+                completion(true)
+            }
+    }
+    
   let secureStore: SecureStore = {
     let accessTokenQueryable = GenericPasswordQueryable(service: "GitHubService")
     return SecureStore(secureStoreQueryable: accessTokenQueryable)

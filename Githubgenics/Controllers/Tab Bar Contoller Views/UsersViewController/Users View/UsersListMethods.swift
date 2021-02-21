@@ -26,7 +26,7 @@ extension UsersListViewController {
         guard !isPaginating else {
             return
         }
-        GitUsersRouter().fetchUsers(query: querySetup, page: pageNo, pagination: false ) { [weak self] users in
+        GitAPIManger().fetchUsers(query: querySetup, page: pageNo, pagination: false ) { [weak self] users in
             guard ((self?.users = users) != nil) else {
                 return
             }
@@ -53,7 +53,7 @@ extension UsersListViewController {
                 } 
                 return query
             }()
-            GitUsersRouter().fetchUsers(query: querySetup, page: pageNo, pagination: true ) { [weak self] result in
+            GitAPIManger().fetchUsers(query: querySetup, page: pageNo, pagination: true ) { [weak self] result in
                 guard ((self?.users.append(contentsOf: result)) != nil) else {
                     return
                 }
@@ -67,7 +67,7 @@ extension UsersListViewController {
     }
     
     func searchUser (query: String) {
-        GitUsersRouter().fetchUsers(query: query, page: 1) { [weak self] users in
+        GitAPIManger().fetchUsers(query: query, page: 1) { [weak self] users in
             guard ((self?.users = users) != nil) else {
                 return
             }
@@ -76,6 +76,7 @@ extension UsersListViewController {
             }
         }
     }
+    
     
     //MARK:- Handle Long Press
     
@@ -89,10 +90,11 @@ extension UsersListViewController {
                     guard let usersIndex = self?.users[index.row] else {
                         return
                     }
-                    Save().user(userName: usersIndex.userName, userAvatar: usersIndex.userAvatar, userURL: usersIndex.userURL )
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
-                    }
+                    let items = UsersDataBase(context: self!.context)
+                    items.userName = usersIndex.userName
+                    items.userAvatar = usersIndex.userAvatar
+                    items.userURL = usersIndex.userURL
+                    try! self?.context.save()
                 }
             }))
             sheet.addAction(UIAlertAction(title: Titles.url , style: .default, handler: { [weak self] (url) in
@@ -117,7 +119,7 @@ extension UsersListViewController {
             }
             return query
         }()
-        GitUsersRouter().fetchUsers(query: querySetup, page: pageNo) { [weak self] result in
+        GitAPIManger().fetchUsers(query: querySetup, page: pageNo) { [weak self] result in
             guard ((self?.users = result) != nil) else {
                 return
             }

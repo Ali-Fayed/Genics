@@ -19,7 +19,7 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.usersCell, for: indexPath) as! UsersCell
+        let cell = tableView.dequeue() as UsersCell
         cell.CellData(with: users[indexPath.row])
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         cell.addGestureRecognizer(longPress)
@@ -29,8 +29,13 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: Segues.detailViewSegue, sender: self)
-        let usersModel = users[indexPath.row]
-        Save().lastSearch(userName: usersModel.userName, userAvatar: usersModel.userAvatar, userURL: usersModel.userURL)
+        if historyView.isHidden == true {
+            let usersModel = users[indexPath.row]
+            let items = UsersDataBase(context: self.context)
+            items.userName = usersModel.userName
+            items.userAvatar = usersModel.userAvatar
+            items.userURL = usersModel.userURL
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

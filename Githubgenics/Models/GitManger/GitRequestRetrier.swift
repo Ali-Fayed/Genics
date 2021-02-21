@@ -7,7 +7,7 @@
 
 import Alamofire
 
-class GitRequestInterceptor: RequestInterceptor {
+class GitRequestRetrier: RequestInterceptor {
   let retryLimit = 5
   let retryDelay: TimeInterval = 10
 

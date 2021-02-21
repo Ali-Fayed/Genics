@@ -10,10 +10,13 @@ import Alamofire
 
 class UsersListViewController: UIViewController  {
     
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var users = [items]()
     var passedUsers : items?
     var lastSearch = [LastSearch]()
     var searchHistory = [SearchHistory]()
+    var fetchSavedUsers = [UsersDataBase]()
     var pageNo : Int = 1
     var totalPages : Int = 100
     var isPaginating = false
@@ -34,7 +37,7 @@ class UsersListViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(Cells.usersNib(), forCellReuseIdentifier: Cells.usersCell)
+        tableView.registerCellNib(cellClass: UsersCell.self)
         tableView.addGestureRecognizer(longPress)
         tableView.addSubview(refreshControl)
         tableView.tableHeaderView = self.listSearchBar
@@ -45,6 +48,7 @@ class UsersListViewController: UIViewController  {
         searchBar.alpha = 0.0
         renderSearchBar()
         renderUsersList()
+        self.tabBarController?.navigationItem.title = Titles.usersViewTitle
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +62,6 @@ class UsersListViewController: UIViewController  {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.tabBarController?.navigationItem.title = Titles.usersViewTitle
         self.tabBarItem.title = Titles.usersViewTitle
     }
     

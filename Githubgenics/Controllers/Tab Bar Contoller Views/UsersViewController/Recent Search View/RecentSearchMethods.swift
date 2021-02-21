@@ -12,15 +12,17 @@ extension RecentSearchViewController : UISearchBarDelegate {
     //MARK:- Fetch Methods
     
     func renderDB () {
-        Fetch().searchHistory { (result) in
+        DataBaseManger().Fetch(returnType: SearchHistory.self) { (result) in
             self.searchHistory = result
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
-        Fetch().lastSearch { (result) in
+        DataBaseManger().Fetch(returnType: LastSearch.self) { (result) in
             self.lastSearch = result
-            self.collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -43,10 +45,10 @@ extension RecentSearchViewController : UISearchBarDelegate {
                 HapticsManger.shared.selectionVibrate(for: .heavy)
 
             }
-            Fetch().self.searchHistory { (result) in
+            DataBaseManger().Fetch(returnType: SearchHistory.self) { (result) in
                 self.searchHistory = result
             }
-            Fetch().self.lastSearch { (result) in
+            DataBaseManger().Fetch(returnType: LastSearch.self) { (result) in
                 self.lastSearch = result
             }
         } catch {

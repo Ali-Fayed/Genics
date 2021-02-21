@@ -15,14 +15,17 @@ extension DetailViewController {
     func renderClickedUserPublicRepositories () {
         guard let repository = passedUser else {return}
         self.loadingIndicator.startAnimating()
-        GitReposRouter().fetchUsersRepositories(for: repository.userName) { [self] result in
-            self.userRepository = result
+        GitAPIManger().APIcall(returnType: Repository.self, requestData: GitRouter.fetchUsersRepository(repository.userName), pagination: true) { [weak self] (result) in
+            self!.userRepository = result
             DispatchQueue.main.async {
-                self.loadingIndicator.stopAnimating()
-                tableView.reloadData()
+                self!.loadingIndicator.stopAnimating()
+                self?.tableView.reloadData()
+                self?.skeletonViewLoader ()
             }
         }
     }
+    
+    
     
     //MARK:- UI Methods
     
@@ -46,10 +49,11 @@ extension DetailViewController {
         self.tableView.tableFooterView?.isHidden = false
     }
     
-    func shimmerLoadingView () {
+    func skeletonViewLoader () {
         tableView.isSkeletonable = true
         tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)), animation: nil, transition: .crossDissolve(0.25))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        tableView.skeletonCornerRadius = 5
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.tableView.stopSkeletonAnimation()
             self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
         }
@@ -80,8 +84,16 @@ extension DetailViewController {
         if let index = tableView.indexPathForRow(at: touchPoint) {
             let sheet = UIAlertController(title: Titles.more, message: nil , preferredStyle: .actionSheet)
             sheet.addAction(UIAlertAction(title: Titles.bookmark, style: .default, handler: { (url) in
-                let repository = self.userRepository[index.row]
-                Save().repository(repoName: repository.repositoryName, repoDescription: repository.repositoryDescription ?? "", repoProgrammingLanguage: repository.repositoryLanguage ?? "", repoURL: repository.repositoryURL, repoUserFullName: repository.repoFullName, repoStars: Float((repository.repositoryStars!)))
+                 let repository = self.userRepository[index.row]
+                let saveRepoInfo = SavedRepositories(context: self.context)
+                    saveRepoInfo.repoName = repository.repositoryName
+                    saveRepoInfo.repoDescription = repository.repositoryDescription
+                    saveRepoInfo.repoProgrammingLanguage = repository.repositoryLanguage
+                    saveRepoInfo.repoUserFullName = repository.repoFullName
+                    saveRepoInfo.repoStars = Float(repository.repositoryStars ?? 0)
+                    saveRepoInfo.repoURL = repository.repositoryURL
+                     try! self.context.save()
+
                         DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }

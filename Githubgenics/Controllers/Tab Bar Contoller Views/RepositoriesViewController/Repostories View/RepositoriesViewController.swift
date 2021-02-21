@@ -9,11 +9,13 @@ import UIKit
 
 class RepositoriesViewController: UITableViewController {
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     lazy var listSearchBar:UISearchBar = UISearchBar()
     lazy var listSearchBar2:UISearchBar = UISearchBar()
     let longPress = UILongPressGestureRecognizer()
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
-    var repositories = [Repository]()
+    var repositories : [Repository] = []
+    var rep : [Repositories] = []
     var selectedRepository: Repository?
     var savedRepositories = [SavedRepositories]()
     var starButton = [Int : Bool]()
@@ -33,8 +35,8 @@ class RepositoriesViewController: UITableViewController {
         tableView.addGestureRecognizer(longPress)
         loadingIndicator.center = view.center
         view.addSubview(loadingIndicator)
-        tableView.register(Cells.reposNib(), forCellReuseIdentifier: Cells.repositoriesCell)
-        tableView.rowHeight = 120
+        tableView.registerCellNib(cellClass: ReposCell.self)
+        tableView.rowHeight = 60
         self.tabBarItem.title = Titles.RepositoriesViewTitle
         renderSearchBar()
         renderStarState()

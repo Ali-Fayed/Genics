@@ -20,7 +20,7 @@ let session: Session = {
   })
 
   let networkLogger = GitNetworkLogger()
-  let interceptor = GitRequestInterceptor()
+  let interceptor = GitRequestRetrier()
 
   return Session(
     configuration: configuration,

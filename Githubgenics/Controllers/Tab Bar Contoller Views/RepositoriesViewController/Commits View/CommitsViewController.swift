@@ -12,7 +12,7 @@ class CommitsViewController: UITableViewController {
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
     var commits = [Commit]()
     var repository : Repository?
-    var userRepositories : UserRepository?
+    var userRepositories : Repository?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,15 +10,16 @@ import Alamofire
 enum GitRouter {
     
     case fetchAccessToken(String)
+    case gitAuthUser
     case fetchUsers(Int, String)
-    case fetchUsersRepositories(String)
+    case fetchUsersRepository(String)
     case fetchAuthorizedUserRepositories
     case searchPublicRepositories(String)
     case fetchCommits(String)
     
     var baseURL: String {
         switch self {
-        case .fetchAuthorizedUserRepositories, .searchPublicRepositories, .fetchCommits , .fetchUsersRepositories, .fetchUsers:
+        case .fetchAuthorizedUserRepositories, .searchPublicRepositories, .fetchCommits , .fetchUsersRepository, .fetchUsers , .gitAuthUser:
             return "https://api.github.com"
         case .fetchAccessToken:
             return "https://github.com"
@@ -29,9 +30,11 @@ enum GitRouter {
         switch self {
         case .fetchAccessToken:
             return "/login/oauth/access_token"
+        case .gitAuthUser:
+            return "/user"
         case .fetchUsers:
             return "/search/users"
-        case .fetchUsersRepositories(let user):
+        case .fetchUsersRepository(let user):
             return "/users/\(user)/repos"
         case .fetchAuthorizedUserRepositories:
             return "/user/repos"
@@ -46,9 +49,11 @@ enum GitRouter {
         switch self {
         case .fetchAccessToken:
             return .post
+        case .gitAuthUser:
+            return .get
         case .fetchUsers:
             return .get
-        case .fetchUsersRepositories:
+        case .fetchUsersRepository:
             return .get
         case .fetchAuthorizedUserRepositories:
             return .get
@@ -67,9 +72,11 @@ enum GitRouter {
                 "client_secret": GitHubConstants.clientSecret,
                 "code": accessToken
             ]
+        case .gitAuthUser:
+            return nil
         case .fetchUsers(let page, let query):
             return ["sort": "repositories", "order": "desc", "page": "\(page)" , "q": query]
-        case.fetchUsersRepositories:
+        case.fetchUsersRepository:
             return ["per_page": "50"]
         case .fetchAuthorizedUserRepositories:
             return ["per_page": "50"]
@@ -98,3 +105,5 @@ extension GitRouter: URLRequestConvertible {
         return request
     }
 }
+
+
