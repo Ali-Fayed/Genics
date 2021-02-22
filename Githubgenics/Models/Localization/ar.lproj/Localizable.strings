@@ -21,7 +21,7 @@
 
 // Welcome Screen
 
-"Sign in with GitHub" = "قم بالتسجيل عن طريق Github";
+"Sign in with GitHub" = "سجل ب Github";
 "By sigining in you accept Github" = "‎بتسجيلك ستقوم بالموافقه علي شروط الموقع";
 "make sure you read the README file and fetch your client ID & client secret to Login with Github and avoid 404 web error or Try without!!" = "تأكد من قرائتك لملف الوصف !!";
 "Try without Github!" = "الاستمرار باي شكل";
@@ -39,3 +39,6 @@
 "Login Options"       = "خيارات التسجيل!";
 "Delete All Records!" = "مسح جميع السجلات!";
 "English" = "English";
+"Profile" = "الملف الشخصي";
+"Organizations" = "المنظمات";
+"There aren't any orgs." = "لا يوجد منظمات";

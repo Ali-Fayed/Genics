@@ -11,6 +11,8 @@ enum GitRouter {
     
     case fetchAccessToken(String)
     case gitAuthUser
+    case gitStartedReposUser
+    case gitOrgs
     case fetchUsers(Int, String)
     case fetchUsersRepository(String)
     case fetchAuthorizedUserRepositories
@@ -19,7 +21,7 @@ enum GitRouter {
     
     var baseURL: String {
         switch self {
-        case .fetchAuthorizedUserRepositories, .searchPublicRepositories, .fetchCommits , .fetchUsersRepository, .fetchUsers , .gitAuthUser:
+        case .fetchAuthorizedUserRepositories, .searchPublicRepositories, .fetchCommits , .fetchUsersRepository, .fetchUsers , .gitAuthUser, .gitStartedReposUser, .gitOrgs:
             return "https://api.github.com"
         case .fetchAccessToken:
             return "https://github.com"
@@ -32,12 +34,16 @@ enum GitRouter {
             return "/login/oauth/access_token"
         case .gitAuthUser:
             return "/user"
+        case .fetchAuthorizedUserRepositories:
+            return "/user/repos"
+        case .gitStartedReposUser:
+            return "/user/starred"
+        case .gitOrgs:
+            return "/user/orgs"
         case .fetchUsers:
             return "/search/users"
         case .fetchUsersRepository(let user):
             return "/users/\(user)/repos"
-        case .fetchAuthorizedUserRepositories:
-            return "/user/repos"
         case .searchPublicRepositories:
             return "/search/repositories"
         case .fetchCommits(let repository):
@@ -50,6 +56,10 @@ enum GitRouter {
         case .fetchAccessToken:
             return .post
         case .gitAuthUser:
+            return .get
+        case .gitStartedReposUser:
+            return .get
+        case .gitOrgs:
             return .get
         case .fetchUsers:
             return .get
@@ -74,6 +84,10 @@ enum GitRouter {
             ]
         case .gitAuthUser:
             return nil
+        case .gitStartedReposUser:
+            return nil
+        case .gitOrgs:
+        return nil
         case .fetchUsers(let page, let query):
             return ["sort": "repositories", "order": "desc", "page": "\(page)" , "q": query]
         case.fetchUsersRepository:

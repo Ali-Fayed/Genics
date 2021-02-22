@@ -29,7 +29,6 @@
 		EA22D7A125CE2EAB009C0EEF /* GitHubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78225CE2DE0009C0EEF /* GitHubConstants.swift */; };
 		EA22D7B625CE2F1B009C0EEF /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78125CE2DE0009C0EEF /* TokenManager.swift */; };
 		EA22D7B725CE2F1B009C0EEF /* GitHubAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78025CE2DE0009C0EEF /* GitHubAccessToken.swift */; };
-		EA2312D925928108000BDC8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA2312D825928108000BDC8C /* GoogleService-Info.plist */; };
 		EA2312DD2592819D000BDC8C /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2312DC2592819D000BDC8C /* Cells.swift */; };
 		EA2F137725DF21A400470A04 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2F137625DF21A400470A04 /* Repository.swift */; };
 		EA3FA0FA25AE9B88008D7520 /* LaunchAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */; };
@@ -77,7 +76,6 @@
 		EAB3959325D5FD3F009D178C /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3959225D5FD3F009D178C /* Entities.swift */; };
 		EAB3959725D6041B009D178C /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3959625D6041B009D178C /* Titles.swift */; };
 		EAB3959B25D60AA3009D178C /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3959A25D60AA3009D178C /* SettingsTableView.swift */; };
-		EAB3959E25D60C30009D178C /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3959D25D60C30009D178C /* Messages.swift */; };
 		EABF30EF25C7C95000A17456 /* UsersSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABF30EE25C7C95000A17456 /* UsersSearchBar.swift */; };
 		EAC1636625BAB789007EDC96 /* UsersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636325BAB789007EDC96 /* UsersCell.xib */; };
 		EAC1636725BAB789007EDC96 /* ReposCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636425BAB789007EDC96 /* ReposCell.xib */; };
@@ -85,6 +83,14 @@
 		EAC3B16F25C951B600F798DA /* Commits.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3B16E25C951B600F798DA /* Commits.swift */; };
 		EAC3B17325C9520700F798DA /* CommitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3B17225C9520700F798DA /* CommitsViewController.swift */; };
 		EAD4476625B0148A00FB42B4 /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD4476425B0148A00FB42B4 /* UsersCell.swift */; };
+		EADCD06D25E334DD005F7033 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD06C25E334DD005F7033 /* ProfileViewController.swift */; };
+		EADCD07525E35FF6005F7033 /* UserRepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07425E35FF6005F7033 /* UserRepositoryViewController.swift */; };
+		EADCD07825E36681005F7033 /* Orgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07725E36681005F7033 /* Orgs.swift */; };
+		EADCD08025E36AE8005F7033 /* UserStartedSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07F25E36AE8005F7033 /* UserStartedSegue.swift */; };
+		EADCD08325E36B0F005F7033 /* UserOrgsSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD08225E36B0F005F7033 /* UserOrgsSegue.swift */; };
+		EADCD08625E36EC1005F7033 /* ViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD08525E36EC1005F7033 /* ViewEx.swift */; };
+		EADCD08F25E381C5005F7033 /* Profile Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD08E25E381C5005F7033 /* Profile Model.swift */; };
+		EADCD09425E388EE005F7033 /* AuthenticatedUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD09325E388EE005F7033 /* AuthenticatedUserModel.swift */; };
 		EAEEE13A25DCACCD00E88EED /* TableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEEE13925DCACCD00E88EED /* TableViewExt.swift */; };
 		EAF1165625DCC644007A1F8F /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF1165425DCC644007A1F8F /* LanguageCell.swift */; };
 		EAF1165725DCC644007A1F8F /* LanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF1165525DCC644007A1F8F /* LanguageCell.xib */; };
@@ -117,7 +123,6 @@
 		EA22D79325CE2E26009C0EEF /* SecureStoreQueryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureStoreQueryable.swift; sourceTree = "<group>"; };
 		EA22D79625CE2E37009C0EEF /* RepositoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesViewController.swift; sourceTree = "<group>"; };
 		EA22D79825CE2E37009C0EEF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		EA2312D825928108000BDC8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EA2312DC2592819D000BDC8C /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		EA2F137625DF21A400470A04 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		EA3FA0F925AE9B88008D7520 /* LaunchAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAnimation.swift; sourceTree = "<group>"; };
@@ -168,7 +173,6 @@
 		EAB3959225D5FD3F009D178C /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 		EAB3959625D6041B009D178C /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
 		EAB3959A25D60AA3009D178C /* SettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
-		EAB3959D25D60C30009D178C /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		EABF30EE25C7C95000A17456 /* UsersSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersSearchBar.swift; sourceTree = "<group>"; };
 		EAC1636325BAB789007EDC96 /* UsersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsersCell.xib; sourceTree = "<group>"; };
 		EAC1636425BAB789007EDC96 /* ReposCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReposCell.xib; sourceTree = "<group>"; };
@@ -176,6 +180,14 @@
 		EAC3B16E25C951B600F798DA /* Commits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commits.swift; sourceTree = "<group>"; };
 		EAC3B17225C9520700F798DA /* CommitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewController.swift; sourceTree = "<group>"; };
 		EAD4476425B0148A00FB42B4 /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
+		EADCD06C25E334DD005F7033 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EADCD07425E35FF6005F7033 /* UserRepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryViewController.swift; sourceTree = "<group>"; };
+		EADCD07725E36681005F7033 /* Orgs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orgs.swift; sourceTree = "<group>"; };
+		EADCD07F25E36AE8005F7033 /* UserStartedSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStartedSegue.swift; sourceTree = "<group>"; };
+		EADCD08225E36B0F005F7033 /* UserOrgsSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOrgsSegue.swift; sourceTree = "<group>"; };
+		EADCD08525E36EC1005F7033 /* ViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEx.swift; sourceTree = "<group>"; };
+		EADCD08E25E381C5005F7033 /* Profile Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile Model.swift"; sourceTree = "<group>"; };
+		EADCD09325E388EE005F7033 /* AuthenticatedUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedUserModel.swift; sourceTree = "<group>"; };
 		EAEEE13925DCACCD00E88EED /* TableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExt.swift; sourceTree = "<group>"; };
 		EAF1165425DCC644007A1F8F /* LanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
 		EAF1165525DCC644007A1F8F /* LanguageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageCell.xib; sourceTree = "<group>"; };
@@ -212,17 +224,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		EA05895125C5561700BC1024 /* Detail View */ = {
+		EA05895125C5561700BC1024 /* DetailViewController */ = {
 			isa = PBXGroup;
 			children = (
 				EA999A6425927C02005E832C /* DetailViewController.swift */,
 				EA05894E25C555BB00BC1024 /* UserRepoTableView.swift */,
 				EAFB5D7925C7B16F0096D729 /* DetailViewFunctions.swift */,
 			);
-			path = "Detail View";
+			path = DetailViewController;
 			sourceTree = "<group>";
 		};
-		EA05897125C55F8B00BC1024 /* Recent Search View */ = {
+		EA05897125C55F8B00BC1024 /* RecentSearchViewController */ = {
 			isa = PBXGroup;
 			children = (
 				EAB2AD0B25BBED9F001B6DD7 /* RecentSearchController.swift */,
@@ -230,7 +242,7 @@
 				EA05897625C55F9F00BC1024 /* RecentCollectionView.swift */,
 				EA48AD0025D4E2E8006803BD /* RecentSearchMethods.swift */,
 			);
-			path = "Recent Search View";
+			path = RecentSearchViewController;
 			sourceTree = "<group>";
 		};
 		EA05898625C564AB00BC1024 /* Repostories View */ = {
@@ -244,13 +256,13 @@
 			path = "Repostories View";
 			sourceTree = "<group>";
 		};
-		EA05898D25C5655A00BC1024 /* SettingsView */ = {
+		EA05898D25C5655A00BC1024 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
 				EA9743512596C3790057C8A0 /* SettingsViewController.swift */,
 				EAB3959A25D60AA3009D178C /* SettingsTableView.swift */,
 			);
-			path = SettingsView;
+			path = SettingsViewController;
 			sourceTree = "<group>";
 		};
 		EA0C2DA025BD1B5300D3898A /* LastSearch */ = {
@@ -314,6 +326,8 @@
 			children = (
 				EAC1636525BAB789007EDC96 /* Main.storyboard */,
 				EA566FF625927B9E00596E6A /* LaunchScreen.storyboard */,
+				EA566FF425927B9E00596E6A /* Assets.xcassets */,
+				EA8AD23F25BCF6B20022DE2E /* Nibs */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -349,7 +363,6 @@
 		EA54C34925940DCC0021BFC4 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
-				EA8AD23F25BCF6B20022DE2E /* Nibs */,
 				EA581A8825BFB7BF0097089D /* Custom Cells */,
 			);
 			path = "Custom Cells";
@@ -376,9 +389,7 @@
 		EA566FE725927B9D00596E6A /* Githubgenics */ = {
 			isa = PBXGroup;
 			children = (
-				EA2312D825928108000BDC8C /* GoogleService-Info.plist */,
 				EA566FF925927B9E00596E6A /* Info.plist */,
-				EA566FF425927B9E00596E6A /* Assets.xcassets */,
 				EA999A7325927C31005E832C /* Models */,
 				EA4664C425BAB204003C4AD1 /* View */,
 				EA999A7425927C67005E832C /* Controllers */,
@@ -408,6 +419,8 @@
 				EA622CFB25C54F3800EC5F3C /* Users.swift */,
 				EA2F137625DF21A400470A04 /* Repository.swift */,
 				EAC3B16E25C951B600F798DA /* Commits.swift */,
+				EADCD07725E36681005F7033 /* Orgs.swift */,
+				EADCD09325E388EE005F7033 /* AuthenticatedUserModel.swift */,
 			);
 			path = GitEndpoints;
 			sourceTree = "<group>";
@@ -487,8 +500,6 @@
 		EA94DCCC25C67CAA00E2C30B /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				EA566FE825927B9D00596E6A /* AppDelegate.swift */,
-				EA566FEA25927B9D00596E6A /* SceneDelegate.swift */,
 				EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */,
 			);
 			path = Other;
@@ -513,13 +524,19 @@
 			children = (
 				EAAF81F825D4EB43006C44EC /* Welcome Screen View */,
 				EA52D7C325D4E3E100B24BDC /* LoginViewController */,
-				EAB395A625D60F3C009D178C /* Tab Bar Contoller Views */,
+				EADCD06B25E334C3005F7033 /* ProfileViewController */,
+				EAA710FD25BD562E004D7E21 /* UsersListViewController */,
+				EA05897125C55F8B00BC1024 /* RecentSearchViewController */,
+				EA05895125C5561700BC1024 /* DetailViewController */,
+				EAB395A425D60F10009D178C /* RepositoriesViewController */,
+				EA65CB7C25BE9069005CBA09 /* BookmarksViewController */,
+				EA05898D25C5655A00BC1024 /* SettingsViewController */,
 				EA54C34925940DCC0021BFC4 /* Custom Cells */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		EAA710FD25BD562E004D7E21 /* Users View */ = {
+		EAA710FD25BD562E004D7E21 /* UsersListViewController */ = {
 			isa = PBXGroup;
 			children = (
 				EA5EADF625929E2700AC3223 /* UsersListViewController.swift */,
@@ -527,7 +544,7 @@
 				EABF30EE25C7C95000A17456 /* UsersSearchBar.swift */,
 				EAFB5D7625C7AF9F0096D729 /* UsersListMethods.swift */,
 			);
-			path = "Users View";
+			path = UsersListViewController;
 			sourceTree = "<group>";
 		};
 		EAAF81F825D4EB43006C44EC /* Welcome Screen View */ = {
@@ -546,20 +563,10 @@
 				EAB3958F25D5FD32009D178C /* Segues.swift */,
 				EAB3959225D5FD3F009D178C /* Entities.swift */,
 				EAB3959625D6041B009D178C /* Titles.swift */,
-				EAB3959D25D60C30009D178C /* Messages.swift */,
 				EA88A7B625D709CB008663BD /* Storyboard ID.swift */,
+				EADCD08E25E381C5005F7033 /* Profile Model.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		EAB395A325D60EE8009D178C /* UsersViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EAA710FD25BD562E004D7E21 /* Users View */,
-				EA05897125C55F8B00BC1024 /* Recent Search View */,
-				EA05895125C5561700BC1024 /* Detail View */,
-			);
-			path = UsersViewController;
 			sourceTree = "<group>";
 		};
 		EAB395A425D60F10009D178C /* RepositoriesViewController */ = {
@@ -571,23 +578,26 @@
 			path = RepositoriesViewController;
 			sourceTree = "<group>";
 		};
-		EAB395A625D60F3C009D178C /* Tab Bar Contoller Views */ = {
+		EADCD06B25E334C3005F7033 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EAB395A325D60EE8009D178C /* UsersViewController */,
-				EAB395A425D60F10009D178C /* RepositoriesViewController */,
-				EA65CB7C25BE9069005CBA09 /* BookmarksViewController */,
-				EA05898D25C5655A00BC1024 /* SettingsView */,
+				EADCD06C25E334DD005F7033 /* ProfileViewController.swift */,
+				EADCD07425E35FF6005F7033 /* UserRepositoryViewController.swift */,
+				EADCD07F25E36AE8005F7033 /* UserStartedSegue.swift */,
+				EADCD08225E36B0F005F7033 /* UserOrgsSegue.swift */,
 			);
-			path = "Tab Bar Contoller Views";
+			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
 		EAEEE13C25DCACD100E88EED /* Recources */ = {
 			isa = PBXGroup;
 			children = (
-				EA703D7425BAB65900073DFB /* GitCoreDataClasses */,
+				EA566FE825927B9D00596E6A /* AppDelegate.swift */,
+				EA566FEA25927B9D00596E6A /* SceneDelegate.swift */,
 				EAEEE13925DCACCD00E88EED /* TableViewExt.swift */,
 				EA668B9F25BFE83C00392A30 /* Githubgenics.xcdatamodeld */,
+				EADCD08525E36EC1005F7033 /* ViewEx.swift */,
+				EA703D7425BAB65900073DFB /* GitCoreDataClasses */,
 			);
 			path = Recources;
 			sourceTree = "<group>";
@@ -657,7 +667,6 @@
 				EA7216D425B6121200E21D3B /* Localizable.strings in Resources */,
 				EAC1636825BAB789007EDC96 /* Main.storyboard in Resources */,
 				EAF1165725DCC644007A1F8F /* LanguageCell.xib in Resources */,
-				EA2312D925928108000BDC8C /* GoogleService-Info.plist in Resources */,
 				EA566FF825927B9E00596E6A /* LaunchScreen.storyboard in Resources */,
 				EA566FF525927B9E00596E6A /* Assets.xcassets in Resources */,
 				EAC1636725BAB789007EDC96 /* ReposCell.xib in Resources */,
@@ -702,10 +711,12 @@
 				EAAF820825D4F012006C44EC /* SettingsCell.swift in Sources */,
 				EA43BCD325965CAD00098ACA /* ReposCell.swift in Sources */,
 				EA48ACF025D4D2C9006803BD /* NetwrokMonitor.swift in Sources */,
+				EADCD06D25E334DD005F7033 /* ProfileViewController.swift in Sources */,
 				EAFB5D7725C7AF9F0096D729 /* UsersListMethods.swift in Sources */,
 				EAB2AD1425BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift in Sources */,
 				EA05897425C55F9800BC1024 /* RecentTableView.swift in Sources */,
 				EA0589BA25C5696D00BC1024 /* BookmarksTableView.swift in Sources */,
+				EADCD08625E36EC1005F7033 /* ViewEx.swift in Sources */,
 				EA2F137725DF21A400470A04 /* Repository.swift in Sources */,
 				EA7C4CAE25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift in Sources */,
 				EAC3B16F25C951B600F798DA /* Commits.swift in Sources */,
@@ -723,25 +734,29 @@
 				EA22D7B625CE2F1B009C0EEF /* TokenManager.swift in Sources */,
 				EA05898825C564C700BC1024 /* RepostoiresSearchBar.swift in Sources */,
 				EA3FA0FA25AE9B88008D7520 /* LaunchAnimation.swift in Sources */,
+				EADCD08325E36B0F005F7033 /* UserOrgsSegue.swift in Sources */,
+				EADCD08F25E381C5005F7033 /* Profile Model.swift in Sources */,
 				EA22D78525CE2DE0009C0EEF /* GitRouter.swift in Sources */,
 				EA05898B25C564FB00BC1024 /* RepostoiresTableView.swift in Sources */,
 				EA22D78625CE2DE0009C0EEF /* GitNetworkLogger.swift in Sources */,
 				EA62595F25CFD75300D63BE0 /* GitSessionManger.swift in Sources */,
+				EADCD09425E388EE005F7033 /* AuthenticatedUserModel.swift in Sources */,
 				EAD4476625B0148A00FB42B4 /* UsersCell.swift in Sources */,
 				EA22D78E25CE2DF4009C0EEF /* SecureStore.swift in Sources */,
 				EAB3959725D6041B009D178C /* Titles.swift in Sources */,
 				EAC3B17325C9520700F798DA /* CommitsViewController.swift in Sources */,
 				EA668BA125BFE83C00392A30 /* Githubgenics.xcdatamodeld in Sources */,
+				EADCD08025E36AE8005F7033 /* UserStartedSegue.swift in Sources */,
 				EA622CFC25C54F3800EC5F3C /* Users.swift in Sources */,
 				EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */,
 				EA668B9D25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift in Sources */,
 				EAFB5D7A25C7B16F0096D729 /* DetailViewFunctions.swift in Sources */,
+				EADCD07525E35FF6005F7033 /* UserRepositoryViewController.swift in Sources */,
 				EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */,
 				EA2312DD2592819D000BDC8C /* Cells.swift in Sources */,
 				EAAF81F425D4E848006C44EC /* BookmarksViewMethods.swift in Sources */,
 				EA48AD0125D4E2E8006803BD /* RecentSearchMethods.swift in Sources */,
 				EAEEE13A25DCACCD00E88EED /* TableViewExt.swift in Sources */,
-				EAB3959E25D60C30009D178C /* Messages.swift in Sources */,
 				EAF1165625DCC644007A1F8F /* LanguageCell.swift in Sources */,
 				EA0589BD25C56A0E00BC1024 /* BookmarksSearchBar.swift in Sources */,
 				EA22D7A125CE2EAB009C0EEF /* GitHubConstants.swift in Sources */,
@@ -768,6 +783,7 @@
 				EAAF820C25D4F036006C44EC /* SignOutCell.swift in Sources */,
 				EAAF81EF25D4E777006C44EC /* CommitsViewMethods.swift in Sources */,
 				EA0C2D9725BD068C00D3898A /* LastSearch+CoreDataProperties.swift in Sources */,
+				EADCD07825E36681005F7033 /* Orgs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

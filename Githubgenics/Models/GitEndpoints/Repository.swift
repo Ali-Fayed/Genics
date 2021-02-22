@@ -9,6 +9,8 @@ struct Repositories: Decodable {
     let items: [Repository]
 }
 
+/// this model used to parse startted repos/repos/userrepos/search
+
 struct Repository {
     let repositoryName: String
     let repositoryDescription: String?

@@ -11,4 +11,8 @@ struct Segues {
     static let savedStateLoginSegue    = "Outh2SavedSegue"
     static let loginToTabBarSegue      = "LogintoTabBarSegue"
     static let commitViewSegue         = "CommitSegue"
+    static let userCellDetailSegue     = "userCellDetailSegue"
+    static let userStarttedSegue        = "userStarttedSegue"
+    static let userOrgsSegue          = "userOrgsSegue"
+
 }

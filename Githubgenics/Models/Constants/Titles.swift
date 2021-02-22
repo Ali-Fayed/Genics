@@ -36,4 +36,12 @@ struct Titles {
     static let removeAll             = "Remove All".localized()
     static let deleteAllRecords      = "Delete All Records!".localized()
     static let langauge              = "English".localized()
+    static let Startted              = "Startted".localized()
+    static let Organizations              = "Organizations".localized()
+    static let Profile                  = "Profile".localized()
+    static let noOrgs                   = "There aren't any orgs.".localized()
+}
+
+struct Messages {
+    static let internetError = "Please check your connection and try again".localized()
 }
