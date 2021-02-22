@@ -8,8 +8,7 @@
 struct Segues {
     static let detailViewSegue         = "DetailViewSegue"
     static let welcomeScreenSegue      = "WelcomeScreenSegue"
-    static let savedStateLoginSegue    = "Outh2SavedSegue"
-    static let loginToTabBarSegue      = "LogintoTabBarSegue"
+    static let TabBarSegue    = "TabBarSegue"
     static let commitViewSegue         = "CommitSegue"
     static let userCellDetailSegue     = "userCellDetailSegue"
     static let userStarttedSegue        = "userStarttedSegue"

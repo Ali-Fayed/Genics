@@ -21,6 +21,7 @@ extension DetailViewController: UITableViewDataSource , UITableViewDelegate {
         cell.addGestureRecognizer(longPress)
         cell.delegate = self
         cell.buttonAccessory()
+        // handle starbutton
         if starButton[indexPath.row] != nil {
             cell.accessoryView?.tintColor = starButton[indexPath.row]! ? .red : .lightGray
         } else {
@@ -59,6 +60,7 @@ extension DetailViewController : DetailViewCellDelegate {
                 starButton[indexPath.row] = false
             }
             else{
+                // handle starbutton and save repos to database
                 HapticsManger.shared.selectionVibrate(for: .medium)
                 cell.accessoryView?.tintColor = .red
                 starButton[indexPath.row] = true
@@ -70,10 +72,9 @@ extension DetailViewController : DetailViewCellDelegate {
                     saveRepoInfo.repoUserFullName = repository.repoFullName
                     saveRepoInfo.repoStars = Float(repository.repositoryStars ?? 0)
                     saveRepoInfo.repoURL = repository.repositoryURL
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
             }
         }
         saveStarState()

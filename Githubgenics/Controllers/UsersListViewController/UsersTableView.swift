@@ -19,7 +19,9 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // generic function to reduce dequeue new cell code
         let cell = tableView.dequeue() as UsersCell
+        // fetch cell data from cell class
         cell.CellData(with: users[indexPath.row])
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         cell.addGestureRecognizer(longPress)
@@ -29,16 +31,17 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: Segues.detailViewSegue, sender: self)
-        if historyView.isHidden == true {
             let usersModel = users[indexPath.row]
-            let items = UsersDataBase(context: self.context)
+            let items = LastSearch(context: self.context)
             items.userName = usersModel.userName
             items.userAvatar = usersModel.userAvatar
             items.userURL = usersModel.userURL
-        }
+            try! self.context.save()
+
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // pagination and fetch more
         if indexPath.row == users.count - 1 {
             showTableViewSpinner()
             fetchMoreUsers ()
@@ -46,6 +49,7 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        // pass model to passedUsers var
         passedUsers = users[indexPath.row]
         return indexPath
     }

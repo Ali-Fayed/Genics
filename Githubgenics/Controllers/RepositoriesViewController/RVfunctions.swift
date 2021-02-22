@@ -101,7 +101,6 @@ extension RepositoriesViewController {
                     saveRepoInfo.repoUserFullName = repository.repoFullName
                     saveRepoInfo.repoStars = Float(repository.repositoryStars ?? 0)
                     saveRepoInfo.repoURL = repository.repositoryURL
-                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }

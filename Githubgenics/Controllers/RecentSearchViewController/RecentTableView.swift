@@ -42,6 +42,7 @@ extension RecentSearchViewController:  UITableViewDataSource , UITableViewDelega
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
+            // delete search record
             let item = searchHistory[indexPath.row]
             DataBaseManger().Delete(returnType: SearchHistory.self, Delete: item)
             DataBaseManger().Fetch(returnType: SearchHistory.self) { (history) in

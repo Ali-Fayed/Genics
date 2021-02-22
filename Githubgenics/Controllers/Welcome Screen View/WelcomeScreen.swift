@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import AuthenticationServices
 
 class WelcomeScreen: UIViewController {
     
@@ -15,6 +16,8 @@ class WelcomeScreen: UIViewController {
     @IBOutlet weak var term: UIButton!
     @IBOutlet weak var and: UILabel!
     @IBOutlet weak var bySign: UILabel!
+    var webAuthenticationSession: ASWebAuthenticationSession?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +57,15 @@ class WelcomeScreen: UIViewController {
     }
     
     @IBAction func signIn(_ sender: Any) {
+        // vibaration when sign in
         HapticsManger.shared.selectionVibrate(for: .medium)
         let sheet = UIAlertController(title: "", message: Titles.makeSure , preferredStyle: .actionSheet)
         sheet.addAction(UIAlertAction(title: Titles.signinWith, style: .default, handler: { (url) in
-            let vc = UIStoryboard.init(name: ID.Main , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.loginViewID) as? LoginViewController
-            self.navigationController?.pushViewController(vc!, animated: true)
+            // call authentication method
+            self.getGitHubAccessToken ()
         }))
+        
+        // sheet alert between guest and authenticated member
         sheet.addAction(UIAlertAction(title: Titles.signinWithout , style: .default, handler: { (url) in
             let alert = UIAlertController(title: "", message: Titles.byContinue , preferredStyle: .alert)
             alert.view.tintColor = UIColor.black
@@ -72,5 +78,16 @@ class WelcomeScreen: UIViewController {
         }))
         sheet.addAction(UIAlertAction(title: Titles.cancel , style: .cancel, handler: nil ))
         present(sheet, animated: true)
+    }
+}
+
+
+
+
+
+extension WelcomeScreen: ASWebAuthenticationPresentationContextProviding {
+    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        return view.window ?? ASPresentationAnchor()
+
     }
 }

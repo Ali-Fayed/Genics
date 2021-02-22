@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import AuthenticationServices
 
 class ProfileViewController: UIViewController {
     
@@ -17,7 +18,7 @@ class ProfileViewController: UIViewController {
     var profileTableData = [ProfileTableData]()
     let footer = UIView ()
     
-    let loginButton: UIButton = {
+    let signInwithGithubButton: UIButton = {
         let button = UIButton()
         button.setTitle(Titles.signinWith, for: .normal)
         button.backgroundColor = UIColor(named: "Color")
@@ -25,7 +26,7 @@ class ProfileViewController: UIViewController {
         button.layer.cornerRadius = 12
         button.layer.masksToBounds = true
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
-        button.addTarget(self, action: #selector(signInButton),for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapSignIn),for: .touchUpInside)
         return button
     }()
     
@@ -50,19 +51,19 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if isLoggedIn {
-            loginButton.isHidden = true
+            signInwithGithubButton.isHidden = true
         } else {
             tableView.isHidden = true
-            loginButton.isHidden = false
+            signInwithGithubButton.isHidden = false
         }
         profileTableData.append(ProfileTableData(cellHeader: "\(Titles.RepositoriesViewTitle)", Image: "Repositories" ))
-        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.BookmarksViewTitle)", Image: "Startted" ))
+        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.Startted)", Image: "Startted" ))
         profileTableData.append(ProfileTableData(cellHeader: "\(Titles.Organizations)", Image: "Organizations"))
         tableView.tableHeaderView = Header
         tableView.tableHeaderView?.backgroundColor = UIColor(named: "ViewsColorBallet")
         tableView.tableFooterView = footer
         renderUserProfile ()
-        view.addSubview(loginButton)
+        view.addSubview(signInwithGithubButton)
         self.tabBarItem.title = Titles.Profile
 
     }
@@ -74,11 +75,11 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        loginButton.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 70)
+        signInwithGithubButton.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 70)
     }
     
-    @objc func signInButton () {
-        let vc = UIStoryboard.init(name: ID.Main, bundle: Bundle.main).instantiateViewController(withIdentifier: ID.loginViewID) as? LoginViewController
+    @objc func didTapSignIn () {
+        let vc = UIStoryboard.init(name: ID.Main, bundle: Bundle.main).instantiateViewController(withIdentifier: ID.welcomeScreenID) as? WelcomeScreen
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     

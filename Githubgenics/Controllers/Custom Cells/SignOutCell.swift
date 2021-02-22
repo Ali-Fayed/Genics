@@ -41,7 +41,7 @@ extension SettingsViewController : DidTapSignOutCell {
             TokenManager.shared.clearAccessToken()
             UserDefaults.standard.removeObject(forKey: "outh")
         } else {
-            let vc = UIStoryboard.init(name: ID.Main, bundle: Bundle.main).instantiateViewController(withIdentifier: ID.loginViewID) as? LoginViewController
+            let vc = UIStoryboard.init(name: ID.Main, bundle: Bundle.main).instantiateViewController(withIdentifier: ID.welcomeScreenID) as? WelcomeScreen
             self.navigationController?.pushViewController(vc!, animated: true)
         }
     }

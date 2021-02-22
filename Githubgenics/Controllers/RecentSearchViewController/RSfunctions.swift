@@ -18,6 +18,10 @@ extension RecentSearchViewController : UISearchBarDelegate {
                 self.tableView.reloadData()
             }
         }
+        DataBaseManger().Fetch(returnType: LastSearch.self) { [weak self] (users) in
+            self?.lastSearch = users
+            self?.tableView.reloadData()
+        }
         DataBaseManger().Fetch(returnType: LastSearch.self) { (result) in
             self.lastSearch = result
             DispatchQueue.main.async {
@@ -28,6 +32,7 @@ extension RecentSearchViewController : UISearchBarDelegate {
     
     //MARK:- Handle DB Excution
     
+    // remove all database records
     func excute () {
         let resetSearchHistory = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.searchHistoryEntity)
         let resetLastSearch = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.lastSearchEntity)

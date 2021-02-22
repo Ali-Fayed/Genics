@@ -10,8 +10,6 @@ import Alamofire
 
 class UsersListViewController: UIViewController  {
     
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var users = [items]()
     var passedUsers : items?
     var lastSearch = [LastSearch]()
@@ -23,13 +21,14 @@ class UsersListViewController: UIViewController  {
     let longPress = UILongPressGestureRecognizer()
     lazy var searchBar = UISearchBar()
     lazy var listSearchBar = UISearchBar()
-    var refreshControl: UIRefreshControl = {
+    lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(UsersListViewController.handleRefresh(_:)), for: UIControl.Event.valueChanged)
         refreshControl.tintColor = UIColor.gray
         return refreshControl
     }()
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var historyView: UIView!
     

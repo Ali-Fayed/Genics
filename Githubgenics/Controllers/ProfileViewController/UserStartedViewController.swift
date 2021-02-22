@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserStartedSegue: UIViewController {
+class UserStartedViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var starttedRepos = [Repository]()
@@ -38,7 +38,9 @@ class UserStartedSegue: UIViewController {
 
 }
 
-extension UserStartedSegue : UITableViewDataSource , UITableViewDelegate {
+//MARK:- User Started Table
+
+extension UserStartedViewController : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return starttedRepos.count

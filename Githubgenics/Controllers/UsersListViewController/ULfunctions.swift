@@ -13,20 +13,12 @@ extension UsersListViewController {
     
     //MARK:- Fetch Methods
     
+    // fetch users in list
     func renderUsersList  ()  {
-        let querySetup : String = {
-            var query : String = "a"
-            if searchBar.text == nil {
-                query = searchBar.text ?? ""
-            } else {
-                searchBar.text = "a"
-            }
-            return query
-        }()
         guard !isPaginating else {
             return
         }
-        GitAPIManger().fetchUsers(query: querySetup, page: pageNo, pagination: false ) { [weak self] users in
+        GitAPIManger().fetchUsers(query: "a", page: pageNo, pagination: false ) { [weak self] users in
             guard ((self?.users = users) != nil) else {
                 return
             }
@@ -36,10 +28,10 @@ extension UsersListViewController {
                     self?.skeletonViewLoader()
                 }
             }
-            
         }
     }
 
+    // fetch more users
     func fetchMoreUsers () {
         if  pageNo < totalPages {
             pageNo += 1
@@ -66,6 +58,7 @@ extension UsersListViewController {
         }
     }
     
+    // search for user
     func searchUser (query: String) {
         GitAPIManger().fetchUsers(query: query, page: 1) { [weak self] users in
             guard ((self?.users = users) != nil) else {
@@ -87,6 +80,7 @@ extension UsersListViewController {
             let sheet = UIAlertController(title: Titles.more, message: nil , preferredStyle: .actionSheet)
             sheet.addAction(UIAlertAction(title: Titles.bookmark, style: .default, handler: { [weak self] (handler) in
                 if let index = self?.tableView.indexPathForRow(at: touchPoint) {
+                    // save user to database bookmarks view
                     guard let usersIndex = self?.users[index.row] else {
                         return
                     }
@@ -98,6 +92,7 @@ extension UsersListViewController {
                 }
             }))
             sheet.addAction(UIAlertAction(title: Titles.url , style: .default, handler: { [weak self] (url) in
+                // open user url
                 guard let url = self?.users[index.row].userURL else {
                     return
                 }
@@ -112,14 +107,8 @@ extension UsersListViewController {
     //MARK:- Handle Refresh
     
     func refreshList () {
-        let querySetup : String = {
-            var query : String = "a"
-            if searchBar.text == nil {
-                query = searchBar.text ?? ""
-            }
-            return query
-        }()
-        GitAPIManger().fetchUsers(query: querySetup, page: pageNo) { [weak self] result in
+        // refresh list
+        GitAPIManger().fetchUsers(query: "a", page: pageNo) { [weak self] result in
             guard ((self?.users = result) != nil) else {
                 return
             }
@@ -170,6 +159,7 @@ extension UsersListViewController {
     
     //MARK:- Handle Segue
     
+    // segue to commits view with passed data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.detailViewSegue {
             guard let commitsViewController = segue.destination as? DetailViewController else {

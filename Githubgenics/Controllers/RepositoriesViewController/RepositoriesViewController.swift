@@ -19,15 +19,13 @@ class RepositoriesViewController: UITableViewController {
     var selectedRepository: Repository?
     var savedRepositories = [SavedRepositories]()
     var starButton = [Int : Bool]()
-
-    @IBOutlet weak var searchBar: UISearchBar!
-    
     var isLoggedIn: Bool {
       if TokenManager.shared.fetchAccessToken() != nil {
         return true
       }
       return false
     }
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()

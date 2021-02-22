@@ -12,6 +12,7 @@ class BookmarksViewController: UITableViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var savedRepositories = [SavedRepositories]()
     var bookmarkedUsers = [UsersDataBase]()
+    var passedRepo : SavedRepositories?
     let longPress = UILongPressGestureRecognizer()
     @IBOutlet weak var searchBar: UISearchBar!
     

@@ -80,4 +80,15 @@ extension BookmarksViewController {
             present(sheet, animated: true)
         }
     }
+    
+    // segue with passed Data
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.commitViewSegue {
+            guard let commitsViewController = segue.destination as? CommitsViewController else {
+                return
+            }
+            commitsViewController.savedRepos = passedRepo
+        }
+    }
 }
+

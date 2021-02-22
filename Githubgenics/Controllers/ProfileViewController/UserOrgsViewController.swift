@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserOrgsSegue: UIViewController {
+class UserOrgsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var organization = [Orgs]()
@@ -19,19 +19,19 @@ class UserOrgsSegue: UIViewController {
         title = Titles.Organizations
         renderAndDisplayUserOrgs()
         tableView.tableFooterView = footer
-        view.addSubview(noResultsLabel)
+        view.addSubview(noORgsLabel)
         if organization.isEmpty == true {
             tableView.isHidden = true
-            noResultsLabel.isHidden = false
+            noORgsLabel.isHidden = false
    
         } else {
             tableView.isHidden = false
-            noResultsLabel.isHidden = true
+            noORgsLabel.isHidden = true
         }
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
-    let noResultsLabel: UILabel = {
+    let noORgsLabel: UILabel = {
        let label = UILabel()
        label.isHidden = true
         label.text = Titles.noOrgs
@@ -42,7 +42,7 @@ class UserOrgsSegue: UIViewController {
    }()
     
     override func viewDidLayoutSubviews() {
-        noResultsLabel.frame = CGRect(x: view.width/4,
+        noORgsLabel.frame = CGRect(x: view.width/4,
                                       y: (view.height-200)/2,
                                       width: view.width/2,
                                       height: 200)
@@ -60,7 +60,9 @@ class UserOrgsSegue: UIViewController {
 
 }
 
-extension UserOrgsSegue : UITableViewDataSource , UITableViewDelegate {
+//MARK:- User Orgs Table
+
+extension UserOrgsViewController : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return organization.count

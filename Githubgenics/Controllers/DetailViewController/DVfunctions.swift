@@ -16,16 +16,14 @@ extension DetailViewController {
         guard let repository = passedUser else {return}
         self.loadingIndicator.startAnimating()
         GitAPIManger().APIcall(returnType: Repository.self, requestData: GitRouter.fetchUsersRepository(repository.userName), pagination: true) { [weak self] (result) in
-            self!.userRepository = result
+            self?.userRepository = result
             DispatchQueue.main.async {
-                self!.loadingIndicator.stopAnimating()
+                self?.loadingIndicator.stopAnimating()
                 self?.tableView.reloadData()
                 self?.skeletonViewLoader ()
             }
         }
     }
-    
-    
     
     //MARK:- UI Methods
     
@@ -67,6 +65,7 @@ extension DetailViewController {
         HapticsManger.shared.selectionVibrate(for: .medium)
     }
     
+    // save button state in user defaults with username
     func renderTheButtonWithSavedState () {
         if let ButtonState = defaults.string(forKey: ((passedUser?.userName)!))
         {
@@ -94,7 +93,6 @@ extension DetailViewController {
                 saveRepoInfo.repoStars = Float(repository.repositoryStars ?? 0)
                 saveRepoInfo.repoURL = repository.repositoryURL
                 try! self.context.save()
-                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -111,6 +109,8 @@ extension DetailViewController {
     
     //MARK:- Handle Star Button State
     
+    
+    // load button state UD
     func renderStarState () {
         if let checks = UserDefaults.standard.value(forKey: passedUser!.userName) as? NSData {
             do {
@@ -120,6 +120,7 @@ extension DetailViewController {
             }
         }
     }
+    // save button state in UD
     func saveStarState () {
         do {
             try  UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: starButton, requiringSecureCoding: true), forKey: passedUser!.userName)
@@ -131,6 +132,7 @@ extension DetailViewController {
     
     //MARK:- Handle Segue
     
+    // segue with passed Data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.commitViewSegue {
             guard let commitsViewController = segue.destination as? CommitsViewController else {

@@ -118,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Voz-yH-W3M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="172" y="98"/>
+            <point key="canvasLocation" x="-32" y="98"/>
         </scene>
         <!--Settings-->
         <scene sceneID="zcG-ZE-OTN">
@@ -175,7 +175,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbe-eD-rr2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4190" y="869"/>
+            <point key="canvasLocation" x="3729" y="1259"/>
         </scene>
         <!--Repositories-->
         <scene sceneID="Upa-Q3-iKf">
@@ -213,7 +213,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75A-Vs-LvN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="808"/>
+            <point key="canvasLocation" x="854" y="828"/>
         </scene>
         <!--Users-->
         <scene sceneID="rtS-F6-jQ5">
@@ -469,12 +469,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5PJ-Dt-g2Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3464" y="869"/>
+            <point key="canvasLocation" x="2368" y="1274"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Zv0-0H-Uv6">
             <objects>
-                <tabBarController id="tgq-MK-Dsb" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabbarID" id="tgq-MK-Dsb" customClass="TabBarController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Cjv-ch-k4L"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lBq-5R-X7a">
@@ -491,7 +491,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U3s-5n-0L8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="98"/>
+            <point key="canvasLocation" x="854" y="98"/>
         </scene>
         <!--Saved Users-->
         <scene sceneID="zRw-aU-8RS">
@@ -515,11 +515,12 @@
                     <navigationItem key="navigationItem" title="Saved Users" id="biE-wc-mOv"/>
                     <connections>
                         <outlet property="searchBar" destination="RhS-26-7bf" id="Jfj-ag-Hgy"/>
+                        <segue destination="8uN-GM-eUw" kind="show" identifier="CommitSegue" id="afg-uf-3vo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zti-3R-3su" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2591" y="-571"/>
+            <point key="canvasLocation" x="1783" y="-577"/>
         </scene>
         <!--Title-->
         <scene sceneID="us6-uP-gq8">
@@ -534,31 +535,12 @@
                     <navigationItem key="navigationItem" title="Title" id="nrF-Ab-MZt"/>
                     <connections>
                         <segue destination="0lm-sm-7sH" kind="show" identifier="WelcomeScreenSegue" id="udR-n7-Mow"/>
-                        <segue destination="tgq-MK-Dsb" kind="show" identifier="Outh2SavedSegue" id="RA0-Tg-hrH"/>
+                        <segue destination="tgq-MK-Dsb" kind="show" identifier="TabBarSegue" id="RA0-Tg-hrH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXv-9E-aIJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-613" y="98"/>
-        </scene>
-        <!--Login View Controller-->
-        <scene sceneID="Cn3-NK-R2G">
-            <objects>
-                <viewController storyboardIdentifier="LoginView" id="pNX-li-JDA" customClass="LoginViewController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dqR-L5-Mqi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="dfj-Dj-Pvx"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="2Xy-qT-DsH"/>
-                    <connections>
-                        <segue destination="tgq-MK-Dsb" kind="show" identifier="LogintoTabBarSegue" id="6xS-sM-4pb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iyj-Pp-BoM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="962" y="98"/>
+            <point key="canvasLocation" x="-852" y="98"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7ho-c4-kie">
@@ -576,7 +558,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LTG-UR-KSD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1355" y="98"/>
+            <point key="canvasLocation" x="-1628" y="98"/>
         </scene>
         <!--Recent Search View Controller-->
         <scene sceneID="Lup-Iw-elL">
@@ -707,7 +689,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emN-OW-mPb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2589.8550724637685" y="807.58928571428567"/>
+            <point key="canvasLocation" x="1754" y="622"/>
         </scene>
         <!--Title-->
         <scene sceneID="a6w-lP-BNP">
@@ -970,7 +952,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7IG-iF-Fr8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4140.579710144928" y="97.767857142857139"/>
+            <point key="canvasLocation" x="4257" y="98"/>
         </scene>
         <!--User Repository View Controller-->
         <scene sceneID="bYr-50-LsW">
@@ -1033,12 +1015,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcJ-i5-cgY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4896" y="-459"/>
+            <point key="canvasLocation" x="5374" y="-504"/>
         </scene>
-        <!--User Started Segue-->
+        <!--User Started View Controller-->
         <scene sceneID="FuM-W0-TNG">
             <objects>
-                <viewController id="O2H-M4-iVe" customClass="UserStartedSegue" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="O2H-M4-iVe" customClass="UserStartedViewController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Bf-Ts-p8H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1096,12 +1078,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oLf-5j-EJ8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4896" y="194"/>
+            <point key="canvasLocation" x="5374" y="320"/>
         </scene>
-        <!--User Orgs Segue-->
+        <!--User Orgs View Controller-->
         <scene sceneID="wKD-qj-g2b">
             <objects>
-                <viewController id="OYH-cK-8rG" customClass="UserOrgsSegue" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OYH-cK-8rG" customClass="UserOrgsViewController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="msc-AS-9CB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1158,12 +1140,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIN-Qr-avK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4896" y="855"/>
+            <point key="canvasLocation" x="4772" y="1259"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="RA0-Tg-hrH"/>
-        <segue reference="lgZ-Wu-mh8"/>
+        <segue reference="afg-uf-3vo"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Github" width="471" height="460"/>

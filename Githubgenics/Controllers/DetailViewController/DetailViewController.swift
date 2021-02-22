@@ -19,7 +19,7 @@ class DetailViewController: UIViewController  {
     var passedUser : items?
     var selectedRepository: Repository?
     var starButton = [Int : Bool]()
-
+    
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userName: UILabel!
@@ -27,18 +27,20 @@ class DetailViewController: UIViewController  {
     @IBOutlet weak var userFollowers: UILabel!
     @IBOutlet weak var userFollowing: UILabel!
     
+    // Bookmark button states on and off with state and save to database
     var setBookmarkButtonState: String = "off" {
         willSet {
             if newValue == "on" {
-                bookmarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+                bookmarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+                // save user to database bookmarks view
                 let users = UsersDataBase(context: context)
-                    users.userName = self.passedUser?.userName
-                    users.userAvatar = self.passedUser?.userAvatar
-                    users.userURL = self.passedUser?.userURL
-                    try! self.context.save()
+                users.userName = self.passedUser?.userName
+                users.userAvatar = self.passedUser?.userAvatar
+                users.userURL = self.passedUser?.userURL
+                try! self.context.save()
             }
             else {
-                bookmarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+                bookmarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
             }
         }
     }

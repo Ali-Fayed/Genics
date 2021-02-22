@@ -9,7 +9,8 @@ import Foundation
 
 extension CommitsViewController {
     
-    func renderSearchedRepositoriesCommits() {
+    // fetch all commits in all repos view
+    func renderCommits() {
       loadingIndicator.startAnimating()
       guard let repository = repository else {
         return
@@ -21,24 +22,13 @@ extension CommitsViewController {
           }
     }
     
-    func renderUserRepositoriesCommits() {
+    // fetch db commits in all repos view
+    func renderSavedRepositoriesCommits() {
       loadingIndicator.startAnimating()
-      guard let repository = repository else {
+      guard let repository = savedRepos else {
         return
       }
-        GitAPIManger().APIcall(returnType: Commit.self, requestData: GitRouter.fetchCommits(repository.repoFullName), pagination: false) { [weak self] (commits) in
-            self?.commits = commits
-            self?.loadingIndicator.stopAnimating()
-            self?.tableView.reloadData()
-          }
-    }
-    
-    func renderStartedReposCommits() {
-      loadingIndicator.startAnimating()
-      guard let repository = repository else {
-        return
-      }
-        GitAPIManger().APIcall(returnType: Commit.self, requestData: GitRouter.fetchCommits(repository.repoFullName), pagination: false) { [weak self] (commits) in
+        GitAPIManger().APIcall(returnType: Commit.self, requestData: GitRouter.fetchCommits(repository.repoUserFullName ?? ""), pagination: false) { [weak self] (commits) in
             self?.commits = commits
             self?.loadingIndicator.stopAnimating()
             self?.tableView.reloadData()

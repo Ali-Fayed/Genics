@@ -17,7 +17,7 @@ class LaunchAnimation: UIViewController {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if UserDefaults.standard.value(forKeyPath: "outh") != nil {
-                self.performSegue(withIdentifier: Segues.savedStateLoginSegue, sender: self)
+                self.performSegue(withIdentifier: Segues.TabBarSegue, sender: self)
             } else {
                 self.performSegue(withIdentifier: Segues.welcomeScreenSegue, sender: self)
             }

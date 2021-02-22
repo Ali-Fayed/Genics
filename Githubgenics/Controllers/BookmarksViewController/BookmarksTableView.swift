@@ -24,7 +24,6 @@ extension BookmarksViewController {
             return cell
             
         } else {
-            
             let cell = tableView.dequeue() as ReposCell
             cell.CellData(with: savedRepositories[indexPath.row - bookmarkedUsers.count])
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
@@ -39,20 +38,24 @@ extension BookmarksViewController {
             guard let url = bookmarkedUsers[indexPath.row].userURL  else {
                 return
             }
-            
             let vc = SFSafariViewController(url: URL(string: url)!)
             present(vc, animated: true)
         } else {
-            guard let url2 = savedRepositories[indexPath.row - bookmarkedUsers.count].repoURL  else {
-                return
-            }
-            let vc = SFSafariViewController(url: URL(string: url2)!)
-            present(vc, animated: true)
+            performSegue(withIdentifier: Segues.commitViewSegue, sender: self)
         }
     }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.row < bookmarkedUsers.count {
+            //
+        } else {
+            passedRepo = savedRepositories[indexPath.row - bookmarkedUsers.count]
+        }
+        return indexPath
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

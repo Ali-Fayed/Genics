@@ -12,12 +12,14 @@ class CommitsViewController: UITableViewController {
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
     var commits = [Commit]()
     var repository : Repository?
+    var savedRepos : SavedRepositories?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingIndicator.center = view.center
         view.addSubview(loadingIndicator)
-        renderSearchedRepositoriesCommits()
+        renderCommits()
+        renderSavedRepositoriesCommits()
         navigationItem.title = Titles.commitsViewTitle
         tableView.tableFooterView = UIView()
     }
