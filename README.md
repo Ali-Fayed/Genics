@@ -1,4 +1,4 @@
-#Githubgenics V1.0
+#Githubgenics V1.1
 
 IOS Native App based on github REST API 
 
