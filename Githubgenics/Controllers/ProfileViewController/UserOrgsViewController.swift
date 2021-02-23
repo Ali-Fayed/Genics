@@ -9,45 +9,49 @@ import UIKit
 
 class UserOrgsViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
     var organization = [Orgs]()
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
     let footer = UIView ()
-
+    // no orgs labek
+    let noOrgsLabel: UILabel = {
+        let label = UILabel()
+        label.isHidden = true
+        label.text = Titles.noOrgs
+        label.textAlignment = .center
+        label.textColor = UIColor(named: "color")
+        label.font = .systemFont(ofSize: 21, weight: .medium)
+        return label
+    }()
+    
+    // IBOutlets
+    @IBOutlet weak var tableView: UITableView!
+    
+    //MARK:- LifeCycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = Titles.Organizations
         renderAndDisplayUserOrgs()
         tableView.tableFooterView = footer
-        view.addSubview(noORgsLabel)
+        view.addSubview(noOrgsLabel)
+        // no orgs label conditions
         if organization.isEmpty == true {
             tableView.isHidden = true
-            noORgsLabel.isHidden = false
-   
+            noOrgsLabel.isHidden = false
+            
         } else {
             tableView.isHidden = false
-            noORgsLabel.isHidden = true
+            noOrgsLabel.isHidden = true
         }
+        // gestures
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
-    
-    let noORgsLabel: UILabel = {
-       let label = UILabel()
-       label.isHidden = true
-        label.text = Titles.noOrgs
-       label.textAlignment = .center
-       label.textColor = UIColor(named: "color")
-       label.font = .systemFont(ofSize: 21, weight: .medium)
-       return label
-   }()
-    
+      
+    // frame and layout
     override func viewDidLayoutSubviews() {
-        noORgsLabel.frame = CGRect(x: view.width/4,
-                                      y: (view.height-200)/2,
-                                      width: view.width/2,
-                                      height: 200)
+        noOrgsLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
     }
-
+    
     func renderAndDisplayUserOrgs() {
         loadingIndicator.startAnimating()
         GitAPIManger().APIcall(returnType: Orgs.self, requestData: GitRouter.gitOrgs, pagination: false) { [weak self] (orgs) in
@@ -56,8 +60,7 @@ class UserOrgsViewController: UIViewController {
             self?.tableView.reloadData()
         }
     }
- 
-
+    
 }
 
 //MARK:- User Orgs Table

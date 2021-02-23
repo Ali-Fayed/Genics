@@ -15,7 +15,7 @@ extension RepositoriesViewController {
     func searchRepositories (query: String) {
         loadingIndicator.stopAnimating()
         GitAPIManger().searchPublicRepositories(query: query) { [weak self] repositories in
-            self?.repositories = repositories
+            self?.publicRepositories = repositories
             self?.loadingIndicator.stopAnimating()
             self?.tableView.reloadData()
         }
@@ -23,27 +23,33 @@ extension RepositoriesViewController {
     
     //MARK:- UI Methods
     
-
     func renderAndDisplayBestSwiftRepositories() {
       loadingIndicator.startAnimating()
         GitAPIManger().fetchPopularSwiftRepositories { [weak self] repositories in
-        self?.repositories = repositories
+        self?.publicRepositories = repositories
         self?.loadingIndicator.stopAnimating()
         self?.tableView.reloadData()
       }
     }
     
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.endRefreshing()
+        HapticsManger.shared.selectionVibrate(for: .soft)
+    }
+    
+    //MARK:- Searchbar
+    
     func renderSearchBar() {
-        listSearchBar.searchBarStyle = UISearchBar.Style.prominent
-        listSearchBar.placeholder = Titles.searchPlacholder
-        listSearchBar.sizeToFit()
-        listSearchBar.isTranslucent = false
-        listSearchBar.delegate = self
-        listSearchBar2.searchBarStyle = UISearchBar.Style.prominent
-        listSearchBar2.placeholder = Titles.searchPlacholder
-        listSearchBar2.sizeToFit()
-        listSearchBar2.isTranslucent = false
-        listSearchBar2.delegate = self
+        reposSearchBar.searchBarStyle = UISearchBar.Style.prominent
+        reposSearchBar.placeholder = Titles.searchPlacholder
+        reposSearchBar.sizeToFit()
+        reposSearchBar.isTranslucent = false
+        reposSearchBar.delegate = self
+        repoSearchBarHeader.searchBarStyle = UISearchBar.Style.prominent
+        repoSearchBarHeader.placeholder = Titles.searchPlacholder
+        repoSearchBarHeader.sizeToFit()
+        repoSearchBarHeader.isTranslucent = false
+        repoSearchBarHeader.delegate = self
     }
     
     // MARK: - Handling Segue
@@ -57,43 +63,18 @@ extension RepositoriesViewController {
         }
     }
     
-    //MARK:- Handle Star Button State
-    
-    func renderStarState () {
-        let cell = ReposCell()
-        guard let indexPath = tableView.indexPath(for: cell) else {
-            return
-        }
-        if let checks = UserDefaults.standard.value(forKey: repositories[indexPath.row].repositoryName) as? NSData {
-            do {
-                try starButton = NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(checks as Data) as! [Int : Bool]
-            } catch {
-                //
-            }
-        }
-    }
-    func saveStarState () {
-        let cell = ReposCell()
-        guard let indexPath = tableView.indexPath(for: cell) else {
-            return
-        }
-        do {
-            try  UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: starButton, requiringSecureCoding: true), forKey: repositories[indexPath.row].repositoryName)
-            UserDefaults.standard.synchronize()
-        } catch {
-            //
-        }
-    }
     
     //MARK:- Handle Long Press
     
     @objc func handleLongPress(sender: UILongPressGestureRecognizer){
+        // haptic when long pressed
         HapticsManger.shared.selectionVibrate(for: .medium)
         let touchPoint = longPress.location(in: tableView)
         if let index = tableView.indexPathForRow(at: touchPoint) {
-            let repository = self.repositories[index.row]
+            let repository = self.publicRepositories[index.row]
             let sheet = UIAlertController(title: Titles.more, message: nil , preferredStyle: .actionSheet)
             sheet.addAction(UIAlertAction(title: Titles.bookmark, style: .default, handler: { (url) in
+                // save repos
                 let saveRepoInfo = SavedRepositories(context: self.context)
                     saveRepoInfo.repoName = repository.repositoryName
                     saveRepoInfo.repoDescription = repository.repositoryDescription
@@ -101,15 +82,14 @@ extension RepositoriesViewController {
                     saveRepoInfo.repoUserFullName = repository.repoFullName
                     saveRepoInfo.repoStars = Float(repository.repositoryStars ?? 0)
                     saveRepoInfo.repoURL = repository.repositoryURL
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
             }))
+            // open url
             sheet.addAction(UIAlertAction(title: Titles.url , style: .default, handler: { (url) in
-                let cell = self.repositories[index.row].repositoryURL
+                let cell = self.publicRepositories[index.row].repositoryURL
                 let vc = SFSafariViewController(url: URL(string: cell)!)
                 self.present(vc, animated: true)
             }))
+            // cancel
             sheet.addAction(UIAlertAction(title: Titles.cancel , style: .cancel, handler: nil ))
             present(sheet, animated: true)
         }

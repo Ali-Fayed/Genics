@@ -43,3 +43,6 @@
 "Organizations" = "المنظمات";
 "There aren't any orgs." = "لا يوجد منظمات";
 "Startted"    = "التفضيلات";
+"Search For users." = "البحث عن عضو";
+"Search For repos." = "البحث عن مستودع";
+"Search For saved" = "البحث عن التفضيلات";

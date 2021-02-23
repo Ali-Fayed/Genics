@@ -15,14 +15,15 @@ class LaunchAnimation: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.startAnimation ()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if UserDefaults.standard.value(forKeyPath: "outh") != nil {
                 self.performSegue(withIdentifier: Segues.TabBarSegue, sender: self)
+                self.view.willRemoveSubview(self.animationView)
             } else {
                 self.performSegue(withIdentifier: Segues.welcomeScreenSegue, sender: self)
             }
         }
-        self.startAnimation ()
     }
         
     override func viewWillAppear(_ animated: Bool) {

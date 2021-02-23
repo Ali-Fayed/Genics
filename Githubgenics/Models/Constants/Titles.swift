@@ -40,6 +40,9 @@ struct Titles {
     static let Organizations              = "Organizations".localized()
     static let Profile                  = "Profile".localized()
     static let noOrgs                   = "There aren't any orgs.".localized()
+    static let searchForUsers           = "Search For users.".localized()
+    static let searchForRepos           = "Search For repos.".localized()
+    static let searchForSaved           = "Search For saved".localized()
 }
 
 struct Messages {

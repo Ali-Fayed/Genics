@@ -12,7 +12,7 @@ extension BookmarksViewController {
     
     //MARK:- Fetch Methods
     
-    func renderDB () {
+    func renderViewData () {
         DataBaseManger().Fetch(returnType: UsersDataBase.self) { [weak self] (users) in
             self?.bookmarkedUsers = users
             self?.tableView.reloadData()
@@ -26,9 +26,9 @@ extension BookmarksViewController {
     //MARK:- Search From Query Method
     
     func searchFromDB () {
-        guard let searchText = searchBar.text else { return }
+        guard let searchText = searchRepositoriesBar.text else { return }
         if searchText.isEmpty {
-            renderDB()
+            renderViewData()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -71,7 +71,7 @@ extension BookmarksViewController {
                         self.tableView.reloadData()
                         HapticsManger.shared.selectionVibrate(for: .heavy)
                     }
-                       renderDB()
+                       renderViewData()
                 } catch {
                     //
                 }
@@ -81,7 +81,8 @@ extension BookmarksViewController {
         }
     }
     
-    // segue with passed Data
+//MARK:- Handle Segue
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.commitViewSegue {
             guard let commitsViewController = segue.destination as? CommitsViewController else {
@@ -89,6 +90,27 @@ extension BookmarksViewController {
             }
             commitsViewController.savedRepos = passedRepo
         }
+    }
+    //MARK:- refresh
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.endRefreshing()
+        HapticsManger.shared.selectionVibrate(for: .soft)
+    }
+    
+    //MARK:- search
+    
+    func renderSearchBar() {
+        searchRepositoriesBar.searchBarStyle = UISearchBar.Style.prominent
+        searchRepositoriesBar.placeholder = Titles.searchPlacholder
+        searchRepositoriesBar.sizeToFit()
+        searchRepositoriesBar.isTranslucent = false
+        searchRepositoriesBar.delegate = self
+        searchBarHeader.searchBarStyle = UISearchBar.Style.prominent
+        searchBarHeader.placeholder = Titles.searchPlacholder
+        searchBarHeader.sizeToFit()
+        searchBarHeader.isTranslucent = false
+        searchBarHeader.delegate = self
     }
 }
 

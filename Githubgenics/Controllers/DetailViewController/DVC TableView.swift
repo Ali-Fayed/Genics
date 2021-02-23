@@ -19,6 +19,7 @@ extension DetailViewController: UITableViewDataSource , UITableViewDelegate {
         cell.CellData(with: userRepository[indexPath.row])
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         cell.addGestureRecognizer(longPress)
+        // cell delegatation to make specific actions
         cell.delegate = self
         cell.buttonAccessory()
         // handle starbutton
@@ -72,9 +73,6 @@ extension DetailViewController : DetailViewCellDelegate {
                     saveRepoInfo.repoUserFullName = repository.repoFullName
                     saveRepoInfo.repoStars = Float(repository.repositoryStars ?? 0)
                     saveRepoInfo.repoURL = repository.repositoryURL
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
             }
         }
         saveStarState()

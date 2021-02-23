@@ -21,7 +21,6 @@ extension RecentSearchViewController:  UICollectionViewDataSource , UICollection
         return cell!
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let url = lastSearch[indexPath.row].userURL

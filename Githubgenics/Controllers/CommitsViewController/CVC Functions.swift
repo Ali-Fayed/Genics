@@ -23,7 +23,7 @@ extension CommitsViewController {
     }
     
     // fetch db commits in all repos view
-    func renderSavedRepositoriesCommits() {
+    func renderCachedReposCommits() {
       loadingIndicator.startAnimating()
       guard let repository = savedRepos else {
         return

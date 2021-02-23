@@ -12,12 +12,14 @@ import AuthenticationServices
 
 class ProfileViewController: UIViewController {
     
-    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
+    // data model
     var userRepository = [Repository]()
     var selectedRepository: Repository?
     var profileTableData = [ProfileTableData]()
     let footer = UIView ()
-    
+    // spinner
+    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
+    // button if not signed in
     let signInwithGithubButton: UIButton = {
         let button = UIButton()
         button.setTitle(Titles.signinWith, for: .normal)
@@ -29,7 +31,14 @@ class ProfileViewController: UIViewController {
         button.addTarget(self, action: #selector(didTapSignIn),for: .touchUpInside)
         return button
     }()
-    
+    //  refresh control
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.gray
+        return refreshControl
+    }()
+    // check for token
     var isLoggedIn: Bool {
         if TokenManager.shared.fetchAccessToken() != nil {
             return true
@@ -37,6 +46,7 @@ class ProfileViewController: UIViewController {
         return false
     }
     
+     // IBOutlets
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userName: UILabel!
@@ -47,6 +57,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var userFollowers: UILabel!
     @IBOutlet weak var userFollowing: UILabel!
+
+    //MARK:- LifeCycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +68,7 @@ class ProfileViewController: UIViewController {
             tableView.isHidden = true
             signInwithGithubButton.isHidden = false
         }
+        tableView.addSubview(refreshControl)
         profileTableData.append(ProfileTableData(cellHeader: "\(Titles.RepositoriesViewTitle)", Image: "Repositories" ))
         profileTableData.append(ProfileTableData(cellHeader: "\(Titles.Startted)", Image: "Startted" ))
         profileTableData.append(ProfileTableData(cellHeader: "\(Titles.Organizations)", Image: "Organizations"))
@@ -78,6 +91,7 @@ class ProfileViewController: UIViewController {
         signInwithGithubButton.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 70)
     }
     
+    // segue to welcome screen
     @objc func didTapSignIn () {
         let vc = UIStoryboard.init(name: ID.Main, bundle: Bundle.main).instantiateViewController(withIdentifier: ID.welcomeScreenID) as? WelcomeScreen
         self.navigationController?.pushViewController(vc!, animated: true)
@@ -124,6 +138,12 @@ extension ProfileViewController : UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         tableView.sectionIndexColor = UIColor(named: "ViewsColorBallet")
         return UIView()
+    }
+    
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.endRefreshing()
+        HapticsManger.shared.selectionVibrate(for: .soft)
     }
     
 }

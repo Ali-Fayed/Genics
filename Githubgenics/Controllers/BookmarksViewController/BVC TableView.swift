@@ -8,13 +8,13 @@
 import UIKit
 import SafariServices
 
-extension BookmarksViewController {
+extension BookmarksViewController: UITableViewDelegate , UITableViewDataSource {
         
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         (savedRepositories.count + bookmarkedUsers.count)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row < bookmarkedUsers.count {
             let cell = tableView.dequeue() as UsersCell
             let  model = bookmarkedUsers[indexPath.row]
@@ -32,7 +32,7 @@ extension BookmarksViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row < bookmarkedUsers.count {
             guard let url = bookmarkedUsers[indexPath.row].userURL  else {
@@ -45,11 +45,11 @@ extension BookmarksViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if indexPath.row < bookmarkedUsers.count {
             //
         } else {
@@ -58,7 +58,7 @@ extension BookmarksViewController {
         return indexPath
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
             if indexPath.row < bookmarkedUsers.count {
@@ -79,7 +79,7 @@ extension BookmarksViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row < bookmarkedUsers.count {
             return 60
         } else {

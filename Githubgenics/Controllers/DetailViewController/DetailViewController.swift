@@ -10,16 +10,22 @@ import SkeletonView
 
 class DetailViewController: UIViewController  {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
-    var defaults = UserDefaults.standard
-    let longPress = UILongPressGestureRecognizer()
+    // data models
     var userRepository = [Repository]()
     var savedRepos = [SavedRepositories]()
     var passedUser : items?
     var selectedRepository: Repository?
+    // userdefaults to cache user settings
+    var defaults = UserDefaults.standard
+    // longpress
+    let longPress = UILongPressGestureRecognizer()
     var starButton = [Int : Bool]()
+    // persistentContainer context
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //
+    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
     
+    // IBOutlets
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userName: UILabel!
@@ -45,24 +51,29 @@ class DetailViewController: UIViewController  {
         }
     }
     
+    //MARK:- LifeCycle Methods
+    
     override func viewDidLoad()  {
         super.viewDidLoad()
+        // add gestures when try to back
         tableView.addGestureRecognizer(longPress)
+        // add spinner as subview
         view.addSubview(loadingIndicator)
         tableView.rowHeight = 60
+        // back with gestures
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        //view title
         navigationItem.title = Titles.DetailViewTitle
+        // register cell with generics
         tableView.registerCellNib(cellClass: ReposCell.self)
+        // headerView data
         renderUserProfileData ()
+        // load user bookmark button state
         renderTheButtonWithSavedState ()
+        // load userRepos
         renderClickedUserPublicRepositories()
+        // load stars state
         renderStarState()
-        
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.isToolbarHidden = true
-    }
+            
 }

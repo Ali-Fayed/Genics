@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1A2908345F20F1BD39F47705 /* libPods-Githubgenics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC40B80E214607357A0B543 /* libPods-Githubgenics.a */; };
-		EA05894F25C555BB00BC1024 /* UserRepoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05894E25C555BB00BC1024 /* UserRepoTableView.swift */; };
+		EA05894F25C555BB00BC1024 /* DVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05894E25C555BB00BC1024 /* DVC TableView.swift */; };
 		EA05895525C5567700BC1024 /* GitDataBaseManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05895425C5567700BC1024 /* GitDataBaseManger.swift */; };
-		EA05897425C55F9800BC1024 /* RecentTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05897325C55F9800BC1024 /* RecentTableView.swift */; };
-		EA05897725C55F9F00BC1024 /* RecentCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05897625C55F9F00BC1024 /* RecentCollectionView.swift */; };
-		EA05898825C564C700BC1024 /* RepostoiresSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05898725C564C700BC1024 /* RepostoiresSearchBar.swift */; };
-		EA05898B25C564FB00BC1024 /* RepostoiresTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05898A25C564FB00BC1024 /* RepostoiresTableView.swift */; };
-		EA0589BA25C5696D00BC1024 /* BookmarksTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0589B925C5696D00BC1024 /* BookmarksTableView.swift */; };
-		EA0589BD25C56A0E00BC1024 /* BookmarksSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0589BC25C56A0E00BC1024 /* BookmarksSearchBar.swift */; };
+		EA05897425C55F9800BC1024 /* RSVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05897325C55F9800BC1024 /* RSVC TableView.swift */; };
+		EA05897725C55F9F00BC1024 /* RSVC CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05897625C55F9F00BC1024 /* RSVC CollectionView.swift */; };
+		EA05898825C564C700BC1024 /* RVC SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05898725C564C700BC1024 /* RVC SearchBar.swift */; };
+		EA05898B25C564FB00BC1024 /* RVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05898A25C564FB00BC1024 /* RVC TableView.swift */; };
+		EA0589BA25C5696D00BC1024 /* BVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0589B925C5696D00BC1024 /* BVC TableView.swift */; };
+		EA0589BD25C56A0E00BC1024 /* BVC SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0589BC25C56A0E00BC1024 /* BVC SearchBar.swift */; };
 		EA0C2D9625BD068C00D3898A /* LastSearch+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C2D9425BD068C00D3898A /* LastSearch+CoreDataClass.swift */; };
 		EA0C2D9725BD068C00D3898A /* LastSearch+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C2D9525BD068C00D3898A /* LastSearch+CoreDataProperties.swift */; };
 		EA22D78325CE2DE0009C0EEF /* GitRequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D77C25CE2DE0009C0EEF /* GitRequestRetrier.swift */; };
@@ -36,10 +36,10 @@
 		EA4530C825BFAD3B00651BFA /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4530C725BFAD3B00651BFA /* Localization.swift */; };
 		EA45AA1A259C45E400365E9B /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA45AA19259C45E400365E9B /* NetworkReachability.swift */; };
 		EA48ACF025D4D2C9006803BD /* NetwrokMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA48ACEF25D4D2C9006803BD /* NetwrokMonitor.swift */; };
-		EA48ACFE25D4E1FA006803BD /* RVfunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA48ACFD25D4E1FA006803BD /* RVfunctions.swift */; };
-		EA48AD0125D4E2E8006803BD /* RSfunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA48AD0025D4E2E8006803BD /* RSfunctions.swift */; };
+		EA48ACFE25D4E1FA006803BD /* RVC Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA48ACFD25D4E1FA006803BD /* RVC Functions.swift */; };
+		EA48AD0125D4E2E8006803BD /* RSVC Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA48AD0025D4E2E8006803BD /* RSVC Functions.swift */; };
 		EA4BCB1625BCDC71000F302A /* LastSearchCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BCB1525BCDC71000F302A /* LastSearchCollection.swift */; };
-		EA4C91CC25C9623F00EE1242 /* CommitsViewTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4C91CB25C9623F00EE1242 /* CommitsViewTable.swift */; };
+		EA4C91CC25C9623F00EE1242 /* CVC TableView .swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4C91CB25C9623F00EE1242 /* CVC TableView .swift */; };
 		EA566FE925927B9D00596E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA566FE825927B9D00596E6A /* AppDelegate.swift */; };
 		EA566FEB25927B9D00596E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA566FEA25927B9D00596E6A /* SceneDelegate.swift */; };
 		EA566FF525927B9E00596E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA566FF425927B9E00596E6A /* Assets.xcassets */; };
@@ -58,13 +58,13 @@
 		EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CAB25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift */; };
 		EA7C4CAE25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CAC25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift */; };
 		EA88A7B725D709CB008663BD /* Storyboard ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88A7B625D709CB008663BD /* Storyboard ID.swift */; };
-		EA94DCBC25C6726C00E2C30B /* UsersTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94DCBB25C6726C00E2C30B /* UsersTableView.swift */; };
+		EA94DCBC25C6726C00E2C30B /* ULVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94DCBB25C6726C00E2C30B /* ULVC TableView.swift */; };
 		EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9743512596C3790057C8A0 /* SettingsViewController.swift */; };
 		EA999A6525927C02005E832C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6425927C02005E832C /* DetailViewController.swift */; };
 		EA999A7A25927CAA005E832C /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7925927CAA005E832C /* WelcomeScreen.swift */; };
 		EAA710F525BD4707004D7E21 /* GitAPIManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA710F425BD4707004D7E21 /* GitAPIManger.swift */; };
-		EAAF81EF25D4E777006C44EC /* CVfunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF81EE25D4E777006C44EC /* CVfunctions.swift */; };
-		EAAF81F425D4E848006C44EC /* BVfunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF81F325D4E848006C44EC /* BVfunctions.swift */; };
+		EAAF81EF25D4E777006C44EC /* CVC Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF81EE25D4E777006C44EC /* CVC Functions.swift */; };
+		EAAF81F425D4E848006C44EC /* BVC Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF81F325D4E848006C44EC /* BVC Functions.swift */; };
 		EAAF81FE25D4EDAD006C44EC /* Cell Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF81FD25D4EDAD006C44EC /* Cell Delegate.swift */; };
 		EAAF820825D4F012006C44EC /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF820725D4F012006C44EC /* SettingsCell.swift */; };
 		EAAF820C25D4F036006C44EC /* SignOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF820A25D4F036006C44EC /* SignOutCell.swift */; };
@@ -76,7 +76,7 @@
 		EAB3959325D5FD3F009D178C /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3959225D5FD3F009D178C /* Entities.swift */; };
 		EAB3959725D6041B009D178C /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3959625D6041B009D178C /* Titles.swift */; };
 		EAB3959B25D60AA3009D178C /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3959A25D60AA3009D178C /* SettingsTableView.swift */; };
-		EABF30EF25C7C95000A17456 /* UsersSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABF30EE25C7C95000A17456 /* UsersSearchBar.swift */; };
+		EABF30EF25C7C95000A17456 /* ULVC SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABF30EE25C7C95000A17456 /* ULVC SearchBar.swift */; };
 		EAC1636625BAB789007EDC96 /* UsersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636325BAB789007EDC96 /* UsersCell.xib */; };
 		EAC1636725BAB789007EDC96 /* ReposCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636425BAB789007EDC96 /* ReposCell.xib */; };
 		EAC1636825BAB789007EDC96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636525BAB789007EDC96 /* Main.storyboard */; };
@@ -94,22 +94,22 @@
 		EAEEE13A25DCACCD00E88EED /* TableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEEE13925DCACCD00E88EED /* TableViewExt.swift */; };
 		EAF1165625DCC644007A1F8F /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF1165425DCC644007A1F8F /* LanguageCell.swift */; };
 		EAF1165725DCC644007A1F8F /* LanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF1165525DCC644007A1F8F /* LanguageCell.xib */; };
-		EAFB5D7725C7AF9F0096D729 /* ULfunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB5D7625C7AF9F0096D729 /* ULfunctions.swift */; };
-		EAFB5D7A25C7B16F0096D729 /* DVfunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB5D7925C7B16F0096D729 /* DVfunctions.swift */; };
+		EAFB5D7725C7AF9F0096D729 /* ULVC Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB5D7625C7AF9F0096D729 /* ULVC Functions.swift */; };
+		EAFB5D7A25C7B16F0096D729 /* DVC Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB5D7925C7B16F0096D729 /* DVC Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		96EA4BC81517436BEC21AB62 /* Pods-Githubgenics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Githubgenics.debug.xcconfig"; path = "Target Support Files/Pods-Githubgenics/Pods-Githubgenics.debug.xcconfig"; sourceTree = "<group>"; };
 		B43592FB3E722C73C20E1EFF /* Pods-Githubgenics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Githubgenics.release.xcconfig"; path = "Target Support Files/Pods-Githubgenics/Pods-Githubgenics.release.xcconfig"; sourceTree = "<group>"; };
 		CCC40B80E214607357A0B543 /* libPods-Githubgenics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Githubgenics.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA05894E25C555BB00BC1024 /* UserRepoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepoTableView.swift; sourceTree = "<group>"; };
+		EA05894E25C555BB00BC1024 /* DVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DVC TableView.swift"; sourceTree = "<group>"; };
 		EA05895425C5567700BC1024 /* GitDataBaseManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitDataBaseManger.swift; sourceTree = "<group>"; };
-		EA05897325C55F9800BC1024 /* RecentTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTableView.swift; sourceTree = "<group>"; };
-		EA05897625C55F9F00BC1024 /* RecentCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCollectionView.swift; sourceTree = "<group>"; };
-		EA05898725C564C700BC1024 /* RepostoiresSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepostoiresSearchBar.swift; sourceTree = "<group>"; };
-		EA05898A25C564FB00BC1024 /* RepostoiresTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepostoiresTableView.swift; sourceTree = "<group>"; };
-		EA0589B925C5696D00BC1024 /* BookmarksTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTableView.swift; sourceTree = "<group>"; };
-		EA0589BC25C56A0E00BC1024 /* BookmarksSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksSearchBar.swift; sourceTree = "<group>"; };
+		EA05897325C55F9800BC1024 /* RSVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSVC TableView.swift"; sourceTree = "<group>"; };
+		EA05897625C55F9F00BC1024 /* RSVC CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSVC CollectionView.swift"; sourceTree = "<group>"; };
+		EA05898725C564C700BC1024 /* RVC SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RVC SearchBar.swift"; sourceTree = "<group>"; };
+		EA05898A25C564FB00BC1024 /* RVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RVC TableView.swift"; sourceTree = "<group>"; };
+		EA0589B925C5696D00BC1024 /* BVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BVC TableView.swift"; sourceTree = "<group>"; };
+		EA0589BC25C56A0E00BC1024 /* BVC SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BVC SearchBar.swift"; sourceTree = "<group>"; };
 		EA0C2D9425BD068C00D3898A /* LastSearch+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LastSearch+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EA0C2D9525BD068C00D3898A /* LastSearch+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LastSearch+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA22D77C25CE2DE0009C0EEF /* GitRequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitRequestRetrier.swift; sourceTree = "<group>"; };
@@ -130,10 +130,10 @@
 		EA4530C725BFAD3B00651BFA /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		EA45AA19259C45E400365E9B /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		EA48ACEF25D4D2C9006803BD /* NetwrokMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwrokMonitor.swift; sourceTree = "<group>"; };
-		EA48ACFD25D4E1FA006803BD /* RVfunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVfunctions.swift; sourceTree = "<group>"; };
-		EA48AD0025D4E2E8006803BD /* RSfunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSfunctions.swift; sourceTree = "<group>"; };
+		EA48ACFD25D4E1FA006803BD /* RVC Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RVC Functions.swift"; sourceTree = "<group>"; };
+		EA48AD0025D4E2E8006803BD /* RSVC Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSVC Functions.swift"; sourceTree = "<group>"; };
 		EA4BCB1525BCDC71000F302A /* LastSearchCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSearchCollection.swift; sourceTree = "<group>"; };
-		EA4C91CB25C9623F00EE1242 /* CommitsViewTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewTable.swift; sourceTree = "<group>"; };
+		EA4C91CB25C9623F00EE1242 /* CVC TableView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVC TableView .swift"; sourceTree = "<group>"; };
 		EA566FE525927B9D00596E6A /* Githubgenics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Githubgenics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA566FE825927B9D00596E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA566FEA25927B9D00596E6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,13 +155,13 @@
 		EA7C4CAB25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersDataBase+CoreDataClass copy.swift"; sourceTree = "<group>"; };
 		EA7C4CAC25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersDataBase+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
 		EA88A7B625D709CB008663BD /* Storyboard ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard ID.swift"; sourceTree = "<group>"; };
-		EA94DCBB25C6726C00E2C30B /* UsersTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableView.swift; sourceTree = "<group>"; };
+		EA94DCBB25C6726C00E2C30B /* ULVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ULVC TableView.swift"; sourceTree = "<group>"; };
 		EA9743512596C3790057C8A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EA999A6425927C02005E832C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EA999A7925927CAA005E832C /* WelcomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		EAA710F425BD4707004D7E21 /* GitAPIManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitAPIManger.swift; sourceTree = "<group>"; };
-		EAAF81EE25D4E777006C44EC /* CVfunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVfunctions.swift; sourceTree = "<group>"; };
-		EAAF81F325D4E848006C44EC /* BVfunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVfunctions.swift; sourceTree = "<group>"; };
+		EAAF81EE25D4E777006C44EC /* CVC Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVC Functions.swift"; sourceTree = "<group>"; };
+		EAAF81F325D4E848006C44EC /* BVC Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BVC Functions.swift"; sourceTree = "<group>"; };
 		EAAF81FD25D4EDAD006C44EC /* Cell Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell Delegate.swift"; sourceTree = "<group>"; };
 		EAAF820725D4F012006C44EC /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		EAAF820A25D4F036006C44EC /* SignOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutCell.swift; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 		EAB3959225D5FD3F009D178C /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 		EAB3959625D6041B009D178C /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
 		EAB3959A25D60AA3009D178C /* SettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
-		EABF30EE25C7C95000A17456 /* UsersSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersSearchBar.swift; sourceTree = "<group>"; };
+		EABF30EE25C7C95000A17456 /* ULVC SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ULVC SearchBar.swift"; sourceTree = "<group>"; };
 		EAC1636325BAB789007EDC96 /* UsersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsersCell.xib; sourceTree = "<group>"; };
 		EAC1636425BAB789007EDC96 /* ReposCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReposCell.xib; sourceTree = "<group>"; };
 		EAC1636525BAB789007EDC96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -191,8 +191,8 @@
 		EAEEE13925DCACCD00E88EED /* TableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExt.swift; sourceTree = "<group>"; };
 		EAF1165425DCC644007A1F8F /* LanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
 		EAF1165525DCC644007A1F8F /* LanguageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageCell.xib; sourceTree = "<group>"; };
-		EAFB5D7625C7AF9F0096D729 /* ULfunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ULfunctions.swift; sourceTree = "<group>"; };
-		EAFB5D7925C7B16F0096D729 /* DVfunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVfunctions.swift; sourceTree = "<group>"; };
+		EAFB5D7625C7AF9F0096D729 /* ULVC Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ULVC Functions.swift"; sourceTree = "<group>"; };
+		EAFB5D7925C7B16F0096D729 /* DVC Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DVC Functions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,8 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				EA999A6425927C02005E832C /* DetailViewController.swift */,
-				EA05894E25C555BB00BC1024 /* UserRepoTableView.swift */,
-				EAFB5D7925C7B16F0096D729 /* DVfunctions.swift */,
+				EA05894E25C555BB00BC1024 /* DVC TableView.swift */,
+				EAFB5D7925C7B16F0096D729 /* DVC Functions.swift */,
 			);
 			path = DetailViewController;
 			sourceTree = "<group>";
@@ -238,9 +238,9 @@
 			isa = PBXGroup;
 			children = (
 				EAB2AD0B25BBED9F001B6DD7 /* RecentSearchController.swift */,
-				EA05897325C55F9800BC1024 /* RecentTableView.swift */,
-				EA05897625C55F9F00BC1024 /* RecentCollectionView.swift */,
-				EA48AD0025D4E2E8006803BD /* RSfunctions.swift */,
+				EA05897325C55F9800BC1024 /* RSVC TableView.swift */,
+				EA05897625C55F9F00BC1024 /* RSVC CollectionView.swift */,
+				EA48AD0025D4E2E8006803BD /* RSVC Functions.swift */,
 			);
 			path = RecentSearchViewController;
 			sourceTree = "<group>";
@@ -285,8 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				EAC3B17225C9520700F798DA /* CommitsViewController.swift */,
-				EA4C91CB25C9623F00EE1242 /* CommitsViewTable.swift */,
-				EAAF81EE25D4E777006C44EC /* CVfunctions.swift */,
+				EA4C91CB25C9623F00EE1242 /* CVC TableView .swift */,
+				EAAF81EE25D4E777006C44EC /* CVC Functions.swift */,
 			);
 			path = CommitsViewController;
 			sourceTree = "<group>";
@@ -414,9 +414,9 @@
 			isa = PBXGroup;
 			children = (
 				EA7C4CA825BAA7E000EC9F45 /* BookmarksViewController.swift */,
-				EA0589B925C5696D00BC1024 /* BookmarksTableView.swift */,
-				EA0589BC25C56A0E00BC1024 /* BookmarksSearchBar.swift */,
-				EAAF81F325D4E848006C44EC /* BVfunctions.swift */,
+				EA0589B925C5696D00BC1024 /* BVC TableView.swift */,
+				EA0589BC25C56A0E00BC1024 /* BVC SearchBar.swift */,
+				EAAF81F325D4E848006C44EC /* BVC Functions.swift */,
 			);
 			path = BookmarksViewController;
 			sourceTree = "<group>";
@@ -513,9 +513,9 @@
 			isa = PBXGroup;
 			children = (
 				EA5EADF625929E2700AC3223 /* UsersListViewController.swift */,
-				EA94DCBB25C6726C00E2C30B /* UsersTableView.swift */,
-				EABF30EE25C7C95000A17456 /* UsersSearchBar.swift */,
-				EAFB5D7625C7AF9F0096D729 /* ULfunctions.swift */,
+				EA94DCBB25C6726C00E2C30B /* ULVC TableView.swift */,
+				EABF30EE25C7C95000A17456 /* ULVC SearchBar.swift */,
+				EAFB5D7625C7AF9F0096D729 /* ULVC Functions.swift */,
 			);
 			path = UsersListViewController;
 			sourceTree = "<group>";
@@ -547,9 +547,9 @@
 			isa = PBXGroup;
 			children = (
 				EA22D79625CE2E37009C0EEF /* RepositoriesViewController.swift */,
-				EA05898A25C564FB00BC1024 /* RepostoiresTableView.swift */,
-				EA05898725C564C700BC1024 /* RepostoiresSearchBar.swift */,
-				EA48ACFD25D4E1FA006803BD /* RVfunctions.swift */,
+				EA05898A25C564FB00BC1024 /* RVC TableView.swift */,
+				EA05898725C564C700BC1024 /* RVC SearchBar.swift */,
+				EA48ACFD25D4E1FA006803BD /* RVC Functions.swift */,
 			);
 			path = RepositoriesViewController;
 			sourceTree = "<group>";
@@ -688,19 +688,19 @@
 				EA43BCD325965CAD00098ACA /* ReposCell.swift in Sources */,
 				EA48ACF025D4D2C9006803BD /* NetwrokMonitor.swift in Sources */,
 				EADCD06D25E334DD005F7033 /* ProfileViewController.swift in Sources */,
-				EAFB5D7725C7AF9F0096D729 /* ULfunctions.swift in Sources */,
+				EAFB5D7725C7AF9F0096D729 /* ULVC Functions.swift in Sources */,
 				EAB2AD1425BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift in Sources */,
-				EA05897425C55F9800BC1024 /* RecentTableView.swift in Sources */,
-				EA0589BA25C5696D00BC1024 /* BookmarksTableView.swift in Sources */,
+				EA05897425C55F9800BC1024 /* RSVC TableView.swift in Sources */,
+				EA0589BA25C5696D00BC1024 /* BVC TableView.swift in Sources */,
 				EA71B5A025E40D1B00779B9A /* GithubAuthentiction.swift in Sources */,
 				EADCD08625E36EC1005F7033 /* ViewEx.swift in Sources */,
 				EA2F137725DF21A400470A04 /* Repository.swift in Sources */,
 				EA7C4CAE25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift in Sources */,
 				EAC3B16F25C951B600F798DA /* Commits.swift in Sources */,
 				EA0C2D9625BD068C00D3898A /* LastSearch+CoreDataClass.swift in Sources */,
-				EA94DCBC25C6726C00E2C30B /* UsersTableView.swift in Sources */,
+				EA94DCBC25C6726C00E2C30B /* ULVC TableView.swift in Sources */,
 				EA5EADF725929E2700AC3223 /* UsersListViewController.swift in Sources */,
-				EA05897725C55F9F00BC1024 /* RecentCollectionView.swift in Sources */,
+				EA05897725C55F9F00BC1024 /* RSVC CollectionView.swift in Sources */,
 				EAAF81FE25D4EDAD006C44EC /* Cell Delegate.swift in Sources */,
 				EAB3959B25D60AA3009D178C /* SettingsTableView.swift in Sources */,
 				EA4BCB1625BCDC71000F302A /* LastSearchCollection.swift in Sources */,
@@ -708,12 +708,12 @@
 				EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */,
 				EA22D78D25CE2DF4009C0EEF /* SecureStoreError.swift in Sources */,
 				EA22D7B625CE2F1B009C0EEF /* TokenManager.swift in Sources */,
-				EA05898825C564C700BC1024 /* RepostoiresSearchBar.swift in Sources */,
+				EA05898825C564C700BC1024 /* RVC SearchBar.swift in Sources */,
 				EA3FA0FA25AE9B88008D7520 /* LaunchAnimation.swift in Sources */,
 				EADCD08325E36B0F005F7033 /* UserOrgsViewController.swift in Sources */,
 				EADCD08F25E381C5005F7033 /* Profile Model.swift in Sources */,
 				EA22D78525CE2DE0009C0EEF /* GitRouter.swift in Sources */,
-				EA05898B25C564FB00BC1024 /* RepostoiresTableView.swift in Sources */,
+				EA05898B25C564FB00BC1024 /* RVC TableView.swift in Sources */,
 				EA71B59C25E40C4F00779B9A /* TabBarController.swift in Sources */,
 				EA22D78625CE2DE0009C0EEF /* GitNetworkLogger.swift in Sources */,
 				EA62595F25CFD75300D63BE0 /* GitSessionManger.swift in Sources */,
@@ -727,15 +727,15 @@
 				EA622CFC25C54F3800EC5F3C /* Users.swift in Sources */,
 				EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */,
 				EA668B9D25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift in Sources */,
-				EAFB5D7A25C7B16F0096D729 /* DVfunctions.swift in Sources */,
+				EAFB5D7A25C7B16F0096D729 /* DVC Functions.swift in Sources */,
 				EADCD07525E35FF6005F7033 /* UserRepositoryViewController.swift in Sources */,
 				EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */,
 				EA2312DD2592819D000BDC8C /* Cells.swift in Sources */,
-				EAAF81F425D4E848006C44EC /* BVfunctions.swift in Sources */,
-				EA48AD0125D4E2E8006803BD /* RSfunctions.swift in Sources */,
+				EAAF81F425D4E848006C44EC /* BVC Functions.swift in Sources */,
+				EA48AD0125D4E2E8006803BD /* RSVC Functions.swift in Sources */,
 				EAEEE13A25DCACCD00E88EED /* TableViewExt.swift in Sources */,
 				EAF1165625DCC644007A1F8F /* LanguageCell.swift in Sources */,
-				EA0589BD25C56A0E00BC1024 /* BookmarksSearchBar.swift in Sources */,
+				EA0589BD25C56A0E00BC1024 /* BVC SearchBar.swift in Sources */,
 				EA22D7A125CE2EAB009C0EEF /* GitHubConstants.swift in Sources */,
 				EA999A6525927C02005E832C /* DetailViewController.swift in Sources */,
 				EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */,
@@ -744,7 +744,7 @@
 				EA999A7A25927CAA005E832C /* WelcomeScreen.swift in Sources */,
 				EAB2AD0C25BBED9F001B6DD7 /* RecentSearchController.swift in Sources */,
 				EA5FD26325D62CAD002E8927 /* HapticsManger.swift in Sources */,
-				EA48ACFE25D4E1FA006803BD /* RVfunctions.swift in Sources */,
+				EA48ACFE25D4E1FA006803BD /* RVC Functions.swift in Sources */,
 				EA22D7B725CE2F1B009C0EEF /* GitHubAccessToken.swift in Sources */,
 				EA45AA1A259C45E400365E9B /* NetworkReachability.swift in Sources */,
 				EA22D78325CE2DE0009C0EEF /* GitRequestRetrier.swift in Sources */,
@@ -752,12 +752,12 @@
 				EA566FE925927B9D00596E6A /* AppDelegate.swift in Sources */,
 				EAB3959325D5FD3F009D178C /* Entities.swift in Sources */,
 				EA566FEB25927B9D00596E6A /* SceneDelegate.swift in Sources */,
-				EA05894F25C555BB00BC1024 /* UserRepoTableView.swift in Sources */,
-				EABF30EF25C7C95000A17456 /* UsersSearchBar.swift in Sources */,
+				EA05894F25C555BB00BC1024 /* DVC TableView.swift in Sources */,
+				EABF30EF25C7C95000A17456 /* ULVC SearchBar.swift in Sources */,
 				EAB3959025D5FD32009D178C /* Segues.swift in Sources */,
-				EA4C91CC25C9623F00EE1242 /* CommitsViewTable.swift in Sources */,
+				EA4C91CC25C9623F00EE1242 /* CVC TableView .swift in Sources */,
 				EAAF820C25D4F036006C44EC /* SignOutCell.swift in Sources */,
-				EAAF81EF25D4E777006C44EC /* CVfunctions.swift in Sources */,
+				EAAF81EF25D4E777006C44EC /* CVC Functions.swift in Sources */,
 				EA0C2D9725BD068C00D3898A /* LastSearch+CoreDataProperties.swift in Sources */,
 				EADCD07825E36681005F7033 /* Orgs.swift in Sources */,
 			);

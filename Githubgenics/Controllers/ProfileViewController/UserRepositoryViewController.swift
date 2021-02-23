@@ -8,17 +8,24 @@
 import UIKit
 
 class UserRepositoryViewController: UIViewController {
+    
+    //spinner
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
-
-    @IBOutlet weak var tableView: UITableView!
+    // data model
     var repositories : Repository?
     var repository = [Repository]()
+    // footer
     let footer = UIView ()
-
+    // IBOutlets
+    @IBOutlet weak var tableView: UITableView!
+    
+    //MARK:- LifeCycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = Titles.RepositoriesViewTitle
         tableView.registerCellNib(cellClass: ReposCell.self)
+        // fetch user repos
         loadingIndicator.startAnimating()
         GitAPIManger().APIcall(returnType: Repository.self, requestData: GitRouter.fetchAuthorizedUserRepositories, pagination: false) { [weak self] (repos) in
             self?.repository = repos
@@ -26,9 +33,11 @@ class UserRepositoryViewController: UIViewController {
             self?.tableView.reloadData()
         }
         tableView.tableFooterView = footer
+        // gestures
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
+    // handle segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.commitViewSegue {
             guard let commitsViewController = segue.destination as? CommitsViewController else {
@@ -37,7 +46,7 @@ class UserRepositoryViewController: UIViewController {
             commitsViewController.repository = repositories
         }
     }
-
+    
 }
 
 //MARK:- User Repos Table

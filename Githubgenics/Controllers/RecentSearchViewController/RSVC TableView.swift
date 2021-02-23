@@ -18,19 +18,9 @@ extension RecentSearchViewController:  UITableViewDataSource , UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.searchHistoryCell, for: indexPath)
         cell.textLabel?.text = searchHistory[indexPath.row].keyword
         cell.accessoryView = UIImageView(image: UIImage(systemName: "arrow.up.backward"))
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        cell.addGestureRecognizer(longPress)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return renderHeader()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -47,7 +37,6 @@ extension RecentSearchViewController:  UITableViewDataSource , UITableViewDelega
             DataBaseManger().Delete(returnType: SearchHistory.self, Delete: item)
             DataBaseManger().Fetch(returnType: SearchHistory.self) { (history) in
             self.searchHistory = history
-
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()

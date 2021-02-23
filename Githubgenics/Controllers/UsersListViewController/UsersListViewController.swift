@@ -10,63 +10,86 @@ import Alamofire
 
 class UsersListViewController: UIViewController  {
     
-    var users = [items]()
+    // data models
+    var usersModel = [items]()
     var passedUsers : items?
     var lastSearch = [LastSearch]()
-    var searchHistory = [SearchHistory]()
-    var fetchSavedUsers = [UsersDataBase]()
+    // page number for requests
     var pageNo : Int = 1
     var totalPages : Int = 100
+    // pagination checking var
     var isPaginating = false
+    // persistentContainer context
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     let longPress = UILongPressGestureRecognizer()
+    // two searchBars for realtime location changing "explained in searchBarPage Code"
     lazy var searchBar = UISearchBar()
-    lazy var listSearchBar = UISearchBar()
+    lazy var usersListViewSearchBar = UISearchBar()
+    // loadingIndicator var
+    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
+    // refresh table
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(UsersListViewController.handleRefresh(_:)), for: UIControl.Event.valueChanged)
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControl.Event.valueChanged)
         refreshControl.tintColor = UIColor.gray
         return refreshControl
     }()
-    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    // searchLabel appear before searching
+    let searchLabel: UILabel = {
+        let label = UILabel()
+        label.isHidden = true
+        label.text = Titles.searchForUsers
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 21, weight: .medium)
+        return label
+    }()
+    // IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var historyView: UIView!
     
+    //MARK:- LifeCycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // register cell with transfer class to identifier string
         tableView.registerCellNib(cellClass: UsersCell.self)
-        tableView.addGestureRecognizer(longPress)
-        tableView.addSubview(refreshControl)
-        tableView.tableHeaderView = self.listSearchBar
+        // tab bar config
+        self.tabBarController?.navigationItem.title = Titles.usersViewTitle
         tabBarController?.navigationItem.hidesBackButton = true
-        loadingIndicator.center = view.center
+        tableView.tableHeaderView = self.usersListViewSearchBar
+        // subviews
         view.addSubview(loadingIndicator)
+        loadingIndicator.center = view.center
+        view.addSubview(searchLabel)
+        tableView.addSubview(refreshControl)
+        tableView.addGestureRecognizer(longPress)
+        searchLabel.isHidden = true
+        // zero opacity
+        searchLabel.alpha = 0.0
         historyView.alpha = 0.0
         searchBar.alpha = 0.0
+        // render searchbar
         renderSearchBar()
+        // API Requset to fetch Users
         renderUsersList()
-        self.tabBarController?.navigationItem.title = Titles.usersViewTitle
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.navigationItem.title = Titles.usersViewTitle
-        self.tabBarItem.title = Titles.usersViewTitle
         navigationController?.isNavigationBarHidden = false
         self.searchBar.becomeFirstResponder()
-        self.historyView.alpha = 1.0
-        tabBarController?.navigationItem.rightBarButtonItem = nil
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.tabBarItem.title = Titles.usersViewTitle
+        self.tabBarController?.navigationItem.title = Titles.usersViewTitle
+        tabBarController?.navigationItem.rightBarButtonItem = nil
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        self.tabBarController?.navigationItem.leftBarButtonItem = nil
-        self.historyView.alpha = 0.0
-        self.tableView.reloadData()
+     // Layout and framing
+    override func viewDidLayoutSubviews() {
+        searchLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
     }
+    
 }

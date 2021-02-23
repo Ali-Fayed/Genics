@@ -15,14 +15,15 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return usersModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // generic function to reduce dequeue new cell code
         let cell = tableView.dequeue() as UsersCell
         // fetch cell data from cell class
-        cell.CellData(with: users[indexPath.row])
+        cell.CellData(with: usersModel[indexPath.row])
+        // long press handle
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         cell.addGestureRecognizer(longPress)
         return cell
@@ -31,18 +32,20 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: Segues.detailViewSegue, sender: self)
-            let usersModel = users[indexPath.row]
+        // check for search bar in active or not to save history in collection
+        if tableView.tableHeaderView == nil {
+            let model = usersModel[indexPath.row]
             let items = LastSearch(context: self.context)
-            items.userName = usersModel.userName
-            items.userAvatar = usersModel.userAvatar
-            items.userURL = usersModel.userURL
+            items.userName = model.userName
+            items.userAvatar = model.userAvatar
+            items.userURL = model.userURL
             try! self.context.save()
-
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // pagination and fetch more
-        if indexPath.row == users.count - 1 {
+        if indexPath.row == usersModel.count - 1 {
             showTableViewSpinner()
             fetchMoreUsers ()
         }
@@ -50,7 +53,7 @@ extension UsersListViewController : UITableViewDataSource , UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         // pass model to passedUsers var
-        passedUsers = users[indexPath.row]
+        passedUsers = usersModel[indexPath.row]
         return indexPath
     }
 }
