@@ -1,4 +1,4 @@
-module Pods_Githubgenics {
+framework module Pods_Githubgenics {
   umbrella header "Pods-Githubgenics-umbrella.h"
 
   export *

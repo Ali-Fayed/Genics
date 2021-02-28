@@ -9,23 +9,32 @@ import UIKit
 import SafariServices
 
 extension BookmarksViewController: UITableViewDelegate , UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
         
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        (savedRepositories.count + bookmarkedUsers.count)
+        switch section {
+        case 0:
+            return bookmarkedUsers.count
+        default:
+            return savedRepositories.count
+        }
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row < bookmarkedUsers.count {
+        switch (indexPath.section) {
+        case 0:
             let cell = tableView.dequeue() as UsersCell
             let  model = bookmarkedUsers[indexPath.row]
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
             cell.addGestureRecognizer(longPress)
             cell.CellData(with: model)
             return cell
-            
-        } else {
+        default:
             let cell = tableView.dequeue() as ReposCell
-            cell.CellData(with: savedRepositories[indexPath.row - bookmarkedUsers.count])
+            cell.CellData(with: savedRepositories[indexPath.row])
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
             cell.addGestureRecognizer(longPress)
             return cell
@@ -34,14 +43,15 @@ extension BookmarksViewController: UITableViewDelegate , UITableViewDataSource {
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.row < bookmarkedUsers.count {
-            guard let url = bookmarkedUsers[indexPath.row].userURL  else {
-                return
-            }
+        switch indexPath.section {
+        case 0:
+            guard let url = bookmarkedUsers[indexPath.row].userURL
+            else { return }
             let vc = SFSafariViewController(url: URL(string: url)!)
             present(vc, animated: true)
-        } else {
+        default:
             performSegue(withIdentifier: Segues.commitViewSegue, sender: self)
+
         }
     }
     
@@ -50,25 +60,40 @@ extension BookmarksViewController: UITableViewDelegate , UITableViewDataSource {
     }
     
      func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if indexPath.row < bookmarkedUsers.count {
-            //
-        } else {
-            passedRepo = savedRepositories[indexPath.row - bookmarkedUsers.count]
+        switch indexPath.section {
+        case 0:
+            break
+        default:
+            passedRepo = savedRepositories[indexPath.row]
         }
         return indexPath
     }
-    
+        
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let headerText = UILabel()
+        switch section {
+        case 0:
+            headerText.textAlignment = .center
+            headerText.text = "Users"
+        default:
+            headerText.textAlignment = .center
+            headerText.text = "Repositories"
+        }
+        return headerText.text
+    }
+        
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-            if indexPath.row < bookmarkedUsers.count {
+            switch indexPath.section {
+            case 0:
                 let item = bookmarkedUsers[indexPath.row]
                 DataBaseManger().Delete(returnType: UsersDataBase.self, Delete: item)
                 DataBaseManger().Fetch(returnType: UsersDataBase.self) { (users) in
                     self.bookmarkedUsers = users
                 }
-            } else {
-                let item = savedRepositories[indexPath.row - bookmarkedUsers.count]
+            default:
+                let item = savedRepositories[indexPath.row]
                 DataBaseManger().Delete(returnType: SavedRepositories.self, Delete: item)
                 DataBaseManger().Fetch(returnType: SavedRepositories.self) { (repos) in
                     self.savedRepositories = repos
@@ -80,10 +105,6 @@ extension BookmarksViewController: UITableViewDelegate , UITableViewDataSource {
     }
     
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row < bookmarkedUsers.count {
-            return 60
-        } else {
-            return 60
-        }
+        return 60
     }
 }

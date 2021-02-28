@@ -46,5 +46,5 @@ struct Titles {
 }
 
 struct Messages {
-    static let internetError = "Please check your connection and try again".localized()
+    static let internetError = "Please check your connection".localized()
 }

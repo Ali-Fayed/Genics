@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A2908345F20F1BD39F47705 /* libPods-Githubgenics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC40B80E214607357A0B543 /* libPods-Githubgenics.a */; };
+		4E32D8F477D7CF1C5E637AAD /* Pods_Githubgenics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C956E6BB032E64279D0C86D /* Pods_Githubgenics.framework */; };
 		EA05894F25C555BB00BC1024 /* DVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05894E25C555BB00BC1024 /* DVC TableView.swift */; };
 		EA05895525C5567700BC1024 /* GitDataBaseManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05895425C5567700BC1024 /* GitDataBaseManger.swift */; };
 		EA05897425C55F9800BC1024 /* RSVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05897325C55F9800BC1024 /* RSVC TableView.swift */; };
@@ -99,9 +99,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C956E6BB032E64279D0C86D /* Pods_Githubgenics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Githubgenics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EA4BC81517436BEC21AB62 /* Pods-Githubgenics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Githubgenics.debug.xcconfig"; path = "Target Support Files/Pods-Githubgenics/Pods-Githubgenics.debug.xcconfig"; sourceTree = "<group>"; };
 		B43592FB3E722C73C20E1EFF /* Pods-Githubgenics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Githubgenics.release.xcconfig"; path = "Target Support Files/Pods-Githubgenics/Pods-Githubgenics.release.xcconfig"; sourceTree = "<group>"; };
-		CCC40B80E214607357A0B543 /* libPods-Githubgenics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Githubgenics.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA05894E25C555BB00BC1024 /* DVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DVC TableView.swift"; sourceTree = "<group>"; };
 		EA05895425C5567700BC1024 /* GitDataBaseManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitDataBaseManger.swift; sourceTree = "<group>"; };
 		EA05897325C55F9800BC1024 /* RSVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSVC TableView.swift"; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A2908345F20F1BD39F47705 /* libPods-Githubgenics.a in Frameworks */,
+				4E32D8F477D7CF1C5E637AAD /* Pods_Githubgenics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +210,7 @@
 		B9640142B75DF33193081D74 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CCC40B80E214607357A0B543 /* libPods-Githubgenics.a */,
+				6C956E6BB032E64279D0C86D /* Pods_Githubgenics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -589,6 +589,7 @@
 				EA566FE125927B9D00596E6A /* Sources */,
 				EA566FE225927B9D00596E6A /* Frameworks */,
 				EA566FE325927B9D00596E6A /* Resources */,
+				0CAD4A3672FCE3BFD3280EBA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -652,6 +653,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0CAD4A3672FCE3BFD3280EBA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Githubgenics/Pods-Githubgenics-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Githubgenics/Pods-Githubgenics-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Githubgenics/Pods-Githubgenics-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2E970170D47D8F9027D78EDA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

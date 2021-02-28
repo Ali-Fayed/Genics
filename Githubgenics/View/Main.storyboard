@@ -1060,7 +1060,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcJ-i5-cgY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5374" y="-504"/>
+            <point key="canvasLocation" x="5374" y="-452"/>
         </scene>
         <!--User Started View Controller-->
         <scene sceneID="FuM-W0-TNG">
@@ -1185,12 +1185,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIN-Qr-avK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4772" y="1259"/>
+            <point key="canvasLocation" x="5374" y="1051"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="RA0-Tg-hrH"/>
-        <segue reference="lgZ-Wu-mh8"/>
+        <segue reference="Tk9-bw-395"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Github" width="471" height="460"/>
