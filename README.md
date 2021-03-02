@@ -20,14 +20,14 @@ Githubgenics V1.1 written in Swift 5.3
 
 ************************************ ***important note*** ***********************************************
 
+drag the project cloned or downloaded folder to your terminal and hit "pod install" 
+
 Open this link https://github.com/settings/applications/new  and create outh2 app and copy your "Client ID & Client secret" to
 ***( Models > GitAuthentication > Token Manger > GitHubconstants )***
 
 put the Authorization call back url :
 
  ***githubgenicap://***
-
-drag the project cloned or downloaded folder to your terminal and hit "pod install" 
 
 put the homepage url any valid url
 
