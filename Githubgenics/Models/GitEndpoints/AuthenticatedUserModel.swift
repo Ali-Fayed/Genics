@@ -20,6 +20,7 @@ enum AuthenticatedUserInfo: CustomStringConvertible {
     case userReposCount
     case userStarttedCount
     case userOrgsCount
+    case userID
     
     var description: String {
         switch self {
@@ -43,6 +44,8 @@ enum AuthenticatedUserInfo: CustomStringConvertible {
            return "location"
         case .userOrgsCount:
              return "location"
+        case .userID:
+             return "id"
         }
     }
 

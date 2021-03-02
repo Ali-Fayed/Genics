@@ -10,7 +10,7 @@ import Foundation
 
 struct Orgs {
     let orgName: String
-    let orgDescription: String
+    let orgDescription: String?
 
     
     enum Orgs: String, CodingKey {
