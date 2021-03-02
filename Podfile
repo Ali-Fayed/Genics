@@ -7,6 +7,12 @@ target 'Githubgenics' do
 
   # Pods for Githubgenics
 
-
+  pod 'SkeletonView'
+  pod 'Alamofire', '~> 5.2'
+  pod 'Kingfisher', '~> 5.15.8'
+  pod 'IQKeyboardManagerSwift'
+  pod 'lottie-ios'
+  pod 'SwiftyJSON', '~> 4.0'
+  pod 'JGProgressHUD'
 
 end
