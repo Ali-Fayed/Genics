@@ -1,11 +1,12 @@
-#Githubgenics V1.1
+#Githubgenics V1.2
 
 IOS Native App based on github REST API 
 
-Githubgenics V1.1 written in Swift 5.3
+Githubgenics V1.2 written in Swift 5.3
+
+check app features in video preview : https://www.youtube.com/watch?v=GHFrdeK7YMU
 
  ***Some App Views Screenshots***
-
 
 ![1](https://user-images.githubusercontent.com/72504852/108808393-38f15a00-75af-11eb-9616-62a25379f599.png )
 
