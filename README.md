@@ -27,6 +27,8 @@ put the Authorization call back url :
 
  ***githubgenicap://***
 
+drag the project cloned or downloaded folder to your terminal and hit "pod install" 
+
 put the homepage url any valid url
 
 Or https://alifayed.me
