@@ -20,7 +20,7 @@
 
 ## Contact Me
 
-[<img alt="LinkedIn" src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>][SkeletonView]  [<img alt="Facebook" src="https://img.shields.io/badge/Facebook%20-%231877F2.svg?&style=for-the-badge&logo=Facebook&logoColor=white"/>][fb]  [<img alt="Twitter" src="https://img.shields.io/badge/Aliifayed%20-%231DA1F2.svg?&style=for-the-badge&logo=Twitter&logoColor=white"/>][tw]  [<img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />][mail]  [<img alt="Youtube" src="https://img.shields.io/badge/Githubgenics preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/>][preview]
+[<img alt="LinkedIn" src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>][contact]  [<img alt="Facebook" src="https://img.shields.io/badge/Facebook%20-%231877F2.svg?&style=for-the-badge&logo=Facebook&logoColor=white"/>][fb]  [<img alt="Twitter" src="https://img.shields.io/badge/Aliifayed%20-%231DA1F2.svg?&style=for-the-badge&logo=Twitter&logoColor=white"/>][tw]  [<img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />][mail]  [<img alt="Youtube" src="https://img.shields.io/badge/Githubgenics preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/>][preview]
 
 ## Important Notes
   
