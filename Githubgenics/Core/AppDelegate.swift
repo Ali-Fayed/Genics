@@ -13,13 +13,12 @@ import IQKeyboardManagerSwift
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    
     let window = UIWindow()
- 
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
-        NetworkingMonitor.shared.startMonitoring()
-        NetworkReachabilityModel.shared.startNetworkMonitoring()
+        GitNetworkMonitor.shared.startMonitoring()
+        GitNetwrokReachability.shared.startNetworkMonitoring()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         return true
