@@ -1,5 +1,5 @@
 //
-//  UserStartedSegue.swift
+//  UsersStartedViewController.swift
 //  Githubgenics
 //
 //  Created by Ali Fayed on 22/02/2021.
@@ -18,6 +18,8 @@ class UsersStartedViewController: UIViewController {
     let footer = UIView ()
     let spinner = JGProgressHUD(style: .dark)
     var passedUser: items?
+    var pageNo : Int = 1
+    var totalPages : Int = 100
     var defaults = UserDefaults.standard
     var starButton = [Int : Bool]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -47,14 +49,25 @@ class UsersStartedViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = Titles.Starred
         // load started
         renderStarState ()
         tableView.registerCellNib(cellClass: ReposCell.self)
+        loadStarred ()
+        view.addSubview(noOrgsLabel)
+        tableView.addSubview(refreshControl)
+        // footer
+        tableView.tableFooterView = footer
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func loadStarred () {
         guard let repository = passedUser else {return}
         if self.starttedRepos.isEmpty == true {
             spinner.show(in: view)
         }
-        GitAPIcaller.shared.makeRequest(returnType: [Repository].self, requestData: GitRequsetRouter.gitPublicUsersStarred(repository.userName), pagination: true) { [weak self] (result) in
+        GitAPIcaller.shared.makeRequest(returnType: [Repository].self, requestData: GitRequestRouter.gitPublicUsersStarred(pageNo, repository.userName)) { [weak self] (result) in
             self?.starttedRepos = result
             DispatchQueue.main.async {
                 if self?.starttedRepos.isEmpty == true {
@@ -69,18 +82,23 @@ class UsersStartedViewController: UIViewController {
                 self?.tableView.reloadData()
             }
         }
-        view.addSubview(noOrgsLabel)
-        tableView.addSubview(refreshControl)
-        // no orgs label conditions
-  
-        // title
-        title = Titles.Starred
-        // footer
-        tableView.tableFooterView = footer
-        // gesture back
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
+    func fetchMoreStarredRepos (page: Int) {
+        guard let user = passedUser else {return}
+        GitAPIcaller.shared.makeRequest(returnType: [Repository].self, requestData: GitRequestRouter.gitPublicUsersStarred(pageNo, user.userName), pagination: true) { [weak self]  (moreStarredRepos) in
+            DispatchQueue.main.async {
+                if moreStarredRepos.isEmpty == false {
+                    self?.starttedRepos.append(contentsOf: moreStarredRepos)
+                    self?.tableView.reloadData()
+                    self?.tableView.tableFooterView = nil
+                } else {
+                    self?.tableView.tableFooterView = self?.footer
+                }
+            }
+        }
+    }
+
     // frame and layout
     override func viewDidLayoutSubviews() {
         noOrgsLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
@@ -134,6 +152,26 @@ extension UsersStartedViewController : UITableViewDataSource , UITableViewDelega
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // fetch more
+        if indexPath.row == starttedRepos.count - 1 {
+            showTableViewSpinner()
+            if pageNo < totalPages {
+                pageNo += 1
+                fetchMoreStarredRepos(page: pageNo)
+            }
+        }
+    }
+    
+    
+    func showTableViewSpinner () {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.startAnimating()
+        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+        self.tableView.tableFooterView = spinner
+        self.tableView.tableFooterView?.isHidden = false
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
@@ -154,7 +192,7 @@ extension UsersStartedViewController : UITableViewDataSource , UITableViewDelega
         let identifier = "\(String(describing: index))" as NSString
         return UIContextMenuConfiguration( identifier: identifier, previewProvider: nil) { _ in
             
-            let mapAction = UIAction(title: "Bookmark", image: UIImage(systemName: "bookmark.fill")) { _ in
+            let bookmarkAction = UIAction(title: "Bookmark", image: UIImage(systemName: "bookmark.fill")) { _ in
                 let saveRepoInfo = SavedRepositories(context: self.context)
                 let repository = self.starttedRepos[indexPath.row]
                     saveRepoInfo.repoName = repository.repositoryName
@@ -166,15 +204,24 @@ extension UsersStartedViewController : UITableViewDataSource , UITableViewDelega
                 try! self.context.save()
             }
             
-            let shareAction = UIAction(
-                title: "URL",
+            let safariAction = UIAction(
+                title: Titles.openInSafari,
                 image: UIImage(systemName: "link")) { _ in
                 let url = self.starttedRepos[indexPath.row].repositoryURL
                 let vc = SFSafariViewController(url: URL(string: url)!)
                 self.present(vc, animated: true)
             }
             
-            return UIMenu(title: "", image: nil, children: [mapAction, shareAction])
+            let shareAction = UIAction(
+                title: Titles.share,
+                image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                let url = self.starttedRepos[indexPath.row].repositoryURL
+                let sheetVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                HapticsManger.shared.selectionVibrate(for: .medium)
+                self.present(sheetVC, animated: true)
+            }
+            
+            return UIMenu(title: "", image: nil, children: [safariAction, bookmarkAction, shareAction])
         }
     }
     

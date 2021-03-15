@@ -8,6 +8,7 @@
 import UIKit
 import SkeletonView
 import SafariServices
+import SwiftyJSON
 
 class PublicUserProfileViewController: UIViewController  {
     
@@ -27,18 +28,22 @@ class PublicUserProfileViewController: UIViewController  {
         return refreshControl
     }()
     // IBOutlets
-    @IBOutlet weak var bookmarkButton: UIButton!
+    @IBOutlet weak var bookmarkButton: UIButton?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userLogin: UILabel!
+    @IBOutlet weak var userLocation: UILabel!
+    @IBOutlet weak var userBio: UILabel!
+    @IBOutlet weak var Header: UIView!
+    @IBOutlet weak var HeaderView: UIView!
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var userFollowers: UILabel!
-    @IBOutlet weak var userFollowing: UILabel!
     
     // Bookmark button states on and off with state and save to database
     var setBookmarkButtonState: String = "off" {
         willSet {
             if newValue == "on" {
-                bookmarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+                bookmarkButton?.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
                 // save user to database bookmarks view
                 let users = UsersDataBase(context: context)
                 users.userName = self.passedUser?.userName
@@ -47,7 +52,7 @@ class PublicUserProfileViewController: UIViewController  {
                 try! self.context.save()
             }
             else {
-                bookmarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+                bookmarkButton?.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
             }
         }
     }
@@ -57,32 +62,39 @@ class PublicUserProfileViewController: UIViewController  {
     override func viewDidLoad()  {
         super.viewDidLoad()
         //view title
-        navigationItem.title = Titles.DetailViewTitle
-        // headerView data
         renderUserProfileData ()
+        renderTheButtonWithSavedState ()
         tableView.tableFooterView = footer
-        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.repositoriesViewTitle)", Image: "Repositories" ))
-        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.Starred)", Image: "Startted" ))
-        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.Organizations)", Image: "Organizations"))
         tableView.addSubview(refreshControl)
         tableView.rowHeight = 60
-        renderFollwingAndFollowers ()
     }
            
     //MARK:- UI Methods
     
     // passed user from users list data
     func renderUserProfileData () {
-        userName.text = "\((passedUser?.userName.capitalized)!)"
-        guard let passedUser = passedUser else {
-            return
+        guard let user = passedUser else {return}
+        session.request(GitRequestRouter.gitPublicUserInfo(user.userName)).responseJSON { (response) in
+            switch response.result {
+            case .success(let responseJSON) :
+                let recievedJson = JSON (responseJSON)
+                self.userName.text = recievedJson["\(User.userName)"].stringValue
+                let avatar = recievedJson["\(User.userAvatar)"].stringValue
+                self.userAvatar.kf.setImage(with: URL(string: avatar), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
+                self.userAvatar.layer.masksToBounds = false
+                self.userAvatar.layer.cornerRadius = self.userAvatar.frame.height/2
+                self.userAvatar.clipsToBounds = true
+                self.userFollowers.text = "followers:  " + recievedJson["\(User.userFollowers)"].stringValue + "  .  " + "following:  " + recievedJson["\(User.userFollowing)"].stringValue
+                self.userBio.text = recievedJson["\(User.userBio)"].stringValue
+                self.userLogin.text = recievedJson["\(User.userLoginName)"].stringValue
+                self.userLocation.text = recievedJson["\(User.userLocation)"].stringValue
+            case .failure(let error):
+                print(error)
+            }
         }
-        let avatar = passedUser.userAvatar
-        userAvatar.kf.indicatorType = .activity
-        userAvatar.kf.setImage(with: URL(string: avatar), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
-        userAvatar.layer.masksToBounds = false
-        userAvatar.layer.cornerRadius = userAvatar.frame.height/2
-        userAvatar.clipsToBounds = true
+        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.repositoriesViewTitle)", Image: "Repositories" ))
+        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.Starred)", Image: "Startted" ))
+        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.Organizations)", Image: "Organizations"))
     }
         
     // change button value between on or off
@@ -93,6 +105,22 @@ class PublicUserProfileViewController: UIViewController  {
             return
         }
         defaults.set(stat, forKey: (passedUser.userName))
+        HapticsManger.shared.selectionVibrate(for: .medium)
+    }
+    
+    @IBAction func urlButton(_ sender: UIButton) {
+        guard let user = passedUser else {return}
+        let url = user.userURL
+        let vc = SFSafariViewController(url: URL(string: url)!)
+        self.present(vc, animated: true)
+    }
+    
+    @IBAction func shareButton(_ sender: UIButton) {
+        guard let url = passedUser?.userURL else {
+            return
+        }
+        let sheetVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        present(sheetVC, animated: true)
         HapticsManger.shared.selectionVibrate(for: .medium)
     }
     
@@ -113,17 +141,6 @@ class PublicUserProfileViewController: UIViewController  {
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         HapticsManger.shared.selectionVibrate(for: .soft)
-    }
-    
-    func renderFollwingAndFollowers () {
-        // may contain error in real numbers because of API
-        guard let user = passedUser else {return}
-        GitAPIcaller.shared.makeRequest(returnType: [items].self, requestData: GitRequsetRouter.gitPublicUserFollowing(user.userName), pagination: false) { [weak self] (result) in
-            self?.userFollowing.text = String(result.count)
-        }
-        GitAPIcaller.shared.makeRequest(returnType: [items].self, requestData: GitRequsetRouter.gitPublicUserFollowers(user.userName), pagination: false) { [weak self] (result) in
-            self?.userFollowers.text = String(result.count)
-        }
     }
 }
 
@@ -174,3 +191,4 @@ extension PublicUserProfileViewController: UITableViewDataSource , UITableViewDe
         return UIView()
     }
 }
+

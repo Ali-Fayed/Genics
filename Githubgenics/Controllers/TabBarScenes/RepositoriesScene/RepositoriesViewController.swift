@@ -14,6 +14,8 @@ class RepositoriesViewController: UIViewController {
     var publicRepositories = [Repository]()
     var selectedRepository: Repository?
     var savedRepositories = [SavedRepositories]()
+    var pageNo : Int = 1
+    var totalPages : Int = 100
     // two search bar for animating (check search bar page)
     lazy var reposSearchBar:UISearchBar = UISearchBar()
     lazy var repoSearchBarHeader:UISearchBar = UISearchBar()
@@ -56,6 +58,7 @@ class RepositoriesViewController: UIViewController {
         renderSearchBar()
         tableView.tableFooterView = UIView()
         renderAndDisplayBestSwiftRepositories ()
+        tableView.tableHeaderView = self.repoSearchBarHeader
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,14 +76,28 @@ class RepositoriesViewController: UIViewController {
     //MARK:- Functions
     
     // Fetch Methods
-    func searchRepositories (query: String) {
+    func searchRepositories (query: String, page: Int) {
         if publicRepositories.isEmpty {
             spinner.show(in: view)
         }
-        GitAPIcaller.shared.makeRequest(returnType: Repositories.self, requestData: GitRequsetRouter.gitPublicRepositories(query)) { [weak self] (repositories) in
+        GitAPIcaller.shared.makeRequest(returnType: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(page, query)) { [weak self] (repositories) in
             self?.publicRepositories = repositories.items
             self?.spinner.dismiss()
             self?.tableView.reloadData()
+        }
+    }
+    
+    func fetchMoreRepositories (query: String, page: Int) {
+        GitAPIcaller.shared.makeRequest(returnType: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(page, query), pagination: true) { [weak self]  (moreRepos) in
+            DispatchQueue.main.async {
+                if moreRepos.items.isEmpty == false {
+                    self?.publicRepositories.append(contentsOf: moreRepos.items)
+                    self?.tableView.reloadData()
+                    self?.tableView.tableFooterView = nil
+                } else {
+                    self?.tableView.tableFooterView = nil
+                }
+            }
         }
     }
     
@@ -89,7 +106,8 @@ class RepositoriesViewController: UIViewController {
         if publicRepositories.isEmpty {
             spinner.show(in: view)
         }
-        GitAPIcaller.shared.makeRequest(returnType: Repositories.self, requestData: GitRequsetRouter.gitPublicRepositories("language:Swift")) { [weak self] (repositories) in            self?.publicRepositories = repositories.items
+        GitAPIcaller.shared.makeRequest(returnType: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(pageNo, "language:Swift")) { [weak self] (repos) in
+            self?.publicRepositories = repos.items
             self?.spinner.dismiss()
             self?.tableView.reloadData()
         }

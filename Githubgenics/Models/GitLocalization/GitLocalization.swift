@@ -47,6 +47,9 @@ struct Titles {
     static let searchForSaved           = "Search For saved".localized()
     static let noBookmarks              = "No Bookmarks".localized()
     static let noTokenLabel             = "Not Signed In"
+    static let share                    = "Share".localized()
+    static let saveImage                = "Save Image".localized()
+    static let openInSafari            = "Open with Safari".localized()
 }
 
 struct Messages {

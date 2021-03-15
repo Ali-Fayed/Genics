@@ -22,13 +22,13 @@ class LaunchScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.startAnimation ()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if self.isLoggedIn {
                 let vc = UIStoryboard.init(name: Storyboards.tabBar , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.tabBarID) as? TabBarViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
+                    self.navigationController?.pushViewController(vc!, animated: true)
             } else {
                 let vc = UIStoryboard.init(name: Storyboards.login , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.loginViewControllerID) as? LoginViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
+                    self.navigationController?.pushViewController(vc!, animated: true)
             }
         }
     }

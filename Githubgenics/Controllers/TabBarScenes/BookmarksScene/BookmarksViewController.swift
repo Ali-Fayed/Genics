@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class BookmarksViewController: UIViewController {
     
@@ -44,7 +45,6 @@ class BookmarksViewController: UIViewController {
     }()
      // IBOutlets
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
     //MARK:- LifeCycle Methods
     
@@ -66,11 +66,12 @@ class BookmarksViewController: UIViewController {
         // fetch bookmarks
         renderViewData ()
         // searchbar
-        searchBar.placeholder = Titles.searchPlacholder
+        tableView.tableHeaderView = self.searchBarHeader
         renderSearchBar()
         noBookmarksState ()
         navigationItem.titleView = nil
         searchRepositoriesBar.becomeFirstResponder()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -128,4 +129,26 @@ class BookmarksViewController: UIViewController {
             tableView.isHidden = false
         }
     }
+    
+    @IBAction func removeAll(_ sender: UIButton) {
+            let resetSearchHistory = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.usersEntity)
+            let resetLastSearch = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.repositoryEntity)
+            let resetRequest = NSBatchDeleteRequest(fetchRequest: resetSearchHistory)
+            let resetRequest2 = NSBatchDeleteRequest(fetchRequest: resetLastSearch)
+            
+            do {
+                try self.context.execute(resetRequest)
+                try self.context.execute(resetRequest2)
+                try self.context.save()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    HapticsManger.shared.selectionVibrate(for: .heavy)
+                    self.noBookmarksState ()
+                }
+                self.renderViewData()
+            } catch {
+                //
+            }
+    }
 }
+

@@ -7,26 +7,28 @@
 
 import Alamofire
 
-enum GitRequsetRouter {
+enum GitRequestRouter {
     
     case gitAccessToken(String)
     case gitAuthenticatedUser
     case gitAuthenticatedUserRepositories
     case gitAuthenticatedUserStarred
     case gitAuthenticatedUserOrgs
-    case gitPublicUsers(Int, String)
-    case gitPublicRepositories(String)
-    case gitRepositoriesCommits(String)
-    case gitPublicUsersRepositories(String)
-    case gitPublicUsersStarred(String)
+    case gitSearchUsers(Int, String)
+    case gitUsersList(Int)
+    case gitPublicUserInfo(String)
+    case gitPublicRepositories(Int, String)
+    case gitRepositoriesCommits(Int, String)
+    case gitPublicUsersRepositories(Int, String)
+    case gitPublicUsersStarred(Int, String)
     case gitPublicUsersOrgs(String)
     case gitPublicUserFollowers(String)
     case gitPublicUserFollowing(String)
-
+    
     
     var baseURL: String {
         switch self {
-        case .gitAuthenticatedUserRepositories, .gitPublicRepositories, .gitRepositoriesCommits , .gitPublicUsersRepositories, .gitPublicUsers , .gitAuthenticatedUser, .gitAuthenticatedUserStarred, .gitAuthenticatedUserOrgs , .gitPublicUsersStarred , .gitPublicUsersOrgs, .gitPublicUserFollowers ,.gitPublicUserFollowing:
+        case .gitAuthenticatedUserRepositories, .gitPublicRepositories, .gitRepositoriesCommits , .gitPublicUsersRepositories, .gitSearchUsers , .gitAuthenticatedUser, .gitAuthenticatedUserStarred, .gitAuthenticatedUserOrgs , .gitPublicUsersStarred , .gitPublicUsersOrgs, .gitPublicUserFollowers ,.gitPublicUserFollowing, .gitPublicUserInfo, .gitUsersList:
             return "https://api.github.com"
         case .gitAccessToken:
             return "https://github.com"
@@ -45,21 +47,25 @@ enum GitRequsetRouter {
             return "/user/starred"
         case .gitAuthenticatedUserOrgs:
             return "/user/orgs"
-        case .gitPublicUsers:
+        case .gitSearchUsers:
             return "/search/users"
-        case .gitPublicUsersRepositories(let user):
+        case .gitUsersList:
+            return "/users"
+        case .gitPublicRepositories:
+            return "/search/repositories"
+        case .gitPublicUserInfo(let user):
+            return "/users/\(user)"
+        case .gitPublicUsersRepositories(_, let user):
             return "/users/\(user)/repos"
         case .gitPublicUserFollowers(let user):
             return "/users/\(user)/followers"
         case .gitPublicUserFollowing(let user):
-                return "/users/\(user)/following"
-        case .gitPublicUsersStarred(let user):
+            return "/users/\(user)/following"
+        case .gitPublicUsersStarred(_,let user):
             return "/users/\(user)/starred"
         case .gitPublicUsersOrgs(let user):
-                return "/users/\(user)/orgs"
-        case .gitPublicRepositories:
-            return "/search/repositories"
-        case .gitRepositoriesCommits(let repository):
+            return "/users/\(user)/orgs"
+        case .gitRepositoriesCommits(_,let repository):
             return "/repos/\(repository)/commits"
         }
     }
@@ -74,7 +80,11 @@ enum GitRequsetRouter {
             return .get
         case .gitAuthenticatedUserOrgs:
             return .get
-        case .gitPublicUsers:
+        case .gitSearchUsers:
+            return .get
+        case .gitPublicUserInfo:
+            return .get
+        case .gitUsersList:
             return .get
         case .gitPublicUsersRepositories:
             return .get
@@ -85,7 +95,7 @@ enum GitRequsetRouter {
         case .gitPublicUserFollowing:
             return .get
         case .gitPublicUsersOrgs:
-                return .get
+            return .get
         case .gitAuthenticatedUserRepositories:
             return .get
         case .gitPublicRepositories:
@@ -106,34 +116,38 @@ enum GitRequsetRouter {
         case .gitAuthenticatedUser:
             return nil
         case .gitAuthenticatedUserStarred:
-            return nil
-        case .gitAuthenticatedUserOrgs:
-        return nil
-        case .gitPublicUsers(let page, let query):
-            return ["sort": "repositories", "order": "desc", "page": "\(page)" , "q": query]
-        case.gitPublicUsersRepositories:
             return ["per_page": "50"]
-        case.gitPublicUserFollowers:
-            return ["per_page": "99"]
-        case.gitPublicUserFollowing:
-            return ["per_page": "99"]
-        case.gitPublicUsersStarred:
-            return ["per_page": "30"]
-        case.gitPublicUsersOrgs:
-            return nil
+        case .gitAuthenticatedUserOrgs:
+            return ["per_page": "50"]
         case .gitAuthenticatedUserRepositories:
             return ["per_page": "50"]
-        case .gitPublicRepositories(let query):
-            return ["sort": "stars", "order": "desc", "page": "1", "q": query]
-        case .gitRepositoriesCommits:
+        case .gitSearchUsers(let page, let query):
+            return ["per_page": "30" ,"sort": "repositories", "order": "desc", "page": "\(page)" , "q": query]
+        case .gitPublicUserInfo:
             return nil
+        case .gitUsersList(let page):
+            return ["page": "\(page)"]
+        case .gitPublicRepositories(let page, let query):
+            return ["per_page": "30", "sort": "stars", "order": "desc", "page": "\(page)" , "q": query]
+        case.gitPublicUsersRepositories(let page, _):
+            return ["per_page": "30" , "page": "\(page)"]
+        case.gitPublicUsersStarred(let page,_):
+            return ["per_page": "30" ,"page": "\(page)"]
+        case.gitPublicUsersOrgs:
+            return ["per_page": "30", "page": "1"]
+        case .gitRepositoriesCommits(let page,_):
+            return ["per_page": "30", "page": "\(page)"]
+        case.gitPublicUserFollowers:
+            return ["per_page": "30"]
+        case.gitPublicUserFollowing:
+            return ["per_page": "30"]
         }
     }
 }
 
 // MARK: - URLRequestConvertible
 
-extension GitRequsetRouter: URLRequestConvertible {
+extension GitRequestRouter: URLRequestConvertible {
     func asURLRequest() throws -> URLRequest {
         let url = try baseURL.asURL().appendingPathComponent(path)
         var request = URLRequest(url: url)
@@ -147,5 +161,3 @@ extension GitRequsetRouter: URLRequestConvertible {
         return request
     }
 }
-
-

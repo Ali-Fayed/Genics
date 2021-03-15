@@ -7,6 +7,8 @@
 
 import SafariServices
 import UIKit
+import Kingfisher
+
 
 extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
         
@@ -41,20 +43,36 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
         // fetch more
         if indexPath.row == usersModel.count - 1 {
             showTableViewSpinner()
-            let querySetup : String = {
-                var query : String = "a"
-                if searchBar.text == nil {
-                    query = searchBar.text ?? ""
+            let query : String = {
+                var queryString = String()
+                if let searchText = searchBar.text {
+                    queryString = searchText.isEmpty ? "a" : searchText
                 }
-                return query
+                return queryString
             }()
             if pageNo < totalPages {
                 pageNo += 1
-            fetchMoreUsers(query: querySetup, page: pageNo)
+            fetchMoreUsers(query: query, page: pageNo)
             }
         }
     }
     
+    // fetch more users
+    func fetchMoreUsers (query: String, page: Int) {
+        GitAPIcaller.shared.makeRequest(returnType: Users.self, requestData: GitRequestRouter.gitSearchUsers(page, query), pagination: true) { [weak self] (moreUsers) in
+            DispatchQueue.main.async {
+                if moreUsers.items.isEmpty == false {
+                    self?.usersModel.append(contentsOf: moreUsers.items)
+                    self?.tableView.reloadData()
+                    self?.tableView.tableFooterView = nil
+                } else {
+                    self?.tableView.tableFooterView = self?.footer
+                }
+            }
+        }
+    }
+    
+    // show spinner
     func showTableViewSpinner () {
         let spinner = UIActivityIndicatorView(style: .medium)
         spinner.startAnimating()
@@ -68,11 +86,15 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
         return indexPath
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        60
+    }
+    
     func tableView( _ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let identifier = "\(String(describing: index))" as NSString
         return UIContextMenuConfiguration( identifier: identifier, previewProvider: nil) { _ in
             
-            let mapAction = UIAction(title: Titles.bookmark, image: UIImage(systemName: "bookmark.fill")) { _ in
+            let bookmarkAction = UIAction(title: Titles.bookmark, image: UIImage(systemName: "bookmark.fill")) { _ in
                 let usersIndex = self.usersModel[indexPath.row]
                 let items = UsersDataBase(context: self.context)
                 items.userName = usersIndex.userName
@@ -81,15 +103,39 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
                 try! self.context.save()
             }
             
-            let shareAction = UIAction(
-                title: Titles.url,
+            let safariAction = UIAction(
+                title: Titles.openInSafari,
                 image: UIImage(systemName: "link")) { _ in
                 let url = self.usersModel[indexPath.row].userURL
                 let vc = SFSafariViewController(url: URL(string: url)!)
                 self.present(vc, animated: true)
             }
             
-            return UIMenu(title: "", image: nil, children: [mapAction, shareAction])
+            let shareAction = UIAction(
+                title: Titles.share,
+                image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                let avatarUrl = self.usersModel[indexPath.row].userAvatar
+                let url = self.usersModel[indexPath.row].userURL
+                let fileUrl = URL(string: avatarUrl)
+                let data = try? Data(contentsOf: fileUrl!)
+                let image = UIImage(data: data!)
+                let sheetVC = UIActivityViewController(activityItems: [image!,url], applicationActivities: nil)
+                HapticsManger.shared.selectionVibrate(for: .medium)
+                self.present(sheetVC, animated: true)
+            }
+            
+            let saveImage = UIAction(
+                title: Titles.saveImage,
+                image: UIImage(systemName: "photo")) { _ in
+                let url = self.usersModel[indexPath.row].userAvatar
+                let fileUrl = URL(string: url)
+                let data = try? Data(contentsOf: fileUrl!)
+                let image = UIImage(data: data!)
+                UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
+                HapticsManger.shared.selectionVibrate(for: .heavy)
+            }
+            
+            return UIMenu(title: "", image: nil, children: [safariAction, bookmarkAction, saveImage, shareAction])
         }
     }
 }

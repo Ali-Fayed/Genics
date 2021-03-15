@@ -1,5 +1,5 @@
 //
-//  UserCellDetailsController.swift
+//  UserRepositoryViewController.swift
 //  Githubgenics
 //
 //  Created by Ali Fayed on 22/02/2021.
@@ -16,6 +16,8 @@ class UserRepositoryViewController: UIViewController {
     // footer
     let footer = UIView ()
     // spinner
+    var pageNo : Int = 1
+    var totalPages : Int = 100
     let spinner = JGProgressHUD(style: .dark)
 
     // IBOutlets
@@ -37,19 +39,34 @@ class UserRepositoryViewController: UIViewController {
         super.viewDidLoad()
         title = Titles.repositoriesViewTitle
         tableView.registerCellNib(cellClass: ReposCell.self)
-        // fetch user repos
+        fetchRepos ()
+        tableView.tableFooterView = footer
+        tableView.addSubview(refreshControl)
+    }
+    
+    func fetchRepos () {
         if self.repository.isEmpty == true {
             spinner.show(in: view)
         }
-        GitAPIcaller.shared.makeRequest(returnType: [Repository].self, requestData: GitRequsetRouter.gitAuthenticatedUserRepositories, pagination: false) { [weak self] (repos) in
+        GitAPIcaller.shared.makeRequest(returnType: [Repository].self, requestData: GitRequestRouter.gitAuthenticatedUserRepositories) { [weak self] (repos) in
             self?.repository = repos
             self?.spinner.dismiss()
             self?.tableView.reloadData()
         }
-        tableView.tableFooterView = footer
-        // gestures
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        tableView.addSubview(refreshControl)
+    }
+    
+    func fetchMoreUserRepos (page: Int) {
+        GitAPIcaller.shared.makeRequest(returnType: [Repository].self, requestData: GitRequestRouter.gitAuthenticatedUserRepositories, pagination: true) { [weak self]  (moreRepos) in
+            DispatchQueue.main.async {
+                if moreRepos.isEmpty == false {
+                    self?.repository.append(contentsOf: moreRepos)
+                    self?.tableView.reloadData()
+                    self?.tableView.tableFooterView = nil
+                } else {
+                    self?.tableView.tableFooterView = nil
+                }
+            }
+        }
     }
     
 }
@@ -71,7 +88,7 @@ extension UserRepositoryViewController : UITableViewDataSource , UITableViewDele
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
-    
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard.init(name: Storyboards.commits , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.commitsViewControllerID) as? CommitsViewController
         vc?.repository = repositories

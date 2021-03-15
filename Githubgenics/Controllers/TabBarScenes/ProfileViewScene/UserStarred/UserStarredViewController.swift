@@ -1,5 +1,5 @@
 //
-//  UserStartedSegue.swift
+//  UserStarredViewController.swift
 //  Githubgenics
 //
 //  Created by Ali Fayed on 22/02/2021.
@@ -13,6 +13,8 @@ class UserStarredViewController: UIViewController {
     // data model
     var starttedRepos = [Repository]()
     var starttedRepositories : Repository?
+    var pageNo : Int = 1
+    var totalPages : Int = 100
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
     let footer = UIView ()
     let spinner = JGProgressHUD(style: .dark)
@@ -31,23 +33,23 @@ class UserStarredViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = Titles.Starred
         tableView.registerCellNib(cellClass: ReposCell.self)
         // load started
+        loadStarred ()
+        tableView.tableFooterView = footer
+        tableView.addSubview(refreshControl)
+    }
+    
+    func loadStarred () {
         if self.starttedRepos.isEmpty == true {
             spinner.show(in: view)
         }
-        GitAPIcaller.shared.makeRequest(returnType: [Repository].self, requestData: GitRequsetRouter.gitAuthenticatedUserStarred, pagination: false) { [weak self] (started) in
+        GitAPIcaller.shared.makeRequest(returnType: [Repository].self, requestData: GitRequestRouter.gitAuthenticatedUserStarred, pagination: false) { [weak self] (started) in
             self?.starttedRepos = started
             self?.spinner.dismiss()
             self?.tableView.reloadData()
         }
-        // title
-        title = Titles.Starred
-        // footer
-        tableView.tableFooterView = footer
-        // gesture back
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        tableView.addSubview(refreshControl)
     }
     
 }

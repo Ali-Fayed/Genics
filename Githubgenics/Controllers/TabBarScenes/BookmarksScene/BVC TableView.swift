@@ -110,33 +110,50 @@ extension BookmarksViewController: UITableViewDelegate , UITableViewDataSource {
             tableView.endUpdates()
         }
     }
-        
+       
     func tableView( _ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let identifier = "\(String(describing: index))" as NSString
         return UIContextMenuConfiguration( identifier: identifier, previewProvider: nil) { _ in
-            
-            let remove = UIAction(title: Titles.removeAll, image: UIImage(systemName: "delete.right")) { _ in
-                let resetSearchHistory = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.usersEntity)
-                let resetLastSearch = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.repositoryEntity)
-                let resetRequest = NSBatchDeleteRequest(fetchRequest: resetSearchHistory)
-                let resetRequest2 = NSBatchDeleteRequest(fetchRequest: resetLastSearch)
-                
-                do {
-                    try self.context.execute(resetRequest)
-                    try self.context.execute(resetRequest2)
-                    try self.context.save()
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        HapticsManger.shared.selectionVibrate(for: .heavy)
-                        self.noBookmarksState ()
-                    }
-                    self.renderViewData()
-                } catch {
-                    //
+            switch indexPath.section {
+            case 0:
+                let safariAction = UIAction(
+                    title: Titles.url,
+                    image: UIImage(systemName: "link")) { _ in
+                    guard let url = self.bookmarkedUsers[indexPath.row].userURL else {return}
+                    let vc = SFSafariViewController(url: URL(string: url)!)
+                    self.present(vc, animated: true)
                 }
+                
+                let shareAction = UIAction(
+                    title: Titles.share,
+                    image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                     let image = UIImage(systemName: "bell")
+                    guard let url = self.bookmarkedUsers[indexPath.row].userURL else {return}
+                    let sheetVC = UIActivityViewController(activityItems: [image!,url], applicationActivities: nil)
+                    HapticsManger.shared.selectionVibrate(for: .medium)
+                    self.present(sheetVC, animated: true)
+                }
+                return UIMenu(title: "", image: nil, children: [safariAction, shareAction])
+            default:
+                let safariAction = UIAction(
+                    title: Titles.url,
+                    image: UIImage(systemName: "link")) { _ in
+                    guard let url = self.savedRepositories[indexPath.row].repoURL else {return}
+                    let vc = SFSafariViewController(url: URL(string: url)!)
+                    self.present(vc, animated: true)
+                }
+                
+                let shareAction = UIAction(
+                    title: Titles.share,
+                    image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                     let image = UIImage(systemName: "bell")
+                    guard let url = self.savedRepositories[indexPath.row].repoURL else {return}
+                    let sheetVC = UIActivityViewController(activityItems: [image!,url], applicationActivities: nil)
+                    HapticsManger.shared.selectionVibrate(for: .medium)
+                    self.present(sheetVC, animated: true)
+                }
+                return UIMenu(title: "", image: nil, children: [safariAction, shareAction])
             }
-            
-            return UIMenu(title: "", image: nil, children: [remove])
         }
     }
     

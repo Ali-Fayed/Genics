@@ -16,7 +16,7 @@ class HeaderView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        session.request(GitRequsetRouter.gitAuthenticatedUser).responseJSON { (response) in
+        session.request(GitRequestRouter.gitAuthenticatedUser).responseJSON { (response) in
             switch response.result {
             case .success(let responseJSON) :
                 let recievedJson = JSON (responseJSON)

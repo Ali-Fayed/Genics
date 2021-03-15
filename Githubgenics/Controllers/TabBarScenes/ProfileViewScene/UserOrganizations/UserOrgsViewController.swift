@@ -1,5 +1,5 @@
 //
-//  UserOrgsSegue.swift
+//  UserOrgsViewController.swift
 //  Githubgenics
 //
 //  Created by Ali Fayed on 22/02/2021.
@@ -53,8 +53,6 @@ class UserOrgsViewController: UIViewController {
             tableView.isHidden = false
             noOrgsLabel.isHidden = true
         }
-        // gestures
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         tableView.addSubview(refreshControl)
 
     }
@@ -68,7 +66,7 @@ class UserOrgsViewController: UIViewController {
         if self.organization.isEmpty == true {
             spinner.show(in: view)
         }
-        GitAPIcaller.shared.makeRequest(returnType: [Orgs].self, requestData: GitRequsetRouter.gitAuthenticatedUserOrgs, pagination: false) { [weak self] (orgs) in
+        GitAPIcaller.shared.makeRequest(returnType: [Orgs].self, requestData: GitRequestRouter.gitAuthenticatedUserOrgs, pagination: false) { [weak self] (orgs) in
             self?.organization = orgs
             self?.spinner.dismiss()
             self?.tableView.reloadData()

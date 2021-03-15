@@ -31,4 +31,5 @@ class GitRequestInterceptor: RequestInterceptor {
       return completion(.doNotRetry)
     }
   }
+
 }

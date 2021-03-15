@@ -1,5 +1,5 @@
 //
-//  SettingsView.swift
+//  SettingsViewController.swift
 //  Githubgenics
 //
 //  Created by Ali Fayed on 26/12/2020.
@@ -31,6 +31,8 @@ class SettingsViewController: UITableViewController {
         } else {
             tableView.tableHeaderView = nil
         }
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

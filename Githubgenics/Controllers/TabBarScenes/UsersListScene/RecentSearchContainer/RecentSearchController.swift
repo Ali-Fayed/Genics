@@ -63,21 +63,14 @@ class RecentSearchViewController:  UIViewController  {
         renderRecentHistoryHiddenConditions ()
         // render database models data
         renderViewData ()
-        lastSearch { (fetch) in
-            self.lastSearch = fetch
-            self.tableView.reloadData()
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         renderRecentHistoryHiddenConditions ()
         renderViewData()
-        lastSearch { (fetch) in
-            self.lastSearch = fetch
-            self.tableView.reloadData()
-        }
     }
+    
     // layout and framing
     override func viewDidLayoutSubviews() {
         searchLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
@@ -88,7 +81,7 @@ class RecentSearchViewController:  UIViewController  {
     func renderViewData () {
         DataBaseManger().Fetch(returnType: LastSearch.self) { [weak self] (result) in
             self?.lastSearch = result
-            self?.tableView.reloadData()
+            self?.collectionView.reloadData()
             
             DataBaseManger().Fetch(returnType: SearchHistory.self) { [weak self] (result) in
                 self?.searchHistory = result
@@ -130,15 +123,6 @@ class RecentSearchViewController:  UIViewController  {
         }
     }
     
-    func lastSearch(completion: @escaping ([LastSearch]) -> Void) {
-        do {
-            lastSearch = try context.fetch(LastSearch.fetchRequest())
-            completion(lastSearch)
-        } catch {
-            //
-        }
-    }
-    
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         HapticsManger.shared.selectionVibrate(for: .soft)
@@ -162,6 +146,11 @@ extension RecentSearchViewController:  UITableViewDataSource , UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let vc = UIStoryboard.init(name: Storyboards.tabBar , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.usersListViewID) as? UsersViewController
+        let history = searchHistory[indexPath.row].keyword
+        DispatchQueue.main.async {
+            vc?.searchBar.text = history
+        }
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -204,4 +193,5 @@ extension RecentSearchViewController:  UICollectionViewDataSource , UICollection
         let vc = SFSafariViewController(url: URL(string: url!)!)
         present(vc, animated: true)
     }
+
 }

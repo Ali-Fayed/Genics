@@ -17,6 +17,8 @@ extension BookmarksViewController : UISearchBarDelegate {
             self.searchRepositoriesBar.showsCancelButton = true
             self.searchRepositoriesBar.becomeFirstResponder()
             self.searchLabel.isHidden = false
+            self.navigationItem.largeTitleDisplayMode = .never
+            self.navigationController?.navigationBar.prefersLargeTitles = false
         }
         
         UIView.animate(withDuration: 0.5, animations: {
@@ -44,6 +46,8 @@ extension BookmarksViewController : UISearchBarDelegate {
             self.tableView.tableHeaderView = self.searchBarHeader
             self.searchRepositoriesBar.text = nil
             self.searchLabel.isHidden = true
+            self.navigationItem.largeTitleDisplayMode = .always
+            self.navigationController?.navigationBar.prefersLargeTitles = true
         }
         UIView.animate(withDuration: 0.5, animations: {
             self.tableView.alpha = 1.0

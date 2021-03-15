@@ -85,8 +85,6 @@ class LoginViewController: UIViewController {
     }
 }
 
-
-
 extension LoginViewController {
     
     func getGitHubAccessToken () {
@@ -139,5 +137,3 @@ extension LoginViewController: ASWebAuthenticationPresentationContextProviding {
         return view.window ?? ASPresentationAnchor()
     }
 }
-
-

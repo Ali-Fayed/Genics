@@ -2,33 +2,45 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Commits View Controller-->
-        <scene sceneID="rig-Qg-UZT">
+        <scene sceneID="d9g-M1-jqf">
             <objects>
-                <tableViewController storyboardIdentifier="CommitsViewController" id="K3b-dj-tjy" customClass="CommitsViewController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WlA-Ip-22J">
+                <viewController storyboardIdentifier="CommitsViewController" id="Tgg-lv-cMI" customClass="CommitsViewController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kwS-cg-159">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WNJ-oc-fBp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Tgg-lv-cMI" id="cKF-1f-p8g"/>
+                                    <outlet property="delegate" destination="Tgg-lv-cMI" id="VqP-dH-6yj"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SLH-cp-wy1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="K3b-dj-tjy" id="cMX-KM-y5N"/>
-                            <outlet property="delegate" destination="K3b-dj-tjy" id="Onq-XD-wr4"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="DAB-ia-6DH"/>
+                        <constraints>
+                            <constraint firstItem="SLH-cp-wy1" firstAttribute="trailing" secondItem="WNJ-oc-fBp" secondAttribute="trailing" id="0rr-Nn-sI3"/>
+                            <constraint firstItem="WNJ-oc-fBp" firstAttribute="leading" secondItem="SLH-cp-wy1" secondAttribute="leading" id="L9Z-ov-TLR"/>
+                            <constraint firstItem="SLH-cp-wy1" firstAttribute="bottom" secondItem="WNJ-oc-fBp" secondAttribute="bottom" id="bMJ-Qa-FoV"/>
+                            <constraint firstItem="WNJ-oc-fBp" firstAttribute="top" secondItem="SLH-cp-wy1" secondAttribute="top" id="swK-Jv-c73"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <outlet property="tableView" destination="WlA-Ip-22J" id="nJN-Uy-7ab"/>
+                        <outlet property="tableView" destination="WNJ-oc-fBp" id="5Ha-eh-InJ"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dbr-In-Lg0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y9d-Wz-zEO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2368" y="1274"/>
+            <point key="canvasLocation" x="3118" y="1149"/>
         </scene>
     </scenes>
     <resources>

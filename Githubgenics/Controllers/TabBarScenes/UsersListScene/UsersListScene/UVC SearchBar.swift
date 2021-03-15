@@ -18,6 +18,9 @@ extension UsersViewController  : UISearchBarDelegate  {
             self.tableView.tableHeaderView = nil
             self.searchBar.becomeFirstResponder()
             self.navigationItem.titleView = self.searchBar
+            self.navigationItem.largeTitleDisplayMode = .never
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.pageNo = 1
             if ((searchBar.text?.isEmpty) == true) {
                 self.spinner.dismiss()
             }
@@ -42,11 +45,12 @@ extension UsersViewController  : UISearchBarDelegate  {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         guard let query = searchBar.text else { return }
-        GitAPIcaller.shared.makeRequest(returnType: Users.self, requestData: GitRequsetRouter.gitPublicUsers(pageNo, query)) { [weak self] (searchedUsers) in
+        GitAPIcaller.shared.makeRequest(returnType: Users.self, requestData: GitRequestRouter.gitSearchUsers(1, query)) { [weak self] (searchedUsers) in
             DispatchQueue.main.async {
                 self?.usersModel = searchedUsers.items
                 self?.tableView.reloadData()
                 self?.searchLabel.isHidden = true
+
             }
         }
         
@@ -64,12 +68,19 @@ extension UsersViewController  : UISearchBarDelegate  {
             self.usersListViewSearchBar.text = nil
             self.usersListViewSearchBar.resignFirstResponder()
             self.tableView.tableHeaderView = self.usersListViewSearchBar
+            self.navigationItem.largeTitleDisplayMode = .always
+            self.navigationController?.navigationBar.prefersLargeTitles = true
             self.searchLabel.isHidden = true
             self.historyView.isHidden = false
             self.title = Titles.usersViewTitle
             self.navigationItem.titleView = nil
             self.renderUsersList()
             self.spinner.dismiss()
+            // Reload Recent View to Update Table realtime
+            let VC : RecentSearchViewController = self.children[0] as! RecentSearchViewController
+            VC.tableView.reloadData()
+            VC.collectionView.reloadData()
+            VC.viewDidAppear(true)
         }
         
         // Some animations when cancel
@@ -80,10 +91,7 @@ extension UsersViewController  : UISearchBarDelegate  {
             self.searchLabel.alpha = 0.0
         })
         
-        // Reload Recent View to Update Table realtime
-        let VC : RecentSearchViewController = self.children[0] as! RecentSearchViewController
-        VC.tableView.reloadData()
-        VC.viewDidAppear(true)
+
     }
     
     // Save Search Keyword If Click Button Search

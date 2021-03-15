@@ -20,7 +20,7 @@
 		EA0C2D9625BD068C00D3898A /* LastSearch+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C2D9425BD068C00D3898A /* LastSearch+CoreDataClass.swift */; };
 		EA0C2D9725BD068C00D3898A /* LastSearch+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C2D9525BD068C00D3898A /* LastSearch+CoreDataProperties.swift */; };
 		EA22D78325CE2DE0009C0EEF /* GitRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D77C25CE2DE0009C0EEF /* GitRequestInterceptor.swift */; };
-		EA22D78525CE2DE0009C0EEF /* GitRequsetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D77D25CE2DE0009C0EEF /* GitRequsetRouter.swift */; };
+		EA22D78525CE2DE0009C0EEF /* GitRequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D77D25CE2DE0009C0EEF /* GitRequestRouter.swift */; };
 		EA22D78625CE2DE0009C0EEF /* GitNetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D77E25CE2DE0009C0EEF /* GitNetworkLogger.swift */; };
 		EA22D78D25CE2DF4009C0EEF /* GitSecureStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78B25CE2DF4009C0EEF /* GitSecureStoreError.swift */; };
 		EA22D78E25CE2DF4009C0EEF /* GitSecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78C25CE2DF4009C0EEF /* GitSecureStore.swift */; };
@@ -117,7 +117,7 @@
 		EA0C2D9425BD068C00D3898A /* LastSearch+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LastSearch+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EA0C2D9525BD068C00D3898A /* LastSearch+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LastSearch+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA22D77C25CE2DE0009C0EEF /* GitRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitRequestInterceptor.swift; sourceTree = "<group>"; };
-		EA22D77D25CE2DE0009C0EEF /* GitRequsetRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitRequsetRouter.swift; sourceTree = "<group>"; };
+		EA22D77D25CE2DE0009C0EEF /* GitRequestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitRequestRouter.swift; sourceTree = "<group>"; };
 		EA22D77E25CE2DE0009C0EEF /* GitNetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitNetworkLogger.swift; sourceTree = "<group>"; };
 		EA22D78025CE2DE0009C0EEF /* GitHubAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAccessToken.swift; sourceTree = "<group>"; };
 		EA22D78125CE2DE0009C0EEF /* GitTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitTokenManager.swift; sourceTree = "<group>"; };
@@ -655,7 +655,7 @@
 		EAC6C44B25FC8F67006702EE /* GitNetwrokSession */ = {
 			isa = PBXGroup;
 			children = (
-				EA22D77D25CE2DE0009C0EEF /* GitRequsetRouter.swift */,
+				EA22D77D25CE2DE0009C0EEF /* GitRequestRouter.swift */,
 				EA22D77E25CE2DE0009C0EEF /* GitNetworkLogger.swift */,
 				EA22D77C25CE2DE0009C0EEF /* GitRequestInterceptor.swift */,
 				EA62595E25CFD75300D63BE0 /* GitSessionManger.swift */,
@@ -910,7 +910,7 @@
 				EA05898825C564C700BC1024 /* RVC SearchBar.swift in Sources */,
 				EA3FA0FA25AE9B88008D7520 /* LaunchScreenViewController.swift in Sources */,
 				EADCD08325E36B0F005F7033 /* UserOrgsViewController.swift in Sources */,
-				EA22D78525CE2DE0009C0EEF /* GitRequsetRouter.swift in Sources */,
+				EA22D78525CE2DE0009C0EEF /* GitRequestRouter.swift in Sources */,
 				EA05898B25C564FB00BC1024 /* RVC TableView.swift in Sources */,
 				EA71B59C25E40C4F00779B9A /* TabBarViewController.swift in Sources */,
 				EA22D78625CE2DE0009C0EEF /* GitNetworkLogger.swift in Sources */,
@@ -1028,7 +1028,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1084,7 +1084,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1110,7 +1110,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.product.IOS14.Githubgenics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1130,7 +1130,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.product.IOS14.Githubgenics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -11,7 +11,7 @@ class GitTokenManager {
     static let shared = GitTokenManager()
     
     func fetchAccessToken(accessToken: String, completion: @escaping (Bool) -> Void) {
-        session.request(GitRequsetRouter.gitAccessToken(accessToken))
+        session.request(GitRequestRouter.gitAccessToken(accessToken))
             .responseDecodable(of: GitHubAccessToken.self) { response in
                 guard let token = response.value else { return completion(false) }
                 GitTokenManager.shared.saveAccessToken(gitToken: token)

@@ -1,5 +1,5 @@
 //
-//  UserCellDetailsController.swift
+//  UsersRepositoryViewController.swift
 //  Githubgenics
 //
 //  Created by Ali Fayed on 22/02/2021.
@@ -16,6 +16,8 @@ class UsersRepositoryViewController: UIViewController {
     var savedRepos = [SavedRepositories]()
     var passedUser : items?
     var selectedRepository: Repository?
+    var pageNo : Int = 1
+    var totalPages : Int = 100
     // userdefaults to cache user settings
     var defaults = UserDefaults.standard
     var starButton = [Int : Bool]()
@@ -59,18 +61,26 @@ class UsersRepositoryViewController: UIViewController {
         renderStarState ()
         tableView.addSubview(refreshControl)
         view.addSubview(noOrgsLabel)
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         HapticsManger.shared.selectionVibrate(for: .soft)
     }
     func renderClickedUserPublicRepositories () {
-        guard let repository = passedUser else {return}
+        guard let user = passedUser else {return}
         if userRepository.isEmpty == true {
             spinner.show(in: view)
         }
-        GitAPIcaller.shared.makeRequest(returnType: [Repository].self, requestData: GitRequsetRouter.gitPublicUsersRepositories(repository.userName), pagination: true) { [weak self] (result) in
+        GitAPIcaller.shared.makeRequest(returnType: [Repository].self, requestData: GitRequestRouter.gitPublicUsersRepositories(pageNo, user.userName)) { [weak self] (result) in
             self?.userRepository = result
             DispatchQueue.main.async {
                 self?.spinner.dismiss()
@@ -81,6 +91,27 @@ class UsersRepositoryViewController: UIViewController {
                 } else {
                     self?.tableView.isHidden = false
                     self?.noOrgsLabel.isHidden = true
+                }
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func fetchMoreRepositories (page: Int) {
+        guard let user = passedUser else {return}
+        GitAPIcaller.shared.makeRequest(returnType: [Repository].self, requestData: GitRequestRouter.gitPublicUsersRepositories(pageNo, user.userName), pagination: true) { [weak self]  (moreRepos) in
+            DispatchQueue.main.async {
+                if moreRepos.isEmpty == false {
+                    self?.userRepository.append(contentsOf: moreRepos)
+                    self?.tableView.reloadData()
+                    self?.tableView.tableFooterView = nil
+                } else {
+                    self?.tableView.tableFooterView = self?.footer
                 }
             }
         }
@@ -152,12 +183,31 @@ extension UsersRepositoryViewController: UITableViewDataSource , UITableViewDele
         self.navigationController?.pushViewController(vc!, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // fetch more
+        if indexPath.row == userRepository.count - 1 {
+            showTableViewSpinner()
+            if pageNo < totalPages {
+                pageNo += 1
+                fetchMoreRepositories(page: pageNo)
+            }
+        }
+    }
+    
+    func showTableViewSpinner () {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.startAnimating()
+        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+        self.tableView.tableFooterView = spinner
+        self.tableView.tableFooterView?.isHidden = false
+    }
     
     func tableView( _ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let identifier = "\(String(describing: index))" as NSString
         return UIContextMenuConfiguration( identifier: identifier, previewProvider: nil) { _ in
             
-            let mapAction = UIAction(title: "Bookmark", image: UIImage(systemName: "bookmark.fill")) { _ in
+            let bookmarkAction = UIAction(title: "Bookmark", image: UIImage(systemName: "bookmark.fill")) { _ in
                 let saveRepoInfo = SavedRepositories(context: self.context)
                 let repository = self.userRepository[indexPath.row]
                     saveRepoInfo.repoName = repository.repositoryName
@@ -169,15 +219,24 @@ extension UsersRepositoryViewController: UITableViewDataSource , UITableViewDele
                 try! self.context.save()
             }
             
-            let shareAction = UIAction(
-                title: "URL",
+            let safariAction = UIAction(
+                title: Titles.openInSafari,
                 image: UIImage(systemName: "link")) { _ in
                 let url = self.userRepository[indexPath.row].repositoryURL
                 let vc = SFSafariViewController(url: URL(string: url)!)
                 self.present(vc, animated: true)
             }
             
-            return UIMenu(title: "", image: nil, children: [mapAction, shareAction])
+            let shareAction = UIAction(
+                title: Titles.share,
+                image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                let url = self.userRepository[indexPath.row].repositoryURL
+                let sheetVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                HapticsManger.shared.selectionVibrate(for: .medium)
+                self.present(sheetVC, animated: true)
+            }
+            
+            return UIMenu(title: "", image: nil, children: [safariAction, bookmarkAction, shareAction])
         }
     }
     

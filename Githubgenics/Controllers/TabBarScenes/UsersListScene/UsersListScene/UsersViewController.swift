@@ -13,13 +13,13 @@ class UsersViewController: UIViewController  {
     
     // data models
     var usersModel = [items]()
+    var savedUsers = [UsersDataBase]()
     var passedUsers : items?
     var lastSearch = [LastSearch]()
     // page number for requests
     var pageNo : Int = 1
     var totalPages : Int = 100
-    // pagination checking var
-    var isPaginating = false
+    let footer = UIView()
     // persistentContainer context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     // two searchBars for realtime location changing "explained in searchBarPage Code"
@@ -56,8 +56,8 @@ class UsersViewController: UIViewController  {
         // register cell with transfer class to identifier string
         tableView.registerCellNib(cellClass: UsersCell.self)
         tableView.tableHeaderView = self.usersListViewSearchBar
-        tableView.rowHeight = 60
         tableView.addSubview(refreshControl)
+        tableView.tableFooterView = footer
         // Hiding
         searchLabel.alpha = 0.0
         historyView.alpha = 0.0
@@ -73,7 +73,7 @@ class UsersViewController: UIViewController  {
         searchBar.becomeFirstResponder()
         searchBar.text = nil
     }
-    
+        
     // Layout and framing
     override func viewDidLayoutSubviews() {
         searchLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
@@ -84,7 +84,7 @@ class UsersViewController: UIViewController  {
     // fetch users in table
     func renderUsersList ()  {
         spinner.show(in: view)
-        GitAPIcaller.shared.makeRequest(returnType: Users.self, requestData: GitRequsetRouter.gitPublicUsers(pageNo, "m")) { [weak self] (users) in
+        GitAPIcaller.shared.makeRequest(returnType: Users.self, requestData: GitRequestRouter.gitSearchUsers(pageNo, "a")) { [weak self] (users) in
             DispatchQueue.main.async {
                 self?.usersModel = users.items
                 self?.tableView.reloadData()
@@ -95,20 +95,6 @@ class UsersViewController: UIViewController  {
                     }
                     self?.spinner.dismiss()
                 }
-            }
-        }
-    }
-    
-    // fetch more users
-    func fetchMoreUsers (query: String, page: Int) {
-        guard !isPaginating else {
-            return
-        }
-        GitAPIcaller.shared.makeRequest(returnType: Users.self, requestData: GitRequsetRouter.gitPublicUsers(page, query), pagination: true) { [weak self]  (moreUsers) in
-            DispatchQueue.main.async {
-                self?.usersModel.append(contentsOf: moreUsers.items)
-                self?.tableView.reloadData()
-                self?.tableView.tableFooterView = nil
             }
         }
     }

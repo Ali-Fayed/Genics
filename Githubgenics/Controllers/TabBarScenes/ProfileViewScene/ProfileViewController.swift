@@ -43,18 +43,16 @@ class ProfileViewController: UIViewController {
         return false
     }
     
-     // IBOutlets
+    // IBOutlets
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userLogin: UILabel!
     @IBOutlet weak var userLocation: UILabel!
     @IBOutlet weak var userBio: UILabel!
-    @IBOutlet weak var Header: UIView!
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var userFollowers: UILabel!
-    @IBOutlet weak var userFollowing: UILabel!
-
+    
     //MARK:- LifeCycle Methods
     
     override func viewDidLoad() {
@@ -62,22 +60,11 @@ class ProfileViewController: UIViewController {
         title = Titles.profileViewTitle
         tabBarItem.title = Titles.profileViewTitle
         tableView.addSubview(refreshControl)
-        tableView.tableHeaderView = Header
-        tableView.tableHeaderView?.backgroundColor = UIColor(named: "ViewsColorBallet")
         tableView.tableFooterView = footer
         tableView.rowHeight = 60
         renderUserProfile ()
         view.addSubview(noTokenLabel)
         tableView.addSubview(refreshControl)
-        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.repositoriesViewTitle)", Image: "Repositories" ))
-        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.Starred)", Image: "Startted" ))
-        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.Organizations)", Image: "Organizations"))
-        if isLoggedIn {
-            noTokenLabel.isHidden = true
-        } else {
-            tableView.isHidden = true
-            noTokenLabel.isHidden = false
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +82,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         noTokenLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
     }
-    
     
     @IBAction func didTapSettingsButton(_ sender: UIBarButtonItem) {
         let vc = UIStoryboard.init(name: Storyboards.settings , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.settingsViewControllerID) as? SettingsViewController
@@ -120,7 +106,7 @@ extension ProfileViewController : UITableViewDataSource , UITableViewDelegate {
         cell.imageView?.clipsToBounds = true
         return cell
     }
-        
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == 0 {
@@ -134,7 +120,6 @@ extension ProfileViewController : UITableViewDataSource , UITableViewDelegate {
         } else if indexPath.row == 2 {
             let vc = UIStoryboard.init(name: Storyboards.userOrgs , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.userOrgsViewControllerID) as? UserOrgsViewController
             self.navigationController?.pushViewController(vc!, animated: true)
-            
         }
     }
     
@@ -158,7 +143,7 @@ extension ProfileViewController : UITableViewDataSource , UITableViewDelegate {
 extension ProfileViewController {
     
     func renderUserProfile () {
-        session.request(GitRequsetRouter.gitAuthenticatedUser).responseJSON { (response) in
+        session.request(GitRequestRouter.gitAuthenticatedUser).responseJSON { (response) in
             switch response.result {
             case .success(let responseJSON) :
                 let recievedJson = JSON (responseJSON)
@@ -168,14 +153,22 @@ extension ProfileViewController {
                 self.userAvatar.layer.masksToBounds = false
                 self.userAvatar.layer.cornerRadius = self.userAvatar.frame.height/2
                 self.userAvatar.clipsToBounds = true
-                self.userFollowers.text = recievedJson["\(User.userFollowers)"].stringValue
-                self.userFollowing.text = recievedJson["\(User.userFollowing)"].stringValue
+                self.userFollowers.text = "followers:  " + recievedJson["\(User.userFollowers)"].stringValue + "  .  " + "following:  " + recievedJson["\(User.userFollowing)"].stringValue
                 self.userBio.text = recievedJson["\(User.userBio)"].stringValue
                 self.userLogin.text = recievedJson["\(User.userLoginName)"].stringValue
                 self.userLocation.text = recievedJson["\(User.userLocation)"].stringValue
             case .failure(let error):
                 print(error)
             }
+        }
+        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.repositoriesViewTitle)", Image: "Repositories" ))
+        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.Starred)", Image: "Startted" ))
+        profileTableData.append(ProfileTableData(cellHeader: "\(Titles.Organizations)", Image: "Organizations"))
+        if isLoggedIn {
+            noTokenLabel.isHidden = true
+        } else {
+            tableView.isHidden = true
+            noTokenLabel.isHidden = false
         }
     }
 }
