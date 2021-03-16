@@ -159,7 +159,7 @@ extension BookmarksViewController: UITableViewDelegate , UITableViewDataSource {
     
     // excute
     func searchFromDB () {
-        guard let searchText = searchRepositoriesBar.text else { return }
+        guard let searchText = searchBar.text else { return }
         if searchText.isEmpty {
             renderViewData()
             DispatchQueue.main.async {
@@ -182,4 +182,8 @@ extension BookmarksViewController: UITableViewDelegate , UITableViewDataSource {
             tableView.reloadData()
         }
     }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+                navigationItem.hidesSearchBarWhenScrolling = true
+    }
+
 }

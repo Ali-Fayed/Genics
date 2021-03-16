@@ -51,22 +51,34 @@ class SettingsViewController: UITableViewController {
 extension SettingsViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        switch section {
+        case 0:
+          return  1
+        case 1:
+           return 1
+        default:
+           return 1
+        }
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        3
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeue() as SettingsCell
-            cell.DarkModeLabel?.text = Setting
-            return cell
-        } else if indexPath.row == 1 {
-            let cell = tableView.dequeue() as LanguageCell
-            cell.languageDelegate = self
-            return cell
-        } else {
-            let cell = tableView.dequeue() as SignOutCell
-            cell.delegate = self
-            return cell
+        switch indexPath.section {
+        case 0:
+                let cell = tableView.dequeue() as SettingsCell
+                cell.DarkModeLabel?.text = Setting
+                return cell
+        case 1:
+                let cell = tableView.dequeue() as LanguageCell
+                cell.languageDelegate = self
+                return cell
+        default:
+                    let cell = tableView.dequeue() as SignOutCell
+                    cell.delegate = self
+                    return cell
         }
     }
     
@@ -74,10 +86,18 @@ extension SettingsViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let headerText = UILabel()
+        switch section {
+        case 0:
+                headerText.text = "Apperance"
+        case 1:
+                headerText.text = "Language"
+        default:
+                headerText.text = "Account"
+        }
+        return headerText.text
     }
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
-    }
+    
+
 }

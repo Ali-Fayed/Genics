@@ -43,6 +43,7 @@ class UsersOrgsViewController: UIViewController {
         super.viewDidLoad()
         title = Titles.Organizations
         renderAndDisplayUserOrgs()
+        fetchOrgs ()
         tableView.tableFooterView = footer
         view.addSubview(noOrgsLabel)
         tableView.addSubview(refreshControl)
@@ -57,6 +58,16 @@ class UsersOrgsViewController: UIViewController {
         noOrgsLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
     }
     
+    func fetchOrgs () {
+            spinner.show(in: view)
+        GitAPIcaller.shared.makeRequest(returnType: [Orgs].self, requestData: GitRequestRouter.gitListOrgs(30, 30), pagination: false) { [weak self] (result) in
+            self?.organization = result
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+                self?.spinner.dismiss()
+            }
+        }
+    }
     func renderAndDisplayUserOrgs() {
         guard let repository = passedUser else {return}
         if self.organization.isEmpty == true {

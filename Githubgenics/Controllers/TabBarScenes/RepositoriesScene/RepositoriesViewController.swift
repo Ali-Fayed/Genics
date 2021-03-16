@@ -18,7 +18,7 @@ class RepositoriesViewController: UIViewController {
     var totalPages : Int = 100
     // two search bar for animating (check search bar page)
     lazy var reposSearchBar:UISearchBar = UISearchBar()
-    lazy var repoSearchBarHeader:UISearchBar = UISearchBar()
+//    lazy var repoSearchBarHeader:UISearchBar = UISearchBar()
     let spinner = JGProgressHUD(style: .dark)
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     // refresh control
@@ -28,6 +28,7 @@ class RepositoriesViewController: UIViewController {
         refreshControl.tintColor = UIColor.gray
         return refreshControl
     }()
+     var search = UISearchController(searchResultsController: nil)
     // before search label
     let searchLabel: UILabel = {
         let label = UILabel()
@@ -55,17 +56,27 @@ class RepositoriesViewController: UIViewController {
         // hide label and zero opacity when start
         searchLabel.isHidden = true
         searchLabel.alpha = 0.0
-        renderSearchBar()
+//        renderSearchBar()
         tableView.tableFooterView = UIView()
         renderAndDisplayBestSwiftRepositories ()
-        tableView.tableHeaderView = self.repoSearchBarHeader
-    }
+        search.searchBar.delegate = self
+        search.searchBar.sizeToFit()
+        search.obscuresBackgroundDuringPresentation = false
+        search.hidesNavigationBarDuringPresentation = true
+        self.definesPresentationContext = true
+        search.searchBar.placeholder = Titles.searchPlacholder
+        self.navigationItem.searchController = search
+        navigationItem.hidesSearchBarWhenScrolling = false
+        }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = Titles.repositoriesViewTitle
-        navigationItem.titleView = nil
-        tableView.tableHeaderView = self.repoSearchBarHeader
+//        navigationItem.hidesSearchBarWhenScrolling = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        navigationItem.hidesSearchBarWhenScrolling = true
     }
         
     // layout and framing
@@ -118,16 +129,5 @@ class RepositoriesViewController: UIViewController {
         HapticsManger.shared.selectionVibrate(for: .soft)
     }
     
-    // Searchbar
-    func renderSearchBar() {
-        reposSearchBar.searchBarStyle = UISearchBar.Style.prominent
-        reposSearchBar.placeholder = Titles.searchPlacholder
-        reposSearchBar.sizeToFit()
-        reposSearchBar.delegate = self
-        repoSearchBarHeader.searchBarStyle = UISearchBar.Style.prominent
-        repoSearchBarHeader.placeholder = Titles.searchPlacholder
-        repoSearchBarHeader.sizeToFit()
-        repoSearchBarHeader.delegate = self
-    }
     
 }

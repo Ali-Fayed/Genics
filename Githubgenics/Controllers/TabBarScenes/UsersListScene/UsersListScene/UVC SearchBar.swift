@@ -13,13 +13,7 @@ extension UsersViewController  : UISearchBarDelegate  {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         
         DispatchQueue.main.async {
-            self.searchBar.showsCancelButton = true
             self.searchBar.text = nil
-            self.tableView.tableHeaderView = nil
-            self.searchBar.becomeFirstResponder()
-            self.navigationItem.titleView = self.searchBar
-            self.navigationItem.largeTitleDisplayMode = .never
-            self.navigationController?.navigationBar.prefersLargeTitles = false
             self.pageNo = 1
             if ((searchBar.text?.isEmpty) == true) {
                 self.spinner.dismiss()
@@ -35,7 +29,7 @@ extension UsersViewController  : UISearchBarDelegate  {
         UIView.animate(withDuration: 0.3, animations: {
             self.tableView.alpha = 0.0
             self.historyView.alpha = 1.0
-            self.searchBar.alpha = 1.0
+//            self.searchBar.alpha = 1.0
             self.searchLabel.alpha = 1.0
         })
         
@@ -50,11 +44,10 @@ extension UsersViewController  : UISearchBarDelegate  {
                 self?.usersModel = searchedUsers.items
                 self?.tableView.reloadData()
                 self?.searchLabel.isHidden = true
-
             }
         }
         
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.0, animations: {
             self.tableView.alpha = 1.0
             self.historyView.alpha = 0.0
             self.searchLabel.alpha = 0.0
@@ -65,16 +58,10 @@ extension UsersViewController  : UISearchBarDelegate  {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
         DispatchQueue.main.async {
-            self.usersListViewSearchBar.text = nil
-            self.usersListViewSearchBar.resignFirstResponder()
-            self.tableView.tableHeaderView = self.usersListViewSearchBar
-            self.navigationItem.largeTitleDisplayMode = .always
-            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.searchBar.text = nil
+            self.searchBar.resignFirstResponder()
             self.searchLabel.isHidden = true
             self.historyView.isHidden = false
-            self.title = Titles.usersViewTitle
-            self.navigationItem.titleView = nil
-            self.renderUsersList()
             self.spinner.dismiss()
             // Reload Recent View to Update Table realtime
             let VC : RecentSearchViewController = self.children[0] as! RecentSearchViewController
@@ -84,14 +71,11 @@ extension UsersViewController  : UISearchBarDelegate  {
         }
         
         // Some animations when cancel
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.0, animations: {
             self.tableView.alpha = 1.0
             self.historyView.alpha = 0.0
-            self.searchBar.alpha = 0.0
             self.searchLabel.alpha = 0.0
         })
-        
-
     }
     
     // Save Search Keyword If Click Button Search

@@ -138,4 +138,9 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
             return UIMenu(title: "", image: nil, children: [safariAction, bookmarkAction, saveImage, shareAction])
         }
     }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+                navigationItem.hidesSearchBarWhenScrolling = true
+    }
+
 }

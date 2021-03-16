@@ -39,6 +39,11 @@ class CommitsViewController: UIViewController {
         tableView.tableFooterView = UIView()
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
+        GitAPIcaller.shared.makeRequest(returnType: [Commit].self, requestData: GitRequestRouter.gitSearchCommits(1, "v"), pagination: false) { [weak self] (commits) in
+            self?.commits = commits
+            self?.spinner.dismiss()
+            self?.tableView.reloadData()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

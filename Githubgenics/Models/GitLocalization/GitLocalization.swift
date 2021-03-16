@@ -37,6 +37,7 @@ struct Titles {
     static let deleteAllRecords      = "Delete All Records!".localized()
     static let langauge              = "Change to English".localized()
     static let Starred              = "Starred".localized()
+    static let Issues               = "Issues".localized()
     static let Organizations              = "Organizations".localized()
     static let profileViewTitle                  = "Profile".localized()
     static let noOrgs                   = "There aren't any orgs.".localized()
@@ -50,6 +51,7 @@ struct Titles {
     static let share                    = "Share".localized()
     static let saveImage                = "Save Image".localized()
     static let openInSafari            = "Open with Safari".localized()
+    static let gitHubURL              = "Github Web".localized()
 }
 
 struct Messages {

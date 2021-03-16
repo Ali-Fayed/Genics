@@ -17,8 +17,7 @@ class BookmarksViewController: UIViewController {
     // persistentContainer context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     // searchBar
-    lazy var searchRepositoriesBar:UISearchBar = UISearchBar()
-    lazy var searchBarHeader:UISearchBar = UISearchBar()
+    lazy var searchBar:UISearchBar = UISearchBar()
     // refresh control
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -43,6 +42,8 @@ class BookmarksViewController: UIViewController {
         label.font = .systemFont(ofSize: 21, weight: .medium)
         return label
     }()
+    var search = UISearchController(searchResultsController: nil)
+
      // IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -58,6 +59,14 @@ class BookmarksViewController: UIViewController {
         tableView.addSubview(refreshControl)
         tableView.rowHeight = 60
         tableView.tableFooterView = UIView()
+        search.searchBar.delegate = self
+        search.searchBar.sizeToFit()
+        search.obscuresBackgroundDuringPresentation = false
+        search.hidesNavigationBarDuringPresentation = true
+        navigationItem.hidesSearchBarWhenScrolling = true
+        self.definesPresentationContext = true
+        search.searchBar.placeholder = Titles.searchPlacholder
+        self.navigationItem.searchController = search
         // hide label and zero opacity
         view.addSubview(searchLabel)
         view.addSubview(noBookmarksLabel)
@@ -65,21 +74,19 @@ class BookmarksViewController: UIViewController {
         searchLabel.alpha = 0.0
         // fetch bookmarks
         renderViewData ()
-        // searchbar
-        tableView.tableHeaderView = self.searchBarHeader
-        renderSearchBar()
         noBookmarksState ()
-        navigationItem.titleView = nil
-        searchRepositoriesBar.becomeFirstResponder()
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        searchRepositoriesBar.becomeFirstResponder()
         title = Titles.bookmarksViewTitle
         renderViewData ()
         noBookmarksState ()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     // layout and frame
@@ -107,19 +114,7 @@ class BookmarksViewController: UIViewController {
         refreshControl.endRefreshing()
         HapticsManger.shared.selectionVibrate(for: .soft)
     }
-    
-    // search
-    func renderSearchBar() {
-        searchRepositoriesBar.searchBarStyle = UISearchBar.Style.prominent
-        searchRepositoriesBar.placeholder = Titles.searchPlacholder
-        searchRepositoriesBar.sizeToFit()
-        searchRepositoriesBar.delegate = self
-        searchBarHeader.searchBarStyle = UISearchBar.Style.prominent
-        searchBarHeader.placeholder = Titles.searchPlacholder
-        searchBarHeader.sizeToFit()
-        searchBarHeader.delegate = self
-    }
-    
+        
     func noBookmarksState () {
         if bookmarkedUsers.isEmpty == true , savedRepositories.isEmpty == true {
             noBookmarksLabel.isHidden = false

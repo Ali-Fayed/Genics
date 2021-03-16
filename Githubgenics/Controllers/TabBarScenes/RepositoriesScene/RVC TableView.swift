@@ -94,4 +94,9 @@ extension RepositoriesViewController: UITableViewDataSource, UITableViewDelegate
             return UIMenu(title: "", image: nil, children: [safariAction ,bookmarkAction, shareAction])
         }
     }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+                navigationItem.hidesSearchBarWhenScrolling = true
+    }
+
 }

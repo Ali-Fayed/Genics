@@ -20,6 +20,8 @@ struct Storyboards {
     static let usersStartted = "UsersStartted"
     static let usersOrgs = "UsersOrgs"
     static let settings = "Settings"
+    static let homeView = "HomeView"
+    static let IssuesView = "Issues"
 }
 
 struct ID {
@@ -31,8 +33,11 @@ struct ID {
     static let commitsViewControllerID = "CommitsViewController"
     static let userStartedViewControllerID = "UserStartedViewController"
     static let userRepositoryViewControllerID = "UserRepositoryViewController"
+    static let repositoriesViewController = "RepositoriesViewController"
     static let userOrgsViewControllerID = "UserOrgsViewController"
     static let usersStartedViewControllerID = "UsersStarttedViewController"
     static let usersRepositoryViewControllerID = "UsersRepositoryViewController"
     static let usersOrgsViewControllerID = "UsersOrgsViewController"
+    static let homeViewController = "HomeViewController"
+    static let issuesViewController = "IssuesViewController"
 }

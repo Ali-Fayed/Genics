@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,7 +11,6 @@
         <!--Public User Profile View Controller-->
         <scene sceneID="INj-S5-fOV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tqa-1g-bx3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="DetailViewController" id="zAq-iu-811" customClass="PublicUserProfileViewController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2jR-m8-L7O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -220,13 +218,13 @@
                         <outlet property="userName" destination="hBB-2i-X8a" id="Zcu-y6-4Wt"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tqa-1g-bx3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5320.0934579439245" y="135.42116630669548"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="By0-w4-3E0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qRh-Kz-WFX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ay1-Fb-Vas" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nzG-2g-LL1">
@@ -238,6 +236,7 @@
                         <segue destination="zAq-iu-811" kind="relationship" relationship="rootViewController" id="sge-sV-wHV"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qRh-Kz-WFX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4420.0934579439254" y="135.42116630669548"/>
         </scene>
