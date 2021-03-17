@@ -32,23 +32,27 @@ class CommitsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         renderCommits()
+        
         tableView.registerCellNib(cellClass: CommitsCell.self)
         renderCachedReposCommits()
         tableView.addSubview(refreshControl)
         navigationItem.title = Titles.commitsViewTitle
         tableView.tableFooterView = UIView()
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.prefersLargeTitles = true
+
         GitAPIcaller.shared.makeRequest(returnType: [Commit].self, requestData: GitRequestRouter.gitSearchCommits(1, "v"), pagination: false) { [weak self] (commits) in
             self?.commits = commits
             self?.spinner.dismiss()
             self?.tableView.reloadData()
         }
     }
+    override func willMove(toParent parent: UIViewController?) {
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationItem.title = Titles.commitsViewTitle
+        title = Titles.commitsViewTitle
     }
     
     override func viewDidDisappear(_ animated: Bool) {

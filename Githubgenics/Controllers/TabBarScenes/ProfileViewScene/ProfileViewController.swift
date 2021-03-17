@@ -79,6 +79,7 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    
     override func viewDidLayoutSubviews() {
         noTokenLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
     }

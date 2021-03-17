@@ -67,6 +67,11 @@ class PublicUserProfileViewController: UIViewController  {
         tableView.tableFooterView = footer
         tableView.addSubview(refreshControl)
         tableView.rowHeight = 60
+        navigationItem.hidesSearchBarWhenScrolling = false
+        self.definesPresentationContext = true
+        title = Titles.profileViewTitle
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
            
     //MARK:- UI Methods

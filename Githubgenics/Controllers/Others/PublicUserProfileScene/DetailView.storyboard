@@ -16,8 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acN-ax-Run">
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bMo-Sn-EPE">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="756"/>
                                 <color key="backgroundColor" name="Dark"/>
                                 <color key="tintColor" name="Dark"/>
                                 <color key="sectionIndexBackgroundColor" name="Dark"/>
@@ -183,7 +186,11 @@
                         <constraints>
                             <constraint firstItem="bMo-Sn-EPE" firstAttribute="top" secondItem="B0r-5f-lq2" secondAttribute="top" id="71R-KN-XWg"/>
                             <constraint firstAttribute="bottom" secondItem="bMo-Sn-EPE" secondAttribute="bottom" id="9SM-JJ-M9T"/>
+                            <constraint firstItem="acN-ax-Run" firstAttribute="top" secondItem="B0r-5f-lq2" secondAttribute="top" id="JYC-hc-XBf"/>
                             <constraint firstItem="bMo-Sn-EPE" firstAttribute="leading" secondItem="B0r-5f-lq2" secondAttribute="leading" id="Oup-bq-b9P"/>
+                            <constraint firstItem="B0r-5f-lq2" firstAttribute="bottom" secondItem="acN-ax-Run" secondAttribute="bottom" id="Ycm-mm-P5W"/>
+                            <constraint firstItem="acN-ax-Run" firstAttribute="leading" secondItem="B0r-5f-lq2" secondAttribute="leading" id="oaj-AR-ucD"/>
+                            <constraint firstItem="B0r-5f-lq2" firstAttribute="trailing" secondItem="acN-ax-Run" secondAttribute="trailing" id="oy8-uk-Ssx"/>
                             <constraint firstItem="bMo-Sn-EPE" firstAttribute="trailing" secondItem="B0r-5f-lq2" secondAttribute="trailing" id="xSI-b3-ajm"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -191,7 +198,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="te9-dp-FUu">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="te9-dp-FUu">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="link" catalog="system" id="fuy-qU-i95">
                                 <connections>
@@ -227,8 +234,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ay1-Fb-Vas" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nzG-2g-LL1">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="nzG-2g-LL1">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

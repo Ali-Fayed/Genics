@@ -65,6 +65,7 @@ class BookmarksViewController: UIViewController {
         search.hidesNavigationBarDuringPresentation = true
         navigationItem.hidesSearchBarWhenScrolling = true
         self.definesPresentationContext = true
+        view.addSubview(searchLabel)
         search.searchBar.placeholder = Titles.searchPlacholder
         self.navigationItem.searchController = search
         // hide label and zero opacity

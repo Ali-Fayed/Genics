@@ -22,6 +22,8 @@ struct Storyboards {
     static let settings = "Settings"
     static let homeView = "HomeView"
     static let IssuesView = "Issues"
+    static let ReposView = "Repos"
+    static let UsersView = "Users"
 }
 
 struct ID {

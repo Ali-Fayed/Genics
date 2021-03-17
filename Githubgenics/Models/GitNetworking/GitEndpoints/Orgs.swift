@@ -22,14 +22,3 @@ extension Orgs: Decodable {
         orgDescription = try container.decode(String.self, forKey: .orgDescription)
     }
 }
-
-//struct ListORgs {
-//    let orgName: String
-//    let orgDescription: String?
-//    let orgAvatar
-//
-//    enum Orgs: String, CodingKey {
-//        case orgName = "login"
-//        case orgDescription = "description"
-//    }
-//}

@@ -36,6 +36,12 @@
 		EA23A07F25ED6657001B943F /* UsersStartted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA23A07E25ED6657001B943F /* UsersStartted.storyboard */; };
 		EA23A08325ED6766001B943F /* UsersOrgs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA23A08225ED6766001B943F /* UsersOrgs.storyboard */; };
 		EA2F137725DF21A400470A04 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2F137625DF21A400470A04 /* Repository.swift */; };
+		EA31595126018FB50038883D /* HVC Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31595026018FB50038883D /* HVC Table.swift */; };
+		EA31595426018FC50038883D /* HVC Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31595326018FC50038883D /* HVC Search.swift */; };
+		EA31595C260191600038883D /* IVC Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31595B260191600038883D /* IVC Table.swift */; };
+		EA31595F2601916E0038883D /* IVC Searchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31595E2601916E0038883D /* IVC Searchbar.swift */; };
+		EA315962260192390038883D /* Repos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA315961260192390038883D /* Repos.storyboard */; };
+		EA315966260192720038883D /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA315965260192720038883D /* Users.storyboard */; };
 		EA3FA0FA25AE9B88008D7520 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA0F925AE9B88008D7520 /* LaunchScreenViewController.swift */; };
 		EA3FA0FD25AE9C00008D7520 /* loadingspinner.json in Resources */ = {isa = PBXBuildFile; fileRef = EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */; };
 		EA43BCD325965CAD00098ACA /* ReposCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA43BCD225965CAD00098ACA /* ReposCell.swift */; };
@@ -62,6 +68,7 @@
 		EA7C4CA925BAA7E000EC9F45 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CA825BAA7E000EC9F45 /* BookmarksViewController.swift */; };
 		EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CAB25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift */; };
 		EA7C4CAE25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CAC25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift */; };
+		EA830F88260198F600F3D2A8 /* UVC Collectio.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA830F87260198F600F3D2A8 /* UVC Collectio.swift */; };
 		EA88A7B725D709CB008663BD /* GitStoryboardIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88A7B625D709CB008663BD /* GitStoryboardIDs.swift */; };
 		EA94DCBC25C6726C00E2C30B /* UVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94DCBB25C6726C00E2C30B /* UVC TableView.swift */; };
 		EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9743512596C3790057C8A0 /* SettingsViewController.swift */; };
@@ -72,7 +79,6 @@
 		EAAF820825D4F012006C44EC /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF820725D4F012006C44EC /* SettingsCell.swift */; };
 		EAAF820C25D4F036006C44EC /* SignOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF820A25D4F036006C44EC /* SignOutCell.swift */; };
 		EAAF820D25D4F036006C44EC /* SignOutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAAF820B25D4F036006C44EC /* SignOutCell.xib */; };
-		EAB2AD0C25BBED9F001B6DD7 /* RecentSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2AD0B25BBED9F001B6DD7 /* RecentSearchController.swift */; };
 		EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2AD1125BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift */; };
 		EAB2AD1425BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2AD1225BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift */; };
 		EABF30EF25C7C95000A17456 /* UVC SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABF30EE25C7C95000A17456 /* UVC SearchBar.swift */; };
@@ -138,6 +144,12 @@
 		EA23A07E25ED6657001B943F /* UsersStartted.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UsersStartted.storyboard; sourceTree = "<group>"; };
 		EA23A08225ED6766001B943F /* UsersOrgs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UsersOrgs.storyboard; sourceTree = "<group>"; };
 		EA2F137625DF21A400470A04 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		EA31595026018FB50038883D /* HVC Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HVC Table.swift"; sourceTree = "<group>"; };
+		EA31595326018FC50038883D /* HVC Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HVC Search.swift"; sourceTree = "<group>"; };
+		EA31595B260191600038883D /* IVC Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IVC Table.swift"; sourceTree = "<group>"; };
+		EA31595E2601916E0038883D /* IVC Searchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IVC Searchbar.swift"; sourceTree = "<group>"; };
+		EA315961260192390038883D /* Repos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Repos.storyboard; sourceTree = "<group>"; };
+		EA315965260192720038883D /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
 		EA3FA0F925AE9B88008D7520 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingspinner.json; sourceTree = "<group>"; };
 		EA43BCD225965CAD00098ACA /* ReposCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposCell.swift; sourceTree = "<group>"; };
@@ -167,6 +179,7 @@
 		EA7C4CA825BAA7E000EC9F45 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		EA7C4CAB25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersDataBase+CoreDataClass copy.swift"; sourceTree = "<group>"; };
 		EA7C4CAC25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersDataBase+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		EA830F87260198F600F3D2A8 /* UVC Collectio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVC Collectio.swift"; sourceTree = "<group>"; };
 		EA88A7B625D709CB008663BD /* GitStoryboardIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitStoryboardIDs.swift; sourceTree = "<group>"; };
 		EA94DCBB25C6726C00E2C30B /* UVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVC TableView.swift"; sourceTree = "<group>"; };
 		EA9743512596C3790057C8A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -177,7 +190,6 @@
 		EAAF820725D4F012006C44EC /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		EAAF820A25D4F036006C44EC /* SignOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutCell.swift; sourceTree = "<group>"; };
 		EAAF820B25D4F036006C44EC /* SignOutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignOutCell.xib; sourceTree = "<group>"; };
-		EAB2AD0B25BBED9F001B6DD7 /* RecentSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchController.swift; sourceTree = "<group>"; };
 		EAB2AD1125BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EAB2AD1225BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHistory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EABF30EE25C7C95000A17456 /* UVC SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVC SearchBar.swift"; sourceTree = "<group>"; };
@@ -271,20 +283,8 @@
 			children = (
 				EA999A6425927C02005E832C /* PublicUserProfileViewController.swift */,
 				EAE2651425ED3B9A0084029B /* DetailView.storyboard */,
-				EA23A06D25ED5C19001B943F /* PublicUsersRepositories */,
-				EA23A06725ED5C19001B943F /* PublicUsersStartted */,
-				EA23A06A25ED5C19001B943F /* PublicUsersOrganizations */,
 			);
 			path = PublicUserProfileScene;
-			sourceTree = "<group>";
-		};
-		EA05897125C55F8B00BC1024 /* RecentSearchContainer */ = {
-			isa = PBXGroup;
-			children = (
-				EAB2AD0B25BBED9F001B6DD7 /* RecentSearchController.swift */,
-				EA7C9BAC25ED4BA000A45DE4 /* CustomCell */,
-			);
-			path = RecentSearchContainer;
 			sourceTree = "<group>";
 		};
 		EA05898D25C5655A00BC1024 /* SettingsViewScene */ = {
@@ -381,15 +381,33 @@
 			path = PublicUsersRepositories;
 			sourceTree = "<group>";
 		};
-		EA23A08A25EDC52B001B943F /* UsersListScene */ = {
+		EA31594626018F950038883D /* HomeViewScene */ = {
 			isa = PBXGroup;
 			children = (
-				EA5EADF625929E2700AC3223 /* UsersViewController.swift */,
-				EA94DCBB25C6726C00E2C30B /* UVC TableView.swift */,
-				EABF30EE25C7C95000A17456 /* UVC SearchBar.swift */,
-				EAE2652825ED43E10084029B /* CustomCell */,
+				EA463E91260027D400F43E7D /* HomeViewController.swift */,
+				EA31595026018FB50038883D /* HVC Table.swift */,
+				EA31595326018FC50038883D /* HVC Search.swift */,
 			);
-			path = UsersListScene;
+			path = HomeViewScene;
+			sourceTree = "<group>";
+		};
+		EA315956260190B40038883D /* IssuesViewScene */ = {
+			isa = PBXGroup;
+			children = (
+				EAFD8FCB26006A60008ABA1E /* IssuesViewController.swift */,
+				EAFD8FCE26006A6B008ABA1E /* Issues.storyboard */,
+				EA31595B260191600038883D /* IVC Table.swift */,
+				EA31595E2601916E0038883D /* IVC Searchbar.swift */,
+			);
+			path = IssuesViewScene;
+			sourceTree = "<group>";
+		};
+		EA315959260191220038883D /* GithubViewScene */ = {
+			isa = PBXGroup;
+			children = (
+				EAFD8FD526008AE2008ABA1E /* GithubViewController.swift */,
+			);
+			path = GithubViewScene;
 			sourceTree = "<group>";
 		};
 		EA4664C425BAB204003C4AD1 /* View */ = {
@@ -397,10 +415,6 @@
 			children = (
 				EAC1636525BAB789007EDC96 /* Main.storyboard */,
 				EA566FF625927B9E00596E6A /* LaunchScreen.storyboard */,
-				EA463E91260027D400F43E7D /* HomeViewController.swift */,
-				EAFD8FCB26006A60008ABA1E /* IssuesViewController.swift */,
-				EAFD8FCE26006A6B008ABA1E /* Issues.storyboard */,
-				EAFD8FD526008AE2008ABA1E /* GithubViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -429,9 +443,16 @@
 			children = (
 				EA7E460725ED0F9200ACA56D /* AnimationScene */,
 				EAAF81F825D4EB43006C44EC /* LoginViewScene */,
+				EAA710FD25BD562E004D7E21 /* UsersListScene */,
+				EAB395A425D60F10009D178C /* RepositoriesScene */,
+				EA315956260190B40038883D /* IssuesViewScene */,
 				EA209CDC25C95F7F0097C03C /* CommitsScene */,
 				EA05895125C5561700BC1024 /* PublicUserProfileScene */,
+				EA23A06D25ED5C19001B943F /* PublicUsersRepositories */,
+				EA23A06725ED5C19001B943F /* PublicUsersStartted */,
+				EA23A06A25ED5C19001B943F /* PublicUsersOrganizations */,
 				EA05898D25C5655A00BC1024 /* SettingsViewScene */,
+				EA315959260191220038883D /* GithubViewScene */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -574,15 +595,6 @@
 			path = DarkMode;
 			sourceTree = "<group>";
 		};
-		EA7C9BAC25ED4BA000A45DE4 /* CustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				EA000B7225ED4E88005EF5D0 /* LastSearch */,
-				EA000B7025ED4E7F005EF5D0 /* SearchHistory */,
-			);
-			path = CustomCell;
-			sourceTree = "<group>";
-		};
 		EA7E45FE25ED0EE100ACA56D /* Others */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,8 +645,12 @@
 		EAA710FD25BD562E004D7E21 /* UsersListScene */ = {
 			isa = PBXGroup;
 			children = (
-				EA23A08A25EDC52B001B943F /* UsersListScene */,
-				EA05897125C55F8B00BC1024 /* RecentSearchContainer */,
+				EA315965260192720038883D /* Users.storyboard */,
+				EA5EADF625929E2700AC3223 /* UsersViewController.swift */,
+				EA94DCBB25C6726C00E2C30B /* UVC TableView.swift */,
+				EABF30EE25C7C95000A17456 /* UVC SearchBar.swift */,
+				EA830F87260198F600F3D2A8 /* UVC Collectio.swift */,
+				EAE2652825ED43E10084029B /* CustomCell */,
 			);
 			path = UsersListScene;
 			sourceTree = "<group>";
@@ -662,6 +678,7 @@
 				EA22D79625CE2E37009C0EEF /* RepositoriesViewController.swift */,
 				EA05898A25C564FB00BC1024 /* RVC TableView.swift */,
 				EA05898725C564C700BC1024 /* RVC SearchBar.swift */,
+				EA315961260192390038883D /* Repos.storyboard */,
 				EAE2652A25ED43F80084029B /* CustomCell */,
 			);
 			path = RepositoriesScene;
@@ -715,8 +732,7 @@
 			isa = PBXGroup;
 			children = (
 				EAC6C45F25FC92AC006702EE /* TabBarScene */,
-				EAA710FD25BD562E004D7E21 /* UsersListScene */,
-				EAB395A425D60F10009D178C /* RepositoriesScene */,
+				EA31594626018F950038883D /* HomeViewScene */,
 				EA65CB7C25BE9069005CBA09 /* BookmarksScene */,
 				EADCD06B25E334C3005F7033 /* ProfileViewScene */,
 			);
@@ -736,6 +752,8 @@
 		EAE2652825ED43E10084029B /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				EA000B7225ED4E88005EF5D0 /* LastSearch */,
+				EA000B7025ED4E7F005EF5D0 /* SearchHistory */,
 				EAC1636325BAB789007EDC96 /* UsersCell.xib */,
 				EAD4476425B0148A00FB42B4 /* UsersCell.swift */,
 			);
@@ -833,11 +851,13 @@
 				EA3FA0FD25AE9C00008D7520 /* loadingspinner.json in Resources */,
 				EA7216D425B6121200E21D3B /* Localizable.strings in Resources */,
 				EA000B6E25ED4E76005EF5D0 /* SearchHistoryCell.xib in Resources */,
+				EA315966260192720038883D /* Users.storyboard in Resources */,
 				EAC1636825BAB789007EDC96 /* Main.storyboard in Resources */,
 				EA000B6725ED4E41005EF5D0 /* CommitsCell.xib in Resources */,
 				EAE2651B25ED3DD00084029B /* UserRepos.storyboard in Resources */,
 				EAF1165725DCC644007A1F8F /* LanguageCell.xib in Resources */,
 				EAE2651825ED3C170084029B /* CommitsView.storyboard in Resources */,
+				EA315962260192390038883D /* Repos.storyboard in Resources */,
 				EA566FF825927B9E00596E6A /* LaunchScreen.storyboard in Resources */,
 				EA566FF525927B9E00596E6A /* Assets.xcassets in Resources */,
 				EAC1636725BAB789007EDC96 /* ReposCell.xib in Resources */,
@@ -898,9 +918,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA000B6625ED4E41005EF5D0 /* CommitsCell.swift in Sources */,
+				EA31595F2601916E0038883D /* IVC Searchbar.swift in Sources */,
 				EA7C4CA925BAA7E000EC9F45 /* BookmarksViewController.swift in Sources */,
 				EAA710F525BD4707004D7E21 /* GitAPIcaller.swift in Sources */,
 				EA23A07125ED5C1A001B943F /* UsersStartedViewController.swift in Sources */,
+				EA31595C260191600038883D /* IVC Table.swift in Sources */,
 				EA05895525C5567700BC1024 /* GitDataBase.swift in Sources */,
 				EA463E92260027D400F43E7D /* HomeViewController.swift in Sources */,
 				EAAF820825D4F012006C44EC /* SettingsCell.swift in Sources */,
@@ -922,6 +944,7 @@
 				EA50D2B825FD6F7800EE32F8 /* GitEntities.swift in Sources */,
 				EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */,
 				EA000B6D25ED4E76005EF5D0 /* SearchHistoryCell.swift in Sources */,
+				EA31595126018FB50038883D /* HVC Table.swift in Sources */,
 				EA22D78D25CE2DF4009C0EEF /* GitSecureStoreError.swift in Sources */,
 				EA22D7B625CE2F1B009C0EEF /* GitTokenManager.swift in Sources */,
 				EA05898825C564C700BC1024 /* RVC SearchBar.swift in Sources */,
@@ -933,12 +956,14 @@
 				EA22D78625CE2DE0009C0EEF /* GitNetworkLogger.swift in Sources */,
 				EA62595F25CFD75300D63BE0 /* GitSessionManger.swift in Sources */,
 				EAFD8FD226006B92008ABA1E /* Issues.swift in Sources */,
+				EA830F88260198F600F3D2A8 /* UVC Collectio.swift in Sources */,
 				EADCD09425E388EE005F7033 /* User.swift in Sources */,
 				EAD4476625B0148A00FB42B4 /* UsersCell.swift in Sources */,
 				EA22D78E25CE2DF4009C0EEF /* GitSecureStore.swift in Sources */,
 				EAC3B17325C9520700F798DA /* CommitsViewController.swift in Sources */,
 				EA668BA125BFE83C00392A30 /* Githubgenics.xcdatamodeld in Sources */,
 				EADCD08025E36AE8005F7033 /* UserStarredViewController.swift in Sources */,
+				EA31595426018FC50038883D /* HVC Search.swift in Sources */,
 				EA622CFC25C54F3800EC5F3C /* Users.swift in Sources */,
 				EA23A07225ED5C1A001B943F /* UsersRepositoryViewController.swift in Sources */,
 				EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */,
@@ -954,7 +979,6 @@
 				EA88A7B725D709CB008663BD /* GitStoryboardIDs.swift in Sources */,
 				EA4530C825BFAD3B00651BFA /* GitLocalization.swift in Sources */,
 				EA999A7A25927CAA005E832C /* LoginViewController.swift in Sources */,
-				EAB2AD0C25BBED9F001B6DD7 /* RecentSearchController.swift in Sources */,
 				EA5FD26325D62CAD002E8927 /* GitHaptics.swift in Sources */,
 				EA22D7B725CE2F1B009C0EEF /* GitHubAccessToken.swift in Sources */,
 				EA45AA1A259C45E400365E9B /* GitNetwrokReachability.swift in Sources */,
