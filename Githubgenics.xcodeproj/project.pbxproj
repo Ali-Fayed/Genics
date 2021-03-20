@@ -29,12 +29,15 @@
 		EA22D7A125CE2EAB009C0EEF /* GitHubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78225CE2DE0009C0EEF /* GitHubConstants.swift */; };
 		EA22D7B625CE2F1B009C0EEF /* GitTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78125CE2DE0009C0EEF /* GitTokenManager.swift */; };
 		EA22D7B725CE2F1B009C0EEF /* GitHubAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78025CE2DE0009C0EEF /* GitHubAccessToken.swift */; };
-		EA23A07025ED5C1A001B943F /* UsersOrgsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23A06B25ED5C19001B943F /* UsersOrgsViewController.swift */; };
-		EA23A07125ED5C1A001B943F /* UsersStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23A06825ED5C19001B943F /* UsersStartedViewController.swift */; };
-		EA23A07225ED5C1A001B943F /* UsersRepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23A06E25ED5C1A001B943F /* UsersRepositoryViewController.swift */; };
+		EA23A07025ED5C1A001B943F /* OrgsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23A06B25ED5C19001B943F /* OrgsViewController.swift */; };
+		EA23A07125ED5C1A001B943F /* PublicUserStarredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23A06825ED5C19001B943F /* PublicUserStarredViewController.swift */; };
+		EA23A07225ED5C1A001B943F /* PublicUserRepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23A06E25ED5C1A001B943F /* PublicUserRepositoriesViewController.swift */; };
 		EA23A07B25ED603B001B943F /* UsersRepos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA23A07A25ED603B001B943F /* UsersRepos.storyboard */; };
 		EA23A07F25ED6657001B943F /* UsersStartted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA23A07E25ED6657001B943F /* UsersStartted.storyboard */; };
 		EA23A08325ED6766001B943F /* UsersOrgs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA23A08225ED6766001B943F /* UsersOrgs.storyboard */; };
+		EA2C11732605AA3000E6EFE1 /* UserRepositoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2C11722605AA3000E6EFE1 /* UserRepositoryData.swift */; };
+		EA2C11812605B8C000E6EFE1 /* StarredViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2C11802605B8C000E6EFE1 /* StarredViewData.swift */; };
+		EA2C11842605B8D400E6EFE1 /* UserOrgsViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2C11832605B8D400E6EFE1 /* UserOrgsViewData.swift */; };
 		EA2F137725DF21A400470A04 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2F137625DF21A400470A04 /* Repository.swift */; };
 		EA31595126018FB50038883D /* HVC Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31595026018FB50038883D /* HVC Table.swift */; };
 		EA31595426018FC50038883D /* HVC Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31595326018FC50038883D /* HVC Search.swift */; };
@@ -92,7 +95,6 @@
 		EADCD07525E35FF6005F7033 /* UserRepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07425E35FF6005F7033 /* UserRepositoryViewController.swift */; };
 		EADCD07825E36681005F7033 /* Orgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07725E36681005F7033 /* Orgs.swift */; };
 		EADCD08025E36AE8005F7033 /* UserStarredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07F25E36AE8005F7033 /* UserStarredViewController.swift */; };
-		EADCD08325E36B0F005F7033 /* UserOrgsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD08225E36B0F005F7033 /* UserOrgsViewController.swift */; };
 		EADCD08625E36EC1005F7033 /* GitViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD08525E36EC1005F7033 /* GitViewExtension.swift */; };
 		EADCD09425E388EE005F7033 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD09325E388EE005F7033 /* User.swift */; };
 		EAE2650F25ED323C0084029B /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE2650E25ED323C0084029B /* LoginView.storyboard */; };
@@ -101,8 +103,8 @@
 		EAE2651825ED3C170084029B /* CommitsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE2651725ED3C170084029B /* CommitsView.storyboard */; };
 		EAE2651B25ED3DD00084029B /* UserRepos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE2651A25ED3DD00084029B /* UserRepos.storyboard */; };
 		EAE2651E25ED3DE70084029B /* UserStartted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE2651D25ED3DE70084029B /* UserStartted.storyboard */; };
-		EAE2652125ED3DF20084029B /* UserOrgs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE2652025ED3DF20084029B /* UserOrgs.storyboard */; };
 		EAE2652425ED3FA00084029B /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE2652325ED3FA00084029B /* TabBar.storyboard */; };
+		EAE3CD46260593C400C7D879 /* ProfileViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE3CD45260593C400C7D879 /* ProfileViewData.swift */; };
 		EAEEE13A25DCACCD00E88EED /* GitTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEEE13925DCACCD00E88EED /* GitTableViewExtension.swift */; };
 		EAF1165625DCC644007A1F8F /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF1165425DCC644007A1F8F /* LanguageCell.swift */; };
 		EAF1165725DCC644007A1F8F /* LanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF1165525DCC644007A1F8F /* LanguageCell.xib */; };
@@ -137,12 +139,15 @@
 		EA22D78C25CE2DF4009C0EEF /* GitSecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitSecureStore.swift; sourceTree = "<group>"; };
 		EA22D79325CE2E26009C0EEF /* GitSecureStoreQueryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitSecureStoreQueryable.swift; sourceTree = "<group>"; };
 		EA22D79625CE2E37009C0EEF /* RepositoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesViewController.swift; sourceTree = "<group>"; };
-		EA23A06825ED5C19001B943F /* UsersStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersStartedViewController.swift; sourceTree = "<group>"; };
-		EA23A06B25ED5C19001B943F /* UsersOrgsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersOrgsViewController.swift; sourceTree = "<group>"; };
-		EA23A06E25ED5C1A001B943F /* UsersRepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepositoryViewController.swift; sourceTree = "<group>"; };
+		EA23A06825ED5C19001B943F /* PublicUserStarredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicUserStarredViewController.swift; sourceTree = "<group>"; };
+		EA23A06B25ED5C19001B943F /* OrgsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgsViewController.swift; sourceTree = "<group>"; };
+		EA23A06E25ED5C1A001B943F /* PublicUserRepositoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicUserRepositoriesViewController.swift; sourceTree = "<group>"; };
 		EA23A07A25ED603B001B943F /* UsersRepos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UsersRepos.storyboard; sourceTree = "<group>"; };
 		EA23A07E25ED6657001B943F /* UsersStartted.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UsersStartted.storyboard; sourceTree = "<group>"; };
 		EA23A08225ED6766001B943F /* UsersOrgs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UsersOrgs.storyboard; sourceTree = "<group>"; };
+		EA2C11722605AA3000E6EFE1 /* UserRepositoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryData.swift; sourceTree = "<group>"; };
+		EA2C11802605B8C000E6EFE1 /* StarredViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredViewData.swift; sourceTree = "<group>"; };
+		EA2C11832605B8D400E6EFE1 /* UserOrgsViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOrgsViewData.swift; sourceTree = "<group>"; };
 		EA2F137625DF21A400470A04 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		EA31595026018FB50038883D /* HVC Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HVC Table.swift"; sourceTree = "<group>"; };
 		EA31595326018FC50038883D /* HVC Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HVC Search.swift"; sourceTree = "<group>"; };
@@ -203,7 +208,6 @@
 		EADCD07425E35FF6005F7033 /* UserRepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryViewController.swift; sourceTree = "<group>"; };
 		EADCD07725E36681005F7033 /* Orgs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orgs.swift; sourceTree = "<group>"; };
 		EADCD07F25E36AE8005F7033 /* UserStarredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStarredViewController.swift; sourceTree = "<group>"; };
-		EADCD08225E36B0F005F7033 /* UserOrgsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOrgsViewController.swift; sourceTree = "<group>"; };
 		EADCD08525E36EC1005F7033 /* GitViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitViewExtension.swift; sourceTree = "<group>"; };
 		EADCD09325E388EE005F7033 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EAE2650E25ED323C0084029B /* LoginView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginView.storyboard; sourceTree = "<group>"; };
@@ -212,8 +216,8 @@
 		EAE2651725ED3C170084029B /* CommitsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommitsView.storyboard; sourceTree = "<group>"; };
 		EAE2651A25ED3DD00084029B /* UserRepos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserRepos.storyboard; sourceTree = "<group>"; };
 		EAE2651D25ED3DE70084029B /* UserStartted.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserStartted.storyboard; sourceTree = "<group>"; };
-		EAE2652025ED3DF20084029B /* UserOrgs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserOrgs.storyboard; sourceTree = "<group>"; };
 		EAE2652325ED3FA00084029B /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		EAE3CD45260593C400C7D879 /* ProfileViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewData.swift; sourceTree = "<group>"; };
 		EAEEE13925DCACCD00E88EED /* GitTableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitTableViewExtension.swift; sourceTree = "<group>"; };
 		EAF1165425DCC644007A1F8F /* LanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
 		EAF1165525DCC644007A1F8F /* LanguageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageCell.xib; sourceTree = "<group>"; };
@@ -278,13 +282,15 @@
 			path = LastSearch;
 			sourceTree = "<group>";
 		};
-		EA05895125C5561700BC1024 /* PublicUserProfileScene */ = {
+		EA05895125C5561700BC1024 /* ProfileViewScenes */ = {
 			isa = PBXGroup;
 			children = (
+				EADCD06C25E334DD005F7033 /* ProfileViewController.swift */,
 				EA999A6425927C02005E832C /* PublicUserProfileViewController.swift */,
+				EAE3CD45260593C400C7D879 /* ProfileViewData.swift */,
 				EAE2651425ED3B9A0084029B /* DetailView.storyboard */,
 			);
-			path = PublicUserProfileScene;
+			path = ProfileViewScenes;
 			sourceTree = "<group>";
 		};
 		EA05898D25C5655A00BC1024 /* SettingsViewScene */ = {
@@ -354,31 +360,16 @@
 			path = GitAuthentication;
 			sourceTree = "<group>";
 		};
-		EA23A06725ED5C19001B943F /* PublicUsersStartted */ = {
+		EA2C11882605B91700E6EFE1 /* UserProfileData */ = {
 			isa = PBXGroup;
 			children = (
-				EA23A06825ED5C19001B943F /* UsersStartedViewController.swift */,
-				EA23A07E25ED6657001B943F /* UsersStartted.storyboard */,
+				EA7C9B9E25ED48C300A45DE4 /* ReposScene */,
+				EA209CDC25C95F7F0097C03C /* CommitsScene */,
+				EA7C9BA025ED48CD00A45DE4 /* StarredScene */,
+				EA315956260190B40038883D /* IssuesScene */,
+				EA7C9BA225ED48D700A45DE4 /* OrgsScene */,
 			);
-			path = PublicUsersStartted;
-			sourceTree = "<group>";
-		};
-		EA23A06A25ED5C19001B943F /* PublicUsersOrganizations */ = {
-			isa = PBXGroup;
-			children = (
-				EA23A06B25ED5C19001B943F /* UsersOrgsViewController.swift */,
-				EA23A08225ED6766001B943F /* UsersOrgs.storyboard */,
-			);
-			path = PublicUsersOrganizations;
-			sourceTree = "<group>";
-		};
-		EA23A06D25ED5C19001B943F /* PublicUsersRepositories */ = {
-			isa = PBXGroup;
-			children = (
-				EA23A06E25ED5C1A001B943F /* UsersRepositoryViewController.swift */,
-				EA23A07A25ED603B001B943F /* UsersRepos.storyboard */,
-			);
-			path = PublicUsersRepositories;
+			path = UserProfileData;
 			sourceTree = "<group>";
 		};
 		EA31594626018F950038883D /* HomeViewScene */ = {
@@ -391,23 +382,23 @@
 			path = HomeViewScene;
 			sourceTree = "<group>";
 		};
-		EA315956260190B40038883D /* IssuesViewScene */ = {
+		EA315956260190B40038883D /* IssuesScene */ = {
 			isa = PBXGroup;
 			children = (
 				EAFD8FCB26006A60008ABA1E /* IssuesViewController.swift */,
-				EAFD8FCE26006A6B008ABA1E /* Issues.storyboard */,
 				EA31595B260191600038883D /* IVC Table.swift */,
 				EA31595E2601916E0038883D /* IVC Searchbar.swift */,
+				EAFD8FCE26006A6B008ABA1E /* Issues.storyboard */,
 			);
-			path = IssuesViewScene;
+			path = IssuesScene;
 			sourceTree = "<group>";
 		};
-		EA315959260191220038883D /* GithubViewScene */ = {
+		EA315959260191220038883D /* GithubWVScene */ = {
 			isa = PBXGroup;
 			children = (
 				EAFD8FD526008AE2008ABA1E /* GithubViewController.swift */,
 			);
-			path = GithubViewScene;
+			path = GithubWVScene;
 			sourceTree = "<group>";
 		};
 		EA4664C425BAB204003C4AD1 /* View */ = {
@@ -436,25 +427,6 @@
 				EA48ACEF25D4D2C9006803BD /* GitNetworkMonitor.swift */,
 			);
 			path = GitNetworkMonitoring;
-			sourceTree = "<group>";
-		};
-		EA50D2BD25FD721C00EE32F8 /* Others */ = {
-			isa = PBXGroup;
-			children = (
-				EA7E460725ED0F9200ACA56D /* AnimationScene */,
-				EAAF81F825D4EB43006C44EC /* LoginViewScene */,
-				EAA710FD25BD562E004D7E21 /* UsersListScene */,
-				EAB395A425D60F10009D178C /* RepositoriesScene */,
-				EA315956260190B40038883D /* IssuesViewScene */,
-				EA209CDC25C95F7F0097C03C /* CommitsScene */,
-				EA05895125C5561700BC1024 /* PublicUserProfileScene */,
-				EA23A06D25ED5C19001B943F /* PublicUsersRepositories */,
-				EA23A06725ED5C19001B943F /* PublicUsersStartted */,
-				EA23A06A25ED5C19001B943F /* PublicUsersOrganizations */,
-				EA05898D25C5655A00BC1024 /* SettingsViewScene */,
-				EA315959260191220038883D /* GithubViewScene */,
-			);
-			path = Others;
 			sourceTree = "<group>";
 		};
 		EA566FDC25927B9D00596E6A = {
@@ -542,31 +514,38 @@
 			path = GitCoreData;
 			sourceTree = "<group>";
 		};
-		EA7C9B9E25ED48C300A45DE4 /* UserRepositories */ = {
+		EA7C9B9E25ED48C300A45DE4 /* ReposScene */ = {
 			isa = PBXGroup;
 			children = (
 				EADCD07425E35FF6005F7033 /* UserRepositoryViewController.swift */,
+				EA23A06E25ED5C1A001B943F /* PublicUserRepositoriesViewController.swift */,
+				EA2C11722605AA3000E6EFE1 /* UserRepositoryData.swift */,
 				EAE2651A25ED3DD00084029B /* UserRepos.storyboard */,
+				EA23A07A25ED603B001B943F /* UsersRepos.storyboard */,
 			);
-			path = UserRepositories;
+			path = ReposScene;
 			sourceTree = "<group>";
 		};
-		EA7C9BA025ED48CD00A45DE4 /* UserStarred */ = {
+		EA7C9BA025ED48CD00A45DE4 /* StarredScene */ = {
 			isa = PBXGroup;
 			children = (
 				EADCD07F25E36AE8005F7033 /* UserStarredViewController.swift */,
+				EA23A06825ED5C19001B943F /* PublicUserStarredViewController.swift */,
+				EA2C11802605B8C000E6EFE1 /* StarredViewData.swift */,
+				EA23A07E25ED6657001B943F /* UsersStartted.storyboard */,
 				EAE2651D25ED3DE70084029B /* UserStartted.storyboard */,
 			);
-			path = UserStarred;
+			path = StarredScene;
 			sourceTree = "<group>";
 		};
-		EA7C9BA225ED48D700A45DE4 /* UserOrganizations */ = {
+		EA7C9BA225ED48D700A45DE4 /* OrgsScene */ = {
 			isa = PBXGroup;
 			children = (
-				EADCD08225E36B0F005F7033 /* UserOrgsViewController.swift */,
-				EAE2652025ED3DF20084029B /* UserOrgs.storyboard */,
+				EA23A06B25ED5C19001B943F /* OrgsViewController.swift */,
+				EA2C11832605B8D400E6EFE1 /* UserOrgsViewData.swift */,
+				EA23A08225ED6766001B943F /* UsersOrgs.storyboard */,
 			);
-			path = UserOrganizations;
+			path = OrgsScene;
 			sourceTree = "<group>";
 		};
 		EA7C9BA525ED490B00A45DE4 /* SignOut */ = {
@@ -636,8 +615,17 @@
 		EA999A7425927C67005E832C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EAE2652625ED42C70084029B /* TabBarScenes */,
-				EA50D2BD25FD721C00EE32F8 /* Others */,
+				EA7E460725ED0F9200ACA56D /* AnimationScene */,
+				EAAF81F825D4EB43006C44EC /* LoginViewScene */,
+				EAC6C45F25FC92AC006702EE /* TabBarScene */,
+				EA31594626018F950038883D /* HomeViewScene */,
+				EA65CB7C25BE9069005CBA09 /* BookmarksScene */,
+				EAA710FD25BD562E004D7E21 /* UsersListScene */,
+				EAB395A425D60F10009D178C /* ReposListScene */,
+				EA05895125C5561700BC1024 /* ProfileViewScenes */,
+				EA2C11882605B91700E6EFE1 /* UserProfileData */,
+				EA315959260191220038883D /* GithubWVScene */,
+				EA05898D25C5655A00BC1024 /* SettingsViewScene */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -672,7 +660,7 @@
 			path = GitConstants;
 			sourceTree = "<group>";
 		};
-		EAB395A425D60F10009D178C /* RepositoriesScene */ = {
+		EAB395A425D60F10009D178C /* ReposListScene */ = {
 			isa = PBXGroup;
 			children = (
 				EA22D79625CE2E37009C0EEF /* RepositoriesViewController.swift */,
@@ -681,7 +669,7 @@
 				EA315961260192390038883D /* Repos.storyboard */,
 				EAE2652A25ED43F80084029B /* CustomCell */,
 			);
-			path = RepositoriesScene;
+			path = ReposListScene;
 			sourceTree = "<group>";
 		};
 		EAC6C44B25FC8F67006702EE /* GitNetwrokSession */ = {
@@ -715,28 +703,6 @@
 				EA71B59B25E40C4F00779B9A /* TabBarViewController.swift */,
 			);
 			path = TabBarScene;
-			sourceTree = "<group>";
-		};
-		EADCD06B25E334C3005F7033 /* ProfileViewScene */ = {
-			isa = PBXGroup;
-			children = (
-				EADCD06C25E334DD005F7033 /* ProfileViewController.swift */,
-				EA7C9B9E25ED48C300A45DE4 /* UserRepositories */,
-				EA7C9BA025ED48CD00A45DE4 /* UserStarred */,
-				EA7C9BA225ED48D700A45DE4 /* UserOrganizations */,
-			);
-			path = ProfileViewScene;
-			sourceTree = "<group>";
-		};
-		EAE2652625ED42C70084029B /* TabBarScenes */ = {
-			isa = PBXGroup;
-			children = (
-				EAC6C45F25FC92AC006702EE /* TabBarScene */,
-				EA31594626018F950038883D /* HomeViewScene */,
-				EA65CB7C25BE9069005CBA09 /* BookmarksScene */,
-				EADCD06B25E334C3005F7033 /* ProfileViewScene */,
-			);
-			path = TabBarScenes;
 			sourceTree = "<group>";
 		};
 		EAE2652725ED432C0084029B /* CustomCells */ = {
@@ -847,7 +813,6 @@
 				EA23A07B25ED603B001B943F /* UsersRepos.storyboard in Resources */,
 				EAE2651225ED38EE0084029B /* Settings.storyboard in Resources */,
 				EA23A07F25ED6657001B943F /* UsersStartted.storyboard in Resources */,
-				EAE2652125ED3DF20084029B /* UserOrgs.storyboard in Resources */,
 				EA3FA0FD25AE9C00008D7520 /* loadingspinner.json in Resources */,
 				EA7216D425B6121200E21D3B /* Localizable.strings in Resources */,
 				EA000B6E25ED4E76005EF5D0 /* SearchHistoryCell.xib in Resources */,
@@ -921,7 +886,7 @@
 				EA31595F2601916E0038883D /* IVC Searchbar.swift in Sources */,
 				EA7C4CA925BAA7E000EC9F45 /* BookmarksViewController.swift in Sources */,
 				EAA710F525BD4707004D7E21 /* GitAPIcaller.swift in Sources */,
-				EA23A07125ED5C1A001B943F /* UsersStartedViewController.swift in Sources */,
+				EA23A07125ED5C1A001B943F /* PublicUserStarredViewController.swift in Sources */,
 				EA31595C260191600038883D /* IVC Table.swift in Sources */,
 				EA05895525C5567700BC1024 /* GitDataBase.swift in Sources */,
 				EA463E92260027D400F43E7D /* HomeViewController.swift in Sources */,
@@ -949,7 +914,7 @@
 				EA22D7B625CE2F1B009C0EEF /* GitTokenManager.swift in Sources */,
 				EA05898825C564C700BC1024 /* RVC SearchBar.swift in Sources */,
 				EA3FA0FA25AE9B88008D7520 /* LaunchScreenViewController.swift in Sources */,
-				EADCD08325E36B0F005F7033 /* UserOrgsViewController.swift in Sources */,
+				EA2C11842605B8D400E6EFE1 /* UserOrgsViewData.swift in Sources */,
 				EA22D78525CE2DE0009C0EEF /* GitRequestRouter.swift in Sources */,
 				EA05898B25C564FB00BC1024 /* RVC TableView.swift in Sources */,
 				EA71B59C25E40C4F00779B9A /* TabBarViewController.swift in Sources */,
@@ -965,7 +930,7 @@
 				EADCD08025E36AE8005F7033 /* UserStarredViewController.swift in Sources */,
 				EA31595426018FC50038883D /* HVC Search.swift in Sources */,
 				EA622CFC25C54F3800EC5F3C /* Users.swift in Sources */,
-				EA23A07225ED5C1A001B943F /* UsersRepositoryViewController.swift in Sources */,
+				EA23A07225ED5C1A001B943F /* PublicUserRepositoriesViewController.swift in Sources */,
 				EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */,
 				EA668B9D25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift in Sources */,
 				EADCD07525E35FF6005F7033 /* UserRepositoryViewController.swift in Sources */,
@@ -977,8 +942,10 @@
 				EA999A6525927C02005E832C /* PublicUserProfileViewController.swift in Sources */,
 				EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */,
 				EA88A7B725D709CB008663BD /* GitStoryboardIDs.swift in Sources */,
+				EAE3CD46260593C400C7D879 /* ProfileViewData.swift in Sources */,
 				EA4530C825BFAD3B00651BFA /* GitLocalization.swift in Sources */,
 				EA999A7A25927CAA005E832C /* LoginViewController.swift in Sources */,
+				EA2C11812605B8C000E6EFE1 /* StarredViewData.swift in Sources */,
 				EA5FD26325D62CAD002E8927 /* GitHaptics.swift in Sources */,
 				EA22D7B725CE2F1B009C0EEF /* GitHubAccessToken.swift in Sources */,
 				EA45AA1A259C45E400365E9B /* GitNetwrokReachability.swift in Sources */,
@@ -990,7 +957,8 @@
 				EABF30EF25C7C95000A17456 /* UVC SearchBar.swift in Sources */,
 				EAFD8FCC26006A60008ABA1E /* IssuesViewController.swift in Sources */,
 				EAAF820C25D4F036006C44EC /* SignOutCell.swift in Sources */,
-				EA23A07025ED5C1A001B943F /* UsersOrgsViewController.swift in Sources */,
+				EA23A07025ED5C1A001B943F /* OrgsViewController.swift in Sources */,
+				EA2C11732605AA3000E6EFE1 /* UserRepositoryData.swift in Sources */,
 				EA0C2D9725BD068C00D3898A /* LastSearch+CoreDataProperties.swift in Sources */,
 				EA7BC37E25FDE44100C22F98 /* HeaderView.swift in Sources */,
 				EADCD07825E36681005F7033 /* Orgs.swift in Sources */,

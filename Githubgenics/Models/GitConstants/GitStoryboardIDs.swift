@@ -24,6 +24,7 @@ struct Storyboards {
     static let IssuesView = "Issues"
     static let ReposView = "Repos"
     static let UsersView = "Users"
+    static let reposDetails = "ReposDetails"
 }
 
 struct ID {
@@ -42,4 +43,5 @@ struct ID {
     static let usersOrgsViewControllerID = "UsersOrgsViewController"
     static let homeViewController = "HomeViewController"
     static let issuesViewController = "IssuesViewController"
+    static let reposDetailsViewController = "ReposDetailsViewController"
 }

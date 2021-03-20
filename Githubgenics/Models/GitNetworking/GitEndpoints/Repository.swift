@@ -25,6 +25,7 @@ struct Repository {
         case repositoryLanguage = "language"
         case repoFullName = "full_name"
         case repositoryURL = "html_url"
+        case repoOwner = "owner"
     }
 }
 
@@ -37,6 +38,10 @@ extension Repository: Decodable {
         repositoryLanguage = try? container.decode(String.self, forKey: .repositoryLanguage)
         repositoryURL = try container.decode(String.self, forKey: .repositoryURL)
         repoFullName = try container.decode(String.self, forKey: .repoFullName)
-
     }
 }
+
+
+
+
+
