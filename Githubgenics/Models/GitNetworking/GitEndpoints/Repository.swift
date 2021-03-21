@@ -17,6 +17,8 @@ struct Repository {
     let repoFullName: String
     let repositoryLanguage: String?
     let repositoryURL:String
+    let repoOwnerName:String
+    let repoOwnerAvatarURL:String
     
     enum repositoriesCodingKeys: String, CodingKey {
         case repositoryName = "name"
@@ -26,18 +28,23 @@ struct Repository {
         case repoFullName = "full_name"
         case repositoryURL = "html_url"
         case repoOwner = "owner"
+        case repoOwnerName = "login"
+        case repoOwnerAvatarURL = "avatar_url"
     }
 }
 
 extension Repository: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: repositoriesCodingKeys.self)
+        let owner = try container.nestedContainer(keyedBy: repositoriesCodingKeys.self, forKey: .repoOwner)
         repositoryName = try container.decode(String.self, forKey: .repositoryName)
         repositoryDescription = try? container.decode(String.self, forKey: .repositoryDescription)
         repositoryStars = try? container.decode(Int.self, forKey: .repositoryStars)
         repositoryLanguage = try? container.decode(String.self, forKey: .repositoryLanguage)
         repositoryURL = try container.decode(String.self, forKey: .repositoryURL)
         repoFullName = try container.decode(String.self, forKey: .repoFullName)
+        repoOwnerName = try owner.decode(String.self, forKey: .repoOwnerName)
+        repoOwnerAvatarURL = try owner.decode(String.self, forKey: .repoOwnerAvatarURL)
     }
 }
 

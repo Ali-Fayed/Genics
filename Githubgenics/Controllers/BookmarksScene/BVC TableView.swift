@@ -161,7 +161,7 @@ extension BookmarksViewController: UITableViewDelegate , UITableViewDataSource {
     
     // excute
     func searchFromDB () {
-        guard let searchText = searchBar.text else { return }
+        guard let searchText = searchController.searchBar.text else { return }
         if searchText.isEmpty {
             renderViewData()
             DispatchQueue.main.async {

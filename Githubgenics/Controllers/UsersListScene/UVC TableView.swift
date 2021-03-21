@@ -51,7 +51,6 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
         }
         else if tableView == self.recentSearchTable {
             tableView.deselectRow(at: indexPath, animated: true)
-            print("aa")
         }
 
     }
@@ -64,7 +63,7 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
                 showTableViewSpinner()
                 let query : String = {
                     var queryString = String()
-                    if let searchText = search.searchBar.text {
+                    if let searchText = searchController.searchBar.text {
                         queryString = searchText.isEmpty ? "a" : searchText
                     }
                     return queryString

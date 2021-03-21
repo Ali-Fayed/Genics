@@ -10,36 +10,15 @@ import SwiftyJSON
 import Alamofire
 import Kingfisher
 
-class ProfileViewData: UIViewController {
+class ProfileViewData: ViewSetups {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let tableFooterView = UIView()
     var profileTableData = [ProfileTableData]()
     var userRepository = [Repository]()
     var selectedRepository: Repository?
     var passedUser : items?
     
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.gray
-        return refreshControl
-    }()
-    
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        refreshControl.endRefreshing()
-        HapticsManger.shared.selectionVibrate(for: .soft)
-    }
-    
-    let noContentLabel: UILabel = {
-        let label = UILabel()
-        label.isHidden = true
-        label.textAlignment = .center
-        label.textColor = UIColor(named: "color")
-        label.font = .systemFont(ofSize: 21, weight: .medium)
-        return label
-    }()
-    
+
     var isLoggedIn: Bool {
         if GitTokenManager.shared.fetchAccessToken() != nil {
             return true

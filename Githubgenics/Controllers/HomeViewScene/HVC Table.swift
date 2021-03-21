@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -223,7 +224,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             case 1:
-                break
+                let url = "https://github.com/Ali-Fayed/Githubgenics"
+                let vc = SFSafariViewController(url: URL(string: url)!)
+                present(vc, animated: true)
             default:
                 break
             }
@@ -235,16 +238,18 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
                 try! self.context.save()
             if indexPath.row == 0 {
                 let vc = UIStoryboard.init(name: Storyboards.UsersView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.usersListViewID) as? UsersViewController
-                vc?.search.searchBar.text = self.search.searchBar.text
+                vc?.searchController.searchBar.text = self.search.searchBar.text
+                vc?.query = self.search.searchBar.text!
                 self.navigationController?.pushViewController(vc!, animated: true)
             } else if indexPath.row == 1 {
                 let vc = UIStoryboard.init(name: Storyboards.ReposView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.repositoriesViewController) as? RepositoriesViewController
-                vc?.search.searchBar.text = self.search.searchBar.text
+                vc?.searchController.searchBar.text = self.search.searchBar.text
+                vc?.query = self.search.searchBar.text!
                 self.navigationController?.pushViewController(vc!, animated: true)
                 
             } else if indexPath.row == 2 {
                 let vc = UIStoryboard.init(name: Storyboards.IssuesView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.issuesViewController) as? IssuesViewController
-                vc?.search.searchBar.text = self.search.searchBar.text
+                vc?.searchController.searchBar.text = self.search.searchBar.text
                 self.navigationController?.pushViewController(vc!, animated: true)
             }
         }

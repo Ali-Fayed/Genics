@@ -12,17 +12,17 @@ extension RepositoriesViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         
         UIView.animate(withDuration: 0.0, animations: {
-            if self.search.searchBar.text?.isEmpty == true {
+            if self.searchController.searchBar.text?.isEmpty == true {
                 self.tableView.alpha = 0.0
-                self.searchLabel.alpha = 1.0
+                self.noContentLabel.alpha = 1.0
             } else {
                 self.tableView.alpha = 1.0
-                self.searchLabel.alpha = 0.0
+                self.noContentLabel.alpha = 0.0
             }
         })
         DispatchQueue.main.async {
             self.reposSearchBar.text = nil
-            self.searchLabel.isHidden = false
+            self.noContentLabel.isHidden = false
             self.pageNo = 1
             self.tableView.isHidden = false
         }
@@ -42,7 +42,7 @@ extension RepositoriesViewController: UISearchBarDelegate {
         }
         UIView.animate(withDuration: 0.5, animations: {
             self.tableView.alpha = 1.0
-            self.searchLabel.isHidden = true
+            self.noContentLabel.isHidden = true
             if searchBar.text?.isEmpty == true {
                 self.tableView.alpha = 0.0
                 self.spinner.dismiss()
@@ -54,13 +54,13 @@ extension RepositoriesViewController: UISearchBarDelegate {
         
         UIView.animate(withDuration: 0.0, animations: {
             self.tableView.alpha = 1.0
-            self.searchLabel.alpha = 0.0
+            self.noContentLabel.alpha = 0.0
         })
         
         DispatchQueue.main.async {
             self.reposSearchBar.resignFirstResponder()
             self.reposSearchBar.text = nil
-            self.searchLabel.isHidden = true
+            self.noContentLabel.isHidden = true
             self.tableView.isHidden = false
 
         }
@@ -69,7 +69,7 @@ extension RepositoriesViewController: UISearchBarDelegate {
     
     func didPresentSearchController(searchController: UISearchController) {
         DispatchQueue.main.async {
-            self.search.searchBar.becomeFirstResponder()
+            self.searchController.searchBar.becomeFirstResponder()
 
         }
     }

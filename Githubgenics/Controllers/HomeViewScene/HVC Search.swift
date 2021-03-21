@@ -48,6 +48,8 @@ extension HomeViewController: UISearchBarDelegate {
             self.searchFieldsTable.isHidden = true
             self.searchLabel.isHidden = true
             self.historyTable.reloadData()
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .always
+            self.navigationController?.navigationBar.prefersLargeTitles = true
         }
     }
     

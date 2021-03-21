@@ -9,12 +9,11 @@ import UIKit
 import SwiftyJSON
 import SafariServices
 
-class HomeViewController: UIViewController {
+class HomeViewController: ViewSetups {
     
     var searchHistory = [SearchHistory]()
     var profileTableData = [ProfileTableData]()
     var searchTableData = [ProfileTableData]()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     var isLoggedIn: Bool {
         if GitTokenManager.shared.fetchAccessToken() != nil {
@@ -22,13 +21,6 @@ class HomeViewController: UIViewController {
         }
         return false
     }
-    
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.gray
-        return refreshControl
-    }()
     
     let searchLabel: UILabel = {
         let label = UILabel()
@@ -80,12 +72,7 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-    
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        refreshControl.endRefreshing()
-        HapticsManger.shared.selectionVibrate(for: .soft)
-    }
-    
+        
     // layout and framing
     override func viewDidLayoutSubviews() {
         searchLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)

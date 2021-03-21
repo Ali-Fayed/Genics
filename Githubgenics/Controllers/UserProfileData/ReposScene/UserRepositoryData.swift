@@ -8,7 +8,7 @@
 import UIKit
 import JGProgressHUD
 
-class UserRepositoryData: UIViewController {
+class UserRepositoryData: ViewSetups {
     
     // data models
     var repositoryModel = [Repository]()
@@ -16,21 +16,11 @@ class UserRepositoryData: UIViewController {
     var passedUser : items?
     var repository: Repository?
     let tableFooterView = UIView ()
-    let spinner = JGProgressHUD(style: .dark)
     var pageNo : Int = 1
     var totalPages : Int = 100
     // userdefaults to cache user settings
     var starButton = [Int : Bool]()
     // persistentContainer context
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    //
-
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.gray
-        return refreshControl
-    }()
     
     let noReposLabel : UILabel = {
         let label = UILabel()
@@ -42,10 +32,5 @@ class UserRepositoryData: UIViewController {
         return label
     }()
     
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        refreshControl.endRefreshing()
-        HapticsManger.shared.selectionVibrate(for: .soft)
-    }
-
 }
 

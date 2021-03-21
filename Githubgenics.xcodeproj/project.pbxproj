@@ -53,6 +53,8 @@
 		EA463E92260027D400F43E7D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA463E91260027D400F43E7D /* HomeViewController.swift */; };
 		EA48ACF025D4D2C9006803BD /* GitNetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA48ACEF25D4D2C9006803BD /* GitNetworkMonitor.swift */; };
 		EA4BCB1625BCDC71000F302A /* LastSearchCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BCB1525BCDC71000F302A /* LastSearchCollection.swift */; };
+		EA5047222607007B00733740 /* ExploreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5047212607007B00733740 /* ExploreCell.xib */; };
+		EA504725260702C600733740 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA504724260702C600733740 /* TableViewCell.swift */; };
 		EA50D2B825FD6F7800EE32F8 /* GitEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50D2B725FD6F7800EE32F8 /* GitEntities.swift */; };
 		EA566FE925927B9D00596E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA566FE825927B9D00596E6A /* AppDelegate.swift */; };
 		EA566FEB25927B9D00596E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA566FEA25927B9D00596E6A /* SceneDelegate.swift */; };
@@ -78,6 +80,11 @@
 		EA999A6525927C02005E832C /* PublicUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6425927C02005E832C /* PublicUserProfileViewController.swift */; };
 		EA999A7A25927CAA005E832C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7925927CAA005E832C /* LoginViewController.swift */; };
 		EAA710F525BD4707004D7E21 /* GitAPIcaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA710F425BD4707004D7E21 /* GitAPIcaller.swift */; };
+		EAA87CC52606E796006BC6E7 /* ViewSetups.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA87CC42606E796006BC6E7 /* ViewSetups.swift */; };
+		EAA87CC82606EED4006BC6E7 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA87CC72606EED4006BC6E7 /* ExploreViewController.swift */; };
+		EAA87CD12606F183006BC6E7 /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA87CCF2606F183006BC6E7 /* ExploreCell.swift */; };
+		EAA87CD72606FC6A006BC6E7 /* ExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA87CD52606FC6A006BC6E7 /* ExploreCollectionViewCell.swift */; };
+		EAA87CD82606FC6A006BC6E7 /* ExploreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA87CD62606FC6A006BC6E7 /* ExploreCollectionViewCell.xib */; };
 		EAAF81FE25D4EDAD006C44EC /* GitCellDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF81FD25D4EDAD006C44EC /* GitCellDelegates.swift */; };
 		EAAF820825D4F012006C44EC /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF820725D4F012006C44EC /* SettingsCell.swift */; };
 		EAAF820C25D4F036006C44EC /* SignOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF820A25D4F036006C44EC /* SignOutCell.swift */; };
@@ -163,6 +170,8 @@
 		EA463E91260027D400F43E7D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EA48ACEF25D4D2C9006803BD /* GitNetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitNetworkMonitor.swift; sourceTree = "<group>"; };
 		EA4BCB1525BCDC71000F302A /* LastSearchCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSearchCollection.swift; sourceTree = "<group>"; };
+		EA5047212607007B00733740 /* ExploreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExploreCell.xib; sourceTree = "<group>"; };
+		EA504724260702C600733740 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		EA50D2B725FD6F7800EE32F8 /* GitEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitEntities.swift; sourceTree = "<group>"; };
 		EA566FE525927B9D00596E6A /* Githubgenics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Githubgenics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA566FE825927B9D00596E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +200,11 @@
 		EA999A6425927C02005E832C /* PublicUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicUserProfileViewController.swift; sourceTree = "<group>"; };
 		EA999A7925927CAA005E832C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EAA710F425BD4707004D7E21 /* GitAPIcaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitAPIcaller.swift; sourceTree = "<group>"; };
+		EAA87CC42606E796006BC6E7 /* ViewSetups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSetups.swift; sourceTree = "<group>"; };
+		EAA87CC72606EED4006BC6E7 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		EAA87CCF2606F183006BC6E7 /* ExploreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
+		EAA87CD52606FC6A006BC6E7 /* ExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewCell.swift; sourceTree = "<group>"; };
+		EAA87CD62606FC6A006BC6E7 /* ExploreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExploreCollectionViewCell.xib; sourceTree = "<group>"; };
 		EAAF81FD25D4EDAD006C44EC /* GitCellDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCellDelegates.swift; sourceTree = "<group>"; };
 		EAAF820725D4F012006C44EC /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		EAAF820A25D4F036006C44EC /* SignOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutCell.swift; sourceTree = "<group>"; };
@@ -429,6 +443,18 @@
 			path = GitNetworkMonitoring;
 			sourceTree = "<group>";
 		};
+		EA50472826070CAB00733740 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				EA5047212607007B00733740 /* ExploreCell.xib */,
+				EAA87CCF2606F183006BC6E7 /* ExploreCell.swift */,
+				EAA87CD52606FC6A006BC6E7 /* ExploreCollectionViewCell.swift */,
+				EAA87CD62606FC6A006BC6E7 /* ExploreCollectionViewCell.xib */,
+				EA504724260702C600733740 /* TableViewCell.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
 		EA566FDC25927B9D00596E6A = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +645,7 @@
 				EAAF81F825D4EB43006C44EC /* LoginViewScene */,
 				EAC6C45F25FC92AC006702EE /* TabBarScene */,
 				EA31594626018F950038883D /* HomeViewScene */,
+				EAA87CCD2606EEE9006BC6E7 /* ExploreView */,
 				EA65CB7C25BE9069005CBA09 /* BookmarksScene */,
 				EAA710FD25BD562E004D7E21 /* UsersListScene */,
 				EAB395A425D60F10009D178C /* ReposListScene */,
@@ -626,6 +653,7 @@
 				EA2C11882605B91700E6EFE1 /* UserProfileData */,
 				EA315959260191220038883D /* GithubWVScene */,
 				EA05898D25C5655A00BC1024 /* SettingsViewScene */,
+				EAA87CC42606E796006BC6E7 /* ViewSetups.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -641,6 +669,15 @@
 				EAE2652825ED43E10084029B /* CustomCell */,
 			);
 			path = UsersListScene;
+			sourceTree = "<group>";
+		};
+		EAA87CCD2606EEE9006BC6E7 /* ExploreView */ = {
+			isa = PBXGroup;
+			children = (
+				EAA87CC72606EED4006BC6E7 /* ExploreViewController.swift */,
+				EA50472826070CAB00733740 /* CustomCell */,
+			);
+			path = ExploreView;
 			sourceTree = "<group>";
 		};
 		EAAF81F825D4EB43006C44EC /* LoginViewScene */ = {
@@ -817,12 +854,14 @@
 				EA7216D425B6121200E21D3B /* Localizable.strings in Resources */,
 				EA000B6E25ED4E76005EF5D0 /* SearchHistoryCell.xib in Resources */,
 				EA315966260192720038883D /* Users.storyboard in Resources */,
+				EA5047222607007B00733740 /* ExploreCell.xib in Resources */,
 				EAC1636825BAB789007EDC96 /* Main.storyboard in Resources */,
 				EA000B6725ED4E41005EF5D0 /* CommitsCell.xib in Resources */,
 				EAE2651B25ED3DD00084029B /* UserRepos.storyboard in Resources */,
 				EAF1165725DCC644007A1F8F /* LanguageCell.xib in Resources */,
 				EAE2651825ED3C170084029B /* CommitsView.storyboard in Resources */,
 				EA315962260192390038883D /* Repos.storyboard in Resources */,
+				EAA87CD82606FC6A006BC6E7 /* ExploreCollectionViewCell.xib in Resources */,
 				EA566FF825927B9E00596E6A /* LaunchScreen.storyboard in Resources */,
 				EA566FF525927B9E00596E6A /* Assets.xcassets in Resources */,
 				EAC1636725BAB789007EDC96 /* ReposCell.xib in Resources */,
@@ -909,6 +948,7 @@
 				EA50D2B825FD6F7800EE32F8 /* GitEntities.swift in Sources */,
 				EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */,
 				EA000B6D25ED4E76005EF5D0 /* SearchHistoryCell.swift in Sources */,
+				EAA87CD12606F183006BC6E7 /* ExploreCell.swift in Sources */,
 				EA31595126018FB50038883D /* HVC Table.swift in Sources */,
 				EA22D78D25CE2DF4009C0EEF /* GitSecureStoreError.swift in Sources */,
 				EA22D7B625CE2F1B009C0EEF /* GitTokenManager.swift in Sources */,
@@ -940,16 +980,20 @@
 				EA0589BD25C56A0E00BC1024 /* BVC SearchBar.swift in Sources */,
 				EA22D7A125CE2EAB009C0EEF /* GitHubConstants.swift in Sources */,
 				EA999A6525927C02005E832C /* PublicUserProfileViewController.swift in Sources */,
+				EAA87CC82606EED4006BC6E7 /* ExploreViewController.swift in Sources */,
 				EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */,
 				EA88A7B725D709CB008663BD /* GitStoryboardIDs.swift in Sources */,
 				EAE3CD46260593C400C7D879 /* ProfileViewData.swift in Sources */,
 				EA4530C825BFAD3B00651BFA /* GitLocalization.swift in Sources */,
+				EAA87CD72606FC6A006BC6E7 /* ExploreCollectionViewCell.swift in Sources */,
+				EA504725260702C600733740 /* TableViewCell.swift in Sources */,
 				EA999A7A25927CAA005E832C /* LoginViewController.swift in Sources */,
 				EA2C11812605B8C000E6EFE1 /* StarredViewData.swift in Sources */,
 				EA5FD26325D62CAD002E8927 /* GitHaptics.swift in Sources */,
 				EA22D7B725CE2F1B009C0EEF /* GitHubAccessToken.swift in Sources */,
 				EA45AA1A259C45E400365E9B /* GitNetwrokReachability.swift in Sources */,
 				EAFD8FD626008AE2008ABA1E /* GithubViewController.swift in Sources */,
+				EAA87CC52606E796006BC6E7 /* ViewSetups.swift in Sources */,
 				EA22D78325CE2DE0009C0EEF /* GitRequestInterceptor.swift in Sources */,
 				EA22D79425CE2E26009C0EEF /* GitSecureStoreQueryable.swift in Sources */,
 				EA566FE925927B9D00596E6A /* AppDelegate.swift in Sources */,

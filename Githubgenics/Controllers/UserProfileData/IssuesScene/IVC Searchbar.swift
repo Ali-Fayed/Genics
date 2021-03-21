@@ -13,13 +13,13 @@ extension IssuesViewController: UISearchBarDelegate {
         
         UIView.animate(withDuration: 0.0, animations: {
             self.tableView.alpha = 0.0
-            self.searchLabel.alpha = 1.0
+            self.noContentLabel.alpha = 1.0
         })
         
         DispatchQueue.main.async {
             self.tableView.isHidden = false
-            self.searchLabel.isHidden = false
-            self.search.searchBar.becomeFirstResponder()
+            self.noContentLabel.isHidden = false
+            self.searchController.searchBar.becomeFirstResponder()
             self.pageNo = 1
         }
     }
@@ -46,7 +46,7 @@ extension IssuesViewController: UISearchBarDelegate {
         
         UIView.animate(withDuration: 0.5, animations: {
             self.tableView.alpha = 1.0
-            self.searchLabel.isHidden = true
+            self.noContentLabel.isHidden = true
             if searchBar.text?.isEmpty == true {
                 self.tableView.alpha = 0.0
                 self.spinner.dismiss()
@@ -58,13 +58,13 @@ extension IssuesViewController: UISearchBarDelegate {
         
         UIView.animate(withDuration: 0.0, animations: {
             self.tableView.alpha = 1.0
-            self.searchLabel.alpha = 0.0
+            self.noContentLabel.alpha = 0.0
         })
         
         DispatchQueue.main.async {
-            self.search.searchBar.resignFirstResponder()
-            self.search.searchBar.text = nil
-            self.searchLabel.isHidden = true
+            self.searchController.searchBar.resignFirstResponder()
+            self.searchController.searchBar.text = nil
+            self.noContentLabel.isHidden = true
             self.tableView.isHidden = false
 
 

@@ -17,21 +17,21 @@ extension UsersViewController  : UISearchBarDelegate  {
             self.pageNo = 1
             self.tableView.reloadData()
             self.recentSearchTable.reloadData()
-            if self.search.searchBar.text?.isEmpty == true {
+            if self.searchController.searchBar.text?.isEmpty == true {
                 self.tableView.isHidden = true
             } else {
                 self.tableView.isHidden = false
-                self.searchLabel.isHidden = true
+                self.noContentLabel.isHidden = true
             }
             if self.lastSearch.isEmpty == true {
                 self.recentSearchTable.isHidden = true
             } else {
                 self.recentSearchTable.isHidden = false
             }
-            if self.search.searchBar.text?.isEmpty == true , self.lastSearch.isEmpty == true {
-                self.searchLabel.isHidden = false
+            if self.searchController.searchBar.text?.isEmpty == true , self.lastSearch.isEmpty == true {
+                self.noContentLabel.isHidden = false
             } else {
-                self.searchLabel.isHidden = true
+                self.noContentLabel.isHidden = true
             }
             self.spinner.dismiss()
             self.recentSearchData ()
@@ -40,7 +40,7 @@ extension UsersViewController  : UISearchBarDelegate  {
         
     // Automatic Search When Change Text with Some Animations
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchLabel.isHidden = true
+        self.noContentLabel.isHidden = true
         guard let query = searchBar.text else { return }
         GitAPIcaller.shared.makeRequest(returnType: Users.self, requestData: GitRequestRouter.gitSearchUsers(1, query)) { [weak self] (searchedUsers) in
             DispatchQueue.main.async {
@@ -59,14 +59,14 @@ extension UsersViewController  : UISearchBarDelegate  {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
         DispatchQueue.main.async {
-            self.search.searchBar.text = nil
+            self.searchController.searchBar.text = nil
             self.recentSearchTable.isHidden = true
             self.tableView.isHidden = false
             self.spinner.dismiss()
             self.recentSearchTable.reloadData()
             self.collectionView.reloadData()
             self.tableView.reloadData()
-            self.searchLabel.isHidden = true
+            self.noContentLabel.isHidden = true
         }
         
         UIView.animate(withDuration: 0.0, animations: {

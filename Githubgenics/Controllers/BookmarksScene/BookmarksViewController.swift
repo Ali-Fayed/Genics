@@ -8,23 +8,13 @@
 import UIKit
 import CoreData
 
-class BookmarksViewController: UIViewController {
+class BookmarksViewController: ViewSetups {
     
     // data models
     var savedRepositories = [SavedRepositories]()
     var bookmarkedUsers = [UsersDataBase]()
     var passedRepo : SavedRepositories?
-    // persistentContainer context
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    // searchBar
-    lazy var searchBar:UISearchBar = UISearchBar()
-    // refresh control
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.gray
-        return refreshControl
-    }()
+
     // before search label
     let searchLabel: UILabel = {
         let label = UILabel()
@@ -34,15 +24,8 @@ class BookmarksViewController: UIViewController {
         label.font = .systemFont(ofSize: 21, weight: .medium)
         return label
     }()
-    let noBookmarksLabel: UILabel = {
-        let label = UILabel()
-        label.isHidden = true
-        label.text = Titles.noBookmarks
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 21, weight: .medium)
-        return label
-    }()
-    var search = UISearchController(searchResultsController: nil)
+
+    var searchController = UISearchController(searchResultsController: nil)
 
      // IBOutlets
     @IBOutlet weak var tableView: UITableView!
@@ -58,19 +41,14 @@ class BookmarksViewController: UIViewController {
         tableView.registerCellNib(cellClass: ReposCell.self)
         tableView.addSubview(refreshControl)
         tableView.rowHeight = 60
+        noContentLabel.text = Titles.noBookmarks
         tableView.tableFooterView = UIView()
-        search.searchBar.delegate = self
-        search.searchBar.sizeToFit()
-        search.obscuresBackgroundDuringPresentation = false
-        search.hidesNavigationBarDuringPresentation = true
-        navigationItem.hidesSearchBarWhenScrolling = true
-        self.definesPresentationContext = true
+        searchController.searchBar.delegate = self
+        setupSearchBar(search: searchController)
         view.addSubview(searchLabel)
-        search.searchBar.placeholder = Titles.searchPlacholder
-        self.navigationItem.searchController = search
         // hide label and zero opacity
         view.addSubview(searchLabel)
-        view.addSubview(noBookmarksLabel)
+        view.addSubview(noContentLabel)
         searchLabel.isHidden = true
         searchLabel.alpha = 0.0
         // fetch bookmarks
@@ -93,7 +71,7 @@ class BookmarksViewController: UIViewController {
     // layout and frame
     override func viewDidLayoutSubviews() {
         searchLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
-        noBookmarksLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
+        noContentLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
     }
     
     //MARK:- Fetch Methods
@@ -110,18 +88,12 @@ class BookmarksViewController: UIViewController {
         }
     }
     
-    // refresh
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        refreshControl.endRefreshing()
-        HapticsManger.shared.selectionVibrate(for: .soft)
-    }
-        
     func noBookmarksState () {
         if bookmarkedUsers.isEmpty == true , savedRepositories.isEmpty == true {
-            noBookmarksLabel.isHidden = false
+            noContentLabel.isHidden = false
             tableView.isHidden = true
         } else {
-            noBookmarksLabel.isHidden = true
+            noContentLabel.isHidden = true
             tableView.isHidden = false
         }
     }

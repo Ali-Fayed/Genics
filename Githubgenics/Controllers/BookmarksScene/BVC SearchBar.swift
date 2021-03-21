@@ -11,7 +11,7 @@ extension BookmarksViewController : UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         DispatchQueue.main.async {
-            self.searchBar.becomeFirstResponder()
+            self.searchController.searchBar.becomeFirstResponder()
             self.searchLabel.isHidden = false
         }
         UIView.animate(withDuration: 0.0, animations: {
@@ -32,7 +32,7 @@ extension BookmarksViewController : UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         renderViewData ()
         DispatchQueue.main.async {
-            self.searchBar.text = nil
+            self.searchController.searchBar.text = nil
             self.searchLabel.isHidden = true
         }
         UIView.animate(withDuration: 0.0, animations: {

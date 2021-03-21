@@ -8,7 +8,7 @@
 import UIKit
 import JGProgressHUD
 
-class RepositoriesViewController: UIViewController {
+class RepositoriesViewController: ViewSetups {
     
     // data models
     var publicRepositories = [Repository]()
@@ -16,28 +16,13 @@ class RepositoriesViewController: UIViewController {
     var savedRepositories = [SavedRepositories]()
     var pageNo : Int = 1
     var totalPages : Int = 100
+    var query : String = "a"
     // two search bar for animating (check search bar page)
     lazy var reposSearchBar:UISearchBar = UISearchBar()
 //    lazy var repoSearchBarHeader:UISearchBar = UISearchBar()
-    let spinner = JGProgressHUD(style: .dark)
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    // refresh control
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.gray
-        return refreshControl
-    }()
-     var search = UISearchController(searchResultsController: nil)
-    // before search label
-    let searchLabel: UILabel = {
-        let label = UILabel()
-        label.isHidden = true
-        label.text = Titles.searchForRepos
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 21, weight: .medium)
-        return label
-    }()
+
+     var searchController = UISearchController(searchResultsController: nil)
+
     // IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -51,41 +36,27 @@ class RepositoriesViewController: UIViewController {
         tableView.registerCellNib(cellClass: ReposCell.self)
         tableView.addSubview(refreshControl)
         // search label subview
-        view.addSubview(searchLabel)
+        view.addSubview(noContentLabel)
         // hide label and zero opacity when start
-        searchLabel.isHidden = true
-        searchLabel.alpha = 0.0
+        noContentLabel.text = Titles.searchForRepos
+        noContentLabel.isHidden = true
+        noContentLabel.alpha = 0.0
         tableView.tableFooterView = UIView()
-        renderAndDisplayBestSwiftRepositories ()
-        search.searchBar.delegate = self
-        search.searchBar.sizeToFit()
-        search.obscuresBackgroundDuringPresentation = false
-        search.hidesNavigationBarDuringPresentation = true
-        navigationItem.hidesSearchBarWhenScrolling = false
-        self.definesPresentationContext = true
-        search.searchBar.placeholder = Titles.searchPlacholder
-        self.navigationItem.searchController = search
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        DispatchQueue.main.async {
-            if self.search.searchBar.text?.isEmpty == false {
-                self.tableView.isHidden = true
-            } else {
-                self.tableView.isHidden = false
-            }
+        if searchController.searchBar.text?.isEmpty == true {
+            searchController.searchBar.delegate = self
+           setupSearchBar(search: searchController)
+            renderAndDisplayBestSwiftRepositories ()
+            navigationItem.title = Titles.repositoriesViewTitle
+        } else {
+            navigationController?.navigationItem.largeTitleDisplayMode = .never
+            navigationController?.navigationBar.prefersLargeTitles = false
+            navigationItem.title = "Results"
+            self.searchRepositories(query: query, page: pageNo)
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.async {
-            self.navigationItem.largeTitleDisplayMode = .always
-            self.navigationController?.navigationBar.prefersLargeTitles = true
-            if self.search.searchBar.text?.isEmpty == false {
-                self.search.searchBar.becomeFirstResponder()
-            }
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -95,7 +66,7 @@ class RepositoriesViewController: UIViewController {
         
     // layout and framing
     override func viewDidLayoutSubviews() {
-        searchLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
+        noContentLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
     }
     
     //MARK:- Functions
@@ -136,11 +107,6 @@ class RepositoriesViewController: UIViewController {
             self?.spinner.dismiss()
             self?.tableView.reloadData()
         }
-    }
-    
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        refreshControl.endRefreshing()
-        HapticsManger.shared.selectionVibrate(for: .soft)
     }
     
     
