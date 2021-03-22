@@ -8,40 +8,41 @@
 import Foundation
 
 struct Storyboards {
-    static let main = "Main"
-    static let login = "LoginView"
-    static let tabBar = "TabBar"
-    static let commits = "CommitsView"
-    static let detail = "DetailView"
-    static let userRepos = "UserRepos"
-    static let userStartted = "UserStartted"
-    static let userOrgs = "UserOrgs"
-    static let usersRepos = "UsersRepos"
-    static let usersStartted = "UsersStartted"
-    static let usersOrgs = "UsersOrgs"
-    static let settings = "Settings"
+    
+    static let mainView = "Main"
+    static let loginView = "LoginView"
+    static let tabBarView = "TabBar"
     static let homeView = "HomeView"
-    static let IssuesView = "Issues"
-    static let ReposView = "Repos"
-    static let UsersView = "Users"
-    static let reposDetails = "ReposDetails"
+    static let usersView = "Users"
+    static let reposView = "Repos"
+    static let commitsView = "CommitsView"
+    static let publicProfileView = "PublicProfileView"
+    static let orgsView = "Orgs"
+    static let starredView = "Starred"
+    static let issuesView = "Issues"
+    static let settingsView = "Settings"
+    
 }
 
 struct ID {
+    static let launchScreenViewController = "LaunchScreenViewController"
+    static let tabBarViewControllerID     = "TabBarViewController"
     static let loginViewControllerID = "LoginViewController"
-    static let usersListViewID = "UsersListViewController"
-    static let tabBarID     = "TabbarID"
-    static let settingsViewControllerID = "SettingsViewController"
-    static let detailViewControllerID = "DetailViewController"
-    static let commitsViewControllerID = "CommitsViewController"
-    static let userStartedViewControllerID = "UserStartedViewController"
-    static let userRepositoryViewControllerID = "UserRepositoryViewController"
-    static let repositoriesViewController = "RepositoriesViewController"
-    static let userOrgsViewControllerID = "UserOrgsViewController"
-    static let usersStartedViewControllerID = "UsersStarttedViewController"
-    static let usersRepositoryViewControllerID = "UsersRepositoryViewController"
-    static let usersOrgsViewControllerID = "UsersOrgsViewController"
     static let homeViewController = "HomeViewController"
+    
+    static let usersListViewID = "UsersListViewController"
+    static let repositoriesViewController = "RepositoriesViewController"
+    static let commitsViewControllerID = "CommitsViewController"
     static let issuesViewController = "IssuesViewController"
-    static let reposDetailsViewController = "ReposDetailsViewController"
+    static let orgsViewControllerID = "OrgsViewController"
+
+    static let profileViewControllerID = "PublicUserProfileViewController"
+    static let settingsViewControllerID = "SettingsViewController"
+    
+    static let userRepositoryViewControllerID = "UserRepositoryViewController"
+    static let usersRepositoryViewControllerID = "UsersRepositoryViewController"
+
+    static let publicUserStarredViewControllerID = "PublicUserStarredViewController"
+    static let userStartedViewControllerID = "UserStartedViewController"
+
 }

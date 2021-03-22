@@ -158,7 +158,7 @@ enum GitRequestRouter {
         case.gitPublicUsersStarred(let page,_):
             return ["per_page": "30" ,"page": "\(page)"]
         case.gitPublicUsersOrgs:
-            return ["per_page": "30", "page": "1"]
+            return nil
         case .gitListOrgs(let perPage, let since):
             return ["per_page": "\(perPage)", "since": "\(since)"]
         case .gitRepositoriesCommits(let page,_):

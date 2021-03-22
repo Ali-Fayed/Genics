@@ -11,7 +11,7 @@
         <!--LaunchAnimation-->
         <scene sceneID="us6-uP-gq8">
             <objects>
-                <viewController storyboardIdentifier="Animation" id="bhe-2U-t0y" customClass="LaunchScreenViewController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LaunchScreenViewController" id="bhe-2U-t0y" customClass="LaunchScreenViewController" customModule="Githubgenics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IRM-3x-bid">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

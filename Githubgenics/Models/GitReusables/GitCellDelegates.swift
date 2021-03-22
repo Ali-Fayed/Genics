@@ -10,15 +10,3 @@ import UIKit
 protocol DetailViewCellDelegate: AnyObject {
     func didTapButton(cell:ReposCell, didTappedThe button:UIButton?)
 }
-
-protocol RepositoryListCellDelegate: AnyObject {
-    func didTapButton(cell:ReposCell, didTappedThe button:UIButton?)
-}
-
-protocol DidTapSignOutCell : AnyObject {
-    func didTapButton(cell:SignOutCell, didTappedThe button:UIButton?)
-}
-
-protocol DidChangeLanguage : AnyObject {
-    func didChangeLang(cell:LanguageCell, didTappedThe button:UIButton?)
-}
