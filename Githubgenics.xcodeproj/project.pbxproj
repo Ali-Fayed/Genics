@@ -91,6 +91,23 @@
 		EADCD08025E36AE8005F7033 /* UserStarredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07F25E36AE8005F7033 /* UserStarredViewController.swift */; };
 		EADCD08625E36EC1005F7033 /* GitViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD08525E36EC1005F7033 /* GitViewExtension.swift */; };
 		EADCD09425E388EE005F7033 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD09325E388EE005F7033 /* User.swift */; };
+		EADCFDB7261E42BA00E8A1A3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFDB6261E42BA00E8A1A3 /* HomeViewModel.swift */; };
+		EADCFDBA261E48CA00E8A1A3 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFDB9261E48CA00E8A1A3 /* HomeTableViewCell.swift */; };
+		EADCFDBD261E493200E8A1A3 /* SearchOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFDBC261E493200E8A1A3 /* SearchOptionsCell.swift */; };
+		EADCFDC0261E494600E8A1A3 /* SearchHstoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFDBF261E494600E8A1A3 /* SearchHstoryCell.swift */; };
+		EADCFDCF261E719700E8A1A3 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFDCE261E719700E8A1A3 /* ExploreViewModel.swift */; };
+		EADCFDD9261E71DC00E8A1A3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFDD8261E71DC00E8A1A3 /* ProfileViewModel.swift */; };
+		EADCFDDC261E71EA00E8A1A3 /* BookmarksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFDDB261E71EA00E8A1A3 /* BookmarksViewModel.swift */; };
+		EADCFE04261E749C00E8A1A3 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE03261E749C00E8A1A3 /* UsersViewModel.swift */; };
+		EADCFE0A261E98F700E8A1A3 /* ISS TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE09261E98F700E8A1A3 /* ISS TableView.swift */; };
+		EADCFE0D261E990800E8A1A3 /* ISS Searchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE0C261E990800E8A1A3 /* ISS Searchbar.swift */; };
+		EADCFE10261E997B00E8A1A3 /* IssuesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE0F261E997B00E8A1A3 /* IssuesViewModel.swift */; };
+		EADCFE13261E9C1400E8A1A3 /* IssuesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE12261E9C1400E8A1A3 /* IssuesTableViewCell.swift */; };
+		EADCFE16261EA0BC00E8A1A3 /* ReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE15261EA0BC00E8A1A3 /* ReposViewModel.swift */; };
+		EADCFE19261EA9B400E8A1A3 /* CM TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE18261EA9B400E8A1A3 /* CM TableView.swift */; };
+		EADCFE1C261EA9DE00E8A1A3 /* CommitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE1B261EA9DE00E8A1A3 /* CommitsViewModel.swift */; };
+		EADCFE1F261EAFD700E8A1A3 /* EXVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE1E261EAFD700E8A1A3 /* EXVC TableView.swift */; };
+		EADCFE22261EB08500E8A1A3 /* BVC Searchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE21261EB08500E8A1A3 /* BVC Searchbar.swift */; };
 		EAE2650F25ED323C0084029B /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE2650E25ED323C0084029B /* LoginView.storyboard */; };
 		EAE2651225ED38EE0084029B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE2651125ED38EE0084029B /* Settings.storyboard */; };
 		EAE2651525ED3B9A0084029B /* PublicProfileView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE2651425ED3B9A0084029B /* PublicProfileView.storyboard */; };
@@ -197,6 +214,23 @@
 		EADCD07F25E36AE8005F7033 /* UserStarredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStarredViewController.swift; sourceTree = "<group>"; };
 		EADCD08525E36EC1005F7033 /* GitViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitViewExtension.swift; sourceTree = "<group>"; };
 		EADCD09325E388EE005F7033 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EADCFDB6261E42BA00E8A1A3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		EADCFDB9261E48CA00E8A1A3 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		EADCFDBC261E493200E8A1A3 /* SearchOptionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchOptionsCell.swift; sourceTree = "<group>"; };
+		EADCFDBF261E494600E8A1A3 /* SearchHstoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHstoryCell.swift; sourceTree = "<group>"; };
+		EADCFDCE261E719700E8A1A3 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
+		EADCFDD8261E71DC00E8A1A3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		EADCFDDB261E71EA00E8A1A3 /* BookmarksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewModel.swift; sourceTree = "<group>"; };
+		EADCFE03261E749C00E8A1A3 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		EADCFE09261E98F700E8A1A3 /* ISS TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ISS TableView.swift"; sourceTree = "<group>"; };
+		EADCFE0C261E990800E8A1A3 /* ISS Searchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ISS Searchbar.swift"; sourceTree = "<group>"; };
+		EADCFE0F261E997B00E8A1A3 /* IssuesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesViewModel.swift; sourceTree = "<group>"; };
+		EADCFE12261E9C1400E8A1A3 /* IssuesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesTableViewCell.swift; sourceTree = "<group>"; };
+		EADCFE15261EA0BC00E8A1A3 /* ReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewModel.swift; sourceTree = "<group>"; };
+		EADCFE18261EA9B400E8A1A3 /* CM TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CM TableView.swift"; sourceTree = "<group>"; };
+		EADCFE1B261EA9DE00E8A1A3 /* CommitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewModel.swift; sourceTree = "<group>"; };
+		EADCFE1E261EAFD700E8A1A3 /* EXVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXVC TableView.swift"; sourceTree = "<group>"; };
+		EADCFE21261EB08500E8A1A3 /* BVC Searchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BVC Searchbar.swift"; sourceTree = "<group>"; };
 		EAE2650E25ED323C0084029B /* LoginView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginView.storyboard; sourceTree = "<group>"; };
 		EAE2651125ED38EE0084029B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		EAE2651425ED3B9A0084029B /* PublicProfileView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PublicProfileView.storyboard; sourceTree = "<group>"; };
@@ -314,14 +348,13 @@
 			path = GitAuthentication;
 			sourceTree = "<group>";
 		};
-		EA31594626018F950038883D /* HomeController */ = {
+		EA31594626018F950038883D /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				EA463E91260027D400F43E7D /* HomeViewController.swift */,
-				EA31595026018FB50038883D /* HVC Table.swift */,
-				EA31595326018FC50038883D /* HVC Search.swift */,
+				EADCFDC5261E674800E8A1A3 /* ViewController */,
+				EADCFDC9261E677000E8A1A3 /* ViewModel */,
 			);
-			path = HomeController;
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 		EA4664C425BAB204003C4AD1 /* View */ = {
@@ -414,59 +447,50 @@
 		EA63575B2608436400045901 /* CoreViews */ = {
 			isa = PBXGroup;
 			children = (
-				EA71B59B25E40C4F00779B9A /* TabBarViewController.swift */,
-				EA31594626018F950038883D /* HomeController */,
-				EAA87CC72606EED4006BC6E7 /* ExploreViewController.swift */,
-				EA65CB7C25BE9069005CBA09 /* BookmarksController */,
-				EADCD06C25E334DD005F7033 /* ProfileViewController.swift */,
+				EA31594626018F950038883D /* HomeView */,
+				EADCFDCB261E716B00E8A1A3 /* ExploreView */,
+				EA65CB7C25BE9069005CBA09 /* BookmarksView */,
+				EADCFDD6261E71CB00E8A1A3 /* ProfileView */,
 			);
 			name = CoreViews;
 			path = GithubWVScene;
 			sourceTree = "<group>";
 		};
-		EA63575C2608444700045901 /* HomeMainControllers */ = {
-			isa = PBXGroup;
-			children = (
-				EAA710FD25BD562E004D7E21 /* UsersListScene */,
-				EAB395A425D60F10009D178C /* ReposListScene */,
-				EAFD8FCB26006A60008ABA1E /* IssuesViewController.swift */,
-				EAFD8FD526008AE2008ABA1E /* GithubViewController.swift */,
-			);
-			path = HomeMainControllers;
-			sourceTree = "<group>";
-		};
-		EA63575D2608448C00045901 /* UserAccountContentControllers */ = {
+		EA63575D2608448C00045901 /* ProfileViewData */ = {
 			isa = PBXGroup;
 			children = (
 				EADCD07F25E36AE8005F7033 /* UserStarredViewController.swift */,
 				EADCD07425E35FF6005F7033 /* UserRepositoryViewController.swift */,
 				EA23A06B25ED5C19001B943F /* OrgsViewController.swift */,
 			);
-			path = UserAccountContentControllers;
+			path = ProfileViewData;
 			sourceTree = "<group>";
 		};
 		EA63575F260844D100045901 /* OtherViews */ = {
 			isa = PBXGroup;
 			children = (
-				EA63575C2608444700045901 /* HomeMainControllers */,
-				EA63575D2608448C00045901 /* UserAccountContentControllers */,
-				EA6357622608453200045901 /* PublicUserController */,
-				EAC3B17225C9520700F798DA /* CommitsViewController.swift */,
-				EA9743512596C3790057C8A0 /* SettingsViewController.swift */,
-				EA3FA0F925AE9B88008D7520 /* LaunchScreenViewController.swift */,
-				EA999A7925927CAA005E832C /* LoginViewController.swift */,
+				EAA710FD25BD562E004D7E21 /* UsersView */,
+				EAB395A425D60F10009D178C /* ReposView */,
+				EADCFDE7261E72BD00E8A1A3 /* IssuesView */,
+				EADCFDE9261E72C800E8A1A3 /* GithubView */,
+				EADCFDEB261E72F200E8A1A3 /* CommitsView */,
+				EADCFDED261E731300E8A1A3 /* SettingsView */,
+				EADCFDEE261E732100E8A1A3 /* LaunchScreenView */,
+				EADCFDF0261E732A00E8A1A3 /* LoginView */,
+				EA63575D2608448C00045901 /* ProfileViewData */,
+				EA6357622608453200045901 /* PublicProfileViewData */,
 			);
 			path = OtherViews;
 			sourceTree = "<group>";
 		};
-		EA6357622608453200045901 /* PublicUserController */ = {
+		EA6357622608453200045901 /* PublicProfileViewData */ = {
 			isa = PBXGroup;
 			children = (
 				EA23A06825ED5C19001B943F /* PublicUserStarredViewController.swift */,
 				EA23A06E25ED5C1A001B943F /* PublicUserRepositoriesViewController.swift */,
 				EA999A6425927C02005E832C /* PublicUserProfileViewController.swift */,
 			);
-			path = PublicUserController;
+			path = PublicProfileViewData;
 			sourceTree = "<group>";
 		};
 		EA635767260845E300045901 /* UserCell */ = {
@@ -497,15 +521,6 @@
 			path = ExploreCell;
 			sourceTree = "<group>";
 		};
-		EA635773260846FF00045901 /* Setups */ = {
-			isa = PBXGroup;
-			children = (
-				EAA87CC42606E796006BC6E7 /* ViewSetups.swift */,
-				EAE3CD45260593C400C7D879 /* ProfileSetup.swift */,
-			);
-			path = Setups;
-			sourceTree = "<group>";
-		};
 		EA63577A2608495C00045901 /* ProfileStoryboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -519,13 +534,13 @@
 			path = ProfileStoryboards;
 			sourceTree = "<group>";
 		};
-		EA65CB7C25BE9069005CBA09 /* BookmarksController */ = {
+		EA65CB7C25BE9069005CBA09 /* BookmarksView */ = {
 			isa = PBXGroup;
 			children = (
-				EA7C4CA825BAA7E000EC9F45 /* BookmarksViewController.swift */,
-				EA0589B925C5696D00BC1024 /* BVC TableView.swift */,
+				EADCFDDE261E71F000E8A1A3 /* ViewController */,
+				EADCFDE0261E720200E8A1A3 /* ViewModel */,
 			);
-			path = BookmarksController;
+			path = BookmarksView;
 			sourceTree = "<group>";
 		};
 		EA65CB8325BE9697005CBA09 /* Repositories */ = {
@@ -552,6 +567,7 @@
 		EA7E45FE25ED0EE100ACA56D /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				EA71B59B25E40C4F00779B9A /* TabBarViewController.swift */,
 				EA703D7425BAB65900073DFB /* GitCoreData */,
 				EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */,
 			);
@@ -584,21 +600,17 @@
 			children = (
 				EA63575B2608436400045901 /* CoreViews */,
 				EA63575F260844D100045901 /* OtherViews */,
-				EAE2652A25ED43F80084029B /* CustomCells */,
-				EA635773260846FF00045901 /* Setups */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		EAA710FD25BD562E004D7E21 /* UsersListScene */ = {
+		EAA710FD25BD562E004D7E21 /* UsersView */ = {
 			isa = PBXGroup;
 			children = (
-				EA5EADF625929E2700AC3223 /* UsersViewController.swift */,
-				EA94DCBB25C6726C00E2C30B /* UVC TableView.swift */,
-				EABF30EE25C7C95000A17456 /* UVC SearchBar.swift */,
-				EA830F87260198F600F3D2A8 /* UVC Collectio.swift */,
+				EADCFDF2261E735300E8A1A3 /* ViewController */,
+				EADCFDF3261E736600E8A1A3 /* ViewModel */,
 			);
-			path = UsersListScene;
+			path = UsersView;
 			sourceTree = "<group>";
 		};
 		EAB3958D25D5FD20009D178C /* GitConstants */ = {
@@ -609,14 +621,13 @@
 			path = GitConstants;
 			sourceTree = "<group>";
 		};
-		EAB395A425D60F10009D178C /* ReposListScene */ = {
+		EAB395A425D60F10009D178C /* ReposView */ = {
 			isa = PBXGroup;
 			children = (
-				EA22D79625CE2E37009C0EEF /* RepositoriesViewController.swift */,
-				EA05898A25C564FB00BC1024 /* RVC TableView.swift */,
-				EA05898725C564C700BC1024 /* RVC SearchBar.swift */,
+				EADCFDF5261E738200E8A1A3 /* ViewController */,
+				EADCFDF6261E738F00E8A1A3 /* ViewModel */,
 			);
-			path = ReposListScene;
+			path = ReposView;
 			sourceTree = "<group>";
 		};
 		EAC6C44B25FC8F67006702EE /* GitNetwrokSession */ = {
@@ -639,24 +650,248 @@
 				EADCD08525E36EC1005F7033 /* GitViewExtension.swift */,
 				EA5FD26225D62CAD002E8927 /* GitHaptics.swift */,
 				EAAF81FD25D4EDAD006C44EC /* GitCellDelegates.swift */,
+				EAA87CC42606E796006BC6E7 /* ViewSetups.swift */,
+				EAE3CD45260593C400C7D879 /* ProfileSetup.swift */,
 			);
 			path = GitReusables;
 			sourceTree = "<group>";
 		};
-		EAE2652A25ED43F80084029B /* CustomCells */ = {
+		EADCFDC5261E674800E8A1A3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA463E91260027D400F43E7D /* HomeViewController.swift */,
+				EA31595026018FB50038883D /* HVC Table.swift */,
+				EA31595326018FC50038883D /* HVC Search.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EADCFDC9261E677000E8A1A3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EADCFDB6261E42BA00E8A1A3 /* HomeViewModel.swift */,
+				EADCFDB9261E48CA00E8A1A3 /* HomeTableViewCell.swift */,
+				EADCFDBC261E493200E8A1A3 /* SearchOptionsCell.swift */,
+				EADCFDBF261E494600E8A1A3 /* SearchHstoryCell.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EADCFDCB261E716B00E8A1A3 /* ExploreView */ = {
+			isa = PBXGroup;
+			children = (
+				EADCFDD1261E71A600E8A1A3 /* ViewController */,
+				EADCFDD3261E71B200E8A1A3 /* ViewModel */,
+			);
+			path = ExploreView;
+			sourceTree = "<group>";
+		};
+		EADCFDD1261E71A600E8A1A3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EAA87CC72606EED4006BC6E7 /* ExploreViewController.swift */,
+				EADCFE1E261EAFD700E8A1A3 /* EXVC TableView.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EADCFDD3261E71B200E8A1A3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA63576E2608463F00045901 /* ExploreCell */,
+				EADCFDCE261E719700E8A1A3 /* ExploreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EADCFDD6261E71CB00E8A1A3 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				EADCFDE2261E720A00E8A1A3 /* ViewController */,
+				EADCFDE4261E721300E8A1A3 /* ViewModel */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
+		EADCFDDE261E71F000E8A1A3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA7C4CA825BAA7E000EC9F45 /* BookmarksViewController.swift */,
+				EA0589B925C5696D00BC1024 /* BVC TableView.swift */,
+				EADCFE21261EB08500E8A1A3 /* BVC Searchbar.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EADCFDE0261E720200E8A1A3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EADCFDDB261E71EA00E8A1A3 /* BookmarksViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EADCFDE2261E720A00E8A1A3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EADCD06C25E334DD005F7033 /* ProfileViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EADCFDE4261E721300E8A1A3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EADCFDD8261E71DC00E8A1A3 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EADCFDE7261E72BD00E8A1A3 /* IssuesView */ = {
+			isa = PBXGroup;
+			children = (
+				EADCFDF7261E73A400E8A1A3 /* ViewController */,
+				EADCFDF9261E73B000E8A1A3 /* ViewModel */,
+			);
+			path = IssuesView;
+			sourceTree = "<group>";
+		};
+		EADCFDE9261E72C800E8A1A3 /* GithubView */ = {
+			isa = PBXGroup;
+			children = (
+				EAFD8FD526008AE2008ABA1E /* GithubViewController.swift */,
+			);
+			path = GithubView;
+			sourceTree = "<group>";
+		};
+		EADCFDEB261E72F200E8A1A3 /* CommitsView */ = {
+			isa = PBXGroup;
+			children = (
+				EADCFDFA261E73D900E8A1A3 /* ViewController */,
+				EADCFDFC261E73E400E8A1A3 /* ViewModel */,
+			);
+			path = CommitsView;
+			sourceTree = "<group>";
+		};
+		EADCFDED261E731300E8A1A3 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				EADCFE01261E745300E8A1A3 /* ViewController */,
+				EADCFDFF261E744C00E8A1A3 /* ViewModel */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		EADCFDEE261E732100E8A1A3 /* LaunchScreenView */ = {
+			isa = PBXGroup;
+			children = (
+				EA3FA0F925AE9B88008D7520 /* LaunchScreenViewController.swift */,
+			);
+			path = LaunchScreenView;
+			sourceTree = "<group>";
+		};
+		EADCFDF0261E732A00E8A1A3 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				EA999A7925927CAA005E832C /* LoginViewController.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		EADCFDF2261E735300E8A1A3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA5EADF625929E2700AC3223 /* UsersViewController.swift */,
+				EA94DCBB25C6726C00E2C30B /* UVC TableView.swift */,
+				EABF30EE25C7C95000A17456 /* UVC SearchBar.swift */,
+				EA830F87260198F600F3D2A8 /* UVC Collectio.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EADCFDF3261E736600E8A1A3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EADCFE03261E749C00E8A1A3 /* UsersViewModel.swift */,
 				EA635767260845E300045901 /* UserCell */,
 				EA000B7225ED4E88005EF5D0 /* LastSearchCell */,
 				EA000B7025ED4E7F005EF5D0 /* SearchHistoryCell */,
-				EA000B6925ED4E46005EF5D0 /* CommitCell */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EADCFDF5261E738200E8A1A3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA22D79625CE2E37009C0EEF /* RepositoriesViewController.swift */,
+				EA05898A25C564FB00BC1024 /* RVC TableView.swift */,
+				EA05898725C564C700BC1024 /* RVC SearchBar.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EADCFDF6261E738F00E8A1A3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
 				EA635769260845F100045901 /* RepoCell */,
-				EA63576E2608463F00045901 /* ExploreCell */,
+				EADCFE15261EA0BC00E8A1A3 /* ReposViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EADCFDF7261E73A400E8A1A3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EAFD8FCB26006A60008ABA1E /* IssuesViewController.swift */,
+				EADCFE09261E98F700E8A1A3 /* ISS TableView.swift */,
+				EADCFE0C261E990800E8A1A3 /* ISS Searchbar.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EADCFDF9261E73B000E8A1A3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EADCFE0F261E997B00E8A1A3 /* IssuesViewModel.swift */,
+				EADCFE12261E9C1400E8A1A3 /* IssuesTableViewCell.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EADCFDFA261E73D900E8A1A3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EAC3B17225C9520700F798DA /* CommitsViewController.swift */,
+				EADCFE18261EA9B400E8A1A3 /* CM TableView.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EADCFDFC261E73E400E8A1A3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA000B6925ED4E46005EF5D0 /* CommitCell */,
+				EADCFE1B261EA9DE00E8A1A3 /* CommitsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EADCFDFF261E744C00E8A1A3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
 				EAAF820A25D4F036006C44EC /* SignOutCell.swift */,
 				EAF1165425DCC644007A1F8F /* LanguageCell.swift */,
 				EAAF820725D4F012006C44EC /* DarkModeCell.swift */,
 			);
-			path = CustomCells;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EADCFE01261E745300E8A1A3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA9743512596C3790057C8A0 /* SettingsViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		EAEEE13C25DCACD100E88EED /* Core */ = {
@@ -815,24 +1050,32 @@
 				EAB2AD1425BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift in Sources */,
 				EA0589BA25C5696D00BC1024 /* BVC TableView.swift in Sources */,
 				EADCD08625E36EC1005F7033 /* GitViewExtension.swift in Sources */,
+				EADCFE1C261EA9DE00E8A1A3 /* CommitsViewModel.swift in Sources */,
 				EA2F137725DF21A400470A04 /* Repository.swift in Sources */,
 				EA7C4CAE25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift in Sources */,
 				EAC3B16F25C951B600F798DA /* Commits.swift in Sources */,
+				EADCFE10261E997B00E8A1A3 /* IssuesViewModel.swift in Sources */,
 				EA0C2D9625BD068C00D3898A /* LastSearch+CoreDataClass.swift in Sources */,
 				EA94DCBC25C6726C00E2C30B /* UVC TableView.swift in Sources */,
 				EA5EADF725929E2700AC3223 /* UsersViewController.swift in Sources */,
 				EAAF81FE25D4EDAD006C44EC /* GitCellDelegates.swift in Sources */,
+				EADCFE13261E9C1400E8A1A3 /* IssuesTableViewCell.swift in Sources */,
 				EA4BCB1625BCDC71000F302A /* LastSearchCollection.swift in Sources */,
 				EA22D79925CE2E37009C0EEF /* RepositoriesViewController.swift in Sources */,
+				EADCFE19261EA9B400E8A1A3 /* CM TableView.swift in Sources */,
+				EADCFE22261EB08500E8A1A3 /* BVC Searchbar.swift in Sources */,
 				EA50D2B825FD6F7800EE32F8 /* GitEntities.swift in Sources */,
 				EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */,
 				EA000B6D25ED4E76005EF5D0 /* SearchHistoryCell.swift in Sources */,
+				EADCFDD9261E71DC00E8A1A3 /* ProfileViewModel.swift in Sources */,
+				EADCFE0A261E98F700E8A1A3 /* ISS TableView.swift in Sources */,
 				EA31595126018FB50038883D /* HVC Table.swift in Sources */,
 				EA22D78D25CE2DF4009C0EEF /* GitSecureStoreError.swift in Sources */,
 				EA22D7B625CE2F1B009C0EEF /* GitTokenManager.swift in Sources */,
 				EA05898825C564C700BC1024 /* RVC SearchBar.swift in Sources */,
 				EA3FA0FA25AE9B88008D7520 /* LaunchScreenViewController.swift in Sources */,
 				EA22D78525CE2DE0009C0EEF /* GitRequestRouter.swift in Sources */,
+				EADCFE1F261EAFD700E8A1A3 /* EXVC TableView.swift in Sources */,
 				EA05898B25C564FB00BC1024 /* RVC TableView.swift in Sources */,
 				EA71B59C25E40C4F00779B9A /* TabBarViewController.swift in Sources */,
 				EA22D78625CE2DE0009C0EEF /* GitNetworkLogger.swift in Sources */,
@@ -843,6 +1086,7 @@
 				EAD4476625B0148A00FB42B4 /* UsersCell.swift in Sources */,
 				EA22D78E25CE2DF4009C0EEF /* GitSecureStore.swift in Sources */,
 				EAC3B17325C9520700F798DA /* CommitsViewController.swift in Sources */,
+				EADCFDBA261E48CA00E8A1A3 /* HomeTableViewCell.swift in Sources */,
 				EA668BA125BFE83C00392A30 /* Githubgenics.xcdatamodeld in Sources */,
 				EADCD08025E36AE8005F7033 /* UserStarredViewController.swift in Sources */,
 				EA31595426018FC50038883D /* HVC Search.swift in Sources */,
@@ -851,13 +1095,16 @@
 				EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */,
 				EA668B9D25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift in Sources */,
 				EADCD07525E35FF6005F7033 /* UserRepositoryViewController.swift in Sources */,
+				EADCFE0D261E990800E8A1A3 /* ISS Searchbar.swift in Sources */,
 				EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */,
 				EAEEE13A25DCACCD00E88EED /* GitTableViewExtension.swift in Sources */,
 				EAF1165625DCC644007A1F8F /* LanguageCell.swift in Sources */,
 				EA22D7A125CE2EAB009C0EEF /* GitHubConstants.swift in Sources */,
 				EA999A6525927C02005E832C /* PublicUserProfileViewController.swift in Sources */,
+				EADCFDDC261E71EA00E8A1A3 /* BookmarksViewModel.swift in Sources */,
 				EAA87CC82606EED4006BC6E7 /* ExploreViewController.swift in Sources */,
 				EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */,
+				EADCFE04261E749C00E8A1A3 /* UsersViewModel.swift in Sources */,
 				EA88A7B725D709CB008663BD /* GitStoryboardIDs.swift in Sources */,
 				EAE3CD46260593C400C7D879 /* ProfileSetup.swift in Sources */,
 				EA4530C825BFAD3B00651BFA /* GitLocalization.swift in Sources */,
@@ -867,6 +1114,9 @@
 				EA5FD26325D62CAD002E8927 /* GitHaptics.swift in Sources */,
 				EA22D7B725CE2F1B009C0EEF /* GitHubAccessToken.swift in Sources */,
 				EA45AA1A259C45E400365E9B /* GitNetwrokReachability.swift in Sources */,
+				EADCFDCF261E719700E8A1A3 /* ExploreViewModel.swift in Sources */,
+				EADCFDBD261E493200E8A1A3 /* SearchOptionsCell.swift in Sources */,
+				EADCFDC0261E494600E8A1A3 /* SearchHstoryCell.swift in Sources */,
 				EAFD8FD626008AE2008ABA1E /* GithubViewController.swift in Sources */,
 				EAA87CC52606E796006BC6E7 /* ViewSetups.swift in Sources */,
 				EA22D78325CE2DE0009C0EEF /* GitRequestInterceptor.swift in Sources */,
@@ -875,7 +1125,9 @@
 				EA566FEB25927B9D00596E6A /* SceneDelegate.swift in Sources */,
 				EABF30EF25C7C95000A17456 /* UVC SearchBar.swift in Sources */,
 				EAFD8FCC26006A60008ABA1E /* IssuesViewController.swift in Sources */,
+				EADCFDB7261E42BA00E8A1A3 /* HomeViewModel.swift in Sources */,
 				EAAF820C25D4F036006C44EC /* SignOutCell.swift in Sources */,
+				EADCFE16261EA0BC00E8A1A3 /* ReposViewModel.swift in Sources */,
 				EA23A07025ED5C1A001B943F /* OrgsViewController.swift in Sources */,
 				EA0C2D9725BD068C00D3898A /* LastSearch+CoreDataProperties.swift in Sources */,
 				EADCD07825E36681005F7033 /* Orgs.swift in Sources */,
