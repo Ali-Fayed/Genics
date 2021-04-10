@@ -773,7 +773,7 @@
 			children = (
 				EAEEE13C25DCACD100E88EED /* Core */,
 				EA999A7325927C31005E832C /* Models */,
-				EA999A7425927C67005E832C /* Scenes */,
+				EAD0CCB026222F2400BD0D19 /* Scenes */,
 				EA7E45FE25ED0EE100ACA56D /* Others */,
 				EA566FF925927B9E00596E6A /* Info.plist */,
 			);
@@ -801,19 +801,6 @@
 				EA48ACF225D4D3AB006803BD /* GitNetworkMonitoring */,
 			);
 			path = GitNetworking;
-			sourceTree = "<group>";
-		};
-		EA63575B2608436400045901 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				EAE2652325ED3FA00084029B /* TabBarViews.storyboard */,
-				EA31594626018F950038883D /* HomeScene */,
-				EADCFDCB261E716B00E8A1A3 /* ExploreScene */,
-				EA65CB7C25BE9069005CBA09 /* BookmarksScene */,
-				EADCFDD6261E71CB00E8A1A3 /* ProfileViewScene */,
-			);
-			name = Core;
-			path = GithubWVScene;
 			sourceTree = "<group>";
 		};
 		EA63575F260844D100045901 /* Others */ = {
@@ -924,15 +911,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		EA999A7425927C67005E832C /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				EA63575B2608436400045901 /* Core */,
-				EA63575F260844D100045901 /* Others */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
 		EAA710FD25BD562E004D7E21 /* UsersScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -984,6 +962,27 @@
 				EAA87CC42606E796006BC6E7 /* ViewSetups.swift */,
 			);
 			path = GitReusables;
+			sourceTree = "<group>";
+		};
+		EAD0CCB026222F2400BD0D19 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				EAD0CCB126222F3000BD0D19 /* Core */,
+				EA63575F260844D100045901 /* Others */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		EAD0CCB126222F3000BD0D19 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EAE2652325ED3FA00084029B /* TabBarViews.storyboard */,
+				EA31594626018F950038883D /* HomeScene */,
+				EADCFDCB261E716B00E8A1A3 /* ExploreScene */,
+				EA65CB7C25BE9069005CBA09 /* BookmarksScene */,
+				EADCFDD6261E71CB00E8A1A3 /* ProfileViewScene */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		EADCFDC5261E674800E8A1A3 /* ViewController */ = {
