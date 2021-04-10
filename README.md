@@ -34,7 +34,7 @@
 
  ## App Technologies:
  
-* App Current Version: V1.2
+* App Current Version: V1.3
 * Supported IOS : IOS 13 or above
 * Swift Frameworks : UIKit - SafariServices - AuthenticationWS 
 * DataStorage : Sqlite
