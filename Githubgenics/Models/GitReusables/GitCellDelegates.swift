@@ -8,5 +8,5 @@
 import UIKit
 
 protocol DetailViewCellDelegate: AnyObject {
-    func didTapButton(cell:ReposCell, didTappedThe button:UIButton?)
+    func didTapButton(cell:ReposTableViewCell, didTappedThe button:UIButton?)
 }

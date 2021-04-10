@@ -6,10 +6,10 @@
 //
 
 struct Users: Decodable {
-    let items: [items]
+    let items: [User]
 }
 
-struct items {
+struct User {
     let userName: String
     let userURL: String
     let userAvatar: String
@@ -25,7 +25,7 @@ struct items {
     }
 }
 
-extension items: Decodable {
+extension User: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: searchedUsersCodingKeys.self)
         userName = try container.decode(String.self, forKey: .userName)
