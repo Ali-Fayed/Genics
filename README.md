@@ -9,6 +9,7 @@
 
 ## App Features: 
 
+- Explore all github features from Home View
 - Explore your full Github profile with all informations and repositories
 - Explore and search github users with infinite scrolling.
 - Explore  user Profile and Repositories by touch the cells.
@@ -17,6 +18,7 @@
 - Swipe to Delete search Records
 - Open any User or Repository URL with Longpress menu.
 - Explore and search for Public Repositories.
+- Explore trending repos form Explore View ( beta )
 - Supporting Dark Mode.
 - Supporting Haptic Feedback when longpress a cell or important actions.
 - Supporting Deep Linking in Settings and many options soon 
@@ -25,8 +27,10 @@
 
 ## Some App Views Screenshots (There is more and updates every week):
 
-![1](https://user-images.githubusercontent.com/72504852/108808393-38f15a00-75af-11eb-9616-62a25379f599.png)
-![2](https://user-images.githubusercontent.com/72504852/108808585-9c7b8780-75af-11eb-9a66-1fe4c77a178d.png)
+![Untitled design-4](https://user-images.githubusercontent.com/72504852/114256789-13cc7580-99bc-11eb-990b-3c87dc989034.png)
+![Untitled design-5](https://user-images.githubusercontent.com/72504852/114256800-2e065380-99bc-11eb-9e96-50dc2c2db8ce.png)
+![Untitled design-6](https://user-images.githubusercontent.com/72504852/114256806-3bbbd900-99bc-11eb-9c49-6f188150915f.png)
+![Untitled design-8](https://user-images.githubusercontent.com/72504852/114256870-a240f700-99bc-11eb-9221-d3cf4a2d956f.png)
 
  ## App Technologies:
  
@@ -35,8 +39,8 @@
 * Swift Frameworks : UIKit - SafariServices - AuthenticationWS 
 * DataStorage : Sqlite
 * Third party Libraries : [Alamofire][Alamofire] - [Kingfisher][Kingfisher] - [Lottie][Lottie] - [IQKeyboard][IQKeyboard] - [SkeletonView][SkeletonView] - [SwiftyJSON][SwiftyJSON] - [JGProgressHUD][JGProgressHUD]
-* Pattern : MVC
-* Supported languages in App : English , Arabic!
+* Pattern : MVVM
+* Supported languages in App : English , Arabic ( not all titles translated it will be too soon!! )!
 
 ## Video Preview:
 
@@ -84,7 +88,7 @@ pod install
 [SwiftyJSON]: https://cocoapods.org/pods/SwiftyJSON
 [JGProgressHUD]: https://cocoapods.org/pods/JGProgressHUD
 [Swift 5.3]: https://developer.apple.com/swift/
-[preview]: https://youtu.be/tRxSgZbIXfw
+[preview]: https://www.youtube.com/watch?v=PP7s4XMVC20
 [contact]: https://www.linkedin.com/in/ali-fayed-8682aa1a6/
 [fb]: https://www.facebook.com/alifayed26/
 [tw]: https://www.twitter.com/Aliifayed
