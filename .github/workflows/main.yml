@@ -1,0 +1,51 @@
+name: "Action"
+on: # rebuild any PRs and main branch changes
+  pull_request:
+  push:
+    branches:
+      - master
+      - actions
+      
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  build: # make sure build/ci work properly
+  
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+  # Cache and Dependencies.
+    - name: cache Pods
+      uses: actions/cache@v2
+      with:
+       path: Pods
+       key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+       restore-keys: |
+         ${{ runner.os }}-pods-
+         
+    - name: cache Carthage Frameworks
+      uses: actions/cache@v2
+      with:
+       path: Carthage
+       key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+       restore-keys: |
+         ${{ runner.os }}-carthage-
+         
+    - name: cache SwiftPackageManger Frameworks
+      uses: actions/cache@v2
+      with:
+       path: .build
+       key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+       restore-keys: |
+         ${{ runner.os }}-spm-   
+         
+    - name: Run SwiftLint Action
+  # You may pin to the exact commit or the version.
+  # uses: norio-nomura/action-swiftlint@9f4dcd7fd46b4e75d7935cf2f4df406d5cae3684
+      uses: norio-nomura/action-swiftlint@3.2.1
