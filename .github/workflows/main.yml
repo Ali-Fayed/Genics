@@ -34,15 +34,24 @@ jobs:
        path: Carthage
        key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
        restore-keys: |
-         ${{ runner.os }}-carthage-
+         ${{ runner.os }}-carthage- 
          
-    - name: cache SwiftPackageManger Frameworks
-      uses: actions/cache@v2
-      with:
-       path: .build
-       key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
-       restore-keys: |
-         ${{ runner.os }}-spm-   
+  test:
+     runs-on: macOS-latest
+     steps:
+      - uses: actions/checkout@v2
+      - run: |
+         npm install --production
+      - uses: ./
+        id: provisioning
+        with:
+         bundle-id: codes.orj.Example-iOS
+         profile-type: IOS_APP_STORE
+         issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+         api-key-id: ${{ secrets.APPSTORE_KEY_ID }}
+         api-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
+      - run: |
+         echo ${{ steps.provisioning.outputs.profiles }}    
          
   #  - name: Run SwiftLint Action
   # You may pin to the exact commit or the version.
