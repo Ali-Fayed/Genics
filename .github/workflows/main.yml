@@ -45,7 +45,7 @@ jobs:
        restore-keys: |
          ${{ runner.os }}-spm-   
          
-    - name: Run SwiftLint Action
+  #  - name: Run SwiftLint Action
   # You may pin to the exact commit or the version.
   # uses: norio-nomura/action-swiftlint@9f4dcd7fd46b4e75d7935cf2f4df406d5cae3684
-      uses: norio-nomura/action-swiftlint@3.2.1
+  #    uses: norio-nomura/action-swiftlint@3.2.1
