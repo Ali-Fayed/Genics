@@ -1,9 +1,10 @@
-name: "Action"
-on: # rebuild any PRs and main branch changes
-  pull_request:
+name: CI
+
+on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
       
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -16,32 +17,31 @@ jobs:
     
     steps:
     
-     - name: Checkout
-       uses: actions/checkout@v2
-      
-  Cache: # Cache and Dependencies.
-   
-     runs-on: macOS-latest
-     timeout-minutes: 30
-     
-     steps:
-     
-     - name: Cache CocoaPods
-       uses: actions/cache@v2
-       with:
+    - name: checkout project
+    - uses: actions/checkout@v2
+
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_12.app
+
+    - name: Build and test
+      run: xcodebuild clean build test -workspace App/QuizApp.xcworkspace -scheme "CI" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 11" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
+
+    - name: Cache CocoaPods
+      uses: actions/cache@v2
+      with:
         path: Pods
         key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-pods-
          
-     - name: Cache Carthage Frameworks
-       uses: actions/cache@v2
-       with:
+    - name: Cache Carthage Frameworks
+      uses: actions/cache@v2
+      with:
          path: Carthage
          key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
          restore-keys: |
           ${{ runner.os }}-carthage- 
-         
+                   
   test: # make sure build/ci work properly
   
      runs-on: ubuntu-latest
