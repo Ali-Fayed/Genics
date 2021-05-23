@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  Build: # make sure build/ci work properly
+   Build: # make sure build/ci work properly
   
     runs-on: macOS-latest
     timeout-minutes: 30
@@ -39,7 +39,7 @@ jobs:
          restore-keys: |
           ${{ runner.os }}-carthage- 
                    
-  swift lint check: # make sure build/ci work properly
+   swiftLint: # make sure build/ci work properly
   
      runs-on: ubuntu-latest
      timeout-minutes: 30
