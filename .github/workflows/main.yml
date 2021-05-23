@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  build and test: # make sure build/ci work properly
+  build and cache: # make sure build/ci work properly
   
     runs-on: macOS-latest
     timeout-minutes: 30
@@ -22,9 +22,6 @@ jobs:
 
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode_12.5.app
-
-    - name: Build project
-      run: xcodebuild clean build test -workspace App/QuizApp.xcworkspace -scheme "CI" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 11" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
 
     - name: Cache CocoaPods
       uses: actions/cache@v2
