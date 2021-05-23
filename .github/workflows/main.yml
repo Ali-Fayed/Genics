@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  Build&Cache: # make sure build/ci work properly
+  Build: # make sure build/ci work properly
   
     runs-on: macOS-latest
     timeout-minutes: 30
