@@ -1,5 +1,5 @@
 //
-//  GitDataBase.swift
+//  DataBaseManger.swift
 //  Githubgenics
 //
 //  Created by Ali Fayed on 30/01/2021.

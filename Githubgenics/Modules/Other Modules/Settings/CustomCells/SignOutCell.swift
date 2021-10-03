@@ -12,7 +12,7 @@ class SignOutCell: UITableViewCell {
     @IBOutlet weak var logOut: UILabel!
     
     var isLoggedIn: Bool {
-        if GitTokenManager.shared.fetchAccessToken() != nil {
+        if TokenManager.shared.fetchAccessToken() != nil {
             return true
         }
         return false

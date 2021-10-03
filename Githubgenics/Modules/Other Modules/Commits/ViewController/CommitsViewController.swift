@@ -9,7 +9,7 @@ import UIKit
 import JGProgressHUD
 import SafariServices
 
-class CommitsViewController: ViewSetups {
+class CommitsViewController: CommonViews {
     
     @IBOutlet var tableView: UITableView!
     lazy var viewModel: CommitsViewModel = {

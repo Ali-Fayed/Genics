@@ -10,7 +10,7 @@ import Alamofire
 import JGProgressHUD
 import CoreData
 
-class UsersViewController: ViewSetups {
+class UsersViewController: CommonViews {
     
     var query : String = ""
     lazy var searchController = UISearchController(searchResultsController: nil)

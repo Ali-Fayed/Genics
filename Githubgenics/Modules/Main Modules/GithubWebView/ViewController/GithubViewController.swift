@@ -7,7 +7,7 @@
 import UIKit
 import WebKit
 
-class GithubViewController : ViewSetups, WKNavigationDelegate {
+class GithubViewController : CommonViews, WKNavigationDelegate {
 
     private let webView: WKWebView = {
         let prefs = WKWebpagePreferences()

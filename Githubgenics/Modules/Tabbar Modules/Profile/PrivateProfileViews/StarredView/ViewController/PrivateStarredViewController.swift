@@ -8,7 +8,7 @@
 import UIKit
 import JGProgressHUD
 
-class PrivateStarredViewController: ViewSetups {
+class PrivateStarredViewController: CommonViews {
     
     @IBOutlet weak var tableView: UITableView!
     

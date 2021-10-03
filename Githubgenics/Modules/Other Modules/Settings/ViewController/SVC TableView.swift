@@ -121,7 +121,7 @@ extension SettingsViewController {
         default:
             if isLoggedIn {
                 navigationController?.popViewController(animated: true)
-                GitTokenManager.shared.clearAccessToken()
+                TokenManager.shared.clearAccessToken()
             } else {
                 let loginView = UIStoryboard.init(name: Storyboards.loginView, bundle: Bundle.main).instantiateViewController(withIdentifier: ID.loginViewControllerID) as? LoginViewController
                 loginView?.hidesBottomBarWhenPushed = true

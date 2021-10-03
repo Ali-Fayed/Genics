@@ -9,7 +9,7 @@ import UIKit
 import JGProgressHUD
 import SafariServices
 
-class PublicStarredViewController: ViewSetups {
+class PublicStarredViewController: CommonViews {
     
     weak var delegate : DetailViewCellDelegate?
     var starButton = [Int : Bool]()

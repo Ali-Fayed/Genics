@@ -12,7 +12,7 @@
 		EA000B6725ED4E41005EF5D0 /* CommitsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA000B6525ED4E41005EF5D0 /* CommitsCell.xib */; };
 		EA000B6D25ED4E76005EF5D0 /* SearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA000B6B25ED4E76005EF5D0 /* SearchHistoryCell.swift */; };
 		EA000B6E25ED4E76005EF5D0 /* SearchHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA000B6C25ED4E76005EF5D0 /* SearchHistoryCell.xib */; };
-		EA05895525C5567700BC1024 /* GitDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05895425C5567700BC1024 /* GitDataBase.swift */; };
+		EA05895525C5567700BC1024 /* DataBaseManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05895425C5567700BC1024 /* DataBaseManger.swift */; };
 		EA05898825C564C700BC1024 /* RVC SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05898725C564C700BC1024 /* RVC SearchBar.swift */; };
 		EA05898B25C564FB00BC1024 /* RVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05898A25C564FB00BC1024 /* RVC TableView.swift */; };
 		EA0589BA25C5696D00BC1024 /* BVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0589B925C5696D00BC1024 /* BVC TableView.swift */; };
@@ -34,7 +34,6 @@
 		EA1EAC4B2620EFC6001CE23F /* PRVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1EAC4A2620EFC6001CE23F /* PRVC TableView.swift */; };
 		EA1EAC4E2620F420001CE23F /* PSVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1EAC4D2620F420001CE23F /* PSVC TableView.swift */; };
 		EA1EAC522620F614001CE23F /* POVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1EAC512620F614001CE23F /* POVC TableView.swift */; };
-		EA1EAC5B2620F8AA001CE23F /* PVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1EAC5A2620F8AA001CE23F /* PVC TableView.swift */; };
 		EA1EAC622620FB4D001CE23F /* PUVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1EAC612620FB4D001CE23F /* PUVC TableView.swift */; };
 		EA1EAC672620FED5001CE23F /* PRRVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1EAC662620FED5001CE23F /* PRRVC TableView.swift */; };
 		EA1EAC7526210425001CE23F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1EAC7426210425001CE23F /* LoginViewModel.swift */; };
@@ -47,16 +46,15 @@
 		EA22D78E25CE2DF4009C0EEF /* GitSecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78C25CE2DF4009C0EEF /* GitSecureStore.swift */; };
 		EA22D79425CE2E26009C0EEF /* GitSecureStoreQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D79325CE2E26009C0EEF /* GitSecureStoreQueryable.swift */; };
 		EA22D79925CE2E37009C0EEF /* RepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D79625CE2E37009C0EEF /* RepositoriesViewController.swift */; };
-		EA22D7A125CE2EAB009C0EEF /* GitHubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78225CE2DE0009C0EEF /* GitHubConstants.swift */; };
-		EA22D7B625CE2F1B009C0EEF /* GitTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78125CE2DE0009C0EEF /* GitTokenManager.swift */; };
-		EA22D7B725CE2F1B009C0EEF /* GitHubAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78025CE2DE0009C0EEF /* GitHubAccessToken.swift */; };
+		EA22D7A125CE2EAB009C0EEF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78225CE2DE0009C0EEF /* Constants.swift */; };
+		EA22D7B625CE2F1B009C0EEF /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78125CE2DE0009C0EEF /* TokenManager.swift */; };
+		EA22D7B725CE2F1B009C0EEF /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22D78025CE2DE0009C0EEF /* AccessToken.swift */; };
 		EA23A07025ED5C1A001B943F /* PublicOrgsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23A06B25ED5C19001B943F /* PublicOrgsViewController.swift */; };
 		EA23A07125ED5C1A001B943F /* PublicStarredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23A06825ED5C19001B943F /* PublicStarredViewController.swift */; };
 		EA23A07225ED5C1A001B943F /* PublicReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA23A06E25ED5C1A001B943F /* PublicReposViewController.swift */; };
 		EA23A08325ED6766001B943F /* PublicOrgsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA23A08225ED6766001B943F /* PublicOrgsView.storyboard */; };
 		EA2F137725DF21A400470A04 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2F137625DF21A400470A04 /* Repository.swift */; };
 		EA31595126018FB50038883D /* HVC Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31595026018FB50038883D /* HVC Table.swift */; };
-		EA31595426018FC50038883D /* HVC Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31595326018FC50038883D /* HVC Search.swift */; };
 		EA315966260192720038883D /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA315965260192720038883D /* Users.storyboard */; };
 		EA3FA0FA25AE9B88008D7520 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA0F925AE9B88008D7520 /* LaunchScreenViewController.swift */; };
 		EA3FA0FD25AE9C00008D7520 /* loadingspinner.json in Resources */ = {isa = PBXBuildFile; fileRef = EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */; };
@@ -73,7 +71,7 @@
 		EA566FF525927B9E00596E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA566FF425927B9E00596E6A /* Assets.xcassets */; };
 		EA566FF825927B9E00596E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA566FF625927B9E00596E6A /* LaunchScreen.storyboard */; };
 		EA5EADF725929E2700AC3223 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5EADF625929E2700AC3223 /* UsersViewController.swift */; };
-		EA5FD26325D62CAD002E8927 /* GitHaptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FD26225D62CAD002E8927 /* GitHaptics.swift */; };
+		EA5FD26325D62CAD002E8927 /* HapticsManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FD26225D62CAD002E8927 /* HapticsManger.swift */; };
 		EA622CFC25C54F3800EC5F3C /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA622CFB25C54F3800EC5F3C /* Users.swift */; };
 		EA62595F25CFD75300D63BE0 /* AFsession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA62595E25CFD75300D63BE0 /* AFsession.swift */; };
 		EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65CB7F25BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift */; };
@@ -91,11 +89,11 @@
 		EA999A6525927C02005E832C /* PublicUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6425927C02005E832C /* PublicUserProfileViewController.swift */; };
 		EA999A7A25927CAA005E832C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7925927CAA005E832C /* LoginViewController.swift */; };
 		EAA710F525BD4707004D7E21 /* APIcaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA710F425BD4707004D7E21 /* APIcaller.swift */; };
-		EAA87CC52606E796006BC6E7 /* ViewSetups.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA87CC42606E796006BC6E7 /* ViewSetups.swift */; };
+		EAA87CC52606E796006BC6E7 /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA87CC42606E796006BC6E7 /* CommonViews.swift */; };
 		EAA87CC82606EED4006BC6E7 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA87CC72606EED4006BC6E7 /* ExploreViewController.swift */; };
 		EAA87CD72606FC6A006BC6E7 /* ExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA87CD52606FC6A006BC6E7 /* ExploreCollectionViewCell.swift */; };
 		EAA87CD82606FC6A006BC6E7 /* ExploreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA87CD62606FC6A006BC6E7 /* ExploreCollectionViewCell.xib */; };
-		EAAF81FE25D4EDAD006C44EC /* GitCellDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF81FD25D4EDAD006C44EC /* GitCellDelegates.swift */; };
+		EAAF81FE25D4EDAD006C44EC /* CellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF81FD25D4EDAD006C44EC /* CellDelegate.swift */; };
 		EAAF820825D4F012006C44EC /* DarkModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF820725D4F012006C44EC /* DarkModeCell.swift */; };
 		EAAF820C25D4F036006C44EC /* SignOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF820A25D4F036006C44EC /* SignOutCell.swift */; };
 		EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2AD1125BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift */; };
@@ -106,6 +104,8 @@
 		EAC1636825BAB789007EDC96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636525BAB789007EDC96 /* Main.storyboard */; };
 		EAC3B16F25C951B600F798DA /* Commits.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3B16E25C951B600F798DA /* Commits.swift */; };
 		EAC3B17325C9520700F798DA /* CommitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3B17225C9520700F798DA /* CommitsViewController.swift */; };
+		EAC40D372709D68600ACE60C /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC40D362709D68600ACE60C /* Storyboarded.swift */; };
+		EAC40D3B2709DA8F00ACE60C /* AppCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC40D3A2709DA8F00ACE60C /* AppCordinator.swift */; };
 		EAD4476625B0148A00FB42B4 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD4476425B0148A00FB42B4 /* UsersTableViewCell.swift */; };
 		EADCD06D25E334DD005F7033 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD06C25E334DD005F7033 /* ProfileViewController.swift */; };
 		EADCD07525E35FF6005F7033 /* PrivateReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07425E35FF6005F7033 /* PrivateReposViewController.swift */; };
@@ -128,8 +128,6 @@
 		EADCFE16261EA0BC00E8A1A3 /* ReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE15261EA0BC00E8A1A3 /* ReposViewModel.swift */; };
 		EADCFE19261EA9B400E8A1A3 /* CM TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE18261EA9B400E8A1A3 /* CM TableView.swift */; };
 		EADCFE1C261EA9DE00E8A1A3 /* CommitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE1B261EA9DE00E8A1A3 /* CommitsViewModel.swift */; };
-		EADCFE1F261EAFD700E8A1A3 /* EXVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE1E261EAFD700E8A1A3 /* EXVC TableView.swift */; };
-		EADCFE22261EB08500E8A1A3 /* BVC Searchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCFE21261EB08500E8A1A3 /* BVC Searchbar.swift */; };
 		EAE2650F25ED323C0084029B /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE2650E25ED323C0084029B /* LoginView.storyboard */; };
 		EAE2651225ED38EE0084029B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE2651125ED38EE0084029B /* Settings.storyboard */; };
 		EAE2651525ED3B9A0084029B /* PublicProfileView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE2651425ED3B9A0084029B /* PublicProfileView.storyboard */; };
@@ -155,7 +153,7 @@
 		EA000B6525ED4E41005EF5D0 /* CommitsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommitsCell.xib; sourceTree = "<group>"; };
 		EA000B6B25ED4E76005EF5D0 /* SearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCell.swift; sourceTree = "<group>"; };
 		EA000B6C25ED4E76005EF5D0 /* SearchHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryCell.xib; sourceTree = "<group>"; };
-		EA05895425C5567700BC1024 /* GitDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitDataBase.swift; sourceTree = "<group>"; };
+		EA05895425C5567700BC1024 /* DataBaseManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManger.swift; sourceTree = "<group>"; };
 		EA05898725C564C700BC1024 /* RVC SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RVC SearchBar.swift"; sourceTree = "<group>"; };
 		EA05898A25C564FB00BC1024 /* RVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RVC TableView.swift"; sourceTree = "<group>"; };
 		EA0589B925C5696D00BC1024 /* BVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BVC TableView.swift"; sourceTree = "<group>"; };
@@ -177,7 +175,6 @@
 		EA1EAC4A2620EFC6001CE23F /* PRVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PRVC TableView.swift"; sourceTree = "<group>"; };
 		EA1EAC4D2620F420001CE23F /* PSVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PSVC TableView.swift"; sourceTree = "<group>"; };
 		EA1EAC512620F614001CE23F /* POVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "POVC TableView.swift"; sourceTree = "<group>"; };
-		EA1EAC5A2620F8AA001CE23F /* PVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PVC TableView.swift"; sourceTree = "<group>"; };
 		EA1EAC612620FB4D001CE23F /* PUVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PUVC TableView.swift"; sourceTree = "<group>"; };
 		EA1EAC662620FED5001CE23F /* PRRVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PRRVC TableView.swift"; sourceTree = "<group>"; };
 		EA1EAC7426210425001CE23F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -186,9 +183,9 @@
 		EA22D77C25CE2DE0009C0EEF /* RequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInterceptor.swift; sourceTree = "<group>"; };
 		EA22D77D25CE2DE0009C0EEF /* RequestRouter .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestRouter .swift"; sourceTree = "<group>"; };
 		EA22D77E25CE2DE0009C0EEF /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
-		EA22D78025CE2DE0009C0EEF /* GitHubAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAccessToken.swift; sourceTree = "<group>"; };
-		EA22D78125CE2DE0009C0EEF /* GitTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitTokenManager.swift; sourceTree = "<group>"; };
-		EA22D78225CE2DE0009C0EEF /* GitHubConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubConstants.swift; sourceTree = "<group>"; };
+		EA22D78025CE2DE0009C0EEF /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		EA22D78125CE2DE0009C0EEF /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		EA22D78225CE2DE0009C0EEF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EA22D78B25CE2DF4009C0EEF /* GitSecureStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitSecureStoreError.swift; sourceTree = "<group>"; };
 		EA22D78C25CE2DF4009C0EEF /* GitSecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitSecureStore.swift; sourceTree = "<group>"; };
 		EA22D79325CE2E26009C0EEF /* GitSecureStoreQueryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitSecureStoreQueryable.swift; sourceTree = "<group>"; };
@@ -199,7 +196,6 @@
 		EA23A08225ED6766001B943F /* PublicOrgsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PublicOrgsView.storyboard; sourceTree = "<group>"; };
 		EA2F137625DF21A400470A04 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		EA31595026018FB50038883D /* HVC Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HVC Table.swift"; sourceTree = "<group>"; };
-		EA31595326018FC50038883D /* HVC Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HVC Search.swift"; sourceTree = "<group>"; };
 		EA315965260192720038883D /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
 		EA3FA0F925AE9B88008D7520 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		EA3FA0FC25AE9C00008D7520 /* loadingspinner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingspinner.json; sourceTree = "<group>"; };
@@ -218,7 +214,7 @@
 		EA566FF725927B9E00596E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA566FF925927B9E00596E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5EADF625929E2700AC3223 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
-		EA5FD26225D62CAD002E8927 /* GitHaptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHaptics.swift; sourceTree = "<group>"; };
+		EA5FD26225D62CAD002E8927 /* HapticsManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManger.swift; sourceTree = "<group>"; };
 		EA622CFB25C54F3800EC5F3C /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		EA62595E25CFD75300D63BE0 /* AFsession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFsession.swift; sourceTree = "<group>"; };
 		EA65CB7F25BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SavedRepositories+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
@@ -237,11 +233,11 @@
 		EA999A6425927C02005E832C /* PublicUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicUserProfileViewController.swift; sourceTree = "<group>"; };
 		EA999A7925927CAA005E832C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EAA710F425BD4707004D7E21 /* APIcaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIcaller.swift; sourceTree = "<group>"; };
-		EAA87CC42606E796006BC6E7 /* ViewSetups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSetups.swift; sourceTree = "<group>"; };
+		EAA87CC42606E796006BC6E7 /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
 		EAA87CC72606EED4006BC6E7 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		EAA87CD52606FC6A006BC6E7 /* ExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewCell.swift; sourceTree = "<group>"; };
 		EAA87CD62606FC6A006BC6E7 /* ExploreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExploreCollectionViewCell.xib; sourceTree = "<group>"; };
-		EAAF81FD25D4EDAD006C44EC /* GitCellDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCellDelegates.swift; sourceTree = "<group>"; };
+		EAAF81FD25D4EDAD006C44EC /* CellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDelegate.swift; sourceTree = "<group>"; };
 		EAAF820725D4F012006C44EC /* DarkModeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkModeCell.swift; sourceTree = "<group>"; };
 		EAAF820A25D4F036006C44EC /* SignOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutCell.swift; sourceTree = "<group>"; };
 		EAB2AD1125BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -252,6 +248,8 @@
 		EAC1636525BAB789007EDC96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EAC3B16E25C951B600F798DA /* Commits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commits.swift; sourceTree = "<group>"; };
 		EAC3B17225C9520700F798DA /* CommitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewController.swift; sourceTree = "<group>"; };
+		EAC40D362709D68600ACE60C /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		EAC40D3A2709DA8F00ACE60C /* AppCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCordinator.swift; sourceTree = "<group>"; };
 		EAD4476425B0148A00FB42B4 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
 		EADCD06C25E334DD005F7033 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EADCD07425E35FF6005F7033 /* PrivateReposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateReposViewController.swift; sourceTree = "<group>"; };
@@ -274,8 +272,6 @@
 		EADCFE15261EA0BC00E8A1A3 /* ReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewModel.swift; sourceTree = "<group>"; };
 		EADCFE18261EA9B400E8A1A3 /* CM TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CM TableView.swift"; sourceTree = "<group>"; };
 		EADCFE1B261EA9DE00E8A1A3 /* CommitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewModel.swift; sourceTree = "<group>"; };
-		EADCFE1E261EAFD700E8A1A3 /* EXVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXVC TableView.swift"; sourceTree = "<group>"; };
-		EADCFE21261EB08500E8A1A3 /* BVC Searchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BVC Searchbar.swift"; sourceTree = "<group>"; };
 		EAE2650E25ED323C0084029B /* LoginView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginView.storyboard; sourceTree = "<group>"; };
 		EAE2651125ED38EE0084029B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		EAE2651425ED3B9A0084029B /* PublicProfileView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PublicProfileView.storyboard; sourceTree = "<group>"; };
@@ -720,6 +716,7 @@
 			isa = PBXGroup;
 			children = (
 				EADCFDC5261E674800E8A1A3 /* ViewController */,
+				EAC40D3C2709DB1700ACE60C /* Cells */,
 				EADCFDC9261E677000E8A1A3 /* ViewModel */,
 			);
 			path = Home;
@@ -728,9 +725,9 @@
 		EA48ACEC25D4D203006803BD /* TokenManger */ = {
 			isa = PBXGroup;
 			children = (
-				EA22D78225CE2DE0009C0EEF /* GitHubConstants.swift */,
-				EA22D78025CE2DE0009C0EEF /* GitHubAccessToken.swift */,
-				EA22D78125CE2DE0009C0EEF /* GitTokenManager.swift */,
+				EA22D78225CE2DE0009C0EEF /* Constants.swift */,
+				EA22D78025CE2DE0009C0EEF /* AccessToken.swift */,
+				EA22D78125CE2DE0009C0EEF /* TokenManager.swift */,
 			);
 			path = TokenManger;
 			sourceTree = "<group>";
@@ -756,10 +753,11 @@
 		EA566FE725927B9D00596E6A /* Githubgenics */ = {
 			isa = PBXGroup;
 			children = (
-				EAEEE13C25DCACD100E88EED /* Core */,
+				EAC40D392709DA7800ACE60C /* Navigation */,
+				EAEEE13C25DCACD100E88EED /* AppDelegate */,
 				EA22D7C025CE4818009C0EEF /* Authentication */,
 				EAD0CCB026222F2400BD0D19 /* Modules */,
-				EA622D0E25C5529300EC5F3C /* NetworkLayer */,
+				EAC40D352709D63000ACE60C /* Assets */,
 				EA86C6C32697D87600F78134 /* Helper */,
 				EA566FF925927B9E00596E6A /* Info.plist */,
 			);
@@ -774,8 +772,7 @@
 				EAA710F425BD4707004D7E21 /* APIcaller.swift */,
 				EA22D77E25CE2DE0009C0EEF /* EventMonitor.swift */,
 				EA22D77C25CE2DE0009C0EEF /* RequestInterceptor.swift */,
-				EA45AA19259C45E400365E9B /* NetwrokReachability.swift */,
-				EA48ACEF25D4D2C9006803BD /* NetworkMonitor.swift */,
+				EAC40D382709D80D00ACE60C /* NetworkReachability */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -800,23 +797,23 @@
 			path = UserCell;
 			sourceTree = "<group>";
 		};
-		EA635769260845F100045901 /* CustomCell */ = {
+		EA635769260845F100045901 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				EAC1636425BAB789007EDC96 /* ReposTableViewCell.xib */,
 				EA43BCD225965CAD00098ACA /* ReposTableViewCell.swift */,
 			);
-			path = CustomCell;
+			path = Cells;
 			sourceTree = "<group>";
 		};
-		EA63576E2608463F00045901 /* ExploreCell */ = {
+		EA63576E2608463F00045901 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				EAA87CD52606FC6A006BC6E7 /* ExploreCollectionViewCell.swift */,
 				EAA87CD62606FC6A006BC6E7 /* ExploreCollectionViewCell.xib */,
 				EA504724260702C600733740 /* TableViewCell.swift */,
 			);
-			path = ExploreCell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		EA65CB7C25BE9069005CBA09 /* Bookmarks */ = {
@@ -875,14 +872,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		EA86C6B72697D21600F78134 /* CustomCells */ = {
+		EA86C6B72697D21600F78134 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				EA635767260845E300045901 /* UserCell */,
 				EA000B7225ED4E88005EF5D0 /* LastSearchCell */,
 				EA000B7025ED4E7F005EF5D0 /* SearchHistoryCell */,
 			);
-			path = CustomCells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		EA86C6B82697D51B00F78134 /* Model */ = {
@@ -925,12 +922,12 @@
 			path = CustomCell;
 			sourceTree = "<group>";
 		};
-		EA86C6BD2697D5BE00F78134 /* CustomCell */ = {
+		EA86C6BD2697D5BE00F78134 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				EADCFE12261E9C1400E8A1A3 /* IssuesTableViewCell.swift */,
 			);
-			path = CustomCell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		EA86C6BE2697D5EE00F78134 /* CustomCells */ = {
@@ -979,12 +976,13 @@
 		EA86C6C32697D87600F78134 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				EA622D0E25C5529300EC5F3C /* NetworkLayer */,
 				EA703D7425BAB65900073DFB /* CoreData */,
 				EA94DCC825C67B0700E2C30B /* Localization */,
+				EAC40D342709D59000ACE60C /* Mangers */,
 				EA86C6B52697D0CC00F78134 /* Extensions */,
-				EAC6C45A25FC919F006702EE /* Reusables */,
+				EAC6C45A25FC919F006702EE /* CommonViews */,
 				EA7E45FE25ED0EE100ACA56D /* Resources */,
-				EA566FF425927B9E00596E6A /* Assets.xcassets */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1024,9 +1022,9 @@
 			children = (
 				EA86C6B62697D1EC00F78134 /* Model */,
 				EA1EAC792621043E001CE23F /* View */,
-				EADCFDF2261E735300E8A1A3 /* ViewController */,
 				EADCFDF3261E736600E8A1A3 /* ViewModel */,
-				EA86C6B72697D21600F78134 /* CustomCells */,
+				EADCFDF2261E735300E8A1A3 /* ViewController */,
+				EA86C6B72697D21600F78134 /* Cells */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -1037,21 +1035,72 @@
 				EA1EAC7A26210445001CE23F /* View */,
 				EADCFDF5261E738200E8A1A3 /* ViewController */,
 				EADCFDF6261E738F00E8A1A3 /* ViewModel */,
-				EA635769260845F100045901 /* CustomCell */,
+				EA635769260845F100045901 /* Cells */,
 			);
 			path = RepositoriesList;
 			sourceTree = "<group>";
 		};
-		EAC6C45A25FC919F006702EE /* Reusables */ = {
+		EAC40D342709D59000ACE60C /* Mangers */ = {
 			isa = PBXGroup;
 			children = (
-				EA05895425C5567700BC1024 /* GitDataBase.swift */,
-				EA5FD26225D62CAD002E8927 /* GitHaptics.swift */,
-				EAAF81FD25D4EDAD006C44EC /* GitCellDelegates.swift */,
-				EAA87CC42606E796006BC6E7 /* ViewSetups.swift */,
+				EA05895425C5567700BC1024 /* DataBaseManger.swift */,
+				EAAF81FD25D4EDAD006C44EC /* CellDelegate.swift */,
+				EA5FD26225D62CAD002E8927 /* HapticsManger.swift */,
+				EAC40D362709D68600ACE60C /* Storyboarded.swift */,
+			);
+			path = Mangers;
+			sourceTree = "<group>";
+		};
+		EAC40D352709D63000ACE60C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EA566FF425927B9E00596E6A /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		EAC40D382709D80D00ACE60C /* NetworkReachability */ = {
+			isa = PBXGroup;
+			children = (
+				EA45AA19259C45E400365E9B /* NetwrokReachability.swift */,
+				EA48ACEF25D4D2C9006803BD /* NetworkMonitor.swift */,
+			);
+			path = NetworkReachability;
+			sourceTree = "<group>";
+		};
+		EAC40D392709DA7800ACE60C /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				EAC40D3A2709DA8F00ACE60C /* AppCordinator.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		EAC40D3C2709DB1700ACE60C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EADCFDB9261E48CA00E8A1A3 /* HomeTableViewCell.swift */,
+				EADCFDBC261E493200E8A1A3 /* SearchOptionsCell.swift */,
+				EADCFDBF261E494600E8A1A3 /* SearchHstoryCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EAC40D3D2709E46500ACE60C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EADCFDD8261E71DC00E8A1A3 /* ProfileViewModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EAC6C45A25FC919F006702EE /* CommonViews */ = {
+			isa = PBXGroup;
+			children = (
+				EAA87CC42606E796006BC6E7 /* CommonViews.swift */,
 				EA88A7B625D709CB008663BD /* GitStoryboardIDs.swift */,
 			);
-			path = Reusables;
+			path = CommonViews;
 			sourceTree = "<group>";
 		};
 		EAD0CCB026222F2400BD0D19 /* Modules */ = {
@@ -1082,7 +1131,6 @@
 			children = (
 				EA463E91260027D400F43E7D /* HomeViewController.swift */,
 				EA31595026018FB50038883D /* HVC Table.swift */,
-				EA31595326018FC50038883D /* HVC Search.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1091,9 +1139,6 @@
 			isa = PBXGroup;
 			children = (
 				EADCFDB6261E42BA00E8A1A3 /* HomeViewModel.swift */,
-				EADCFDB9261E48CA00E8A1A3 /* HomeTableViewCell.swift */,
-				EADCFDBC261E493200E8A1A3 /* SearchOptionsCell.swift */,
-				EADCFDBF261E494600E8A1A3 /* SearchHstoryCell.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1101,8 +1146,9 @@
 		EADCFDCB261E716B00E8A1A3 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				EADCFDD1261E71A600E8A1A3 /* ViewController */,
 				EADCFDD3261E71B200E8A1A3 /* ViewModel */,
+				EADCFDD1261E71A600E8A1A3 /* ViewController */,
+				EA63576E2608463F00045901 /* Cell */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -1111,7 +1157,6 @@
 			isa = PBXGroup;
 			children = (
 				EAA87CC72606EED4006BC6E7 /* ExploreViewController.swift */,
-				EADCFE1E261EAFD700E8A1A3 /* EXVC TableView.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1119,7 +1164,6 @@
 		EADCFDD3261E71B200E8A1A3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				EA63576E2608463F00045901 /* ExploreCell */,
 				EADCFDCE261E719700E8A1A3 /* ExploreViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1130,6 +1174,7 @@
 			children = (
 				EA86C6C22697D68F00F78134 /* Model */,
 				EADCFDE2261E720A00E8A1A3 /* ViewController */,
+				EAC40D3D2709E46500ACE60C /* Cell */,
 				EADCFDE4261E721300E8A1A3 /* ViewModel */,
 				EA1EABE92620E668001CE23F /* PrivateProfileViews */,
 			);
@@ -1141,7 +1186,6 @@
 			children = (
 				EA7C4CA825BAA7E000EC9F45 /* BookmarksViewController.swift */,
 				EA0589B925C5696D00BC1024 /* BVC TableView.swift */,
-				EADCFE21261EB08500E8A1A3 /* BVC Searchbar.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1158,7 +1202,6 @@
 			isa = PBXGroup;
 			children = (
 				EADCD06C25E334DD005F7033 /* ProfileViewController.swift */,
-				EA1EAC5A2620F8AA001CE23F /* PVC TableView.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1166,7 +1209,6 @@
 		EADCFDE4261E721300E8A1A3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				EADCFDD8261E71DC00E8A1A3 /* ProfileViewModel.swift */,
 				EA1EAC8D26210911001CE23F /* ProfileTableViewCell.swift */,
 			);
 			path = ViewModel;
@@ -1179,7 +1221,7 @@
 				EA1EAC7B2621044A001CE23F /* View */,
 				EADCFDF7261E73A400E8A1A3 /* ViewController */,
 				EADCFDF9261E73B000E8A1A3 /* ViewModel */,
-				EA86C6BD2697D5BE00F78134 /* CustomCell */,
+				EA86C6BD2697D5BE00F78134 /* Cell */,
 			);
 			path = Issues;
 			sourceTree = "<group>";
@@ -1340,13 +1382,13 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		EAEEE13C25DCACD100E88EED /* Core */ = {
+		EAEEE13C25DCACD100E88EED /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
 				EA566FE825927B9D00596E6A /* AppDelegate.swift */,
 				EA566FEA25927B9D00596E6A /* SceneDelegate.swift */,
 			);
-			path = Core;
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1357,7 +1399,6 @@
 			buildConfigurationList = EA566FFC25927B9E00596E6A /* Build configuration list for PBXNativeTarget "Githubgenics" */;
 			buildPhases = (
 				2E970170D47D8F9027D78EDA /* [CP] Check Pods Manifest.lock */,
-				EA672A35263A48CF0081BAF6 /* Swiftlint */,
 				EA566FE125927B9D00596E6A /* Sources */,
 				EA566FE225927B9D00596E6A /* Frameworks */,
 				EA566FE325927B9D00596E6A /* Resources */,
@@ -1479,24 +1520,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Githubgenics/Pods-Githubgenics-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EA672A35263A48CF0081BAF6 /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1508,15 +1531,15 @@
 				EA7C4CA925BAA7E000EC9F45 /* BookmarksViewController.swift in Sources */,
 				EAA710F525BD4707004D7E21 /* APIcaller.swift in Sources */,
 				EA23A07125ED5C1A001B943F /* PublicStarredViewController.swift in Sources */,
-				EA05895525C5567700BC1024 /* GitDataBase.swift in Sources */,
+				EA05895525C5567700BC1024 /* DataBaseManger.swift in Sources */,
 				EA463E92260027D400F43E7D /* HomeViewController.swift in Sources */,
 				EAAF820825D4F012006C44EC /* DarkModeCell.swift in Sources */,
 				EA43BCD325965CAD00098ACA /* ReposTableViewCell.swift in Sources */,
 				EA48ACF025D4D2C9006803BD /* NetworkMonitor.swift in Sources */,
 				EADCD06D25E334DD005F7033 /* ProfileViewController.swift in Sources */,
+				EAC40D372709D68600ACE60C /* Storyboarded.swift in Sources */,
 				EAB2AD1425BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift in Sources */,
 				EA0589BA25C5696D00BC1024 /* BVC TableView.swift in Sources */,
-				EA1EAC5B2620F8AA001CE23F /* PVC TableView.swift in Sources */,
 				EADCD08625E36EC1005F7033 /* ViewExtension.swift in Sources */,
 				EADCFE1C261EA9DE00E8A1A3 /* CommitsViewModel.swift in Sources */,
 				EA1EAC522620F614001CE23F /* POVC TableView.swift in Sources */,
@@ -1529,7 +1552,7 @@
 				EA94DCBC25C6726C00E2C30B /* UVC TableView.swift in Sources */,
 				EA5EADF725929E2700AC3223 /* UsersViewController.swift in Sources */,
 				EA1EABE52620E4E1001CE23F /* OrgsTableViewCell.swift in Sources */,
-				EAAF81FE25D4EDAD006C44EC /* GitCellDelegates.swift in Sources */,
+				EAAF81FE25D4EDAD006C44EC /* CellDelegate.swift in Sources */,
 				EADCFE13261E9C1400E8A1A3 /* IssuesTableViewCell.swift in Sources */,
 				EA1EAC242620E937001CE23F /* PublicReposViewModel.swift in Sources */,
 				EA1EAC022620E7A5001CE23F /* PrivateOrgsViewModel.swift in Sources */,
@@ -1540,7 +1563,6 @@
 				EA1EAC7F26210486001CE23F /* PfUVC TableView.swift in Sources */,
 				EA1EABDA2620E278001CE23F /* OVC TableView.swift in Sources */,
 				EADCFE19261EA9B400E8A1A3 /* CM TableView.swift in Sources */,
-				EADCFE22261EB08500E8A1A3 /* BVC Searchbar.swift in Sources */,
 				EA50D2B825FD6F7800EE32F8 /* GitEntities.swift in Sources */,
 				EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */,
 				EA000B6D25ED4E76005EF5D0 /* SearchHistoryCell.swift in Sources */,
@@ -1548,11 +1570,10 @@
 				EADCFE0A261E98F700E8A1A3 /* ISS TableView.swift in Sources */,
 				EA31595126018FB50038883D /* HVC Table.swift in Sources */,
 				EA22D78D25CE2DF4009C0EEF /* GitSecureStoreError.swift in Sources */,
-				EA22D7B625CE2F1B009C0EEF /* GitTokenManager.swift in Sources */,
+				EA22D7B625CE2F1B009C0EEF /* TokenManager.swift in Sources */,
 				EA05898825C564C700BC1024 /* RVC SearchBar.swift in Sources */,
 				EA3FA0FA25AE9B88008D7520 /* LaunchScreenViewController.swift in Sources */,
 				EA22D78525CE2DE0009C0EEF /* RequestRouter .swift in Sources */,
-				EADCFE1F261EAFD700E8A1A3 /* EXVC TableView.swift in Sources */,
 				EA05898B25C564FB00BC1024 /* RVC TableView.swift in Sources */,
 				EA71B59C25E40C4F00779B9A /* TabBarViewController.swift in Sources */,
 				EA22D78625CE2DE0009C0EEF /* EventMonitor.swift in Sources */,
@@ -1567,12 +1588,12 @@
 				EA668BA125BFE83C00392A30 /* Githubgenics.xcdatamodeld in Sources */,
 				EAEA13A226215CE5003CF3D5 /* SVC Header.swift in Sources */,
 				EADCD08025E36AE8005F7033 /* PrivateStarredViewController.swift in Sources */,
-				EA31595426018FC50038883D /* HVC Search.swift in Sources */,
 				EAEA139F26215C76003CF3D5 /* SVC TableView.swift in Sources */,
 				EA622CFC25C54F3800EC5F3C /* Users.swift in Sources */,
 				EA23A07225ED5C1A001B943F /* PublicReposViewController.swift in Sources */,
 				EA1EAC062620E806001CE23F /* PrivateReposViewModel.swift in Sources */,
 				EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */,
+				EAC40D3B2709DA8F00ACE60C /* AppCordinator.swift in Sources */,
 				EA1EAC672620FED5001CE23F /* PRRVC TableView.swift in Sources */,
 				EA668B9D25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift in Sources */,
 				EADCD07525E35FF6005F7033 /* PrivateReposViewController.swift in Sources */,
@@ -1581,7 +1602,7 @@
 				EA1EAC4B2620EFC6001CE23F /* PRVC TableView.swift in Sources */,
 				EAEEE13A25DCACCD00E88EED /* TableViewExtension.swift in Sources */,
 				EAF1165625DCC644007A1F8F /* LanguageCell.swift in Sources */,
-				EA22D7A125CE2EAB009C0EEF /* GitHubConstants.swift in Sources */,
+				EA22D7A125CE2EAB009C0EEF /* Constants.swift in Sources */,
 				EA999A6525927C02005E832C /* PublicUserProfileViewController.swift in Sources */,
 				EADCFDDC261E71EA00E8A1A3 /* BookmarksViewModel.swift in Sources */,
 				EAA87CC82606EED4006BC6E7 /* ExploreViewController.swift in Sources */,
@@ -1594,15 +1615,15 @@
 				EA1EABEC2620E6A3001CE23F /* PrivateOrgsViewController.swift in Sources */,
 				EA504725260702C600733740 /* TableViewCell.swift in Sources */,
 				EA999A7A25927CAA005E832C /* LoginViewController.swift in Sources */,
-				EA5FD26325D62CAD002E8927 /* GitHaptics.swift in Sources */,
-				EA22D7B725CE2F1B009C0EEF /* GitHubAccessToken.swift in Sources */,
+				EA5FD26325D62CAD002E8927 /* HapticsManger.swift in Sources */,
+				EA22D7B725CE2F1B009C0EEF /* AccessToken.swift in Sources */,
 				EA45AA1A259C45E400365E9B /* NetwrokReachability.swift in Sources */,
 				EADCFDCF261E719700E8A1A3 /* ExploreViewModel.swift in Sources */,
 				EADCFDBD261E493200E8A1A3 /* SearchOptionsCell.swift in Sources */,
 				EADCFDC0261E494600E8A1A3 /* SearchHstoryCell.swift in Sources */,
 				EA1EAC622620FB4D001CE23F /* PUVC TableView.swift in Sources */,
 				EAFD8FD626008AE2008ABA1E /* GithubViewController.swift in Sources */,
-				EAA87CC52606E796006BC6E7 /* ViewSetups.swift in Sources */,
+				EAA87CC52606E796006BC6E7 /* CommonViews.swift in Sources */,
 				EA22D78325CE2DE0009C0EEF /* RequestInterceptor.swift in Sources */,
 				EA22D79425CE2E26009C0EEF /* GitSecureStoreQueryable.swift in Sources */,
 				EA1EABE02620E2C7001CE23F /* OrgsViewModel.swift in Sources */,

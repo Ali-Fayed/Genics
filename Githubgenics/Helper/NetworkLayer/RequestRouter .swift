@@ -128,8 +128,8 @@ enum GitRequestRouter {
         switch self {
         case .gitAccessToken(let accessToken):
             return [
-                "client_id": GitHubConstants.clientID,
-                "client_secret": GitHubConstants.clientSecret,
+                "client_id": Constants.clientID,
+                "client_secret": Constants.clientSecret,
                 "code": accessToken
             ]
         case .gitAuthenticatedUser:

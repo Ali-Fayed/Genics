@@ -5,16 +5,16 @@
 //  Created by Ali Fayed on 30/12/2020.
 //
 
-class GitTokenManager {
+class TokenManager {
     
     let userAccount = "accessToken"
-    static let shared = GitTokenManager()
+    static let shared = TokenManager()
     
     func fetchAccessToken(accessToken: String, completion: @escaping (Bool) -> Void) {
         AFsession.request(GitRequestRouter.gitAccessToken(accessToken))
-            .responseDecodable(of: GitHubAccessToken.self) { response in
+            .responseDecodable(of: AccessToken.self) { response in
                 guard let token = response.value else { return completion(false) }
-                GitTokenManager.shared.saveAccessToken(gitToken: token)
+                TokenManager.shared.saveAccessToken(gitToken: token)
                 completion(true)
             }
     }
@@ -24,7 +24,7 @@ class GitTokenManager {
         return GitSecureStore(secureStoreQueryable: accessTokenQueryable)
     }()
     
-    func saveAccessToken(gitToken: GitHubAccessToken) {
+    func saveAccessToken(gitToken: AccessToken) {
         do {
             try secureStore.setValue(gitToken.accessToken, for: userAccount)
         } catch let exception {

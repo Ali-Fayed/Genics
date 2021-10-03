@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PrivateOrgsViewController: ViewSetups {
+class PrivateOrgsViewController: CommonViews {
 
     @IBOutlet weak var tableView: UITableView!
     

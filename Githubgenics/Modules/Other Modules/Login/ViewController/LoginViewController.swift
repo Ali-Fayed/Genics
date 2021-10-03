@@ -10,7 +10,7 @@ import SafariServices
 import AuthenticationServices
 
 
-class LoginViewController: ViewSetups {
+class LoginViewController: CommonViews {
     
     @IBOutlet weak var signInWithGitHub: UIButton!
     @IBOutlet weak var privacy: UIButton!
@@ -91,17 +91,17 @@ class LoginViewController: ViewSetups {
 extension LoginViewController {
     
     func getGitHubAccessToken () {
-        var authorizeURLComponents = URLComponents(string: GitHubConstants.authorizeURL)
+        var authorizeURLComponents = URLComponents(string: Constants.authorizeURL)
         authorizeURLComponents?.queryItems = [
-            URLQueryItem(name: "client_id", value: GitHubConstants.clientID),
-            URLQueryItem(name: "scope", value: GitHubConstants.scope)
+            URLQueryItem(name: "client_id", value: Constants.clientID),
+            URLQueryItem(name: "scope", value: Constants.scope)
         ]
         guard let authorizeURL = authorizeURLComponents?.url else {
             return
         }
         webAuthenticationSession = ASWebAuthenticationSession.init(
             url: authorizeURL,
-            callbackURLScheme: GitHubConstants.redirectURI) { (callBack: URL?, error: Error?) in
+            callbackURLScheme: Constants.redirectURI) { (callBack: URL?, error: Error?) in
             guard
                 error == nil,
                 let successURL = callBack
@@ -114,7 +114,7 @@ extension LoginViewController {
                 return
             }
             // fetch token using access code
-            GitTokenManager.shared.fetchAccessToken(accessToken: accessCode) { isSuccess in
+            TokenManager.shared.fetchAccessToken(accessToken: accessCode) { isSuccess in
                 self.handlesignin(success: isSuccess)
             }
         }

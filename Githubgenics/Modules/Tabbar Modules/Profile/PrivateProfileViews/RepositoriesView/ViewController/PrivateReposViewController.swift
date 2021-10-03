@@ -8,7 +8,7 @@
 import UIKit
 import JGProgressHUD
 
-class PrivateReposViewController: ViewSetups {
+class PrivateReposViewController: CommonViews {
 
     @IBOutlet weak var tableView: UITableView!
 

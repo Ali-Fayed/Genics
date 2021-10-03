@@ -1,11 +1,11 @@
 //
-//  GitHubAccessToken.swift
+//  AccessToken.swift
 //  Githubgenics
 //
 //  Created by Ali Fayed on 30/12/2020.
 //
 
-struct GitHubAccessToken: Decodable {
+struct AccessToken: Decodable {
   let accessToken: String
   let tokenType: String
 

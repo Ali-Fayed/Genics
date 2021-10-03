@@ -8,7 +8,7 @@
 import UIKit
 import JGProgressHUD
 
-class RepositoriesViewController: ViewSetups {
+class RepositoriesViewController: CommonViews {
 
     var query : String = ""
     lazy var searchController = UISearchController(searchResultsController: nil)

@@ -8,7 +8,7 @@
 import UIKit
 import SafariServices
 
-class PublicUserProfileViewController: ViewSetups  {
+class PublicUserProfileViewController: CommonViews  {
     
     @IBOutlet weak var bookmarkButton: UIButton?
     @IBOutlet weak var tableView: UITableView!

@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-class LaunchScreenViewController: ViewSetups {
+class LaunchScreenViewController: CommonViews {
     
     let animationView = AnimationView()
     static let animation = "loadingspinner"

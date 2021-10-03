@@ -8,7 +8,7 @@
 import UIKit
 import JGProgressHUD
 
-class IssuesViewController: ViewSetups {
+class IssuesViewController: CommonViews {
     
     var query: String = ""
     @IBOutlet weak var tableView: UITableView!

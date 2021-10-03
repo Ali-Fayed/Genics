@@ -8,8 +8,7 @@
 import UIKit
 
 class SearchHstoryCell: UITableViewCell {
-    
-    func cellViewModel(with model: SearchHistory) {
+    func getData(with model: SearchHistory) {
         textLabel?.text = model.keyword
         accessoryView = UIImageView(image: UIImage(systemName: "arrow.up.backward"))
     }

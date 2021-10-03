@@ -9,7 +9,7 @@ import UIKit
 import SafariServices
 import JGProgressHUD
 
-class PublicReposViewController: ViewSetups {
+class PublicReposViewController: CommonViews {
     
     @IBOutlet weak var tableView: UITableView!
     var starButton = [Int : Bool]()

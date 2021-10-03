@@ -10,7 +10,6 @@ import CoreData
 import JGProgressHUD
 
 class BookmarksViewModel {
-    
     // data models
     var savedRepositories = [SavedRepositories]()
     var bookmarkedUsers = [UsersDataBase]()

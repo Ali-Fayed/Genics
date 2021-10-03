@@ -8,7 +8,7 @@
 import UIKit
 import JGProgressHUD
 
-class ViewSetups : UIViewController {
+class CommonViews : UIViewController {
 
     let tableFooterView = UIView()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -36,7 +36,7 @@ class ViewSetups : UIViewController {
         return label
     }()
     var isLoggedIn: Bool {
-        if GitTokenManager.shared.fetchAccessToken() != nil {
+        if TokenManager.shared.fetchAccessToken() != nil {
             return true
         }
         return false

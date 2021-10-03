@@ -8,23 +8,20 @@
 import UIKit
 
 class HomeTableViewCell: UITableViewCell {
-    
     var isLoggedIn: Bool {
-        if GitTokenManager.shared.fetchAccessToken() != nil {
+        if TokenManager.shared.fetchAccessToken() != nil {
             return true
         }
         return false
     }
-    
-    func cellViewModel(with model: ProfileTableData) {
+    func getData(model: ProfileTableData) {
         textLabel?.text = model.cellHeader
         imageView?.image = UIImage(named: model.image)
         imageView?.clipsToBounds = true
         imageView?.layer.cornerRadius = 10
         accessoryType = .disclosureIndicator
     }
-    
-    func cellViewModelSection2 () {
+    func getSeconSectionData () {
         textLabel?.text = "Githubgenics"
         detailTextLabel?.text = "Ali-Fayed"
         imageView?.image = UIImage(named: "ali")
@@ -32,8 +29,7 @@ class HomeTableViewCell: UITableViewCell {
         imageView?.layer.cornerRadius = 10
         accessoryType = .disclosureIndicator
     }
-    
-    func cellViewModelSection3 () {
+    func getThirdSectionData () {
         textLabel?.text = isLoggedIn ? Titles.authenticatedModeTitle : Titles.guestModeTitle
         accessoryType = .none
     }

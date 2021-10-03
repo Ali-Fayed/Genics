@@ -16,7 +16,7 @@ class ProfileViewModel {
     var passedUser : User?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var isLoggedIn: Bool {
-        if GitTokenManager.shared.fetchAccessToken() != nil {
+        if TokenManager.shared.fetchAccessToken() != nil {
             return true
         }
         return false
