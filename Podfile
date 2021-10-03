@@ -14,5 +14,8 @@ target 'Githubgenics' do
   pod 'lottie-ios'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'JGProgressHUD'
-
+  pod 'SnapKit', '~> 5.0.0'
+  pod 'SwiftLint'
+  pod 'RxSwift', '6.2.0'
+  pod 'RxCocoa', '6.2.0'
 end
