@@ -12,6 +12,7 @@ class HomeViewModel {
     var profileTableData = [ProfileTableData]()
     var searchTableData = [ProfileTableData]()
     var searchHistory = [SearchHistory]()
+    var router = HomeCordinator()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var numberOfHomeTableCells: Int {
         return profileTableData.count
@@ -49,37 +50,22 @@ class HomeViewModel {
     }
     func pushToDestinationVC (indexPath: IndexPath, navigationController: UINavigationController) {
         if indexPath.row == 0 {
-            let usersView = UsersViewController.instaintiate(on: .usersView)
-            navigationController.pushViewController(usersView, animated: true)
+            router.pushTo(destination: .users, navigationController: navigationController, searchText: "")
         } else if indexPath.row == 1 {
-            let reposView = RepositoriesViewController.instaintiate(on: .reposView)
-            navigationController.pushViewController(reposView, animated: true)
+            router.pushTo(destination: .repos, navigationController: navigationController, searchText: "")
         } else if indexPath.row == 2 {
-            let issuesView = IssuesViewController.instaintiate(on: .issuesView)
-            navigationController.pushViewController(issuesView, animated: true)
+            router.pushTo(destination: .issues, navigationController: navigationController, searchText: "")
         } else if indexPath.row == 3 {
-            let gitHubWebVC = GithubViewController()
-            gitHubWebVC.navigationItem.largeTitleDisplayMode = .never
-            gitHubWebVC.navigationController?.navigationBar.prefersLargeTitles = false
-            navigationController.pushViewController(gitHubWebVC, animated: true)
+            router.pushTo(destination: .githubWebSite, navigationController: navigationController, searchText: "")
         }
     }
     func pushToDestinationSearchedVC (indexPath: IndexPath, navigationController: UINavigationController, searchText: String) {
         if indexPath.row == 0 {
-            let usersView = UsersViewController.instaintiate(on: .usersView)
-            usersView.searchController.searchBar.text = searchText
-            usersView.query = searchText
-            navigationController.pushViewController(usersView, animated: true)
+            router.pushTo(destination: .searchUsers, navigationController: navigationController, searchText: searchText)
         } else if indexPath.row == 1 {
-            let reposView = RepositoriesViewController.instaintiate(on: .reposView)
-            reposView.searchController.searchBar.text = searchText
-            reposView.query = searchText
-            navigationController.pushViewController(reposView, animated: true)
+            router.pushTo(destination: .searchRepos, navigationController: navigationController, searchText: searchText)
         } else if indexPath.row == 2 {
-            let issuesView = IssuesViewController.instaintiate(on: .issuesView)
-            issuesView.searchController.searchBar.text = searchText
-            issuesView.query = searchText
-            navigationController.pushViewController(issuesView, animated: true)
+            router.pushTo(destination: .searchIssues, navigationController: navigationController, searchText: searchText)
         }
     }
     func saveSearchWord (text: String) {

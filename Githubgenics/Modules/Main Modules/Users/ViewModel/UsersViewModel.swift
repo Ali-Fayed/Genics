@@ -121,11 +121,11 @@ class UsersViewModel {
     }
     
     func pushWithData (navigationController: UINavigationController) {
-        let publicProfileView = UIStoryboard.init(name: Storyboards.publicProfileView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.publicProfileViewControllerID) as? PublicUserProfileViewController
-        publicProfileView?.viewModel.passedUser = passedUsers
-        publicProfileView?.navigationItem.largeTitleDisplayMode = .never
-        publicProfileView?.navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController.pushViewController(publicProfileView!, animated: true)
+        let publicProfileView = PublicUserProfileViewController.instaintiate(on: .publicProfileView)
+        publicProfileView.viewModel.passedUser = passedUsers
+        publicProfileView.navigationItem.largeTitleDisplayMode = .never
+        publicProfileView.navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController.pushViewController(publicProfileView, animated: true)
     }
     
     func deleteAndFetchRecentTableData (indexPath:IndexPath) {

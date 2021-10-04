@@ -123,10 +123,10 @@ extension SettingsViewController {
                 navigationController?.popViewController(animated: true)
                 TokenManager.shared.clearAccessToken()
             } else {
-                let loginView = UIStoryboard.init(name: Storyboards.loginView, bundle: Bundle.main).instantiateViewController(withIdentifier: ID.loginViewControllerID) as? LoginViewController
-                loginView?.hidesBottomBarWhenPushed = true
-                loginView?.getGitHubAccessToken()
-                navigationController?.pushViewController(loginView!, animated: true)
+                let loginView = LoginViewController.instaintiate(on: .loginView)
+                loginView.hidesBottomBarWhenPushed = true
+                loginView.getGitHubAccessToken()
+                navigationController?.pushViewController(loginView, animated: true)
             }
         }
     }

@@ -21,6 +21,7 @@ class ProfileViewController: CommonViews {
     lazy var viewModel: ProfileViewModel = {
        return ProfileViewModel()
    }()
+    var router = ProfileCordinator()
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +51,7 @@ class ProfileViewController: CommonViews {
                         userBio: userBio, userLoginName: userLogin, userLocation: userLocation)
     }
     @IBAction func didTapSettingsButton(_ sender: UIBarButtonItem) {
-        let settingsVC = UIStoryboard.init(name: Storyboards.settingsView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.settingsViewControllerID) as? SettingsViewController
-        navigationController?.pushViewController(settingsVC!, animated: true)
+        router.pushTo(destination: .settings, navigationController: navigationController!, passedUser: nil)
     }
 }
 //MARK: - TableView

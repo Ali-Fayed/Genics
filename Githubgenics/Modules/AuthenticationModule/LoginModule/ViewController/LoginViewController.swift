@@ -75,9 +75,9 @@ class LoginViewController: CommonViews {
             alert.view.tintColor = UIColor.black
             let action = UIAlertAction(title: Titles.continueLabel, style: .default) {_ in
 
-                let tabBarView = UIStoryboard.init(name: Storyboards.tabBarView, bundle: Bundle.main).instantiateViewController(withIdentifier: ID.tabBarViewControllerID) as? TabBarViewController
-                tabBarView?.modalPresentationStyle = .fullScreen
-                self.navigationController?.pushViewController(tabBarView!, animated: true)
+                let tabBarView = TabBarViewController.instaintiate(on: .tabBarView)
+                tabBarView.modalPresentationStyle = .fullScreen
+                self.navigationController?.pushViewController(tabBarView, animated: true)
             }
             action.setValue(UIColor(named: "Color"), forKey: "titleTextColor")
             alert.addAction(action)
@@ -128,9 +128,9 @@ extension LoginViewController {
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             return
         }
-        let tabBarView = UIStoryboard.init(name: Storyboards.tabBarView, bundle: Bundle.main).instantiateViewController(withIdentifier: ID.tabBarViewControllerID) as? TabBarViewController
-        tabBarView?.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(tabBarView!, animated: true)
+        let tabBarView = TabBarViewController.instaintiate(on: .tabBarView)
+        tabBarView.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(tabBarView, animated: true)
     }
 }
 

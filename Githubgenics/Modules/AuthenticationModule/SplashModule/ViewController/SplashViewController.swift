@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-class LaunchScreenViewController: CommonViews {
+class SplashViewController: CommonViews {
     
     let animationView = AnimationView()
     static let animation = "loadingspinner"
@@ -25,7 +25,7 @@ class LaunchScreenViewController: CommonViews {
     }
         
     private func startAnimation () {
-        animationView.animation = Animation.named(LaunchScreenViewController.animation)
+        animationView.animation = Animation.named(SplashViewController.animation)
         animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         animationView.center = view.center
         animationView.contentMode = .scaleAspectFit
@@ -37,11 +37,11 @@ class LaunchScreenViewController: CommonViews {
     func handleAnimation() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if self.isLoggedIn {
-                let tabBarView = UIStoryboard.init(name: Storyboards.tabBarView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.tabBarViewControllerID) as? TabBarViewController
-                    self.navigationController?.pushViewController(tabBarView!, animated: true)
+                let tabBarView = TabBarViewController.instaintiate(on: .tabBarView)
+                    self.navigationController?.pushViewController(tabBarView, animated: true)
             } else {
-                let loginView = UIStoryboard.init(name: Storyboards.loginView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.loginViewControllerID) as? LoginViewController
-                    self.navigationController?.pushViewController(loginView!, animated: true)
+                let loginView = LoginViewController.instaintiate(on: .loginView)
+                    self.navigationController?.pushViewController(loginView, animated: true)
             }
         }
     }

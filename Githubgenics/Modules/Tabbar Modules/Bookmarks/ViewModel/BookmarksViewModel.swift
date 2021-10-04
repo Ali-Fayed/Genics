@@ -15,7 +15,6 @@ class BookmarksViewModel {
     var bookmarkedUsers = [UsersDataBase]()
     var passedRepo : SavedRepositories?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
     var numberOfReposCells: Int {
         return savedRepositories.count
     }
@@ -99,10 +98,10 @@ class BookmarksViewModel {
     }
     
     func pushToDestnationVC(indexPath: IndexPath, navigationController: UINavigationController , view: UIView, tableView: UITableView, loadingSpinner: JGProgressHUD) {
-        let commitsView = UIStoryboard.init(name: Storyboards.commitsView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.commitsViewControllerID) as? CommitsViewController
-        commitsView?.viewModel.savedRepos = passedRepo
-        commitsView?.viewModel.renderCachedReposCommits(view: view, tableView: tableView, loadingSpinner: loadingSpinner)
-        navigationController.pushViewController(commitsView!, animated: true)
+        let commitsView = CommitsViewController.instaintiate(on: .commitsView)
+        commitsView.viewModel.savedRepos = passedRepo
+        commitsView.viewModel.renderCachedReposCommits(view: view, tableView: tableView, loadingSpinner: loadingSpinner)
+        navigationController.pushViewController(commitsView, animated: true)
     }
     
 }

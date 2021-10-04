@@ -69,10 +69,10 @@ class PublicReposViewModel {
     }
     
     func pushToDestnationVC(indexPath: IndexPath, navigationController: UINavigationController, view: UIView, tableView: UITableView, loadingSpinner: JGProgressHUD ) {
-        let commitsView = UIStoryboard.init(name: Storyboards.commitsView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.commitsViewControllerID) as? CommitsViewController
-        commitsView?.viewModel.repository = repository
-        commitsView?.viewModel.fetchReposCommits(view: view, tableView: tableView, loadingSpinner: loadingSpinner)
-        navigationController.pushViewController(commitsView!, animated: true)
+        let commitsView = CommitsViewController.instaintiate(on: .commitsView)
+        commitsView.viewModel.repository = repository
+        commitsView.viewModel.fetchReposCommits(view: view, tableView: tableView, loadingSpinner: loadingSpinner)
+        navigationController.pushViewController(commitsView, animated: true)
     }
     
     func saveRepoToBookmarks(at indexPath: IndexPath) {

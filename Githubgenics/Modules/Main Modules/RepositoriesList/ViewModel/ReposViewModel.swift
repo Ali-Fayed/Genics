@@ -58,9 +58,9 @@ class ReposViewModel {
     }
     
     func pushWithData (navigationController: UINavigationController) {
-        let commitsView = UIStoryboard.init(name: Storyboards.commitsView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.commitsViewControllerID) as? CommitsViewController
-        commitsView?.viewModel.repository = selectedRepository
-        navigationController.pushViewController(commitsView!, animated: true)
+        let commitsView = CommitsViewController.instaintiate(on: .commitsView)
+        commitsView.viewModel.repository = selectedRepository
+        navigationController.pushViewController(commitsView, animated: true)
     }
     
     func fetchMoreCells (tableView: UITableView, loadingSpinner: JGProgressHUD, indexPath: IndexPath, searchController: UISearchController) {

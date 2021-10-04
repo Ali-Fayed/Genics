@@ -14,6 +14,7 @@ class ProfileViewModel {
     var userRepository = [Repository]()
     var selectedRepository: Repository?
     var passedUser : User?
+    var router = ProfileCordinator()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var isLoggedIn: Bool {
         if TokenManager.shared.fetchAccessToken() != nil {
@@ -30,36 +31,21 @@ class ProfileViewModel {
     }
     func pushToPrivateDestnationVC(indexPath: IndexPath, navigationController: UINavigationController) {
         if indexPath.row == 0 {
-            let privateReposViewVC = UIStoryboard.init(name: Storyboards.privateReposView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.privateReposViewController) as? PrivateReposViewController
-            navigationController.pushViewController(privateReposViewVC!, animated: true)
-            
+            router.pushTo(destination: .privateRepos, navigationController: navigationController, passedUser: nil)
         } else if indexPath.row == 1 {
-            let privateStarredViewVC = UIStoryboard.init(name: Storyboards.privateStarredView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.privateStarredViewController) as? PrivateStarredViewController
-            navigationController.pushViewController(privateStarredViewVC!, animated: true)
-            
+            router.pushTo(destination: .privateStarred, navigationController: navigationController, passedUser: nil)
         } else if indexPath.row == 2 {
-            let privateOrgsViewVC = UIStoryboard.init(name: Storyboards.privateOrgsView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.privateOrgsViewController) as?
-                PrivateOrgsViewController
-            navigationController.pushViewController(privateOrgsViewVC!, animated: true)
+            router.pushTo(destination: .privateOrgs, navigationController: navigationController, passedUser: nil)
         }
     }
     
     func pushToPublicDestnationVC (indexPath: IndexPath, navigationController: UINavigationController) {
         if indexPath.row == 0 {
-            let publicReposView = UIStoryboard.init(name: Storyboards.publicReposView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.publicReposViewController) as? PublicReposViewController
-            publicReposView?.viewModel.passedUser = passedUser
-            navigationController.pushViewController(publicReposView!, animated: true)
-            
+            router.pushTo(destination: .publicRepos, navigationController: navigationController, passedUser: passedUser)
         } else if indexPath.row == 1 {
-            let publicStarredView = UIStoryboard.init(name: Storyboards.publicStarredView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.publicStarredViewController) as? PublicStarredViewController
-            publicStarredView?.viewModel.passedUser = passedUser
-            navigationController.pushViewController(publicStarredView!, animated: true)
-            
+            router.pushTo(destination: .publicStarred, navigationController: navigationController, passedUser: passedUser)
         } else if indexPath.row == 2 {
-            let publicOrgsView = UIStoryboard.init(name: Storyboards.publicOrgsView , bundle: Bundle.main).instantiateViewController(withIdentifier: ID.publicOrgsViewController) as? PublicOrgsViewController
-            publicOrgsView?.viewModel.passedUser = passedUser
-            navigationController.pushViewController(publicOrgsView!, animated: true)
-            
+            router.pushTo(destination: .publicOrgs, navigationController: navigationController, passedUser: passedUser)
         }
     }
     
