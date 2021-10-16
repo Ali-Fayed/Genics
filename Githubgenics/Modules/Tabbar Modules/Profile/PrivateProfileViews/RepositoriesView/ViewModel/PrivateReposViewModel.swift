@@ -27,23 +27,33 @@ class PrivateReposViewModel {
         if self.repositoryModel.isEmpty == true {
             loadingSpinner.show(in: view)
         }
-        GitAPIcaller.makeRequest(dataModel: [Repository].self, requestData: GitRequestRouter.gitAuthenticatedUserRepositories) { [weak self] (repos) in
-            self?.repositoryModel = repos
-            loadingSpinner.dismiss()
-            tableView.reloadData()
+        NetworkingManger.shared.performRequest(dataModel: [Repository].self, requestData: GitRequestRouter.gitAuthenticatedUserRepositories) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                self?.repositoryModel = result
+                loadingSpinner.dismiss()
+                tableView.reloadData()
+            case .failure(let error):
+                break
+            }
         }
     }
     
     func fetchMoreUserRepos (tableView: UITableView, loadingSpinner: JGProgressHUD, view: UIView, page: Int) {
-        GitAPIcaller.makeRequest(dataModel: [Repository].self, requestData: GitRequestRouter.gitAuthenticatedUserRepositories, pagination: true) { [weak self]  (moreRepos) in
-            DispatchQueue.main.async {
-                if moreRepos.isEmpty == false {
-                    self?.repositoryModel.append(contentsOf: moreRepos)
-                    tableView.reloadData()
-                    tableView.tableFooterView = nil
-                } else {
-                    tableView.tableFooterView = nil
+        NetworkingManger.shared.performRequest(dataModel: [Repository].self, requestData: GitRequestRouter.gitAuthenticatedUserRepositories, pagination: true) { [weak self]  (result) in
+            switch result {
+            case .success(let result):
+                DispatchQueue.main.async {
+                    if result.isEmpty == false {
+                        self?.repositoryModel.append(contentsOf: result)
+                        tableView.reloadData()
+                        tableView.tableFooterView = nil
+                    } else {
+                        tableView.tableFooterView = nil
+                    }
                 }
+            case .failure(let error):
+                break
             }
         }
     }

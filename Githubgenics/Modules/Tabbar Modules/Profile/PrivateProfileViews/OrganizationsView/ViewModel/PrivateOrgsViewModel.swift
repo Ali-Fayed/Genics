@@ -22,16 +22,21 @@ class PrivateOrgsViewModel {
         
     func fetchUserOrgs(tableView: UITableView , loadingSpinner: JGProgressHUD , view: UIView , conditionLabel: UILabel) {
         loadingSpinner.show(in: view)
-        GitAPIcaller.makeRequest(dataModel: [Orgs].self, requestData: GitRequestRouter.gitAuthenticatedUserOrgs) { [weak self] (orgs) in
-            self?.orgsModel = orgs
-            loadingSpinner.dismiss()
-            tableView.reloadData()
-            if self?.orgsModel.isEmpty == true {
-                tableView.isHidden = true
-                conditionLabel.isHidden = false
-            } else {
-                tableView.isHidden = false
-                conditionLabel.isHidden = true
+        NetworkingManger.shared.performRequest(dataModel: [Orgs].self, requestData: GitRequestRouter.gitAuthenticatedUserOrgs) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                self?.orgsModel = result
+                loadingSpinner.dismiss()
+                tableView.reloadData()
+                if self?.orgsModel.isEmpty == true {
+                    tableView.isHidden = true
+                    conditionLabel.isHidden = false
+                } else {
+                    tableView.isHidden = false
+                    conditionLabel.isHidden = true
+                }
+            case .failure(let error):
+                break
             }
         }
     }

@@ -21,12 +21,9 @@ enum AppStoryboards: String {
     case reposView = "ReposView"
     case issuesView = "Issues"
     case publicProfileView = "PublicProfileView"
-    case publicOrgsView = "PublicOrgsView"
-    case publicStarredView = "PublicStarredView"
-    case publicReposView = "PublicReposView"
-    case privateReposView = "PrivateReposView"
-    case privateStarredView = "PrivateStarredView"
-    case privateOrgsView = "PrivateOrgsView"
+    case reposSB = "Repos"
+    case starredSB = "Starred"
+    case orgsSB = "Orgs"
 }
 
 extension Storyboarded where Self: UIViewController {

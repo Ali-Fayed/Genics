@@ -38,6 +38,15 @@ enum GitRequestRouter {
         }
     }
     
+    var method: HTTPMethod {
+        switch self {
+        case .gitAccessToken:
+            return .post
+        case .gitAuthenticatedUserRepositories, .gitPublicRepositories, .gitRepositoriesCommits , .gitPublicUsersRepositories, .gitSearchUsers , .gitAuthenticatedUser, .gitAuthenticatedUserStarred, .gitAuthenticatedUserOrgs , .gitPublicUsersStarred , .gitPublicUsersOrgs, .gitPublicUserFollowers ,.gitPublicUserFollowing, .gitPublicUserInfo, .gitUsersList , .gitSearchIssues, .gitListOrgs, .gitSearchCommits, .gitProjectRepo:
+            return .get
+        }
+    }
+    
     var path: String {
         switch self {
         case .gitAccessToken:
@@ -81,49 +90,6 @@ enum GitRequestRouter {
         }
     }
     
-    var method: HTTPMethod {
-        switch self {
-        case .gitAccessToken:
-            return .post
-        case .gitAuthenticatedUser:
-            return .get
-        case .gitAuthenticatedUserStarred:
-            return .get
-        case .gitAuthenticatedUserOrgs:
-            return .get
-        case .gitSearchUsers:
-            return .get
-        case .gitPublicUserInfo:
-            return .get
-        case .gitUsersList:
-            return .get
-        case .gitSearchCommits:
-            return .get
-        case .gitSearchIssues:
-            return .get
-        case .gitPublicUsersRepositories:
-            return .get
-        case .gitPublicUsersStarred:
-            return .get
-        case .gitPublicUserFollowers:
-            return .get
-        case .gitPublicUserFollowing:
-            return .get
-        case .gitPublicUsersOrgs:
-            return .get
-        case .gitListOrgs:
-            return .get
-        case .gitAuthenticatedUserRepositories:
-            return .get
-        case .gitPublicRepositories:
-            return .get
-        case .gitRepositoriesCommits:
-            return .get
-        case .gitProjectRepo:
-            return .get
-        }
-    }
-    
     var parameters: [String: String]? {
         switch self {
         case .gitAccessToken(let accessToken):
@@ -132,42 +98,24 @@ enum GitRequestRouter {
                 "client_secret": Constants.clientSecret,
                 "code": accessToken
             ]
-        case .gitAuthenticatedUser:
-            return nil
-        case .gitAuthenticatedUserStarred:
-            return ["per_page": "50"]
-        case .gitAuthenticatedUserOrgs:
-            return ["per_page": "50"]
-        case .gitAuthenticatedUserRepositories:
-            return ["per_page": "50"]
         case .gitSearchUsers(let page, let query):
             return ["per_page": "30" ,"sort": "repositories", "order": "desc", "page": "\(page)" , "q": query]
         case .gitSearchIssues(let page, let query):
             return ["per_page": "30" ,"sort": "reactions", "order": "desc", "page": "\(page)" , "q": query]
         case .gitSearchCommits(let page, let query):
             return ["per_page": "30" ,"sort": "author-date", "order": "desc", "page": "\(page)" , "q": query]
-        case .gitPublicUserInfo:
-            return nil
         case .gitUsersList(let page):
             return ["page": "\(page)"]
         case .gitPublicRepositories(let page, let query):
             return ["per_page": "30", "sort": "stars", "order": "desc", "page": "\(page)" , "q": query]
-        case.gitPublicUsersRepositories(let page, _):
-            return ["per_page": "30" , "page": "\(page)"]
-        case.gitPublicUsersStarred(let page,_):
-            return ["per_page": "30" ,"page": "\(page)"]
-        case.gitPublicUsersOrgs:
-            return nil
         case .gitListOrgs(let perPage, let since):
             return ["per_page": "\(perPage)", "since": "\(since)"]
-        case .gitRepositoriesCommits(let page,_):
-            return ["per_page": "30", "page": "\(page)"]
-        case.gitPublicUserFollowers:
-            return ["per_page": "30"]
-        case.gitPublicUserFollowing:
-            return ["per_page": "30"]
-        case .gitProjectRepo:
+        case .gitAuthenticatedUser, .gitPublicUserInfo, .gitProjectRepo, .gitPublicUsersOrgs:
             return nil
+        case .gitAuthenticatedUserStarred, .gitAuthenticatedUserOrgs, .gitAuthenticatedUserRepositories, .gitPublicUserFollowers, .gitPublicUserFollowing:
+            return ["per_page": "30"]
+        case.gitPublicUsersRepositories(let page, _), .gitPublicUsersStarred(let page,_), .gitRepositoriesCommits(let page,_):
+            return ["per_page": "30" , "page": "\(page)"]
         }
     }
 }

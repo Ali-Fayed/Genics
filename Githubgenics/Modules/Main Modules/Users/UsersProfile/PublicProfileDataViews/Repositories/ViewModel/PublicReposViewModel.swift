@@ -31,19 +31,25 @@ class PublicReposViewModel {
         if repositoryModel.isEmpty == true {
             loadingSpinner.show(in: view)
         }
-        GitAPIcaller.makeRequest(dataModel: [Repository].self, requestData: GitRequestRouter.gitPublicUsersRepositories(pageNo, user.userName)) { [weak self] (result) in
-            self?.repositoryModel = result
-            DispatchQueue.main.async {
-                loadingSpinner.dismiss()
-                tableView.reloadData()
-                if self?.repositoryModel.isEmpty == true {
-                    tableView.isHidden = true
-                    conditionLabel.isHidden = false
-                } else {
-                    tableView.isHidden = false
-                    conditionLabel.isHidden = true
+        NetworkingManger.shared.performRequest(dataModel: [Repository].self, requestData: GitRequestRouter.gitPublicUsersRepositories(pageNo, user.userName)) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                self?.repositoryModel = result
+                DispatchQueue.main.async {
+                    loadingSpinner.dismiss()
+                    tableView.reloadData()
+                    if self?.repositoryModel.isEmpty == true {
+                        tableView.isHidden = true
+                        conditionLabel.isHidden = false
+                    } else {
+                        tableView.isHidden = false
+                        conditionLabel.isHidden = true
+                    }
                 }
+            case .failure(let error):
+                break
             }
+
         }
     }
         
@@ -52,15 +58,20 @@ class PublicReposViewModel {
             if pageNo < totalPages {
                 pageNo += 1
                 guard let user = passedUser else {return}
-                GitAPIcaller.makeRequest(dataModel: [Repository].self, requestData: GitRequestRouter.gitPublicUsersRepositories(pageNo, user.userName), pagination: true) { [weak self]  (moreRepos) in
-                    DispatchQueue.main.async {
-                        if moreRepos.isEmpty == false {
-                            self?.repositoryModel.append(contentsOf: moreRepos)
-                            tableView.reloadData()
-                            tableView.tableFooterView = nil
-                        } else {
-                            tableView.tableFooterView = tableFooterView
+                NetworkingManger.shared.performRequest(dataModel: [Repository].self, requestData: GitRequestRouter.gitPublicUsersRepositories(pageNo, user.userName), pagination: true) { [weak self]  (result) in
+                    switch result {
+                    case .success(let result):
+                        DispatchQueue.main.async {
+                            if result.isEmpty == false {
+                                self?.repositoryModel.append(contentsOf: result)
+                                tableView.reloadData()
+                                tableView.tableFooterView = nil
+                            } else {
+                                tableView.tableFooterView = tableFooterView
+                            }
                         }
+                    case .failure(let error):
+                        break
                     }
                 }
             }

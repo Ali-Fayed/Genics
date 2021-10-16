@@ -18,17 +18,32 @@ class TableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        GitAPIcaller.makeRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(1, "language:Swift")) { [weak self] (repos) in
-            self?.bestRepos = repos.items
-            self?.collectionView.reloadData()
+        NetworkingManger.shared.performRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(1, "language:Swift")) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                self?.bestRepos = result.items
+                self?.collectionView.reloadData()
+            case .failure(let error):
+                break
+            }
         }
-        GitAPIcaller.makeRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(1, "language:Dart")) { [weak self] (repos) in
-            self?.bestPython = repos.items
-            self?.collectionView.reloadData()
+        NetworkingManger.shared.performRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(1, "language:Dart")) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                self?.bestPython = result.items
+                self?.collectionView.reloadData()
+            case .failure(let error):
+                break
+            }
         }
-        GitAPIcaller.makeRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(1, "language:Java")) { [weak self] (repos) in
-            self?.bestJavaScript = repos.items
-            self?.collectionView.reloadData()
+        NetworkingManger.shared.performRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(1, "language:Java")) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                self?.bestJavaScript = result.items
+                self?.collectionView.reloadData()
+            case .failure(let error):
+                break
+            }
         }
         
     }

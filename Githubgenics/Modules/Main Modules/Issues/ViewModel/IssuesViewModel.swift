@@ -22,36 +22,51 @@ class IssuesViewModel {
     
     func searchIssues (tableView: UITableView, loadingSpinner: JGProgressHUD, view: UIView) {
             loadingSpinner.show(in: view)
-        GitAPIcaller.makeRequest(dataModel: Issues.self, requestData: GitRequestRouter.gitSearchIssues(1, "a"), pagination: false) { [weak self] (result) in
-            self?.issuesData = result.items
-            DispatchQueue.main.async {
-                tableView.reloadData()
-                loadingSpinner.dismiss()
+        NetworkingManger.shared.performRequest(dataModel: Issues.self, requestData: GitRequestRouter.gitSearchIssues(1, "a"), pagination: false) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                self?.issuesData = result.items
+                DispatchQueue.main.async {
+                    tableView.reloadData()
+                    loadingSpinner.dismiss()
+                }
+            case .failure(let error):
+                break
             }
         }
     }
     
     func passedSearchIssues (tableView: UITableView, loadingSpinner: JGProgressHUD, view: UIView, query: String) {
         loadingSpinner.show(in: view)
-        GitAPIcaller.makeRequest(dataModel: Issues.self, requestData: GitRequestRouter.gitSearchIssues(1, query), pagination: false) { [weak self] (result) in
-            self?.issuesData = result.items
-            DispatchQueue.main.async {
-                tableView.reloadData()
-                loadingSpinner.dismiss()
+        NetworkingManger.shared.performRequest(dataModel: Issues.self, requestData: GitRequestRouter.gitSearchIssues(1, query), pagination: false) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                self?.issuesData = result.items
+                DispatchQueue.main.async {
+                    tableView.reloadData()
+                    loadingSpinner.dismiss()
+                }
+            case .failure(let error):
+                break
             }
         }
     }
     
     func fetchMoreIssues (tableView: UITableView, tableFooterView: UIView, query: String, page: Int) {
-        GitAPIcaller.makeRequest(dataModel: Issues.self, requestData: GitRequestRouter.gitSearchIssues(page, query), pagination: true) { [weak self] (moreUsers) in
-            DispatchQueue.main.async {
-                if moreUsers.items.isEmpty == false {
-                    self?.issuesData.append(contentsOf: moreUsers.items)
-                    tableView.reloadData()
-                    tableView.tableFooterView = nil
-                } else {
-                    tableView.tableFooterView = tableFooterView
+        NetworkingManger.shared.performRequest(dataModel: Issues.self, requestData: GitRequestRouter.gitSearchIssues(page, query), pagination: true) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                DispatchQueue.main.async {
+                    if result.items.isEmpty == false {
+                        self?.issuesData.append(contentsOf: result.items)
+                        tableView.reloadData()
+                        tableView.tableFooterView = nil
+                    } else {
+                        tableView.tableFooterView = tableFooterView
+                    }
                 }
+            case .failure(let error):
+                break
             }
         }
     }
@@ -72,10 +87,15 @@ class IssuesViewModel {
         if issuesData.isEmpty {
             loadingSpinner.show(in: view)
         }
-        GitAPIcaller.makeRequest(dataModel: Issues.self, requestData: GitRequestRouter.gitSearchIssues(page, query)) { [weak self] (repositories) in
-            self?.issuesData = repositories.items
-            loadingSpinner.dismiss()
-            tableView.reloadData()
+        NetworkingManger.shared.performRequest(dataModel: Issues.self, requestData: GitRequestRouter.gitSearchIssues(page, query)) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                self?.issuesData = result.items
+                loadingSpinner.dismiss()
+                tableView.reloadData()
+            case .failure(let error):
+                break
+            }
         }
     }
 }

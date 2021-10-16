@@ -11,7 +11,7 @@ class TokenManager {
     static let shared = TokenManager()
     
     func fetchAccessToken(accessToken: String, completion: @escaping (Bool) -> Void) {
-        AFsession.request(GitRequestRouter.gitAccessToken(accessToken))
+        NetworkingManger.shared.afSession.request(GitRequestRouter.gitAccessToken(accessToken))
             .responseDecodable(of: AccessToken.self) { response in
                 guard let token = response.value else { return completion(false) }
                 TokenManager.shared.saveAccessToken(gitToken: token)

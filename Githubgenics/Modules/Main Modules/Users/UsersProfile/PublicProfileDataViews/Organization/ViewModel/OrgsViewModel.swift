@@ -24,11 +24,16 @@ class OrgsViewModel {
     func fetchPublicUserOrgs (tableView: UITableView , loadingSpinner: JGProgressHUD , view: UIView) {
         guard let repository = passedUser else {return}
         loadingSpinner.show(in: view)
-        GitAPIcaller.makeRequest(dataModel: [Orgs].self, requestData: GitRequestRouter.gitPublicUsersOrgs(repository.userName), pagination: true) { [weak self] (result) in
-            DispatchQueue.main.async {
-                self?.orgsModel = result
-                tableView.reloadData()
-                loadingSpinner.dismiss()
+        NetworkingManger.shared.performRequest(dataModel: [Orgs].self, requestData: GitRequestRouter.gitPublicUsersOrgs(repository.userName), pagination: true) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                DispatchQueue.main.async {
+                    self?.orgsModel = result
+                    tableView.reloadData()
+                    loadingSpinner.dismiss()
+                }
+            case .failure(let error):
+                break
             }
         }
     }

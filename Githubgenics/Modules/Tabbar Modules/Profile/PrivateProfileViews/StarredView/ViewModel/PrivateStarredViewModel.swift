@@ -23,10 +23,15 @@ class PrivateStarredViewModel {
     
     func loadStarredRepos (tableView: UITableView, view: UIView, loadingSpinner: JGProgressHUD ) {
         loadingSpinner.show(in: view)
-        GitAPIcaller.makeRequest(dataModel: [Repository].self, requestData: GitRequestRouter.gitAuthenticatedUserStarred, pagination: false) { [weak self] (started) in
-            self?.starttedRepos = started
-            loadingSpinner.dismiss()
-            tableView.reloadData()
+        NetworkingManger.shared.performRequest(dataModel: [Repository].self, requestData: GitRequestRouter.gitAuthenticatedUserStarred, pagination: false) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                self?.starttedRepos = result
+                loadingSpinner.dismiss()
+                tableView.reloadData()
+            case .failure(let error):
+                break
+            }
         }
     }
     

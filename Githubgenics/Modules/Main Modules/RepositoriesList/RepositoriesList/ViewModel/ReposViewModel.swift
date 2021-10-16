@@ -28,10 +28,15 @@ class ReposViewModel {
         if publicRepositories.isEmpty {
             loadingSpinner.show(in: view)
         }
-        GitAPIcaller.makeRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(page, query)) { [weak self] (repositories) in
-            self?.publicRepositories = repositories.items
-            loadingSpinner.dismiss()
-            tableView.reloadData()
+        NetworkingManger.shared.performRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(page, query)) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                self?.publicRepositories = result.items
+                loadingSpinner.dismiss()
+                tableView.reloadData()
+            case .failure(let error):
+                break
+            }
         }
     }
         
@@ -39,10 +44,15 @@ class ReposViewModel {
         if publicRepositories.isEmpty {
             loadingSpinner.show(in: view)
         }
-        GitAPIcaller.makeRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(pageNo, "language:Swift")) { [weak self] (repos) in
-            self?.publicRepositories = repos.items
-            loadingSpinner.dismiss()
-            tableView.reloadData()
+        NetworkingManger.shared.performRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(pageNo, "language:Swift")) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                self?.publicRepositories = result.items
+                loadingSpinner.dismiss()
+                tableView.reloadData()
+            case .failure(let error):
+                break
+            }
         }
     }
     
@@ -69,15 +79,20 @@ class ReposViewModel {
                 pageNo += 1
                 let searchText = searchController.searchBar.text
                let queryText = query(searchText: searchText)
-                GitAPIcaller.makeRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(pageNo, queryText), pagination: true) { [weak self]  (moreRepos) in
-                    DispatchQueue.main.async {
-                        if moreRepos.items.isEmpty == false {
-                            self?.publicRepositories.append(contentsOf: moreRepos.items)
-                            tableView.reloadData()
-                            tableView.tableFooterView = nil
-                        } else {
-                            tableView.tableFooterView = nil
+                NetworkingManger.shared.performRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(pageNo, queryText), pagination: true) { [weak self]  (result) in
+                    switch result {
+                    case .success(let result):
+                        DispatchQueue.main.async {
+                            if result.items.isEmpty == false {
+                                self?.publicRepositories.append(contentsOf: result.items)
+                                tableView.reloadData()
+                                tableView.tableFooterView = nil
+                            } else {
+                                tableView.tableFooterView = nil
+                            }
                         }
+                    case .failure(let error):
+                        break
                     }
                 }
                 

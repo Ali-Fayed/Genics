@@ -50,7 +50,7 @@ class ProfileViewModel {
     }
     
     func userProfileData(requestData: GitRequestRouter,userName : UILabel, userAvatar: UIImageView, userFollowData: UILabel, userBio: UILabel, userLoginName: UILabel, userLocation: UILabel) {
-        AFsession.request(requestData).responseJSON { (response) in
+        NetworkingManger.shared.afSession.request(requestData).responseJSON { (response) in
             switch response.result {
             case .success(let responseJSON) :
                 let recievedJson = JSON(responseJSON)

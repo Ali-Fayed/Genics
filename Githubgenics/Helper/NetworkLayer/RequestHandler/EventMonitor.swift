@@ -8,7 +8,7 @@
 import Alamofire
 import UIKit
 
-class GitNetworkLogger: EventMonitor {
+class NetworkLogger: EventMonitor {
   let queue = DispatchQueue(label: "com.product.IOS14.Githubgenics.networklogger")
 
   func requestDidFinish(_ request: Request) {

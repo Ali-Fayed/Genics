@@ -5,7 +5,6 @@
 //  Created by Ali Fayed on 10/04/2021.
 //
 
-import Alamofire
 import UIKit
 import SwiftyJSON
 
@@ -16,7 +15,7 @@ class HeaderView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AFsession.request(GitRequestRouter.gitAuthenticatedUser).responseJSON { (response) in
+        NetworkingManger.shared.afSession.request(GitRequestRouter.gitAuthenticatedUser).responseJSON { (response) in
             switch response.result {
             case .success(let responseJSON) :
                 let recievedJson = JSON(responseJSON)

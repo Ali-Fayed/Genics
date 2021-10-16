@@ -47,18 +47,23 @@ class UsersViewModel {
     func fetchUsers (tableView: UITableView, searchController: UISearchController, loadingIndicator: JGProgressHUD, query : String) {
         isFetching = true
         let data = GitRequestRouter.gitSearchUsers(pageNo, query)
-        GitAPIcaller.makeRequest(dataModel: Users.self, requestData: data) { [weak self] (result) in
-            DispatchQueue.main.async {
-                if searchController.searchBar.text?.isEmpty == true {
-                    self?.usersModel.append(contentsOf: result.items)
-                    self?.pageNo += 1
-                    self?.isFetching = false
-                    loadingIndicator.dismiss()
-                } else {
-                    self?.usersModel = result.items
-                    tableView.isHidden = false
+        NetworkingManger.shared.performRequest(dataModel: Users.self, requestData: data) { [weak self] (result) in
+            switch result {
+            case .success(let result):
+                DispatchQueue.main.async {
+                    if searchController.searchBar.text?.isEmpty == true {
+                        self?.usersModel.append(contentsOf: result.items)
+                        self?.pageNo += 1
+                        self?.isFetching = false
+                        loadingIndicator.dismiss()
+                    } else {
+                        self?.usersModel = result.items
+                        tableView.isHidden = false
+                    }
+                    tableView.reloadData()
                 }
-                tableView.reloadData()
+            case .failure(let error):
+                break
             }
         }
     }
