@@ -13,7 +13,7 @@ import IQKeyboardManagerSwift
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    let window = UIWindow()
+    lazy var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GitNetwrokReachability.shared.startNetworkMonitoring()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        window?.overrideUserInterfaceStyle = .dark
         return true
     }
     

@@ -34,7 +34,8 @@ class PrivateReposViewModel {
                 loadingSpinner.dismiss()
                 tableView.reloadData()
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                loadingSpinner.dismiss()
             }
         }
     }
@@ -53,7 +54,8 @@ class PrivateReposViewModel {
                     }
                 }
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                loadingSpinner.dismiss()
             }
         }
     }

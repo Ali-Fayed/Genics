@@ -79,13 +79,17 @@
 		EA7C4CA925BAA7E000EC9F45 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CA825BAA7E000EC9F45 /* BookmarksViewController.swift */; };
 		EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CAB25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift */; };
 		EA7C4CAE25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C4CAC25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift */; };
-		EA830F88260198F600F3D2A8 /* UVC Collectio.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA830F87260198F600F3D2A8 /* UVC Collectio.swift */; };
 		EA94DCBC25C6726C00E2C30B /* UVC TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94DCBB25C6726C00E2C30B /* UVC TableView.swift */; };
 		EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9743512596C3790057C8A0 /* SettingsViewController.swift */; };
 		EA999A6525927C02005E832C /* PublicUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A6425927C02005E832C /* PublicUserProfileViewController.swift */; };
 		EA999A7A25927CAA005E832C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA999A7925927CAA005E832C /* LoginViewController.swift */; };
 		EAA588BD271B078C00F98A60 /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA588BC271B078C00F98A60 /* ErrorCode.swift */; };
 		EAA588C4271B0D3700F98A60 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA588C3271B0D3700F98A60 /* APIError.swift */; };
+		EAA588C7271B47E400F98A60 /* CustomFailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA588C6271B47E400F98A60 /* CustomFailScreen.swift */; };
+		EAA588CB271B481800F98A60 /* CustomFailScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA588C9271B481800F98A60 /* CustomFailScreen.xib */; };
+		EAA588CF271B4A3000F98A60 /* DeepLinkURLDestnation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA588CE271B4A3000F98A60 /* DeepLinkURLDestnation.swift */; };
+		EAA588D1271B4AC100F98A60 /* AppDeepLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA588D0271B4AC100F98A60 /* AppDeepLinks.swift */; };
+		EAA588D3271B4B6100F98A60 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA588D2271B4B6100F98A60 /* CustomViews.swift */; };
 		EAA710F525BD4707004D7E21 /* NetworkingManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA710F425BD4707004D7E21 /* NetworkingManger.swift */; };
 		EAA87CC52606E796006BC6E7 /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA87CC42606E796006BC6E7 /* CommonViews.swift */; };
 		EAA87CC82606EED4006BC6E7 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA87CC72606EED4006BC6E7 /* ExploreViewController.swift */; };
@@ -96,7 +100,6 @@
 		EAAF820C25D4F036006C44EC /* SignOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF820A25D4F036006C44EC /* SignOutCell.swift */; };
 		EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2AD1125BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift */; };
 		EAB2AD1425BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB2AD1225BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift */; };
-		EABF30EF25C7C95000A17456 /* UVC SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABF30EE25C7C95000A17456 /* UVC SearchBar.swift */; };
 		EAC1636625BAB789007EDC96 /* UsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636325BAB789007EDC96 /* UsersTableViewCell.xib */; };
 		EAC1636725BAB789007EDC96 /* ReposTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636425BAB789007EDC96 /* ReposTableViewCell.xib */; };
 		EAC1636825BAB789007EDC96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636525BAB789007EDC96 /* Main.storyboard */; };
@@ -221,13 +224,18 @@
 		EA7C4CA825BAA7E000EC9F45 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		EA7C4CAB25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersDataBase+CoreDataClass copy.swift"; sourceTree = "<group>"; };
 		EA7C4CAC25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsersDataBase+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
-		EA830F87260198F600F3D2A8 /* UVC Collectio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVC Collectio.swift"; sourceTree = "<group>"; };
 		EA94DCBB25C6726C00E2C30B /* UVC TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVC TableView.swift"; sourceTree = "<group>"; };
 		EA9743512596C3790057C8A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EA999A6425927C02005E832C /* PublicUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicUserProfileViewController.swift; sourceTree = "<group>"; };
 		EA999A7925927CAA005E832C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EAA588BC271B078C00F98A60 /* ErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
 		EAA588C3271B0D3700F98A60 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		EAA588C5271B3A0B00F98A60 /* Githubgenics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Githubgenics.entitlements; sourceTree = "<group>"; };
+		EAA588C6271B47E400F98A60 /* CustomFailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFailScreen.swift; sourceTree = "<group>"; };
+		EAA588C9271B481800F98A60 /* CustomFailScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomFailScreen.xib; sourceTree = "<group>"; };
+		EAA588CE271B4A3000F98A60 /* DeepLinkURLDestnation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeepLinkURLDestnation.swift; path = ../../../../../../Downloads/DeepLinkURLDestnation.swift; sourceTree = "<group>"; };
+		EAA588D0271B4AC100F98A60 /* AppDeepLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeepLinks.swift; sourceTree = "<group>"; };
+		EAA588D2271B4B6100F98A60 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		EAA710F425BD4707004D7E21 /* NetworkingManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManger.swift; sourceTree = "<group>"; };
 		EAA87CC42606E796006BC6E7 /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
 		EAA87CC72606EED4006BC6E7 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
@@ -238,7 +246,6 @@
 		EAAF820A25D4F036006C44EC /* SignOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutCell.swift; sourceTree = "<group>"; };
 		EAB2AD1125BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EAB2AD1225BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHistory+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EABF30EE25C7C95000A17456 /* UVC SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVC SearchBar.swift"; sourceTree = "<group>"; };
 		EAC1636325BAB789007EDC96 /* UsersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsersTableViewCell.xib; sourceTree = "<group>"; };
 		EAC1636425BAB789007EDC96 /* ReposTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReposTableViewCell.xib; sourceTree = "<group>"; };
 		EAC1636525BAB789007EDC96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -722,6 +729,7 @@
 		EA566FE725927B9D00596E6A /* Githubgenics */ = {
 			isa = PBXGroup;
 			children = (
+				EAA588C5271B3A0B00F98A60 /* Githubgenics.entitlements */,
 				EAEEE13C25DCACD100E88EED /* AppDelegate */,
 				EAC40D392709DA7800ACE60C /* Navigation */,
 				EAC40D43270B39B200ACE60C /* Storyboard */,
@@ -932,6 +940,7 @@
 		EA86C6C32697D87600F78134 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				EAA588CD271B4A1700F98A60 /* DeepLink */,
 				EA22D7C025CE4818009C0EEF /* Authentication */,
 				EA622D0E25C5529300EC5F3C /* NetworkLayer */,
 				EA703D7425BAB65900073DFB /* CoreData */,
@@ -1022,6 +1031,23 @@
 				EA22D77D25CE2DE0009C0EEF /* RequestRouter .swift */,
 			);
 			path = RequestRouter;
+			sourceTree = "<group>";
+		};
+		EAA588CC271B484E00F98A60 /* CustomFailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EAA588C6271B47E400F98A60 /* CustomFailScreen.swift */,
+				EAA588C9271B481800F98A60 /* CustomFailScreen.xib */,
+			);
+			path = CustomFailScreen;
+			sourceTree = "<group>";
+		};
+		EAA588CD271B4A1700F98A60 /* DeepLink */ = {
+			isa = PBXGroup;
+			children = (
+				EAA588CE271B4A3000F98A60 /* DeepLinkURLDestnation.swift */,
+			);
+			path = DeepLink;
 			sourceTree = "<group>";
 		};
 		EAA710FD25BD562E004D7E21 /* Users */ = {
@@ -1118,7 +1144,9 @@
 		EAC6C45A25FC919F006702EE /* CommonViews */ = {
 			isa = PBXGroup;
 			children = (
+				EAA588CC271B484E00F98A60 /* CustomFailScreen */,
 				EAA87CC42606E796006BC6E7 /* CommonViews.swift */,
+				EAA588D2271B4B6100F98A60 /* CustomViews.swift */,
 			);
 			path = CommonViews;
 			sourceTree = "<group>";
@@ -1299,8 +1327,6 @@
 			children = (
 				EA5EADF625929E2700AC3223 /* UsersViewController.swift */,
 				EA94DCBB25C6726C00E2C30B /* UVC TableView.swift */,
-				EABF30EE25C7C95000A17456 /* UVC SearchBar.swift */,
-				EA830F87260198F600F3D2A8 /* UVC Collectio.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1389,6 +1415,7 @@
 			children = (
 				EA566FE825927B9D00596E6A /* AppDelegate.swift */,
 				EA566FEA25927B9D00596E6A /* SceneDelegate.swift */,
+				EAA588D0271B4AC100F98A60 /* AppDeepLinks.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -1460,6 +1487,7 @@
 				EA3FA0FD25AE9C00008D7520 /* loadingspinner.json in Resources */,
 				EA7216D425B6121200E21D3B /* Localizable.strings in Resources */,
 				EA000B6E25ED4E76005EF5D0 /* SearchHistoryCell.xib in Resources */,
+				EAA588CB271B481800F98A60 /* CustomFailScreen.xib in Resources */,
 				EA315966260192720038883D /* Users.storyboard in Resources */,
 				EA1EAC412620EDB0001CE23F /* Orgs.storyboard in Resources */,
 				EAC1636825BAB789007EDC96 /* Main.storyboard in Resources */,
@@ -1563,6 +1591,7 @@
 				EA1EABDA2620E278001CE23F /* OVC TableView.swift in Sources */,
 				EADCFE19261EA9B400E8A1A3 /* CM TableView.swift in Sources */,
 				EA50D2B825FD6F7800EE32F8 /* GitEntities.swift in Sources */,
+				EAA588CF271B4A3000F98A60 /* DeepLinkURLDestnation.swift in Sources */,
 				EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */,
 				EA000B6D25ED4E76005EF5D0 /* SearchHistoryCell.swift in Sources */,
 				EADCFDD9261E71DC00E8A1A3 /* ProfileViewModel.swift in Sources */,
@@ -1577,7 +1606,6 @@
 				EA71B59C25E40C4F00779B9A /* TabBarViewController.swift in Sources */,
 				EA22D78625CE2DE0009C0EEF /* EventMonitor.swift in Sources */,
 				EAFD8FD226006B92008ABA1E /* Issues.swift in Sources */,
-				EA830F88260198F600F3D2A8 /* UVC Collectio.swift in Sources */,
 				EADCD09425E388EE005F7033 /* PrivateUser.swift in Sources */,
 				EAD4476625B0148A00FB42B4 /* UsersTableViewCell.swift in Sources */,
 				EA22D78E25CE2DF4009C0EEF /* GitSecureStore.swift in Sources */,
@@ -1587,6 +1615,7 @@
 				EAEA13A226215CE5003CF3D5 /* SVC Header.swift in Sources */,
 				EADCD08025E36AE8005F7033 /* PrivateStarredViewController.swift in Sources */,
 				EAEA139F26215C76003CF3D5 /* SVC TableView.swift in Sources */,
+				EAA588D3271B4B6100F98A60 /* CustomViews.swift in Sources */,
 				EA622CFC25C54F3800EC5F3C /* Users.swift in Sources */,
 				EA23A07225ED5C1A001B943F /* PublicReposViewController.swift in Sources */,
 				EA1EAC062620E806001CE23F /* PrivateReposViewModel.swift in Sources */,
@@ -1599,6 +1628,7 @@
 				EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */,
 				EA1EAC4B2620EFC6001CE23F /* PRVC TableView.swift in Sources */,
 				EAEEE13A25DCACCD00E88EED /* TableViewExtension.swift in Sources */,
+				EAA588D1271B4AC100F98A60 /* AppDeepLinks.swift in Sources */,
 				EAC40D45270B3B6200ACE60C /* HomeCordinator.swift in Sources */,
 				EAF1165625DCC644007A1F8F /* LanguageCell.swift in Sources */,
 				EA22D7A125CE2EAB009C0EEF /* Constants.swift in Sources */,
@@ -1606,6 +1636,7 @@
 				EADCFDDC261E71EA00E8A1A3 /* BookmarksViewModel.swift in Sources */,
 				EAA87CC82606EED4006BC6E7 /* ExploreViewController.swift in Sources */,
 				EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */,
+				EAA588C7271B47E400F98A60 /* CustomFailScreen.swift in Sources */,
 				EADCFE04261E749C00E8A1A3 /* UsersViewModel.swift in Sources */,
 				EA4530C825BFAD3B00651BFA /* GitLocalization.swift in Sources */,
 				EAA87CD72606FC6A006BC6E7 /* ExploreCollectionViewCell.swift in Sources */,
@@ -1628,7 +1659,6 @@
 				EA1EABE02620E2C7001CE23F /* OrgsViewModel.swift in Sources */,
 				EA566FE925927B9D00596E6A /* AppDelegate.swift in Sources */,
 				EA566FEB25927B9D00596E6A /* SceneDelegate.swift in Sources */,
-				EABF30EF25C7C95000A17456 /* UVC SearchBar.swift in Sources */,
 				EAA588C4271B0D3700F98A60 /* APIError.swift in Sources */,
 				EAFD8FCC26006A60008ABA1E /* IssuesViewController.swift in Sources */,
 				EA1EAC1D2620E91E001CE23F /* PublicStarredViewModel.swift in Sources */,
@@ -1788,14 +1818,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Githubgenics/Githubgenics.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GY5GDJ28B9;
+				DEVELOPMENT_TEAM = H368HQSP2D;
 				INFOPLIST_FILE = Githubgenics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.product.Genics;
+				PRODUCT_BUNDLE_IDENTIFIER = comm.product.Genics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1808,14 +1839,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Githubgenics/Githubgenics.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GY5GDJ28B9;
+				DEVELOPMENT_TEAM = H368HQSP2D;
 				INFOPLIST_FILE = Githubgenics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.product.Genics;
+				PRODUCT_BUNDLE_IDENTIFIER = comm.product.Genics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

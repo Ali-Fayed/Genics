@@ -10,42 +10,32 @@ import CoreData
 import JGProgressHUD
 
 class UsersViewModel {
-    
-    var searchHistory = [SearchHistory]()
     var usersModel = [User]()
-    var passedUsers : User?
+    var passedUsers: User?
+    var searchHistory = [SearchHistory]()
     var lastSearch = [LastSearch]()
+    var pageNo: Int = 1
+    var totalPages: Int = 100
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var pageNo : Int = 1
-    var totalPages : Int = 100
-    var isFetching = false
-
     var numberOfSearchHistoryCell: Int {
         return searchHistory.count
     }
     var numberOfUsersCells: Int {
         return usersModel.count
     }
-    
     var numberOfLastSearchCells: Int {
         return lastSearch.count
     }
-    
-    func getSearchHistoryViewModel( at indexPath: IndexPath ) -> SearchHistory {
+    func getSearchHistoryViewModel(at indexPath: IndexPath ) -> SearchHistory {
         return searchHistory[indexPath.row]
     }
-    
-    func getUsersCellsViewModel( at indexPath: IndexPath ) -> User {
+    func getUsersCellsViewModel(at indexPath: IndexPath ) -> User {
         return usersModel[indexPath.row]
     }
-        
-    func getLastSearchViewModel( at indexPath: IndexPath ) -> LastSearch {
+    func getLastSearchViewModel(at indexPath: IndexPath ) -> LastSearch {
         return lastSearch[indexPath.row]
     }
-        
-    // fetch users in table
     func fetchUsers (tableView: UITableView, searchController: UISearchController, loadingIndicator: JGProgressHUD, query : String) {
-        isFetching = true
         let data = GitRequestRouter.gitSearchUsers(pageNo, query)
         NetworkingManger.shared.performRequest(dataModel: Users.self, requestData: data) { [weak self] (result) in
             switch result {
@@ -54,20 +44,19 @@ class UsersViewModel {
                     if searchController.searchBar.text?.isEmpty == true {
                         self?.usersModel.append(contentsOf: result.items)
                         self?.pageNo += 1
-                        self?.isFetching = false
-                        loadingIndicator.dismiss()
                     } else {
-                        self?.usersModel = result.items
+                        self?.usersModel.append(contentsOf: result.items)
                         tableView.isHidden = false
                     }
                     tableView.reloadData()
+                    loadingIndicator.dismiss()
                 }
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                loadingIndicator.dismiss()
             }
         }
     }
-        
     func recentSearchData (collectionView: UICollectionView, tableView: UITableView) {
             DataBaseManger().fetch(returnType: LastSearch.self) { [weak self] (result) in
                  self?.lastSearch = result
@@ -78,7 +67,6 @@ class UsersViewModel {
             }
         }
     }
-    
     func excute (tableView: UITableView , collectionView: UICollectionView, label: UILabel) {
         let resetSearchHistory = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.searchHistoryEntity)
         let resetLastSearch = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.lastSearchEntity)
@@ -106,7 +94,6 @@ class UsersViewModel {
             //
         }
     }
-    
     func saveUserToBookmarks (indexPath: IndexPath) {
         let model = usersModel[indexPath.row]
         let items = UsersDataBase(context: self.context)
@@ -115,7 +102,6 @@ class UsersViewModel {
         items.userURL = model.userURL
         try! self.context.save()
     }
-    
     func saveToLastSearch (indexPath: IndexPath) {
         let model = usersModel[indexPath.row]
         let items = LastSearch(context: self.context)
@@ -124,7 +110,6 @@ class UsersViewModel {
         items.userURL = model.userURL
         try! self.context.save()
     }
-    
     func pushWithData (navigationController: UINavigationController) {
         let publicProfileView = PublicUserProfileViewController.instaintiate(on: .publicProfileView)
         publicProfileView.viewModel.passedUser = passedUsers
@@ -132,7 +117,6 @@ class UsersViewModel {
         publicProfileView.navigationController?.navigationBar.prefersLargeTitles = false
         navigationController.pushViewController(publicProfileView, animated: true)
     }
-    
     func deleteAndFetchRecentTableData (indexPath:IndexPath) {
         let item = searchHistory[indexPath.row]
         DataBaseManger.shared.delete(returnType: SearchHistory.self, delete: item)
@@ -140,11 +124,9 @@ class UsersViewModel {
             self.searchHistory = history
         }
     }
-    
     func saveSearchWord (text: String) {
         let history = SearchHistory(context: self.context)
         history.keyword = text
         try! self.context.save()
     }
-    
 }

@@ -48,13 +48,14 @@ class PublicUserProfileViewController: CommonViews  {
         renderTheButtonWithSavedState ()
         tableView.tableFooterView = tableFooterView
         tableView.addSubview(refreshControl)
+        tableView.isHidden = true
     }
     
     func initViewModel() {
         guard let user = viewModel.passedUser?.userName else {return}
         viewModel.userProfileData(requestData: GitRequestRouter.gitPublicUserInfo(user),
                         userName: userName, userAvatar: userAvatar, userFollowData: userFollowers,
-                        userBio: userBio, userLoginName: userLogin, userLocation: userLocation)
+                        userBio: userBio, userLoginName: userLogin, userLocation: userLocation, tableView: tableView)
     }
                    
     func renderTheButtonWithSavedState () {

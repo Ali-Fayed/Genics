@@ -9,18 +9,15 @@ import UIKit
 import JGProgressHUD
 
 class ReposViewModel {
-    
     var publicRepositories = [Repository]()
     var selectedRepository: Repository?
     var savedRepositories = [SavedRepositories]()
-    var pageNo : Int = 1
-    var totalPages : Int = 100
+    var pageNo: Int = 1
+    var totalPages: Int = 100
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
     var numberOfReposCell: Int {
         return publicRepositories.count
     }
-    
     func getReposViewModel( at indexPath: IndexPath ) -> Repository {
         return publicRepositories[indexPath.row]
     }
@@ -35,11 +32,11 @@ class ReposViewModel {
                 loadingSpinner.dismiss()
                 tableView.reloadData()
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                loadingSpinner.dismiss()
             }
         }
     }
-        
     func renderAndDisplayBestSwiftRepositories(view: UIView, tableView: UITableView, loadingSpinner: JGProgressHUD) {
         if publicRepositories.isEmpty {
             loadingSpinner.show(in: view)
@@ -51,11 +48,11 @@ class ReposViewModel {
                 loadingSpinner.dismiss()
                 tableView.reloadData()
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                loadingSpinner.dismiss()
             }
         }
     }
-    
     func query (searchText : String? ) -> String {
         let query : String = {
             var queryString = String()
@@ -66,13 +63,11 @@ class ReposViewModel {
         }()
         return query
     }
-    
     func pushWithData (navigationController: UINavigationController) {
         let commitsView = CommitsViewController.instaintiate(on: .commitsView)
         commitsView.viewModel.repository = selectedRepository
         navigationController.pushViewController(commitsView, animated: true)
     }
-    
     func fetchMoreCells (tableView: UITableView, loadingSpinner: JGProgressHUD, indexPath: IndexPath, searchController: UISearchController) {
         if indexPath.row == numberOfReposCell - 1 {
             if pageNo < totalPages {
@@ -92,14 +87,14 @@ class ReposViewModel {
                             }
                         }
                     case .failure(let error):
-                        break
+                        CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                        loadingSpinner.dismiss()
                     }
                 }
                 
             }
         }
     }
-    
     func saveRepos(indexPath: IndexPath) {
         let saveRepoInfo = SavedRepositories(context: self.context)
         let repository = self.getReposViewModel(at: indexPath)

@@ -42,13 +42,14 @@ class ProfileViewController: CommonViews {
         tabBarItem.title = Titles.profileViewTitle
         tableView.tableFooterView = tableFooterView
         tableView.addSubview(refreshControl)
+        tableView.isHidden = true
         view.addSubview(conditionLabel)
         conditionLabel.text = Titles.noToken
     }
     func initViewModel () {
         viewModel.userProfileData(requestData: GitRequestRouter.gitAuthenticatedUser,
                         userName: userName, userAvatar: userAvatar, userFollowData: userFollowers,
-                        userBio: userBio, userLoginName: userLogin, userLocation: userLocation)
+                        userBio: userBio, userLoginName: userLogin, userLocation: userLocation, tableView: tableView)
     }
     @IBAction func didTapSettingsButton(_ sender: UIBarButtonItem) {
         router.pushTo(destination: .settings, navigationController: navigationController!, passedUser: nil)

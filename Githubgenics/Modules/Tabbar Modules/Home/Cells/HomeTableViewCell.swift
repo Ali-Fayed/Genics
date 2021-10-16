@@ -22,7 +22,7 @@ class HomeTableViewCell: UITableViewCell {
         accessoryType = .disclosureIndicator
     }
     func getSeconSectionData () {
-        textLabel?.text = "Githubgenics"
+        textLabel?.text = "Genics"
         detailTextLabel?.text = "Ali-Fayed"
         imageView?.image = UIImage(named: "ali")
         imageView?.clipsToBounds = true

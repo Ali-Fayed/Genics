@@ -47,7 +47,8 @@ class PublicStarredViewModel {
                     tableView.reloadData()
                 }
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                loadingSpinner.dismiss()
             }
         }
     }
@@ -71,7 +72,8 @@ class PublicStarredViewModel {
                             }
                         }
                     case .failure(let error):
-                        break
+                        CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                        loadingSpinner.dismiss()
                     }
                 }
             }

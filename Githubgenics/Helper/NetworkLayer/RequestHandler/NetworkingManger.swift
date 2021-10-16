@@ -18,7 +18,7 @@ class NetworkingManger {
             eventMonitors: [networkLogger])
     }()
     
-    func performRequest<T: Decodable>(dataModel: T.Type, requestData: URLRequestConvertible,pagination isPaginating: Bool = false, completion: @escaping (Result<T, Error>) -> Void) {
+    func performRequest<T: Decodable>(dataModel: T.Type, requestData: URLRequestConvertible, pagination isPaginating: Bool = false, completion: @escaping (Result<T, Error>) -> Void) {
         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + (isPaginating ? 0.5 : 0)) {
             self.afSession.request(requestData)
                 .validate(statusCode: 200...300)
@@ -28,16 +28,7 @@ class NetworkingManger {
                         guard let value = response.value else {return}
                         completion(.success(value))
                     case .failure(let error):
-                        guard let statusCode = response.response?.statusCode else {return}
-                        switch statusCode  {
-                        case 400..<500:
-                            guard let data = response.data else {return}
-                            guard let apiError = try? JSONDecoder().decode(ApiError.self, from: data) else {return}
-                            completion(.failure(apiError))
-                            print(error)
-                        default:
-                            completion(.failure(ApiError(.general)))
-                        }
+                        completion(.failure(error))
                     }
                 })
         }

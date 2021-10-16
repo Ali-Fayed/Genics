@@ -33,7 +33,8 @@ class OrgsViewModel {
                     loadingSpinner.dismiss()
                 }
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                loadingSpinner.dismiss()
             }
         }
     }

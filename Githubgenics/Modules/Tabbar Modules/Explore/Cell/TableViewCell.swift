@@ -24,7 +24,7 @@ class TableViewCell: UITableViewCell {
                 self?.bestRepos = result.items
                 self?.collectionView.reloadData()
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
             }
         }
         NetworkingManger.shared.performRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(1, "language:Dart")) { [weak self] (result) in
@@ -33,7 +33,7 @@ class TableViewCell: UITableViewCell {
                 self?.bestPython = result.items
                 self?.collectionView.reloadData()
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
             }
         }
         NetworkingManger.shared.performRequest(dataModel: Repositories.self, requestData: GitRequestRouter.gitPublicRepositories(1, "language:Java")) { [weak self] (result) in
@@ -42,7 +42,7 @@ class TableViewCell: UITableViewCell {
                 self?.bestJavaScript = result.items
                 self?.collectionView.reloadData()
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
             }
         }
         

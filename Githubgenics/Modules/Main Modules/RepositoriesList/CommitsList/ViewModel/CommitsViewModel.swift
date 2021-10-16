@@ -38,7 +38,8 @@ class CommitsViewModel {
                 loadingSpinner.dismiss()
                 tableView.reloadData()
             case .failure(let error):
-              break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                loadingSpinner.dismiss()
             }
         }
     }
@@ -57,7 +58,8 @@ class CommitsViewModel {
                 loadingSpinner.dismiss()
                 tableView.reloadData()
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                loadingSpinner.dismiss()
             }
         }
     }
@@ -83,7 +85,8 @@ class CommitsViewModel {
                             }
                         }
                     case .failure(let error):
-                        break
+                        CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                        loadingSpinner.dismiss()
                     }
                 }
             }

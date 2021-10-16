@@ -49,7 +49,7 @@ class ProfileViewModel {
         }
     }
     
-    func userProfileData(requestData: GitRequestRouter,userName : UILabel, userAvatar: UIImageView, userFollowData: UILabel, userBio: UILabel, userLoginName: UILabel, userLocation: UILabel) {
+    func userProfileData(requestData: GitRequestRouter,userName : UILabel, userAvatar: UIImageView, userFollowData: UILabel, userBio: UILabel, userLoginName: UILabel, userLocation: UILabel, tableView: UITableView) {
         NetworkingManger.shared.afSession.request(requestData).responseJSON { (response) in
             switch response.result {
             case .success(let responseJSON) :
@@ -64,8 +64,9 @@ class ProfileViewModel {
                 userBio.text = recievedJson["\(PrivateUser.userBio)"].stringValue
                 userLoginName.text = recievedJson["\(PrivateUser.userLoginName)"].stringValue
                 userLocation.text  = recievedJson["\(PrivateUser.userLocation)"].stringValue
+                tableView.isHidden = false
             case .failure(let error):
-                print(error)
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "AuthenticationError")
             }
         }
         profileTableData.append(ProfileTableData(cellHeader: "\(Titles.repositoriesViewTitle)", image: "Repositories" ))

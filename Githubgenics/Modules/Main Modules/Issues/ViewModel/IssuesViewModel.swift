@@ -31,7 +31,8 @@ class IssuesViewModel {
                     loadingSpinner.dismiss()
                 }
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                loadingSpinner.dismiss()
             }
         }
     }
@@ -47,7 +48,8 @@ class IssuesViewModel {
                     loadingSpinner.dismiss()
                 }
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                loadingSpinner.dismiss()
             }
         }
     }
@@ -66,7 +68,7 @@ class IssuesViewModel {
                     }
                 }
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
             }
         }
     }
@@ -94,7 +96,8 @@ class IssuesViewModel {
                 loadingSpinner.dismiss()
                 tableView.reloadData()
             case .failure(let error):
-                break
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                loadingSpinner.dismiss()
             }
         }
     }

@@ -10,7 +10,6 @@ import UIKit
 import Kingfisher
 
 extension UsersViewController : UITableViewDataSource , UITableViewDelegate, UITableViewDataSourcePrefetching {
-        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView {
         case self.tableView:
@@ -22,7 +21,6 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate, UIT
         }
         return Int()
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch tableView {
         case self.tableView:
@@ -38,7 +36,6 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate, UIT
         }
         return UITableViewCell()
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch tableView {
@@ -47,13 +44,10 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate, UIT
             if searchController.searchBar.text?.isEmpty == false {
                 viewModel.saveToLastSearch(indexPath: indexPath)
             }
-        case recentSearchTable:
-            break
         default:
             break
         }
     }
-    
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         switch tableView {
         case self.tableView:
@@ -65,76 +59,52 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate, UIT
                     }
                     return queryString
                 }()
-                if index.row >= viewModel.numberOfUsersCells - 1 && !viewModel.isFetching {
+                if index.row >= viewModel.numberOfUsersCells - 1 {
                     viewModel.fetchUsers(tableView: self.tableView, searchController: searchController, loadingIndicator: loadingSpinner, query: query)
-//                    showTableViewSpinner(tableView: tableView)
-                    break
                 }
             }
-        case recentSearchTable:
-            break
         default:
             break
         }
     }
-    
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         switch tableView {
         case self.tableView:
             viewModel.passedUsers = viewModel.getUsersCellsViewModel(at: indexPath)
             return indexPath
-        case recentSearchTable:
-            break
         default:
             break
         }
         return IndexPath()
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch tableView {
-        case self.tableView:
-            return 60
-        case recentSearchTable:
-            return 50
-        default:
-            break
-        }
-        return CGFloat()
+        return 60
     }
-    
     func tableView( _ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         switch tableView {
         case self.tableView:
             let identifier = "\(String(describing: index))" as NSString
             return UIContextMenuConfiguration( identifier: identifier, previewProvider: nil) { [weak self]_ in
-                
                 let bookmarkAction = UIAction(title: Titles.bookmark, image: UIImage(systemName: "bookmark.fill")) { _ in
                     self?.viewModel.saveUserToBookmarks(indexPath: indexPath)
                 }
-                
                 let safariAction = UIAction(
                     title: Titles.openInSafari,
                     image: UIImage(systemName: "link")) { _ in
                     self?.openInSafari(indexPath: indexPath)
                 }
-                
                 let shareAction = UIAction(
                     title: Titles.share,
                     image: UIImage(systemName: "square.and.arrow.up")) { _ in
                     self?.shareUser(indexPath: indexPath)
                 }
-                
                 let saveImage = UIAction(
                     title: Titles.saveImage,
                     image: UIImage(systemName: "photo")) { _ in
                     self?.saveeImage(indexPath: indexPath)
                 }
-                
                 return UIMenu(title: "", image: nil, children: [safariAction, bookmarkAction, saveImage, shareAction])
         }
-        case recentSearchTable:
-            break
         default:
             break
         }
@@ -166,20 +136,14 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         switch tableView {
-        case self.tableView:
-            return .none
         case recentSearchTable:
             return .delete
         default:
-            break
+           return .none
         }
-        return .none
     }
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch tableView {
-        case self.tableView:
-            break
         case recentSearchTable:
             if editingStyle == .delete {
                 tableView.beginUpdates()
@@ -190,11 +154,8 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate, UIT
         default:
             break
         }
-
     }
-    
     //MARK:- LongPress Actions
-    
     func openInSafari (indexPath: IndexPath) {
         let usersURL = self.viewModel.getUsersCellsViewModel(at: indexPath).userURL
         let safariVC = SFSafariViewController(url: URL(string: usersURL)!)
@@ -210,7 +171,6 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate, UIT
         HapticsManger.shared.selectionVibrate(for: .medium)
         self.present(sheetVC, animated: true)
     }
-
     func saveeImage (indexPath: IndexPath) {
         let usersAvatarURL = self.viewModel.getUsersCellsViewModel(at: indexPath).userAvatar
         let fileUrl = URL(string: usersAvatarURL)
