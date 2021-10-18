@@ -110,7 +110,7 @@
 		EADAF1A8271B8E82005999EA /* HomeCordinatorr.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1A7271B8E82005999EA /* HomeCordinatorr.swift */; };
 		EADAF1AA271B8E8D005999EA /* ExploreCordinaotr.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1A9271B8E8D005999EA /* ExploreCordinaotr.swift */; };
 		EADAF1AC271B8EA0005999EA /* BookmarkCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1AB271B8EA0005999EA /* BookmarkCordinator.swift */; };
-		EADAF1AE271B8EAE005999EA /* ProfileCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1AD271B8EAE005999EA /* ProfileCordinator.swift */; };
+		EADAF1AE271B8EAE005999EA /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1AD271B8EAE005999EA /* ProfileCoordinator.swift */; };
 		EADAF1B1271B96C1005999EA /* LoginCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1B0271B96C1005999EA /* LoginCordinator.swift */; };
 		EADAF1B3271B9AA3005999EA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1B2271B9AA3005999EA /* AppCoordinator.swift */; };
 		EADAF1B6271B9D48005999EA /* UsersListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1B5271B9D48005999EA /* UsersListCoordinator.swift */; };
@@ -261,7 +261,7 @@
 		EADAF1A7271B8E82005999EA /* HomeCordinatorr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCordinatorr.swift; sourceTree = "<group>"; };
 		EADAF1A9271B8E8D005999EA /* ExploreCordinaotr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCordinaotr.swift; sourceTree = "<group>"; };
 		EADAF1AB271B8EA0005999EA /* BookmarkCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCordinator.swift; sourceTree = "<group>"; };
-		EADAF1AD271B8EAE005999EA /* ProfileCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCordinator.swift; sourceTree = "<group>"; };
+		EADAF1AD271B8EAE005999EA /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		EADAF1B0271B96C1005999EA /* LoginCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCordinator.swift; sourceTree = "<group>"; };
 		EADAF1B2271B9AA3005999EA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		EADAF1B5271B9D48005999EA /* UsersListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListCoordinator.swift; sourceTree = "<group>"; };
@@ -1184,7 +1184,7 @@
 				EADAF1A7271B8E82005999EA /* HomeCordinatorr.swift */,
 				EADAF1A9271B8E8D005999EA /* ExploreCordinaotr.swift */,
 				EADAF1AB271B8EA0005999EA /* BookmarkCordinator.swift */,
-				EADAF1AD271B8EAE005999EA /* ProfileCordinator.swift */,
+				EADAF1AD271B8EAE005999EA /* ProfileCoordinator.swift */,
 			);
 			path = TabBarCordinator;
 			sourceTree = "<group>";
@@ -1573,7 +1573,7 @@
 				EA7C4CA925BAA7E000EC9F45 /* BookmarksViewController.swift in Sources */,
 				EAA710F525BD4707004D7E21 /* NetworkingManger.swift in Sources */,
 				EA23A07125ED5C1A001B943F /* PublicStarredViewController.swift in Sources */,
-				EADAF1AE271B8EAE005999EA /* ProfileCordinator.swift in Sources */,
+				EADAF1AE271B8EAE005999EA /* ProfileCoordinator.swift in Sources */,
 				EA05895525C5567700BC1024 /* DataBaseManger.swift in Sources */,
 				EA463E92260027D400F43E7D /* HomeViewController.swift in Sources */,
 				EAAF820825D4F012006C44EC /* DarkModeCell.swift in Sources */,

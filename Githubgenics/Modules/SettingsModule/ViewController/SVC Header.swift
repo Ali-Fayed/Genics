@@ -9,10 +9,8 @@ import UIKit
 import SwiftyJSON
 
 class HeaderView: UIViewController {
-    
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var userID : UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         NetworkingManger.shared.afSession.request(GitRequestRouter.gitAuthenticatedUser).responseJSON { (response) in
@@ -28,7 +26,6 @@ class HeaderView: UIViewController {
             case .failure(let error):
                 print(error)
             }
-            
         }
     }
 }

@@ -174,8 +174,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     func pushToRepoURLPage () {
-        let repoURL = "https://github.com/Ali-Fayed/Githubgenics"
-        let safariVC = SFSafariViewController(url: URL(string: repoURL)!)
-        present(safariVC, animated: true)
+        viewModel.router?.trigger(.appRepoWeb)
     }
 }

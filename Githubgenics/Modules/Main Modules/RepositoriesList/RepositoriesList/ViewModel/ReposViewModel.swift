@@ -7,12 +7,14 @@
 
 import UIKit
 import JGProgressHUD
+import XCoordinator
 
 class ReposViewModel {
     var publicRepositories = [Repository]()
     var selectedRepository: Repository?
     var savedRepositories = [SavedRepositories]()
     var pageNo: Int = 1
+    var router: UnownedRouter<HomeRoute>?
     var totalPages: Int = 100
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var numberOfReposCell: Int {
@@ -64,9 +66,10 @@ class ReposViewModel {
         return query
     }
     func pushWithData (navigationController: UINavigationController) {
-        let commitsView = CommitsViewController.instaintiate(on: .commitsView)
-        commitsView.viewModel.repository = selectedRepository
-        navigationController.pushViewController(commitsView, animated: true)
+        guard let selectedRepository = selectedRepository else {
+            return
+        }
+        router?.trigger(.commits(selectedRepository: selectedRepository))
     }
     func fetchMoreCells (tableView: UITableView, loadingSpinner: JGProgressHUD, indexPath: IndexPath, searchController: UISearchController) {
         if indexPath.row == numberOfReposCell - 1 {

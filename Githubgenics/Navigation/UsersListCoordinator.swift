@@ -18,7 +18,10 @@ enum UsersRoute: Route {
     case publicOrgs(passedUser: User)
     case shareSheet(passedUser: User)
     case publicCommits(view: UIView, tableView: UITableView, loadingSpinner: JGProgressHUD, repository: Repository)
+    case lastSearch(indexPath: IndexPath)
     case userURL(passedUser: User)
+    case userURLL(indexPath: IndexPath)
+    case shareUser(indexPath: IndexPath)
 }
 
 class UserCordinaotr: NavigationCoordinator<UsersRoute> {
@@ -29,7 +32,7 @@ class UserCordinaotr: NavigationCoordinator<UsersRoute> {
         switch route {
         case .users:
             let usersView = UsersViewController.instaintiate(on: .usersView)
-            usersView.viewModel.router = unownedRouter
+            usersView.viewModel.router = strongRouter
             return .push(usersView)
         case .publicProfile(passedUser: let passedUser):
             let viewController = PublicUserProfileViewController.instaintiate(on: .publicProfileView)
@@ -62,6 +65,26 @@ class UserCordinaotr: NavigationCoordinator<UsersRoute> {
             let userURL = passedUser.userURL
             let safariVC = SFSafariViewController(url: URL(string: userURL)!)
             return .push(safariVC)
+        case .shareUser(let indexPath):
+            let usersView = UsersViewController.instaintiate(on: .usersView)
+            let avatarUrl = usersView.viewModel.getUsersCellsViewModel(at: indexPath).userAvatar
+            let usersURL = usersView.viewModel.getUsersCellsViewModel(at: indexPath).userURL
+            let fileUrl = URL(string: avatarUrl)
+            let data = try? Data(contentsOf: fileUrl!)
+            let image = UIImage(data: data!)
+            let sheetVC = UIActivityViewController(activityItems: [image!,usersURL], applicationActivities: nil)
+            HapticsManger.shared.selectionVibrate(for: .medium)
+            return .present(sheetVC)
+        case .userURLL(indexPath: let indexPath):
+            let usersView = UsersViewController.instaintiate(on: .usersView)
+            let usersURL = usersView.viewModel.getUsersCellsViewModel(at: indexPath).userURL
+            let safariVC = SFSafariViewController(url: URL(string: usersURL)!)
+            return .present(safariVC)
+        case .lastSearch(let indexPath):
+            let usersView = UsersViewController.instaintiate(on: .usersView)
+            let userURL = usersView.viewModel.getLastSearchViewModel(at: indexPath).userURL
+            let safariVC = SFSafariViewController(url: URL(string: userURL!)!)
+            return .present(safariVC)
         }
     }
 }

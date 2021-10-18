@@ -14,6 +14,7 @@ class PublicStarredViewModel {
     var starttedRepos = [Repository]()
     var starttedRepositories : Repository?
     var passedUser: User?
+    var router: UnownedRouter<ProfileRoute>?
     var pageNo : Int = 1
     var totalPages : Int = 100
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -93,9 +94,8 @@ class PublicStarredViewModel {
     }
     
     func pushToDestnationVC(indexPath: IndexPath, navigationController: UINavigationController ) {
-        let commitsView = CommitsViewController.instaintiate(on: .commitsView)
-        commitsView.viewModel.repository = starttedRepositories
-        navigationController.pushViewController(commitsView, animated: true)
+        guard let starttedRepositories = starttedRepositories else {return}
+        router?.trigger(.commits(repository: starttedRepositories))
     }
     
 }

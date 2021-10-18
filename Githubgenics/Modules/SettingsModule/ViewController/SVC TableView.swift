@@ -10,7 +10,6 @@ import CoreData
 import SafariServices
 
 extension SettingsViewController {
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -27,7 +26,6 @@ extension SettingsViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         4
     }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
@@ -101,13 +99,9 @@ extension SettingsViewController {
         case 1:
             switch indexPath.row {
             case 0:
-                let policyURL = "https://docs.github.com/en/github/site-policy/github-privacy-statement"
-                let policyVC = SFSafariViewController(url: URL(string: policyURL)!)
-                self.present(policyVC, animated: true)
+                router?.trigger(.privacy)
             default:
-                let termsURL = "https://docs.github.com/en/github/site-policy/github-terms-of-service"
-                let termsVC = SFSafariViewController(url: URL(string: termsURL)!)
-                self.present(termsVC, animated: true)
+                router?.trigger(.terms)
             }
         case 2:
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
@@ -123,10 +117,7 @@ extension SettingsViewController {
                 navigationController?.popViewController(animated: true)
                 TokenManager.shared.clearAccessToken()
             } else {
-                let loginView = LoginViewController.instaintiate(on: .loginView)
-                loginView.hidesBottomBarWhenPushed = true
-                loginView.getGitHubAccessToken()
-                navigationController?.pushViewController(loginView, animated: true)
+                router?.trigger(.reLogin)
             }
         }
     }

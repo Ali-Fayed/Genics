@@ -77,21 +77,13 @@ extension PublicReposViewController: UITableViewDelegate, UITableViewDataSource 
     //MARK:- Actions
     
     func openInSafari (indexPath: IndexPath) {
-        let repositoryURL = self.viewModel.getReposViewModel(at: indexPath).repositoryURL
-        let safariVC = SFSafariViewController(url: URL(string: repositoryURL)!)
-        self.present(safariVC, animated: true)
+        viewModel.router?.trigger(.openPrivateRepoURL(indexPath: indexPath))
     }
     func share (indexPath: IndexPath) {
-        let repositoryURL = self.viewModel.getReposViewModel(at: indexPath).repositoryURL
-        let sheetVC = UIActivityViewController(activityItems: [repositoryURL], applicationActivities: nil)
-        HapticsManger.shared.selectionVibrate(for: .medium)
-        self.present(sheetVC, animated: true)
+        viewModel.router?.trigger(.sharePrivateRepo(indexPath: indexPath))
     }
 }
-
-
 //MARK:- cell delegate
-
 extension PublicReposViewController : DetailViewCellDelegate {
     
     func didTapButton(cell: ReposTableViewCell, didTappedThe button: UIButton?) {

@@ -157,19 +157,10 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate, UIT
     }
     //MARK:- LongPress Actions
     func openInSafari (indexPath: IndexPath) {
-        let usersURL = self.viewModel.getUsersCellsViewModel(at: indexPath).userURL
-        let safariVC = SFSafariViewController(url: URL(string: usersURL)!)
-        self.present(safariVC, animated: true)
+        viewModel.router?.trigger(.userURLL(indexPath: indexPath))
     }
     func shareUser (indexPath: IndexPath) {
-        let avatarUrl = self.viewModel.getUsersCellsViewModel(at: indexPath).userAvatar
-        let usersURL = self.viewModel.getUsersCellsViewModel(at: indexPath).userURL
-        let fileUrl = URL(string: avatarUrl)
-        let data = try? Data(contentsOf: fileUrl!)
-        let image = UIImage(data: data!)
-        let sheetVC = UIActivityViewController(activityItems: [image!,usersURL], applicationActivities: nil)
-        HapticsManger.shared.selectionVibrate(for: .medium)
-        self.present(sheetVC, animated: true)
+        viewModel.router?.trigger(.shareUser(indexPath: indexPath))
     }
     func saveeImage (indexPath: IndexPath) {
         let usersAvatarURL = self.viewModel.getUsersCellsViewModel(at: indexPath).userAvatar

@@ -21,7 +21,9 @@ enum HomeRoute: Route {
     case searchRepos(serachText: String)
     case searchIssues(serachText: String)
     case githubWebSite
-    case repoWeb
+    case appRepoWeb
+    case repoURL(indexPath: IndexPath)
+    case shareRepo(indexPath: IndexPath)
 }
 class HomeCoordinator: NavigationCoordinator<HomeRoute> {
     init() {
@@ -38,7 +40,7 @@ class HomeCoordinator: NavigationCoordinator<HomeRoute> {
             viewController.rootViewController.modalPresentationStyle = .fullScreen
             viewController.rootViewController.navigationBar.prefersLargeTitles = true
             viewController.rootViewController.navigationItem.largeTitleDisplayMode = .always
-            return .present(viewController)
+            return .push(viewController)
         case .searchUsers(let searchText):
             let viewController = UsersViewController.instaintiate(on: .usersView)
             viewController.searchController.searchBar.text = searchText
@@ -46,6 +48,7 @@ class HomeCoordinator: NavigationCoordinator<HomeRoute> {
             return .push(viewController)
         case .repos:
             let viewController = RepositoriesViewController.instaintiate(on: .reposView)
+            viewController.viewModel.router = unownedRouter
             return .push(viewController)
         case .searchRepos(let searchText):
             let viewController = RepositoriesViewController.instaintiate(on: .reposView)
@@ -65,7 +68,7 @@ class HomeCoordinator: NavigationCoordinator<HomeRoute> {
             gitHubWebVC.navigationItem.largeTitleDisplayMode = .never
             gitHubWebVC.navigationController?.navigationBar.prefersLargeTitles = false
             return .push(gitHubWebVC)
-        case .repoWeb:
+        case .appRepoWeb:
             let repoURL = "https://github.com/Ali-Fayed/Githubgenics"
             let repoVC = SFSafariViewController(url: URL(string: repoURL)!)
             return .push(repoVC)
@@ -76,9 +79,22 @@ class HomeCoordinator: NavigationCoordinator<HomeRoute> {
             return .push(viewController)
         case .commitsURL(let indexPath):
             let commitsView = CommitsViewController.instaintiate(on: .commitsView)
+            commitsView.viewModel.routerr = unownedRouter
             let commitURL = commitsView.viewModel.getCommitViewModel(at: indexPath).commitURL
             let safariVC = SFSafariViewController(url: URL(string: commitURL)!)
             return .present(safariVC)
+        case .repoURL(let indexPath):
+            let viewController = RepositoriesViewController.instaintiate(on: .reposView)
+            let repositoryURL = viewController.viewModel.getReposViewModel(at: indexPath).repositoryURL
+            let safariVC = SFSafariViewController(url: URL(string: repositoryURL)!)
+            return .present(safariVC)
+        case .shareRepo(let indexPath):
+            let viewController = RepositoriesViewController.instaintiate(on: .reposView)
+            let image = UIImage(systemName: "bell")
+            let repositoryURL = viewController.viewModel.getReposViewModel(at: indexPath).repositoryURL
+           let sheetVC = UIActivityViewController(activityItems: [image!,repositoryURL], applicationActivities: nil)
+           HapticsManger.shared.selectionVibrate(for: .medium)
+            return .present(sheetVC)
         }
     }
 }

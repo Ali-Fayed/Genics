@@ -16,6 +16,7 @@ class PublicReposViewModel {
     var passedUser : User?
     var repository: Repository?
     var pageNo : Int = 1
+    var router: UnownedRouter<ProfileRoute>?
     var totalPages : Int = 100
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var numberOfReposCells: Int {
@@ -82,10 +83,8 @@ class PublicReposViewModel {
     }
     
     func pushToDestnationVC(indexPath: IndexPath, navigationController: UINavigationController, view: UIView, tableView: UITableView, loadingSpinner: JGProgressHUD ) {
-        let commitsView = CommitsViewController.instaintiate(on: .commitsView)
-        commitsView.viewModel.repository = repository
-        commitsView.viewModel.fetchReposCommits(view: view, tableView: tableView, loadingSpinner: loadingSpinner)
-        navigationController.pushViewController(commitsView, animated: true)
+        guard let repository = repository else {return}
+        router?.trigger(.publicRepoCommit(view: view, tableView: tableView, loadingSpinner: loadingSpinner, repository: repository))
     }
     
     func saveRepoToBookmarks(at indexPath: IndexPath) {

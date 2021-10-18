@@ -93,7 +93,7 @@ class HomeViewModel {
     }
     
     func pushToRepoURLPage (viewController: UIViewController) {
-        router?.trigger(.repoWeb)
+        router?.trigger(.appRepoWeb)
     }
     func handleDelete (at indexPath: IndexPath) {
         let item = getSearchHistoryCellViewModel(at: indexPath)

@@ -17,7 +17,7 @@ class UsersViewModel {
     var lastSearch = [LastSearch]()
     var pageNo: Int = 1
     var totalPages: Int = 100
-    var router: UnownedRouter<UsersRoute>?
+    var router: StrongRouter<UsersRoute>?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var numberOfSearchHistoryCell: Int {
         return searchHistory.count

@@ -7,12 +7,14 @@
 
 import UIKit
 import JGProgressHUD
+import XCoordinator
 
 class PrivateStarredViewModel {
     
     var starttedRepos = [Repository]()
     var starttedRepositories : Repository?
-    
+    var router: UnownedRouter<ProfileRoute>?
+
     var numberOfStarredCells: Int {
         return  starttedRepos.count
     }
@@ -37,8 +39,7 @@ class PrivateStarredViewModel {
     }
     
     func pushToDestinationVC(indexPath: IndexPath,navigationController: UINavigationController ) {
-        let commitsView = CommitsViewController.instaintiate(on: .commitsView)
-        commitsView.viewModel.repository = starttedRepositories
-        navigationController.pushViewController(commitsView, animated: true)
+        guard let starttedRepositories = starttedRepositories else {return}
+        router?.trigger(.commits(repository: starttedRepositories))
     }
 }

@@ -24,8 +24,9 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
         switch route {
         case .splash:
             let viewController = SplashViewController.instaintiate(on: .mainView)
+            viewController.modalPresentationStyle = .overFullScreen
             viewController.router = strongRouter
-            return .push(viewController)
+            return .present(viewController)
         case .login:
             let loginCoordinator = LoginCoordinator()
             loginCoordinator.rootViewController.modalPresentationStyle = .overFullScreen

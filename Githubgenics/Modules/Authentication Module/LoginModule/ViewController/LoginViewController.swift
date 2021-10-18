@@ -18,8 +18,7 @@ class LoginViewController: CommonViews {
     @IBOutlet weak var annd: UILabel!
     @IBOutlet weak var bySign: UILabel!
     var webAuthenticationSession: ASWebAuthenticationSession?
-    var router: UnownedRouter<LoginRoute>?
-    var routerr: UnownedRouter<ProfileRoute>?
+    var router: StrongRouter<LoginRoute>?
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()

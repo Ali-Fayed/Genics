@@ -7,6 +7,7 @@
 
 import UIKit
 import JGProgressHUD
+import XCoordinator
 
 class PrivateReposViewModel {
         
@@ -14,7 +15,7 @@ class PrivateReposViewModel {
     var savedRepos = [SavedRepositories]()
     var passedUser : User?
     var repository: Repository?
-    
+    var router: UnownedRouter<ProfileRoute>?
     var numberOfReposCells: Int {
         return  repositoryModel.count
     }
@@ -61,8 +62,7 @@ class PrivateReposViewModel {
     }
     
     func pushToDestinationVC(indexPath: IndexPath, navigationController: UINavigationController) {
-        let commitsView = CommitsViewController.instaintiate(on: .commitsView)
-        commitsView.viewModel.repository = repository
-        navigationController.pushViewController(commitsView, animated: true)
+        guard let repository = repository else {return}
+        router?.trigger(.commits(repository: repository))
     }
 }

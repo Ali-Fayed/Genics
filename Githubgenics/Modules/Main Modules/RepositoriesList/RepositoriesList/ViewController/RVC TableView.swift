@@ -66,17 +66,11 @@ extension RepositoriesViewController: UITableViewDataSource, UITableViewDelegate
     //MARK:- Actions
     
     func pushURLpage(indexPath: IndexPath)  {
-        let repositoryURL = self.viewModel.getReposViewModel(at: indexPath).repositoryURL
-        let safariVC = SFSafariViewController(url: URL(string: repositoryURL)!)
-        self.present(safariVC, animated: true)
+        viewModel.router?.trigger(.repoURL(indexPath: indexPath))
     }
     
     func shareRepo(indexPath: IndexPath) {
-        let image = UIImage(systemName: "bell")
-       let repositoryURL = self.viewModel.getReposViewModel(at: indexPath).repositoryURL
-       let sheetVC = UIActivityViewController(activityItems: [image!,repositoryURL], applicationActivities: nil)
-       HapticsManger.shared.selectionVibrate(for: .medium)
-       self.present(sheetVC, animated: true)
+        viewModel.router?.trigger(.shareRepo(indexPath: indexPath))
     }
     
 }

@@ -166,9 +166,6 @@ extension UsersViewController:  UICollectionViewDataSource , UICollectionViewDel
         return cell!
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        let userURL = viewModel.getLastSearchViewModel(at: indexPath).userURL
-        let safariVC = SFSafariViewController(url: URL(string: userURL!)!)
-        present(safariVC, animated: true)
+        viewModel.router?.trigger(.lastSearch(indexPath: indexPath))
     }
 }

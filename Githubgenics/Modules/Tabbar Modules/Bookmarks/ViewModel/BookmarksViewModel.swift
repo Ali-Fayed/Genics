@@ -8,12 +8,14 @@
 import UIKit
 import CoreData
 import JGProgressHUD
+import XCoordinator
 
 class BookmarksViewModel {
     // data models
     var savedRepositories = [SavedRepositories]()
     var bookmarkedUsers = [UsersDataBase]()
     var passedRepo : SavedRepositories?
+    var router: UnownedRouter<BookmarkRoute>?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var numberOfReposCells: Int {
         return savedRepositories.count
@@ -98,10 +100,10 @@ class BookmarksViewModel {
     }
     
     func pushToDestnationVC(indexPath: IndexPath, navigationController: UINavigationController , view: UIView, tableView: UITableView, loadingSpinner: JGProgressHUD) {
-        let commitsView = CommitsViewController.instaintiate(on: .commitsView)
-        commitsView.viewModel.savedRepos = passedRepo
-        commitsView.viewModel.renderCachedReposCommits(view: view, tableView: tableView, loadingSpinner: loadingSpinner)
-        navigationController.pushViewController(commitsView, animated: true)
+        guard let passedRepo = passedRepo else {
+            return
+        }
+        router?.trigger(.reposCommits(view: view, tableView: tableView, loadingSpinner: loadingSpinner, passedRepo: passedRepo))
     }
     
 }
