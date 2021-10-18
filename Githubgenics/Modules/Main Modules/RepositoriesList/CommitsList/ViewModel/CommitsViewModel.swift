@@ -7,6 +7,7 @@
 
 import UIKit
 import JGProgressHUD
+import XCoordinator
 
 class CommitsViewModel {
     
@@ -15,7 +16,8 @@ class CommitsViewModel {
     var savedRepos : SavedRepositories?
     var pageNo : Int = 1
     var totalPages : Int = 100
-    
+    var router: UnownedRouter<UsersRoute>?
+    var routerr: UnownedRouter<HomeRoute>?
     var numberOfCommitCell: Int {
         return  commits.count
     }

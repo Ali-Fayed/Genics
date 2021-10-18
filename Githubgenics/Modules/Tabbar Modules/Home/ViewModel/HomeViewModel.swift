@@ -7,12 +7,13 @@
 
 import UIKit
 import SafariServices
+import XCoordinator
 
 class HomeViewModel {
     var profileTableData = [ProfileTableData]()
     var searchTableData = [ProfileTableData]()
     var searchHistory = [SearchHistory]()
-    var router = HomeCordinator()
+    var router: UnownedRouter<HomeRoute>?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var numberOfHomeTableCells: Int {
         return profileTableData.count
@@ -48,24 +49,24 @@ class HomeViewModel {
             self?.searchHistory = result
         }
     }
-    func pushToDestinationVC (indexPath: IndexPath, navigationController: UINavigationController) {
+    func pushToDestinationVC (indexPath: IndexPath) {
         if indexPath.row == 0 {
-            router.pushTo(destination: .users, navigationController: navigationController, searchText: "")
+            router?.trigger(.users)
         } else if indexPath.row == 1 {
-            router.pushTo(destination: .repos, navigationController: navigationController, searchText: "")
+            router?.trigger(.repos)
         } else if indexPath.row == 2 {
-            router.pushTo(destination: .issues, navigationController: navigationController, searchText: "")
+            router?.trigger(.issues)
         } else if indexPath.row == 3 {
-            router.pushTo(destination: .githubWebSite, navigationController: navigationController, searchText: "")
+            router?.trigger(.githubWebSite)
         }
     }
-    func pushToDestinationSearchedVC (indexPath: IndexPath, navigationController: UINavigationController, searchText: String) {
+    func pushToDestinationSearchedVC (indexPath: IndexPath, searchText: String) {
         if indexPath.row == 0 {
-            router.pushTo(destination: .searchUsers, navigationController: navigationController, searchText: searchText)
+            router?.trigger(.searchUsers(serachText: searchText))
         } else if indexPath.row == 1 {
-            router.pushTo(destination: .searchRepos, navigationController: navigationController, searchText: searchText)
+            router?.trigger(.searchRepos(serachText: searchText))
         } else if indexPath.row == 2 {
-            router.pushTo(destination: .searchIssues, navigationController: navigationController, searchText: searchText)
+            router?.trigger(.searchIssues(serachText: searchText))
         }
     }
     func saveSearchWord (text: String) {
@@ -92,9 +93,7 @@ class HomeViewModel {
     }
     
     func pushToRepoURLPage (viewController: UIViewController) {
-        let repoURL = "https://github.com/Ali-Fayed/Githubgenics"
-        let repoVC = SFSafariViewController(url: URL(string: repoURL)!)
-        viewController.present(repoVC, animated: true)
+        router?.trigger(.repoWeb)
     }
     func handleDelete (at indexPath: IndexPath) {
         let item = getSearchHistoryCellViewModel(at: indexPath)

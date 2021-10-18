@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import XCoordinator
 
 class BookmarksViewController: CommonViews {
     //MARK: - @IBOutlets
@@ -16,6 +17,7 @@ class BookmarksViewController: CommonViews {
     lazy var viewModel: BookmarksViewModel = {
         return BookmarksViewModel ()
     }()
+    var router: UnownedRouter<BookmarkRoute>?
     //MARK: - UIcomponent
     let searchLabel: UILabel = {
         let label = UILabel()

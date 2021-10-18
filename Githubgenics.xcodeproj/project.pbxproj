@@ -87,7 +87,6 @@
 		EAA588C4271B0D3700F98A60 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA588C3271B0D3700F98A60 /* APIError.swift */; };
 		EAA588C7271B47E400F98A60 /* CustomFailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA588C6271B47E400F98A60 /* CustomFailScreen.swift */; };
 		EAA588CB271B481800F98A60 /* CustomFailScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA588C9271B481800F98A60 /* CustomFailScreen.xib */; };
-		EAA588CF271B4A3000F98A60 /* DeepLinkURLDestnation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA588CE271B4A3000F98A60 /* DeepLinkURLDestnation.swift */; };
 		EAA588D1271B4AC100F98A60 /* AppDeepLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA588D0271B4AC100F98A60 /* AppDeepLinks.swift */; };
 		EAA588D3271B4B6100F98A60 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA588D2271B4B6100F98A60 /* CustomViews.swift */; };
 		EAA710F525BD4707004D7E21 /* NetworkingManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA710F425BD4707004D7E21 /* NetworkingManger.swift */; };
@@ -105,10 +104,16 @@
 		EAC1636825BAB789007EDC96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC1636525BAB789007EDC96 /* Main.storyboard */; };
 		EAC3B16F25C951B600F798DA /* Commits.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3B16E25C951B600F798DA /* Commits.swift */; };
 		EAC3B17325C9520700F798DA /* CommitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3B17225C9520700F798DA /* CommitsViewController.swift */; };
-		EAC40D3B2709DA8F00ACE60C /* AppCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC40D3A2709DA8F00ACE60C /* AppCordinator.swift */; };
-		EAC40D45270B3B6200ACE60C /* HomeCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC40D44270B3B6200ACE60C /* HomeCordinator.swift */; };
-		EAC40D47270B3FCF00ACE60C /* ProfileCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC40D46270B3FCF00ACE60C /* ProfileCordinator.swift */; };
+		EAC40D3B2709DA8F00ACE60C /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC40D3A2709DA8F00ACE60C /* Storyboarded.swift */; };
 		EAD4476625B0148A00FB42B4 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD4476425B0148A00FB42B4 /* UsersTableViewCell.swift */; };
+		EADAF1A6271B8E19005999EA /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1A5271B8E19005999EA /* TabBarCoordinator.swift */; };
+		EADAF1A8271B8E82005999EA /* HomeCordinatorr.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1A7271B8E82005999EA /* HomeCordinatorr.swift */; };
+		EADAF1AA271B8E8D005999EA /* ExploreCordinaotr.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1A9271B8E8D005999EA /* ExploreCordinaotr.swift */; };
+		EADAF1AC271B8EA0005999EA /* BookmarkCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1AB271B8EA0005999EA /* BookmarkCordinator.swift */; };
+		EADAF1AE271B8EAE005999EA /* ProfileCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1AD271B8EAE005999EA /* ProfileCordinator.swift */; };
+		EADAF1B1271B96C1005999EA /* LoginCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1B0271B96C1005999EA /* LoginCordinator.swift */; };
+		EADAF1B3271B9AA3005999EA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1B2271B9AA3005999EA /* AppCoordinator.swift */; };
+		EADAF1B6271B9D48005999EA /* UsersListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1B5271B9D48005999EA /* UsersListCoordinator.swift */; };
 		EADCD06D25E334DD005F7033 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD06C25E334DD005F7033 /* ProfileViewController.swift */; };
 		EADCD07525E35FF6005F7033 /* PrivateReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07425E35FF6005F7033 /* PrivateReposViewController.swift */; };
 		EADCD07825E36681005F7033 /* Orgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07725E36681005F7033 /* Orgs.swift */; };
@@ -233,7 +238,6 @@
 		EAA588C5271B3A0B00F98A60 /* Githubgenics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Githubgenics.entitlements; sourceTree = "<group>"; };
 		EAA588C6271B47E400F98A60 /* CustomFailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFailScreen.swift; sourceTree = "<group>"; };
 		EAA588C9271B481800F98A60 /* CustomFailScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomFailScreen.xib; sourceTree = "<group>"; };
-		EAA588CE271B4A3000F98A60 /* DeepLinkURLDestnation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeepLinkURLDestnation.swift; path = ../../../../../../Downloads/DeepLinkURLDestnation.swift; sourceTree = "<group>"; };
 		EAA588D0271B4AC100F98A60 /* AppDeepLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeepLinks.swift; sourceTree = "<group>"; };
 		EAA588D2271B4B6100F98A60 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		EAA710F425BD4707004D7E21 /* NetworkingManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManger.swift; sourceTree = "<group>"; };
@@ -251,10 +255,16 @@
 		EAC1636525BAB789007EDC96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EAC3B16E25C951B600F798DA /* Commits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commits.swift; sourceTree = "<group>"; };
 		EAC3B17225C9520700F798DA /* CommitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewController.swift; sourceTree = "<group>"; };
-		EAC40D3A2709DA8F00ACE60C /* AppCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCordinator.swift; sourceTree = "<group>"; };
-		EAC40D44270B3B6200ACE60C /* HomeCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCordinator.swift; sourceTree = "<group>"; };
-		EAC40D46270B3FCF00ACE60C /* ProfileCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCordinator.swift; sourceTree = "<group>"; };
+		EAC40D3A2709DA8F00ACE60C /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		EAD4476425B0148A00FB42B4 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
+		EADAF1A5271B8E19005999EA /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		EADAF1A7271B8E82005999EA /* HomeCordinatorr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCordinatorr.swift; sourceTree = "<group>"; };
+		EADAF1A9271B8E8D005999EA /* ExploreCordinaotr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCordinaotr.swift; sourceTree = "<group>"; };
+		EADAF1AB271B8EA0005999EA /* BookmarkCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCordinator.swift; sourceTree = "<group>"; };
+		EADAF1AD271B8EAE005999EA /* ProfileCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCordinator.swift; sourceTree = "<group>"; };
+		EADAF1B0271B96C1005999EA /* LoginCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCordinator.swift; sourceTree = "<group>"; };
+		EADAF1B2271B9AA3005999EA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		EADAF1B5271B9D48005999EA /* UsersListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListCoordinator.swift; sourceTree = "<group>"; };
 		EADCD06C25E334DD005F7033 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EADCD07425E35FF6005F7033 /* PrivateReposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateReposViewController.swift; sourceTree = "<group>"; };
 		EADCD07725E36681005F7033 /* Orgs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orgs.swift; sourceTree = "<group>"; };
@@ -940,7 +950,6 @@
 		EA86C6C32697D87600F78134 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				EAA588CD271B4A1700F98A60 /* DeepLink */,
 				EA22D7C025CE4818009C0EEF /* Authentication */,
 				EA622D0E25C5529300EC5F3C /* NetworkLayer */,
 				EA703D7425BAB65900073DFB /* CoreData */,
@@ -956,9 +965,9 @@
 		EA86C6C42697D8CD00F78134 /* Main Modules */ = {
 			isa = PBXGroup;
 			children = (
-				EAA710FD25BD562E004D7E21 /* Users */,
+				EAA710FD25BD562E004D7E21 /* UsersList */,
 				EAB395A425D60F10009D178C /* RepositoriesList */,
-				EADCFDE7261E72BD00E8A1A3 /* Issues */,
+				EADCFDE7261E72BD00E8A1A3 /* IssuesList */,
 				EADCFDE9261E72C800E8A1A3 /* GithubWebView */,
 			);
 			path = "Main Modules";
@@ -1042,21 +1051,13 @@
 			path = CustomFailScreen;
 			sourceTree = "<group>";
 		};
-		EAA588CD271B4A1700F98A60 /* DeepLink */ = {
-			isa = PBXGroup;
-			children = (
-				EAA588CE271B4A3000F98A60 /* DeepLinkURLDestnation.swift */,
-			);
-			path = DeepLink;
-			sourceTree = "<group>";
-		};
-		EAA710FD25BD562E004D7E21 /* Users */ = {
+		EAA710FD25BD562E004D7E21 /* UsersList */ = {
 			isa = PBXGroup;
 			children = (
 				EAA588BA271AFF8600F98A60 /* UsersList */,
 				EA1EAC2B2620E9CF001CE23F /* UsersProfile */,
 			);
-			path = Users;
+			path = UsersList;
 			sourceTree = "<group>";
 		};
 		EAB395A425D60F10009D178C /* RepositoriesList */ = {
@@ -1098,9 +1099,11 @@
 		EAC40D392709DA7800ACE60C /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				EAC40D3A2709DA8F00ACE60C /* AppCordinator.swift */,
-				EAC40D44270B3B6200ACE60C /* HomeCordinator.swift */,
-				EAC40D46270B3FCF00ACE60C /* ProfileCordinator.swift */,
+				EAC40D3A2709DA8F00ACE60C /* Storyboarded.swift */,
+				EADAF1B2271B9AA3005999EA /* AppCoordinator.swift */,
+				EADAF1B0271B96C1005999EA /* LoginCordinator.swift */,
+				EADAF1B5271B9D48005999EA /* UsersListCoordinator.swift */,
+				EADAF1AF271B9486005999EA /* TabBarCordinator */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -1172,6 +1175,18 @@
 				EADCFDD6261E71CB00E8A1A3 /* Profile */,
 			);
 			path = "Tabbar Modules";
+			sourceTree = "<group>";
+		};
+		EADAF1AF271B9486005999EA /* TabBarCordinator */ = {
+			isa = PBXGroup;
+			children = (
+				EADAF1A5271B8E19005999EA /* TabBarCoordinator.swift */,
+				EADAF1A7271B8E82005999EA /* HomeCordinatorr.swift */,
+				EADAF1A9271B8E8D005999EA /* ExploreCordinaotr.swift */,
+				EADAF1AB271B8EA0005999EA /* BookmarkCordinator.swift */,
+				EADAF1AD271B8EAE005999EA /* ProfileCordinator.swift */,
+			);
+			path = TabBarCordinator;
 			sourceTree = "<group>";
 		};
 		EADCFDC5261E674800E8A1A3 /* ViewController */ = {
@@ -1262,7 +1277,7 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		EADCFDE7261E72BD00E8A1A3 /* Issues */ = {
+		EADCFDE7261E72BD00E8A1A3 /* IssuesList */ = {
 			isa = PBXGroup;
 			children = (
 				EA86C6BA2697D54600F78134 /* Model */,
@@ -1271,7 +1286,7 @@
 				EADCFDF9261E73B000E8A1A3 /* ViewModel */,
 				EA86C6BD2697D5BE00F78134 /* Cell */,
 			);
-			path = Issues;
+			path = IssuesList;
 			sourceTree = "<group>";
 		};
 		EADCFDE9261E72C800E8A1A3 /* GithubWebView */ = {
@@ -1558,6 +1573,7 @@
 				EA7C4CA925BAA7E000EC9F45 /* BookmarksViewController.swift in Sources */,
 				EAA710F525BD4707004D7E21 /* NetworkingManger.swift in Sources */,
 				EA23A07125ED5C1A001B943F /* PublicStarredViewController.swift in Sources */,
+				EADAF1AE271B8EAE005999EA /* ProfileCordinator.swift in Sources */,
 				EA05895525C5567700BC1024 /* DataBaseManger.swift in Sources */,
 				EA463E92260027D400F43E7D /* HomeViewController.swift in Sources */,
 				EAAF820825D4F012006C44EC /* DarkModeCell.swift in Sources */,
@@ -1565,10 +1581,12 @@
 				EA48ACF025D4D2C9006803BD /* NetworkMonitor.swift in Sources */,
 				EADCD06D25E334DD005F7033 /* ProfileViewController.swift in Sources */,
 				EAB2AD1425BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift in Sources */,
+				EADAF1B3271B9AA3005999EA /* AppCoordinator.swift in Sources */,
 				EA0589BA25C5696D00BC1024 /* BVC TableView.swift in Sources */,
 				EADCD08625E36EC1005F7033 /* ViewExtension.swift in Sources */,
 				EADCFE1C261EA9DE00E8A1A3 /* CommitsViewModel.swift in Sources */,
 				EAA588BD271B078C00F98A60 /* ErrorCode.swift in Sources */,
+				EADAF1A8271B8E82005999EA /* HomeCordinatorr.swift in Sources */,
 				EA1EAC522620F614001CE23F /* POVC TableView.swift in Sources */,
 				EA2F137725DF21A400470A04 /* Repository.swift in Sources */,
 				EA7C4CAE25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift in Sources */,
@@ -1591,7 +1609,6 @@
 				EA1EABDA2620E278001CE23F /* OVC TableView.swift in Sources */,
 				EADCFE19261EA9B400E8A1A3 /* CM TableView.swift in Sources */,
 				EA50D2B825FD6F7800EE32F8 /* GitEntities.swift in Sources */,
-				EAA588CF271B4A3000F98A60 /* DeepLinkURLDestnation.swift in Sources */,
 				EAB2AD1325BBF573001B6DD7 /* SearchHistory+CoreDataClass.swift in Sources */,
 				EA000B6D25ED4E76005EF5D0 /* SearchHistoryCell.swift in Sources */,
 				EADCFDD9261E71DC00E8A1A3 /* ProfileViewModel.swift in Sources */,
@@ -1615,21 +1632,22 @@
 				EAEA13A226215CE5003CF3D5 /* SVC Header.swift in Sources */,
 				EADCD08025E36AE8005F7033 /* PrivateStarredViewController.swift in Sources */,
 				EAEA139F26215C76003CF3D5 /* SVC TableView.swift in Sources */,
+				EADAF1AC271B8EA0005999EA /* BookmarkCordinator.swift in Sources */,
 				EAA588D3271B4B6100F98A60 /* CustomViews.swift in Sources */,
 				EA622CFC25C54F3800EC5F3C /* Users.swift in Sources */,
 				EA23A07225ED5C1A001B943F /* PublicReposViewController.swift in Sources */,
 				EA1EAC062620E806001CE23F /* PrivateReposViewModel.swift in Sources */,
 				EA9743522596C3790057C8A0 /* SettingsViewController.swift in Sources */,
-				EAC40D3B2709DA8F00ACE60C /* AppCordinator.swift in Sources */,
+				EAC40D3B2709DA8F00ACE60C /* Storyboarded.swift in Sources */,
 				EA1EAC672620FED5001CE23F /* PRRVC TableView.swift in Sources */,
 				EA668B9D25BFE82000392A30 /* SavedRepositories+CoreDataClass.swift in Sources */,
 				EADCD07525E35FF6005F7033 /* PrivateReposViewController.swift in Sources */,
 				EADCFE0D261E990800E8A1A3 /* ISS Searchbar.swift in Sources */,
 				EA7C4CAD25BAA8E200EC9F45 /* UsersDataBase+CoreDataClass copy.swift in Sources */,
+				EADAF1B1271B96C1005999EA /* LoginCordinator.swift in Sources */,
 				EA1EAC4B2620EFC6001CE23F /* PRVC TableView.swift in Sources */,
 				EAEEE13A25DCACCD00E88EED /* TableViewExtension.swift in Sources */,
 				EAA588D1271B4AC100F98A60 /* AppDeepLinks.swift in Sources */,
-				EAC40D45270B3B6200ACE60C /* HomeCordinator.swift in Sources */,
 				EAF1165625DCC644007A1F8F /* LanguageCell.swift in Sources */,
 				EA22D7A125CE2EAB009C0EEF /* Constants.swift in Sources */,
 				EA999A6525927C02005E832C /* PublicUserProfileViewController.swift in Sources */,
@@ -1637,8 +1655,10 @@
 				EAA87CC82606EED4006BC6E7 /* ExploreViewController.swift in Sources */,
 				EA65CB8125BE9692005CBA09 /* SavedRepositories+CoreDataProperties copy.swift in Sources */,
 				EAA588C7271B47E400F98A60 /* CustomFailScreen.swift in Sources */,
+				EADAF1A6271B8E19005999EA /* TabBarCoordinator.swift in Sources */,
 				EADCFE04261E749C00E8A1A3 /* UsersViewModel.swift in Sources */,
 				EA4530C825BFAD3B00651BFA /* GitLocalization.swift in Sources */,
+				EADAF1B6271B9D48005999EA /* UsersListCoordinator.swift in Sources */,
 				EAA87CD72606FC6A006BC6E7 /* ExploreCollectionViewCell.swift in Sources */,
 				EA1EABFC2620E723001CE23F /* PrivateStarredViewModel.swift in Sources */,
 				EA1EABEC2620E6A3001CE23F /* PrivateOrgsViewController.swift in Sources */,
@@ -1654,7 +1674,6 @@
 				EAFD8FD626008AE2008ABA1E /* GithubViewController.swift in Sources */,
 				EAA87CC52606E796006BC6E7 /* CommonViews.swift in Sources */,
 				EA22D78325CE2DE0009C0EEF /* RequestInterceptor.swift in Sources */,
-				EAC40D47270B3FCF00ACE60C /* ProfileCordinator.swift in Sources */,
 				EA22D79425CE2E26009C0EEF /* GitSecureStoreQueryable.swift in Sources */,
 				EA1EABE02620E2C7001CE23F /* OrgsViewModel.swift in Sources */,
 				EA566FE925927B9D00596E6A /* AppDelegate.swift in Sources */,
@@ -1667,6 +1686,7 @@
 				EADCFE16261EA0BC00E8A1A3 /* ReposViewModel.swift in Sources */,
 				EA23A07025ED5C1A001B943F /* PublicOrgsViewController.swift in Sources */,
 				EA0C2D9725BD068C00D3898A /* LastSearch+CoreDataProperties.swift in Sources */,
+				EADAF1AA271B8E8D005999EA /* ExploreCordinaotr.swift in Sources */,
 				EADCD07825E36681005F7033 /* Orgs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1820,13 +1840,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Githubgenics/Githubgenics.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H368HQSP2D;
+				DEVELOPMENT_TEAM = GY5GDJ28B9;
 				INFOPLIST_FILE = Githubgenics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = comm.product.Genics;
+				PRODUCT_BUNDLE_IDENTIFIER = com.product.Genics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1840,15 +1860,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Githubgenics/Githubgenics.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H368HQSP2D;
+				DEVELOPMENT_TEAM = GY5GDJ28B9;
 				INFOPLIST_FILE = Githubgenics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = comm.product.Genics;
+				PRODUCT_BUNDLE_IDENTIFIER = com.product.Genics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

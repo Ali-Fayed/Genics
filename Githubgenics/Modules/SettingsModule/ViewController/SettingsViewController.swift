@@ -10,6 +10,7 @@ import Alamofire
 import SwiftyJSON
 import CoreData
 import SafariServices
+import XCoordinator
 
 class SettingsViewController: UITableViewController {
     
@@ -17,7 +18,7 @@ class SettingsViewController: UITableViewController {
     var setting = Titles.darkMode
     var settings = [Titles.darkMode , Titles.removeAllRecords , Titles.removeAllBookmarks]
     var policy = ["\(Titles.privacyPolicyTitle)" , "\(Titles.termsOfUseTitle)"]
-    
+    var router: UnownedRouter<ProfileRoute>?
     var isLoggedIn: Bool {
         if TokenManager.shared.fetchAccessToken() != nil {
             return true

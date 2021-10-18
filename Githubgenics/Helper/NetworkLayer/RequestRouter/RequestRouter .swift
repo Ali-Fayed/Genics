@@ -121,7 +121,6 @@ enum GitRequestRouter {
 }
 
 // MARK: - URLRequestConvertible
-
 extension GitRequestRouter: URLRequestConvertible {
     func asURLRequest() throws -> URLRequest {
         let requestURL = try baseURL.asURL().appendingPathComponent(path)

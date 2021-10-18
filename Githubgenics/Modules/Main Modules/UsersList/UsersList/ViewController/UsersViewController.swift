@@ -15,12 +15,7 @@ class UsersViewController: CommonViews {
     lazy var viewModel: UsersViewModel = {
         return UsersViewModel()
     }()
-    var query : String = "" {
-        didSet {
-            tableView.reloadData()
-            tableView.isHidden = false
-        }
-    }
+    var query : String = ""
     //MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var recentSearchTable: UITableView!

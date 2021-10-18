@@ -67,7 +67,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         case homeTableView:
             switch indexPath.section {
             case 0:
-                viewModel.pushToDestinationVC(indexPath: indexPath, navigationController: navigationController!)
+                viewModel.pushToDestinationVC(indexPath: indexPath)
             case 1:
                 pushToRepoURLPage()
             default:
@@ -81,7 +81,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         case searchOptionsTableView:
             guard let text = searchController.searchBar.text else { return }
             viewModel.saveSearchWord(text: text)
-            viewModel.pushToDestinationSearchedVC(indexPath: indexPath, navigationController: navigationController!, searchText: text)
+            viewModel.pushToDestinationSearchedVC(indexPath: indexPath, searchText: text)
         default:
             break
         }

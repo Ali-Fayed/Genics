@@ -7,14 +7,14 @@
 
 import UIKit
 import CoreData
-import Alamofire
+import XCoordinator
 import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    lazy var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
-
+    let window: UIWindow! = UIWindow()
+    let router = AppCoordinator().strongRouter
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
         GitNetworkMonitor.shared.startMonitoring()
@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         window?.overrideUserInterfaceStyle = .dark
+        router.setRoot(for: window)
         return true
     }
     

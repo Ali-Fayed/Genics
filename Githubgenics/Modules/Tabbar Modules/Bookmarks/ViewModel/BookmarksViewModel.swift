@@ -115,9 +115,10 @@ extension BookmarksViewController {
             let resetRequest2 = NSBatchDeleteRequest(fetchRequest: resetLastSearch)
             
             do {
-                try self.context.execute(resetRequest)
-                try self.context.execute(resetRequest2)
-                try self.context.save()
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                try context.execute(resetRequest)
+                try context.execute(resetRequest2)
+                try context.save()
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     HapticsManger.shared.selectionVibrate(for: .heavy)

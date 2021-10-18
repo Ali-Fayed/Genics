@@ -33,7 +33,7 @@ extension PublicUserProfileViewController: UITableViewDataSource, UITableViewDel
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        viewModel.pushToPublicDestnationVC(indexPath: indexPath, navigationController: navigationController!)
+        viewModel.pushToPublicDestnationVC(indexPath: indexPath)
     }
 
 }

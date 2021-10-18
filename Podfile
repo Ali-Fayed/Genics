@@ -16,6 +16,7 @@ target 'Githubgenics' do
   pod 'JGProgressHUD'
   pod 'SnapKit', '~> 5.0.0'
 #  pod 'SwiftLint'
+  pod 'XCoordinator/Combine', '~> 2.0'
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
 end

@@ -8,7 +8,7 @@
 import UIKit
 import SafariServices
 import AuthenticationServices
-
+import XCoordinator
 
 class LoginViewController: CommonViews {
     
@@ -18,12 +18,12 @@ class LoginViewController: CommonViews {
     @IBOutlet weak var annd: UILabel!
     @IBOutlet weak var bySign: UILabel!
     var webAuthenticationSession: ASWebAuthenticationSession?
-    
+    var router: UnownedRouter<LoginRoute>?
+    var routerr: UnownedRouter<ProfileRoute>?
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
     }
-    
     func initView()  {
         signInWithGitHub.layer.cornerRadius = 20
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
@@ -35,31 +35,22 @@ class LoginViewController: CommonViews {
         annd.text = Titles.annd
         bySign.text = Titles.bySign
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
         navigationController?.isToolbarHidden = true
         signInWithGitHub.layer.cornerRadius = 20
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         signInWithGitHub.layer.cornerRadius = 20
     }
-    
     @IBAction func privacyPolicy(_ sender: Any) {
-        let privacyURL = "https://docs.github.com/en/github/site-policy/github-privacy-statement"
-        let safariVC = SFSafariViewController(url: URL(string: privacyURL)!)
-        self.present(safariVC, animated: true)
+        router?.trigger(.privacy)
     }
-    
     @IBAction func terms(_ sender: Any) {
-        let termsURL = "https://docs.github.com/en/github/site-policy/github-terms-of-service"
-        let safariVC = SFSafariViewController(url: URL(string: termsURL)!)
-        self.present(safariVC, animated: true)
+        router?.trigger(.terms)
     }
-    
     @IBAction func signIn(_ sender: Any) {
         // vibaration when sign in
         HapticsManger.shared.selectionVibrate(for: .medium)
@@ -68,16 +59,12 @@ class LoginViewController: CommonViews {
             // call authentication method
             self.getGitHubAccessToken ()
         }))
-        
         // sheet alert between guest and authenticated member
         sheet.addAction(UIAlertAction(title: Titles.guestModeTitle , style: .default, handler: {_ in
             let alert = UIAlertController(title: "", message: Titles.byContinue , preferredStyle: .alert)
             alert.view.tintColor = UIColor.black
             let action = UIAlertAction(title: Titles.continueLabel, style: .default) {_ in
-
-                let tabBarView = TabBarViewController.instaintiate(on: .tabBarView)
-                tabBarView.modalPresentationStyle = .fullScreen
-                self.navigationController?.pushViewController(tabBarView, animated: true)
+                self.router?.trigger(.home)
             }
             action.setValue(UIColor(named: "Color"), forKey: "titleTextColor")
             alert.addAction(action)
@@ -89,7 +76,6 @@ class LoginViewController: CommonViews {
 }
 
 extension LoginViewController {
-    
     func getGitHubAccessToken () {
         var authorizeURLComponents = URLComponents(string: Constants.authorizeURL)
         authorizeURLComponents?.queryItems = [
@@ -128,9 +114,7 @@ extension LoginViewController {
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             return
         }
-        let tabBarView = TabBarViewController.instaintiate(on: .tabBarView)
-        tabBarView.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(tabBarView, animated: true)
+        self.router?.trigger(.home)
     }
 }
 

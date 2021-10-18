@@ -9,7 +9,6 @@ import UIKit
 import SafariServices
 
 class PublicUserProfileViewController: CommonViews  {
-    
     @IBOutlet weak var bookmarkButton: UIButton?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userName: UILabel!
@@ -20,11 +19,9 @@ class PublicUserProfileViewController: CommonViews  {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var userFollowers: UILabel!
-    
     lazy var viewModel: ProfileViewModel = {
        return ProfileViewModel()
    }()
-    
     // Bookmark button states on and off with state and save to database
     var setBookmarkButtonState: String = "off" {
         willSet {
@@ -37,27 +34,23 @@ class PublicUserProfileViewController: CommonViews  {
             }
         }
     }
-    
     override func viewDidLoad()  {
         super.viewDidLoad()
         initView()
         initViewModel()
     }
-    
     func initView() {
         renderTheButtonWithSavedState ()
         tableView.tableFooterView = tableFooterView
         tableView.addSubview(refreshControl)
         tableView.isHidden = true
     }
-    
     func initViewModel() {
         guard let user = viewModel.passedUser?.userName else {return}
         viewModel.userProfileData(requestData: GitRequestRouter.gitPublicUserInfo(user),
                         userName: userName, userAvatar: userAvatar, userFollowData: userFollowers,
                         userBio: userBio, userLoginName: userLogin, userLocation: userLocation, tableView: tableView)
     }
-                   
     func renderTheButtonWithSavedState () {
         guard let passedUserName = viewModel.passedUser?.userName else { return }
         if let buttonState = UserDefaults.standard.string(forKey: (passedUserName)) {
@@ -67,9 +60,7 @@ class PublicUserProfileViewController: CommonViews  {
         }
     }
 }
-
 extension PublicUserProfileViewController {
-    
     // change button value between on or off
     @IBAction func bookmarkButton(_ sender: UIButton) {
         let stat = setBookmarkButtonState == "on" ? "off" : "on"
@@ -78,19 +69,12 @@ extension PublicUserProfileViewController {
         UserDefaults.standard.set(stat, forKey: (passedUser.userName))
         HapticsManger.shared.selectionVibrate(for: .medium)
     }
-    
     @IBAction func urlButton(_ sender: UIButton) {
-        guard let user = viewModel.passedUser else { return }
-        let userURL = user.userURL
-        let safariVC = SFSafariViewController(url: URL(string: userURL)!)
-        self.present(safariVC, animated: true)
+        guard let passedUser = viewModel.passedUser else {return}
+        viewModel.publicRouter?.trigger(.userURL(passedUser: passedUser))
     }
-    
     @IBAction func shareButton(_ sender: UIButton) {
-        guard let userURL = viewModel.passedUser?.userURL else { return }
-        let sheetVC = UIActivityViewController(activityItems: [userURL], applicationActivities: nil)
-        present(sheetVC, animated: true)
-        HapticsManger.shared.selectionVibrate(for: .medium)
+        guard let passedUser = viewModel.passedUser else {return}
+        viewModel.publicRouter?.trigger(.shareSheet(passedUser: passedUser))
     }
-    
 }

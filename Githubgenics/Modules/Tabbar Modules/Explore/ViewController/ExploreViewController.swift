@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import XCoordinator
 
 class ExploreViewController: CommonViews {
 
     var bestRepos = [Repository]()
+    var router: UnownedRouter<ExploreRoute>?
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,5 +1,5 @@
 //
-//  AppCordinator.swift
+//  Storyboarded.swift
 //  Githubgenics
 //
 //  Created by Ali Fayed on 03/10/2021.
@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import XCoordinator
 
 protocol Storyboarded {
     static func instaintiate(on storyboard: AppStoryboards) -> Self

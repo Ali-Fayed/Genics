@@ -7,12 +7,12 @@
 
 import UIKit
 import JGProgressHUD
+import XCoordinator
 
 class OrgsViewModel {
     
     var passedUser : User?
     var orgsModel = [Orgs]()
-
     var numberOfOrgsCells: Int {
         return orgsModel.count
     }

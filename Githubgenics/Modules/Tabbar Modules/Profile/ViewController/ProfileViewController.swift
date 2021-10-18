@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import XCoordinator
 
 class ProfileViewController: CommonViews {
     //MARK: - @IBOutlets
@@ -21,7 +22,6 @@ class ProfileViewController: CommonViews {
     lazy var viewModel: ProfileViewModel = {
        return ProfileViewModel()
    }()
-    var router = ProfileCordinator()
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ class ProfileViewController: CommonViews {
                         userBio: userBio, userLoginName: userLogin, userLocation: userLocation, tableView: tableView)
     }
     @IBAction func didTapSettingsButton(_ sender: UIBarButtonItem) {
-        router.pushTo(destination: .settings, navigationController: navigationController!, passedUser: nil)
+        viewModel.router?.trigger(.settings)
     }
 }
 //MARK: - TableView
@@ -67,7 +67,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        viewModel.pushToPrivateDestnationVC(indexPath: indexPath, navigationController: navigationController!)
+        viewModel.pushToPrivateDestnationVC(indexPath: indexPath)
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10

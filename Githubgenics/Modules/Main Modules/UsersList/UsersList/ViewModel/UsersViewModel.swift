@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import JGProgressHUD
+import XCoordinator
 
 class UsersViewModel {
     var usersModel = [User]()
@@ -16,6 +17,7 @@ class UsersViewModel {
     var lastSearch = [LastSearch]()
     var pageNo: Int = 1
     var totalPages: Int = 100
+    var router: UnownedRouter<UsersRoute>?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var numberOfSearchHistoryCell: Int {
         return searchHistory.count
@@ -111,11 +113,8 @@ class UsersViewModel {
         try! self.context.save()
     }
     func pushWithData (navigationController: UINavigationController) {
-        let publicProfileView = PublicUserProfileViewController.instaintiate(on: .publicProfileView)
-        publicProfileView.viewModel.passedUser = passedUsers
-        publicProfileView.navigationItem.largeTitleDisplayMode = .never
-        publicProfileView.navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController.pushViewController(publicProfileView, animated: true)
+        guard let passedUsers = passedUsers else {return}
+        router?.trigger(.publicProfile(passedUser: passedUsers))
     }
     func deleteAndFetchRecentTableData (indexPath:IndexPath) {
         let item = searchHistory[indexPath.row]

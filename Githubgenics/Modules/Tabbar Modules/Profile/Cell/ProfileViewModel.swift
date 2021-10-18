@@ -8,13 +8,13 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
+import XCoordinator
 
 class ProfileViewModel {
     var profileTableData = [ProfileTableData]()
     var userRepository = [Repository]()
     var selectedRepository: Repository?
-    var passedUser : User?
-    var router = ProfileCordinator()
+    var passedUser: User?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var isLoggedIn: Bool {
         if TokenManager.shared.fetchAccessToken() != nil {
@@ -22,33 +22,33 @@ class ProfileViewModel {
         }
         return false
     }
-
+    var router: UnownedRouter<ProfileRoute>?
+    var publicRouter: UnownedRouter<UsersRoute>?
     var numberOfProfileElementCells: Int {
         return  profileTableData.count
     }
     func getProfileViewModel( at indexPath: IndexPath ) -> ProfileTableData {
         return profileTableData[indexPath.row]
     }
-    func pushToPrivateDestnationVC(indexPath: IndexPath, navigationController: UINavigationController) {
+    func pushToPrivateDestnationVC(indexPath: IndexPath) {
         if indexPath.row == 0 {
-            router.pushTo(destination: .privateRepos, navigationController: navigationController, passedUser: nil)
+            router?.trigger(.privateRepos)
         } else if indexPath.row == 1 {
-            router.pushTo(destination: .privateStarred, navigationController: navigationController, passedUser: nil)
+            router?.trigger(.privateStarred)
         } else if indexPath.row == 2 {
-            router.pushTo(destination: .privateOrgs, navigationController: navigationController, passedUser: nil)
+            router?.trigger(.privateOrgs)
         }
     }
-    
-    func pushToPublicDestnationVC (indexPath: IndexPath, navigationController: UINavigationController) {
+    func pushToPublicDestnationVC (indexPath: IndexPath) {
+        guard let passedUser = passedUser else {return}
         if indexPath.row == 0 {
-            router.pushTo(destination: .publicRepos, navigationController: navigationController, passedUser: passedUser)
+            publicRouter?.trigger(.publicRepos(passedUser: passedUser))
         } else if indexPath.row == 1 {
-            router.pushTo(destination: .publicStarred, navigationController: navigationController, passedUser: passedUser)
+            publicRouter?.trigger(.publicStarred(passedUser: passedUser))
         } else if indexPath.row == 2 {
-            router.pushTo(destination: .publicOrgs, navigationController: navigationController, passedUser: passedUser)
+            publicRouter?.trigger(.publicOrgs(passedUser: passedUser))
         }
     }
-    
     func userProfileData(requestData: GitRequestRouter,userName : UILabel, userAvatar: UIImageView, userFollowData: UILabel, userBio: UILabel, userLoginName: UILabel, userLocation: UILabel, tableView: UITableView) {
         NetworkingManger.shared.afSession.request(requestData).responseJSON { (response) in
             switch response.result {

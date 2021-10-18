@@ -54,7 +54,8 @@ extension PublicStarredViewController : UITableViewDataSource , UITableViewDeleg
             
             let bookmarkAction = UIAction(title: "Bookmark", image: UIImage(systemName: "bookmark.fill")) { _ in
                 self.viewModel.saveRepoToBookmarks(at: indexPath)
-                try! self.context.save()
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                try! context.save()
             }
             
             let safariAction = UIAction(

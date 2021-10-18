@@ -11,7 +11,7 @@ import JGProgressHUD
 class CommonViews : UIViewController {
 
     let tableFooterView = UIView()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let loadingSpinner = JGProgressHUD(style: .dark)
     var pageNo : Int = 1
     var totalPages : Int = 100

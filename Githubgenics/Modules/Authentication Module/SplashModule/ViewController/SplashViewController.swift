@@ -7,11 +7,13 @@
 
 import UIKit
 import Lottie
+import XCoordinator
 
 class SplashViewController: CommonViews {
     
     let animationView = AnimationView()
     static let animation = "loadingspinner"
+    var router: StrongRouter<AppRoute>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +39,9 @@ class SplashViewController: CommonViews {
     func handleAnimation() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if self.isLoggedIn {
-                let tabBarView = TabBarViewController.instaintiate(on: .tabBarView)
-                    self.navigationController?.pushViewController(tabBarView, animated: true)
+                self.router?.trigger(.home)
             } else {
-                let loginView = LoginViewController.instaintiate(on: .loginView)
-                    self.navigationController?.pushViewController(loginView, animated: true)
+                self.router?.trigger(.login)
             }
         }
     }
