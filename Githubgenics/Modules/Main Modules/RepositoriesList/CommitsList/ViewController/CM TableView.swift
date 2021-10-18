@@ -26,6 +26,8 @@ extension CommitsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        viewModel.routerr?.trigger(.commitsURL(indexPath: indexPath))
+        let commitURL = viewModel.getCommitViewModel(at: indexPath).commitURL
+        let safariVC = SFSafariViewController(url: URL(string: commitURL)!)
+        self.present(safariVC, animated: true)
     }
 }

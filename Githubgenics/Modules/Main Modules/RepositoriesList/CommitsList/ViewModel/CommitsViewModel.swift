@@ -18,6 +18,7 @@ class CommitsViewModel {
     var totalPages : Int = 100
     var router: UnownedRouter<UsersRoute>?
     var routerr: UnownedRouter<HomeRoute>?
+    var publicUserRouter: UnownedRouter<PublicProfileRoute>?
     var numberOfCommitCell: Int {
         return  commits.count
     }

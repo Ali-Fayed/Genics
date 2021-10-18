@@ -23,7 +23,7 @@ class ProfileViewModel {
         return false
     }
     var router: UnownedRouter<ProfileRoute>?
-    var publicRouter: UnownedRouter<UsersRoute>?
+    var publicRouter: UnownedRouter<PublicProfileRoute>?
     var numberOfProfileElementCells: Int {
         return  profileTableData.count
     }

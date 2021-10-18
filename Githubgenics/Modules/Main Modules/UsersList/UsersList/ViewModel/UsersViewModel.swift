@@ -114,7 +114,7 @@ class UsersViewModel {
     }
     func pushWithData (navigationController: UINavigationController) {
         guard let passedUsers = passedUsers else {return}
-        router?.trigger(.publicProfile(passedUser: passedUsers))
+        router?.trigger(.publicUserProfile(user: passedUsers))
     }
     func deleteAndFetchRecentTableData (indexPath:IndexPath) {
         let item = searchHistory[indexPath.row]

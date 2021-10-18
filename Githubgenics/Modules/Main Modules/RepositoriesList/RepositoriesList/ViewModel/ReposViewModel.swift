@@ -14,7 +14,7 @@ class ReposViewModel {
     var selectedRepository: Repository?
     var savedRepositories = [SavedRepositories]()
     var pageNo: Int = 1
-    var router: UnownedRouter<HomeRoute>?
+    var router: UnownedRouter<ReposListRoute>?
     var totalPages: Int = 100
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var numberOfReposCell: Int {
@@ -66,9 +66,7 @@ class ReposViewModel {
         return query
     }
     func pushWithData (navigationController: UINavigationController) {
-        guard let selectedRepository = selectedRepository else {
-            return
-        }
+        guard let selectedRepository = selectedRepository else {return}
         router?.trigger(.commits(selectedRepository: selectedRepository))
     }
     func fetchMoreCells (tableView: UITableView, loadingSpinner: JGProgressHUD, indexPath: IndexPath, searchController: UISearchController) {

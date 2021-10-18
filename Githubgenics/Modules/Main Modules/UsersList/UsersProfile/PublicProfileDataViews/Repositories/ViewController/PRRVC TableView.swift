@@ -13,7 +13,6 @@ extension PublicReposViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfReposCells
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue() as ReposTableViewCell
         cell.cellData(with: viewModel.getReposViewModel(at: indexPath))
@@ -43,44 +42,9 @@ extension PublicReposViewController: UITableViewDelegate, UITableViewDataSource 
         showTableViewSpinner(tableView: tableView)
         viewModel.fetchMoreRepositories(at: indexPath, tableView: tableView, tableFooterView: tableFooterView, loadingSpinner: loadingSpinner)
     }
-    
-    func tableView( _ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let identifier = "\(String(describing: index))" as NSString
-        return UIContextMenuConfiguration( identifier: identifier, previewProvider: nil) { _ in
-            
-            let bookmarkAction = UIAction(title: "Bookmark", image: UIImage(systemName: "bookmark.fill")) { _ in
-                self.viewModel.saveRepoToBookmarks(at: indexPath)
-
-            }
-            
-            let safariAction = UIAction(
-                title: Titles.openInSafari,
-                image: UIImage(systemName: "link")) { _ in
-                self.openInSafari (indexPath: indexPath)
-            }
-            
-            let shareAction = UIAction(
-                title: Titles.share,
-                image: UIImage(systemName: "square.and.arrow.up")) { _ in
-                self.share (indexPath: indexPath)
-            }
-            
-            return UIMenu(title: "", image: nil, children: [safariAction, bookmarkAction, shareAction])
-        }
-    }
-    
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         viewModel.repository = viewModel.getReposViewModel(at: indexPath)
         return indexPath
-    }
-    
-    //MARK:- Actions
-    
-    func openInSafari (indexPath: IndexPath) {
-        viewModel.router?.trigger(.openPrivateRepoURL(indexPath: indexPath))
-    }
-    func share (indexPath: IndexPath) {
-        viewModel.router?.trigger(.sharePrivateRepo(indexPath: indexPath))
     }
 }
 //MARK:- cell delegate

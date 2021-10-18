@@ -13,6 +13,7 @@ class OrgsViewModel {
     
     var passedUser : User?
     var orgsModel = [Orgs]()
+    var router: UnownedRouter<PublicProfileRoute>?
     var numberOfOrgsCells: Int {
         return orgsModel.count
     }

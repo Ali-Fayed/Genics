@@ -16,19 +16,20 @@ enum ProfileRoute: Route {
     case privateRepos
     case privateStarred
     case privateOrgs
-    case publiceProfile(passedUser: User)
-    case publicRepos(passedUser: User)
     case commits(repository: Repository)
-    case publicRepoCommit(view: UIView, tableView: UITableView, loadingSpinner: JGProgressHUD, repository: Repository)
     case commitURL(indexPath: IndexPath)
-    case publicStarred(passedUser: User)
-    case publicOrgs(passedUser: User)
-    case shareRepo(indexPath: IndexPath)
-    case repoURL(indexPath: IndexPath)
-    case sharePrivateRepo(indexPath: IndexPath)
-    case openPrivateRepoURL(indexPath: IndexPath)
     case settings
     case reLogin
+
+    case publiceProfile(passedUser: User)
+//    case publicRepos(passedUser: User)
+//    case publicStarred(passedUser: User)
+    case publicOrgs(passedUser: User)
+    case publicRepoCommit(view: UIView, tableView: UITableView, loadingSpinner: JGProgressHUD, repository: Repository)
+    case shareRepo(indexPath: IndexPath)
+    case repoURL(indexPath: IndexPath)
+//    case sharePrivateRepo(indexPath: IndexPath)
+//    case openPrivateRepoURL(indexPath: IndexPath)
     case privacy
     case terms
     case dismiss
@@ -69,16 +70,16 @@ class ProfileCoordinator: NavigationCoordinator<ProfileRoute> {
         case .privateOrgs:
             let viewController = PrivateOrgsViewController.instaintiate(on: .orgsSB)
             return .push(viewController)
-        case .publicRepos(let passedUser):
-            let viewController = PublicReposViewController.instaintiate(on: .reposSB)
-            viewController.viewModel.router = unownedRouter
-            viewController.viewModel.passedUser = passedUser
-            return .push(viewController)
-        case .publicStarred(let passedUser):
-            let viewController = PublicStarredViewController.instaintiate(on: .starredSB)
-            viewController.viewModel.passedUser = passedUser
-            viewController.viewModel.router = unownedRouter
-            return .push(viewController)
+//        case .publicRepos(let passedUser):
+//            let viewController = PublicReposViewController.instaintiate(on: .reposSB)
+//            viewController.viewModel.router = unownedRouter
+//            viewController.viewModel.passedUser = passedUser
+//            return .push(viewController)
+//        case .publicStarred(let passedUser):
+//            let viewController = PublicStarredViewController.instaintiate(on: .starredSB)
+//            viewController.viewModel.passedUser = passedUser
+//            viewController.viewModel.router = unownedRouter
+//            return .push(viewController)
         case .publicOrgs(let passedUser):
             let viewController = PublicOrgsViewController.instaintiate(on: .orgsSB)
             viewController.viewModel.passedUser = passedUser
@@ -118,17 +119,17 @@ class ProfileCoordinator: NavigationCoordinator<ProfileRoute> {
             let repositoryURL = viewController.viewModel.getStarredViewModel(at: indexPath).repositoryURL
             let safariVC = SFSafariViewController(url: URL(string: repositoryURL)!)
             return .present(safariVC)
-        case .sharePrivateRepo(indexPath: let indexPath):
-            let viewController = PublicReposViewController.instaintiate(on: .reposSB)
-            let repositoryURL = viewController.viewModel.getReposViewModel(at: indexPath).repositoryURL
-            let sheetVC = UIActivityViewController(activityItems: [repositoryURL], applicationActivities: nil)
-            HapticsManger.shared.selectionVibrate(for: .medium)
-            return .present(sheetVC)
-        case .openPrivateRepoURL(indexPath: let indexPath):
-            let viewController = PublicReposViewController.instaintiate(on: .reposSB)
-            let repositoryURL = viewController.viewModel.getReposViewModel(at: indexPath).repositoryURL
-            let safariVC = SFSafariViewController(url: URL(string: repositoryURL)!)
-            return .present(safariVC)
+//        case .sharePrivateRepo(indexPath: let indexPath):
+//            let viewController = PublicReposViewController.instaintiate(on: .reposSB)
+//            let repositoryURL = viewController.viewModel.getReposViewModel(at: indexPath).repositoryURL
+//            let sheetVC = UIActivityViewController(activityItems: [repositoryURL], applicationActivities: nil)
+//            HapticsManger.shared.selectionVibrate(for: .medium)
+//            return .present(sheetVC)
+//        case .openPrivateRepoURL(indexPath: let indexPath):
+//            let viewController = PublicReposViewController.instaintiate(on: .reposSB)
+//            let repositoryURL = viewController.viewModel.getReposViewModel(at: indexPath).repositoryURL
+//            let safariVC = SFSafariViewController(url: URL(string: repositoryURL)!)
+//            return .present(safariVC)
         }
     }
 }

@@ -107,13 +107,16 @@
 		EAC40D3B2709DA8F00ACE60C /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC40D3A2709DA8F00ACE60C /* Storyboarded.swift */; };
 		EAD4476625B0148A00FB42B4 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD4476425B0148A00FB42B4 /* UsersTableViewCell.swift */; };
 		EADAF1A6271B8E19005999EA /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1A5271B8E19005999EA /* TabBarCoordinator.swift */; };
-		EADAF1A8271B8E82005999EA /* HomeCordinatorr.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1A7271B8E82005999EA /* HomeCordinatorr.swift */; };
-		EADAF1AA271B8E8D005999EA /* ExploreCordinaotr.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1A9271B8E8D005999EA /* ExploreCordinaotr.swift */; };
-		EADAF1AC271B8EA0005999EA /* BookmarkCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1AB271B8EA0005999EA /* BookmarkCordinator.swift */; };
+		EADAF1A8271B8E82005999EA /* HomeCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1A7271B8E82005999EA /* HomeCordinator.swift */; };
+		EADAF1AA271B8E8D005999EA /* ExploreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1A9271B8E8D005999EA /* ExploreCoordinator.swift */; };
+		EADAF1AC271B8EA0005999EA /* BookmarksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1AB271B8EA0005999EA /* BookmarksCoordinator.swift */; };
 		EADAF1AE271B8EAE005999EA /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1AD271B8EAE005999EA /* ProfileCoordinator.swift */; };
 		EADAF1B1271B96C1005999EA /* LoginCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1B0271B96C1005999EA /* LoginCordinator.swift */; };
 		EADAF1B3271B9AA3005999EA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1B2271B9AA3005999EA /* AppCoordinator.swift */; };
 		EADAF1B6271B9D48005999EA /* UsersListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF1B5271B9D48005999EA /* UsersListCoordinator.swift */; };
+		EADAF201271DAB38005999EA /* ReposListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF200271DAB38005999EA /* ReposListCoordinator.swift */; };
+		EADAF203271DAB47005999EA /* IssuesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF202271DAB47005999EA /* IssuesCoordinator.swift */; };
+		EADAF206271DAB65005999EA /* PublicProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF205271DAB65005999EA /* PublicProfileCoordinator.swift */; };
 		EADCD06D25E334DD005F7033 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD06C25E334DD005F7033 /* ProfileViewController.swift */; };
 		EADCD07525E35FF6005F7033 /* PrivateReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07425E35FF6005F7033 /* PrivateReposViewController.swift */; };
 		EADCD07825E36681005F7033 /* Orgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07725E36681005F7033 /* Orgs.swift */; };
@@ -258,13 +261,16 @@
 		EAC40D3A2709DA8F00ACE60C /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		EAD4476425B0148A00FB42B4 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
 		EADAF1A5271B8E19005999EA /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
-		EADAF1A7271B8E82005999EA /* HomeCordinatorr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCordinatorr.swift; sourceTree = "<group>"; };
-		EADAF1A9271B8E8D005999EA /* ExploreCordinaotr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCordinaotr.swift; sourceTree = "<group>"; };
-		EADAF1AB271B8EA0005999EA /* BookmarkCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCordinator.swift; sourceTree = "<group>"; };
+		EADAF1A7271B8E82005999EA /* HomeCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCordinator.swift; sourceTree = "<group>"; };
+		EADAF1A9271B8E8D005999EA /* ExploreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCoordinator.swift; sourceTree = "<group>"; };
+		EADAF1AB271B8EA0005999EA /* BookmarksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCoordinator.swift; sourceTree = "<group>"; };
 		EADAF1AD271B8EAE005999EA /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		EADAF1B0271B96C1005999EA /* LoginCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCordinator.swift; sourceTree = "<group>"; };
 		EADAF1B2271B9AA3005999EA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		EADAF1B5271B9D48005999EA /* UsersListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListCoordinator.swift; sourceTree = "<group>"; };
+		EADAF200271DAB38005999EA /* ReposListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposListCoordinator.swift; sourceTree = "<group>"; };
+		EADAF202271DAB47005999EA /* IssuesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCoordinator.swift; sourceTree = "<group>"; };
+		EADAF205271DAB65005999EA /* PublicProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicProfileCoordinator.swift; sourceTree = "<group>"; };
 		EADCD06C25E334DD005F7033 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EADCD07425E35FF6005F7033 /* PrivateReposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateReposViewController.swift; sourceTree = "<group>"; };
 		EADCD07725E36681005F7033 /* Orgs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orgs.swift; sourceTree = "<group>"; };
@@ -1102,7 +1108,7 @@
 				EAC40D3A2709DA8F00ACE60C /* Storyboarded.swift */,
 				EADAF1B2271B9AA3005999EA /* AppCoordinator.swift */,
 				EADAF1B0271B96C1005999EA /* LoginCordinator.swift */,
-				EADAF1B5271B9D48005999EA /* UsersListCoordinator.swift */,
+				EADAF204271DAB51005999EA /* Main */,
 				EADAF1AF271B9486005999EA /* TabBarCordinator */,
 			);
 			path = Navigation;
@@ -1181,12 +1187,23 @@
 			isa = PBXGroup;
 			children = (
 				EADAF1A5271B8E19005999EA /* TabBarCoordinator.swift */,
-				EADAF1A7271B8E82005999EA /* HomeCordinatorr.swift */,
-				EADAF1A9271B8E8D005999EA /* ExploreCordinaotr.swift */,
-				EADAF1AB271B8EA0005999EA /* BookmarkCordinator.swift */,
+				EADAF1A7271B8E82005999EA /* HomeCordinator.swift */,
+				EADAF1A9271B8E8D005999EA /* ExploreCoordinator.swift */,
+				EADAF1AB271B8EA0005999EA /* BookmarksCoordinator.swift */,
 				EADAF1AD271B8EAE005999EA /* ProfileCoordinator.swift */,
 			);
 			path = TabBarCordinator;
+			sourceTree = "<group>";
+		};
+		EADAF204271DAB51005999EA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EADAF1B5271B9D48005999EA /* UsersListCoordinator.swift */,
+				EADAF205271DAB65005999EA /* PublicProfileCoordinator.swift */,
+				EADAF200271DAB38005999EA /* ReposListCoordinator.swift */,
+				EADAF202271DAB47005999EA /* IssuesCoordinator.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		EADCFDC5261E674800E8A1A3 /* ViewController */ = {
@@ -1580,13 +1597,14 @@
 				EA43BCD325965CAD00098ACA /* ReposTableViewCell.swift in Sources */,
 				EA48ACF025D4D2C9006803BD /* NetworkMonitor.swift in Sources */,
 				EADCD06D25E334DD005F7033 /* ProfileViewController.swift in Sources */,
+				EADAF206271DAB65005999EA /* PublicProfileCoordinator.swift in Sources */,
 				EAB2AD1425BBF573001B6DD7 /* SearchHistory+CoreDataProperties.swift in Sources */,
 				EADAF1B3271B9AA3005999EA /* AppCoordinator.swift in Sources */,
 				EA0589BA25C5696D00BC1024 /* BVC TableView.swift in Sources */,
 				EADCD08625E36EC1005F7033 /* ViewExtension.swift in Sources */,
 				EADCFE1C261EA9DE00E8A1A3 /* CommitsViewModel.swift in Sources */,
 				EAA588BD271B078C00F98A60 /* ErrorCode.swift in Sources */,
-				EADAF1A8271B8E82005999EA /* HomeCordinatorr.swift in Sources */,
+				EADAF1A8271B8E82005999EA /* HomeCordinator.swift in Sources */,
 				EA1EAC522620F614001CE23F /* POVC TableView.swift in Sources */,
 				EA2F137725DF21A400470A04 /* Repository.swift in Sources */,
 				EA7C4CAE25BAA8E200EC9F45 /* UsersDataBase+CoreDataProperties copy.swift in Sources */,
@@ -1629,10 +1647,11 @@
 				EAC3B17325C9520700F798DA /* CommitsViewController.swift in Sources */,
 				EADCFDBA261E48CA00E8A1A3 /* HomeTableViewCell.swift in Sources */,
 				EA668BA125BFE83C00392A30 /* Githubgenics.xcdatamodeld in Sources */,
+				EADAF203271DAB47005999EA /* IssuesCoordinator.swift in Sources */,
 				EAEA13A226215CE5003CF3D5 /* SVC Header.swift in Sources */,
 				EADCD08025E36AE8005F7033 /* PrivateStarredViewController.swift in Sources */,
 				EAEA139F26215C76003CF3D5 /* SVC TableView.swift in Sources */,
-				EADAF1AC271B8EA0005999EA /* BookmarkCordinator.swift in Sources */,
+				EADAF1AC271B8EA0005999EA /* BookmarksCoordinator.swift in Sources */,
 				EAA588D3271B4B6100F98A60 /* CustomViews.swift in Sources */,
 				EA622CFC25C54F3800EC5F3C /* Users.swift in Sources */,
 				EA23A07225ED5C1A001B943F /* PublicReposViewController.swift in Sources */,
@@ -1671,6 +1690,7 @@
 				EADCFDBD261E493200E8A1A3 /* SearchOptionsCell.swift in Sources */,
 				EADCFDC0261E494600E8A1A3 /* SearchHstoryCell.swift in Sources */,
 				EA1EAC622620FB4D001CE23F /* PUVC TableView.swift in Sources */,
+				EADAF201271DAB38005999EA /* ReposListCoordinator.swift in Sources */,
 				EAFD8FD626008AE2008ABA1E /* GithubViewController.swift in Sources */,
 				EAA87CC52606E796006BC6E7 /* CommonViews.swift in Sources */,
 				EA22D78325CE2DE0009C0EEF /* RequestInterceptor.swift in Sources */,
@@ -1686,7 +1706,7 @@
 				EADCFE16261EA0BC00E8A1A3 /* ReposViewModel.swift in Sources */,
 				EA23A07025ED5C1A001B943F /* PublicOrgsViewController.swift in Sources */,
 				EA0C2D9725BD068C00D3898A /* LastSearch+CoreDataProperties.swift in Sources */,
-				EADAF1AA271B8E8D005999EA /* ExploreCordinaotr.swift in Sources */,
+				EADAF1AA271B8E8D005999EA /* ExploreCoordinator.swift in Sources */,
 				EADCD07825E36681005F7033 /* Orgs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

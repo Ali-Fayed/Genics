@@ -10,23 +10,20 @@ import JGProgressHUD
 import XCoordinator
 
 class PublicReposViewModel {
-
     var repositoryModel = [Repository]()
     var savedRepos = [SavedRepositories]()
     var passedUser : User?
     var repository: Repository?
     var pageNo : Int = 1
-    var router: UnownedRouter<ProfileRoute>?
+    var router: UnownedRouter<PublicProfileRoute>?
     var totalPages : Int = 100
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var numberOfReposCells: Int {
         return  repositoryModel.count
     }
-    
     func getReposViewModel( at indexPath: IndexPath ) -> Repository {
         return repositoryModel[indexPath.row]
     }
-    
     func renderClickedUserPublicRepositories (tableView: UITableView, view: UIView , loadingSpinner: JGProgressHUD, conditionLabel: UILabel ) {
         guard let user = passedUser else {return}
         if repositoryModel.isEmpty == true {
@@ -54,7 +51,6 @@ class PublicReposViewModel {
 
         }
     }
-        
     func fetchMoreRepositories (at indexPath: IndexPath, tableView: UITableView, tableFooterView: UIView , loadingSpinner: JGProgressHUD) {
         if indexPath.row == numberOfReposCells - 1 {
             if pageNo < totalPages {
@@ -79,14 +75,11 @@ class PublicReposViewModel {
                 }
             }
         }
-
     }
-    
     func pushToDestnationVC(indexPath: IndexPath, navigationController: UINavigationController, view: UIView, tableView: UITableView, loadingSpinner: JGProgressHUD ) {
         guard let repository = repository else {return}
-        router?.trigger(.publicRepoCommit(view: view, tableView: tableView, loadingSpinner: loadingSpinner, repository: repository))
+        router?.trigger(.userCommits(view: view, tableView: tableView, loadingSpinner: loadingSpinner, repository: repository))
     }
-    
     func saveRepoToBookmarks(at indexPath: IndexPath) {
         let repository = self.getReposViewModel(at: indexPath)
         let saveRepoInfo = SavedRepositories(context: self.context)

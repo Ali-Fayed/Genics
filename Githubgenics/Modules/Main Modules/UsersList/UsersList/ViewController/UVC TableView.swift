@@ -157,7 +157,7 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate, UIT
     }
     //MARK:- LongPress Actions
     func openInSafari (indexPath: IndexPath) {
-        viewModel.router?.trigger(.userURLL(indexPath: indexPath))
+//        viewModel.router?.trigger(.userURL(indexPath: indexPath))
     }
     func shareUser (indexPath: IndexPath) {
         viewModel.router?.trigger(.shareUser(indexPath: indexPath))

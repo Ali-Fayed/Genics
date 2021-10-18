@@ -44,6 +44,16 @@ class PublicUserProfileViewController: CommonViews  {
         tableView.tableFooterView = tableFooterView
         tableView.addSubview(refreshControl)
         tableView.isHidden = true
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        button.setTitle("Back", for: .normal)
+        button.sizeToFit()
+        button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        let backButton = UIBarButtonItem(customView: button)
+        navigationItem.leftBarButtonItem = backButton
+    }
+    @objc func dismissView () {
+        viewModel.publicRouter?.trigger(.dismiss)
     }
     func initViewModel() {
         guard let user = viewModel.passedUser?.userName else {return}

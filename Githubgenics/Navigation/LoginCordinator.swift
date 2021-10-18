@@ -28,6 +28,8 @@ class LoginCoordinator: NavigationCoordinator<LoginRoute> {
         case .home:
             let tabCoordinator = HomeTabBarCoordinator()
             tabCoordinator.rootViewController.modalPresentationStyle = .overFullScreen
+            tabCoordinator.rootViewController.navigationController?.navigationBar.prefersLargeTitles = true
+            tabCoordinator.rootViewController.navigationItem.largeTitleDisplayMode = .always
             return .push(tabCoordinator)
         case .terms:
             let termsURL = "https://docs.github.com/en/github/site-policy/github-terms-of-service"

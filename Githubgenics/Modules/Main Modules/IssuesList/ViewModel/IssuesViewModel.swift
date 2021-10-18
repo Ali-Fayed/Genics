@@ -7,11 +7,12 @@
 
 import UIKit
 import JGProgressHUD
+import XCoordinator
 
 class IssuesViewModel {
     
     var issuesData = [Issue]()
-
+    var router: UnownedRouter<IssuesRoute>?
     var numberOfIssuesCell: Int {
         return issuesData.count
     }

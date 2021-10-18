@@ -13,7 +13,7 @@ class HomeViewModel {
     var profileTableData = [ProfileTableData]()
     var searchTableData = [ProfileTableData]()
     var searchHistory = [SearchHistory]()
-    var router: UnownedRouter<HomeRoute>?
+    var router: StrongRouter<HomeRoute>?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var numberOfHomeTableCells: Int {
         return profileTableData.count
