@@ -27,7 +27,8 @@ class ExploreCollectionViewCell: UICollectionViewCell {
     func cellData( with model: Repository ) {
         self.repoName?.text = model.repositoryName
         self.repoDescription?.text = model.repositoryDescription
-        self.repoStartsNumber?.text = String(model.repositoryStars!)
+        guard let repoStars = model.repositoryStars else {return}
+        self.repoStartsNumber?.text = String(repoStars)
         self.repoLanguage?.text = model.repositoryLanguage
         self.repoOwnerName?.text = model.repoOwnerName
         let repoURL = model.repoOwnerAvatarURL

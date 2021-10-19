@@ -63,18 +63,20 @@ extension TableViewCell:  UICollectionViewDataSource , UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ExploreCollectionViewCell
-        switch indexPath.row {
-        case 0:
-            cell!.cellData(with: bestRepos[indexPath.row])
-            return cell!
-        case 1:
-            cell!.cellData(with: bestRepos[indexPath.row])
-            return cell!
-        default:
-            cell!.cellData(with: bestRepos[indexPath.row])
-            return cell!
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ExploreCollectionViewCell {
+            switch indexPath.row {
+            case 0:
+                cell.cellData(with: bestRepos[indexPath.row])
+                return cell
+            case 1:
+                cell.cellData(with: bestRepos[indexPath.row])
+                return cell
+            default:
+                cell.cellData(with: bestRepos[indexPath.row])
+                return cell
+            }
         }
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

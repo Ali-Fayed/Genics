@@ -55,6 +55,10 @@ class ReposViewModel {
             }
         }
     }
+    func pushWithData (navigationController: UINavigationController) {
+        guard let selectedRepository = selectedRepository else {return}
+        router?.trigger(.commits(selectedRepository: selectedRepository))
+    }
     func query (searchText : String? ) -> String {
         let query : String = {
             var queryString = String()
@@ -64,10 +68,6 @@ class ReposViewModel {
             return queryString
         }()
         return query
-    }
-    func pushWithData (navigationController: UINavigationController) {
-        guard let selectedRepository = selectedRepository else {return}
-        router?.trigger(.commits(selectedRepository: selectedRepository))
     }
     func fetchMoreCells (tableView: UITableView, loadingSpinner: JGProgressHUD, indexPath: IndexPath, searchController: UISearchController) {
         if indexPath.row == numberOfReposCell - 1 {

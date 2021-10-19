@@ -50,15 +50,9 @@ class IssuesViewController: CommonViews {
         tableView.tableFooterView = tableFooterView
         conditionLabel.text = Titles.searchIssues
         view.addSubview(conditionLabel)
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
-        button.setTitle("Back", for: .normal)
-        button.sizeToFit()
-        button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
-        let backButton = UIBarButtonItem(customView: button)
-        navigationItem.leftBarButtonItem = backButton
+        dismissButton()
     }
-    @objc func dismissView () {
+    @objc override func dismissView () {
         viewModel.router?.trigger(.dismiss)
     }
     

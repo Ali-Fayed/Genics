@@ -42,7 +42,7 @@ extension BookmarksViewController: UITableViewDelegate , UITableViewDataSource {
         case 0:
             router?.trigger(.userSafariURL(indexPath: indexPath))
         default:
-            viewModel.pushToDestnationVC(indexPath: indexPath, navigationController: navigationController!, view: view, tableView: self.tableView, loadingSpinner: loadingSpinner)
+            viewModel.pushToDestnationVC(indexPath: indexPath, view: view, tableView: self.tableView, loadingSpinner: loadingSpinner)
         }
     }
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {

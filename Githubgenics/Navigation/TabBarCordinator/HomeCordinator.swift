@@ -68,11 +68,11 @@ class HomeCoordinator: NavigationCoordinator<HomeRoute> {
             let gitHubWebVC = GithubViewController()
             gitHubWebVC.navigationItem.largeTitleDisplayMode = .never
             gitHubWebVC.navigationController?.navigationBar.prefersLargeTitles = false
-            return .push(gitHubWebVC)
+            return .present(gitHubWebVC)
         case .appRepoWeb:
             let repoURL = "https://github.com/Ali-Fayed/Githubgenics"
             let repoVC = SFSafariViewController(url: URL(string: repoURL)!)
-            return .push(repoVC)
+            return .present(repoVC)
         }
     }
 }

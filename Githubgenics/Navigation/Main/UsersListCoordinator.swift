@@ -13,7 +13,6 @@ enum UsersRoute: Route {
     case usersList
     case publicUserProfile(user: User)
     case userURL(passedUser: User)
-    case shareUser(indexPath: IndexPath)
     case lastSearch(indexPath: IndexPath)
     case dismiss
 }
@@ -26,6 +25,7 @@ class UserListCoordinaotr: NavigationCoordinator<UsersRoute> {
         case .usersList:
             let usersView = UsersViewController.instaintiate(on: .usersView)
             usersView.viewModel.router = strongRouter
+            usersView.viewModel.useCase = UserUseCase()
             return .push(usersView)
         case .publicUserProfile(let user):
             let publicProfileCoordinaotr = PublicProfileCoordinaotr(user: user)
@@ -37,16 +37,6 @@ class UserListCoordinaotr: NavigationCoordinator<UsersRoute> {
             let userURL = passedUser.userURL
             let safariVC = SFSafariViewController(url: URL(string: userURL)!)
             return .present(safariVC)
-        case .shareUser(let indexPath):
-            let usersView = UsersViewController.instaintiate(on: .usersView)
-            let avatarUrl = usersView.viewModel.getUsersCellsViewModel(at: indexPath).userAvatar
-            let usersURL = usersView.viewModel.getUsersCellsViewModel(at: indexPath).userURL
-            let fileUrl = URL(string: avatarUrl)
-            let data = try? Data(contentsOf: fileUrl!)
-            let image = UIImage(data: data!)
-            let sheetVC = UIActivityViewController(activityItems: [image!,usersURL], applicationActivities: nil)
-            HapticsManger.shared.selectionVibrate(for: .medium)
-            return .present(sheetVC)
         case .lastSearch(let indexPath):
             let usersView = UsersViewController.instaintiate(on: .usersView)
             let userURL = usersView.viewModel.getLastSearchViewModel(at: indexPath).userURL

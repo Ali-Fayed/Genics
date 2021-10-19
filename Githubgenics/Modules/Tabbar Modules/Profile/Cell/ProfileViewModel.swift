@@ -32,11 +32,11 @@ class ProfileViewModel {
     }
     func pushToPrivateDestnationVC(indexPath: IndexPath) {
         if indexPath.row == 0 {
-            router?.trigger(.privateRepos)
+            router?.trigger(.repositories)
         } else if indexPath.row == 1 {
-            router?.trigger(.privateStarred)
+            router?.trigger(.starredRepos)
         } else if indexPath.row == 2 {
-            router?.trigger(.privateOrgs)
+            router?.trigger(.organizations)
         }
     }
     func pushToPublicDestnationVC (indexPath: IndexPath) {

@@ -20,7 +20,7 @@ class NetworkLogger: EventMonitor {
       return
     }
     if let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) {
-      print(json)
+//      print(json)
     }
   }
 }

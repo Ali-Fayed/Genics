@@ -7,6 +7,7 @@
 
 import UIKit
 import JGProgressHUD
+import XCoordinator
 
 class CommonViews : UIViewController {
 
@@ -26,6 +27,18 @@ class CommonViews : UIViewController {
     @objc func refreshTable(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         HapticsManger.shared.selectionVibrate(for: .soft)
+    }
+    func dismissButton() {
+       let button = UIButton(type: .system)
+       button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+       button.setTitle("Back", for: .normal)
+       button.sizeToFit()
+       button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+       let backButton = UIBarButtonItem(customView: button)
+       navigationItem.leftBarButtonItem = backButton
+   }
+    @objc func dismissView () {
+//        viewModel.router?.trigger(.dismiss)
     }
     // searchLabel appear before searching
     let conditionLabel: UILabel = {

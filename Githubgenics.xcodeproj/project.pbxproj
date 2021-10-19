@@ -117,6 +117,8 @@
 		EADAF201271DAB38005999EA /* ReposListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF200271DAB38005999EA /* ReposListCoordinator.swift */; };
 		EADAF203271DAB47005999EA /* IssuesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF202271DAB47005999EA /* IssuesCoordinator.swift */; };
 		EADAF206271DAB65005999EA /* PublicProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF205271DAB65005999EA /* PublicProfileCoordinator.swift */; };
+		EADAF20A271ED644005999EA /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF209271ED644005999EA /* SettingsCoordinator.swift */; };
+		EADAF20D271EE024005999EA /* UsersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADAF20C271EE024005999EA /* UsersUseCase.swift */; };
 		EADCD06D25E334DD005F7033 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD06C25E334DD005F7033 /* ProfileViewController.swift */; };
 		EADCD07525E35FF6005F7033 /* PrivateReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07425E35FF6005F7033 /* PrivateReposViewController.swift */; };
 		EADCD07825E36681005F7033 /* Orgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCD07725E36681005F7033 /* Orgs.swift */; };
@@ -271,6 +273,8 @@
 		EADAF200271DAB38005999EA /* ReposListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposListCoordinator.swift; sourceTree = "<group>"; };
 		EADAF202271DAB47005999EA /* IssuesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesCoordinator.swift; sourceTree = "<group>"; };
 		EADAF205271DAB65005999EA /* PublicProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicProfileCoordinator.swift; sourceTree = "<group>"; };
+		EADAF209271ED644005999EA /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		EADAF20C271EE024005999EA /* UsersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersUseCase.swift; sourceTree = "<group>"; };
 		EADCD06C25E334DD005F7033 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EADCD07425E35FF6005F7033 /* PrivateReposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateReposViewController.swift; sourceTree = "<group>"; };
 		EADCD07725E36681005F7033 /* Orgs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orgs.swift; sourceTree = "<group>"; };
@@ -1001,6 +1005,7 @@
 		EAA588BA271AFF8600F98A60 /* UsersList */ = {
 			isa = PBXGroup;
 			children = (
+				EADAF20B271EE011005999EA /* UseCase */,
 				EA86C6B62697D1EC00F78134 /* Model */,
 				EA1EAC792621043E001CE23F /* View */,
 				EADCFDF3261E736600E8A1A3 /* ViewModel */,
@@ -1202,8 +1207,17 @@
 				EADAF205271DAB65005999EA /* PublicProfileCoordinator.swift */,
 				EADAF200271DAB38005999EA /* ReposListCoordinator.swift */,
 				EADAF202271DAB47005999EA /* IssuesCoordinator.swift */,
+				EADAF209271ED644005999EA /* SettingsCoordinator.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		EADAF20B271EE011005999EA /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				EADAF20C271EE024005999EA /* UsersUseCase.swift */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 		EADCFDC5261E674800E8A1A3 /* ViewController */ = {
@@ -1602,6 +1616,7 @@
 				EADAF1B3271B9AA3005999EA /* AppCoordinator.swift in Sources */,
 				EA0589BA25C5696D00BC1024 /* BVC TableView.swift in Sources */,
 				EADCD08625E36EC1005F7033 /* ViewExtension.swift in Sources */,
+				EADAF20A271ED644005999EA /* SettingsCoordinator.swift in Sources */,
 				EADCFE1C261EA9DE00E8A1A3 /* CommitsViewModel.swift in Sources */,
 				EAA588BD271B078C00F98A60 /* ErrorCode.swift in Sources */,
 				EADAF1A8271B8E82005999EA /* HomeCordinator.swift in Sources */,
@@ -1701,6 +1716,7 @@
 				EAA588C4271B0D3700F98A60 /* APIError.swift in Sources */,
 				EAFD8FCC26006A60008ABA1E /* IssuesViewController.swift in Sources */,
 				EA1EAC1D2620E91E001CE23F /* PublicStarredViewModel.swift in Sources */,
+				EADAF20D271EE024005999EA /* UsersUseCase.swift in Sources */,
 				EADCFDB7261E42BA00E8A1A3 /* HomeViewModel.swift in Sources */,
 				EAAF820C25D4F036006C44EC /* SignOutCell.swift in Sources */,
 				EADCFE16261EA0BC00E8A1A3 /* ReposViewModel.swift in Sources */,

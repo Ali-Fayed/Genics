@@ -59,23 +59,17 @@ class UsersViewController: CommonViews {
         handleViewStyle ()
         renderRecentHistoryHiddenConditions()
         loadingSpinner.show(in: view)
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
-        button.setTitle("Back", for: .normal)
-        button.sizeToFit()
-        button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
-        let backButton = UIBarButtonItem(customView: button)
-        navigationItem.leftBarButtonItem = backButton
+        dismissButton()
     }
-    @objc func dismissView () {
+    @objc override func dismissView () {
         viewModel.router?.trigger(.dismiss)
     }
     func initViewModel () {
         viewModel.recentSearchData(collectionView: collectionView, tableView: recentSearchTable)
         if searchController.searchBar.text?.isEmpty == true {
-            viewModel.fetchUsers(tableView: tableView, searchController: searchController, loadingIndicator: loadingSpinner, query: "a")
+            viewModel.fetchUsers(tableView: tableView, loadingIndicator: loadingSpinner, query: "a")
         } else {
-            viewModel.fetchUsers(tableView: self.tableView, searchController: searchController, loadingIndicator: loadingSpinner, query: query)
+            viewModel.fetchUsers(tableView: self.tableView, loadingIndicator: loadingSpinner, query: query)
         }
     }
     func renderRecentHistoryHiddenConditions () {
@@ -133,7 +127,7 @@ extension UsersViewController: UISearchBarDelegate  {
         self.conditionLabel.isHidden = true
         self.tableView.reloadData()
         guard let query = searchBar.text else { return }
-        viewModel.fetchUsers(tableView: tableView, searchController: searchController, loadingIndicator: loadingSpinner, query: query)
+        viewModel.fetchUsers(tableView: tableView, loadingIndicator: loadingSpinner, query: query)
         UIView.animate(withDuration: 0.0, animations: {
             self.tableView.alpha = 1.0
             self.recentSearchTable.alpha = 0.0
@@ -141,7 +135,7 @@ extension UsersViewController: UISearchBarDelegate  {
     }
     // canel and return to man view and return searchBar to tableHeader
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.fetchUsers(tableView: tableView, searchController: searchController, loadingIndicator: loadingSpinner, query: "a")
+        viewModel.fetchUsers(tableView: tableView, loadingIndicator: loadingSpinner, query: "a")
         DispatchQueue.main.async {
             self.searchController.searchBar.text = nil
             self.recentSearchTable.isHidden = true

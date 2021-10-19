@@ -17,6 +17,7 @@ class UsersViewModel {
     var lastSearch = [LastSearch]()
     var pageNo: Int = 1
     var totalPages: Int = 100
+    var useCase: UserUseCase?
     var router: StrongRouter<UsersRoute>?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var numberOfSearchHistoryCell: Int {
@@ -37,25 +38,55 @@ class UsersViewModel {
     func getLastSearchViewModel(at indexPath: IndexPath ) -> LastSearch {
         return lastSearch[indexPath.row]
     }
-    func fetchUsers (tableView: UITableView, searchController: UISearchController, loadingIndicator: JGProgressHUD, query : String) {
-        let data = GitRequestRouter.gitSearchUsers(pageNo, query)
-        NetworkingManger.shared.performRequest(dataModel: Users.self, requestData: data) { [weak self] (result) in
+    func fetchUsers(tableView: UITableView, loadingIndicator: JGProgressHUD, query : String) {
+        useCase?.fetchUsersList(page: pageNo ,query: query, completion: { [weak self] result in
             switch result {
             case .success(let result):
                 DispatchQueue.main.async {
-                    if searchController.searchBar.text?.isEmpty == true {
-                        self?.usersModel.append(contentsOf: result.items)
-                        self?.pageNo += 1
-                    } else {
-                        self?.usersModel.append(contentsOf: result.items)
-                        tableView.isHidden = false
-                    }
+                    self?.usersModel = result
+                    tableView.isHidden = false
                     tableView.reloadData()
                     loadingIndicator.dismiss()
                 }
             case .failure(let error):
                 CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
                 loadingIndicator.dismiss()
+            }
+        })
+    }
+    func query (searchText : String? ) -> String {
+        let query : String = {
+            var queryString = String()
+            if let searchText = searchText {
+                queryString = searchText.isEmpty ? "a" : searchText
+            }
+            return queryString
+        }()
+        return query
+    }
+    func fetchMoreCells (tableView: UITableView, loadingSpinner: JGProgressHUD, indexPath: IndexPath, searchController: UISearchController) {
+        if indexPath.row == numberOfUsersCells - 1 {
+            if pageNo < totalPages {
+                pageNo += 1
+                let searchText = searchController.searchBar.text
+               let queryText = query(searchText: searchText)
+                useCase?.fetchUsersList(page: pageNo ,query: queryText, completion: { [weak self] result in
+                    switch result {
+                    case .success(let result):
+                        DispatchQueue.main.async {
+                            if result.isEmpty == false {
+                                self?.usersModel.append(contentsOf: result)
+                                tableView.reloadData()
+                                tableView.tableFooterView = nil
+                            } else {
+                                tableView.tableFooterView = nil
+                            }
+                        }
+                    case .failure(let error):
+                        CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+                        loadingSpinner.dismiss()
+                    }
+                })
             }
         }
     }

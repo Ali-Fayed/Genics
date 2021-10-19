@@ -99,7 +99,7 @@ class BookmarksViewModel {
         noBookmarksState(tableView: tableView, conditionLabel: conditionLabel)
     }
     
-    func pushToDestnationVC(indexPath: IndexPath, navigationController: UINavigationController , view: UIView, tableView: UITableView, loadingSpinner: JGProgressHUD) {
+    func pushToDestnationVC(indexPath: IndexPath, view: UIView, tableView: UITableView, loadingSpinner: JGProgressHUD) {
         guard let passedRepo = passedRepo else {
             return
         }

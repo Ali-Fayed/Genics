@@ -53,9 +53,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         case searchOptionsTableView:
             let cell = tableView.dequeue() as SearchOptionsCell
-            let searchText = searchController.searchBar.text
-            cell.getData(with: viewModel.getSearchOptionsCellViewModel(at: indexPath), with: searchText!)
-            return cell
+            if let searchText = searchController.searchBar.text {
+                cell.getData(with: viewModel.getSearchOptionsCellViewModel(at: indexPath), with: searchText)
+                return cell
+            }
         default:
             break
         }
