@@ -9,26 +9,24 @@ import UIKit
 import CoreData
 import JGProgressHUD
 import XCoordinator
+import RxSwift
+import RxCocoa
 
 class UsersViewModel {
+    var usersListItems = PublishSubject<[User]>()
+    var searchHistoryitems = PublishSubject<[SearchHistory]>()
+    var lastSearchitems = PublishSubject<[LastSearch]>()
+    var router: StrongRouter<UsersRoute>?
+    var useCase: UserUseCase?
+    
     var usersModel = [User]()
     var passedUsers: User?
     var searchHistory = [SearchHistory]()
     var lastSearch = [LastSearch]()
+    
     var pageNo: Int = 1
     var totalPages: Int = 100
-    var useCase: UserUseCase?
-    var router: StrongRouter<UsersRoute>?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var numberOfSearchHistoryCell: Int {
-        return searchHistory.count
-    }
-    var numberOfUsersCells: Int {
-        return usersModel.count
-    }
-    var numberOfLastSearchCells: Int {
-        return lastSearch.count
-    }
     func getSearchHistoryViewModel(at indexPath: IndexPath ) -> SearchHistory {
         return searchHistory[indexPath.row]
     }
@@ -38,23 +36,7 @@ class UsersViewModel {
     func getLastSearchViewModel(at indexPath: IndexPath ) -> LastSearch {
         return lastSearch[indexPath.row]
     }
-    func fetchUsers(tableView: UITableView, loadingIndicator: JGProgressHUD, query : String) {
-        useCase?.fetchUsersList(page: pageNo ,query: query, completion: { [weak self] result in
-            switch result {
-            case .success(let result):
-                DispatchQueue.main.async {
-                    self?.usersModel = result
-                    tableView.isHidden = false
-                    tableView.reloadData()
-                    loadingIndicator.dismiss()
-                }
-            case .failure(let error):
-                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
-                loadingIndicator.dismiss()
-            }
-        })
-    }
-    func query (searchText : String? ) -> String {
+    func query(searchText : String?) -> String {
         let query : String = {
             var queryString = String()
             if let searchText = searchText {
@@ -64,40 +46,51 @@ class UsersViewModel {
         }()
         return query
     }
-    func fetchMoreCells (tableView: UITableView, loadingSpinner: JGProgressHUD, indexPath: IndexPath, searchController: UISearchController) {
-        if indexPath.row == numberOfUsersCells - 1 {
-            if pageNo < totalPages {
-                pageNo += 1
+    func fetchUsers(query : String) {
+        useCase?.fetchUsersList(page: pageNo ,query: query, completion: { [weak self] result in
+            switch result {
+            case .success(let result):
+                self?.usersListItems.onNext(result)
+                self?.usersListItems.onCompleted()
+            case .failure(let error):
+//                self?.usersListItems.onError(error)
+                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
+            }
+        })
+    }
+    func fetchMoreUsers(indexPath: IndexPath, searchController: UISearchController) {
+//        if indexPath.row == usersModel.count - 1 {
+//            if pageNo < totalPages {
+//                pageNo += 1
                 let searchText = searchController.searchBar.text
-               let queryText = query(searchText: searchText)
-                useCase?.fetchUsersList(page: pageNo ,query: queryText, completion: { [weak self] result in
+                let queryText = query(searchText: searchText)
+                useCase?.fetchUsersList(page: 2 ,query: "q", completion: { [weak self] result in
                     switch result {
                     case .success(let result):
-                        DispatchQueue.main.async {
-                            if result.isEmpty == false {
-                                self?.usersModel.append(contentsOf: result)
-                                tableView.reloadData()
-                                tableView.tableFooterView = nil
-                            } else {
-                                tableView.tableFooterView = nil
-                            }
-                        }
+//                        if result.isEmpty == false {
+//                            self?.usersListItems.onNext(result)
+//                            self?.usersListItems.onCompleted()
+//                        }
+                        print(result)
                     case .failure(let error):
+//                        self?.usersListItems.onError(error)
                         CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
-                        loadingSpinner.dismiss()
                     }
                 })
-            }
+//            }
+    }
+    func fetchRecentSearch () {
+        DataBaseManger.shared.fetch(returnType: SearchHistory.self) { [weak self] (result) in
+            self?.searchHistoryitems.onNext(result)
+            print(result)
+            self?.searchHistoryitems.onCompleted()
         }
     }
-    func recentSearchData (collectionView: UICollectionView, tableView: UITableView) {
-            DataBaseManger().fetch(returnType: LastSearch.self) { [weak self] (result) in
-                 self?.lastSearch = result
-                 collectionView.reloadData()
-            DataBaseManger().fetch(returnType: SearchHistory.self) { [weak self] (result) in
-                 self?.searchHistory = result
-                 tableView.reloadData()
-            }
+    func fetchlastSearch() {
+        DataBaseManger.shared.fetch(returnType: LastSearch.self) { [weak self] (result) in
+            self?.lastSearchitems.onNext(result)
+            print(result)
+            self?.lastSearchitems.onCompleted()
         }
     }
     func excute (tableView: UITableView , collectionView: UICollectionView, label: UILabel) {
@@ -115,15 +108,9 @@ class UsersViewModel {
                 tableView.isHidden = true
                 label.isHidden = false
             }
-            DataBaseManger().fetch(returnType: LastSearch.self) { [weak self] (result) in
-                self?.lastSearch = result
-                collectionView.reloadData()
-            }
-                DataBaseManger().fetch(returnType: SearchHistory.self) { [weak self] (result) in
-                    self?.searchHistory = result
-                    tableView.reloadData()
-                }
-            } catch {
+            fetchRecentSearch ()
+            fetchlastSearch()
+        } catch {
             //
         }
     }
@@ -142,10 +129,6 @@ class UsersViewModel {
         items.userAvatar = model.userAvatar
         items.userURL = model.userURL
         try! self.context.save()
-    }
-    func pushWithData (navigationController: UINavigationController) {
-        guard let passedUsers = passedUsers else {return}
-        router?.trigger(.publicUserProfile(user: passedUsers))
     }
     func deleteAndFetchRecentTableData (indexPath:IndexPath) {
         let item = searchHistory[indexPath.row]

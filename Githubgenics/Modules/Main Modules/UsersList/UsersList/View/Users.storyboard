@@ -26,9 +26,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="dataSource" destination="w1U-Wr-4wQ" id="ZwX-UF-6xC"/>
                                     <outlet property="delegate" destination="w1U-Wr-4wQ" id="jqW-qn-MBD"/>
-                                    <outlet property="prefetchDataSource" destination="w1U-Wr-4wQ" id="mJW-3o-hvd"/>
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8LK-Aq-dEI">
@@ -97,7 +95,6 @@
                                                 </collectionViewCell>
                                             </cells>
                                             <connections>
-                                                <outlet property="dataSource" destination="w1U-Wr-4wQ" id="IAw-8M-mgg"/>
                                                 <outlet property="delegate" destination="w1U-Wr-4wQ" id="COF-EF-K0b"/>
                                             </connections>
                                         </collectionView>
@@ -144,7 +141,6 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="w1U-Wr-4wQ" id="I7D-Rd-xO0"/>
                                     <outlet property="delegate" destination="4QS-Wm-iih" id="q9u-U1-76e"/>
                                 </connections>
                             </tableView>
