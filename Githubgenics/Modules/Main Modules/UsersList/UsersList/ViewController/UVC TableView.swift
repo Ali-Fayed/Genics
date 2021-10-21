@@ -10,65 +10,37 @@ import UIKit
 import Kingfisher
 
 extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
+    func bindUsersListTableView() {
+         /// usersListTableView rowHeight
+         tableView.rx.rowHeight.onNext(60)
+         /// usersListTableView dataSource
+         viewModel.usersListItems.bind(to: tableView.rx.items(cellIdentifier: "UsersTableViewCell", cellType: UsersTableViewCell.self)) {[weak self] row, model, cell  in
+             self?.viewModel.passedUsers = model
+             cell.cellData(with: model)
+             self?.tableView.isHidden = false
+             self?.loadingSpinner.dismiss()
+         }.disposed(by: bag)
+         /// didSelectRow
+         tableView.rx.modelSelected(User.self).bind { [weak self] result in
+             self?.viewModel.router?.trigger(.publicUserProfile(user: result))
+             print(result)
+         }.disposed(by: bag)
+         /// selectedItem
+         tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+             self?.tableView.deselectRow(at: indexPath, animated: true)
+             if self?.searchController.searchBar.text?.isEmpty == false {
+                 self?.viewModel.saveToLastSearch(indexPath: indexPath)
+             }
+         }).disposed(by: bag)
+     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch tableView {
-        case self.tableView:
-            return viewModel.numberOfUsersCells
-        case recentSearchTable:
             return viewModel.numberOfSearchHistoryCell
-        default:
-            break
-        }
-        return Int()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch tableView {
-        case self.tableView:
-            let cell = tableView.dequeue() as UsersTableViewCell
-            cell.cellData(with: viewModel.getUsersCellsViewModel(at: indexPath))
-            return cell
-        case recentSearchTable:
             let cell = tableView.dequeue() as SearchHistoryCell
             cell.cellData(with: viewModel.getSearchHistoryViewModel(at: indexPath))
             return cell
-        default:
-            break
-        }
-        return UITableViewCell()
-    }
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        switch tableView {
-        case self.tableView:
-            showTableViewSpinner(tableView: tableView)
-            viewModel.fetchMoreCells(tableView: tableView, loadingSpinner: loadingSpinner, indexPath: indexPath, searchController: searchController)
-        default:
-            break
-        }
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        switch tableView {
-        case self.tableView:
-            viewModel.pushWithData(navigationController: navigationController!)
-            if searchController.searchBar.text?.isEmpty == false {
-                viewModel.saveToLastSearch(indexPath: indexPath)
-            }
-        default:
-            break
-        }
-    }
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        switch tableView {
-        case self.tableView:
-            viewModel.passedUsers = viewModel.getUsersCellsViewModel(at: indexPath)
-            return indexPath
-        default:
-            break
-        }
-        return IndexPath()
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
     }
     func tableView( _ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         switch tableView {
@@ -106,10 +78,6 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch tableView {
-        case self.tableView:
-            break
-        case recentSearchTable:
             let headerText = UILabel()
             switch section {
             case 0:
@@ -122,31 +90,17 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
                 break
             }
             return headerText.text
-        default:
-            break
-        }
-        return String()
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        switch tableView {
-        case recentSearchTable:
             return .delete
-        default:
-            return .none
-        }
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        switch tableView {
-        case recentSearchTable:
             if editingStyle == .delete {
                 tableView.beginUpdates()
                 viewModel.deleteAndFetchRecentTableData(indexPath: indexPath)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 tableView.endUpdates()
             }
-        default:
-            break
-        }
     }
 }

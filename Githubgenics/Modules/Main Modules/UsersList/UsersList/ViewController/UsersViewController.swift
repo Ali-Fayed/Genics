@@ -9,11 +9,14 @@ import UIKit
 import SafariServices
 import JGProgressHUD
 import CoreData
+import RxSwift
+import RxCocoa
 
 class UsersViewController: CommonViews {
     lazy var searchController = UISearchController(searchResultsController: nil)
     lazy var viewModel = UsersViewModel()
     var query : String = ""
+    let bag = DisposeBag()
     //MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var recentSearchTable: UITableView!
@@ -28,6 +31,7 @@ class UsersViewController: CommonViews {
         super.viewDidLoad()
         initView()
         initViewModel()
+        recentSearchTable.dataSource = self
     }
     override func viewDidLayoutSubviews() {
         conditionLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
@@ -39,6 +43,8 @@ class UsersViewController: CommonViews {
         setupSearchHistoryTable(tableView: recentSearchTable)
         renderRecentHistoryHiddenConditions()
         dismissButton()
+        bindUsersListTableView()
+        bindLastSearchCollectionView()
     }
     @objc override func dismissView () {
         viewModel.router?.trigger(.dismiss)
@@ -90,7 +96,6 @@ extension UsersViewController: UISearchBarDelegate  {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         DispatchQueue.main.async {
             self.viewModel.pageNo = 1
-            self.tableView.reloadData()
             self.recentSearchTable.reloadData()
             if self.searchController.searchBar.text?.isEmpty == true {
                 self.tableView.isHidden = true
@@ -115,7 +120,6 @@ extension UsersViewController: UISearchBarDelegate  {
     // Automatic Search When Change Text with Some Animations
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.conditionLabel.isHidden = true
-        self.tableView.reloadData()
         guard let query = searchBar.text else { return }
         viewModel.fetchUsers(tableView: tableView, loadingIndicator: loadingSpinner, query: query)
         UIView.animate(withDuration: 0.0, animations: {
@@ -132,7 +136,6 @@ extension UsersViewController: UISearchBarDelegate  {
             self.tableView.isHidden = false
             self.loadingSpinner.dismiss()
             self.recentSearchTable.reloadData()
-            self.collectionView.reloadData()
             self.conditionLabel.isHidden = true
         }
         UIView.animate(withDuration: 0.0, animations: {
@@ -149,17 +152,17 @@ extension UsersViewController: UISearchBarDelegate  {
         navigationItem.hidesSearchBarWhenScrolling = true
     }
 }
-//MARK: - Collection
-extension UsersViewController:  UICollectionViewDataSource , UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfLastSearchCells
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LastSearchCollectionCell.lastSearchCell, for: indexPath) as? LastSearchCollectionCell
-        cell!.cellData(with: viewModel.getLastSearchViewModel(at: indexPath))
-        return cell!
-    }
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        viewModel.router?.trigger(.lastSearch(indexPath: indexPath))
+//MARK: - CollectionView
+extension UsersViewController {
+    func bindLastSearchCollectionView () {
+        /// lastSearchitems dataSource
+        viewModel.lastSearchitems.bind(to: collectionView.rx.items(cellIdentifier: "LastSearchCollectionCell", cellType: LastSearchCollectionCell.self)) { row, model, cell  in
+            cell.cellData(with: model)
+        }.disposed(by: bag)
+        /// didSelectRow
+        collectionView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+            self?.collectionView.deselectItem(at: indexPath, animated: true)
+            self?.viewModel.router?.trigger(.lastSearch(indexPath: indexPath))
+        }).disposed(by: bag)
     }
 }

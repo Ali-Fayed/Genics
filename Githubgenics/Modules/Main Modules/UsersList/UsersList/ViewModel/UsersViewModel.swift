@@ -9,8 +9,14 @@ import UIKit
 import CoreData
 import JGProgressHUD
 import XCoordinator
+import RxSwift
+import RxCocoa
 
 class UsersViewModel {
+    var usersListItems = PublishSubject<[User]>()
+       var searchHistoryitems = PublishSubject<[SearchHistory]>()
+       var lastSearchitems = PublishSubject<[LastSearch]>()
+    
     var usersModel = [User]()
     var passedUsers: User?
     var searchHistory = [SearchHistory]()
@@ -43,10 +49,9 @@ class UsersViewModel {
             switch result {
             case .success(let result):
                 DispatchQueue.main.async {
+                    self?.usersListItems.onNext(result)
+                    self?.usersListItems.onCompleted()
                     self?.usersModel = result
-                    tableView.isHidden = false
-                    tableView.reloadData()
-                    loadingIndicator.dismiss()
                 }
             case .failure(let error):
                 CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
@@ -93,7 +98,9 @@ class UsersViewModel {
     func recentSearchData (collectionView: UICollectionView, tableView: UITableView) {
             DataBaseManger().fetch(returnType: LastSearch.self) { [weak self] (result) in
                  self?.lastSearch = result
-                 collectionView.reloadData()
+                self?.lastSearchitems.onNext(result)
+                self?.lastSearchitems.onCompleted()
+//                 collectionView.reloadData()
             DataBaseManger().fetch(returnType: SearchHistory.self) { [weak self] (result) in
                  self?.searchHistory = result
                  tableView.reloadData()
@@ -111,7 +118,7 @@ class UsersViewModel {
             try context.save()
             DispatchQueue.main.async {
                 tableView.reloadData()
-                collectionView.reloadData()
+//                collectionView.reloadData()
                 tableView.isHidden = true
                 label.isHidden = false
             }
