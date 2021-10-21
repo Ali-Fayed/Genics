@@ -39,6 +39,11 @@ class PublicUserProfileViewController: CommonViews  {
         initView()
         initViewModel()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
     func initView() {
         renderTheButtonWithSavedState ()
         tableView.tableFooterView = tableFooterView

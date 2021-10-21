@@ -12,64 +12,65 @@ import CoreData
 
 class UsersViewController: CommonViews {
     lazy var searchController = UISearchController(searchResultsController: nil)
-    lazy var viewModel: UsersViewModel = {
-        return UsersViewModel()
-    }()
+    lazy var viewModel = UsersViewModel()
     var query : String = ""
     //MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var recentSearchTable: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var header: UIView!
-    
     @IBAction func removeAll(_ sender: UIButton) {
         viewModel.excute(tableView: recentSearchTable, collectionView: collectionView, label: conditionLabel)
         HapticsManger.shared.selectionVibrate(for: .heavy)
     }
-    //MARK:- LifeCycle Methods
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
         initViewModel()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        tableView.reloadData()
-        recentSearchTable.reloadData()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        searchController.searchBar.becomeFirstResponder()
     }
     override func viewDidLayoutSubviews() {
         conditionLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
     }
     //MARK: - UI Functions
     func initView () {
-        tabBarItem.title = Titles.usersViewTitle
-        conditionLabel.text = Titles.searchForUsers
-        tableView.registerCellNib(cellClass: UsersTableViewCell.self)
-        tableView.tableFooterView = tableFooterView
-        recentSearchTable.tableFooterView = tableFooterView
-        tableView.addSubview(refreshControl)
-        recentSearchTable.addSubview(refreshControl)
-        view.addSubview(conditionLabel)
-        conditionLabel.isHidden = true
-        recentSearchTable.isHidden = true
-        handleViewStyle ()
+        setupConditionLabel(conditionLabel: conditionLabel)
+        setupTableView(tableView: tableView)
+        setupSearchHistoryTable(tableView: recentSearchTable)
         renderRecentHistoryHiddenConditions()
-        loadingSpinner.show(in: view)
         dismissButton()
     }
     @objc override func dismissView () {
         viewModel.router?.trigger(.dismiss)
     }
+    func setupConditionLabel(conditionLabel: UILabel) {
+        view.addSubview(conditionLabel)
+        conditionLabel.text = Titles.searchForUsers
+        conditionLabel.isHidden = true
+    }
+    func setupTableView(tableView: UITableView) {
+        tableView.registerCellNib(cellClass: UsersTableViewCell.self)
+        tableView.tableFooterView = tableFooterView
+        tableView.addSubview(refreshControl)
+    }
+    func setupSearchHistoryTable(tableView: UITableView) {
+        tableView.tableFooterView = tableFooterView
+        tableView.addSubview(refreshControl)
+        tableView.isHidden = true
+    }
     func initViewModel () {
+        loadingSpinner.show(in: view)
         viewModel.recentSearchData(collectionView: collectionView, tableView: recentSearchTable)
         if searchController.searchBar.text?.isEmpty == true {
             viewModel.fetchUsers(tableView: tableView, loadingIndicator: loadingSpinner, query: "a")
+            searchController.searchBar.delegate = self
+            setupSearchController(search: searchController)
+            navigationItem.title = Titles.usersViewTitle
         } else {
             viewModel.fetchUsers(tableView: self.tableView, loadingIndicator: loadingSpinner, query: query)
+            navigationController?.navigationItem.largeTitleDisplayMode = .never
+            navigationController?.navigationBar.prefersLargeTitles = false
+            title = Titles.resultsViewTitle
         }
     }
     func renderRecentHistoryHiddenConditions () {
@@ -80,13 +81,6 @@ class UsersViewController: CommonViews {
         }
         if viewModel.lastSearch.isEmpty == true , viewModel.searchHistory.isEmpty == true {
             conditionLabel.isHidden = true
-        }
-    }
-    func handleViewStyle () {
-        if searchController.searchBar.text?.isEmpty == true {
-            searchController.searchBar.delegate = self
-            setupSearchController(search: searchController)
-            title = Titles.usersViewTitle
         }
     }
 }

@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4QS-Wm-iih">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="853"/>
                                 <inset key="separatorInset" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -32,7 +32,7 @@
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8LK-Aq-dEI">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="853"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="c5r-Bz-5mi">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="177"/>
@@ -156,8 +156,8 @@
                             <constraint firstItem="8LK-Aq-dEI" firstAttribute="leading" secondItem="Gg8-ip-FxT" secondAttribute="leading" id="L5W-sT-pRN"/>
                             <constraint firstItem="4QS-Wm-iih" firstAttribute="trailing" secondItem="Gg8-ip-FxT" secondAttribute="trailing" id="NWO-7I-TIk"/>
                             <constraint firstItem="4QS-Wm-iih" firstAttribute="leading" secondItem="Gg8-ip-FxT" secondAttribute="leading" id="NWp-C1-W7L"/>
-                            <constraint firstItem="4QS-Wm-iih" firstAttribute="bottom" secondItem="Gg8-ip-FxT" secondAttribute="bottom" id="Rpb-tj-Yhj"/>
-                            <constraint firstItem="8LK-Aq-dEI" firstAttribute="bottom" secondItem="Gg8-ip-FxT" secondAttribute="bottom" id="X5i-Qt-3wD"/>
+                            <constraint firstItem="4QS-Wm-iih" firstAttribute="bottom" secondItem="Gg8-ip-FxT" secondAttribute="bottom" constant="35" id="Rpb-tj-Yhj"/>
+                            <constraint firstItem="8LK-Aq-dEI" firstAttribute="bottom" secondItem="Gg8-ip-FxT" secondAttribute="bottom" constant="35" id="X5i-Qt-3wD"/>
                             <constraint firstItem="4QS-Wm-iih" firstAttribute="top" secondItem="Gg8-ip-FxT" secondAttribute="top" id="hQY-yu-h6h"/>
                             <constraint firstItem="8LK-Aq-dEI" firstAttribute="trailing" secondItem="Gg8-ip-FxT" secondAttribute="trailing" id="sSt-mZ-bXw"/>
                         </constraints>
