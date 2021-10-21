@@ -9,13 +9,12 @@ import SafariServices
 import UIKit
 import Kingfisher
 
-extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
+extension UsersViewController: UITableViewDelegate {
     func bindUsersListTableView() {
          /// usersListTableView rowHeight
          tableView.rx.rowHeight.onNext(60)
          /// usersListTableView dataSource
          viewModel.usersListItems.bind(to: tableView.rx.items(cellIdentifier: "UsersTableViewCell", cellType: UsersTableViewCell.self)) {[weak self] row, model, cell  in
-             self?.viewModel.passedUsers = model
              cell.cellData(with: model)
              self?.tableView.isHidden = false
              self?.loadingSpinner.dismiss()
@@ -23,25 +22,39 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
          /// didSelectRow
          tableView.rx.modelSelected(User.self).bind { [weak self] result in
              self?.viewModel.router?.trigger(.publicUserProfile(user: result))
-             print(result)
+             if self?.searchController.searchBar.text?.isEmpty == false {
+                 self?.viewModel.saveToLastSearch(model: result)
+             }
          }.disposed(by: bag)
          /// selectedItem
          tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
              self?.tableView.deselectRow(at: indexPath, animated: true)
-             if self?.searchController.searchBar.text?.isEmpty == false {
-                 self?.viewModel.saveToLastSearch(indexPath: indexPath)
-             }
          }).disposed(by: bag)
      }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return viewModel.numberOfSearchHistoryCell
+    //MARK: - searchHistory tableView
+    func bindSearchHistoryTableView () {
+        /// recentSearchTable rowHeight
+        recentSearchTable.rx.rowHeight.onNext(50)
+        /// searchHistory dataSource
+        viewModel.searchHistoryitems.bind(to: recentSearchTable.rx.items(cellIdentifier: "SearchHistoryCell", cellType: SearchHistoryCell.self)) { row, model, cell  in
+            cell.cellData(with: model)
+        }.disposed(by: bag)
+        /// searchHistory delete
+        recentSearchTable.rx.itemDeleted.subscribe(onNext: { [weak self] indexPath in
+            self?.recentSearchTable.beginUpdates()
+            self?.recentSearchTable.deleteRows(at: [indexPath], with: .fade)
+            self?.recentSearchTable.endUpdates()
+        }).disposed(by: bag)
+        
+        recentSearchTable.rx.modelDeleted(SearchHistory.self).bind { [weak self] result in
+            self?.recentSearchTable.beginUpdates()
+            DataBaseManger.shared.delete(returnType: SearchHistory.self, delete: result)
+            self?.recentSearchTable.endUpdates()
+        }.disposed(by: bag)
+
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeue() as SearchHistoryCell
-            cell.cellData(with: viewModel.getSearchHistoryViewModel(at: indexPath))
-            return cell
-    }
+
     func tableView( _ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         switch tableView {
         case self.tableView:
@@ -76,31 +89,16 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
         }
         return UIContextMenuConfiguration()
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            let headerText = UILabel()
-            switch section {
-            case 0:
-                if viewModel.searchHistory.isEmpty == false {
-                    headerText.text = Titles.recentSearch
-                } else {
-                    return nil
-                }
-            default:
-                break
-            }
-            return headerText.text
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-            return .delete
-    }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-            if editingStyle == .delete {
-                tableView.beginUpdates()
-                viewModel.deleteAndFetchRecentTableData(indexPath: indexPath)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                tableView.endUpdates()
-            }
-    }
+
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//            return .delete
+//    }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//            if editingStyle == .delete {
+//                tableView.beginUpdates()
+//                viewModel.deleteAndFetchRecentTableData(indexPath: indexPath)
+//                tableView.deleteRows(at: [indexPath], with: .fade)
+//                tableView.endUpdates()
+//            }
+//    }
 }

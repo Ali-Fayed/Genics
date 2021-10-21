@@ -31,7 +31,6 @@ class UsersViewController: CommonViews {
         super.viewDidLoad()
         initView()
         initViewModel()
-        recentSearchTable.dataSource = self
     }
     override func viewDidLayoutSubviews() {
         conditionLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
@@ -45,6 +44,7 @@ class UsersViewController: CommonViews {
         dismissButton()
         bindUsersListTableView()
         bindLastSearchCollectionView()
+        bindSearchHistoryTableView ()
     }
     @objc override func dismissView () {
         viewModel.router?.trigger(.dismiss)
@@ -66,14 +66,14 @@ class UsersViewController: CommonViews {
     }
     func initViewModel () {
         loadingSpinner.show(in: view)
-        viewModel.recentSearchData(collectionView: collectionView, tableView: recentSearchTable)
+        viewModel.recentSearchData()
         if searchController.searchBar.text?.isEmpty == true {
-            viewModel.fetchUsers(tableView: tableView, loadingIndicator: loadingSpinner, query: "a")
+            viewModel.fetchUsers(query: "a")
             searchController.searchBar.delegate = self
             setupSearchController(search: searchController)
             navigationItem.title = Titles.usersViewTitle
         } else {
-            viewModel.fetchUsers(tableView: self.tableView, loadingIndicator: loadingSpinner, query: query)
+            viewModel.fetchUsers(query: query)
             navigationController?.navigationItem.largeTitleDisplayMode = .never
             navigationController?.navigationBar.prefersLargeTitles = false
             title = Titles.resultsViewTitle
@@ -96,7 +96,6 @@ extension UsersViewController: UISearchBarDelegate  {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         DispatchQueue.main.async {
             self.viewModel.pageNo = 1
-            self.recentSearchTable.reloadData()
             if self.searchController.searchBar.text?.isEmpty == true {
                 self.tableView.isHidden = true
             } else {
@@ -114,14 +113,14 @@ extension UsersViewController: UISearchBarDelegate  {
                 self.conditionLabel.isHidden = true
             }
             self.loadingSpinner.dismiss()
-            self.viewModel.recentSearchData(collectionView: self.collectionView, tableView: self.recentSearchTable)
+            self.viewModel.recentSearchData()
         }
     }
     // Automatic Search When Change Text with Some Animations
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.conditionLabel.isHidden = true
         guard let query = searchBar.text else { return }
-        viewModel.fetchUsers(tableView: tableView, loadingIndicator: loadingSpinner, query: query)
+        viewModel.fetchUsers(query: query)
         UIView.animate(withDuration: 0.0, animations: {
             self.tableView.alpha = 1.0
             self.recentSearchTable.alpha = 0.0
@@ -129,7 +128,7 @@ extension UsersViewController: UISearchBarDelegate  {
     }
     // canel and return to man view and return searchBar to tableHeader
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.fetchUsers(tableView: tableView, loadingIndicator: loadingSpinner, query: "a")
+        viewModel.fetchUsers(query: "a")
         DispatchQueue.main.async {
             self.searchController.searchBar.text = nil
             self.recentSearchTable.isHidden = true

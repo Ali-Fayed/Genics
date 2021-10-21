@@ -26,17 +26,8 @@ class UsersViewModel {
     var useCase: UserUseCase?
     var router: StrongRouter<UsersRoute>?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var numberOfSearchHistoryCell: Int {
-        return searchHistory.count
-    }
     var numberOfUsersCells: Int {
         return usersModel.count
-    }
-    var numberOfLastSearchCells: Int {
-        return lastSearch.count
-    }
-    func getSearchHistoryViewModel(at indexPath: IndexPath ) -> SearchHistory {
-        return searchHistory[indexPath.row]
     }
     func getUsersCellsViewModel(at indexPath: IndexPath ) -> User {
         return usersModel[indexPath.row]
@@ -44,18 +35,15 @@ class UsersViewModel {
     func getLastSearchViewModel(at indexPath: IndexPath ) -> LastSearch {
         return lastSearch[indexPath.row]
     }
-    func fetchUsers(tableView: UITableView, loadingIndicator: JGProgressHUD, query : String) {
+    func fetchUsers(query : String) {
         useCase?.fetchUsersList(page: pageNo ,query: query, completion: { [weak self] result in
             switch result {
             case .success(let result):
-                DispatchQueue.main.async {
+                    self?.usersModel = result
                     self?.usersListItems.onNext(result)
                     self?.usersListItems.onCompleted()
-                    self?.usersModel = result
-                }
             case .failure(let error):
                 CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
-                loadingIndicator.dismiss()
             }
         })
     }
@@ -81,7 +69,6 @@ class UsersViewModel {
                         DispatchQueue.main.async {
                             if result.isEmpty == false {
                                 self?.usersModel.append(contentsOf: result)
-                                tableView.reloadData()
                                 tableView.tableFooterView = nil
                             } else {
                                 tableView.tableFooterView = nil
@@ -95,15 +82,15 @@ class UsersViewModel {
             }
         }
     }
-    func recentSearchData (collectionView: UICollectionView, tableView: UITableView) {
+    func recentSearchData () {
             DataBaseManger().fetch(returnType: LastSearch.self) { [weak self] (result) in
                  self?.lastSearch = result
                 self?.lastSearchitems.onNext(result)
                 self?.lastSearchitems.onCompleted()
-//                 collectionView.reloadData()
             DataBaseManger().fetch(returnType: SearchHistory.self) { [weak self] (result) in
                  self?.searchHistory = result
-                 tableView.reloadData()
+                self?.searchHistoryitems.onNext(result)
+                self?.searchHistoryitems.onCompleted()
             }
         }
     }
@@ -117,12 +104,10 @@ class UsersViewModel {
             try context.execute(resetLast)
             try context.save()
             DispatchQueue.main.async {
-                tableView.reloadData()
-//                collectionView.reloadData()
                 tableView.isHidden = true
                 label.isHidden = false
             }
-            recentSearchData(collectionView: collectionView, tableView: tableView)
+            recentSearchData()
             } catch {
             //
         }
@@ -135,17 +120,12 @@ class UsersViewModel {
         items.userURL = model.userURL
         try! self.context.save()
     }
-    func saveToLastSearch (indexPath: IndexPath) {
-        let model = usersModel[indexPath.row]
+    func saveToLastSearch(model: User) {
         let items = LastSearch(context: self.context)
         items.userName = model.userName
         items.userAvatar = model.userAvatar
         items.userURL = model.userURL
         try! self.context.save()
-    }
-    func pushWithData (navigationController: UINavigationController) {
-        guard let passedUsers = passedUsers else {return}
-        router?.trigger(.publicUserProfile(user: passedUsers))
     }
     func deleteAndFetchRecentTableData (indexPath:IndexPath) {
         let item = searchHistory[indexPath.row]
