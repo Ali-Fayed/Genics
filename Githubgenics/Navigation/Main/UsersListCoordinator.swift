@@ -15,6 +15,9 @@ enum UsersRoute: Route {
     case publicUserProfile(user: User)
     case userURL(passedUser: User)
     case lastSearch(indexPath: IndexPath)
+    case openInSafari(indexPath: String)
+    case shareUser(avatarURL: String, userURL: String)
+    case saveImage(avatarURL: String)
     case dismiss
 }
 class UserListCoordinaotr: NavigationCoordinator<UsersRoute> {
@@ -57,6 +60,24 @@ class UserListCoordinaotr: NavigationCoordinator<UsersRoute> {
             let userURL = usersView.viewModel.getLastSearchViewModel(at: indexPath).userURL
             let safariVC = SFSafariViewController(url: URL(string: userURL!)!)
             return .present(safariVC)
+        case .openInSafari(let indexPath):
+            let usersURL = URL(string: indexPath)!
+            let safariVC = SFSafariViewController(url: usersURL)
+            return .present(safariVC)
+        case .shareUser(let avatarURL, let userURL):
+            let fileUrl = URL(string: avatarURL)
+            let data = try? Data(contentsOf: fileUrl!)
+            let image = UIImage(data: data!)
+            let sheetVC = UIActivityViewController(activityItems: [image!,userURL], applicationActivities: nil)
+            HapticsManger.shared.selectionVibrate(for: .medium)
+            return .present(sheetVC)
+        case .saveImage(let avatarURL):
+            let fileUrl = URL(string: avatarURL)
+            let data = try? Data(contentsOf: fileUrl!)
+            let image = UIImage(data: data!)
+            UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
+            HapticsManger.shared.selectionVibrate(for: .heavy)
+            return .none()
         case .dismiss:
             return .dismiss()
         }

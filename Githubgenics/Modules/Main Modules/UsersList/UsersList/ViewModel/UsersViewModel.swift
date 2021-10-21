@@ -115,14 +115,7 @@ class UsersViewModel {
                 tableView.isHidden = true
                 label.isHidden = false
             }
-            DataBaseManger().fetch(returnType: LastSearch.self) { [weak self] (result) in
-                self?.lastSearch = result
-                collectionView.reloadData()
-            }
-                DataBaseManger().fetch(returnType: SearchHistory.self) { [weak self] (result) in
-                    self?.searchHistory = result
-                    tableView.reloadData()
-                }
+            recentSearchData(collectionView: collectionView, tableView: tableView)
             } catch {
             //
         }

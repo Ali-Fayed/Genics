@@ -57,25 +57,6 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
             break
         }
     }
-//    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-//        switch tableView {
-//        case self.tableView:
-//            for index in indexPaths {
-//                let query : String = {
-//                    var queryString = String()
-//                    if let searchText = searchController.searchBar.text {
-//                        queryString = searchText.isEmpty ? "a" : searchText
-//                    }
-//                    return queryString
-//                }()
-//                if index.row >= viewModel.numberOfUsersCells - 1 {
-//                    viewModel.fetchUsers(tableView: self.tableView, searchController: searchController, loadingIndicator: loadingSpinner, query: query)
-//                }
-//            }
-//        default:
-//            break
-//        }
-//    }
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         switch tableView {
         case self.tableView:
@@ -100,27 +81,31 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
                 let safariAction = UIAction(
                     title: Titles.openInSafari,
                     image: UIImage(systemName: "link")) { _ in
-                    self?.openInSafari(indexPath: indexPath)
-                }
+                        let usersURLstring = self?.viewModel.getUsersCellsViewModel(at: indexPath).userURL
+                        self?.viewModel.router?.trigger(.openInSafari(indexPath: usersURLstring!))
+                    }
                 let shareAction = UIAction(
                     title: Titles.share,
                     image: UIImage(systemName: "square.and.arrow.up")) { _ in
-                    self?.shareUser(indexPath: indexPath)
-                }
+                    let avatarUrl = self?.viewModel.getUsersCellsViewModel(at: indexPath).userAvatar
+                    let usersURL = self?.viewModel.getUsersCellsViewModel(at: indexPath).userURL
+                    self?.viewModel.router?.trigger(.shareUser(avatarURL: avatarUrl!, userURL: usersURL!))
+                    }
                 let saveImage = UIAction(
                     title: Titles.saveImage,
                     image: UIImage(systemName: "photo")) { _ in
-                    self?.saveeImage(indexPath: indexPath)
-                }
+                        let usersAvatarURL = self?.viewModel.getUsersCellsViewModel(at: indexPath).userAvatar
+                        self?.viewModel.router?.trigger(.saveImage(avatarURL: usersAvatarURL!))
+                    }
                 return UIMenu(title: "", image: nil, children: [safariAction, bookmarkAction, saveImage, shareAction])
-        }
+            }
         default:
             break
         }
-     return UIContextMenuConfiguration()
+        return UIContextMenuConfiguration()
     }
     
-     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch tableView {
         case self.tableView:
             break
@@ -134,21 +119,21 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
                     return nil
                 }
             default:
-                    break
+                break
             }
             return headerText.text
         default:
             break
         }
         return String()
-      }
+    }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         switch tableView {
         case recentSearchTable:
             return .delete
         default:
-           return .none
+            return .none
         }
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -163,30 +148,5 @@ extension UsersViewController : UITableViewDataSource , UITableViewDelegate {
         default:
             break
         }
-    }
-    //MARK:- LongPress Actions
-    func openInSafari (indexPath: IndexPath) {
-        let usersURLstring = self.viewModel.getUsersCellsViewModel(at: indexPath).userURL
-        guard let usersURL = URL(string: usersURLstring) else {return}
-        let safariVC = SFSafariViewController(url: usersURL)
-        self.present(safariVC, animated: true)
-    }
-    func shareUser (indexPath: IndexPath) {
-        let avatarUrl = self.viewModel.getUsersCellsViewModel(at: indexPath).userAvatar
-        let usersURL = self.viewModel.getUsersCellsViewModel(at: indexPath).userURL
-        let fileUrl = URL(string: avatarUrl)
-        let data = try? Data(contentsOf: fileUrl!)
-        let image = UIImage(data: data!)
-        let sheetVC = UIActivityViewController(activityItems: [image!,usersURL], applicationActivities: nil)
-        HapticsManger.shared.selectionVibrate(for: .medium)
-        self.present(sheetVC, animated: true)
-    }
-    func saveeImage (indexPath: IndexPath) {
-        let usersAvatarURL = self.viewModel.getUsersCellsViewModel(at: indexPath).userAvatar
-        let fileUrl = URL(string: usersAvatarURL)
-        let data = try? Data(contentsOf: fileUrl!)
-        let image = UIImage(data: data!)
-        UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
-        HapticsManger.shared.selectionVibrate(for: .heavy)
     }
 }

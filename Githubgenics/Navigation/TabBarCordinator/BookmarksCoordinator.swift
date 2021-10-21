@@ -13,10 +13,10 @@ import SafariServices
 // make route has tab controller or navigation controller or a new root view controller
 enum BookmarkRoute: Route {
     case bookmark
-    case userSafariURL(indexPath: IndexPath)
-    case repoSafariURL(indexPath: IndexPath)
-    case shareRepo(indexPath: IndexPath)
-    case shareUser(indexPath: IndexPath)
+    case userSafariURL(userURL: String)
+    case repoSafariURL(repoURL: String)
+    case shareRepo(repoURL: String)
+    case shareUser(userURL: String)
     case reposCommits(view: UIView, tableView: UITableView, loadingSpinner: JGProgressHUD, passedRepo: SavedRepositories)
 }
 class BookmarkCordinator: NavigationCoordinator<BookmarkRoute> {
@@ -29,33 +29,25 @@ class BookmarkCordinator: NavigationCoordinator<BookmarkRoute> {
             let viewController = BookmarksViewController.instaintiate(on: .tabBarView)
             viewController.router = unownedRouter
             return .push(viewController)
-        case .userSafariURL(let indexPath):
-            let viewController = BookmarksViewController.instaintiate(on: .tabBarView)
-            let userURL = viewController.viewModel.getUsersViewModel(at: indexPath).userURL!
+        case .userSafariURL(let userURL):
             let safariVC = SFSafariViewController(url: URL(string: userURL)!)
             return .present(safariVC)
-        case .repoSafariURL(indexPath: let indexPath):
-            let viewController = BookmarksViewController.instaintiate(on: .tabBarView)
-            let repoURL = viewController.viewModel.getReposViewModel(at: indexPath)
-            let safariVC = SFSafariViewController(url: URL(string: repoURL.repoURL!)!)
+        case .repoSafariURL(let repoURL):
+            let safariVC = SFSafariViewController(url: URL(string: repoURL)!)
             return .present(safariVC)
         case .reposCommits(view: let view, tableView: let tableView, loadingSpinner: let loadingSpinner, passedRepo: let passedRepo):
             let commitsView = CommitsViewController.instaintiate(on: .commitsView)
             commitsView.viewModel.savedRepos = passedRepo
             commitsView.viewModel.renderCachedReposCommits(view: view, tableView: tableView, loadingSpinner: loadingSpinner)
             return .push(commitsView)
-        case .shareRepo(indexPath: let indexPath):
-            let viewController = BookmarksViewController.instaintiate(on: .tabBarView)
+        case .shareRepo(let repoURL):
             let image = UIImage(systemName: "bell")
-            let repoURL = viewController.viewModel.getReposViewModel(at: indexPath).repoURL
-           let sheetVC = UIActivityViewController(activityItems: [image!,repoURL!], applicationActivities: nil)
+            let sheetVC = UIActivityViewController(activityItems: [image!,repoURL], applicationActivities: nil)
            HapticsManger.shared.selectionVibrate(for: .medium)
             return .present(sheetVC)
-        case .shareUser(indexPath: let indexPath):
-            let viewController = BookmarksViewController.instaintiate(on: .tabBarView)
+        case .shareUser(let userURL):
             let image = UIImage(systemName: "bell")
-            let userURL = viewController.viewModel.getUsersViewModel(at: indexPath).userURL
-           let sheetVC = UIActivityViewController(activityItems: [image!,userURL!], applicationActivities: nil)
+           let sheetVC = UIActivityViewController(activityItems: [image!,userURL], applicationActivities: nil)
            HapticsManger.shared.selectionVibrate(for: .medium)
             return .present(sheetVC)
         }

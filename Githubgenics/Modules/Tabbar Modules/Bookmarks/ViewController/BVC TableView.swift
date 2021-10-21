@@ -40,7 +40,8 @@ extension BookmarksViewController: UITableViewDelegate , UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
         case 0:
-            router?.trigger(.userSafariURL(indexPath: indexPath))
+            let userURL = self.viewModel.getUsersViewModel(at: indexPath).userURL!
+            router?.trigger(.userSafariURL(userURL: userURL))
         default:
             viewModel.pushToDestnationVC(indexPath: indexPath, view: view, tableView: self.tableView, loadingSpinner: loadingSpinner)
         }
@@ -129,15 +130,19 @@ extension BookmarksViewController: UITableViewDelegate , UITableViewDataSource {
     }
     // MARK: - Actions
     func openUserInSafari (indexPath: IndexPath) {
-        router?.trigger(.userSafariURL(indexPath: indexPath))
+        let userURL = self.viewModel.getUsersViewModel(at: indexPath).userURL!
+        router?.trigger(.userSafariURL(userURL: userURL))
     }
     func shareUser (indexPath: IndexPath) {
-        router?.trigger(.shareUser(indexPath: indexPath))
+        let userURL = self.viewModel.getUsersViewModel(at: indexPath).userURL
+        router?.trigger(.shareUser(userURL: userURL!))
     }
     func openRepoInSafari (indexPath: IndexPath) {
-        router?.trigger(.repoSafariURL(indexPath: indexPath))
+        let repoURL = self.viewModel.getReposViewModel(at: indexPath).repoURL
+        router?.trigger(.repoSafariURL(repoURL: repoURL!))
     }
     func shareRepo (indexPath: IndexPath) {
-        router?.trigger(.shareRepo(indexPath: indexPath))
+        let repoURL = self.viewModel.getReposViewModel(at: indexPath).repoURL
+        router?.trigger(.shareRepo(repoURL: repoURL!))
     }
 }
