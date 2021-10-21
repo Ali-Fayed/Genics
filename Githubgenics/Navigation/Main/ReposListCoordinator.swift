@@ -10,20 +10,32 @@ import XCoordinator
 import SafariServices
 enum ReposListRoute: Route {
     case reposList
+    case searchRepos(searchText: String)
     case repoURL(indexPath: IndexPath)
     case commits(selectedRepository: Repository)
     case shareRepo(indexPath: IndexPath)
     case dismiss
 }
 class ReposListCoordinaotr: NavigationCoordinator<ReposListRoute> {
-    init() {
-        super.init(initialRoute: .reposList)
+    init(searchText: String) {
+        let viewController = RepositoriesViewController.instaintiate(on: .reposView)
+        if viewController.navigationController?.navigationBar.prefersLargeTitles == true {
+            super.init(initialRoute: .reposList)
+        } else {
+            super.init(initialRoute: .searchRepos(searchText: searchText))
+        }
     }
     override func prepareTransition(for route: ReposListRoute) -> NavigationTransition {
         switch route {
         case .reposList:
             let viewController = RepositoriesViewController.instaintiate(on: .reposView)
             viewController.viewModel.router = unownedRouter
+            return .push(viewController)
+        case .searchRepos(let searchText):
+            let viewController = RepositoriesViewController.instaintiate(on: .reposView)
+            viewController.viewModel.router = unownedRouter
+            viewController.searchController.searchBar.text = searchText
+            viewController.query = searchText
             return .push(viewController)
         case .commits(let selectedRepository):
             let commitsView = CommitsViewController.instaintiate(on: .commitsView)

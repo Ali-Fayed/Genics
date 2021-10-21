@@ -24,9 +24,6 @@ enum PublicProfileRoute: Route {
 }
 
 class PublicProfileCoordinaotr: NavigationCoordinator<PublicProfileRoute> {
-    @objc func addTapped () {
-        print("error")
-    }
     init(user: User) {
         super.init(initialRoute: .publicProfile(passedUser: user))
     }

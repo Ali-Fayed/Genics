@@ -32,38 +32,41 @@ class HomeCoordinator: NavigationCoordinator<HomeRoute> {
             viewController.viewModel.router = strongRouter
             return .push(viewController)
         case .users:
-            let userCoordinator = UserListCoordinaotr()
+            let userCoordinator = UserListCoordinaotr(searchText: "")
             userCoordinator.rootViewController.modalPresentationStyle = .fullScreen
             userCoordinator.rootViewController.navigationBar.prefersLargeTitles = true
             userCoordinator.rootViewController.navigationItem.largeTitleDisplayMode = .always
             return .present(userCoordinator)
         case .repos:
-            let reposCoordinator = ReposListCoordinaotr()
+            let reposCoordinator = ReposListCoordinaotr(searchText: "")
             reposCoordinator.rootViewController.modalPresentationStyle = .fullScreen
             reposCoordinator.rootViewController.navigationBar.prefersLargeTitles = true
             reposCoordinator.rootViewController.navigationItem.largeTitleDisplayMode = .always
             return .present(reposCoordinator)
         case .issues:
-            let issuesCoordinator = IssuesCoordinaotr()
+            let issuesCoordinator = IssuesCoordinaotr(searchText: "")
             issuesCoordinator.rootViewController.modalPresentationStyle = .fullScreen
             issuesCoordinator.rootViewController.navigationBar.prefersLargeTitles = true
             issuesCoordinator.rootViewController.navigationItem.largeTitleDisplayMode = .always
             return .present(issuesCoordinator)
         case .searchUsers(let searchText):
-            let viewController = UsersViewController.instaintiate(on: .usersView)
-            viewController.searchController.searchBar.text = searchText
-            viewController.query = searchText
-            return .push(viewController)
+            let userCoordinator = UserListCoordinaotr(searchText: searchText)
+            userCoordinator.rootViewController.modalPresentationStyle = .fullScreen
+            userCoordinator.rootViewController.navigationBar.prefersLargeTitles = false
+            userCoordinator.rootViewController.navigationItem.largeTitleDisplayMode = .never
+            return .present(userCoordinator)
         case .searchRepos(let searchText):
-            let viewController = RepositoriesViewController.instaintiate(on: .reposView)
-            viewController.searchController.searchBar.text = searchText
-            viewController.query = searchText
-            return .push(viewController)
+            let reposCoordinator = ReposListCoordinaotr(searchText: searchText)
+            reposCoordinator.rootViewController.modalPresentationStyle = .fullScreen
+            reposCoordinator.rootViewController.navigationBar.prefersLargeTitles = false
+            reposCoordinator.rootViewController.navigationItem.largeTitleDisplayMode = .never
+            return .present(reposCoordinator)
         case .searchIssues(let searchText):
-            let viewController = IssuesViewController.instaintiate(on: .issuesView)
-            viewController.searchController.searchBar.text = searchText
-            viewController.query = searchText
-            return .push(viewController)
+            let issuesCoordinator = IssuesCoordinaotr(searchText: searchText)
+            issuesCoordinator.rootViewController.modalPresentationStyle = .fullScreen
+            issuesCoordinator.rootViewController.navigationBar.prefersLargeTitles = false
+            issuesCoordinator.rootViewController.navigationItem.largeTitleDisplayMode = .never
+            return .present(issuesCoordinator)
         case .githubWebSite:
             let gitHubWebVC = GithubViewController()
             gitHubWebVC.navigationItem.largeTitleDisplayMode = .never

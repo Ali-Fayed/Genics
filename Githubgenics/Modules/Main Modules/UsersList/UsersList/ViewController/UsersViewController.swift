@@ -87,10 +87,6 @@ class UsersViewController: CommonViews {
             searchController.searchBar.delegate = self
             setupSearchController(search: searchController)
             title = Titles.usersViewTitle
-        } else {
-            navigationController?.navigationItem.largeTitleDisplayMode = .never
-            navigationController?.navigationBar.prefersLargeTitles = false
-            title = Titles.resultsViewTitle
         }
     }
 }
