@@ -17,9 +17,9 @@ enum PublicProfileRoute: Route {
     case shareSheet(passedUser: User)
     case userURL(passedUser: User)
     case shareUser(indexPath: IndexPath)
+    case userCommitsURL(indexPath: IndexPath)
     case userCommits(view: UIView, tableView: UITableView, loadingSpinner: JGProgressHUD, repository: Repository)
     case starredCommits(starttedRepositories: Repository)
-    case userCommitsURL(indexPath: IndexPath)
     case dismiss
 }
 

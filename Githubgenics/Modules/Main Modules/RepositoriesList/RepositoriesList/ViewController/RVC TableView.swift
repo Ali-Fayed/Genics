@@ -66,11 +66,13 @@ extension RepositoriesViewController: UITableViewDataSource, UITableViewDelegate
     //MARK:- Actions
     
     func pushURLpage(indexPath: IndexPath)  {
-        viewModel.router?.trigger(.repoURL(indexPath: indexPath))
+        let repoURL = viewModel.getReposViewModel(at: indexPath).repositoryURL
+        viewModel.router?.trigger(.repoURL(repoURL: repoURL))
     }
     
     func shareRepo(indexPath: IndexPath) {
-        viewModel.router?.trigger(.shareRepo(indexPath: indexPath))
+        let repoURL = viewModel.getReposViewModel(at: indexPath).repositoryURL
+        viewModel.router?.trigger(.shareRepo(repoURL: repoURL))
     }
     
 }

@@ -11,9 +11,9 @@ import SafariServices
 enum ReposListRoute: Route {
     case reposList
     case searchRepos(searchText: String)
-    case repoURL(indexPath: IndexPath)
     case commits(selectedRepository: Repository)
-    case shareRepo(indexPath: IndexPath)
+    case repoURL(repoURL: String)
+    case shareRepo(repoURL: String)
     case dismiss
 }
 class ReposListCoordinaotr: NavigationCoordinator<ReposListRoute> {
@@ -41,16 +41,12 @@ class ReposListCoordinaotr: NavigationCoordinator<ReposListRoute> {
             let commitsView = CommitsViewController.instaintiate(on: .commitsView)
             commitsView.viewModel.repository = selectedRepository
             return .push(commitsView)
-        case .repoURL(let indexPath):
-            let viewController = RepositoriesViewController.instaintiate(on: .reposView)
-            let repositoryURL = viewController.viewModel.getReposViewModel(at: indexPath).repositoryURL
-            let safariVC = SFSafariViewController(url: URL(string: repositoryURL)!)
+        case .repoURL(let repoURL):
+            let safariVC = SFSafariViewController(url: URL(string: repoURL)!)
             return .present(safariVC)
-        case .shareRepo(let indexPath):
-            let viewController = RepositoriesViewController.instaintiate(on: .reposView)
+        case .shareRepo(let repoURL):
             let image = UIImage(systemName: "bell")
-            let repositoryURL = viewController.viewModel.getReposViewModel(at: indexPath).repositoryURL
-           let sheetVC = UIActivityViewController(activityItems: [image!,repositoryURL], applicationActivities: nil)
+           let sheetVC = UIActivityViewController(activityItems: [image!,repoURL], applicationActivities: nil)
            HapticsManger.shared.selectionVibrate(for: .medium)
             return .present(sheetVC)
         case .dismiss:

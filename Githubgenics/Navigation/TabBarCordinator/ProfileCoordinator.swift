@@ -19,7 +19,6 @@ enum ProfileRoute: Route {
     case organizations
     case commits(repository: Repository)
 }
-
 class ProfileCoordinator: NavigationCoordinator<ProfileRoute> {
     init() {
         super.init(initialRoute: .profile)
