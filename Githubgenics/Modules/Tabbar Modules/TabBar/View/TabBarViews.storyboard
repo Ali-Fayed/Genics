@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="G52-cY-JXK">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="853"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="PSj-rX-wDa" id="CrQ-qM-hjr"/>
@@ -49,7 +49,7 @@
                         <constraints>
                             <constraint firstItem="W7f-72-liJ" firstAttribute="trailing" secondItem="G52-cY-JXK" secondAttribute="trailing" id="0ox-2H-xF1"/>
                             <constraint firstItem="G52-cY-JXK" firstAttribute="top" secondItem="W7f-72-liJ" secondAttribute="top" id="8yv-ru-cZM"/>
-                            <constraint firstItem="W7f-72-liJ" firstAttribute="bottom" secondItem="G52-cY-JXK" secondAttribute="bottom" id="cbO-xS-Qx4"/>
+                            <constraint firstItem="W7f-72-liJ" firstAttribute="bottom" secondItem="G52-cY-JXK" secondAttribute="bottom" constant="-35" id="cbO-xS-Qx4"/>
                             <constraint firstItem="G52-cY-JXK" firstAttribute="leading" secondItem="W7f-72-liJ" secondAttribute="leading" id="itd-l8-rPt"/>
                         </constraints>
                     </view>
@@ -271,7 +271,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="y11-uR-9j1">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="853"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HomeTableViewCell" rowHeight="60" id="cx0-bG-7dH" customClass="HomeTableViewCell" customModule="Githubgenics" customModuleProvider="target">
                                         <rect key="frame" x="20" y="49.5" width="374" height="60"/>
@@ -289,7 +289,7 @@
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="SzN-Ba-I7p">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="853"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchHstoryCell" textLabel="5Bf-H5-FaD" style="IBUITableViewCellStyleDefault" id="uvg-7u-m2q" customClass="SearchHstoryCell" customModule="Githubgenics" customModuleProvider="target">
@@ -317,7 +317,7 @@
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="liE-IS-v4t">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="853"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchOptionsCell" id="yce-cy-skJ" customClass="SearchOptionsCell" customModule="Githubgenics" customModuleProvider="target">
@@ -340,16 +340,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="liE-IS-v4t" firstAttribute="top" secondItem="akt-pZ-5o6" secondAttribute="top" id="96o-sg-uNP"/>
-                            <constraint firstItem="SzN-Ba-I7p" firstAttribute="bottom" secondItem="akt-pZ-5o6" secondAttribute="bottom" id="C79-BQ-x3K"/>
+                            <constraint firstItem="SzN-Ba-I7p" firstAttribute="bottom" secondItem="akt-pZ-5o6" secondAttribute="bottom" constant="35" id="C79-BQ-x3K"/>
                             <constraint firstItem="y11-uR-9j1" firstAttribute="leading" secondItem="akt-pZ-5o6" secondAttribute="leading" id="CIT-WS-DuC"/>
                             <constraint firstItem="y11-uR-9j1" firstAttribute="trailing" secondItem="akt-pZ-5o6" secondAttribute="trailing" id="EQ5-k8-EU5"/>
                             <constraint firstItem="liE-IS-v4t" firstAttribute="leading" secondItem="akt-pZ-5o6" secondAttribute="leading" id="NTH-XZ-d9X"/>
                             <constraint firstItem="SzN-Ba-I7p" firstAttribute="trailing" secondItem="akt-pZ-5o6" secondAttribute="trailing" id="Q1H-X2-laY"/>
                             <constraint firstItem="SzN-Ba-I7p" firstAttribute="top" secondItem="akt-pZ-5o6" secondAttribute="top" id="RQY-Ig-2b0"/>
-                            <constraint firstItem="y11-uR-9j1" firstAttribute="bottom" secondItem="akt-pZ-5o6" secondAttribute="bottom" id="eFI-KH-7pT"/>
+                            <constraint firstItem="y11-uR-9j1" firstAttribute="bottom" secondItem="akt-pZ-5o6" secondAttribute="bottom" constant="35" id="eFI-KH-7pT"/>
                             <constraint firstItem="y11-uR-9j1" firstAttribute="top" secondItem="akt-pZ-5o6" secondAttribute="top" id="hxg-hm-l2b"/>
                             <constraint firstItem="liE-IS-v4t" firstAttribute="trailing" secondItem="akt-pZ-5o6" secondAttribute="trailing" id="k8B-GT-BAE"/>
-                            <constraint firstItem="liE-IS-v4t" firstAttribute="bottom" secondItem="akt-pZ-5o6" secondAttribute="bottom" id="vRl-es-vDS"/>
+                            <constraint firstItem="liE-IS-v4t" firstAttribute="bottom" secondItem="akt-pZ-5o6" secondAttribute="bottom" constant="35" id="vRl-es-vDS"/>
                             <constraint firstItem="SzN-Ba-I7p" firstAttribute="leading" secondItem="akt-pZ-5o6" secondAttribute="leading" id="voK-53-VBF"/>
                         </constraints>
                     </view>
@@ -373,7 +373,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="v5V-Lt-c3y">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="853"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" rowHeight="405" id="oSf-z2-q5T" customClass="TableViewCell" customModule="Githubgenics" customModuleProvider="target">
@@ -537,7 +537,7 @@
                         <constraints>
                             <constraint firstItem="v5V-Lt-c3y" firstAttribute="leading" secondItem="B86-Pd-SlU" secondAttribute="leading" id="0tP-RS-CmA"/>
                             <constraint firstItem="v5V-Lt-c3y" firstAttribute="top" secondItem="B86-Pd-SlU" secondAttribute="top" id="Y0I-J7-WEX"/>
-                            <constraint firstItem="B86-Pd-SlU" firstAttribute="bottom" secondItem="v5V-Lt-c3y" secondAttribute="bottom" id="aEF-n4-jIL"/>
+                            <constraint firstItem="B86-Pd-SlU" firstAttribute="bottom" secondItem="v5V-Lt-c3y" secondAttribute="bottom" constant="-35" id="aEF-n4-jIL"/>
                             <constraint firstItem="B86-Pd-SlU" firstAttribute="trailing" secondItem="v5V-Lt-c3y" secondAttribute="trailing" id="db9-ll-ex6"/>
                         </constraints>
                     </view>

@@ -8,56 +8,35 @@
 import SafariServices
 import UIKit
 import Kingfisher
+import RxCocoa
+import RxSwift
 
 extension UsersViewController: UITableViewDelegate {
     func bindUsersListTableView() {
          /// usersListTableView rowHeight
-         tableView.rx.rowHeight.onNext(60)
+         usersListTableView.rx.rowHeight.onNext(60)
          /// usersListTableView dataSource
-         viewModel.usersListItems.bind(to: tableView.rx.items(cellIdentifier: "UsersTableViewCell", cellType: UsersTableViewCell.self)) {[weak self] row, model, cell  in
-             cell.cellData(with: model)
-             self?.tableView.isHidden = false
+         viewModel
+            .usersModelObservable.bind(to: usersListTableView.rx.items(cellIdentifier: String(describing: UsersTableViewCell.self), cellType: UsersTableViewCell.self)) {[weak self] row, users, cell  in
+             cell.cellData(with: users)
+             self?.usersListTableView.isHidden = false
              self?.loadingSpinner.dismiss()
          }.disposed(by: bag)
          /// didSelectRow
-         tableView.rx.modelSelected(User.self).bind { [weak self] result in
-             self?.viewModel.router?.trigger(.publicUserProfile(user: result))
-             if self?.searchController.searchBar.text?.isEmpty == false {
-                 self?.viewModel.saveToLastSearch(model: result)
-             }
-         }.disposed(by: bag)
-         /// selectedItem
-         tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
-             self?.tableView.deselectRow(at: indexPath, animated: true)
-         }).disposed(by: bag)
+        Observable
+            .zip(usersListTableView.rx.itemSelected, usersListTableView.rx.modelSelected(User.self))
+            .bind { [weak self] indexPath, users in
+                self?.usersListTableView.deselectRow(at: indexPath, animated: true)
+                self?.viewModel.router?.trigger(.publicUserProfile(user: users))
+                if self?.searchController.searchBar.text?.isEmpty == false {
+                    self?.viewModel.saveToLastSearch(model: users)
+                }
+        }.disposed(by: bag)
      }
-    
-    //MARK: - searchHistory tableView
-    func bindSearchHistoryTableView () {
-        /// recentSearchTable rowHeight
-        recentSearchTable.rx.rowHeight.onNext(50)
-        /// searchHistory dataSource
-        viewModel.searchHistoryitems.bind(to: recentSearchTable.rx.items(cellIdentifier: "SearchHistoryCell", cellType: SearchHistoryCell.self)) { row, model, cell  in
-            cell.cellData(with: model)
-        }.disposed(by: bag)
-        /// searchHistory delete
-        recentSearchTable.rx.itemDeleted.subscribe(onNext: { [weak self] indexPath in
-            self?.recentSearchTable.beginUpdates()
-            self?.recentSearchTable.deleteRows(at: [indexPath], with: .fade)
-            self?.recentSearchTable.endUpdates()
-        }).disposed(by: bag)
-        
-        recentSearchTable.rx.modelDeleted(SearchHistory.self).bind { [weak self] result in
-            self?.recentSearchTable.beginUpdates()
-            DataBaseManger.shared.delete(returnType: SearchHistory.self, delete: result)
-            self?.recentSearchTable.endUpdates()
-        }.disposed(by: bag)
-
-    }
-
+    /// long press menu
     func tableView( _ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         switch tableView {
-        case self.tableView:
+        case self.usersListTableView:
             let identifier = "\(String(describing: index))" as NSString
             return UIContextMenuConfiguration( identifier: identifier, previewProvider: nil) { [weak self]_ in
                 let bookmarkAction = UIAction(title: Titles.bookmark, image: UIImage(systemName: "bookmark.fill")) { _ in
@@ -89,16 +68,30 @@ extension UsersViewController: UITableViewDelegate {
         }
         return UIContextMenuConfiguration()
     }
-
-//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//            return .delete
-//    }
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//            if editingStyle == .delete {
-//                tableView.beginUpdates()
-//                viewModel.deleteAndFetchRecentTableData(indexPath: indexPath)
-//                tableView.deleteRows(at: [indexPath], with: .fade)
-//                tableView.endUpdates()
-//            }
-//    }
+    //MARK: - searchHistory tableView
+    func bindSearchHistoryTableView () {
+        /// recentSearchTable rowHeight
+        recentSearchTableView.rx.rowHeight.onNext(50)
+        /// searchHistory dataSource
+        viewModel.searchHistoryModelObservable.bind(to: recentSearchTableView.rx.items(cellIdentifier: String(describing: SearchHistoryCell.self), cellType: SearchHistoryCell.self)) { row, model, cell  in
+            cell.cellData(with: model)
+        }.disposed(by: bag)
+        /// searchHistory delete
+        Observable
+            .zip(recentSearchTableView.rx.itemDeleted, recentSearchTableView.rx.modelDeleted(SearchHistory.self))
+            .bind { [weak self] indexPath, searchHistory in
+                self?.recentSearchTableView.beginUpdates()
+                DataBaseManger.shared.delete(returnType: SearchHistory.self, delete: searchHistory)
+                self?.recentSearchTableView.deleteRows(at: [indexPath], with: .fade)
+                self?.recentSearchTableView.endUpdates()
+        }.disposed(by: bag)
+        /// didSelectRow
+        Observable
+            .zip(recentSearchTableView.rx.itemSelected, recentSearchTableView.rx.modelSelected(SearchHistory.self))
+            .bind { [weak self] indexPath, searchHistory in
+                    self?.recentSearchTableView.deselectRow(at: indexPath, animated: true)
+                    self?.searchController.searchBar.text = searchHistory.keyword
+                    self?.searchController.searchBar.becomeFirstResponder()
+        }.disposed(by: bag)
+    }
 }

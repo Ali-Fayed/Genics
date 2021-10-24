@@ -15,15 +15,14 @@ import RxCocoa
 class UsersViewController: CommonViews {
     lazy var searchController = UISearchController(searchResultsController: nil)
     lazy var viewModel = UsersViewModel()
-    var query : String = ""
     let bag = DisposeBag()
     //MARK: - IBOutlet
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var recentSearchTable: UITableView!
+    @IBOutlet weak var usersListTableView: UITableView!
+    @IBOutlet weak var recentSearchTableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var header: UIView!
     @IBAction func removeAll(_ sender: UIButton) {
-        viewModel.excute(tableView: recentSearchTable, collectionView: collectionView, label: conditionLabel)
+        viewModel.excute(tableView: recentSearchTableView, collectionView: collectionView, label: conditionLabel)
         HapticsManger.shared.selectionVibrate(for: .heavy)
     }
     //MARK: - LifeCycle Methods
@@ -38,8 +37,8 @@ class UsersViewController: CommonViews {
     //MARK: - UI Functions
     func initView () {
         setupConditionLabel(conditionLabel: conditionLabel)
-        setupTableView(tableView: tableView)
-        setupSearchHistoryTable(tableView: recentSearchTable)
+        setupTableView(tableView: usersListTableView)
+        setupSearchHistoryTable(tableView: recentSearchTableView)
         renderRecentHistoryHiddenConditions()
         dismissButton()
         bindUsersListTableView()
@@ -66,21 +65,21 @@ class UsersViewController: CommonViews {
     }
     func initViewModel () {
         loadingSpinner.show(in: view)
-        viewModel.recentSearchData()
+        viewModel.fetchDataBaseData()
         if searchController.searchBar.text?.isEmpty == true {
-            viewModel.fetchUsers(query: "a")
+            viewModel.fetchUsers(query: "T")
             searchController.searchBar.delegate = self
             setupSearchController(search: searchController)
             navigationItem.title = Titles.usersViewTitle
         } else {
-            viewModel.fetchUsers(query: query)
+            viewModel.fetchUsers(query: viewModel.query)
             navigationController?.navigationItem.largeTitleDisplayMode = .never
             navigationController?.navigationBar.prefersLargeTitles = false
             title = Titles.resultsViewTitle
         }
     }
     func renderRecentHistoryHiddenConditions () {
-        if recentSearchTable.isHidden == true , searchController.searchBar.text?.isEmpty == false {
+        if recentSearchTableView.isHidden == true , searchController.searchBar.text?.isEmpty == false {
             conditionLabel.isHidden = false
         } else {
             conditionLabel.isHidden = true
@@ -97,15 +96,15 @@ extension UsersViewController: UISearchBarDelegate  {
         DispatchQueue.main.async {
             self.viewModel.pageNo = 1
             if self.searchController.searchBar.text?.isEmpty == true {
-                self.tableView.isHidden = true
+                self.usersListTableView.isHidden = true
             } else {
-                self.tableView.isHidden = false
+                self.usersListTableView.isHidden = false
                 self.conditionLabel.isHidden = true
             }
             if self.viewModel.searchHistory.isEmpty == true {
-                self.recentSearchTable.isHidden = true
+                self.recentSearchTableView.isHidden = true
             } else {
-                self.recentSearchTable.isHidden = false
+                self.recentSearchTableView.isHidden = false
             }
             if self.searchController.searchBar.text?.isEmpty == true , self.viewModel.lastSearch.isEmpty == true , self.viewModel.searchHistory.isEmpty == true{
                 self.conditionLabel.isHidden = false
@@ -113,7 +112,7 @@ extension UsersViewController: UISearchBarDelegate  {
                 self.conditionLabel.isHidden = true
             }
             self.loadingSpinner.dismiss()
-            self.viewModel.recentSearchData()
+            self.viewModel.fetchDataBaseData()
         }
     }
     // Automatic Search When Change Text with Some Animations
@@ -122,8 +121,8 @@ extension UsersViewController: UISearchBarDelegate  {
         guard let query = searchBar.text else { return }
         viewModel.fetchUsers(query: query)
         UIView.animate(withDuration: 0.0, animations: {
-            self.tableView.alpha = 1.0
-            self.recentSearchTable.alpha = 0.0
+            self.usersListTableView.alpha = 1.0
+            self.recentSearchTableView.alpha = 0.0
         })
     }
     // canel and return to man view and return searchBar to tableHeader
@@ -131,15 +130,15 @@ extension UsersViewController: UISearchBarDelegate  {
         viewModel.fetchUsers(query: "a")
         DispatchQueue.main.async {
             self.searchController.searchBar.text = nil
-            self.recentSearchTable.isHidden = true
-            self.tableView.isHidden = false
+            self.recentSearchTableView.isHidden = true
+            self.usersListTableView.isHidden = false
             self.loadingSpinner.dismiss()
-            self.recentSearchTable.reloadData()
+            self.recentSearchTableView.reloadData()
             self.conditionLabel.isHidden = true
         }
         UIView.animate(withDuration: 0.0, animations: {
-            self.tableView.alpha = 1.0
-            self.recentSearchTable.alpha = 1.0
+            self.usersListTableView.alpha = 1.0
+            self.recentSearchTableView.alpha = 1.0
         })
     }
     // Save Search Keyword If Click Button Search
@@ -155,13 +154,17 @@ extension UsersViewController: UISearchBarDelegate  {
 extension UsersViewController {
     func bindLastSearchCollectionView () {
         /// lastSearchitems dataSource
-        viewModel.lastSearchitems.bind(to: collectionView.rx.items(cellIdentifier: "LastSearchCollectionCell", cellType: LastSearchCollectionCell.self)) { row, model, cell  in
-            cell.cellData(with: model)
-        }.disposed(by: bag)
+        viewModel.lastSearchModelObservable
+            .bind(to: collectionView.rx.items(cellIdentifier: String(describing: LastSearchCollectionCell.self), cellType: LastSearchCollectionCell.self)) { row, lastSearch, cell  in
+                cell.cellData(with: lastSearch)
+            }.disposed(by: bag)
         /// didSelectRow
-        collectionView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
-            self?.collectionView.deselectItem(at: indexPath, animated: true)
-            self?.viewModel.router?.trigger(.lastSearch(indexPath: indexPath))
-        }).disposed(by: bag)
+        Observable
+            .zip(collectionView.rx.itemSelected, collectionView.rx.modelSelected(LastSearch.self))
+            .bind { [weak self] indexPath, lastSearch in
+                self?.collectionView.deselectItem(at: indexPath, animated: true)
+                let safariVC = SFSafariViewController(url: URL(string: lastSearch.userURL!)!)
+                self?.present(safariVC, animated: true)
+            }.disposed(by: bag)
     }
 }

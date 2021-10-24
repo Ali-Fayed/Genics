@@ -156,8 +156,8 @@
                     <connections>
                         <outlet property="collectionView" destination="872-LP-CA5" id="lg9-Fg-OUp"/>
                         <outlet property="header" destination="c5r-Bz-5mi" id="cej-Yy-qMC"/>
-                        <outlet property="recentSearchTable" destination="8LK-Aq-dEI" id="0Yi-Ff-HRh"/>
-                        <outlet property="tableView" destination="4QS-Wm-iih" id="8lN-Y9-eyQ"/>
+                        <outlet property="recentSearchTableView" destination="8LK-Aq-dEI" id="Nxr-bH-a3d"/>
+                        <outlet property="usersListTableView" destination="4QS-Wm-iih" id="lCm-xD-cX4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DgO-pz-Bth" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

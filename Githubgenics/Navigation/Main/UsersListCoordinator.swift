@@ -14,7 +14,6 @@ enum UsersRoute: Route {
     case searchUsers(searchText: String)
     case publicUserProfile(user: User)
     case userURL(passedUser: User)
-    case lastSearch(indexPath: IndexPath)
     case openInSafari(indexPath: String)
     case shareUser(avatarURL: String, userURL: String)
     case saveImage(avatarURL: String)
@@ -43,7 +42,7 @@ class UserListCoordinaotr: NavigationCoordinator<UsersRoute> {
             viewController.viewModel.useCase = UserUseCase()
             viewController.searchController.searchBar.text = searchText
             viewController.title = Titles.resultsViewTitle
-            viewController.query = searchText
+            viewController.viewModel.query = searchText
             return .push(viewController)
         case .publicUserProfile(let user):
             let publicProfileCoordinaotr = PublicProfileCoordinaotr(user: user)
@@ -54,11 +53,6 @@ class UserListCoordinaotr: NavigationCoordinator<UsersRoute> {
         case .userURL(let passedUser):
             let userURL = passedUser.userURL
             let safariVC = SFSafariViewController(url: URL(string: userURL)!)
-            return .present(safariVC)
-        case .lastSearch(let indexPath):
-            let usersView = UsersViewController.instaintiate(on: .usersView)
-            let userURL = usersView.viewModel.getLastSearchViewModel(at: indexPath).userURL
-            let safariVC = SFSafariViewController(url: URL(string: userURL!)!)
             return .present(safariVC)
         case .openInSafari(let indexPath):
             let usersURL = URL(string: indexPath)!
