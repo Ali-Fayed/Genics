@@ -95,3 +95,21 @@ extension UsersViewController: UITableViewDelegate {
         }.disposed(by: bag)
     }
 }
+//MARK: - CollectionView
+extension UsersViewController {
+    func bindLastSearchCollectionView () {
+        /// lastSearchitems dataSource
+        viewModel.lastSearchModelObservable
+            .bind(to: collectionView.rx.items(cellIdentifier: String(describing: LastSearchCollectionCell.self), cellType: LastSearchCollectionCell.self)) { row, lastSearch, cell  in
+                cell.cellData(with: lastSearch)
+            }.disposed(by: bag)
+        /// didSelectRow
+        Observable
+            .zip(collectionView.rx.itemSelected, collectionView.rx.modelSelected(LastSearch.self))
+            .bind { [weak self] indexPath, lastSearch in
+                self?.collectionView.deselectItem(at: indexPath, animated: true)
+                let safariVC = SFSafariViewController(url: URL(string: lastSearch.userURL!)!)
+                self?.present(safariVC, animated: true)
+            }.disposed(by: bag)
+    }
+}

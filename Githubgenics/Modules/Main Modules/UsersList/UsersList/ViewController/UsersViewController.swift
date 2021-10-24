@@ -31,6 +31,9 @@ class UsersViewController: CommonViews {
         initView()
         initViewModel()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        initViewModel()
+    }
     override func viewDidLayoutSubviews() {
         conditionLabel.frame = CGRect(x: view.width/4, y: (view.height-200)/2, width: view.width/2, height: 200)
     }
@@ -42,8 +45,9 @@ class UsersViewController: CommonViews {
         renderRecentHistoryHiddenConditions()
         dismissButton()
         bindUsersListTableView()
-        bindLastSearchCollectionView()
         bindSearchHistoryTableView ()
+        bindLastSearchCollectionView()
+        subscribeToSearchBar()
     }
     @objc override func dismissView () {
         viewModel.router?.trigger(.dismiss)
@@ -68,7 +72,6 @@ class UsersViewController: CommonViews {
         viewModel.fetchDataBaseData()
         if searchController.searchBar.text?.isEmpty == true {
             viewModel.fetchUsers(query: "T")
-            searchController.searchBar.delegate = self
             setupSearchController(search: searchController)
             navigationItem.title = Titles.usersViewTitle
         } else {
@@ -90,81 +93,56 @@ class UsersViewController: CommonViews {
     }
 }
 //MARK: - SearchBar
-extension UsersViewController: UISearchBarDelegate  {
-    // animation when click on search bar and push searchBar to navbar headerView
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        DispatchQueue.main.async {
-            self.viewModel.pageNo = 1
-            if self.searchController.searchBar.text?.isEmpty == true {
-                self.usersListTableView.isHidden = true
-            } else {
-                self.usersListTableView.isHidden = false
-                self.conditionLabel.isHidden = true
+extension UsersViewController {
+    func subscribeToSearchBar () {
+        /// animation when click on search bar and push searchBar to navbar headerView
+        searchController.searchBar.rx.textDidBeginEditing.subscribe(onNext: { [weak self] in
+            print("textDidBeginEditing")
+            DispatchQueue.main.async {
+                self?.viewModel.pageNo = 1
+                if self?.searchController.searchBar.text?.isEmpty == true {
+                    self?.usersListTableView.isHidden = true
+                } else {
+                    self?.usersListTableView.isHidden = false
+                    self?.conditionLabel.isHidden = true
+                }
+                if self?.viewModel.searchHistory.isEmpty == true {
+                    self?.recentSearchTableView.isHidden = true
+                } else {
+                    self?.recentSearchTableView.isHidden = false
+                }
+                if self?.searchController.searchBar.text?.isEmpty == true , self?.viewModel.lastSearch.isEmpty == true , self?.viewModel.searchHistory.isEmpty == true{
+                    self?.conditionLabel.isHidden = false
+                } else {
+                    self?.conditionLabel.isHidden = true
+                }
+                self?.loadingSpinner.dismiss()
+                self?.viewModel.fetchDataBaseData()
             }
-            if self.viewModel.searchHistory.isEmpty == true {
-                self.recentSearchTableView.isHidden = true
-            } else {
-                self.recentSearchTableView.isHidden = false
-            }
-            if self.searchController.searchBar.text?.isEmpty == true , self.viewModel.lastSearch.isEmpty == true , self.viewModel.searchHistory.isEmpty == true{
-                self.conditionLabel.isHidden = false
-            } else {
-                self.conditionLabel.isHidden = true
-            }
-            self.loadingSpinner.dismiss()
-            self.viewModel.fetchDataBaseData()
-        }
+        }).disposed(by: bag)
+        /// Save Search Keyword If Click Button Search
+        searchController.searchBar.rx.searchButtonClicked.subscribe(onNext: { [weak self] in
+            print("searchButtonClicked")
+            guard let text = self?.searchController.searchBar.text else { return }
+            self?.viewModel.saveSearchWord(text: text)
+        }).disposed(by: bag)
+        /// canel and return to man view and return searchBar to tableHeader
+        searchController.searchBar.rx.cancelButtonClicked.subscribe(onNext: { [weak self] in
+                print("cancelButtonClicked")
+                self?.searchController.searchBar.text = nil
+                self?.recentSearchTableView.isHidden = true
+                self?.usersListTableView.isHidden = false
+                self?.loadingSpinner.dismiss()
+                self?.conditionLabel.isHidden = true
+            }).disposed(by: bag)
     }
-    // Automatic Search When Change Text with Some Animations
+    /// Automatic Search When Change Text with Some Animations
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.conditionLabel.isHidden = true
         guard let query = searchBar.text else { return }
         viewModel.fetchUsers(query: query)
-        UIView.animate(withDuration: 0.0, animations: {
-            self.usersListTableView.alpha = 1.0
-            self.recentSearchTableView.alpha = 0.0
-        })
-    }
-    // canel and return to man view and return searchBar to tableHeader
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.fetchUsers(query: "a")
-        DispatchQueue.main.async {
-            self.searchController.searchBar.text = nil
-            self.recentSearchTableView.isHidden = true
-            self.usersListTableView.isHidden = false
-            self.loadingSpinner.dismiss()
-            self.recentSearchTableView.reloadData()
-            self.conditionLabel.isHidden = true
-        }
-        UIView.animate(withDuration: 0.0, animations: {
-            self.usersListTableView.alpha = 1.0
-            self.recentSearchTableView.alpha = 1.0
-        })
-    }
-    // Save Search Keyword If Click Button Search
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text else { return }
-        viewModel.saveSearchWord(text: text)
     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         navigationItem.hidesSearchBarWhenScrolling = true
-    }
-}
-//MARK: - CollectionView
-extension UsersViewController {
-    func bindLastSearchCollectionView () {
-        /// lastSearchitems dataSource
-        viewModel.lastSearchModelObservable
-            .bind(to: collectionView.rx.items(cellIdentifier: String(describing: LastSearchCollectionCell.self), cellType: LastSearchCollectionCell.self)) { row, lastSearch, cell  in
-                cell.cellData(with: lastSearch)
-            }.disposed(by: bag)
-        /// didSelectRow
-        Observable
-            .zip(collectionView.rx.itemSelected, collectionView.rx.modelSelected(LastSearch.self))
-            .bind { [weak self] indexPath, lastSearch in
-                self?.collectionView.deselectItem(at: indexPath, animated: true)
-                let safariVC = SFSafariViewController(url: URL(string: lastSearch.userURL!)!)
-                self?.present(safariVC, animated: true)
-            }.disposed(by: bag)
     }
 }
