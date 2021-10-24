@@ -71,11 +71,11 @@ class UsersViewController: CommonViews {
         loadingSpinner.show(in: view)
         viewModel.fetchDataBaseData()
         if searchController.searchBar.text?.isEmpty == true {
-            viewModel.fetchUsers(query: "T")
+            viewModel.fetchUsers(pageNo: viewModel.pageNo, query: "T")
             setupSearchController(search: searchController)
             navigationItem.title = Titles.usersViewTitle
         } else {
-            viewModel.fetchUsers(query: viewModel.query)
+            viewModel.fetchUsers(pageNo: viewModel.pageNo, query: viewModel.query)
             navigationController?.navigationItem.largeTitleDisplayMode = .never
             navigationController?.navigationBar.prefersLargeTitles = false
             title = Titles.resultsViewTitle
@@ -97,9 +97,9 @@ extension UsersViewController {
     func subscribeToSearchBar () {
         /// animation when click on search bar and push searchBar to navbar headerView
         searchController.searchBar.rx.textDidBeginEditing.subscribe(onNext: { [weak self] in
-            print("textDidBeginEditing")
             DispatchQueue.main.async {
                 self?.viewModel.pageNo = 1
+                self?.viewModel.isPaginating = false
                 if self?.searchController.searchBar.text?.isEmpty == true {
                     self?.usersListTableView.isHidden = true
                 } else {
@@ -122,25 +122,25 @@ extension UsersViewController {
         }).disposed(by: bag)
         /// Save Search Keyword If Click Button Search
         searchController.searchBar.rx.searchButtonClicked.subscribe(onNext: { [weak self] in
-            print("searchButtonClicked")
             guard let text = self?.searchController.searchBar.text else { return }
             self?.viewModel.saveSearchWord(text: text)
         }).disposed(by: bag)
         /// canel and return to man view and return searchBar to tableHeader
         searchController.searchBar.rx.cancelButtonClicked.subscribe(onNext: { [weak self] in
-                print("cancelButtonClicked")
                 self?.searchController.searchBar.text = nil
                 self?.recentSearchTableView.isHidden = true
                 self?.usersListTableView.isHidden = false
                 self?.loadingSpinner.dismiss()
                 self?.conditionLabel.isHidden = true
             }).disposed(by: bag)
-    }
-    /// Automatic Search When Change Text with Some Animations
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.conditionLabel.isHidden = true
-        guard let query = searchBar.text else { return }
-        viewModel.fetchUsers(query: query)
+        /// Automatic Search When Change Text with Some Animations
+        searchController.searchBar.rx.text.orEmpty.subscribe(onNext: { _ in
+            guard let text = self.searchController.searchBar.text else { return }
+            self.viewModel.fetchUsers(pageNo: self.viewModel.pageNo, query: self.viewModel.query(searchText: text))
+            self.conditionLabel.isHidden = true
+            self.recentSearchTableView.isHidden = true
+        }).disposed(by: bag)
+
     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         navigationItem.hidesSearchBarWhenScrolling = true

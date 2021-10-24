@@ -13,67 +13,43 @@ import RxSwift
 import RxCocoa
 
 class UsersViewModel {
-    private var usersListSubject = PublishSubject<[User]>()
-    private var searchHistorySubject = PublishSubject<[SearchHistory]>()
-    private var lastSearchSubject = PublishSubject<[LastSearch]>()
-    var usersModelObservable: Observable<[User]> {
-        return usersListSubject
-    }
-    var searchHistoryModelObservable: Observable<[SearchHistory]> {
-        return searchHistorySubject
-    }
-    var lastSearchModelObservable: Observable<[LastSearch]> {
-        return lastSearchSubject
-    }
-    var useCase: UserUseCase?
-    var router: StrongRouter<UsersRoute>?
-    
+    let usersListdataSource = BehaviorRelay(value: [User]())
+    let searchHistoryDataSource = BehaviorRelay(value: [SearchHistory]())
+    let lastSearchDataSource = BehaviorRelay(value: [LastSearch]())
     var usersModel = [User]()
     var searchHistory = [SearchHistory]()
     var lastSearch = [LastSearch]()
+    var useCase: UserUseCase?
+    var router: StrongRouter<UsersRoute>?
     var pageNo: Int = 1
-    var query : String = ""
-    var totalPages: Int = 100
+    var isPaginating = false
+    var query: String = ""
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     func getUsersCellsViewModel(at indexPath: IndexPath ) -> User {
         return usersModel[indexPath.row]
     }
-    func fetchUsers(query: String) {
-        useCase?.fetchUsersList(page: pageNo ,query: query, completion: { [weak self] result in
-            switch result {
-            case .success(let result):
-                self?.usersModel = result
-                self?.usersListSubject.onNext(result)
-                self?.usersListSubject.onCompleted()
-            case .failure(let error):
-                CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
-            }
-        })
-    }
-    private func query(searchText: String?) -> String {
+    func query(searchText: String?) -> String {
         let query : String = {
             var queryString = String()
             if let searchText = searchText {
-                queryString = searchText.isEmpty ? "a" : searchText
+                queryString = searchText.isEmpty ? "J" : searchText
             }
             return queryString
         }()
         return query
     }
-    func fetchMoreCells (tableView: UITableView, searchController: UISearchController) {
-        pageNo += 1
-        let searchText = searchController.searchBar.text
-        let queryText = query(searchText: searchText)
-        useCase?.fetchUsersList(page: pageNo ,query: queryText, completion: { [weak self] result in
+    func fetchUsers(pageNo: Int, query: String) {
+        useCase?.fetchUsersList(page: pageNo ,query: query, completion: { [weak self] result in
             switch result {
             case .success(let result):
-                DispatchQueue.main.async {
-                    if result.isEmpty == false {
-                        self?.usersModel.append(contentsOf: result)
-                        self?.usersListSubject.onNext(result)
-                        self?.usersListSubject.onCompleted()
-                        tableView.tableFooterView = nil
-                    }
+                if self!.isPaginating == true {
+                    self?.usersModel.append(contentsOf: result)
+                    guard let usersModel = self?.usersModel else {return}
+                    self?.usersListdataSource.accept(usersModel)
+                } else {
+                    self?.usersModel = result
+                    guard let usersModel = self?.usersModel else {return}
+                    self?.usersListdataSource.accept(usersModel)
                 }
             case .failure(let error):
                 CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
@@ -83,15 +59,15 @@ class UsersViewModel {
     private func fetchSearchHistory() {
         useCase?.fetchSearchHistory(completion: { [weak self] result in
             self?.searchHistory = result
-            self?.searchHistorySubject.onNext(result)
-            self?.searchHistorySubject.onCompleted()
+            guard let searchHistory = self?.searchHistory else {return}
+            self?.searchHistoryDataSource.accept(searchHistory)
         })
     }
     private func fetchLastSearch() {
         useCase?.fetchLastSearch(completion: { [weak self] result in
             self?.lastSearch = result
-            self?.lastSearchSubject.onNext(result)
-            self?.lastSearchSubject.onCompleted()
+            guard let lastSearch = self?.lastSearch else {return}
+            self?.lastSearchDataSource.accept(lastSearch)
         })
     }
     public func fetchDataBaseData() {
@@ -114,9 +90,8 @@ class UsersViewModel {
             self?.fetchDataBaseData()
         })
     }
-    func deleteAndFetchRecentTableData(indexPath:IndexPath) {
-        let item = searchHistory[indexPath.row]
-        DataBaseManger.shared.delete(returnType: SearchHistory.self, delete: item)
+    func deleteAndFetchRecentTableData(searchHistory: SearchHistory) {
+        DataBaseManger.shared.delete(returnType: SearchHistory.self, delete: searchHistory)
         fetchSearchHistory()
     }
 }

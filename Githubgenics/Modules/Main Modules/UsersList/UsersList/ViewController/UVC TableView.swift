@@ -16,12 +16,11 @@ extension UsersViewController: UITableViewDelegate {
          /// usersListTableView rowHeight
          usersListTableView.rx.rowHeight.onNext(60)
          /// usersListTableView dataSource
-         viewModel
-            .usersModelObservable.bind(to: usersListTableView.rx.items(cellIdentifier: String(describing: UsersTableViewCell.self), cellType: UsersTableViewCell.self)) {[weak self] row, users, cell  in
-             cell.cellData(with: users)
-             self?.usersListTableView.isHidden = false
-             self?.loadingSpinner.dismiss()
-         }.disposed(by: bag)
+        viewModel.usersListdataSource.bind(to: usersListTableView.rx.items(cellIdentifier: "UsersTableViewCell", cellType: UsersTableViewCell.self)) { [weak self] row, users, cell in
+            cell.cellData(with: users)
+            self?.usersListTableView.isHidden = false
+            self?.loadingSpinner.dismiss()
+        }.disposed(by: bag)
          /// didSelectRow
         Observable
             .zip(usersListTableView.rx.itemSelected, usersListTableView.rx.modelSelected(User.self))
@@ -32,6 +31,18 @@ extension UsersViewController: UITableViewDelegate {
                     self?.viewModel.saveToLastSearch(model: users)
                 }
         }.disposed(by: bag)
+        /// willDisplayCell
+        usersListTableView.rx.prefetchRows.subscribe(onNext: { [self] indexPaths in
+                 for index in indexPaths {
+                     if index.row == viewModel.usersModel.count - 1 {
+                         self.viewModel.pageNo+=1
+                         self.viewModel.isPaginating = true
+                         print(self.viewModel.pageNo+=1)
+                         self.showTableViewSpinner(tableView: usersListTableView)
+                         self.viewModel.fetchUsers(pageNo: self.viewModel.pageNo, query: "J")
+                     }
+                 }
+             }).disposed(by: bag)
      }
     /// long press menu
     func tableView( _ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
@@ -73,7 +84,7 @@ extension UsersViewController: UITableViewDelegate {
         /// recentSearchTable rowHeight
         recentSearchTableView.rx.rowHeight.onNext(50)
         /// searchHistory dataSource
-        viewModel.searchHistoryModelObservable.bind(to: recentSearchTableView.rx.items(cellIdentifier: String(describing: SearchHistoryCell.self), cellType: SearchHistoryCell.self)) { row, model, cell  in
+        viewModel.searchHistoryDataSource.bind(to: recentSearchTableView.rx.items(cellIdentifier: String(describing: SearchHistoryCell.self), cellType: SearchHistoryCell.self)) { row, model, cell  in
             cell.cellData(with: model)
         }.disposed(by: bag)
         /// searchHistory delete
@@ -81,17 +92,19 @@ extension UsersViewController: UITableViewDelegate {
             .zip(recentSearchTableView.rx.itemDeleted, recentSearchTableView.rx.modelDeleted(SearchHistory.self))
             .bind { [weak self] indexPath, searchHistory in
                 self?.recentSearchTableView.beginUpdates()
-                DataBaseManger.shared.delete(returnType: SearchHistory.self, delete: searchHistory)
                 self?.recentSearchTableView.deleteRows(at: [indexPath], with: .fade)
+                self?.viewModel.deleteAndFetchRecentTableData(searchHistory: searchHistory)
                 self?.recentSearchTableView.endUpdates()
         }.disposed(by: bag)
         /// didSelectRow
         Observable
             .zip(recentSearchTableView.rx.itemSelected, recentSearchTableView.rx.modelSelected(SearchHistory.self))
             .bind { [weak self] indexPath, searchHistory in
+                DispatchQueue.main.async {
                     self?.recentSearchTableView.deselectRow(at: indexPath, animated: true)
                     self?.searchController.searchBar.text = searchHistory.keyword
                     self?.searchController.searchBar.becomeFirstResponder()
+                }
         }.disposed(by: bag)
     }
 }
@@ -99,7 +112,7 @@ extension UsersViewController: UITableViewDelegate {
 extension UsersViewController {
     func bindLastSearchCollectionView () {
         /// lastSearchitems dataSource
-        viewModel.lastSearchModelObservable
+        viewModel.lastSearchDataSource
             .bind(to: collectionView.rx.items(cellIdentifier: String(describing: LastSearchCollectionCell.self), cellType: LastSearchCollectionCell.self)) { row, lastSearch, cell  in
                 cell.cellData(with: lastSearch)
             }.disposed(by: bag)

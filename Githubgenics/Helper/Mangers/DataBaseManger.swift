@@ -24,6 +24,7 @@ class DataBaseManger {
     }
     func delete<T: NSManagedObject>(returnType: T.Type, delete: T) {
         context.delete(delete.self)
+        HapticsManger.shared.selectionVibrate(for: .light)
         do {
             try context.save()
         } catch {
