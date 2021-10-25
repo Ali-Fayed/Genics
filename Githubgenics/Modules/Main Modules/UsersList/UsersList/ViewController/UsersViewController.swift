@@ -6,16 +6,21 @@
 //
 
 import UIKit
-import SafariServices
-import JGProgressHUD
-import CoreData
 import RxSwift
 import RxCocoa
 
-class UsersViewController: CommonViews {
+class UsersViewController: UIViewController {
     lazy var searchController = UISearchController(searchResultsController: nil)
     lazy var viewModel = UsersViewModel()
     let bag = DisposeBag()
+    let tableFooterView = UIView()
+    let conditionLabel: UILabel = {
+        let label = UILabel()
+        label.isHidden = true
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 21, weight: .medium)
+        return label
+    }()
     //MARK: - IBOutlet
     @IBOutlet weak var usersListTableView: UITableView!
     @IBOutlet weak var recentSearchTableView: UITableView!
@@ -42,15 +47,24 @@ class UsersViewController: CommonViews {
         setupConditionLabel(conditionLabel: conditionLabel)
         setupTableView(tableView: usersListTableView)
         setupSearchHistoryTable(tableView: recentSearchTableView)
-        renderRecentHistoryHiddenConditions()
-        dismissButton()
         bindUsersListTableView()
         bindSearchHistoryTableView ()
         bindLastSearchCollectionView()
         subscribeToSearchBar()
+        subscribeToLoading()
+        dismissButton()
     }
     @objc override func dismissView () {
         viewModel.router?.trigger(.dismiss)
+    }
+    func subscribeToLoading() {
+        viewModel.loadingBehavior.subscribe(onNext: { (isLoading) in
+            if isLoading {
+                self.showIndicator(withTitle: "Loading", and: "")
+            } else {
+                self.hideIndicator()
+            }
+        }).disposed(by: bag)
     }
     func setupConditionLabel(conditionLabel: UILabel) {
         view.addSubview(conditionLabel)
@@ -60,35 +74,25 @@ class UsersViewController: CommonViews {
     func setupTableView(tableView: UITableView) {
         tableView.registerCellNib(cellClass: UsersTableViewCell.self)
         tableView.tableFooterView = tableFooterView
-        tableView.addSubview(refreshControl)
     }
     func setupSearchHistoryTable(tableView: UITableView) {
         tableView.tableFooterView = tableFooterView
-        tableView.addSubview(refreshControl)
         tableView.isHidden = true
     }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        navigationItem.hidesSearchBarWhenScrolling = true
+    }
     func initViewModel () {
-        loadingSpinner.show(in: view)
         viewModel.fetchDataBaseData()
         if searchController.searchBar.text?.isEmpty == true {
             viewModel.fetchUsers(pageNo: viewModel.pageNo, query: "T")
-            setupSearchController(search: searchController)
+            setupSearchController(search: searchController, viewController: self)
             navigationItem.title = Titles.usersViewTitle
         } else {
             viewModel.fetchUsers(pageNo: viewModel.pageNo, query: viewModel.query)
             navigationController?.navigationItem.largeTitleDisplayMode = .never
             navigationController?.navigationBar.prefersLargeTitles = false
             title = Titles.resultsViewTitle
-        }
-    }
-    func renderRecentHistoryHiddenConditions () {
-        if recentSearchTableView.isHidden == true , searchController.searchBar.text?.isEmpty == false {
-            conditionLabel.isHidden = false
-        } else {
-            conditionLabel.isHidden = true
-        }
-        if viewModel.lastSearch.isEmpty == true , viewModel.searchHistory.isEmpty == true {
-            conditionLabel.isHidden = true
         }
     }
 }
@@ -98,25 +102,18 @@ extension UsersViewController {
         /// animation when click on search bar and push searchBar to navbar headerView
         searchController.searchBar.rx.textDidBeginEditing.subscribe(onNext: { [weak self] in
             DispatchQueue.main.async {
+                if self?.searchController.isActive == true {
+                    self?.usersListTableView.isHidden = true
+                    if self?.viewModel.searchHistoryModel.isEmpty == true,
+                       self?.viewModel.lastSearchModel.isEmpty == true {
+                         self?.conditionLabel.isHidden = false
+                     } else {
+                         self?.conditionLabel.isHidden = true
+                         self?.recentSearchTableView.isHidden = false
+                     }
+                }
                 self?.viewModel.pageNo = 1
                 self?.viewModel.isPaginating = false
-                if self?.searchController.searchBar.text?.isEmpty == true {
-                    self?.usersListTableView.isHidden = true
-                } else {
-                    self?.usersListTableView.isHidden = false
-                    self?.conditionLabel.isHidden = true
-                }
-                if self?.viewModel.searchHistory.isEmpty == true {
-                    self?.recentSearchTableView.isHidden = true
-                } else {
-                    self?.recentSearchTableView.isHidden = false
-                }
-                if self?.searchController.searchBar.text?.isEmpty == true , self?.viewModel.lastSearch.isEmpty == true , self?.viewModel.searchHistory.isEmpty == true{
-                    self?.conditionLabel.isHidden = false
-                } else {
-                    self?.conditionLabel.isHidden = true
-                }
-                self?.loadingSpinner.dismiss()
                 self?.viewModel.fetchDataBaseData()
             }
         }).disposed(by: bag)
@@ -130,19 +127,20 @@ extension UsersViewController {
                 self?.searchController.searchBar.text = nil
                 self?.recentSearchTableView.isHidden = true
                 self?.usersListTableView.isHidden = false
-                self?.loadingSpinner.dismiss()
+//                self?.loadingSpinner.dismiss()
                 self?.conditionLabel.isHidden = true
+                self?.viewModel.fetchDataBaseData()
+                self?.viewModel.fetchUsers(pageNo: 1, query: "T")
             }).disposed(by: bag)
         /// Automatic Search When Change Text with Some Animations
         searchController.searchBar.rx.text.orEmpty.subscribe(onNext: { _ in
             guard let text = self.searchController.searchBar.text else { return }
-            self.viewModel.fetchUsers(pageNo: self.viewModel.pageNo, query: self.viewModel.query(searchText: text))
-            self.conditionLabel.isHidden = true
-            self.recentSearchTableView.isHidden = true
+            if text.isEmpty == false {
+                self.viewModel.fetchUsers(pageNo: self.viewModel.pageNo, query: self.viewModel.query(searchText: text))
+                self.conditionLabel.isHidden = true
+                self.usersListTableView.isHidden = false
+                self.recentSearchTableView.isHidden = true
+            }
         }).disposed(by: bag)
-
-    }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        navigationItem.hidesSearchBarWhenScrolling = true
     }
 }

@@ -45,16 +45,7 @@ class SettingsViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         dismissButton()
     }
-    func dismissButton() {
-       let button = UIButton(type: .system)
-       button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
-       button.setTitle("Back", for: .normal)
-       button.sizeToFit()
-       button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
-       let backButton = UIBarButtonItem(customView: button)
-       navigationItem.leftBarButtonItem = backButton
-   }
-    @objc func dismissView () {
+    @objc override func dismissView () {
         router?.trigger(.dismiss)
     }
     

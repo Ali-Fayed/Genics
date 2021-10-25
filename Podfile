@@ -19,4 +19,6 @@ target 'Githubgenics' do
   pod 'XCoordinator/Combine', '~> 2.0'
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
+  pod 'MBProgressHUD', '~> 1.2.0'
+  pod 'CleanyModal'
 end

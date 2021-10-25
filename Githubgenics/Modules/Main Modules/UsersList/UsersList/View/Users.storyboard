@@ -19,22 +19,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4QS-Wm-iih">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="4QS-Wm-iih">
                                 <rect key="frame" x="0.0" y="44" width="414" height="853"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="separatorInset" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="w1U-Wr-4wQ" id="Ab7-i3-bbJ"/>
+                                </connections>
                             </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8LK-Aq-dEI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8LK-Aq-dEI">
                                 <rect key="frame" x="0.0" y="44" width="414" height="853"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="c5r-Bz-5mi">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="177"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="872-LP-CA5">
-                                            <rect key="frame" x="0.0" y="51" width="433" height="126"/>
+                                            <rect key="frame" x="17" y="51" width="377" height="114"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" name="ViewsColorBallet"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iCs-mB-QIA">
@@ -45,24 +48,24 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="LastSearchCollectionCell" id="aJs-fl-2FY" customClass="LastSearchCollectionCell" customModule="Githubgenics" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="13" width="100" height="100"/>
+                                                    <rect key="frame" x="0.0" y="7" width="100" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="y4s-AB-2bm">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JFV-gI-xN3">
-                                                                <rect key="frame" x="20" y="0.0" width="60" height="57"/>
+                                                                <rect key="frame" x="20" y="10" width="60" height="57"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="60" id="CIR-lQ-dIf"/>
                                                                     <constraint firstAttribute="width" constant="60" id="No4-Ww-yIP"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-gY-v1K">
-                                                                <rect key="frame" x="10" y="57" width="80" height="33"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-gY-v1K">
+                                                                <rect key="frame" x="10" y="67" width="80" height="23"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="88" id="Lf3-gD-JaM"/>
-                                                                    <constraint firstAttribute="height" constant="33" id="vyG-wM-xFK"/>
+                                                                    <constraint firstAttribute="width" constant="80" id="Lf3-gD-JaM"/>
+                                                                    <constraint firstAttribute="height" constant="23" id="vyG-wM-xFK"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <nil key="textColor"/>
@@ -76,7 +79,7 @@
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="eoQ-gY-v1K" firstAttribute="leading" secondItem="y4s-AB-2bm" secondAttribute="leading" constant="10" id="0z2-1V-OTh"/>
-                                                            <constraint firstItem="JFV-gI-xN3" firstAttribute="top" secondItem="y4s-AB-2bm" secondAttribute="top" id="6f8-ie-Pt4"/>
+                                                            <constraint firstItem="JFV-gI-xN3" firstAttribute="top" secondItem="y4s-AB-2bm" secondAttribute="top" constant="10" id="6f8-ie-Pt4"/>
                                                             <constraint firstAttribute="bottom" secondItem="eoQ-gY-v1K" secondAttribute="bottom" constant="10" id="7hH-s2-x2X"/>
                                                             <constraint firstAttribute="trailing" secondItem="eoQ-gY-v1K" secondAttribute="trailing" constant="10" id="M6p-lG-fqk"/>
                                                             <constraint firstItem="eoQ-gY-v1K" firstAttribute="top" secondItem="JFV-gI-xN3" secondAttribute="bottom" id="SBZ-8o-roo"/>
@@ -124,11 +127,11 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchHistoryCell" id="QWq-OD-b07" customClass="SearchHistoryCell" customModule="Githubgenics" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="226.5" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchHistoryCell" rowHeight="52" id="QWq-OD-b07" customClass="SearchHistoryCell" customModule="Githubgenics" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="226.5" width="374" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QWq-OD-b07" id="B1u-T8-Iwp">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="ViewsColorBallet"/>
@@ -157,7 +160,7 @@
                         <outlet property="collectionView" destination="872-LP-CA5" id="lg9-Fg-OUp"/>
                         <outlet property="header" destination="c5r-Bz-5mi" id="cej-Yy-qMC"/>
                         <outlet property="recentSearchTableView" destination="8LK-Aq-dEI" id="Nxr-bH-a3d"/>
-                        <outlet property="usersListTableView" destination="4QS-Wm-iih" id="lCm-xD-cX4"/>
+                        <outlet property="usersListTableView" destination="4QS-Wm-iih" id="R0p-YJ-mW0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DgO-pz-Bth" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

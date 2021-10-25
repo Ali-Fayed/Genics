@@ -24,19 +24,15 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
         switch route {
         case .splash:
             let viewController = SplashViewController.instaintiate(on: .mainView)
-            viewController.modalPresentationStyle = .overFullScreen
             viewController.router = strongRouter
-            return .present(viewController)
+            return .push(viewController)
         case .login:
             let loginCoordinator = LoginCoordinator()
             loginCoordinator.rootViewController.modalPresentationStyle = .overFullScreen
             return .present(loginCoordinator)
         case .home:
             let tabCoordinator = HomeTabBarCoordinator()
-            tabCoordinator.rootViewController.modalPresentationStyle = .overFullScreen
-            tabCoordinator.rootViewController.navigationController?.navigationBar.prefersLargeTitles = true
-            tabCoordinator.rootViewController.navigationItem.largeTitleDisplayMode = .always
-            return .present(tabCoordinator)
+            return .push(tabCoordinator)
         }
     }
 }

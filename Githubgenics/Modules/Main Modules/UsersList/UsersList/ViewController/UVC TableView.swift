@@ -18,9 +18,11 @@ extension UsersViewController: UITableViewDelegate {
          /// usersListTableView dataSource
         viewModel.usersListdataSource.bind(to: usersListTableView.rx.items(cellIdentifier: "UsersTableViewCell", cellType: UsersTableViewCell.self)) { [weak self] row, users, cell in
             cell.cellData(with: users)
-            self?.usersListTableView.isHidden = false
-            self?.loadingSpinner.dismiss()
+            if self?.searchController.isActive == false {
+                self?.usersListTableView.isHidden = false
+            }
         }.disposed(by: bag)
+        
          /// didSelectRow
         Observable
             .zip(usersListTableView.rx.itemSelected, usersListTableView.rx.modelSelected(User.self))
@@ -28,6 +30,8 @@ extension UsersViewController: UITableViewDelegate {
                 self?.usersListTableView.deselectRow(at: indexPath, animated: true)
                 self?.viewModel.router?.trigger(.publicUserProfile(user: users))
                 if self?.searchController.searchBar.text?.isEmpty == false {
+                    guard let text = self?.searchController.searchBar.text else { return }
+                    self?.viewModel.saveSearchWord(text: text)
                     self?.viewModel.saveToLastSearch(model: users)
                 }
         }.disposed(by: bag)
@@ -37,7 +41,6 @@ extension UsersViewController: UITableViewDelegate {
                      if index.row == viewModel.usersModel.count - 1 {
                          self.viewModel.pageNo+=1
                          self.viewModel.isPaginating = true
-                         print(self.viewModel.pageNo+=1)
                          self.showTableViewSpinner(tableView: usersListTableView)
                          self.viewModel.fetchUsers(pageNo: self.viewModel.pageNo, query: "J")
                      }
@@ -111,6 +114,7 @@ extension UsersViewController: UITableViewDelegate {
 //MARK: - CollectionView
 extension UsersViewController {
     func bindLastSearchCollectionView () {
+        collectionView.layer.cornerRadius = 10
         /// lastSearchitems dataSource
         viewModel.lastSearchDataSource
             .bind(to: collectionView.rx.items(cellIdentifier: String(describing: LastSearchCollectionCell.self), cellType: LastSearchCollectionCell.self)) { row, lastSearch, cell  in

@@ -14,13 +14,14 @@ import RxCocoa
 
 class UsersViewModel {
     let usersListdataSource = BehaviorRelay(value: [User]())
-    let searchHistoryDataSource = BehaviorRelay(value: [SearchHistory]())
-    let lastSearchDataSource = BehaviorRelay(value: [LastSearch]())
     var usersModel = [User]()
-    var searchHistory = [SearchHistory]()
-    var lastSearch = [LastSearch]()
+    let searchHistoryDataSource = BehaviorRelay(value: [SearchHistory]())
+    var searchHistoryModel = [SearchHistory]()
+    let lastSearchDataSource = BehaviorRelay(value: [LastSearch]())
+    var lastSearchModel = [LastSearch]()
     var useCase: UserUseCase?
     var router: StrongRouter<UsersRoute>?
+    var loadingBehavior = BehaviorRelay<Bool>(value: false)
     var pageNo: Int = 1
     var isPaginating = false
     var query: String = ""
@@ -39,6 +40,9 @@ class UsersViewModel {
         return query
     }
     func fetchUsers(pageNo: Int, query: String) {
+        if isPaginating == false {
+            loadingBehavior.accept(true)
+        }
         useCase?.fetchUsersList(page: pageNo ,query: query, completion: { [weak self] result in
             switch result {
             case .success(let result):
@@ -51,6 +55,7 @@ class UsersViewModel {
                     guard let usersModel = self?.usersModel else {return}
                     self?.usersListdataSource.accept(usersModel)
                 }
+                self?.loadingBehavior.accept(false)
             case .failure(let error):
                 CustomViews.shared.showAlert(message: error.localizedDescription, title: "Error")
             }
@@ -58,15 +63,15 @@ class UsersViewModel {
     }
     private func fetchSearchHistory() {
         useCase?.fetchSearchHistory(completion: { [weak self] result in
-            self?.searchHistory = result
-            guard let searchHistory = self?.searchHistory else {return}
+            self?.searchHistoryModel = result
+            guard let searchHistory = self?.searchHistoryModel else {return}
             self?.searchHistoryDataSource.accept(searchHistory)
         })
     }
     private func fetchLastSearch() {
         useCase?.fetchLastSearch(completion: { [weak self] result in
-            self?.lastSearch = result
-            guard let lastSearch = self?.lastSearch else {return}
+            self?.lastSearchModel = result
+            guard let lastSearch = self?.lastSearchModel else {return}
             self?.lastSearchDataSource.accept(lastSearch)
         })
     }
