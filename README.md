@@ -1,6 +1,6 @@
 ![Git](https://user-images.githubusercontent.com/72504852/109747727-57270d80-7be0-11eb-8d6a-6a7d7b42faf8.png)
 
-### Hi there, This is ***Githubgenics*** - iOS Native App Written in [Swift 5.3][Swift 5.3] and based on [Github REST API][website] 👋
+### Hi there, This is ***Genics*** - iOS Native App Written in [Swift 5.3][Swift 5.3] and based on [Github REST API][website] 👋
 
 
 
